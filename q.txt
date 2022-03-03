@@ -1,0 +1,10 @@
+2
+Main.main
+2
+a1,a2
+a3,a4
+A.foo
+3
+r1,r2
+r3,r4
+r5,r6
