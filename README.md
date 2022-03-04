@@ -10,31 +10,79 @@ Base repository for CS6235 A1 - a Soot-based Flow- and Context-Insensitive Inter
 * Ensure that any code you write is within the `cs6235.a1.submission` package.
 * You will eventually submit only an archive containing the code for the `cs6235.a1.submission` package.
 * Even if you submit other items, we will only copy over the `cs6235.a1.submission` package during evaluation - so make sure all your submission code is within that package.
-* `q.txt` is a sample file containing some aliasing queries. **Note** that you do not have to read-in or parse its contents. That is taken care of behind the scenes. However, since you will need to build your own test cases, it is beneficial to know its strcture. It is as follows:
+
+## Input/Output
+* Consider the following program provided as input in `Test.java`
+  ```
+	//Test.java
+	class Test {
+		public static void main (String [] args) {
+			A a = new A();
+			a.f = new F();
+			F p = a.f;
+			
+			F q = p.foo();
+   
+			a.bar(q);
+		}
+	}
+	  
+	class A {
+		F f;
+		void bar(F x) {
+			F y = this.f;
+			System.out.println("hello world");
+		}
+	}
+	
+	class F {
+		F foo() {
+			return this;
+		}
+	}
+	
+  ```
+
+ Your code will need to answer some aliasing queries, which will ask if certain variables in this input program are aliases of each other. These queries will be supplied in an input queries text file, described below. The structure of this input queries file is as follows:
   1. First line contains an integer M - indicates the number of methods that have queries
   2. Next two lines contains a Method-Name, followed by an integer N - that indicates the number of alias queries for Method-Name
   3. Next N lines contain the alias queries for Method-Name, in the format `lhs,rhs` -- to be read as "Does `lhs` alias `rhs`?"
   4. Items ii and iii repeat M times, once for each Method-Name
   
-     For example:
-     ```
-     2
-     Driver.main
-     3
-     x,y
-     w,z
-     p,q
-     C.fooBar
-     2
-     a,b
-     d,e
-     ```
+  **Note** that you do not need to read-in or parse this text file, it is done behind the scenes.
+  
+   For example, consider the following input queries file `q.txt` :
+```
+  2
+  Test.main
+  3
+  a,p
+  a,q
+  p,q
+  A.bar
+  1
+  x,y
+```
      
-     Here there 2 methods for which there are aliasing queries - `Driver.main`, and `C.fooBar`. There are 3 queries for `Driver.main` -- "Does `x` alias `y`?", "Does `w` alias `z`?" and "Does `p` alias `q`?". Similarly there there 2 queries for `C.fooBar` -- "Does `a` alias `b`?" and "Does `d` alias `e`?"
+Here there are 2 methods for which there are aliasing queries - `Test.main`, and `A.bar`. There are 3 queries for `Test.main` -- "Does `a` alias `p`?", "Does `a` alias `q`?" and "Does `p` alias `q`?". Similarly there is 1 query for `A.bar` -- "Does `x` alias `y`?"
      
      
-* The input queries will be available to you via the `getQueries` method of your analysis. It is already loaded behind the scenes. Simply execute `Map<String, List<Query>> queries = this.getQueries();` inside your analysis to obtain a map using which you can obtain the queries per method.
+The input queries will be available to you via the `getQueries` method of your analysis. It is already loaded behind the scenes. Simply execute `Map<String, List<Query>> queries = this.getQueries();` inside your analysis to obtain a map using which you can obtain the queries per method.
 
+The output should be a sequence of line-separated "YES" or "NO" strings, answering the alias queries in the respective order. For example, given the above `Test.java` and `q.txt`, your output would be:
+```
+NO
+NO
+YES
+YES
+```
+i.e. it should convey the following:
+```
+Does a alias p in Test.Main? NO
+Does a alias q in Test.main? NO
+Does p alias q in Test.main? YES
+Does x alias y in A.bar? YES
+```
 
 ## Cheat Sheet
 Some ready reckoners to accomplish a few essential tasks are listed below. Note that they are offered without any warranty, and you are expected to use your judgement and test things thoroughly yourself.
