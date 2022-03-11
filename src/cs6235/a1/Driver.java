@@ -20,7 +20,27 @@ public class Driver {
 				//"-p", "jb", "use-original-names:true",
 				"-p", "cg.cha", "enabled:true",
 				"-p", "cg.spark", "enabled:false",
-				//"-f", "J",
+				//START disable some optimizations that eliminate locals
+				"-p", "jb", "preserve-source-annotations:true",
+				"-p", "jb", "stabilize-local-names:true",
+				"-p", "jb.ulp", "enabled:false",
+				"-p", "jb.dae", "enabled:false",
+				"-p", "jb.cp-ule", "enabled:false",
+				"-p", "jb.cp", "enabled:false",
+				"-p", "jb.lp", "enabled:false",
+				"-p", "jb.lns", "enabled:false",
+				"-p", "jb.dtr", "enabled:false",
+				"-p", "jb.ese", "enabled:false",
+				"-p", "jb.sils", "enabled:false",
+				"-p", "jb.a", "enabled:false",
+				"-p", "jb.ule", "enabled:false",
+				"-p", "jb.ne", "enabled:false",
+				"-p", "jb.uce", "enabled:false",
+				"-p", "jb.tt", "enabled:false",
+				//END disable some optimizations that eliminate locals
+				//now tell the Jimple-Body pack to preserve variable names from Source, wherever applicable
+				"-p", "jb", "use-original-names:true",
+				"-f", "J",
 				//"-d", "output",
 				mainClass
 				
