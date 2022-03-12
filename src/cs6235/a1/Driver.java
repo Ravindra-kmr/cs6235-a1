@@ -8,9 +8,9 @@ import soot.Transform;
 public class Driver {
 	public static void main (String [] args) {
 		String classPath = "tests";
-		String queriesPath = "q.txt";
+		String queriesPath = "tests/CS21M050/Q1.txt";
 		Options.queriesPath = queriesPath;
-		String mainClass = "Main";
+		String mainClass = "P1";
 		
 		String [] sootArgs = {
 				"-v",
