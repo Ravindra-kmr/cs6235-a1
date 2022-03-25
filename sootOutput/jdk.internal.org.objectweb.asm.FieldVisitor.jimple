@@ -1,0 +1,175 @@
+public abstract class jdk.internal.org.objectweb.asm.FieldVisitor extends java.lang.Object
+{
+    protected final int api;
+    protected jdk.internal.org.objectweb.asm.FieldVisitor fv;
+
+    public void <init>(int)
+    {
+        int api;
+        jdk.internal.org.objectweb.asm.FieldVisitor this;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldVisitor;
+
+        api := @parameter0: int;
+
+        specialinvoke this.<jdk.internal.org.objectweb.asm.FieldVisitor: void <init>(int,jdk.internal.org.objectweb.asm.FieldVisitor)>(api, null);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(int, jdk.internal.org.objectweb.asm.FieldVisitor)
+    {
+        jdk.internal.org.objectweb.asm.FieldVisitor this, fv;
+        int api;
+        java.lang.IllegalArgumentException $stack3;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldVisitor;
+
+        api := @parameter0: int;
+
+        fv := @parameter1: jdk.internal.org.objectweb.asm.FieldVisitor;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        if api < 262144 goto label1;
+
+        if api <= 393216 goto label2;
+
+     label1:
+        $stack3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack3.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $stack3;
+
+     label2:
+        this.<jdk.internal.org.objectweb.asm.FieldVisitor: int api> = api;
+
+        this.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.FieldVisitor fv> = fv;
+
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.FieldVisitor this, $stack3, $stack4;
+        java.lang.String desc;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack5;
+        boolean visible;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldVisitor;
+
+        desc := @parameter0: java.lang.String;
+
+        visible := @parameter1: boolean;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.FieldVisitor fv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.FieldVisitor fv>;
+
+        $stack5 = virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String,boolean)>(desc, visible);
+
+        return $stack5;
+
+     label1:
+        return null;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitTypeAnnotation(int, jdk.internal.org.objectweb.asm.TypePath, java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.TypePath typePath;
+        jdk.internal.org.objectweb.asm.FieldVisitor this, $stack6, $stack7;
+        java.lang.RuntimeException $stack9;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack8;
+        int $stack5, typeRef;
+        java.lang.String desc;
+        boolean visible;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldVisitor;
+
+        typeRef := @parameter0: int;
+
+        typePath := @parameter1: jdk.internal.org.objectweb.asm.TypePath;
+
+        desc := @parameter2: java.lang.String;
+
+        visible := @parameter3: boolean;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.FieldVisitor: int api>;
+
+        if $stack5 >= 327680 goto label1;
+
+        $stack9 = new java.lang.RuntimeException;
+
+        specialinvoke $stack9.<java.lang.RuntimeException: void <init>()>();
+
+        throw $stack9;
+
+     label1:
+        $stack6 = this.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.FieldVisitor fv>;
+
+        if $stack6 == null goto label2;
+
+        $stack7 = this.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.FieldVisitor fv>;
+
+        $stack8 = virtualinvoke $stack7.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitTypeAnnotation(int,jdk.internal.org.objectweb.asm.TypePath,java.lang.String,boolean)>(typeRef, typePath, desc, visible);
+
+        return $stack8;
+
+     label2:
+        return null;
+
+        nop;
+    }
+
+    public void visitAttribute(jdk.internal.org.objectweb.asm.Attribute)
+    {
+        jdk.internal.org.objectweb.asm.FieldVisitor this, $stack2, $stack3;
+        jdk.internal.org.objectweb.asm.Attribute attr;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldVisitor;
+
+        attr := @parameter0: jdk.internal.org.objectweb.asm.Attribute;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.FieldVisitor fv>;
+
+        if $stack2 == null goto label1;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.FieldVisitor fv>;
+
+        virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.FieldVisitor: void visitAttribute(jdk.internal.org.objectweb.asm.Attribute)>(attr);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitEnd()
+    {
+        jdk.internal.org.objectweb.asm.FieldVisitor this, $stack1, $stack2;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldVisitor;
+
+        $stack1 = this.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.FieldVisitor fv>;
+
+        if $stack1 == null goto label1;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.FieldVisitor: jdk.internal.org.objectweb.asm.FieldVisitor fv>;
+
+        virtualinvoke $stack2.<jdk.internal.org.objectweb.asm.FieldVisitor: void visitEnd()>();
+
+     label1:
+        return;
+
+        nop;
+    }
+}

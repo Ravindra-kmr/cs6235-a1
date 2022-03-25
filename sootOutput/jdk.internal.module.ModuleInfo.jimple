@@ -1,0 +1,2159 @@
+public final class jdk.internal.module.ModuleInfo extends java.lang.Object
+{
+    private final int JAVA_MIN_SUPPORTED_VERSION;
+    private final int JAVA_MAX_SUPPORTED_VERSION;
+    private static final jdk.internal.misc.JavaLangModuleAccess JLMA;
+    private final java.util.function.Supplier packageFinder;
+    private final boolean parseHashes;
+    private static volatile java.util.Set predefinedNotAllowed;
+    static final boolean $assertionsDisabled;
+
+    private void <init>(java.util.function.Supplier, boolean)
+    {
+        jdk.internal.module.ModuleInfo this;
+        java.util.function.Supplier pf;
+        boolean ph;
+
+        this := @this: jdk.internal.module.ModuleInfo;
+
+        pf := @parameter0: java.util.function.Supplier;
+
+        ph := @parameter1: boolean;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.module.ModuleInfo: int JAVA_MAX_SUPPORTED_VERSION> = 55;
+
+        this.<jdk.internal.module.ModuleInfo: int JAVA_MIN_SUPPORTED_VERSION> = 53;
+
+        this.<jdk.internal.module.ModuleInfo: int JAVA_MIN_SUPPORTED_VERSION> = 53;
+
+        this.<jdk.internal.module.ModuleInfo: int JAVA_MAX_SUPPORTED_VERSION> = 55;
+
+        this.<jdk.internal.module.ModuleInfo: java.util.function.Supplier packageFinder> = pf;
+
+        this.<jdk.internal.module.ModuleInfo: boolean parseHashes> = ph;
+
+        return;
+
+        nop;
+    }
+
+    private void <init>(java.util.function.Supplier)
+    {
+        jdk.internal.module.ModuleInfo this;
+        java.util.function.Supplier pf;
+
+        this := @this: jdk.internal.module.ModuleInfo;
+
+        pf := @parameter0: java.util.function.Supplier;
+
+        specialinvoke this.<jdk.internal.module.ModuleInfo: void <init>(java.util.function.Supplier,boolean)>(pf, 1);
+
+        return;
+
+        nop;
+    }
+
+    public static jdk.internal.module.ModuleInfo$Attributes read(java.io.InputStream, java.util.function.Supplier) throws java.io.IOException
+    {
+        jdk.internal.module.ModuleInfo $stack3;
+        java.io.DataInputStream $stack4;
+        jdk.internal.module.ModuleInfo$Attributes $stack5;
+        java.lang.RuntimeException $stack8, e#1;
+        java.util.function.Supplier pf;
+        java.io.EOFException $stack6, e#2;
+        bottom_type e;
+        java.lang.module.InvalidModuleDescriptorException $stack7, $stack10;
+        java.lang.String $stack9;
+        java.io.InputStream in;
+
+        in := @parameter0: java.io.InputStream;
+
+        pf := @parameter1: java.util.function.Supplier;
+
+     label1:
+        $stack3 = new jdk.internal.module.ModuleInfo;
+
+        specialinvoke $stack3.<jdk.internal.module.ModuleInfo: void <init>(java.util.function.Supplier)>(pf);
+
+        $stack4 = new java.io.DataInputStream;
+
+        specialinvoke $stack4.<java.io.DataInputStream: void <init>(java.io.InputStream)>(in);
+
+        $stack5 = virtualinvoke $stack3.<jdk.internal.module.ModuleInfo: jdk.internal.module.ModuleInfo$Attributes doRead(java.io.DataInput)>($stack4);
+
+     label2:
+        return $stack5;
+
+     label3:
+        $stack8 := @caughtexception;
+
+        e#1 = $stack8;
+
+        $stack9 = virtualinvoke e#1.<java.lang.RuntimeException: java.lang.String getMessage()>();
+
+        $stack10 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack9);
+
+        throw $stack10;
+
+     label4:
+        $stack6 := @caughtexception;
+
+        e#2 = $stack6;
+
+        $stack7 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException truncatedModuleDescriptor()>();
+
+        throw $stack7;
+
+        nop;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+        catch java.io.EOFException from label1 to label2 with label4;
+    }
+
+    public static jdk.internal.module.ModuleInfo$Attributes read(java.nio.ByteBuffer, java.util.function.Supplier)
+    {
+        jdk.internal.module.ModuleInfo $stack3;
+        java.util.function.Supplier pf;
+        java.nio.ByteBuffer bb;
+        bottom_type e;
+        java.lang.String $stack11;
+        jdk.internal.module.ModuleInfo$DataInputWrapper $stack4;
+        jdk.internal.module.ModuleInfo$Attributes $stack5;
+        java.io.IOException $stack6, e#3;
+        java.lang.RuntimeException $stack10, e#1;
+        java.io.EOFException $stack8, e#2;
+        java.io.UncheckedIOException $stack7;
+        java.lang.module.InvalidModuleDescriptorException $stack9, $stack12;
+
+        bb := @parameter0: java.nio.ByteBuffer;
+
+        pf := @parameter1: java.util.function.Supplier;
+
+     label1:
+        $stack3 = new jdk.internal.module.ModuleInfo;
+
+        specialinvoke $stack3.<jdk.internal.module.ModuleInfo: void <init>(java.util.function.Supplier)>(pf);
+
+        $stack4 = new jdk.internal.module.ModuleInfo$DataInputWrapper;
+
+        specialinvoke $stack4.<jdk.internal.module.ModuleInfo$DataInputWrapper: void <init>(java.nio.ByteBuffer)>(bb);
+
+        $stack5 = virtualinvoke $stack3.<jdk.internal.module.ModuleInfo: jdk.internal.module.ModuleInfo$Attributes doRead(java.io.DataInput)>($stack4);
+
+     label2:
+        return $stack5;
+
+     label3:
+        $stack10 := @caughtexception;
+
+        e#1 = $stack10;
+
+        $stack11 = virtualinvoke e#1.<java.lang.RuntimeException: java.lang.String getMessage()>();
+
+        $stack12 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack11);
+
+        throw $stack12;
+
+     label4:
+        $stack8 := @caughtexception;
+
+        e#2 = $stack8;
+
+        $stack9 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException truncatedModuleDescriptor()>();
+
+        throw $stack9;
+
+     label5:
+        $stack6 := @caughtexception;
+
+        e#3 = $stack6;
+
+        $stack7 = new java.io.UncheckedIOException;
+
+        specialinvoke $stack7.<java.io.UncheckedIOException: void <init>(java.io.IOException)>(e#3);
+
+        throw $stack7;
+
+        nop;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+        catch java.io.EOFException from label1 to label2 with label4;
+        catch java.io.IOException from label1 to label2 with label5;
+    }
+
+    public static jdk.internal.module.ModuleInfo$Attributes readIgnoringHashes(java.nio.ByteBuffer, java.util.function.Supplier)
+    {
+        jdk.internal.module.ModuleInfo $stack3;
+        java.util.function.Supplier pf;
+        java.nio.ByteBuffer bb;
+        bottom_type e;
+        java.lang.String $stack11;
+        jdk.internal.module.ModuleInfo$DataInputWrapper $stack4;
+        jdk.internal.module.ModuleInfo$Attributes $stack5;
+        java.io.IOException $stack6, e#3;
+        java.lang.RuntimeException $stack10, e#1;
+        java.io.EOFException $stack8, e#2;
+        java.io.UncheckedIOException $stack7;
+        java.lang.module.InvalidModuleDescriptorException $stack9, $stack12;
+
+        bb := @parameter0: java.nio.ByteBuffer;
+
+        pf := @parameter1: java.util.function.Supplier;
+
+     label1:
+        $stack3 = new jdk.internal.module.ModuleInfo;
+
+        specialinvoke $stack3.<jdk.internal.module.ModuleInfo: void <init>(java.util.function.Supplier,boolean)>(pf, 0);
+
+        $stack4 = new jdk.internal.module.ModuleInfo$DataInputWrapper;
+
+        specialinvoke $stack4.<jdk.internal.module.ModuleInfo$DataInputWrapper: void <init>(java.nio.ByteBuffer)>(bb);
+
+        $stack5 = virtualinvoke $stack3.<jdk.internal.module.ModuleInfo: jdk.internal.module.ModuleInfo$Attributes doRead(java.io.DataInput)>($stack4);
+
+     label2:
+        return $stack5;
+
+     label3:
+        $stack10 := @caughtexception;
+
+        e#1 = $stack10;
+
+        $stack11 = virtualinvoke e#1.<java.lang.RuntimeException: java.lang.String getMessage()>();
+
+        $stack12 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack11);
+
+        throw $stack12;
+
+     label4:
+        $stack8 := @caughtexception;
+
+        e#2 = $stack8;
+
+        $stack9 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException truncatedModuleDescriptor()>();
+
+        throw $stack9;
+
+     label5:
+        $stack6 := @caughtexception;
+
+        e#3 = $stack6;
+
+        $stack7 = new java.io.UncheckedIOException;
+
+        specialinvoke $stack7.<java.io.UncheckedIOException: void <init>(java.io.IOException)>(e#3);
+
+        throw $stack7;
+
+        nop;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+        catch java.io.EOFException from label1 to label2 with label4;
+        catch java.io.IOException from label1 to label2 with label5;
+    }
+
+    private jdk.internal.module.ModuleInfo$Attributes doRead(java.io.DataInput) throws java.io.IOException
+    {
+        byte $stack119, l27#12, $stack111#13, $stack111#14;
+        java.lang.StringBuilder $stack31, $stack32, $stack33, $stack34, $stack35, $stack66, $stack67, $stack68, $stack69, $stack106, $stack107, $stack108, $stack121, $stack122, $stack123, $stack124, $u0, $u3, $u4, $u7;
+        jdk.internal.module.ModuleInfo this;
+        java.util.function.Supplier $stack80, $stack82;
+        java.io.IOException $stack139;
+        jdk.internal.module.ModuleInfo$Attributes $stack51, $u8;
+        jdk.internal.module.ModuleTarget $stack58, $stack100, moduleTarget#4;
+        java.io.DataInput in;
+        java.lang.module.ModuleDescriptor $stack50, $stack57, name_index#23;
+        java.util.HashSet $stack49, attributes, $stack61, $stack76, attribute_name#20, $u2, $u5;
+        int $stack28, magic, $stack29, minor_version, $stack30, major_version, $stack39, access_flags, $stack40, this_class, $stack44, super_class, $stack45, interfaces_count, $stack46, fields_count, $stack47, methods_count, $stack48, attributes_count, $stack88, $stack90, $stack92, $stack95, $stack96, $stack98, $stack105, $stack134, $stack136, i#7, name_index#8, length#10, $i0;
+        jdk.internal.module.ModuleHashes $stack59, $stack99, moduelHashes#5;
+        java.lang.module.ModuleDescriptor$Builder $stack55, $stack56, $stack84, $stack103, builder#1;
+        java.lang.Object $stack65, $stack83;
+        jdk.internal.module.ModuleResolution $stack60, $stack94, moduleResolution#6;
+        bottom_type builder, allPackages, mainClass, moduleTarget, moduelHashes, moduleResolution, i, name_index, attribute_name, length, added, $stack81, l27, $stack111;
+        jdk.internal.module.ModuleInfo$ConstantPool $stack38, cpool, $u1;
+        java.util.Set $stack53, $stack86, $stack102, allPackages#2, $stack81#17, $stack81#18, name_index#19;
+        java.io.UncheckedIOException $stack138, name_index#16;
+        java.lang.module.InvalidModuleDescriptorException $stack37, $stack71, $stack87, $stack110, $stack126, $stack127, $stack128, $stack129, $stack130, $stack131, $stack132, $stack137;
+        java.lang.AssertionError $stack79, $u6;
+        java.lang.String $stack36, $stack41, mn, $stack42, $stack70, $stack72, $stack73, $stack74, $stack77, $stack89, l26, $stack101, $stack109, $stack118, $stack120, $stack125, $stack133, $stack135, mainClass#3, attribute_name#9, length#21, added#22;
+        jdk.internal.misc.JavaLangModuleAccess $stack52;
+        boolean $stack43, $stack54, $stack62, $stack63, $stack75, $stack78, $stack85, $stack91, $stack93, $stack97, $stack104, $stack112, $stack113, $stack114, $stack115, $stack116, $stack117, added#11, i#15;
+        java.util.Iterator $stack64;
+        char $c0;
+
+        this := @this: jdk.internal.module.ModuleInfo;
+
+        in := @parameter0: java.io.DataInput;
+
+        $stack28 = interfaceinvoke in.<java.io.DataInput: int readInt()>();
+
+        magic = $stack28;
+
+        if magic == -889275714 goto label01;
+
+        $stack137 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("Bad magic number");
+
+        throw $stack137;
+
+     label01:
+        $stack29 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        minor_version = $stack29;
+
+        $stack30 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        major_version = $stack30;
+
+        if major_version < 53 goto label02;
+
+        if major_version <= 55 goto label03;
+
+     label02:
+        $u0 = new java.lang.StringBuilder;
+
+        $stack31 = $u0;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $stack133 = "Unsupported major.minor version ";
+
+        $stack32 = virtualinvoke $stack31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack133);
+
+        $stack134 = major_version;
+
+        $stack33 = virtualinvoke $stack32.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack134);
+
+        $stack135 = ".";
+
+        $stack34 = virtualinvoke $stack33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack135);
+
+        $stack136 = minor_version;
+
+        $stack35 = virtualinvoke $stack34.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack136);
+
+        $stack36 = virtualinvoke $stack35.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack37 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack36);
+
+        throw $stack37;
+
+     label03:
+        $u1 = new jdk.internal.module.ModuleInfo$ConstantPool;
+
+        $stack38 = $u1;
+
+        specialinvoke $u1.<jdk.internal.module.ModuleInfo$ConstantPool: void <init>(java.io.DataInput)>(in);
+
+        cpool = $stack38;
+
+        $stack39 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        access_flags = $stack39;
+
+        $c0 = 32768;
+
+        $i0 = (int) $c0;
+
+        if access_flags == $i0 goto label04;
+
+        $stack132 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("access_flags should be ACC_MODULE");
+
+        throw $stack132;
+
+     label04:
+        $stack40 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        this_class = $stack40;
+
+        $stack41 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getClassName(int)>(this_class);
+
+        mn = $stack41;
+
+        $stack42 = "module-info";
+
+        $stack43 = virtualinvoke $stack42.<java.lang.String: boolean equals(java.lang.Object)>(mn);
+
+        if $stack43 != 0 goto label05;
+
+        $stack131 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("this_class should be module-info");
+
+        throw $stack131;
+
+     label05:
+        $stack44 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        super_class = $stack44;
+
+        if super_class <= 0 goto label06;
+
+        $stack130 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("bad #super_class");
+
+        throw $stack130;
+
+     label06:
+        $stack45 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        interfaces_count = $stack45;
+
+        if interfaces_count <= 0 goto label07;
+
+        $stack129 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("Bad #interfaces");
+
+        throw $stack129;
+
+     label07:
+        $stack46 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        fields_count = $stack46;
+
+        if fields_count <= 0 goto label08;
+
+        $stack128 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("Bad #fields");
+
+        throw $stack128;
+
+     label08:
+        $stack47 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        methods_count = $stack47;
+
+        if methods_count <= 0 goto label09;
+
+        $stack127 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("Bad #methods");
+
+        throw $stack127;
+
+     label09:
+        $stack48 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        attributes_count = $stack48;
+
+        $u2 = new java.util.HashSet;
+
+        $stack49 = $u2;
+
+        specialinvoke $u2.<java.util.HashSet: void <init>()>();
+
+        attributes = $stack49;
+
+        builder#1 = null;
+
+        allPackages#2 = null;
+
+        mainClass#3 = null;
+
+        moduleTarget#4 = null;
+
+        moduelHashes#5 = null;
+
+        moduleResolution#6 = null;
+
+        i#7 = 0;
+
+     label10:
+        $stack96 = i#7;
+
+        $stack95 = attributes_count;
+
+        if $stack96 >= $stack95 goto label29;
+
+        $stack88 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        name_index#8 = $stack88;
+
+        $stack89 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getUtf8(int)>(name_index#8);
+
+        attribute_name#9 = $stack89;
+
+        $stack90 = interfaceinvoke in.<java.io.DataInput: int readInt()>();
+
+        length#10 = $stack90;
+
+        $stack91 = interfaceinvoke attributes.<java.util.Set: boolean add(java.lang.Object)>(attribute_name#9);
+
+        added#11 = $stack91;
+
+        if added#11 != 0 goto label11;
+
+        $stack117 = staticinvoke <jdk.internal.module.ModuleInfo: boolean isAttributeAtMostOnce(java.lang.String)>(attribute_name#9);
+
+        if $stack117 == 0 goto label11;
+
+        $u3 = new java.lang.StringBuilder;
+
+        $stack121 = $u3;
+
+        specialinvoke $u3.<java.lang.StringBuilder: void <init>()>();
+
+        $stack122 = virtualinvoke $stack121.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("More than one ");
+
+        $stack123 = virtualinvoke $stack122.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(attribute_name#9);
+
+        $stack124 = virtualinvoke $stack123.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" attribute");
+
+        $stack125 = virtualinvoke $stack124.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack126 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack125);
+
+        throw $stack126;
+
+     label11:
+        $stack118 = attribute_name#9;
+
+        l26 = $stack118;
+
+        $stack119 = -1;
+
+        l27#12 = $stack119;
+
+        $stack120 = l26;
+
+        $stack92 = virtualinvoke $stack120.<java.lang.String: int hashCode()>();
+
+        lookupswitch($stack92)
+        {
+            case -1984916852: goto label12;
+            case 539437144: goto label17;
+            case 654770073: goto label13;
+            case 1038813715: goto label14;
+            case 1103964136: goto label16;
+            case 1447483197: goto label15;
+            default: goto label18;
+        };
+
+     label12:
+        $stack116 = virtualinvoke l26.<java.lang.String: boolean equals(java.lang.Object)>("Module");
+
+        if $stack116 == 0 goto label18;
+
+        l27#12 = 0;
+
+        goto label18;
+
+     label13:
+        $stack114 = virtualinvoke l26.<java.lang.String: boolean equals(java.lang.Object)>("ModulePackages");
+
+        if $stack114 == 0 goto label18;
+
+        l27#12 = 1;
+
+        goto label18;
+
+     label14:
+        $stack113 = virtualinvoke l26.<java.lang.String: boolean equals(java.lang.Object)>("ModuleMainClass");
+
+        if $stack113 == 0 goto label18;
+
+        l27#12 = 2;
+
+        goto label18;
+
+     label15:
+        $stack93 = virtualinvoke l26.<java.lang.String: boolean equals(java.lang.Object)>("ModuleTarget");
+
+        if $stack93 == 0 goto label18;
+
+        l27#12 = 3;
+
+        goto label18;
+
+     label16:
+        $stack112 = virtualinvoke l26.<java.lang.String: boolean equals(java.lang.Object)>("ModuleHashes");
+
+        if $stack112 == 0 goto label18;
+
+        l27#12 = 4;
+
+        goto label18;
+
+     label17:
+        $stack115 = virtualinvoke l26.<java.lang.String: boolean equals(java.lang.Object)>("ModuleResolution");
+
+        if $stack115 == 0 goto label18;
+
+        l27#12 = 5;
+
+     label18:
+        $stack111#13 = l27#12;
+
+        $stack111#14 = $stack111#13;
+
+        tableswitch($stack111#14)
+        {
+            case 0: goto label19;
+            case 1: goto label20;
+            case 2: goto label21;
+            case 3: goto label22;
+            case 4: goto label23;
+            case 5: goto label25;
+            default: goto label26;
+        };
+
+     label19:
+        $stack103 = virtualinvoke this.<jdk.internal.module.ModuleInfo: java.lang.module.ModuleDescriptor$Builder readModuleAttribute(java.io.DataInput,jdk.internal.module.ModuleInfo$ConstantPool,int)>(in, cpool, major_version);
+
+        builder#1 = $stack103;
+
+        goto label28;
+
+     label20:
+        $stack102 = virtualinvoke this.<jdk.internal.module.ModuleInfo: java.util.Set readModulePackagesAttribute(java.io.DataInput,jdk.internal.module.ModuleInfo$ConstantPool)>(in, cpool);
+
+        allPackages#2 = $stack102;
+
+        goto label28;
+
+     label21:
+        $stack101 = virtualinvoke this.<jdk.internal.module.ModuleInfo: java.lang.String readModuleMainClassAttribute(java.io.DataInput,jdk.internal.module.ModuleInfo$ConstantPool)>(in, cpool);
+
+        mainClass#3 = $stack101;
+
+        goto label28;
+
+     label22:
+        $stack100 = virtualinvoke this.<jdk.internal.module.ModuleInfo: jdk.internal.module.ModuleTarget readModuleTargetAttribute(java.io.DataInput,jdk.internal.module.ModuleInfo$ConstantPool)>(in, cpool);
+
+        moduleTarget#4 = $stack100;
+
+        goto label28;
+
+     label23:
+        $stack97 = this.<jdk.internal.module.ModuleInfo: boolean parseHashes>;
+
+        if $stack97 == 0 goto label24;
+
+        $stack99 = virtualinvoke this.<jdk.internal.module.ModuleInfo: jdk.internal.module.ModuleHashes readModuleHashesAttribute(java.io.DataInput,jdk.internal.module.ModuleInfo$ConstantPool)>(in, cpool);
+
+        moduelHashes#5 = $stack99;
+
+        goto label28;
+
+     label24:
+        $stack98 = interfaceinvoke in.<java.io.DataInput: int skipBytes(int)>(length#10);
+
+        goto label28;
+
+     label25:
+        $stack94 = virtualinvoke this.<jdk.internal.module.ModuleInfo: jdk.internal.module.ModuleResolution readModuleResolution(java.io.DataInput,jdk.internal.module.ModuleInfo$ConstantPool)>(in, cpool);
+
+        moduleResolution#6 = $stack94;
+
+        goto label28;
+
+     label26:
+        $stack104 = staticinvoke <jdk.internal.module.ModuleInfo: boolean isAttributeDisallowed(java.lang.String)>(attribute_name#9);
+
+        if $stack104 == 0 goto label27;
+
+        $u4 = new java.lang.StringBuilder;
+
+        $stack106 = $u4;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        $stack107 = virtualinvoke $stack106.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(attribute_name#9);
+
+        $stack108 = virtualinvoke $stack107.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" attribute not allowed");
+
+        $stack109 = virtualinvoke $stack108.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack110 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack109);
+
+        throw $stack110;
+
+     label27:
+        $stack105 = interfaceinvoke in.<java.io.DataInput: int skipBytes(int)>(length#10);
+
+     label28:
+        i#7 = i#7 + 1;
+
+        goto label10;
+
+     label29:
+        if builder#1 != null goto label30;
+
+        $stack87 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("Module attribute not found");
+
+        throw $stack87;
+
+     label30:
+        if mainClass#3 == null goto label31;
+
+        $stack84 = virtualinvoke builder#1.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder mainClass(java.lang.String)>(mainClass#3);
+
+     label31:
+        $stack85 = 0;
+
+        i#15 = $stack85;
+
+        $stack86 = allPackages#2;
+
+        if $stack86 != null goto label36;
+
+        $stack80 = this.<jdk.internal.module.ModuleInfo: java.util.function.Supplier packageFinder>;
+
+        if $stack80 == null goto label36;
+
+     label32:
+        $stack82 = this.<jdk.internal.module.ModuleInfo: java.util.function.Supplier packageFinder>;
+
+        $stack83 = interfaceinvoke $stack82.<java.util.function.Supplier: java.lang.Object get()>();
+
+        allPackages#2 = (java.util.Set) $stack83;
+
+     label33:
+        goto label35;
+
+     label34:
+        $stack138 := @caughtexception;
+
+        name_index#16 = $stack138;
+
+        $stack139 = virtualinvoke name_index#16.<java.io.UncheckedIOException: java.io.IOException getCause()>();
+
+        throw $stack139;
+
+     label35:
+        i#15 = 1;
+
+     label36:
+        $stack81#17 = allPackages#2;
+
+        $stack81#18 = $stack81#17;
+
+        if $stack81#18 == null goto label41;
+
+        $stack52 = <jdk.internal.module.ModuleInfo: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        $stack53 = interfaceinvoke $stack52.<jdk.internal.misc.JavaLangModuleAccess: java.util.Set packages(java.lang.module.ModuleDescriptor$Builder)>(builder#1);
+
+        name_index#19 = $stack53;
+
+        $stack54 = interfaceinvoke allPackages#2.<java.util.Set: boolean containsAll(java.util.Collection)>(name_index#19);
+
+        if $stack54 != 0 goto label40;
+
+        $u5 = new java.util.HashSet;
+
+        $stack61 = $u5;
+
+        specialinvoke $u5.<java.util.HashSet: void <init>(java.util.Collection)>(name_index#19);
+
+        attribute_name#20 = $stack61;
+
+        $stack62 = interfaceinvoke attribute_name#20.<java.util.Set: boolean removeAll(java.util.Collection)>(allPackages#2);
+
+        $stack63 = <jdk.internal.module.ModuleInfo: boolean $assertionsDisabled>;
+
+        if $stack63 != 0 goto label37;
+
+        $stack75 = interfaceinvoke attribute_name#20.<java.util.Set: boolean isEmpty()>();
+
+        if $stack75 == 0 goto label37;
+
+        $u6 = new java.lang.AssertionError;
+
+        $stack79 = $u6;
+
+        specialinvoke $u6.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack79;
+
+     label37:
+        $stack76 = attribute_name#20;
+
+        $stack64 = interfaceinvoke $stack76.<java.util.Set: java.util.Iterator iterator()>();
+
+        $stack65 = interfaceinvoke $stack64.<java.util.Iterator: java.lang.Object next()>();
+
+        $stack77 = (java.lang.String) $stack65;
+
+        length#21 = $stack77;
+
+        $stack78 = i#15;
+
+        if $stack78 == 0 goto label38;
+
+        added#22 = " not found in module";
+
+        goto label39;
+
+     label38:
+        added#22 = " missing from ModulePackages class file attribute";
+
+     label39:
+        $u7 = new java.lang.StringBuilder;
+
+        $stack66 = $u7;
+
+        specialinvoke $u7.<java.lang.StringBuilder: void <init>()>();
+
+        $stack72 = "Package ";
+
+        $stack67 = virtualinvoke $stack66.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack72);
+
+        $stack73 = length#21;
+
+        $stack68 = virtualinvoke $stack67.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack73);
+
+        $stack74 = added#22;
+
+        $stack69 = virtualinvoke $stack68.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack74);
+
+        $stack70 = virtualinvoke $stack69.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack71 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack70);
+
+        throw $stack71;
+
+     label40:
+        $stack55 = virtualinvoke builder#1.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder packages(java.util.Set)>(allPackages#2);
+
+     label41:
+        $stack56 = builder#1;
+
+        $stack50 = virtualinvoke $stack56.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor build()>();
+
+        name_index#23 = $stack50;
+
+        $u8 = new jdk.internal.module.ModuleInfo$Attributes;
+
+        $stack51 = $u8;
+
+        $stack57 = name_index#23;
+
+        $stack58 = moduleTarget#4;
+
+        $stack59 = moduelHashes#5;
+
+        $stack60 = moduleResolution#6;
+
+        specialinvoke $u8.<jdk.internal.module.ModuleInfo$Attributes: void <init>(java.lang.module.ModuleDescriptor,jdk.internal.module.ModuleTarget,jdk.internal.module.ModuleHashes,jdk.internal.module.ModuleResolution)>($stack57, $stack58, $stack59, $stack60);
+
+        return $stack51;
+
+        nop;
+
+        catch java.io.UncheckedIOException from label32 to label33 with label34;
+    }
+
+    private java.lang.module.ModuleDescriptor$Builder readModuleAttribute(java.io.DataInput, jdk.internal.module.ModuleInfo$ConstantPool, int) throws java.io.IOException
+    {
+        jdk.internal.module.ModuleInfo this;
+        java.io.DataInput in, $stack61, $stack68, $stack104, $stack140, $stack196, $stack204, $stack179#14, $stack179#15, $stack132#29, $stack132#30, $stack96#46, $stack96#47;
+        int $stack25, module_name_index, $stack27, module_flags, $stack29, $stack30, $stack31, $stack34, module_version_index, $stack35, $stack37, $stack38, $stack39, $stack40, $stack42, $stack44, $stack47, $stack48, $stack49, $stack52, $stack53, $stack62, $stack63, $stack66, $stack67, $stack69, $stack70, $stack72, $stack74, $stack75, $stack78, $stack79, $stack82, $stack85, $stack86, $stack101, $stack105, $stack106, $stack108, $stack110, $stack111, $stack114, $stack115, $stack118, $stack121, $stack122, $stack137, $stack141, $stack143, $stack145, $stack147, $stack148, $stack149, $stack150, major, $stack184, $stack188, $stack192, $stack205, $stack209, $stack213, vs_1#3, i#5, $stack156#6, $stack156#7, $stack155#8, $stack155#9, requires_index#10, requires_flags#12, $stack151#16, $stack151#17, requires_version_index#18, $stack180#19, $stack180#20, i#23, requires_index#24, dn#25, requires_version_index#27, $stack112#31, $stack112#32, vs_2#33, $stack133#34, $stack133#35, j#37, exports_to_index#38, requires_index#40, dn#41, requires_flags#42, vs_2#44, $stack76#48, $stack76#49, targets#50, $stack97#51, $stack97#52, exports_to_index#54, target_1#55, dn#56, requires_flags#57, mods#58, requires_flags#60, mods#61, requires_version_index#62, targets#64, exports_to_index#66, requires_version_index#67, $i0, $i1, $i2, $i3;
+        java.lang.module.ModuleDescriptor$Builder $stack33, builder, $stack41, $stack46, $stack65, $stack77, $stack81, $stack113, $stack117, $stack174, $stack195;
+        java.util.ArrayList $stack45, j#65, $u9;
+        java.lang.String $stack26, mn, $stack43, $stack50, $stack59, $stack64, $stack71, $stack83, target_2, $stack92, $stack107, $stack119, $stack128, $stack144, $stack152, $stack165, $stack167, $stack168, $stack169, $stack175, $stack176, $stack194, $stack201, vs_1#2, dn#11, vs_2#21, vs_2#22, requires_flags#26, target_1#39, mods#43, requires_version_index#59, vs_2#63, target_1#68;
+        java.lang.module.ModuleDescriptor$Opens$Modifier $stack94, $stack98;
+        jdk.internal.misc.JavaLangModuleAccess $stack32, $stack153;
+        boolean open, $stack36, $stack51, $stack84, $stack95, $stack99, $stack120, $stack131, $stack135, $stack154, $stack158, $stack160, $stack171, $stack172, $stack178, $stack182, $stack186, $stack190, $stack197, $stack200, $stack202, $stack207, $stack211, $stack215, $stack214#1, requiresJavaBase#4;
+        java.lang.module.ModuleDescriptor$Requires$Modifier $stack157, $stack159, $stack170, $stack177, $stack181, $stack185, $stack189;
+        byte $stack191, $stack198;
+        java.lang.StringBuilder $stack54, $stack55, $stack56, $stack57, $stack58, $stack87, $stack88, $stack89, $stack90, $stack91, $stack123, $stack124, $stack125, $stack126, $stack127, $stack161, $stack162, $stack163, $stack164, $u2, $u5, $u8, $u10;
+        short $stack187, $stack212;
+        java.util.HashSet $stack28, modifiers, $stack73, $stack80, $stack109, $stack116, $stack146, $stack203, targets#36, j#53, $u0, $u1, $u3, $u4, $u6, $u7;
+        java.lang.module.ModuleDescriptor$Exports$Modifier $stack130, $stack134;
+        bottom_type vs_1, requiresJavaBase, i, requires_index, dn, requires_flags, mods, requires_version_index, vs_2, targets, j, exports_to_index, target_1, $stack76, $stack96, $stack97, $stack112, $stack132, $stack133, $stack151, $stack155, $stack156, $stack179, $stack180, $stack214;
+        jdk.internal.module.ModuleInfo$ConstantPool cpool;
+        java.util.Set $stack102, $stack138, $stack173, $stack193, mods#13, mods#28, requires_version_index#45;
+        java.lang.module.InvalidModuleDescriptorException $stack60, $stack93, $stack103, $stack129, $stack139, $stack142, $stack166;
+        java.lang.module.ModuleDescriptor$Modifier $stack199, $stack206, $stack210;
+        char $stack100, $stack136, $stack183, $stack208;
+
+        this := @this: jdk.internal.module.ModuleInfo;
+
+        in := @parameter0: java.io.DataInput;
+
+        cpool := @parameter1: jdk.internal.module.ModuleInfo$ConstantPool;
+
+        major := @parameter2: int;
+
+        $stack25 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        module_name_index = $stack25;
+
+        $stack26 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getModuleName(int)>(module_name_index);
+
+        mn = $stack26;
+
+        $stack27 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        module_flags = $stack27;
+
+        $u0 = new java.util.HashSet;
+
+        $stack28 = $u0;
+
+        specialinvoke $u0.<java.util.HashSet: void <init>()>();
+
+        modifiers = $stack28;
+
+        $stack29 = module_flags & 32;
+
+        if $stack29 == 0 goto label01;
+
+        $stack214#1 = 1;
+
+        goto label02;
+
+     label01:
+        $stack214#1 = 0;
+
+     label02:
+        open = $stack214#1;
+
+        $stack215 = open;
+
+        if $stack215 == 0 goto label03;
+
+        $stack210 = <java.lang.module.ModuleDescriptor$Modifier: java.lang.module.ModuleDescriptor$Modifier OPEN>;
+
+        $stack211 = interfaceinvoke modifiers.<java.util.Set: boolean add(java.lang.Object)>($stack210);
+
+     label03:
+        $stack213 = module_flags;
+
+        $stack212 = 4096;
+
+        $stack30 = $stack213 & $stack212;
+
+        if $stack30 == 0 goto label04;
+
+        $stack206 = <java.lang.module.ModuleDescriptor$Modifier: java.lang.module.ModuleDescriptor$Modifier SYNTHETIC>;
+
+        $stack207 = interfaceinvoke modifiers.<java.util.Set: boolean add(java.lang.Object)>($stack206);
+
+     label04:
+        $stack209 = module_flags;
+
+        $stack208 = 32768;
+
+        $i0 = (int) $stack208;
+
+        $stack31 = $stack209 & $i0;
+
+        if $stack31 == 0 goto label05;
+
+        $stack199 = <java.lang.module.ModuleDescriptor$Modifier: java.lang.module.ModuleDescriptor$Modifier MANDATED>;
+
+        $stack200 = interfaceinvoke modifiers.<java.util.Set: boolean add(java.lang.Object)>($stack199);
+
+     label05:
+        $stack32 = <jdk.internal.module.ModuleInfo: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        $stack201 = mn;
+
+        $stack202 = 0;
+
+        $stack203 = modifiers;
+
+        $stack33 = interfaceinvoke $stack32.<jdk.internal.misc.JavaLangModuleAccess: java.lang.module.ModuleDescriptor$Builder newModuleBuilder(java.lang.String,boolean,java.util.Set)>($stack201, $stack202, $stack203);
+
+        builder = $stack33;
+
+        $stack204 = in;
+
+        $stack34 = interfaceinvoke $stack204.<java.io.DataInput: int readUnsignedShort()>();
+
+        module_version_index = $stack34;
+
+        $stack205 = module_version_index;
+
+        if $stack205 == 0 goto label06;
+
+        $stack194 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getUtf8(int)>(module_version_index);
+
+        vs_1#2 = $stack194;
+
+        $stack195 = virtualinvoke builder.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder version(java.lang.String)>(vs_1#2);
+
+     label06:
+        $stack196 = in;
+
+        $stack35 = interfaceinvoke $stack196.<java.io.DataInput: int readUnsignedShort()>();
+
+        vs_1#3 = $stack35;
+
+        $stack197 = 0;
+
+        requiresJavaBase#4 = $stack197;
+
+        $stack198 = 0;
+
+        i#5 = $stack198;
+
+     label07:
+        $stack156#6 = i#5;
+
+        $stack156#7 = $stack156#6;
+
+        $stack155#8 = vs_1#3;
+
+        $stack155#9 = $stack155#8;
+
+        if $stack156#7 >= $stack155#9 goto label20;
+
+        $stack143 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        requires_index#10 = $stack143;
+
+        $stack144 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getModuleName(int)>(requires_index#10);
+
+        dn#11 = $stack144;
+
+        $stack145 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        requires_flags#12 = $stack145;
+
+        if requires_flags#12 != 0 goto label08;
+
+        $stack193 = staticinvoke <java.util.Set: java.util.Set of()>();
+
+        mods#13 = $stack193;
+
+        goto label12;
+
+     label08:
+        $u1 = new java.util.HashSet;
+
+        $stack146 = $u1;
+
+        specialinvoke $u1.<java.util.HashSet: void <init>()>();
+
+        mods#13 = $stack146;
+
+        $stack147 = requires_flags#12 & 32;
+
+        if $stack147 == 0 goto label09;
+
+        $stack189 = <java.lang.module.ModuleDescriptor$Requires$Modifier: java.lang.module.ModuleDescriptor$Requires$Modifier TRANSITIVE>;
+
+        $stack190 = interfaceinvoke mods#13.<java.util.Set: boolean add(java.lang.Object)>($stack189);
+
+     label09:
+        $stack192 = requires_flags#12;
+
+        $stack191 = 64;
+
+        $stack148 = $stack192 & $stack191;
+
+        if $stack148 == 0 goto label10;
+
+        $stack185 = <java.lang.module.ModuleDescriptor$Requires$Modifier: java.lang.module.ModuleDescriptor$Requires$Modifier STATIC>;
+
+        $stack186 = interfaceinvoke mods#13.<java.util.Set: boolean add(java.lang.Object)>($stack185);
+
+     label10:
+        $stack188 = requires_flags#12;
+
+        $stack187 = 4096;
+
+        $stack149 = $stack188 & $stack187;
+
+        if $stack149 == 0 goto label11;
+
+        $stack181 = <java.lang.module.ModuleDescriptor$Requires$Modifier: java.lang.module.ModuleDescriptor$Requires$Modifier SYNTHETIC>;
+
+        $stack182 = interfaceinvoke mods#13.<java.util.Set: boolean add(java.lang.Object)>($stack181);
+
+     label11:
+        $stack184 = requires_flags#12;
+
+        $stack183 = 32768;
+
+        $i1 = (int) $stack183;
+
+        $stack150 = $stack184 & $i1;
+
+        if $stack150 == 0 goto label12;
+
+        $stack177 = <java.lang.module.ModuleDescriptor$Requires$Modifier: java.lang.module.ModuleDescriptor$Requires$Modifier MANDATED>;
+
+        $stack178 = interfaceinvoke mods#13.<java.util.Set: boolean add(java.lang.Object)>($stack177);
+
+     label12:
+        $stack179#14 = in;
+
+        $stack179#15 = $stack179#14;
+
+        $stack151#16 = interfaceinvoke $stack179#15.<java.io.DataInput: int readUnsignedShort()>();
+
+        $stack151#17 = $stack151#16;
+
+        requires_version_index#18 = $stack151#17;
+
+        $stack180#19 = requires_version_index#18;
+
+        $stack180#20 = $stack180#19;
+
+        if $stack180#20 != 0 goto label13;
+
+        $stack174 = virtualinvoke builder.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder requires(java.util.Set,java.lang.String)>(mods#13, dn#11);
+
+        goto label14;
+
+     label13:
+        $stack152 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getUtf8(int)>(requires_version_index#18);
+
+        vs_2#21 = $stack152;
+
+        $stack153 = <jdk.internal.module.ModuleInfo: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        interfaceinvoke $stack153.<jdk.internal.misc.JavaLangModuleAccess: void requires(java.lang.module.ModuleDescriptor$Builder,java.util.Set,java.lang.String,java.lang.String)>(builder, mods#13, dn#11, vs_2#21);
+
+     label14:
+        $stack176 = dn#11;
+
+        $stack175 = "java.base";
+
+        $stack154 = virtualinvoke $stack176.<java.lang.String: boolean equals(java.lang.Object)>($stack175);
+
+        if $stack154 == 0 goto label19;
+
+        if major < 54 goto label18;
+
+        $stack157 = <java.lang.module.ModuleDescriptor$Requires$Modifier: java.lang.module.ModuleDescriptor$Requires$Modifier TRANSITIVE>;
+
+        $stack158 = interfaceinvoke mods#13.<java.util.Set: boolean contains(java.lang.Object)>($stack157);
+
+        if $stack158 != 0 goto label15;
+
+        $stack170 = <java.lang.module.ModuleDescriptor$Requires$Modifier: java.lang.module.ModuleDescriptor$Requires$Modifier STATIC>;
+
+        $stack171 = interfaceinvoke mods#13.<java.util.Set: boolean contains(java.lang.Object)>($stack170);
+
+        if $stack171 == 0 goto label18;
+
+     label15:
+        $stack173 = mods#13;
+
+        $stack159 = <java.lang.module.ModuleDescriptor$Requires$Modifier: java.lang.module.ModuleDescriptor$Requires$Modifier TRANSITIVE>;
+
+        $stack160 = interfaceinvoke $stack173.<java.util.Set: boolean contains(java.lang.Object)>($stack159);
+
+        if $stack160 == 0 goto label16;
+
+        vs_2#22 = "ACC_TRANSITIVE";
+
+        goto label17;
+
+     label16:
+        vs_2#22 = "ACC_STATIC_PHASE";
+
+     label17:
+        $u2 = new java.lang.StringBuilder;
+
+        $stack161 = $u2;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        $stack167 = "The requires entry for java.base has ";
+
+        $stack162 = virtualinvoke $stack161.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack167);
+
+        $stack168 = vs_2#22;
+
+        $stack163 = virtualinvoke $stack162.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack168);
+
+        $stack169 = " set";
+
+        $stack164 = virtualinvoke $stack163.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack169);
+
+        $stack165 = virtualinvoke $stack164.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack166 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack165);
+
+        throw $stack166;
+
+     label18:
+        $stack172 = 1;
+
+        requiresJavaBase#4 = $stack172;
+
+     label19:
+        i#5 = i#5 + 1;
+
+        goto label07;
+
+     label20:
+        $stack36 = virtualinvoke mn.<java.lang.String: boolean equals(java.lang.Object)>("java.base");
+
+        if $stack36 == 0 goto label21;
+
+        if vs_1#3 <= 0 goto label22;
+
+        $stack142 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("The requires table for java.base must be 0 length");
+
+        throw $stack142;
+
+     label21:
+        if requiresJavaBase#4 != 0 goto label22;
+
+        $stack139 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("The requires table must have an entry for java.base");
+
+        throw $stack139;
+
+     label22:
+        $stack140 = in;
+
+        $stack37 = interfaceinvoke $stack140.<java.io.DataInput: int readUnsignedShort()>();
+
+        i#23 = $stack37;
+
+        $stack141 = i#23;
+
+        if $stack141 <= 0 goto label32;
+
+        requires_index#24 = 0;
+
+     label23:
+        $stack115 = requires_index#24;
+
+        $stack114 = i#23;
+
+        if $stack115 >= $stack114 goto label32;
+
+        $stack106 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        dn#25 = $stack106;
+
+        $stack107 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getPackageName(int)>(dn#25);
+
+        requires_flags#26 = $stack107;
+
+        $stack108 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        requires_version_index#27 = $stack108;
+
+        if requires_version_index#27 != 0 goto label24;
+
+        $stack138 = staticinvoke <java.util.Set: java.util.Set of()>();
+
+        mods#28 = $stack138;
+
+        goto label26;
+
+     label24:
+        $u3 = new java.util.HashSet;
+
+        $stack109 = $u3;
+
+        specialinvoke $u3.<java.util.HashSet: void <init>()>();
+
+        mods#28 = $stack109;
+
+        $stack110 = requires_version_index#27 & 4096;
+
+        if $stack110 == 0 goto label25;
+
+        $stack134 = <java.lang.module.ModuleDescriptor$Exports$Modifier: java.lang.module.ModuleDescriptor$Exports$Modifier SYNTHETIC>;
+
+        $stack135 = interfaceinvoke mods#28.<java.util.Set: boolean add(java.lang.Object)>($stack134);
+
+     label25:
+        $stack137 = requires_version_index#27;
+
+        $stack136 = 32768;
+
+        $i2 = (int) $stack136;
+
+        $stack111 = $stack137 & $i2;
+
+        if $stack111 == 0 goto label26;
+
+        $stack130 = <java.lang.module.ModuleDescriptor$Exports$Modifier: java.lang.module.ModuleDescriptor$Exports$Modifier MANDATED>;
+
+        $stack131 = interfaceinvoke mods#28.<java.util.Set: boolean add(java.lang.Object)>($stack130);
+
+     label26:
+        $stack132#29 = in;
+
+        $stack132#30 = $stack132#29;
+
+        $stack112#31 = interfaceinvoke $stack132#30.<java.io.DataInput: int readUnsignedShort()>();
+
+        $stack112#32 = $stack112#31;
+
+        vs_2#33 = $stack112#32;
+
+        $stack133#34 = vs_2#33;
+
+        $stack133#35 = $stack133#34;
+
+        if $stack133#35 <= 0 goto label30;
+
+        $u4 = new java.util.HashSet;
+
+        $stack116 = $u4;
+
+        specialinvoke $u4.<java.util.HashSet: void <init>(int)>(vs_2#33);
+
+        targets#36 = $stack116;
+
+        j#37 = 0;
+
+     label27:
+        $stack122 = j#37;
+
+        $stack121 = vs_2#33;
+
+        if $stack122 >= $stack121 goto label29;
+
+        $stack118 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        exports_to_index#38 = $stack118;
+
+        $stack119 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getModuleName(int)>(exports_to_index#38);
+
+        target_1#39 = $stack119;
+
+        $stack120 = interfaceinvoke targets#36.<java.util.Set: boolean add(java.lang.Object)>(target_1#39);
+
+        if $stack120 != 0 goto label28;
+
+        $u5 = new java.lang.StringBuilder;
+
+        $stack123 = $u5;
+
+        specialinvoke $u5.<java.lang.StringBuilder: void <init>()>();
+
+        $stack124 = virtualinvoke $stack123.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(requires_flags#26);
+
+        $stack125 = virtualinvoke $stack124.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" exported to ");
+
+        $stack126 = virtualinvoke $stack125.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(target_1#39);
+
+        $stack127 = virtualinvoke $stack126.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" more than once");
+
+        $stack128 = virtualinvoke $stack127.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack129 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack128);
+
+        throw $stack129;
+
+     label28:
+        j#37 = j#37 + 1;
+
+        goto label27;
+
+     label29:
+        $stack117 = virtualinvoke builder.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder exports(java.util.Set,java.lang.String,java.util.Set)>(mods#28, requires_flags#26, targets#36);
+
+        goto label31;
+
+     label30:
+        $stack113 = virtualinvoke builder.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder exports(java.util.Set,java.lang.String)>(mods#28, requires_flags#26);
+
+     label31:
+        requires_index#24 = requires_index#24 + 1;
+
+        goto label23;
+
+     label32:
+        $stack104 = in;
+
+        $stack38 = interfaceinvoke $stack104.<java.io.DataInput: int readUnsignedShort()>();
+
+        requires_index#40 = $stack38;
+
+        $stack105 = requires_index#40;
+
+        if $stack105 <= 0 goto label43;
+
+        if open == 0 goto label33;
+
+        $stack103 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("The opens table for an open module must be 0 length");
+
+        throw $stack103;
+
+     label33:
+        dn#41 = 0;
+
+     label34:
+        $stack79 = dn#41;
+
+        $stack78 = requires_index#40;
+
+        if $stack79 >= $stack78 goto label43;
+
+        $stack70 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        requires_flags#42 = $stack70;
+
+        $stack71 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getPackageName(int)>(requires_flags#42);
+
+        mods#43 = $stack71;
+
+        $stack72 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        vs_2#44 = $stack72;
+
+        if vs_2#44 != 0 goto label35;
+
+        $stack102 = staticinvoke <java.util.Set: java.util.Set of()>();
+
+        requires_version_index#45 = $stack102;
+
+        goto label37;
+
+     label35:
+        $u6 = new java.util.HashSet;
+
+        $stack73 = $u6;
+
+        specialinvoke $u6.<java.util.HashSet: void <init>()>();
+
+        requires_version_index#45 = $stack73;
+
+        $stack74 = vs_2#44 & 4096;
+
+        if $stack74 == 0 goto label36;
+
+        $stack98 = <java.lang.module.ModuleDescriptor$Opens$Modifier: java.lang.module.ModuleDescriptor$Opens$Modifier SYNTHETIC>;
+
+        $stack99 = interfaceinvoke requires_version_index#45.<java.util.Set: boolean add(java.lang.Object)>($stack98);
+
+     label36:
+        $stack101 = vs_2#44;
+
+        $stack100 = 32768;
+
+        $i3 = (int) $stack100;
+
+        $stack75 = $stack101 & $i3;
+
+        if $stack75 == 0 goto label37;
+
+        $stack94 = <java.lang.module.ModuleDescriptor$Opens$Modifier: java.lang.module.ModuleDescriptor$Opens$Modifier MANDATED>;
+
+        $stack95 = interfaceinvoke requires_version_index#45.<java.util.Set: boolean add(java.lang.Object)>($stack94);
+
+     label37:
+        $stack96#46 = in;
+
+        $stack96#47 = $stack96#46;
+
+        $stack76#48 = interfaceinvoke $stack96#47.<java.io.DataInput: int readUnsignedShort()>();
+
+        $stack76#49 = $stack76#48;
+
+        targets#50 = $stack76#49;
+
+        $stack97#51 = targets#50;
+
+        $stack97#52 = $stack97#51;
+
+        if $stack97#52 <= 0 goto label41;
+
+        $u7 = new java.util.HashSet;
+
+        $stack80 = $u7;
+
+        specialinvoke $u7.<java.util.HashSet: void <init>(int)>(targets#50);
+
+        j#53 = $stack80;
+
+        exports_to_index#54 = 0;
+
+     label38:
+        $stack86 = exports_to_index#54;
+
+        $stack85 = targets#50;
+
+        if $stack86 >= $stack85 goto label40;
+
+        $stack82 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        target_1#55 = $stack82;
+
+        $stack83 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getModuleName(int)>(target_1#55);
+
+        target_2 = $stack83;
+
+        $stack84 = interfaceinvoke j#53.<java.util.Set: boolean add(java.lang.Object)>(target_2);
+
+        if $stack84 != 0 goto label39;
+
+        $u8 = new java.lang.StringBuilder;
+
+        $stack87 = $u8;
+
+        specialinvoke $u8.<java.lang.StringBuilder: void <init>()>();
+
+        $stack88 = virtualinvoke $stack87.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(mods#43);
+
+        $stack89 = virtualinvoke $stack88.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" opened to ");
+
+        $stack90 = virtualinvoke $stack89.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(target_2);
+
+        $stack91 = virtualinvoke $stack90.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" more than once");
+
+        $stack92 = virtualinvoke $stack91.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack93 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack92);
+
+        throw $stack93;
+
+     label39:
+        exports_to_index#54 = exports_to_index#54 + 1;
+
+        goto label38;
+
+     label40:
+        $stack81 = virtualinvoke builder.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder opens(java.util.Set,java.lang.String,java.util.Set)>(requires_version_index#45, mods#43, j#53);
+
+        goto label42;
+
+     label41:
+        $stack77 = virtualinvoke builder.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder opens(java.util.Set,java.lang.String)>(requires_version_index#45, mods#43);
+
+     label42:
+        dn#41 = dn#41 + 1;
+
+        goto label34;
+
+     label43:
+        $stack68 = in;
+
+        $stack39 = interfaceinvoke $stack68.<java.io.DataInput: int readUnsignedShort()>();
+
+        dn#56 = $stack39;
+
+        $stack69 = dn#56;
+
+        if $stack69 <= 0 goto label45;
+
+        requires_flags#57 = 0;
+
+     label44:
+        $stack67 = requires_flags#57;
+
+        $stack66 = dn#56;
+
+        if $stack67 >= $stack66 goto label45;
+
+        $stack63 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        mods#58 = $stack63;
+
+        $stack64 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getClassName(int)>(mods#58);
+
+        requires_version_index#59 = $stack64;
+
+        $stack65 = virtualinvoke builder.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder uses(java.lang.String)>(requires_version_index#59);
+
+        requires_flags#57 = requires_flags#57 + 1;
+
+        goto label44;
+
+     label45:
+        $stack61 = in;
+
+        $stack40 = interfaceinvoke $stack61.<java.io.DataInput: int readUnsignedShort()>();
+
+        requires_flags#60 = $stack40;
+
+        $stack62 = requires_flags#60;
+
+        if $stack62 <= 0 goto label50;
+
+        mods#61 = 0;
+
+     label46:
+        $stack48 = mods#61;
+
+        $stack47 = requires_flags#60;
+
+        if $stack48 >= $stack47 goto label50;
+
+        $stack42 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        requires_version_index#62 = $stack42;
+
+        $stack43 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getClassName(int)>(requires_version_index#62);
+
+        vs_2#63 = $stack43;
+
+        $stack44 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        targets#64 = $stack44;
+
+        $u9 = new java.util.ArrayList;
+
+        $stack45 = $u9;
+
+        specialinvoke $u9.<java.util.ArrayList: void <init>(int)>(targets#64);
+
+        j#65 = $stack45;
+
+        exports_to_index#66 = 0;
+
+     label47:
+        $stack53 = exports_to_index#66;
+
+        $stack52 = targets#64;
+
+        if $stack53 >= $stack52 goto label49;
+
+        $stack49 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        requires_version_index#67 = $stack49;
+
+        $stack50 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getClassName(int)>(requires_version_index#67);
+
+        target_1#68 = $stack50;
+
+        $stack51 = interfaceinvoke j#65.<java.util.List: boolean add(java.lang.Object)>(target_1#68);
+
+        if $stack51 != 0 goto label48;
+
+        $u10 = new java.lang.StringBuilder;
+
+        $stack54 = $u10;
+
+        specialinvoke $u10.<java.lang.StringBuilder: void <init>()>();
+
+        $stack55 = virtualinvoke $stack54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(vs_2#63);
+
+        $stack56 = virtualinvoke $stack55.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" provides ");
+
+        $stack57 = virtualinvoke $stack56.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(target_1#68);
+
+        $stack58 = virtualinvoke $stack57.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" more than once");
+
+        $stack59 = virtualinvoke $stack58.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack60 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack59);
+
+        throw $stack60;
+
+     label48:
+        exports_to_index#66 = exports_to_index#66 + 1;
+
+        goto label47;
+
+     label49:
+        $stack46 = virtualinvoke builder.<java.lang.module.ModuleDescriptor$Builder: java.lang.module.ModuleDescriptor$Builder provides(java.lang.String,java.util.List)>(vs_2#63, j#65);
+
+        mods#61 = mods#61 + 1;
+
+        goto label46;
+
+     label50:
+        $stack41 = builder;
+
+        return $stack41;
+
+        nop;
+    }
+
+    private java.util.Set readModulePackagesAttribute(java.io.DataInput, jdk.internal.module.ModuleInfo$ConstantPool) throws java.io.IOException
+    {
+        jdk.internal.module.ModuleInfo this;
+        java.util.HashSet $stack10, packages;
+        bottom_type i;
+        int $stack9, package_count, $stack11, index, $stack14, $stack15, i#1;
+        java.lang.String $stack12, pn, $stack20;
+        boolean $stack13, added;
+        jdk.internal.module.ModuleInfo$ConstantPool cpool;
+        java.io.DataInput in;
+        java.lang.module.InvalidModuleDescriptorException $stack21;
+        java.lang.StringBuilder $stack16, $stack17, $stack18, $stack19;
+
+        this := @this: jdk.internal.module.ModuleInfo;
+
+        in := @parameter0: java.io.DataInput;
+
+        cpool := @parameter1: jdk.internal.module.ModuleInfo$ConstantPool;
+
+        $stack9 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        package_count = $stack9;
+
+        $stack10 = new java.util.HashSet;
+
+        specialinvoke $stack10.<java.util.HashSet: void <init>(int)>(package_count);
+
+        packages = $stack10;
+
+        i#1 = 0;
+
+     label1:
+        $stack15 = i#1;
+
+        $stack14 = package_count;
+
+        if $stack15 >= $stack14 goto label3;
+
+        $stack11 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        index = $stack11;
+
+        $stack12 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getPackageName(int)>(index);
+
+        pn = $stack12;
+
+        $stack13 = interfaceinvoke packages.<java.util.Set: boolean add(java.lang.Object)>(pn);
+
+        added = $stack13;
+
+        if added != 0 goto label2;
+
+        $stack16 = new java.lang.StringBuilder;
+
+        specialinvoke $stack16.<java.lang.StringBuilder: void <init>()>();
+
+        $stack17 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Package ");
+
+        $stack18 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(pn);
+
+        $stack19 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" in ModulePackagesattribute more than once");
+
+        $stack20 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack21 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack20);
+
+        throw $stack21;
+
+     label2:
+        i#1 = i#1 + 1;
+
+        goto label1;
+
+     label3:
+        return packages;
+
+        nop;
+    }
+
+    private java.lang.String readModuleMainClassAttribute(java.io.DataInput, jdk.internal.module.ModuleInfo$ConstantPool) throws java.io.IOException
+    {
+        jdk.internal.module.ModuleInfo this;
+        java.io.DataInput in;
+        int $stack4, index;
+        jdk.internal.module.ModuleInfo$ConstantPool cpool;
+        java.lang.String $stack5;
+
+        this := @this: jdk.internal.module.ModuleInfo;
+
+        in := @parameter0: java.io.DataInput;
+
+        cpool := @parameter1: jdk.internal.module.ModuleInfo$ConstantPool;
+
+        $stack4 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        index = $stack4;
+
+        $stack5 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getClassName(int)>(index);
+
+        return $stack5;
+
+        nop;
+    }
+
+    private jdk.internal.module.ModuleTarget readModuleTargetAttribute(java.io.DataInput, jdk.internal.module.ModuleInfo$ConstantPool) throws java.io.IOException
+    {
+        jdk.internal.module.ModuleInfo this;
+        jdk.internal.module.ModuleInfo$ConstantPool cpool;
+        jdk.internal.module.ModuleTarget $stack6;
+        bottom_type targetPlatform;
+        java.io.DataInput in;
+        int $stack5, index;
+        java.lang.String $stack7, $stack8, targetPlatform#1;
+
+        this := @this: jdk.internal.module.ModuleInfo;
+
+        in := @parameter0: java.io.DataInput;
+
+        cpool := @parameter1: jdk.internal.module.ModuleInfo$ConstantPool;
+
+        targetPlatform#1 = null;
+
+        $stack5 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        index = $stack5;
+
+        if index == 0 goto label1;
+
+        $stack7 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getUtf8(int)>(index);
+
+        targetPlatform#1 = $stack7;
+
+     label1:
+        $stack6 = new jdk.internal.module.ModuleTarget;
+
+        $stack8 = targetPlatform#1;
+
+        specialinvoke $stack6.<jdk.internal.module.ModuleTarget: void <init>(java.lang.String)>($stack8);
+
+        return $stack6;
+
+        nop;
+    }
+
+    private jdk.internal.module.ModuleHashes readModuleHashesAttribute(java.io.DataInput, jdk.internal.module.ModuleInfo$ConstantPool) throws java.io.IOException
+    {
+        jdk.internal.module.ModuleInfo this;
+        byte[] hash;
+        java.util.HashMap $stack15, map;
+        bottom_type i;
+        int $stack12, algorithm_index, $stack14, hash_count, $stack17, module_name_index, $stack19, hash_length, $stack21, $stack22, i#1;
+        java.lang.String $stack13, algorithm, $stack18, mn;
+        jdk.internal.module.ModuleHashes $stack16;
+        jdk.internal.module.ModuleInfo$ConstantPool cpool;
+        java.io.DataInput in;
+        java.lang.module.InvalidModuleDescriptorException $stack23;
+        java.lang.Object $stack20;
+
+        this := @this: jdk.internal.module.ModuleInfo;
+
+        in := @parameter0: java.io.DataInput;
+
+        cpool := @parameter1: jdk.internal.module.ModuleInfo$ConstantPool;
+
+        $stack12 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        algorithm_index = $stack12;
+
+        $stack13 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getUtf8(int)>(algorithm_index);
+
+        algorithm = $stack13;
+
+        $stack14 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        hash_count = $stack14;
+
+        $stack15 = new java.util.HashMap;
+
+        specialinvoke $stack15.<java.util.HashMap: void <init>(int)>(hash_count);
+
+        map = $stack15;
+
+        i#1 = 0;
+
+     label1:
+        $stack22 = i#1;
+
+        $stack21 = hash_count;
+
+        if $stack22 >= $stack21 goto label3;
+
+        $stack17 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        module_name_index = $stack17;
+
+        $stack18 = virtualinvoke cpool.<jdk.internal.module.ModuleInfo$ConstantPool: java.lang.String getModuleName(int)>(module_name_index);
+
+        mn = $stack18;
+
+        $stack19 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        hash_length = $stack19;
+
+        if hash_length != 0 goto label2;
+
+        $stack23 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("hash_length == 0");
+
+        throw $stack23;
+
+     label2:
+        hash = newarray (byte)[hash_length];
+
+        interfaceinvoke in.<java.io.DataInput: void readFully(byte[])>(hash);
+
+        $stack20 = interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(mn, hash);
+
+        i#1 = i#1 + 1;
+
+        goto label1;
+
+     label3:
+        $stack16 = new jdk.internal.module.ModuleHashes;
+
+        specialinvoke $stack16.<jdk.internal.module.ModuleHashes: void <init>(java.lang.String,java.util.Map)>(algorithm, map);
+
+        return $stack16;
+
+        nop;
+    }
+
+    private jdk.internal.module.ModuleResolution readModuleResolution(java.io.DataInput, jdk.internal.module.ModuleInfo$ConstantPool) throws java.io.IOException
+    {
+        jdk.internal.module.ModuleInfo this;
+        jdk.internal.module.ModuleResolution $stack9;
+        byte $stack16, $stack23, reason#1;
+        bottom_type reason;
+        int $stack5, flags, $stack6, $stack7, $stack8, $stack10, $stack17, $stack24;
+        java.lang.String $stack14, $stack21;
+        jdk.internal.module.ModuleInfo$ConstantPool cpool;
+        java.io.DataInput in;
+        java.lang.module.InvalidModuleDescriptorException $stack15, $stack22;
+        java.lang.StringBuilder $stack11, $stack12, $stack13, $stack18, $stack19, $stack20;
+
+        this := @this: jdk.internal.module.ModuleInfo;
+
+        in := @parameter0: java.io.DataInput;
+
+        cpool := @parameter1: jdk.internal.module.ModuleInfo$ConstantPool;
+
+        $stack5 = interfaceinvoke in.<java.io.DataInput: int readUnsignedShort()>();
+
+        flags = $stack5;
+
+        reason#1 = 0;
+
+        $stack6 = flags & 2;
+
+        if $stack6 == 0 goto label1;
+
+        reason#1 = 2;
+
+     label1:
+        $stack24 = flags;
+
+        $stack23 = 4;
+
+        $stack7 = $stack24 & $stack23;
+
+        if $stack7 == 0 goto label3;
+
+        if reason#1 == 0 goto label2;
+
+        $stack18 = new java.lang.StringBuilder;
+
+        specialinvoke $stack18.<java.lang.StringBuilder: void <init>()>();
+
+        $stack19 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Bad module resolution flags:");
+
+        $stack20 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(flags);
+
+        $stack21 = virtualinvoke $stack20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack22 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack21);
+
+        throw $stack22;
+
+     label2:
+        reason#1 = 4;
+
+     label3:
+        $stack17 = flags;
+
+        $stack16 = 8;
+
+        $stack8 = $stack17 & $stack16;
+
+        if $stack8 == 0 goto label4;
+
+        if reason#1 == 0 goto label4;
+
+        $stack11 = new java.lang.StringBuilder;
+
+        specialinvoke $stack11.<java.lang.StringBuilder: void <init>()>();
+
+        $stack12 = virtualinvoke $stack11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Bad module resolution flags:");
+
+        $stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(flags);
+
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack15 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>($stack14);
+
+        throw $stack15;
+
+     label4:
+        $stack9 = new jdk.internal.module.ModuleResolution;
+
+        $stack10 = flags;
+
+        specialinvoke $stack9.<jdk.internal.module.ModuleResolution: void <init>(int)>($stack10);
+
+        return $stack9;
+
+        nop;
+    }
+
+    private static boolean isAttributeAtMostOnce(java.lang.String)
+    {
+        bottom_type $stack3;
+        java.lang.String name;
+        boolean $stack1, $stack2, $stack4, $stack5, $stack6, $stack7, $stack8, $stack9, $stack3#1, $stack3#2;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("Module");
+
+        if $stack1 != 0 goto label1;
+
+        $stack2 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("SourceFile");
+
+        if $stack2 != 0 goto label1;
+
+        $stack4 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("SourceDebugExtension");
+
+        if $stack4 != 0 goto label1;
+
+        $stack5 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("ModulePackages");
+
+        if $stack5 != 0 goto label1;
+
+        $stack6 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("ModuleMainClass");
+
+        if $stack6 != 0 goto label1;
+
+        $stack7 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("ModuleTarget");
+
+        if $stack7 != 0 goto label1;
+
+        $stack8 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("ModuleHashes");
+
+        if $stack8 != 0 goto label1;
+
+        $stack9 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("ModuleResolution");
+
+        if $stack9 == 0 goto label2;
+
+     label1:
+        $stack3#1 = 1;
+
+        $stack3#2 = $stack3#1;
+
+        return $stack3#2;
+
+     label2:
+        return 0;
+
+        nop;
+    }
+
+    private static boolean isAttributeDisallowed(java.lang.String)
+    {
+        java.util.Set $stack4, $stack6, notAllowed#1;
+        java.lang.String[] $stack3;
+        bottom_type notAllowed;
+        java.lang.String name, $stack5;
+        boolean $stack2;
+
+        name := @parameter0: java.lang.String;
+
+        notAllowed#1 = <jdk.internal.module.ModuleInfo: java.util.Set predefinedNotAllowed>;
+
+        if notAllowed#1 != null goto label1;
+
+        $stack3 = newarray (java.lang.String)[18];
+
+        $stack3[0] = "ConstantValue";
+
+        $stack3[1] = "Code";
+
+        $stack3[2] = "Deprecated";
+
+        $stack3[3] = "StackMapTable";
+
+        $stack3[4] = "Exceptions";
+
+        $stack3[5] = "EnclosingMethod";
+
+        $stack3[6] = "Signature";
+
+        $stack3[7] = "LineNumberTable";
+
+        $stack3[8] = "LocalVariableTable";
+
+        $stack3[9] = "LocalVariableTypeTable";
+
+        $stack3[10] = "RuntimeVisibleParameterAnnotations";
+
+        $stack3[11] = "RuntimeInvisibleParameterAnnotations";
+
+        $stack3[12] = "RuntimeVisibleTypeAnnotations";
+
+        $stack3[13] = "RuntimeInvisibleTypeAnnotations";
+
+        $stack3[14] = "Synthetic";
+
+        $stack3[15] = "AnnotationDefault";
+
+        $stack3[16] = "BootstrapMethods";
+
+        $stack3[17] = "MethodParameters";
+
+        $stack4 = staticinvoke <java.util.Set: java.util.Set of(java.lang.Object[])>($stack3);
+
+        notAllowed#1 = $stack4;
+
+        <jdk.internal.module.ModuleInfo: java.util.Set predefinedNotAllowed> = notAllowed#1;
+
+     label1:
+        $stack6 = notAllowed#1;
+
+        $stack5 = name;
+
+        $stack2 = interfaceinvoke $stack6.<java.util.Set: boolean contains(java.lang.Object)>($stack5);
+
+        return $stack2;
+
+        nop;
+    }
+
+    private static java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)
+    {
+        java.lang.module.InvalidModuleDescriptorException $stack1;
+        java.lang.String msg;
+
+        msg := @parameter0: java.lang.String;
+
+        $stack1 = new java.lang.module.InvalidModuleDescriptorException;
+
+        specialinvoke $stack1.<java.lang.module.InvalidModuleDescriptorException: void <init>(java.lang.String)>(msg);
+
+        return $stack1;
+
+        nop;
+    }
+
+    private static java.lang.module.InvalidModuleDescriptorException truncatedModuleDescriptor()
+    {
+        java.lang.module.InvalidModuleDescriptorException $stack0;
+
+        $stack0 = staticinvoke <jdk.internal.module.ModuleInfo: java.lang.module.InvalidModuleDescriptorException invalidModuleDescriptor(java.lang.String)>("Truncated module-info.class");
+
+        return $stack0;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack3;
+        java.lang.Class $stack0;
+        jdk.internal.misc.JavaLangModuleAccess $stack2;
+        boolean $stack1, $stack3#1;
+
+        $stack0 = class "Ljdk/internal/module/ModuleInfo;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack3#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = 0;
+
+     label2:
+        <jdk.internal.module.ModuleInfo: boolean $assertionsDisabled> = $stack3#1;
+
+        $stack2 = staticinvoke <jdk.internal.misc.SharedSecrets: jdk.internal.misc.JavaLangModuleAccess getJavaLangModuleAccess()>();
+
+        <jdk.internal.module.ModuleInfo: jdk.internal.misc.JavaLangModuleAccess JLMA> = $stack2;
+
+        return;
+    }
+}

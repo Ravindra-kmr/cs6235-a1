@@ -1,0 +1,1972 @@
+public final class jdk.internal.loader.Loader extends java.security.SecureClassLoader
+{
+    private final jdk.internal.loader.LoaderPool pool;
+    private final java.lang.ClassLoader parent;
+    private final java.util.Map nameToModule;
+    private final java.util.Map localPackageToModule;
+    private final java.util.Map remotePackageToLoader;
+    private final java.util.Map moduleToReader;
+    private final java.security.AccessControlContext acc;
+    static final boolean $assertionsDisabled;
+
+    public void <init>(java.lang.module.ResolvedModule, jdk.internal.loader.LoaderPool, java.lang.ClassLoader)
+    {
+        java.security.AccessControlContext $stack24;
+        jdk.internal.loader.LoaderPool pool;
+        java.lang.module.ModuleDescriptor $stack17, descriptor;
+        java.lang.module.ModuleReference $stack16, mref;
+        java.util.HashMap $stack20, localPackageToModule;
+        java.lang.module.ResolvedModule resolvedModule;
+        java.util.Map $stack19;
+        java.lang.String $stack11, $stack13, $stack18, mn;
+        java.util.concurrent.ConcurrentHashMap $stack14, $stack15;
+        jdk.internal.loader.Loader this;
+        java.util.Set $stack22;
+        java.util.function.Consumer $stack23;
+        jdk.internal.loader.Loader$LoadedModule $stack21, lm;
+        java.lang.StringBuilder $stack9, $stack10, $stack12;
+        java.lang.ClassLoader parent;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        resolvedModule := @parameter0: java.lang.module.ResolvedModule;
+
+        pool := @parameter1: jdk.internal.loader.LoaderPool;
+
+        parent := @parameter2: java.lang.ClassLoader;
+
+        $stack9 = new java.lang.StringBuilder;
+
+        specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>();
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Loader-");
+
+        $stack11 = virtualinvoke resolvedModule.<java.lang.module.ResolvedModule: java.lang.String name()>();
+
+        $stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11);
+
+        $stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke this.<java.security.SecureClassLoader: void <init>(java.lang.String,java.lang.ClassLoader)>($stack13, parent);
+
+        $stack14 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $stack14.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        this.<jdk.internal.loader.Loader: java.util.Map remotePackageToLoader> = $stack14;
+
+        $stack15 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $stack15.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        this.<jdk.internal.loader.Loader: java.util.Map moduleToReader> = $stack15;
+
+        this.<jdk.internal.loader.Loader: jdk.internal.loader.LoaderPool pool> = pool;
+
+        this.<jdk.internal.loader.Loader: java.lang.ClassLoader parent> = parent;
+
+        $stack16 = virtualinvoke resolvedModule.<java.lang.module.ResolvedModule: java.lang.module.ModuleReference reference()>();
+
+        mref = $stack16;
+
+        $stack17 = virtualinvoke mref.<java.lang.module.ModuleReference: java.lang.module.ModuleDescriptor descriptor()>();
+
+        descriptor = $stack17;
+
+        $stack18 = virtualinvoke descriptor.<java.lang.module.ModuleDescriptor: java.lang.String name()>();
+
+        mn = $stack18;
+
+        $stack19 = staticinvoke <java.util.Map: java.util.Map of(java.lang.Object,java.lang.Object)>(mn, mref);
+
+        this.<jdk.internal.loader.Loader: java.util.Map nameToModule> = $stack19;
+
+        $stack20 = new java.util.HashMap;
+
+        specialinvoke $stack20.<java.util.HashMap: void <init>()>();
+
+        localPackageToModule = $stack20;
+
+        $stack21 = new jdk.internal.loader.Loader$LoadedModule;
+
+        specialinvoke $stack21.<jdk.internal.loader.Loader$LoadedModule: void <init>(java.lang.module.ModuleReference)>(mref);
+
+        lm = $stack21;
+
+        $stack22 = virtualinvoke descriptor.<java.lang.module.ModuleDescriptor: java.util.Set packages()>();
+
+        $stack23 = staticinvoke <jdk.internal.loader.Loader$lambda_new_0__368: java.util.function.Consumer bootstrap$(java.util.Map,jdk.internal.loader.Loader$LoadedModule)>(localPackageToModule, lm);
+
+        interfaceinvoke $stack22.<java.util.Set: void forEach(java.util.function.Consumer)>($stack23);
+
+        this.<jdk.internal.loader.Loader: java.util.Map localPackageToModule> = localPackageToModule;
+
+        $stack24 = staticinvoke <java.security.AccessController: java.security.AccessControlContext getContext()>();
+
+        this.<jdk.internal.loader.Loader: java.security.AccessControlContext acc> = $stack24;
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(java.util.Collection, java.lang.ClassLoader)
+    {
+        java.security.AccessControlContext $stack15;
+        java.lang.module.ModuleDescriptor $stack18, descriptor;
+        java.util.HashMap $stack11, nameToModule, $stack12, localPackageToModule;
+        java.lang.module.ModuleReference $stack17, mref;
+        java.lang.module.ResolvedModule resolvedModule;
+        java.lang.String $stack19;
+        boolean $stack14;
+        java.util.Iterator $stack13, l5, $stack23;
+        java.util.Collection modules;
+        java.util.concurrent.ConcurrentHashMap $stack9, $stack10;
+        jdk.internal.loader.Loader this;
+        java.util.Set $stack21;
+        java.util.function.Consumer $stack22;
+        java.lang.Object $stack16, $stack20;
+        java.lang.ClassLoader parent;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        modules := @parameter0: java.util.Collection;
+
+        parent := @parameter1: java.lang.ClassLoader;
+
+        specialinvoke this.<java.security.SecureClassLoader: void <init>(java.lang.ClassLoader)>(parent);
+
+        $stack9 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $stack9.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        this.<jdk.internal.loader.Loader: java.util.Map remotePackageToLoader> = $stack9;
+
+        $stack10 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $stack10.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        this.<jdk.internal.loader.Loader: java.util.Map moduleToReader> = $stack10;
+
+        this.<jdk.internal.loader.Loader: jdk.internal.loader.LoaderPool pool> = null;
+
+        this.<jdk.internal.loader.Loader: java.lang.ClassLoader parent> = parent;
+
+        $stack11 = new java.util.HashMap;
+
+        specialinvoke $stack11.<java.util.HashMap: void <init>()>();
+
+        nameToModule = $stack11;
+
+        $stack12 = new java.util.HashMap;
+
+        specialinvoke $stack12.<java.util.HashMap: void <init>()>();
+
+        localPackageToModule = $stack12;
+
+        $stack13 = interfaceinvoke modules.<java.util.Collection: java.util.Iterator iterator()>();
+
+        l5 = $stack13;
+
+     label1:
+        $stack23 = l5;
+
+        $stack14 = interfaceinvoke $stack23.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack14 == 0 goto label2;
+
+        $stack16 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
+
+        resolvedModule = (java.lang.module.ResolvedModule) $stack16;
+
+        $stack17 = virtualinvoke resolvedModule.<java.lang.module.ResolvedModule: java.lang.module.ModuleReference reference()>();
+
+        mref = $stack17;
+
+        $stack18 = virtualinvoke mref.<java.lang.module.ModuleReference: java.lang.module.ModuleDescriptor descriptor()>();
+
+        descriptor = $stack18;
+
+        $stack19 = virtualinvoke descriptor.<java.lang.module.ModuleDescriptor: java.lang.String name()>();
+
+        $stack20 = interfaceinvoke nameToModule.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($stack19, mref);
+
+        $stack21 = virtualinvoke descriptor.<java.lang.module.ModuleDescriptor: java.util.Set packages()>();
+
+        $stack22 = staticinvoke <jdk.internal.loader.Loader$lambda_new_1__369: java.util.function.Consumer bootstrap$(java.lang.module.ModuleReference,java.util.Map)>(mref, localPackageToModule);
+
+        interfaceinvoke $stack21.<java.util.Set: void forEach(java.util.function.Consumer)>($stack22);
+
+        goto label1;
+
+     label2:
+        this.<jdk.internal.loader.Loader: java.util.Map nameToModule> = nameToModule;
+
+        this.<jdk.internal.loader.Loader: java.util.Map localPackageToModule> = localPackageToModule;
+
+        $stack15 = staticinvoke <java.security.AccessController: java.security.AccessControlContext getContext()>();
+
+        this.<jdk.internal.loader.Loader: java.security.AccessControlContext acc> = $stack15;
+
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.loader.Loader initRemotePackageMap(java.lang.module.Configuration, java.util.List)
+    {
+        java.lang.module.ModuleReference $stack40#9, $stack40#10;
+        bottom_type $stack25, layer, loader, $stack40, $stack41, $stack42, l, $stack47, delegate, $stack56, $stack60, $stack61;
+        java.util.Map $stack15, $stack74;
+        java.util.Set $stack16, $stack23, $stack44, $stack54, $stack57;
+        java.util.stream.Stream $stack30, $stack32, $stack34;
+        java.lang.ClassLoader $stack39, $stack59, $stack66, loader#5, l#18;
+        java.lang.AssertionError $stack67, $stack72, $stack76, $stack79;
+        java.util.function.Supplier $stack36;
+        java.lang.module.ResolvedModule resolvedModule, other, $stack78, $stack60#7, $stack60#8;
+        java.lang.String name, $stack28, mn, $stack43, $stack51, $stack64, l#19;
+        jdk.internal.loader.Loader this, $stack70;
+        boolean $stack18, $stack22, $stack38, $stack46, $stack49, $stack53, $stack55, $stack63, $stack71, $stack73, $stack75, $stack25#3, $stack25#4, $stack42#16, $stack42#17, $stack56#20, delegate#21;
+        java.lang.module.Configuration cf, $stack29, $stack52, $stack77;
+        java.util.List parentModuleLayers;
+        java.util.Optional $stack20, $stack35, $stack62;
+        java.lang.module.ModuleDescriptor$Exports e;
+        jdk.internal.loader.LoaderPool $stack68, $stack69;
+        java.lang.ModuleLayer $stack65, layer#6;
+        java.lang.module.ModuleDescriptor $stack41#11, $stack41#12, layer#13, $stack61#14, $stack61#15;
+        java.util.function.Function $stack31, $stack33;
+        java.util.Iterator $stack17, l3, $stack24, l6, $stack26, $stack45, l12, $stack50, $stack47#1, $stack47#2;
+        java.util.function.Consumer $stack58;
+        java.lang.Object $stack19, $stack21, $stack27, $stack37, $stack48;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        cf := @parameter0: java.lang.module.Configuration;
+
+        parentModuleLayers := @parameter1: java.util.List;
+
+        $stack15 = this.<jdk.internal.loader.Loader: java.util.Map nameToModule>;
+
+        $stack16 = interfaceinvoke $stack15.<java.util.Map: java.util.Set keySet()>();
+
+        $stack17 = interfaceinvoke $stack16.<java.util.Set: java.util.Iterator iterator()>();
+
+        l3 = $stack17;
+
+     label01:
+        $stack26 = l3;
+
+        $stack18 = interfaceinvoke $stack26.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack18 == 0 goto label17;
+
+        $stack19 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>();
+
+        name = (java.lang.String) $stack19;
+
+        $stack20 = virtualinvoke cf.<java.lang.module.Configuration: java.util.Optional findModule(java.lang.String)>(name);
+
+        $stack21 = virtualinvoke $stack20.<java.util.Optional: java.lang.Object get()>();
+
+        resolvedModule = (java.lang.module.ResolvedModule) $stack21;
+
+        $stack22 = <jdk.internal.loader.Loader: boolean $assertionsDisabled>;
+
+        if $stack22 != 0 goto label02;
+
+        $stack77 = virtualinvoke resolvedModule.<java.lang.module.ResolvedModule: java.lang.module.Configuration configuration()>();
+
+        if $stack77 == cf goto label02;
+
+        $stack79 = new java.lang.AssertionError;
+
+        specialinvoke $stack79.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack79;
+
+     label02:
+        $stack78 = resolvedModule;
+
+        $stack23 = virtualinvoke $stack78.<java.lang.module.ResolvedModule: java.util.Set reads()>();
+
+        $stack24 = interfaceinvoke $stack23.<java.util.Set: java.util.Iterator iterator()>();
+
+        l6 = $stack24;
+
+     label03:
+        $stack47#1 = l6;
+
+        $stack47#2 = $stack47#1;
+
+        $stack25#3 = interfaceinvoke $stack47#2.<java.util.Iterator: boolean hasNext()>();
+
+        $stack25#4 = $stack25#3;
+
+        if $stack25#4 == 0 goto label16;
+
+        $stack27 = interfaceinvoke l6.<java.util.Iterator: java.lang.Object next()>();
+
+        other = (java.lang.module.ResolvedModule) $stack27;
+
+        $stack28 = virtualinvoke other.<java.lang.module.ResolvedModule: java.lang.String name()>();
+
+        mn = $stack28;
+
+        $stack29 = virtualinvoke other.<java.lang.module.ResolvedModule: java.lang.module.Configuration configuration()>();
+
+        if $stack29 != cf goto label05;
+
+        $stack68 = this.<jdk.internal.loader.Loader: jdk.internal.loader.LoaderPool pool>;
+
+        if $stack68 != null goto label04;
+
+        $stack73 = <jdk.internal.loader.Loader: boolean $assertionsDisabled>;
+
+        if $stack73 != 0 goto label03;
+
+        $stack74 = this.<jdk.internal.loader.Loader: java.util.Map nameToModule>;
+
+        $stack75 = interfaceinvoke $stack74.<java.util.Map: boolean containsKey(java.lang.Object)>(mn);
+
+        if $stack75 != 0 goto label03;
+
+        $stack76 = new java.lang.AssertionError;
+
+        specialinvoke $stack76.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack76;
+
+     label04:
+        $stack69 = this.<jdk.internal.loader.Loader: jdk.internal.loader.LoaderPool pool>;
+
+        $stack70 = virtualinvoke $stack69.<jdk.internal.loader.LoaderPool: jdk.internal.loader.Loader loaderFor(java.lang.String)>(mn);
+
+        loader#5 = $stack70;
+
+        $stack71 = <jdk.internal.loader.Loader: boolean $assertionsDisabled>;
+
+        if $stack71 != 0 goto label07;
+
+        if loader#5 != null goto label07;
+
+        $stack72 = new java.lang.AssertionError;
+
+        specialinvoke $stack72.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack72;
+
+     label05:
+        $stack30 = interfaceinvoke parentModuleLayers.<java.util.List: java.util.stream.Stream stream()>();
+
+        $stack31 = staticinvoke <jdk.internal.loader.Loader$lambda_initRemotePackageMap_2__370: java.util.function.Function bootstrap$(jdk.internal.loader.Loader,java.lang.module.ResolvedModule)>(this, other);
+
+        $stack32 = interfaceinvoke $stack30.<java.util.stream.Stream: java.util.stream.Stream map(java.util.function.Function)>($stack31);
+
+        $stack33 = staticinvoke <jdk.internal.loader.Loader$stream__371: java.util.function.Function bootstrap$()>();
+
+        $stack34 = interfaceinvoke $stack32.<java.util.stream.Stream: java.util.stream.Stream flatMap(java.util.function.Function)>($stack33);
+
+        $stack35 = interfaceinvoke $stack34.<java.util.stream.Stream: java.util.Optional findAny()>();
+
+        $stack36 = staticinvoke <jdk.internal.loader.Loader$lambda_initRemotePackageMap_3__372: java.util.function.Supplier bootstrap$()>();
+
+        $stack37 = virtualinvoke $stack35.<java.util.Optional: java.lang.Object orElseThrow(java.util.function.Supplier)>($stack36);
+
+        layer#6 = (java.lang.ModuleLayer) $stack37;
+
+        $stack38 = <jdk.internal.loader.Loader: boolean $assertionsDisabled>;
+
+        if $stack38 != 0 goto label06;
+
+        $stack62 = virtualinvoke layer#6.<java.lang.ModuleLayer: java.util.Optional findModule(java.lang.String)>(mn);
+
+        $stack63 = virtualinvoke $stack62.<java.util.Optional: boolean isPresent()>();
+
+        if $stack63 != 0 goto label06;
+
+        $stack67 = new java.lang.AssertionError;
+
+        specialinvoke $stack67.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack67;
+
+     label06:
+        $stack65 = layer#6;
+
+        $stack64 = mn;
+
+        $stack39 = virtualinvoke $stack65.<java.lang.ModuleLayer: java.lang.ClassLoader findLoader(java.lang.String)>($stack64);
+
+        loader#5 = $stack39;
+
+        $stack66 = loader#5;
+
+        if $stack66 != null goto label07;
+
+        $stack59 = staticinvoke <jdk.internal.loader.ClassLoaders: java.lang.ClassLoader platformClassLoader()>();
+
+        loader#5 = $stack59;
+
+     label07:
+        $stack60#7 = other;
+
+        $stack60#8 = $stack60#7;
+
+        $stack40#9 = virtualinvoke $stack60#8.<java.lang.module.ResolvedModule: java.lang.module.ModuleReference reference()>();
+
+        $stack40#10 = $stack40#9;
+
+        $stack41#11 = virtualinvoke $stack40#10.<java.lang.module.ModuleReference: java.lang.module.ModuleDescriptor descriptor()>();
+
+        $stack41#12 = $stack41#11;
+
+        layer#13 = $stack41#12;
+
+        $stack61#14 = layer#13;
+
+        $stack61#15 = $stack61#14;
+
+        $stack42#16 = virtualinvoke $stack61#15.<java.lang.module.ModuleDescriptor: boolean isAutomatic()>();
+
+        $stack42#17 = $stack42#16;
+
+        if $stack42#17 == 0 goto label08;
+
+        l#18 = loader#5;
+
+        $stack57 = virtualinvoke layer#13.<java.lang.module.ModuleDescriptor: java.util.Set packages()>();
+
+        $stack58 = staticinvoke <jdk.internal.loader.Loader$lambda_initRemotePackageMap_4__374: java.util.function.Consumer bootstrap$(jdk.internal.loader.Loader,java.lang.ClassLoader)>(this, l#18);
+
+        interfaceinvoke $stack57.<java.util.Set: void forEach(java.util.function.Consumer)>($stack58);
+
+        goto label15;
+
+     label08:
+        $stack43 = virtualinvoke resolvedModule.<java.lang.module.ResolvedModule: java.lang.String name()>();
+
+        l#19 = $stack43;
+
+        $stack44 = virtualinvoke layer#13.<java.lang.module.ModuleDescriptor: java.util.Set exports()>();
+
+        $stack45 = interfaceinvoke $stack44.<java.util.Set: java.util.Iterator iterator()>();
+
+        l12 = $stack45;
+
+     label09:
+        $stack50 = l12;
+
+        $stack46 = interfaceinvoke $stack50.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack46 == 0 goto label15;
+
+        $stack48 = interfaceinvoke l12.<java.util.Iterator: java.lang.Object next()>();
+
+        e = (java.lang.module.ModuleDescriptor$Exports) $stack48;
+
+        $stack49 = virtualinvoke e.<java.lang.module.ModuleDescriptor$Exports: boolean isQualified()>();
+
+        if $stack49 == 0 goto label12;
+
+        $stack52 = virtualinvoke other.<java.lang.module.ResolvedModule: java.lang.module.Configuration configuration()>();
+
+        if $stack52 != cf goto label10;
+
+        $stack54 = virtualinvoke e.<java.lang.module.ModuleDescriptor$Exports: java.util.Set targets()>();
+
+        $stack55 = interfaceinvoke $stack54.<java.util.Set: boolean contains(java.lang.Object)>(l#19);
+
+        if $stack55 == 0 goto label10;
+
+        $stack56#20 = 1;
+
+        goto label11;
+
+     label10:
+        $stack56#20 = 0;
+
+     label11:
+        delegate#21 = $stack56#20;
+
+        goto label13;
+
+     label12:
+        delegate#21 = 1;
+
+     label13:
+        $stack53 = delegate#21;
+
+        if $stack53 == 0 goto label14;
+
+        $stack51 = virtualinvoke e.<java.lang.module.ModuleDescriptor$Exports: java.lang.String source()>();
+
+        virtualinvoke this.<jdk.internal.loader.Loader: void remotePackage(java.lang.String,java.lang.ClassLoader)>($stack51, loader#5);
+
+     label14:
+        goto label09;
+
+     label15:
+        goto label03;
+
+     label16:
+        goto label01;
+
+     label17:
+        return this;
+
+        nop;
+    }
+
+    private void remotePackage(java.lang.String, java.lang.ClassLoader)
+    {
+        java.lang.IllegalStateException $stack6;
+        jdk.internal.loader.Loader this;
+        java.util.Map $stack4;
+        java.lang.Object $stack5;
+        java.lang.StringBuilder $stack7, $stack8, $stack9, $stack10;
+        java.lang.String pn, $stack11;
+        java.lang.ClassLoader loader, l;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        pn := @parameter0: java.lang.String;
+
+        loader := @parameter1: java.lang.ClassLoader;
+
+        $stack4 = this.<jdk.internal.loader.Loader: java.util.Map remotePackageToLoader>;
+
+        $stack5 = interfaceinvoke $stack4.<java.util.Map: java.lang.Object putIfAbsent(java.lang.Object,java.lang.Object)>(pn, loader);
+
+        l = (java.lang.ClassLoader) $stack5;
+
+        if l == null goto label1;
+
+        if l == loader goto label1;
+
+        $stack6 = new java.lang.IllegalStateException;
+
+        $stack7 = new java.lang.StringBuilder;
+
+        specialinvoke $stack7.<java.lang.StringBuilder: void <init>()>();
+
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Package ");
+
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(pn);
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" cannot be imported from multiple loaders");
+
+        $stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack6.<java.lang.IllegalStateException: void <init>(java.lang.String)>($stack11);
+
+        throw $stack6;
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    private java.util.Optional findModuleLayer(java.lang.ModuleLayer, java.lang.module.Configuration)
+    {
+        java.util.function.Predicate $stack5;
+        java.lang.ModuleLayer parent;
+        jdk.internal.loader.Loader this;
+        java.lang.module.Configuration cf;
+        jdk.internal.misc.JavaLangAccess $stack3;
+        java.util.stream.Stream $stack4, $stack6;
+        java.util.Optional $stack7;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        parent := @parameter0: java.lang.ModuleLayer;
+
+        cf := @parameter1: java.lang.module.Configuration;
+
+        $stack3 = staticinvoke <jdk.internal.misc.SharedSecrets: jdk.internal.misc.JavaLangAccess getJavaLangAccess()>();
+
+        $stack4 = interfaceinvoke $stack3.<jdk.internal.misc.JavaLangAccess: java.util.stream.Stream layers(java.lang.ModuleLayer)>(parent);
+
+        $stack5 = staticinvoke <jdk.internal.loader.Loader$lambda_findModuleLayer_5__376: java.util.function.Predicate bootstrap$(java.lang.module.Configuration)>(cf);
+
+        $stack6 = interfaceinvoke $stack4.<java.util.stream.Stream: java.util.stream.Stream filter(java.util.function.Predicate)>($stack5);
+
+        $stack7 = interfaceinvoke $stack6.<java.util.stream.Stream: java.util.Optional findAny()>();
+
+        return $stack7;
+
+        nop;
+    }
+
+    public jdk.internal.loader.LoaderPool pool()
+    {
+        jdk.internal.loader.Loader this;
+        jdk.internal.loader.LoaderPool $stack1;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        $stack1 = this.<jdk.internal.loader.Loader: jdk.internal.loader.LoaderPool pool>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    protected java.net.URL findResource(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        java.security.AccessControlContext $stack11;
+        java.lang.Throwable $stack19;
+        java.net.URL url#3, pae#5, $stack9#7, $stack9#8;
+        java.lang.module.ModuleReference mref, $stack16, $stack15#1;
+        jdk.internal.loader.Loader$1 $stack6;
+        java.util.Map $stack13;
+        jdk.internal.loader.Loader$2 $stack10;
+        java.lang.String mn, name;
+        java.security.PrivilegedActionException $stack17, $stack18, pae#4;
+        jdk.internal.loader.Loader this;
+        java.io.IOException $stack20;
+        java.lang.SecurityManager $stack8;
+        java.lang.Object $stack7, $stack12, $stack14;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        mn := @parameter0: java.lang.String;
+
+        name := @parameter1: java.lang.String;
+
+        if mn == null goto label01;
+
+        $stack13 = this.<jdk.internal.loader.Loader: java.util.Map nameToModule>;
+
+        $stack14 = interfaceinvoke $stack13.<java.util.Map: java.lang.Object get(java.lang.Object)>(mn);
+
+        $stack15#1 = (java.lang.module.ModuleReference) $stack14;
+
+        goto label02;
+
+     label01:
+        $stack15#1 = null;
+
+     label02:
+        mref = $stack15#1;
+
+        $stack16 = mref;
+
+        if $stack16 != null goto label03;
+
+        return null;
+
+     label03:
+        $stack6 = new jdk.internal.loader.Loader$1;
+
+        specialinvoke $stack6.<jdk.internal.loader.Loader$1: void <init>(jdk.internal.loader.Loader,java.lang.module.ModuleReference,java.lang.String)>(this, mref, name);
+
+        $stack7 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedExceptionAction)>($stack6);
+
+        url#3 = (java.net.URL) $stack7;
+
+     label04:
+        goto label06;
+
+     label05:
+        $stack18 := @caughtexception;
+
+        pae#4 = $stack18;
+
+        $stack19 = virtualinvoke pae#4.<java.security.PrivilegedActionException: java.lang.Throwable getCause()>();
+
+        $stack20 = (java.io.IOException) $stack19;
+
+        throw $stack20;
+
+     label06:
+        if url#3 == null goto label10;
+
+        $stack8 = staticinvoke <java.lang.System: java.lang.SecurityManager getSecurityManager()>();
+
+        if $stack8 == null goto label10;
+
+     label07:
+        pae#5 = url#3;
+
+        $stack10 = new jdk.internal.loader.Loader$2;
+
+        specialinvoke $stack10.<jdk.internal.loader.Loader$2: void <init>(jdk.internal.loader.Loader,java.net.URL)>(this, pae#5);
+
+        $stack11 = this.<jdk.internal.loader.Loader: java.security.AccessControlContext acc>;
+
+        $stack12 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedExceptionAction,java.security.AccessControlContext)>($stack10, $stack11);
+
+        url#3 = (java.net.URL) $stack12;
+
+     label08:
+        goto label10;
+
+     label09:
+        $stack17 := @caughtexception;
+
+        url#3 = null;
+
+     label10:
+        $stack9#7 = url#3;
+
+        $stack9#8 = $stack9#7;
+
+        return $stack9#8;
+
+        catch java.security.PrivilegedActionException from label03 to label04 with label05;
+        catch java.security.PrivilegedActionException from label07 to label08 with label09;
+    }
+
+    public java.net.URL findResource(java.lang.String)
+    {
+        java.net.URL $stack17, $stack20, url_1#1, $stack25#2, $stack25#3, url_2#6;
+        java.lang.module.ModuleDescriptor $stack15;
+        java.lang.module.ModuleReference mref, $stack26;
+        java.util.Map $stack8, $stack10;
+        java.lang.String name, $stack7, pn, $stack16, $stack19, $stack23;
+        boolean $stack13, $stack22, $stack24, $stack27;
+        java.util.Iterator $stack12, $stack18, url_1#5;
+        java.util.Collection $stack11;
+        jdk.internal.loader.Loader this;
+        java.io.IOException $stack28, $stack29;
+        jdk.internal.loader.Loader$LoadedModule module;
+        java.lang.Object $stack9, $stack14;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        name := @parameter0: java.lang.String;
+
+        $stack7 = staticinvoke <jdk.internal.module.Resources: java.lang.String toPackageName(java.lang.String)>(name);
+
+        pn = $stack7;
+
+        $stack8 = this.<jdk.internal.loader.Loader: java.util.Map localPackageToModule>;
+
+        $stack9 = interfaceinvoke $stack8.<java.util.Map: java.lang.Object get(java.lang.Object)>(pn);
+
+        module = (jdk.internal.loader.Loader$LoadedModule) $stack9;
+
+        if module == null goto label06;
+
+     label01:
+        $stack19 = virtualinvoke module.<jdk.internal.loader.Loader$LoadedModule: java.lang.String name()>();
+
+        $stack20 = virtualinvoke this.<jdk.internal.loader.Loader: java.net.URL findResource(java.lang.String,java.lang.String)>($stack19, name);
+
+        url_1#1 = $stack20;
+
+        if url_1#1 == null goto label04;
+
+        $stack22 = virtualinvoke name.<java.lang.String: boolean endsWith(java.lang.String)>(".class");
+
+        if $stack22 != 0 goto label02;
+
+        $stack23 = virtualinvoke url_1#1.<java.net.URL: java.lang.String toString()>();
+
+        $stack24 = virtualinvoke $stack23.<java.lang.String: boolean endsWith(java.lang.String)>("/");
+
+        if $stack24 != 0 goto label02;
+
+        $stack26 = virtualinvoke module.<jdk.internal.loader.Loader$LoadedModule: java.lang.module.ModuleReference mref()>();
+
+        $stack27 = virtualinvoke this.<jdk.internal.loader.Loader: boolean isOpen(java.lang.module.ModuleReference,java.lang.String)>($stack26, pn);
+
+        if $stack27 == 0 goto label04;
+
+     label02:
+        $stack25#2 = url_1#1;
+
+        $stack25#3 = $stack25#2;
+
+     label03:
+        return $stack25#3;
+
+     label04:
+        goto label13;
+
+     label05:
+        $stack29 := @caughtexception;
+
+        goto label13;
+
+     label06:
+        $stack10 = this.<jdk.internal.loader.Loader: java.util.Map nameToModule>;
+
+        $stack11 = interfaceinvoke $stack10.<java.util.Map: java.util.Collection values()>();
+
+        $stack12 = interfaceinvoke $stack11.<java.util.Collection: java.util.Iterator iterator()>();
+
+        url_1#5 = $stack12;
+
+     label07:
+        $stack18 = url_1#5;
+
+        $stack13 = interfaceinvoke $stack18.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack13 == 0 goto label13;
+
+        $stack14 = interfaceinvoke url_1#5.<java.util.Iterator: java.lang.Object next()>();
+
+        mref = (java.lang.module.ModuleReference) $stack14;
+
+     label08:
+        $stack15 = virtualinvoke mref.<java.lang.module.ModuleReference: java.lang.module.ModuleDescriptor descriptor()>();
+
+        $stack16 = virtualinvoke $stack15.<java.lang.module.ModuleDescriptor: java.lang.String name()>();
+
+        $stack17 = virtualinvoke this.<jdk.internal.loader.Loader: java.net.URL findResource(java.lang.String,java.lang.String)>($stack16, name);
+
+        url_2#6 = $stack17;
+
+        if url_2#6 == null goto label10;
+
+     label09:
+        return url_2#6;
+
+     label10:
+        goto label12;
+
+     label11:
+        $stack28 := @caughtexception;
+
+     label12:
+        goto label07;
+
+     label13:
+        return null;
+
+        catch java.io.IOException from label01 to label03 with label05;
+        catch java.io.IOException from label08 to label09 with label11;
+    }
+
+    public java.util.Enumeration findResources(java.lang.String) throws java.io.IOException
+    {
+        java.util.List $stack2;
+        java.util.Enumeration $stack3;
+        jdk.internal.loader.Loader this;
+        java.lang.String name;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        name := @parameter0: java.lang.String;
+
+        $stack2 = virtualinvoke this.<jdk.internal.loader.Loader: java.util.List findResourcesAsList(java.lang.String)>(name);
+
+        $stack3 = staticinvoke <java.util.Collections: java.util.Enumeration enumeration(java.util.Collection)>($stack2);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public java.net.URL getResource(java.lang.String)
+    {
+        java.net.URL $stack4, $stack6, $stack9, url#1, $stack7#2, $stack7#3;
+        jdk.internal.loader.Loader this;
+        bottom_type url, $stack7;
+        java.lang.Object $stack3;
+        java.lang.String name;
+        java.lang.ClassLoader $stack5, $stack8;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        name := @parameter0: java.lang.String;
+
+        $stack3 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(name);
+
+        $stack4 = virtualinvoke this.<jdk.internal.loader.Loader: java.net.URL findResource(java.lang.String)>(name);
+
+        url#1 = $stack4;
+
+        if url#1 != null goto label2;
+
+        $stack5 = this.<jdk.internal.loader.Loader: java.lang.ClassLoader parent>;
+
+        if $stack5 == null goto label1;
+
+        $stack8 = this.<jdk.internal.loader.Loader: java.lang.ClassLoader parent>;
+
+        $stack9 = virtualinvoke $stack8.<java.lang.ClassLoader: java.net.URL getResource(java.lang.String)>(name);
+
+        url#1 = $stack9;
+
+        goto label2;
+
+     label1:
+        $stack6 = staticinvoke <jdk.internal.loader.BootLoader: java.net.URL findResource(java.lang.String)>(name);
+
+        url#1 = $stack6;
+
+     label2:
+        $stack7#2 = url#1;
+
+        $stack7#3 = $stack7#2;
+
+        return $stack7#3;
+
+        nop;
+    }
+
+    public java.util.Enumeration getResources(java.lang.String) throws java.io.IOException
+    {
+        java.util.Enumeration $stack7, $stack10, $stack13, e#1;
+        jdk.internal.loader.Loader this, $stack11;
+        java.util.List $stack5, urls, $stack12;
+        bottom_type e;
+        jdk.internal.loader.Loader$3 $stack8;
+        java.lang.Object $stack4;
+        java.lang.String name;
+        java.lang.ClassLoader $stack6, $stack9;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        name := @parameter0: java.lang.String;
+
+        $stack4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(name);
+
+        $stack5 = virtualinvoke this.<jdk.internal.loader.Loader: java.util.List findResourcesAsList(java.lang.String)>(name);
+
+        urls = $stack5;
+
+        $stack6 = this.<jdk.internal.loader.Loader: java.lang.ClassLoader parent>;
+
+        if $stack6 == null goto label1;
+
+        $stack9 = this.<jdk.internal.loader.Loader: java.lang.ClassLoader parent>;
+
+        $stack10 = virtualinvoke $stack9.<java.lang.ClassLoader: java.util.Enumeration getResources(java.lang.String)>(name);
+
+        e#1 = $stack10;
+
+        goto label2;
+
+     label1:
+        $stack7 = staticinvoke <jdk.internal.loader.BootLoader: java.util.Enumeration findResources(java.lang.String)>(name);
+
+        e#1 = $stack7;
+
+     label2:
+        $stack8 = new jdk.internal.loader.Loader$3;
+
+        $stack11 = this;
+
+        $stack12 = urls;
+
+        $stack13 = e#1;
+
+        specialinvoke $stack8.<jdk.internal.loader.Loader$3: void <init>(jdk.internal.loader.Loader,java.util.List,java.util.Enumeration)>($stack11, $stack12, $stack13);
+
+        return $stack8;
+
+        nop;
+    }
+
+    private java.util.List findResourcesAsList(java.lang.String) throws java.io.IOException
+    {
+        java.net.URL $stack19, url_2, $stack23, url_1#1, $stack29#2, $stack29#3;
+        java.lang.module.ModuleReference mref, $stack30;
+        bottom_type url_1, $stack26, $stack29;
+        java.util.Map $stack9, $stack12;
+        boolean $stack15, $stack21, $stack25, $stack28, $stack31;
+        java.util.Collection $stack13;
+        java.util.List $stack24, $stack26#4, $stack26#5;
+        java.lang.module.ModuleDescriptor $stack17;
+        java.util.ArrayList $stack11, url_1#6;
+        java.lang.String name, $stack8, pn, $stack18, $stack22, $stack27;
+        java.util.Iterator $stack14, l5, $stack20;
+        jdk.internal.loader.Loader this;
+        jdk.internal.loader.Loader$LoadedModule module;
+        java.lang.Object $stack10, $stack16;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        name := @parameter0: java.lang.String;
+
+        $stack8 = staticinvoke <jdk.internal.module.Resources: java.lang.String toPackageName(java.lang.String)>(name);
+
+        pn = $stack8;
+
+        $stack9 = this.<jdk.internal.loader.Loader: java.util.Map localPackageToModule>;
+
+        $stack10 = interfaceinvoke $stack9.<java.util.Map: java.lang.Object get(java.lang.Object)>(pn);
+
+        module = (jdk.internal.loader.Loader$LoadedModule) $stack10;
+
+        if module == null goto label3;
+
+        $stack22 = virtualinvoke module.<jdk.internal.loader.Loader$LoadedModule: java.lang.String name()>();
+
+        $stack23 = virtualinvoke this.<jdk.internal.loader.Loader: java.net.URL findResource(java.lang.String,java.lang.String)>($stack22, name);
+
+        url_1#1 = $stack23;
+
+        if url_1#1 == null goto label2;
+
+        $stack25 = virtualinvoke name.<java.lang.String: boolean endsWith(java.lang.String)>(".class");
+
+        if $stack25 != 0 goto label1;
+
+        $stack27 = virtualinvoke url_1#1.<java.net.URL: java.lang.String toString()>();
+
+        $stack28 = virtualinvoke $stack27.<java.lang.String: boolean endsWith(java.lang.String)>("/");
+
+        if $stack28 != 0 goto label1;
+
+        $stack30 = virtualinvoke module.<jdk.internal.loader.Loader$LoadedModule: java.lang.module.ModuleReference mref()>();
+
+        $stack31 = virtualinvoke this.<jdk.internal.loader.Loader: boolean isOpen(java.lang.module.ModuleReference,java.lang.String)>($stack30, pn);
+
+        if $stack31 == 0 goto label2;
+
+     label1:
+        $stack29#2 = url_1#1;
+
+        $stack29#3 = $stack29#2;
+
+        $stack26#4 = staticinvoke <java.util.List: java.util.List of(java.lang.Object)>($stack29#3);
+
+        $stack26#5 = $stack26#4;
+
+        return $stack26#5;
+
+     label2:
+        $stack24 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $stack24;
+
+     label3:
+        $stack11 = new java.util.ArrayList;
+
+        specialinvoke $stack11.<java.util.ArrayList: void <init>()>();
+
+        url_1#6 = $stack11;
+
+        $stack12 = this.<jdk.internal.loader.Loader: java.util.Map nameToModule>;
+
+        $stack13 = interfaceinvoke $stack12.<java.util.Map: java.util.Collection values()>();
+
+        $stack14 = interfaceinvoke $stack13.<java.util.Collection: java.util.Iterator iterator()>();
+
+        l5 = $stack14;
+
+     label4:
+        $stack20 = l5;
+
+        $stack15 = interfaceinvoke $stack20.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack15 == 0 goto label6;
+
+        $stack16 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
+
+        mref = (java.lang.module.ModuleReference) $stack16;
+
+        $stack17 = virtualinvoke mref.<java.lang.module.ModuleReference: java.lang.module.ModuleDescriptor descriptor()>();
+
+        $stack18 = virtualinvoke $stack17.<java.lang.module.ModuleDescriptor: java.lang.String name()>();
+
+        $stack19 = virtualinvoke this.<jdk.internal.loader.Loader: java.net.URL findResource(java.lang.String,java.lang.String)>($stack18, name);
+
+        url_2 = $stack19;
+
+        if url_2 == null goto label5;
+
+        $stack21 = interfaceinvoke url_1#6.<java.util.List: boolean add(java.lang.Object)>(url_2);
+
+     label5:
+        goto label4;
+
+     label6:
+        return url_1#6;
+
+        nop;
+    }
+
+    protected java.lang.Class findClass(java.lang.String) throws java.lang.ClassNotFoundException
+    {
+        jdk.internal.loader.Loader this;
+        bottom_type c;
+        jdk.internal.loader.Loader$LoadedModule $stack4, loadedModule;
+        java.lang.ClassNotFoundException $stack5;
+        java.lang.Class $stack6, $stack7, c#1;
+        java.lang.String cn;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        cn := @parameter0: java.lang.String;
+
+        c#1 = null;
+
+        $stack4 = virtualinvoke this.<jdk.internal.loader.Loader: jdk.internal.loader.Loader$LoadedModule findLoadedModule(java.lang.String)>(cn);
+
+        loadedModule = $stack4;
+
+        if loadedModule == null goto label1;
+
+        $stack6 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.Class findClassInModuleOrNull(jdk.internal.loader.Loader$LoadedModule,java.lang.String)>(loadedModule, cn);
+
+        c#1 = $stack6;
+
+     label1:
+        $stack7 = c#1;
+
+        if $stack7 != null goto label2;
+
+        $stack5 = new java.lang.ClassNotFoundException;
+
+        specialinvoke $stack5.<java.lang.ClassNotFoundException: void <init>(java.lang.String)>(cn);
+
+        throw $stack5;
+
+     label2:
+        return c#1;
+
+        nop;
+    }
+
+    protected java.lang.Class findClass(java.lang.String, java.lang.String)
+    {
+        jdk.internal.loader.Loader this;
+        bottom_type c, $stack8;
+        jdk.internal.loader.Loader$LoadedModule $stack5, loadedModule;
+        java.lang.Class $stack9, c#1, $stack8#2, $stack8#3;
+        java.lang.String cn, $stack6, mn;
+        boolean $stack7;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        mn := @parameter0: java.lang.String;
+
+        cn := @parameter1: java.lang.String;
+
+        c#1 = null;
+
+        $stack5 = virtualinvoke this.<jdk.internal.loader.Loader: jdk.internal.loader.Loader$LoadedModule findLoadedModule(java.lang.String)>(cn);
+
+        loadedModule = $stack5;
+
+        if loadedModule == null goto label1;
+
+        $stack6 = virtualinvoke loadedModule.<jdk.internal.loader.Loader$LoadedModule: java.lang.String name()>();
+
+        $stack7 = virtualinvoke $stack6.<java.lang.String: boolean equals(java.lang.Object)>(mn);
+
+        if $stack7 == 0 goto label1;
+
+        $stack9 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.Class findClassInModuleOrNull(jdk.internal.loader.Loader$LoadedModule,java.lang.String)>(loadedModule, cn);
+
+        c#1 = $stack9;
+
+     label1:
+        $stack8#2 = c#1;
+
+        $stack8#3 = $stack8#2;
+
+        return $stack8#3;
+
+        nop;
+    }
+
+    protected java.lang.Class loadClass(java.lang.String, boolean) throws java.lang.ClassNotFoundException
+    {
+        bottom_type $stack11, pn_1, $stack12, c, loader, $stack21, $stack27, $stack28, $stack29, $stack30, $stack31;
+        java.util.Map $stack18;
+        boolean resolve, $stack26;
+        java.lang.ClassLoader $stack23, loader#18;
+        java.lang.Throwable $stack32, l9;
+        java.lang.String cn, $stack17, pn_2, $stack25, pn_1#1, $stack27#4, $stack27#5, $stack29#11, $stack29#12;
+        jdk.internal.loader.Loader this, $stack28#2, $stack28#3, $stack30#9, $stack30#10;
+        java.lang.SecurityManager $stack10, sm;
+        jdk.internal.loader.Loader$LoadedModule $stack16, loadedModule;
+        java.lang.Object $stack13, $stack19, $stack33, $stack11#6, $stack11#7, pn_1#8;
+        java.lang.Class $stack14, $stack20, $stack22, $stack24, $stack12#13, $stack12#14, c#15, $stack31#16, $stack31#17, $stack21#19, $stack21#20;
+        java.lang.ClassNotFoundException $stack15;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        cn := @parameter0: java.lang.String;
+
+        resolve := @parameter1: boolean;
+
+        $stack10 = staticinvoke <java.lang.System: java.lang.SecurityManager getSecurityManager()>();
+
+        sm = $stack10;
+
+        if sm == null goto label01;
+
+        $stack25 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.String packageName(java.lang.String)>(cn);
+
+        pn_1#1 = $stack25;
+
+        $stack26 = virtualinvoke pn_1#1.<java.lang.String: boolean isEmpty()>();
+
+        if $stack26 != 0 goto label01;
+
+        virtualinvoke sm.<java.lang.SecurityManager: void checkPackageAccess(java.lang.String)>(pn_1#1);
+
+     label01:
+        $stack28#2 = this;
+
+        $stack28#3 = $stack28#2;
+
+        $stack27#4 = cn;
+
+        $stack27#5 = $stack27#4;
+
+        $stack11#6 = virtualinvoke $stack28#3.<jdk.internal.loader.Loader: java.lang.Object getClassLoadingLock(java.lang.String)>($stack27#5);
+
+        $stack11#7 = $stack11#6;
+
+        pn_1#8 = $stack11#7;
+
+        entermonitor $stack11#7;
+
+     label02:
+        $stack30#9 = this;
+
+        $stack30#10 = $stack30#9;
+
+        $stack29#11 = cn;
+
+        $stack29#12 = $stack29#11;
+
+        $stack12#13 = virtualinvoke $stack30#10.<jdk.internal.loader.Loader: java.lang.Class findLoadedClass(java.lang.String)>($stack29#12);
+
+        $stack12#14 = $stack12#13;
+
+        c#15 = $stack12#14;
+
+        $stack31#16 = c#15;
+
+        $stack31#17 = $stack31#16;
+
+        if $stack31#17 != null goto label06;
+
+        $stack16 = virtualinvoke this.<jdk.internal.loader.Loader: jdk.internal.loader.Loader$LoadedModule findLoadedModule(java.lang.String)>(cn);
+
+        loadedModule = $stack16;
+
+        if loadedModule == null goto label03;
+
+        $stack24 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.Class findClassInModuleOrNull(jdk.internal.loader.Loader$LoadedModule,java.lang.String)>(loadedModule, cn);
+
+        c#15 = $stack24;
+
+        goto label06;
+
+     label03:
+        $stack17 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.String packageName(java.lang.String)>(cn);
+
+        pn_2 = $stack17;
+
+        $stack18 = this.<jdk.internal.loader.Loader: java.util.Map remotePackageToLoader>;
+
+        $stack19 = interfaceinvoke $stack18.<java.util.Map: java.lang.Object get(java.lang.Object)>(pn_2);
+
+        loader#18 = (java.lang.ClassLoader) $stack19;
+
+        if loader#18 != null goto label04;
+
+        loader#18 = this.<jdk.internal.loader.Loader: java.lang.ClassLoader parent>;
+
+     label04:
+        $stack23 = loader#18;
+
+        if $stack23 != null goto label05;
+
+        $stack22 = staticinvoke <jdk.internal.loader.BootLoader: java.lang.Class loadClassOrNull(java.lang.String)>(cn);
+
+        c#15 = $stack22;
+
+        goto label06;
+
+     label05:
+        $stack20 = virtualinvoke loader#18.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>(cn);
+
+        c#15 = $stack20;
+
+     label06:
+        $stack21#19 = c#15;
+
+        $stack21#20 = $stack21#19;
+
+        if $stack21#20 != null goto label07;
+
+        $stack15 = new java.lang.ClassNotFoundException;
+
+        specialinvoke $stack15.<java.lang.ClassNotFoundException: void <init>(java.lang.String)>(cn);
+
+        throw $stack15;
+
+     label07:
+        if resolve == 0 goto label08;
+
+        virtualinvoke this.<jdk.internal.loader.Loader: void resolveClass(java.lang.Class)>(c#15);
+
+     label08:
+        $stack14 = c#15;
+
+        $stack13 = pn_1#8;
+
+        exitmonitor $stack13;
+
+     label09:
+        return $stack14;
+
+     label10:
+        $stack32 := @caughtexception;
+
+        l9 = $stack32;
+
+        $stack33 = pn_1#8;
+
+        exitmonitor $stack33;
+
+     label11:
+        throw l9;
+
+        nop;
+
+        catch java.lang.Throwable from label02 to label09 with label10;
+        catch java.lang.Throwable from label10 to label11 with label10;
+    }
+
+    private java.lang.Class findClassInModuleOrNull(jdk.internal.loader.Loader$LoadedModule, java.lang.String)
+    {
+        java.security.AccessControlContext $stack5;
+        jdk.internal.loader.Loader this;
+        java.security.PrivilegedAction $stack4, pa;
+        jdk.internal.loader.Loader$LoadedModule loadedModule;
+        java.lang.Object $stack6;
+        java.lang.Class $stack7;
+        java.lang.String cn;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        loadedModule := @parameter0: jdk.internal.loader.Loader$LoadedModule;
+
+        cn := @parameter1: java.lang.String;
+
+        $stack4 = staticinvoke <jdk.internal.loader.Loader$lambda_findClassInModuleOrNull_6__172: java.security.PrivilegedAction bootstrap$(jdk.internal.loader.Loader,java.lang.String,jdk.internal.loader.Loader$LoadedModule)>(this, cn, loadedModule);
+
+        pa = $stack4;
+
+        $stack5 = this.<jdk.internal.loader.Loader: java.security.AccessControlContext acc>;
+
+        $stack6 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedAction,java.security.AccessControlContext)>(pa, $stack5);
+
+        $stack7 = (java.lang.Class) $stack6;
+
+        return $stack7;
+
+        nop;
+    }
+
+    private java.lang.Class defineClass(java.lang.String, jdk.internal.loader.Loader$LoadedModule)
+    {
+        java.lang.Throwable $stack17, l7;
+        java.lang.module.ModuleReference $stack8;
+        java.lang.module.ModuleReader $stack9, reader;
+        java.nio.ByteBuffer bb;
+        bottom_type rn;
+        java.lang.String cn, $stack10, $stack11, rn#1;
+        jdk.internal.loader.Loader this;
+        java.io.IOException $stack16, rn#2;
+        jdk.internal.loader.Loader$LoadedModule loadedModule;
+        java.util.Optional $stack12;
+        java.lang.Object $stack13;
+        java.lang.Class $stack15, l6;
+        java.security.CodeSource $stack14;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        cn := @parameter0: java.lang.String;
+
+        loadedModule := @parameter1: jdk.internal.loader.Loader$LoadedModule;
+
+        $stack8 = virtualinvoke loadedModule.<jdk.internal.loader.Loader$LoadedModule: java.lang.module.ModuleReference mref()>();
+
+        $stack9 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.module.ModuleReader moduleReaderFor(java.lang.module.ModuleReference)>($stack8);
+
+        reader = $stack9;
+
+     label1:
+        $stack10 = virtualinvoke cn.<java.lang.String: java.lang.String replace(char,char)>(46, 47);
+
+        $stack11 = virtualinvoke $stack10.<java.lang.String: java.lang.String concat(java.lang.String)>(".class");
+
+        rn#1 = $stack11;
+
+        $stack12 = interfaceinvoke reader.<java.lang.module.ModuleReader: java.util.Optional read(java.lang.String)>(rn#1);
+
+        $stack13 = virtualinvoke $stack12.<java.util.Optional: java.lang.Object orElse(java.lang.Object)>(null);
+
+        bb = (java.nio.ByteBuffer) $stack13;
+
+        if bb != null goto label3;
+
+     label2:
+        return null;
+
+     label3:
+        $stack14 = virtualinvoke loadedModule.<jdk.internal.loader.Loader$LoadedModule: java.security.CodeSource codeSource()>();
+
+        $stack15 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.Class defineClass(java.lang.String,java.nio.ByteBuffer,java.security.CodeSource)>(cn, bb, $stack14);
+
+        l6 = $stack15;
+
+     label4:
+        interfaceinvoke reader.<java.lang.module.ModuleReader: void release(java.nio.ByteBuffer)>(bb);
+
+     label5:
+        return l6;
+
+     label6:
+        $stack17 := @caughtexception;
+
+        l7 = $stack17;
+
+     label7:
+        interfaceinvoke reader.<java.lang.module.ModuleReader: void release(java.nio.ByteBuffer)>(bb);
+
+        throw l7;
+
+     label8:
+        $stack16 := @caughtexception;
+
+        rn#2 = $stack16;
+
+        return null;
+
+        nop;
+
+        catch java.lang.Throwable from label3 to label4 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+        catch java.io.IOException from label1 to label2 with label8;
+        catch java.io.IOException from label3 to label5 with label8;
+        catch java.io.IOException from label6 to label8 with label8;
+    }
+
+    protected java.security.PermissionCollection getPermissions(java.security.CodeSource)
+    {
+        java.net.URL $stack7, url;
+        bottom_type p, path, $stack14, $stack15;
+        java.net.URLConnection $stack8;
+        java.io.FilePermission $stack20;
+        java.lang.String $stack11, $stack12, $stack19, path#2, path#3;
+        boolean $stack10, $stack13;
+        jdk.internal.loader.Loader this;
+        java.io.IOException $stack21, p#8;
+        java.security.PermissionCollection $stack6, perms, $stack22, $stack15#4, $stack15#5;
+        java.security.Permission $stack9, p#1, $stack14#6, $stack14#7;
+        java.lang.StringBuilder $stack16, $stack17, $stack18;
+        java.security.CodeSource cs;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        cs := @parameter0: java.security.CodeSource;
+
+        $stack6 = specialinvoke this.<java.security.SecureClassLoader: java.security.PermissionCollection getPermissions(java.security.CodeSource)>(cs);
+
+        perms = $stack6;
+
+        $stack7 = virtualinvoke cs.<java.security.CodeSource: java.net.URL getLocation()>();
+
+        url = $stack7;
+
+        if url != null goto label1;
+
+        return perms;
+
+     label1:
+        $stack8 = virtualinvoke url.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        $stack9 = virtualinvoke $stack8.<java.net.URLConnection: java.security.Permission getPermission()>();
+
+        p#1 = $stack9;
+
+        if p#1 == null goto label3;
+
+        $stack10 = p#1 instanceof java.io.FilePermission;
+
+        if $stack10 == 0 goto label2;
+
+        $stack11 = virtualinvoke p#1.<java.security.Permission: java.lang.String getName()>();
+
+        path#2 = $stack11;
+
+        $stack12 = <java.io.File: java.lang.String separator>;
+
+        $stack13 = virtualinvoke path#2.<java.lang.String: boolean endsWith(java.lang.String)>($stack12);
+
+        if $stack13 == 0 goto label2;
+
+        $stack16 = new java.lang.StringBuilder;
+
+        specialinvoke $stack16.<java.lang.StringBuilder: void <init>()>();
+
+        $stack17 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(path#2);
+
+        $stack18 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        $stack19 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        path#3 = $stack19;
+
+        $stack20 = new java.io.FilePermission;
+
+        specialinvoke $stack20.<java.io.FilePermission: void <init>(java.lang.String,java.lang.String)>(path#3, "read");
+
+        p#1 = $stack20;
+
+     label2:
+        $stack15#4 = perms;
+
+        $stack15#5 = $stack15#4;
+
+        $stack14#6 = p#1;
+
+        $stack14#7 = $stack14#6;
+
+        virtualinvoke $stack15#5.<java.security.PermissionCollection: void add(java.security.Permission)>($stack14#7);
+
+     label3:
+        goto label5;
+
+     label4:
+        $stack21 := @caughtexception;
+
+        p#8 = $stack21;
+
+     label5:
+        $stack22 = perms;
+
+        return $stack22;
+
+        nop;
+
+        catch java.io.IOException from label1 to label3 with label4;
+    }
+
+    private jdk.internal.loader.Loader$LoadedModule findLoadedModule(java.lang.String)
+    {
+        jdk.internal.loader.Loader this;
+        bottom_type $stack7;
+        java.util.Map $stack5;
+        jdk.internal.loader.Loader$LoadedModule $stack7#1;
+        java.lang.Object $stack6;
+        java.lang.String cn, $stack3, pn;
+        boolean $stack4;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        cn := @parameter0: java.lang.String;
+
+        $stack3 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.String packageName(java.lang.String)>(cn);
+
+        pn = $stack3;
+
+        $stack4 = virtualinvoke pn.<java.lang.String: boolean isEmpty()>();
+
+        if $stack4 == 0 goto label1;
+
+        $stack7#1 = null;
+
+        goto label2;
+
+     label1:
+        $stack5 = this.<jdk.internal.loader.Loader: java.util.Map localPackageToModule>;
+
+        $stack6 = interfaceinvoke $stack5.<java.util.Map: java.lang.Object get(java.lang.Object)>(pn);
+
+        $stack7#1 = (jdk.internal.loader.Loader$LoadedModule) $stack6;
+
+     label2:
+        return $stack7#1;
+
+        nop;
+    }
+
+    private java.lang.String packageName(java.lang.String)
+    {
+        bottom_type $stack4;
+        int $stack3, pos;
+        jdk.internal.loader.Loader this;
+        java.lang.String cn, $stack4#1;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        cn := @parameter0: java.lang.String;
+
+        $stack3 = virtualinvoke cn.<java.lang.String: int lastIndexOf(int)>(46);
+
+        pos = $stack3;
+
+        if pos >= 0 goto label1;
+
+        $stack4#1 = "";
+
+        goto label2;
+
+     label1:
+        $stack4#1 = virtualinvoke cn.<java.lang.String: java.lang.String substring(int,int)>(0, pos);
+
+     label2:
+        return $stack4#1;
+
+        nop;
+    }
+
+    private java.lang.module.ModuleReader moduleReaderFor(java.lang.module.ModuleReference)
+    {
+        java.util.Map $stack2;
+        jdk.internal.loader.Loader this;
+        java.lang.module.ModuleReference mref;
+        java.lang.Object $stack4;
+        java.lang.module.ModuleReader $stack5;
+        java.util.function.Function $stack3;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        mref := @parameter0: java.lang.module.ModuleReference;
+
+        $stack2 = this.<jdk.internal.loader.Loader: java.util.Map moduleToReader>;
+
+        $stack3 = staticinvoke <jdk.internal.loader.Loader$lambda_moduleReaderFor_7__121: java.util.function.Function bootstrap$(jdk.internal.loader.Loader,java.lang.module.ModuleReference)>(this, mref);
+
+        $stack4 = interfaceinvoke $stack2.<java.util.Map: java.lang.Object computeIfAbsent(java.lang.Object,java.util.function.Function)>(mref, $stack3);
+
+        $stack5 = (java.lang.module.ModuleReader) $stack4;
+
+        return $stack5;
+
+        nop;
+    }
+
+    private java.lang.module.ModuleReader createModuleReader(java.lang.module.ModuleReference)
+    {
+        jdk.internal.loader.Loader$NullModuleReader $stack5;
+        jdk.internal.loader.Loader this;
+        java.lang.module.ModuleReference mref;
+        java.io.IOException $stack4, e;
+        java.lang.module.ModuleReader $stack3;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        mref := @parameter0: java.lang.module.ModuleReference;
+
+     label1:
+        $stack3 = virtualinvoke mref.<java.lang.module.ModuleReference: java.lang.module.ModuleReader open()>();
+
+     label2:
+        return $stack3;
+
+     label3:
+        $stack4 := @caughtexception;
+
+        e = $stack4;
+
+        $stack5 = new jdk.internal.loader.Loader$NullModuleReader;
+
+        specialinvoke $stack5.<jdk.internal.loader.Loader$NullModuleReader: void <init>()>();
+
+        return $stack5;
+
+        nop;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    private boolean isOpen(java.lang.module.ModuleReference, java.lang.String)
+    {
+        java.lang.module.ModuleDescriptor $stack7, descriptor;
+        java.lang.module.ModuleReference mref;
+        java.lang.String $stack14, source, pn;
+        boolean $stack8, $stack9, $stack12, $stack15, $stack17, $stack18;
+        java.lang.module.ModuleDescriptor$Opens opens;
+        java.util.Iterator $stack11, l4, $stack16;
+        java.util.Set $stack10;
+        jdk.internal.loader.Loader this;
+        java.lang.Object $stack13;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        mref := @parameter0: java.lang.module.ModuleReference;
+
+        pn := @parameter1: java.lang.String;
+
+        $stack7 = virtualinvoke mref.<java.lang.module.ModuleReference: java.lang.module.ModuleDescriptor descriptor()>();
+
+        descriptor = $stack7;
+
+        $stack8 = virtualinvoke descriptor.<java.lang.module.ModuleDescriptor: boolean isOpen()>();
+
+        if $stack8 != 0 goto label1;
+
+        $stack9 = virtualinvoke descriptor.<java.lang.module.ModuleDescriptor: boolean isAutomatic()>();
+
+        if $stack9 == 0 goto label2;
+
+     label1:
+        $stack18 = 1;
+
+        return $stack18;
+
+     label2:
+        $stack10 = virtualinvoke descriptor.<java.lang.module.ModuleDescriptor: java.util.Set opens()>();
+
+        $stack11 = interfaceinvoke $stack10.<java.util.Set: java.util.Iterator iterator()>();
+
+        l4 = $stack11;
+
+     label3:
+        $stack16 = l4;
+
+        $stack12 = interfaceinvoke $stack16.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack12 == 0 goto label5;
+
+        $stack13 = interfaceinvoke l4.<java.util.Iterator: java.lang.Object next()>();
+
+        opens = (java.lang.module.ModuleDescriptor$Opens) $stack13;
+
+        $stack14 = virtualinvoke opens.<java.lang.module.ModuleDescriptor$Opens: java.lang.String source()>();
+
+        source = $stack14;
+
+        $stack15 = virtualinvoke opens.<java.lang.module.ModuleDescriptor$Opens: boolean isQualified()>();
+
+        if $stack15 != 0 goto label4;
+
+        $stack17 = virtualinvoke source.<java.lang.String: boolean equals(java.lang.Object)>(pn);
+
+        if $stack17 == 0 goto label4;
+
+        return 1;
+
+     label4:
+        goto label3;
+
+     label5:
+        return 0;
+
+        nop;
+    }
+
+    public java.lang.module.ModuleReader lambda$moduleReaderFor$7(java.lang.module.ModuleReference, java.lang.module.ModuleReference)
+    {
+        jdk.internal.loader.Loader this;
+        java.lang.module.ModuleReference mref, m;
+        java.lang.module.ModuleReader $stack3;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        mref := @parameter0: java.lang.module.ModuleReference;
+
+        m := @parameter1: java.lang.module.ModuleReference;
+
+        $stack3 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.module.ModuleReader createModuleReader(java.lang.module.ModuleReference)>(mref);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public java.lang.Class lambda$findClassInModuleOrNull$6(java.lang.String, jdk.internal.loader.Loader$LoadedModule)
+    {
+        jdk.internal.loader.Loader$LoadedModule loadedModule;
+        jdk.internal.loader.Loader this;
+        java.lang.Class $stack3;
+        java.lang.String cn;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        cn := @parameter0: java.lang.String;
+
+        loadedModule := @parameter1: jdk.internal.loader.Loader$LoadedModule;
+
+        $stack3 = virtualinvoke this.<jdk.internal.loader.Loader: java.lang.Class defineClass(java.lang.String,jdk.internal.loader.Loader$LoadedModule)>(cn, loadedModule);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public static boolean lambda$findModuleLayer$5(java.lang.module.Configuration, java.lang.ModuleLayer)
+    {
+        bottom_type $stack3;
+        java.lang.ModuleLayer l;
+        java.lang.module.Configuration $stack2, cf;
+        boolean $stack3#1;
+
+        cf := @parameter0: java.lang.module.Configuration;
+
+        l := @parameter1: java.lang.ModuleLayer;
+
+        $stack2 = virtualinvoke l.<java.lang.ModuleLayer: java.lang.module.Configuration configuration()>();
+
+        if $stack2 != cf goto label1;
+
+        $stack3#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = 0;
+
+     label2:
+        return $stack3#1;
+
+        nop;
+    }
+
+    public void lambda$initRemotePackageMap$4(java.lang.ClassLoader, java.lang.String)
+    {
+        jdk.internal.loader.Loader this;
+        java.lang.String pn;
+        java.lang.ClassLoader l;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        l := @parameter0: java.lang.ClassLoader;
+
+        pn := @parameter1: java.lang.String;
+
+        virtualinvoke this.<jdk.internal.loader.Loader: void remotePackage(java.lang.String,java.lang.ClassLoader)>(pn, l);
+
+        return;
+
+        nop;
+    }
+
+    public static java.lang.InternalError lambda$initRemotePackageMap$3()
+    {
+        java.lang.InternalError $stack0;
+
+        $stack0 = new java.lang.InternalError;
+
+        specialinvoke $stack0.<java.lang.InternalError: void <init>(java.lang.String)>("Unable to find parent layer");
+
+        return $stack0;
+    }
+
+    public java.util.Optional lambda$initRemotePackageMap$2(java.lang.module.ResolvedModule, java.lang.ModuleLayer)
+    {
+        java.lang.module.ResolvedModule other;
+        jdk.internal.loader.Loader this;
+        java.lang.ModuleLayer parent;
+        java.util.Optional $stack4;
+        java.lang.module.Configuration $stack3;
+
+        this := @this: jdk.internal.loader.Loader;
+
+        other := @parameter0: java.lang.module.ResolvedModule;
+
+        parent := @parameter1: java.lang.ModuleLayer;
+
+        $stack3 = virtualinvoke other.<java.lang.module.ResolvedModule: java.lang.module.Configuration configuration()>();
+
+        $stack4 = virtualinvoke this.<jdk.internal.loader.Loader: java.util.Optional findModuleLayer(java.lang.ModuleLayer,java.lang.module.Configuration)>(parent, $stack3);
+
+        return $stack4;
+
+        nop;
+    }
+
+    public static void lambda$new$1(java.lang.module.ModuleReference, java.util.Map, java.lang.String)
+    {
+        java.lang.module.ModuleReference mref;
+        java.lang.IllegalArgumentException $stack6;
+        jdk.internal.loader.Loader$LoadedModule $stack4, lm;
+        java.util.Map localPackageToModule;
+        java.lang.Object $stack5;
+        java.lang.StringBuilder $stack7, $stack8, $stack9, $stack10;
+        java.lang.String pn, $stack11;
+
+        mref := @parameter0: java.lang.module.ModuleReference;
+
+        localPackageToModule := @parameter1: java.util.Map;
+
+        pn := @parameter2: java.lang.String;
+
+        $stack4 = new jdk.internal.loader.Loader$LoadedModule;
+
+        specialinvoke $stack4.<jdk.internal.loader.Loader$LoadedModule: void <init>(java.lang.module.ModuleReference)>(mref);
+
+        lm = $stack4;
+
+        $stack5 = interfaceinvoke localPackageToModule.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(pn, lm);
+
+        if $stack5 == null goto label1;
+
+        $stack6 = new java.lang.IllegalArgumentException;
+
+        $stack7 = new java.lang.StringBuilder;
+
+        specialinvoke $stack7.<java.lang.StringBuilder: void <init>()>();
+
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Package ");
+
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(pn);
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" in more than one module");
+
+        $stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($stack11);
+
+        throw $stack6;
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public static void lambda$new$0(java.util.Map, jdk.internal.loader.Loader$LoadedModule, java.lang.String)
+    {
+        java.util.Map localPackageToModule;
+        jdk.internal.loader.Loader$LoadedModule lm;
+        java.lang.Object $stack3;
+        java.lang.String pn;
+
+        localPackageToModule := @parameter0: java.util.Map;
+
+        lm := @parameter1: jdk.internal.loader.Loader$LoadedModule;
+
+        pn := @parameter2: java.lang.String;
+
+        $stack3 = interfaceinvoke localPackageToModule.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(pn, lm);
+
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack3;
+        java.lang.Class $stack0;
+        boolean $stack1, $stack2, $stack3#1;
+
+        $stack0 = class "Ljdk/internal/loader/Loader;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack3#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = 0;
+
+     label2:
+        <jdk.internal.loader.Loader: boolean $assertionsDisabled> = $stack3#1;
+
+        $stack2 = staticinvoke <java.lang.ClassLoader: boolean registerAsParallelCapable()>();
+
+        return;
+    }
+}

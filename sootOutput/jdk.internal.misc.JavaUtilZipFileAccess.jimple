@@ -1,0 +1,21 @@
+public interface  jdk.internal.misc.JavaUtilZipFileAccess extends java.lang.Object
+{
+
+    public abstract boolean startsWithLocHeader(java.util.zip.ZipFile);
+
+    public abstract int getManifestNum(java.util.jar.JarFile);
+
+    public abstract java.lang.String[] getMetaInfEntryNames(java.util.zip.ZipFile);
+
+    public abstract java.util.jar.JarEntry getEntry(java.util.zip.ZipFile, java.lang.String, java.util.function.Function);
+
+    public abstract java.util.Enumeration entries(java.util.zip.ZipFile, java.util.function.Function);
+
+    public abstract java.util.stream.Stream stream(java.util.zip.ZipFile, java.util.function.Function);
+
+    public abstract java.util.stream.Stream entryNameStream(java.util.zip.ZipFile);
+
+    public abstract void setExtraAttributes(java.util.zip.ZipEntry, int);
+
+    public abstract int getExtraAttributes(java.util.zip.ZipEntry);
+}

@@ -1,0 +1,113 @@
+public final class jdk.internal.logger.SurrogateLogger extends jdk.internal.logger.SimpleConsoleLogger
+{
+    private static final sun.util.logging.PlatformLogger$Level JUL_DEFAULT_LEVEL;
+    private static volatile java.lang.String simpleFormatString;
+
+    void <init>(java.lang.String)
+    {
+        jdk.internal.logger.SurrogateLogger this;
+        java.lang.String name;
+
+        this := @this: jdk.internal.logger.SurrogateLogger;
+
+        name := @parameter0: java.lang.String;
+
+        specialinvoke this.<jdk.internal.logger.SimpleConsoleLogger: void <init>(java.lang.String,boolean)>(name, 1);
+
+        return;
+
+        nop;
+    }
+
+    sun.util.logging.PlatformLogger$Level defaultPlatformLevel()
+    {
+        sun.util.logging.PlatformLogger$Level $stack1;
+        jdk.internal.logger.SurrogateLogger this;
+
+        this := @this: jdk.internal.logger.SurrogateLogger;
+
+        $stack1 = <jdk.internal.logger.SurrogateLogger: sun.util.logging.PlatformLogger$Level JUL_DEFAULT_LEVEL>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    java.lang.String getSimpleFormatString()
+    {
+        java.lang.String $stack1, $stack2, $stack3;
+        jdk.internal.logger.SurrogateLogger this;
+
+        this := @this: jdk.internal.logger.SurrogateLogger;
+
+        $stack1 = <jdk.internal.logger.SurrogateLogger: java.lang.String simpleFormatString>;
+
+        if $stack1 != null goto label1;
+
+        $stack3 = staticinvoke <jdk.internal.logger.SurrogateLogger: java.lang.String getSimpleFormat(java.util.function.Function)>(null);
+
+        <jdk.internal.logger.SurrogateLogger: java.lang.String simpleFormatString> = $stack3;
+
+     label1:
+        $stack2 = <jdk.internal.logger.SurrogateLogger: java.lang.String simpleFormatString>;
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static java.lang.String getSimpleFormat(java.util.function.Function)
+    {
+        java.lang.String $stack1;
+        java.util.function.Function defaultPropertyGetter;
+
+        defaultPropertyGetter := @parameter0: java.util.function.Function;
+
+        $stack1 = staticinvoke <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String getSimpleFormat(java.lang.String,java.util.function.Function)>("java.util.logging.SimpleFormatter.format", defaultPropertyGetter);
+
+        return $stack1;
+
+        nop;
+    }
+
+    public static jdk.internal.logger.SurrogateLogger makeSurrogateLogger(java.lang.String)
+    {
+        jdk.internal.logger.SurrogateLogger $stack1;
+        java.lang.String name;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = new jdk.internal.logger.SurrogateLogger;
+
+        specialinvoke $stack1.<jdk.internal.logger.SurrogateLogger: void <init>(java.lang.String)>(name);
+
+        return $stack1;
+
+        nop;
+    }
+
+    public static boolean isFilteredFrame(java.lang.StackWalker$StackFrame)
+    {
+        java.lang.StackWalker$StackFrame st;
+        boolean $stack1;
+
+        st := @parameter0: java.lang.StackWalker$StackFrame;
+
+        $stack1 = staticinvoke <jdk.internal.logger.SimpleConsoleLogger$Formatting: boolean isFilteredFrame(java.lang.StackWalker$StackFrame)>(st);
+
+        return $stack1;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        sun.util.logging.PlatformLogger$Level $stack0;
+
+        $stack0 = <sun.util.logging.PlatformLogger$Level: sun.util.logging.PlatformLogger$Level INFO>;
+
+        <jdk.internal.logger.SurrogateLogger: sun.util.logging.PlatformLogger$Level JUL_DEFAULT_LEVEL> = $stack0;
+
+        return;
+    }
+}

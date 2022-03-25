@@ -1,0 +1,400 @@
+public abstract class jdk.internal.loader.Resource extends java.lang.Object
+{
+    private java.io.InputStream cis;
+
+    public void <init>()
+    {
+        jdk.internal.loader.Resource this;
+
+        this := @this: jdk.internal.loader.Resource;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public abstract java.lang.String getName();
+
+    public abstract java.net.URL getURL();
+
+    public abstract java.net.URL getCodeSourceURL();
+
+    public abstract java.io.InputStream getInputStream() throws java.io.IOException;
+
+    public abstract int getContentLength() throws java.io.IOException;
+
+    private synchronized java.io.InputStream cachedInputStream() throws java.io.IOException
+    {
+        jdk.internal.loader.Resource this, $stack4;
+        java.io.InputStream $stack1, $stack2, $stack3;
+
+        this := @this: jdk.internal.loader.Resource;
+
+        $stack1 = this.<jdk.internal.loader.Resource: java.io.InputStream cis>;
+
+        if $stack1 != null goto label1;
+
+        $stack3 = virtualinvoke this.<jdk.internal.loader.Resource: java.io.InputStream getInputStream()>();
+
+        this.<jdk.internal.loader.Resource: java.io.InputStream cis> = $stack3;
+
+     label1:
+        $stack4 = this;
+
+        $stack2 = $stack4.<jdk.internal.loader.Resource: java.io.InputStream cis>;
+
+        return $stack2;
+
+        nop;
+    }
+
+    public byte[] getBytes() throws java.io.IOException
+    {
+        byte[] $stack15, $stack23, $stack37, b#4, $stack32#16, $stack32#17;
+        byte $stack38, $stack31#11, $stack31#12, $b0;
+        bottom_type isInterrupted, len, b, iioe_1, bytesToRead, cc, $stack18, $stack19, $stack20, $stack22, $stack31, $stack32, $stack33, $stack34, $stack35, iioe_2, $stack43, $stack46;
+        java.lang.Thread $stack14, $stack40;
+        java.lang.Throwable l9, $stack41, $stack44;
+        java.io.InterruptedIOException $stack42, $stack47, $stack48, iioe_3, $stack51, iioe_1#3, iioe_1#26, iioe_2#30;
+        java.io.IOException $stack39, $stack45, iioe_1#27, iioe_2#31;
+        boolean $stack12, $stack49, $stack52, isInterrupted#1, $stack46#28, $stack46#29, $stack43#32, $stack43#33;
+        java.io.EOFException $stack24, $u0;
+        jdk.internal.loader.Resource this, $stack53;
+        int $stack13, $stack16, $stack17, $stack21, $stack25, $stack26, $stack27, $stack28, $stack29, $stack30, $stack36, $stack50, len#2, iioe_1#5, $stack20#6, $stack20#7, $stack19#8, $stack19#9, bytesToRead#10, cc#13, $stack33#18, $stack33#19, $stack34#20, $stack34#21, $stack18#22, $stack18#23, $i0;
+        java.io.InputStream $stack11, in, $stack35#14, $stack35#15, $stack22#24, $stack22#25;
+
+        this := @this: jdk.internal.loader.Resource;
+
+        $stack11 = virtualinvoke this.<jdk.internal.loader.Resource: java.io.InputStream cachedInputStream()>();
+
+        in = $stack11;
+
+        $stack12 = staticinvoke <java.lang.Thread: boolean interrupted()>();
+
+        isInterrupted#1 = $stack12;
+
+     label01:
+        $stack53 = this;
+
+        $stack13 = virtualinvoke $stack53.<jdk.internal.loader.Resource: int getContentLength()>();
+
+        len#2 = $stack13;
+
+     label02:
+        goto label04;
+
+     label03:
+        $stack51 := @caughtexception;
+
+        iioe_1#3 = $stack51;
+
+        $stack52 = staticinvoke <java.lang.Thread: boolean interrupted()>();
+
+        isInterrupted#1 = 1;
+
+        goto label01;
+
+     label04:
+        b#4 = newarray (byte)[0];
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        if len#2 != $i0 goto label05;
+
+        len#2 = 2147483647;
+
+     label05:
+        $stack38 = 0;
+
+        iioe_1#5 = $stack38;
+
+     label06:
+        $stack20#6 = iioe_1#5;
+
+        $stack20#7 = $stack20#6;
+
+        $stack19#8 = len#2;
+
+        $stack19#9 = $stack19#8;
+
+        if $stack20#7 >= $stack19#9 goto label15;
+
+        $stack16 = lengthof b#4;
+
+        if iioe_1#5 < $stack16 goto label07;
+
+        $stack27 = len#2 - iioe_1#5;
+
+        $stack25 = lengthof b#4;
+
+        $stack26 = $stack25 + 1024;
+
+        $stack28 = staticinvoke <java.lang.Math: int min(int,int)>($stack27, $stack26);
+
+        bytesToRead#10 = $stack28;
+
+        $stack30 = lengthof b#4;
+
+        $stack29 = iioe_1#5 + bytesToRead#10;
+
+        if $stack30 >= $stack29 goto label08;
+
+        $stack36 = iioe_1#5 + bytesToRead#10;
+
+        $stack37 = staticinvoke <java.util.Arrays: byte[] copyOf(byte[],int)>(b#4, $stack36);
+
+        b#4 = $stack37;
+
+        goto label08;
+
+     label07:
+        $stack17 = lengthof b#4;
+
+        bytesToRead#10 = $stack17 - iioe_1#5;
+
+     label08:
+        $stack31#11 = 0;
+
+        $stack31#12 = $stack31#11;
+
+        cc#13 = $stack31#12;
+
+     label09:
+        $stack35#14 = in;
+
+        $stack35#15 = $stack35#14;
+
+        $stack32#16 = b#4;
+
+        $stack32#17 = $stack32#16;
+
+        $stack33#18 = iioe_1#5;
+
+        $stack33#19 = $stack33#18;
+
+        $stack34#20 = bytesToRead#10;
+
+        $stack34#21 = $stack34#20;
+
+        $stack18#22 = virtualinvoke $stack35#15.<java.io.InputStream: int read(byte[],int,int)>($stack32#17, $stack33#19, $stack34#21);
+
+        $stack18#23 = $stack18#22;
+
+        cc#13 = $stack18#23;
+
+     label10:
+        goto label12;
+
+     label11:
+        $stack48 := @caughtexception;
+
+        iioe_3 = $stack48;
+
+        $stack49 = staticinvoke <java.lang.Thread: boolean interrupted()>();
+
+        isInterrupted#1 = 1;
+
+     label12:
+        $stack50 = cc#13;
+
+        if $stack50 >= 0 goto label14;
+
+        if len#2 == 2147483647 goto label13;
+
+        $u0 = new java.io.EOFException;
+
+        $stack24 = $u0;
+
+        specialinvoke $u0.<java.io.EOFException: void <init>(java.lang.String)>("Detect premature EOF");
+
+        throw $stack24;
+
+     label13:
+        $stack21 = lengthof b#4;
+
+        if $stack21 == iioe_1#5 goto label15;
+
+        $stack23 = staticinvoke <java.util.Arrays: byte[] copyOf(byte[],int)>(b#4, iioe_1#5);
+
+        b#4 = $stack23;
+
+        goto label15;
+
+     label14:
+        iioe_1#5 = iioe_1#5 + cc#13;
+
+        goto label06;
+
+     label15:
+        $stack22#24 = in;
+
+        $stack22#25 = $stack22#24;
+
+        virtualinvoke $stack22#25.<java.io.InputStream: void close()>();
+
+     label16:
+        goto label19;
+
+     label17:
+        $stack47 := @caughtexception;
+
+        iioe_1#26 = $stack47;
+
+        isInterrupted#1 = 1;
+
+        goto label19;
+
+     label18:
+        $stack45 := @caughtexception;
+
+        iioe_1#27 = $stack45;
+
+     label19:
+        $stack46#28 = isInterrupted#1;
+
+        $stack46#29 = $stack46#28;
+
+        if $stack46#29 == 0 goto label27;
+
+        $stack14 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $stack14.<java.lang.Thread: void interrupt()>();
+
+        goto label27;
+
+     label20:
+        $stack44 := @caughtexception;
+
+        l9 = $stack44;
+
+     label21:
+        virtualinvoke in.<java.io.InputStream: void close()>();
+
+     label22:
+        goto label25;
+
+     label23:
+        $stack42 := @caughtexception;
+
+        iioe_2#30 = $stack42;
+
+        isInterrupted#1 = 1;
+
+        goto label25;
+
+     label24:
+        $stack39 := @caughtexception;
+
+        iioe_2#31 = $stack39;
+
+     label25:
+        $stack43#32 = isInterrupted#1;
+
+        $stack43#33 = $stack43#32;
+
+        if $stack43#33 == 0 goto label26;
+
+        $stack40 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $stack40.<java.lang.Thread: void interrupt()>();
+
+     label26:
+        $stack41 = l9;
+
+        throw $stack41;
+
+     label27:
+        $stack15 = b#4;
+
+        return $stack15;
+
+        nop;
+
+        catch java.io.InterruptedIOException from label01 to label02 with label03;
+        catch java.io.InterruptedIOException from label09 to label10 with label11;
+        catch java.io.InterruptedIOException from label15 to label16 with label17;
+        catch java.io.IOException from label15 to label16 with label18;
+        catch java.lang.Throwable from label04 to label15 with label20;
+        catch java.io.InterruptedIOException from label21 to label22 with label23;
+        catch java.io.IOException from label21 to label22 with label24;
+        catch java.lang.Throwable from label20 to label21 with label20;
+    }
+
+    public java.nio.ByteBuffer getByteBuffer() throws java.io.IOException
+    {
+        jdk.internal.loader.Resource this;
+        sun.nio.ByteBuffered $stack4;
+        java.nio.ByteBuffer $stack5;
+        java.io.InputStream $stack2, in;
+        boolean $stack3;
+
+        this := @this: jdk.internal.loader.Resource;
+
+        $stack2 = virtualinvoke this.<jdk.internal.loader.Resource: java.io.InputStream cachedInputStream()>();
+
+        in = $stack2;
+
+        $stack3 = in instanceof sun.nio.ByteBuffered;
+
+        if $stack3 == 0 goto label1;
+
+        $stack4 = (sun.nio.ByteBuffered) in;
+
+        $stack5 = interfaceinvoke $stack4.<sun.nio.ByteBuffered: java.nio.ByteBuffer getByteBuffer()>();
+
+        return $stack5;
+
+     label1:
+        return null;
+
+        nop;
+    }
+
+    public java.util.jar.Manifest getManifest() throws java.io.IOException
+    {
+        jdk.internal.loader.Resource this;
+
+        this := @this: jdk.internal.loader.Resource;
+
+        return null;
+
+        nop;
+    }
+
+    public java.security.cert.Certificate[] getCertificates()
+    {
+        jdk.internal.loader.Resource this;
+
+        this := @this: jdk.internal.loader.Resource;
+
+        return null;
+
+        nop;
+    }
+
+    public java.security.CodeSigner[] getCodeSigners()
+    {
+        jdk.internal.loader.Resource this;
+
+        this := @this: jdk.internal.loader.Resource;
+
+        return null;
+
+        nop;
+    }
+
+    public java.lang.Exception getDataError()
+    {
+        jdk.internal.loader.Resource this;
+
+        this := @this: jdk.internal.loader.Resource;
+
+        return null;
+
+        nop;
+    }
+}

@@ -1,0 +1,2293 @@
+class jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer extends java.lang.Object implements jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter
+{
+    boolean isNegative;
+    int decExponent;
+    char[] digits;
+    int nDigits;
+    private static final double[] SMALL_10_POW;
+    private static final float[] SINGLE_SMALL_10_POW;
+    private static final double[] BIG_10_POW;
+    private static final double[] TINY_10_POW;
+    private static final int MAX_SMALL_TEN;
+    private static final int SINGLE_MAX_SMALL_TEN;
+    static final boolean $assertionsDisabled;
+
+    void <init>(boolean, int, char[], int)
+    {
+        int decExponent, n;
+        char[] digits;
+        jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer this;
+        boolean negSign;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer;
+
+        negSign := @parameter0: boolean;
+
+        decExponent := @parameter1: int;
+
+        digits := @parameter2: char[];
+
+        n := @parameter3: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative> = negSign;
+
+        this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent> = decExponent;
+
+        this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits> = digits;
+
+        this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits> = n;
+
+        return;
+
+        nop;
+    }
+
+    public double doubleValue()
+    {
+        int $stack31, $stack32, kDigits, $stack35, iDigits, $stack36, $stack37, $stack40, $stack42, $stack43, $stack45, $stack46, B5, $stack47, D5, $stack51, bigIntNBits, $stack54, $stack55, common2, $stack92, $stack94, $stack95, $stack96, $stack97, $stack98, $stack99, $stack100, $stack101, $stack102, $stack103, $stack104, $stack105, $stack106, $stack107, $stack108, $stack109, $stack110, $stack111, $stack112, $stack113, $stack115, $stack116, $stack118, $stack120, $stack124, $stack125, $stack126, $stack129, $stack131, $stack151, $stack154, $stack156, $stack159, $stack160, $stack166, $stack167, $stack168, $stack180, $stack182, $stack186, $stack187, $stack188, $stack192, $stack195, $stack196, $stack197, $stack207, $stack209, $stack213, $stack214, $stack215, $stack219, $stack225, $stack226, $stack228, $stack233, $stack234, $stack235, $stack238, $stack250, $stack253, $stack254, $stack257, $stack258, $stack259, $stack260, iValue#1, i_1#2, i_2#4, exp#6, rValue_1#10, $stack227#16, $stack227#17, exp#19, rValue_1#20, exp#25, exp#27, rValue_1#28, $stack38#35, $stack38#36, exp#40, prevD2#44, $stack69#51, $stack69#52, binexp#53, $stack73#61, $stack73#62, leadingZeros#64, shift#65, binexp#66, $stack52#69, $stack52#70, leadingZeros#71, $stack133#74, $stack133#75, $stack137#79, $stack137#80, $stack53#83, $stack53#84, $stack138#85, $stack138#86, $stack139#87, $stack139#88, shift#89, $stack140#92, $stack140#93, $stack142#94, $stack142#95, $stack143#96, $stack143#97, B2#98, $stack144#99, $stack144#100, D2#101, $stack145#102, $stack145#103, Ulp2#104, hulpbias#105, B2#106, D2#107, B2#108, D2#109, Ulp2#110, $stack58#115, $stack58#116, cmpResult#117, $stack85#122, $stack85#123, $stack86#124, $stack86#125, $stack63#126, $stack63#127, cmpResult#128, $stack88#129, $stack88#130, $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7;
+        java.lang.AssertionError $stack146, $u1;
+        char[] $stack33, $stack41, $stack147, $stack248, $stack255;
+        boolean $stack50, $stack178, $stack193, $stack200, $stack203, $stack205, $stack220, $stack222, $stack231, $stack241, $stack245, overvalue#118, $stack59#135, $stack59#136;
+        double $stack60, $stack155, $stack172, $stack175, $stack177, $stack184, $stack190, $stack199, $stack202, $stack204, $stack211, $stack217, $stack230, $stack237, $stack240, $stack244, i_2#5, $stack223#7, rValue_1#8, $stack246#9, i_2#11, rValue_2#12, $stack242#13, rValue_1#14, $stack232#15, $stack221#18, rValue_2#21, rValue_2#22, rValue_2#23, $stack206#24, $stack194#26, rValue_2#29, rValue_2#30, rValue_2#31, $stack179#32;
+        byte $stack64, $stack66, $stack80, $stack121, $stack173, $stack176, $stack224;
+        long $stack44, $stack61, $stack75, $stack76, $stack78, $stack79, $stack82, $stack83, $stack114, $stack122, $stack127, $stack128, $stack150, $stack251, $stack252, i_1#3, rValue_2#41, $stack68#45, $stack68#46, $stack49#49, $stack49#50, $stack71#54, $stack71#55, $stack72#58, $stack72#59, bigBbits#60, bigBbits#63, $stack132#67, $stack132#68, $stack134#72, $stack134#73, $stack135#76, $stack135#77, bigBbits#78, $stack81#131, $stack74#132;
+        jdk.internal.math.FDBigInteger $stack39, $stack48, $stack56, bigB, $stack57, $stack62, $stack84, $stack89, $stack93, $stack117, $stack162, $stack163, rValue_1#39, rValue_1#42, bigD#43, $stack91#111, $stack91#112, $stack90#113, $stack90#114, diff#119, $stack87#120, $stack87#121, $u0;
+        jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer this, $stack148, $stack149, $stack152, $stack153, $stack247, $stack169#33, $stack169#34, $stack65#133, $stack65#134;
+        double[] $stack171, $stack174, $stack183, $stack189, $stack198, $stack201, $stack210, $stack216, $stack229, $stack236, $stack239, $stack243;
+        char $stack34, $stack249, $stack256;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer;
+
+        $stack31 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        $stack32 = staticinvoke <java.lang.Math: int min(int,int)>($stack31, 16);
+
+        kDigits = $stack32;
+
+        $stack33 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack34 = $stack33[0];
+
+        $i0 = (int) $stack34;
+
+        iValue#1 = $i0 - 48;
+
+        $stack35 = staticinvoke <java.lang.Math: int min(int,int)>(kDigits, 9);
+
+        iDigits = $stack35;
+
+        i_1#2 = 1;
+
+     label01:
+        $stack260 = i_1#2;
+
+        $stack259 = iDigits;
+
+        if $stack260 >= $stack259 goto label02;
+
+        $stack257 = iValue#1 * 10;
+
+        $stack255 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack256 = $stack255[i_1#2];
+
+        $i1 = (int) $stack256;
+
+        $stack258 = $stack257 + $i1;
+
+        iValue#1 = $stack258 - 48;
+
+        i_1#2 = i_1#2 + 1;
+
+        goto label01;
+
+     label02:
+        i_1#3 = (long) iValue#1;
+
+        i_2#4 = iDigits;
+
+     label03:
+        $stack254 = i_2#4;
+
+        $stack253 = kDigits;
+
+        if $stack254 >= $stack253 goto label04;
+
+        $stack252 = i_1#3 * 10L;
+
+        $stack248 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack249 = $stack248[i_2#4];
+
+        $i2 = (int) $stack249;
+
+        $stack250 = $i2 - 48;
+
+        $stack251 = (long) $stack250;
+
+        i_1#3 = $stack252 + $stack251;
+
+        i_2#4 = i_2#4 + 1;
+
+        goto label03;
+
+     label04:
+        i_2#5 = (double) i_1#3;
+
+        $stack36 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        exp#6 = $stack36 - kDigits;
+
+        $stack37 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        if $stack37 > 15 goto label18;
+
+        if exp#6 == 0 goto label05;
+
+        $stack224 = i_2#5 cmpl 0.0;
+
+        if $stack224 != 0 goto label08;
+
+     label05:
+        $stack247 = this;
+
+        $stack222 = $stack247.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack222 == 0 goto label06;
+
+        $stack223#7 = neg i_2#5;
+
+        goto label07;
+
+     label06:
+        $stack223#7 = i_2#5;
+
+     label07:
+        return $stack223#7;
+
+     label08:
+        if exp#6 < 0 goto label15;
+
+        $stack233 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int MAX_SMALL_TEN>;
+
+        if exp#6 > $stack233 goto label11;
+
+        $stack243 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack244 = $stack243[exp#6];
+
+        rValue_1#8 = i_2#5 * $stack244;
+
+        $stack245 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack245 == 0 goto label09;
+
+        $stack246#9 = neg rValue_1#8;
+
+        goto label10;
+
+     label09:
+        $stack246#9 = rValue_1#8;
+
+     label10:
+        return $stack246#9;
+
+     label11:
+        rValue_1#10 = 15 - kDigits;
+
+        $stack234 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int MAX_SMALL_TEN>;
+
+        $stack235 = $stack234 + rValue_1#10;
+
+        if exp#6 > $stack235 goto label14;
+
+        $stack236 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack237 = $stack236[rValue_1#10];
+
+        i_2#11 = i_2#5 * $stack237;
+
+        $stack239 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack238 = exp#6 - rValue_1#10;
+
+        $stack240 = $stack239[$stack238];
+
+        rValue_2#12 = i_2#11 * $stack240;
+
+        $stack241 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack241 == 0 goto label12;
+
+        $stack242#13 = neg rValue_2#12;
+
+        goto label13;
+
+     label12:
+        $stack242#13 = rValue_2#12;
+
+     label13:
+        return $stack242#13;
+
+     label14:
+        goto label18;
+
+     label15:
+        $stack225 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int MAX_SMALL_TEN>;
+
+        $stack226 = neg $stack225;
+
+        if exp#6 < $stack226 goto label18;
+
+        $stack229 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack228 = neg exp#6;
+
+        $stack230 = $stack229[$stack228];
+
+        rValue_1#14 = i_2#5 / $stack230;
+
+        $stack231 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack231 == 0 goto label16;
+
+        $stack232#15 = neg rValue_1#14;
+
+        goto label17;
+
+     label16:
+        $stack232#15 = rValue_1#14;
+
+     label17:
+        return $stack232#15;
+
+     label18:
+        $stack227#16 = exp#6;
+
+        $stack227#17 = $stack227#16;
+
+        if $stack227#17 <= 0 goto label30;
+
+        $stack195 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        if $stack195 <= 309 goto label21;
+
+        $stack220 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack220 == 0 goto label19;
+
+        $stack221#18 = #-Infinity;
+
+        goto label20;
+
+     label19:
+        $stack221#18 = #Infinity;
+
+     label20:
+        return $stack221#18;
+
+     label21:
+        $stack196 = exp#6 & 15;
+
+        if $stack196 == 0 goto label22;
+
+        $stack216 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack215 = exp#6 & 15;
+
+        $stack217 = $stack216[$stack215];
+
+        i_2#5 = i_2#5 * $stack217;
+
+     label22:
+        $stack219 = exp#6;
+
+        $stack197 = $stack219 >> 4;
+
+        exp#19 = $stack197;
+
+        if $stack197 == 0 goto label42;
+
+        rValue_1#20 = 0;
+
+     label23:
+        $stack209 = exp#19;
+
+        if $stack209 <= 1 goto label25;
+
+        $stack207 = exp#19 & 1;
+
+        if $stack207 == 0 goto label24;
+
+        $stack210 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] BIG_10_POW>;
+
+        $stack211 = $stack210[rValue_1#20];
+
+        i_2#5 = i_2#5 * $stack211;
+
+     label24:
+        rValue_1#20 = rValue_1#20 + 1;
+
+        $stack213 = exp#19;
+
+        $stack214 = $stack213 >> 1;
+
+        exp#19 = $stack214;
+
+        goto label23;
+
+     label25:
+        $stack198 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] BIG_10_POW>;
+
+        $stack199 = $stack198[rValue_1#20];
+
+        rValue_2#21 = i_2#5 * $stack199;
+
+        $stack200 = staticinvoke <java.lang.Double: boolean isInfinite(double)>(rValue_2#21);
+
+        if $stack200 == 0 goto label29;
+
+        rValue_2#22 = i_2#5 / 2.0;
+
+        $stack201 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] BIG_10_POW>;
+
+        $stack202 = $stack201[rValue_1#20];
+
+        rValue_2#23 = rValue_2#22 * $stack202;
+
+        $stack203 = staticinvoke <java.lang.Double: boolean isInfinite(double)>(rValue_2#23);
+
+        if $stack203 == 0 goto label28;
+
+        $stack205 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack205 == 0 goto label26;
+
+        $stack206#24 = #-Infinity;
+
+        goto label27;
+
+     label26:
+        $stack206#24 = #Infinity;
+
+     label27:
+        return $stack206#24;
+
+     label28:
+        rValue_2#21 = 1.7976931348623157E308;
+
+     label29:
+        $stack204 = rValue_2#21;
+
+        i_2#5 = $stack204;
+
+        goto label42;
+
+     label30:
+        if exp#6 >= 0 goto label42;
+
+        exp#25 = neg exp#6;
+
+        $stack166 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        $i3 = (int) -325;
+
+        if $stack166 >= $i3 goto label33;
+
+        $stack193 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack193 == 0 goto label31;
+
+        $stack194#26 = -0.0;
+
+        goto label32;
+
+     label31:
+        $stack194#26 = 0.0;
+
+     label32:
+        return $stack194#26;
+
+     label33:
+        $stack167 = exp#25 & 15;
+
+        if $stack167 == 0 goto label34;
+
+        $stack189 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack188 = exp#25 & 15;
+
+        $stack190 = $stack189[$stack188];
+
+        i_2#5 = i_2#5 / $stack190;
+
+     label34:
+        $stack192 = exp#25;
+
+        $stack168 = $stack192 >> 4;
+
+        exp#27 = $stack168;
+
+        if $stack168 == 0 goto label42;
+
+        rValue_1#28 = 0;
+
+     label35:
+        $stack182 = exp#27;
+
+        if $stack182 <= 1 goto label37;
+
+        $stack180 = exp#27 & 1;
+
+        if $stack180 == 0 goto label36;
+
+        $stack183 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] TINY_10_POW>;
+
+        $stack184 = $stack183[rValue_1#28];
+
+        i_2#5 = i_2#5 * $stack184;
+
+     label36:
+        rValue_1#28 = rValue_1#28 + 1;
+
+        $stack186 = exp#27;
+
+        $stack187 = $stack186 >> 1;
+
+        exp#27 = $stack187;
+
+        goto label35;
+
+     label37:
+        $stack171 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] TINY_10_POW>;
+
+        $stack172 = $stack171[rValue_1#28];
+
+        rValue_2#29 = i_2#5 * $stack172;
+
+        $stack173 = rValue_2#29 cmpl 0.0;
+
+        if $stack173 != 0 goto label41;
+
+        rValue_2#30 = i_2#5 * 2.0;
+
+        $stack174 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] TINY_10_POW>;
+
+        $stack175 = $stack174[rValue_1#28];
+
+        rValue_2#31 = rValue_2#30 * $stack175;
+
+        $stack176 = rValue_2#31 cmpl 0.0;
+
+        if $stack176 != 0 goto label40;
+
+        $stack178 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack178 == 0 goto label38;
+
+        $stack179#32 = -0.0;
+
+        goto label39;
+
+     label38:
+        $stack179#32 = 0.0;
+
+     label39:
+        return $stack179#32;
+
+     label40:
+        rValue_2#29 = 4.9E-324;
+
+     label41:
+        $stack177 = rValue_2#29;
+
+        i_2#5 = $stack177;
+
+     label42:
+        $stack169#33 = this;
+
+        $stack169#34 = $stack169#33;
+
+        $stack38#35 = $stack169#34.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        $stack38#36 = $stack38#35;
+
+        if $stack38#36 <= 1100 goto label43;
+
+        this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits> = 1101;
+
+        $stack147 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack147[1100] = 49;
+
+     label43:
+        $u0 = new jdk.internal.math.FDBigInteger;
+
+        $stack39 = $u0;
+
+        $stack150 = i_1#3;
+
+        $stack148 = this;
+
+        $stack41 = $stack148.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack151 = kDigits;
+
+        $stack149 = this;
+
+        $stack40 = $stack149.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        specialinvoke $u0.<jdk.internal.math.FDBigInteger: void <init>(long,char[],int,int)>($stack150, $stack41, $stack151, $stack40);
+
+        rValue_1#39 = $stack39;
+
+        $stack152 = this;
+
+        $stack43 = $stack152.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        $stack153 = this;
+
+        $stack42 = $stack153.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        $stack154 = $stack43 - $stack42;
+
+        exp#40 = $stack154;
+
+        $stack155 = i_2#5;
+
+        $stack44 = staticinvoke <java.lang.Double: long doubleToRawLongBits(double)>($stack155);
+
+        rValue_2#41 = $stack44;
+
+        $stack156 = exp#40;
+
+        $stack45 = neg $stack156;
+
+        $stack46 = staticinvoke <java.lang.Math: int max(int,int)>(0, $stack45);
+
+        B5 = $stack46;
+
+        $stack159 = exp#40;
+
+        $stack47 = staticinvoke <java.lang.Math: int max(int,int)>(0, $stack159);
+
+        D5 = $stack47;
+
+        $stack162 = rValue_1#39;
+
+        $stack160 = D5;
+
+        $stack48 = virtualinvoke $stack162.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger multByPow52(int,int)>($stack160, 0);
+
+        rValue_1#42 = $stack48;
+
+        $stack163 = rValue_1#42;
+
+        virtualinvoke $stack163.<jdk.internal.math.FDBigInteger: void makeImmutable()>();
+
+        bigD#43 = null;
+
+        prevD2#44 = 0;
+
+     label44:
+        $stack68#45 = rValue_2#41;
+
+        $stack68#46 = $stack68#45;
+
+        $stack49#49 = $stack68#46 >>> 52;
+
+        $stack49#50 = $stack49#49;
+
+        $stack69#51 = (int) $stack49#50;
+
+        $stack69#52 = $stack69#51;
+
+        binexp#53 = $stack69#52;
+
+        $stack71#54 = rValue_2#41;
+
+        $stack71#55 = $stack71#54;
+
+        $stack72#58 = $stack71#55 & 4503599627370495L;
+
+        $stack72#59 = $stack72#58;
+
+        bigBbits#60 = $stack72#59;
+
+        $stack73#61 = binexp#53;
+
+        $stack73#62 = $stack73#61;
+
+        if $stack73#62 <= 0 goto label45;
+
+        bigBbits#63 = bigBbits#60 | 4503599627370496L;
+
+        goto label47;
+
+     label45:
+        $stack50 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean $assertionsDisabled>;
+
+        if $stack50 != 0 goto label46;
+
+        $stack121 = bigBbits#60 cmp 0L;
+
+        if $stack121 != 0 goto label46;
+
+        $u1 = new java.lang.AssertionError;
+
+        $stack146 = $u1;
+
+        specialinvoke $u1.<java.lang.AssertionError: void <init>(long)>(bigBbits#60);
+
+        throw $stack146;
+
+     label46:
+        $stack122 = bigBbits#60;
+
+        $stack51 = staticinvoke <java.lang.Long: int numberOfLeadingZeros(long)>($stack122);
+
+        leadingZeros#64 = $stack51;
+
+        $stack124 = leadingZeros#64;
+
+        $stack125 = $stack124 - 11;
+
+        shift#65 = $stack125;
+
+        $stack127 = bigBbits#60;
+
+        $stack126 = shift#65;
+
+        $stack128 = $stack127 << $stack126;
+
+        bigBbits#63 = $stack128;
+
+        $stack129 = shift#65;
+
+        $stack131 = 1 - $stack129;
+
+        binexp#53 = $stack131;
+
+     label47:
+        $i4 = (int) -1023;
+
+        binexp#66 = binexp#53 + $i4;
+
+        $stack132#67 = bigBbits#63;
+
+        $stack132#68 = $stack132#67;
+
+        $stack52#69 = staticinvoke <java.lang.Long: int numberOfTrailingZeros(long)>($stack132#68);
+
+        $stack52#70 = $stack52#69;
+
+        leadingZeros#71 = $stack52#70;
+
+        $stack134#72 = bigBbits#63;
+
+        $stack134#73 = $stack134#72;
+
+        $stack133#74 = leadingZeros#71;
+
+        $stack133#75 = $stack133#74;
+
+        $stack135#76 = $stack134#73 >>> $stack133#75;
+
+        $stack135#77 = $stack135#76;
+
+        bigBbits#78 = $stack135#77;
+
+        $stack137#79 = binexp#66;
+
+        $stack137#80 = $stack137#79;
+
+        $stack53#83 = $stack137#80 - 52;
+
+        $stack53#84 = $stack53#83;
+
+        $stack138#85 = leadingZeros#71;
+
+        $stack138#86 = $stack138#85;
+
+        $stack139#87 = $stack53#84 + $stack138#86;
+
+        $stack139#88 = $stack139#87;
+
+        shift#89 = $stack139#88;
+
+        $stack140#92 = leadingZeros#71;
+
+        $stack140#93 = $stack140#92;
+
+        $stack142#94 = 53 - $stack140#93;
+
+        $stack142#95 = $stack142#94;
+
+        bigIntNBits = $stack142#95;
+
+        $stack143#96 = B5;
+
+        $stack143#97 = $stack143#96;
+
+        B2#98 = $stack143#97;
+
+        $stack144#99 = D5;
+
+        $stack144#100 = $stack144#99;
+
+        D2#101 = $stack144#100;
+
+        $stack145#102 = shift#89;
+
+        $stack145#103 = $stack145#102;
+
+        if $stack145#103 < 0 goto label48;
+
+        B2#98 = B2#98 + shift#89;
+
+        goto label49;
+
+     label48:
+        D2#101 = D2#101 - shift#89;
+
+     label49:
+        $stack118 = B2#98;
+
+        Ulp2#104 = $stack118;
+
+        $stack120 = binexp#66;
+
+        $i5 = (int) -1023;
+
+        if $stack120 > $i5 goto label50;
+
+        $stack95 = binexp#66 + leadingZeros#71;
+
+        hulpbias#105 = $stack95 + 1023;
+
+        goto label51;
+
+     label50:
+        hulpbias#105 = 1 + leadingZeros#71;
+
+     label51:
+        $stack97 = B2#98;
+
+        $stack96 = hulpbias#105;
+
+        $stack98 = $stack97 + $stack96;
+
+        B2#106 = $stack98;
+
+        $stack100 = D2#101;
+
+        $stack99 = hulpbias#105;
+
+        $stack101 = $stack100 + $stack99;
+
+        D2#107 = $stack101;
+
+        $stack104 = B2#106;
+
+        $stack102 = D2#107;
+
+        $stack103 = Ulp2#104;
+
+        $stack54 = staticinvoke <java.lang.Math: int min(int,int)>($stack102, $stack103);
+
+        $stack55 = staticinvoke <java.lang.Math: int min(int,int)>($stack104, $stack54);
+
+        common2 = $stack55;
+
+        $stack106 = B2#106;
+
+        $stack105 = common2;
+
+        $stack107 = $stack106 - $stack105;
+
+        B2#108 = $stack107;
+
+        $stack109 = D2#107;
+
+        $stack108 = common2;
+
+        $stack110 = $stack109 - $stack108;
+
+        D2#109 = $stack110;
+
+        $stack112 = Ulp2#104;
+
+        $stack111 = common2;
+
+        $stack113 = $stack112 - $stack111;
+
+        Ulp2#110 = $stack113;
+
+        $stack114 = bigBbits#78;
+
+        $stack115 = B5;
+
+        $stack116 = B2#108;
+
+        $stack56 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger valueOfMulPow52(long,int,int)>($stack114, $stack115, $stack116);
+
+        bigB = $stack56;
+
+        $stack117 = bigD#43;
+
+        if $stack117 == null goto label52;
+
+        if prevD2#44 == D2#109 goto label53;
+
+     label52:
+        $stack93 = rValue_1#42;
+
+        $stack92 = D2#109;
+
+        $stack57 = virtualinvoke $stack93.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftShift(int)>($stack92);
+
+        bigD#43 = $stack57;
+
+        $stack94 = D2#109;
+
+        prevD2#44 = $stack94;
+
+     label53:
+        $stack91#111 = bigB;
+
+        $stack91#112 = $stack91#111;
+
+        $stack90#113 = bigD#43;
+
+        $stack90#114 = $stack90#113;
+
+        $stack58#115 = virtualinvoke $stack91#112.<jdk.internal.math.FDBigInteger: int 'cmp'(jdk.internal.math.FDBigInteger)>($stack90#114);
+
+        $stack58#116 = $stack58#115;
+
+        cmpResult#117 = $stack58#116;
+
+        if $stack58#116 <= 0 goto label54;
+
+        overvalue#118 = 1;
+
+        $stack84 = virtualinvoke bigB.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftInplaceSub(jdk.internal.math.FDBigInteger)>(bigD#43);
+
+        diff#119 = $stack84;
+
+        if bigIntNBits != 1 goto label55;
+
+        $i6 = (int) -1022;
+
+        if shift#89 <= $i6 goto label55;
+
+        $i7 = (int) -1;
+
+        Ulp2#110 = Ulp2#110 + $i7;
+
+        if Ulp2#110 >= 0 goto label55;
+
+        Ulp2#110 = 0;
+
+        $stack89 = virtualinvoke diff#119.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftShift(int)>(1);
+
+        diff#119 = $stack89;
+
+        goto label55;
+
+     label54:
+        if cmpResult#117 >= 0 goto label62;
+
+        overvalue#118 = 0;
+
+        $stack62 = virtualinvoke bigD#43.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger rightInplaceSub(jdk.internal.math.FDBigInteger)>(bigB);
+
+        diff#119 = $stack62;
+
+     label55:
+        $stack87#120 = diff#119;
+
+        $stack87#121 = $stack87#120;
+
+        $stack85#122 = B5;
+
+        $stack85#123 = $stack85#122;
+
+        $stack86#124 = Ulp2#110;
+
+        $stack86#125 = $stack86#124;
+
+        $stack63#126 = virtualinvoke $stack87#121.<jdk.internal.math.FDBigInteger: int cmpPow52(int,int)>($stack85#123, $stack86#125);
+
+        $stack63#127 = $stack63#126;
+
+        cmpResult#128 = $stack63#127;
+
+        $stack88#129 = cmpResult#128;
+
+        $stack88#130 = $stack88#129;
+
+        if $stack88#130 >= 0 goto label56;
+
+        goto label62;
+
+     label56:
+        if cmpResult#128 != 0 goto label59;
+
+        $stack79 = rValue_2#41 & 1L;
+
+        $stack80 = $stack79 cmp 0L;
+
+        if $stack80 == 0 goto label62;
+
+        $stack82 = rValue_2#41;
+
+        if overvalue#118 == 0 goto label57;
+
+        $stack81#131 = -1L;
+
+        goto label58;
+
+     label57:
+        $stack81#131 = 1L;
+
+     label58:
+        $stack83 = $stack82 + $stack81#131;
+
+        rValue_2#41 = $stack83;
+
+        goto label62;
+
+     label59:
+        $stack75 = rValue_2#41;
+
+        if overvalue#118 == 0 goto label60;
+
+        $stack74#132 = -1L;
+
+        goto label61;
+
+     label60:
+        $stack74#132 = 1L;
+
+     label61:
+        $stack76 = $stack75 + $stack74#132;
+
+        rValue_2#41 = $stack76;
+
+        $stack78 = rValue_2#41;
+
+        $stack64 = $stack78 cmp 0L;
+
+        if $stack64 == 0 goto label62;
+
+        $stack66 = rValue_2#41 cmp 9218868437227405312L;
+
+        if $stack66 != 0 goto label44;
+
+        goto label62;
+
+     label62:
+        $stack65#133 = this;
+
+        $stack65#134 = $stack65#133;
+
+        $stack59#135 = $stack65#134.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        $stack59#136 = $stack59#135;
+
+        if $stack59#136 == 0 goto label63;
+
+        rValue_2#41 = rValue_2#41 | -9223372036854775808L;
+
+     label63:
+        $stack61 = rValue_2#41;
+
+        $stack60 = staticinvoke <java.lang.Double: double longBitsToDouble(long)>($stack61);
+
+        return $stack60;
+    }
+
+    public float floatValue()
+    {
+        float[] $stack227, $stack234, $stack237, $stack241;
+        int $stack27, $stack28, kDigits, $stack31, $stack32, $stack33, $stack34, $stack41, $stack44, $stack45, $stack46, $stack47, $stack48, B5, $stack49, D5, $stack52, bigIntNBits, $stack55, $stack56, common2, $stack63, $stack75, $stack76, $stack77, $stack78, $stack80, $stack81, $stack90, $stack92, $stack93, $stack94, $stack95, $stack96, $stack97, $stack98, $stack99, $stack100, $stack101, $stack102, $stack103, $stack104, $stack105, $stack106, $stack107, $stack108, $stack109, $stack110, $stack111, $stack112, $stack113, $stack114, $stack116, $stack118, $stack119, $stack121, $stack122, $stack123, $stack124, $stack125, $stack126, $stack128, $stack145, $stack148, $stack151, $stack153, $stack156, $stack157, $stack163, $stack164, $stack165, $stack170, $stack171, $stack175, $stack176, $stack177, $stack181, $stack184, $stack185, $stack186, $stack187, $stack188, $stack192, $stack193, $stack194, $stack198, $stack201, $stack202, $stack203, $stack207, $stack208, $stack209, $stack216, $stack220, $stack224, $stack225, $stack226, $stack231, $stack232, $stack233, $stack236, $stack248, $stack249, $stack250, $stack251, iValue#1, i_1#2, exp#4, slop#8, i_2#15, exp#17, $stack206#26, $stack206#27, exp#29, i_2#30, exp#31, exp#33, i_2#34, $stack39#50, $stack39#51, exp#55, ieeeBits#56, prevD2#59, $stack68#60, $stack68#61, $stack69#64, $stack69#65, binexp#66, $stack71#67, $stack71#68, $stack72#71, $stack72#72, bigBbits#73, $stack73#74, $stack73#75, bigBbits#76, leadingZeros#77, shift#78, binexp#79, $stack129#80, $stack129#81, $stack53#82, $stack53#83, leadingZeros#84, $stack131#85, $stack131#86, $stack130#87, $stack130#88, $stack132#89, $stack132#90, bigBbits#91, $stack134#92, $stack134#93, $stack54#96, $stack54#97, $stack135#98, $stack135#99, $stack136#100, $stack136#101, shift#102, $stack137#105, $stack137#106, $stack139#107, $stack139#108, $stack140#109, $stack140#110, B2#111, $stack141#112, $stack141#113, D2#114, $stack142#115, $stack142#116, Ulp2#117, hulpbias#118, B2#119, D2#120, B2#121, D2#122, Ulp2#123, $stack60#128, $stack60#129, cmpResult#130, $stack83#135, $stack83#136, $stack84#137, $stack84#138, $stack65#139, $stack65#140, cmpResult#141, $stack86#142, $stack86#143, $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7;
+        java.lang.AssertionError $stack143, $u1;
+        char[] $stack29, $stack42, $stack144, $stack214, $stack246;
+        boolean $stack51, $stack182, $stack199, $stack212, $stack221, $stack229, $stack239, $stack243, overvalue#131, $stack61#148, $stack61#149;
+        double $stack173, $stack179, $stack190, $stack196, $stack211, i_2#16, i_2#18, $stack205#23, $stack205#24, slop#25, $stack166#39, $stack166#40;
+        byte $stack223, $stack79#144, $stack74#145;
+        long $stack43, $stack57, $stack217, $stack218, slop#14;
+        jdk.internal.math.FDBigInteger $stack40, $stack50, $stack58, bigB, $stack59, $stack64, $stack82, $stack87, $stack91, $stack115, $stack159, $stack160, i_2#54, i_2#57, bigD#58, $stack89#124, $stack89#125, $stack88#126, $stack88#127, diff#132, $stack85#133, $stack85#134, $u0;
+        jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer this, $stack146, $stack147, $stack149, $stack150, $stack219, $stack245, $stack168#48, $stack168#49, $stack66#146, $stack66#147;
+        double[] $stack172, $stack178, $stack189, $stack195, $stack210;
+        float $stack62, $stack152, $stack228, $stack235, $stack238, $stack242, i_1#3, $stack222#5, i_1#6, $stack244#7, i_1#9, i_1#10, $stack240#11, i_1#12, $stack230#13, i_1#19, $stack213#20, $stack204#21, $stack204#22, $stack200#28, $stack183#32, $stack35#41, $stack35#42, $stack37#43, $stack37#44, $stack38#45, $stack38#46, i_1#47;
+        char $stack30, $stack215, $stack247;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer;
+
+        $stack27 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        $stack28 = staticinvoke <java.lang.Math: int min(int,int)>($stack27, 8);
+
+        kDigits = $stack28;
+
+        $stack29 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack30 = $stack29[0];
+
+        $i0 = (int) $stack30;
+
+        iValue#1 = $i0 - 48;
+
+        i_1#2 = 1;
+
+     label01:
+        $stack251 = i_1#2;
+
+        $stack250 = kDigits;
+
+        if $stack251 >= $stack250 goto label02;
+
+        $stack248 = iValue#1 * 10;
+
+        $stack246 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack247 = $stack246[i_1#2];
+
+        $i1 = (int) $stack247;
+
+        $stack249 = $stack248 + $i1;
+
+        iValue#1 = $stack249 - 48;
+
+        i_1#2 = i_1#2 + 1;
+
+        goto label01;
+
+     label02:
+        i_1#3 = (float) iValue#1;
+
+        $stack31 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        exp#4 = $stack31 - kDigits;
+
+        $stack32 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        if $stack32 > 7 goto label16;
+
+        if exp#4 == 0 goto label03;
+
+        $stack223 = i_1#3 cmpl 0.0F;
+
+        if $stack223 != 0 goto label06;
+
+     label03:
+        $stack245 = this;
+
+        $stack221 = $stack245.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack221 == 0 goto label04;
+
+        $stack222#5 = neg i_1#3;
+
+        goto label05;
+
+     label04:
+        $stack222#5 = i_1#3;
+
+     label05:
+        return $stack222#5;
+
+     label06:
+        if exp#4 < 0 goto label13;
+
+        $stack231 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int SINGLE_MAX_SMALL_TEN>;
+
+        if exp#4 > $stack231 goto label09;
+
+        $stack241 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: float[] SINGLE_SMALL_10_POW>;
+
+        $stack242 = $stack241[exp#4];
+
+        i_1#6 = i_1#3 * $stack242;
+
+        $stack243 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack243 == 0 goto label07;
+
+        $stack244#7 = neg i_1#6;
+
+        goto label08;
+
+     label07:
+        $stack244#7 = i_1#6;
+
+     label08:
+        return $stack244#7;
+
+     label09:
+        slop#8 = 7 - kDigits;
+
+        $stack232 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int SINGLE_MAX_SMALL_TEN>;
+
+        $stack233 = $stack232 + slop#8;
+
+        if exp#4 > $stack233 goto label12;
+
+        $stack234 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: float[] SINGLE_SMALL_10_POW>;
+
+        $stack235 = $stack234[slop#8];
+
+        i_1#9 = i_1#3 * $stack235;
+
+        $stack237 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: float[] SINGLE_SMALL_10_POW>;
+
+        $stack236 = exp#4 - slop#8;
+
+        $stack238 = $stack237[$stack236];
+
+        i_1#10 = i_1#9 * $stack238;
+
+        $stack239 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack239 == 0 goto label10;
+
+        $stack240#11 = neg i_1#10;
+
+        goto label11;
+
+     label10:
+        $stack240#11 = i_1#10;
+
+     label11:
+        return $stack240#11;
+
+     label12:
+        goto label21;
+
+     label13:
+        $stack224 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int SINGLE_MAX_SMALL_TEN>;
+
+        $stack225 = neg $stack224;
+
+        if exp#4 < $stack225 goto label21;
+
+        $stack227 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: float[] SINGLE_SMALL_10_POW>;
+
+        $stack226 = neg exp#4;
+
+        $stack228 = $stack227[$stack226];
+
+        i_1#12 = i_1#3 / $stack228;
+
+        $stack229 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack229 == 0 goto label14;
+
+        $stack230#13 = neg i_1#12;
+
+        goto label15;
+
+     label14:
+        $stack230#13 = i_1#12;
+
+     label15:
+        return $stack230#13;
+
+     label16:
+        $stack34 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        $stack33 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        if $stack34 < $stack33 goto label21;
+
+        $stack202 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        $stack201 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        $stack203 = $stack202 + $stack201;
+
+        if $stack203 > 15 goto label21;
+
+        slop#14 = (long) iValue#1;
+
+        i_2#15 = kDigits;
+
+     label17:
+        $stack220 = i_2#15;
+
+        $stack219 = this;
+
+        $stack207 = $stack219.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        if $stack220 >= $stack207 goto label18;
+
+        $stack218 = slop#14 * 10L;
+
+        $stack214 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack215 = $stack214[i_2#15];
+
+        $i2 = (int) $stack215;
+
+        $stack216 = $i2 - 48;
+
+        $stack217 = (long) $stack216;
+
+        slop#14 = $stack218 + $stack217;
+
+        i_2#15 = i_2#15 + 1;
+
+        goto label17;
+
+     label18:
+        i_2#16 = (double) slop#14;
+
+        $stack209 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        $stack208 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        exp#17 = $stack209 - $stack208;
+
+        $stack210 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack211 = $stack210[exp#17];
+
+        i_2#18 = i_2#16 * $stack211;
+
+        i_1#19 = (float) i_2#18;
+
+        $stack212 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack212 == 0 goto label19;
+
+        $stack213#20 = neg i_1#19;
+
+        goto label20;
+
+     label19:
+        $stack213#20 = i_1#19;
+
+     label20:
+        return $stack213#20;
+
+     label21:
+        $stack204#21 = i_1#3;
+
+        $stack204#22 = $stack204#21;
+
+        $stack205#23 = (double) $stack204#22;
+
+        $stack205#24 = $stack205#23;
+
+        slop#25 = $stack205#24;
+
+        $stack206#26 = exp#4;
+
+        $stack206#27 = $stack206#26;
+
+        if $stack206#27 <= 0 goto label29;
+
+        $stack184 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        if $stack184 <= 39 goto label24;
+
+        $stack199 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack199 == 0 goto label22;
+
+        $stack200#28 = #-InfinityF;
+
+        goto label23;
+
+     label22:
+        $stack200#28 = #InfinityF;
+
+     label23:
+        return $stack200#28;
+
+     label24:
+        $stack185 = exp#4 & 15;
+
+        if $stack185 == 0 goto label25;
+
+        $stack195 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack194 = exp#4 & 15;
+
+        $stack196 = $stack195[$stack194];
+
+        slop#25 = slop#25 * $stack196;
+
+     label25:
+        $stack198 = exp#4;
+
+        $stack186 = $stack198 >> 4;
+
+        exp#29 = $stack186;
+
+        if $stack186 == 0 goto label36;
+
+        i_2#30 = 0;
+
+     label26:
+        $stack188 = exp#29;
+
+        if $stack188 <= 0 goto label28;
+
+        $stack187 = exp#29 & 1;
+
+        if $stack187 == 0 goto label27;
+
+        $stack189 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] BIG_10_POW>;
+
+        $stack190 = $stack189[i_2#30];
+
+        slop#25 = slop#25 * $stack190;
+
+     label27:
+        i_2#30 = i_2#30 + 1;
+
+        $stack192 = exp#29;
+
+        $stack193 = $stack192 >> 1;
+
+        exp#29 = $stack193;
+
+        goto label26;
+
+     label28:
+        goto label36;
+
+     label29:
+        if exp#4 >= 0 goto label36;
+
+        exp#31 = neg exp#4;
+
+        $stack163 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        $i3 = (int) -46;
+
+        if $stack163 >= $i3 goto label32;
+
+        $stack182 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        if $stack182 == 0 goto label30;
+
+        $stack183#32 = -0.0F;
+
+        goto label31;
+
+     label30:
+        $stack183#32 = 0.0F;
+
+     label31:
+        return $stack183#32;
+
+     label32:
+        $stack164 = exp#31 & 15;
+
+        if $stack164 == 0 goto label33;
+
+        $stack178 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack177 = exp#31 & 15;
+
+        $stack179 = $stack178[$stack177];
+
+        slop#25 = slop#25 / $stack179;
+
+     label33:
+        $stack181 = exp#31;
+
+        $stack165 = $stack181 >> 4;
+
+        exp#33 = $stack165;
+
+        if $stack165 == 0 goto label36;
+
+        i_2#34 = 0;
+
+     label34:
+        $stack171 = exp#33;
+
+        if $stack171 <= 0 goto label36;
+
+        $stack170 = exp#33 & 1;
+
+        if $stack170 == 0 goto label35;
+
+        $stack172 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] TINY_10_POW>;
+
+        $stack173 = $stack172[i_2#34];
+
+        slop#25 = slop#25 * $stack173;
+
+     label35:
+        i_2#34 = i_2#34 + 1;
+
+        $stack175 = exp#33;
+
+        $stack176 = $stack175 >> 1;
+
+        exp#33 = $stack176;
+
+        goto label34;
+
+     label36:
+        $stack166#39 = slop#25;
+
+        $stack166#40 = $stack166#39;
+
+        $stack35#41 = (float) $stack166#40;
+
+        $stack35#42 = $stack35#41;
+
+        $stack37#43 = staticinvoke <java.lang.Math: float min(float,float)>(3.4028235E38F, $stack35#42);
+
+        $stack37#44 = $stack37#43;
+
+        $stack38#45 = staticinvoke <java.lang.Math: float max(float,float)>(1.4E-45F, $stack37#44);
+
+        $stack38#46 = $stack38#45;
+
+        i_1#47 = $stack38#46;
+
+        $stack168#48 = this;
+
+        $stack168#49 = $stack168#48;
+
+        $stack39#50 = $stack168#49.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        $stack39#51 = $stack39#50;
+
+        if $stack39#51 <= 200 goto label37;
+
+        this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits> = 201;
+
+        $stack144 = this.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack144[200] = 49;
+
+     label37:
+        $u0 = new jdk.internal.math.FDBigInteger;
+
+        $stack40 = $u0;
+
+        $stack145 = iValue#1;
+
+        $stack43 = (long) $stack145;
+
+        $stack146 = this;
+
+        $stack42 = $stack146.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: char[] digits>;
+
+        $stack148 = kDigits;
+
+        $stack147 = this;
+
+        $stack41 = $stack147.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        specialinvoke $u0.<jdk.internal.math.FDBigInteger: void <init>(long,char[],int,int)>($stack43, $stack42, $stack148, $stack41);
+
+        i_2#54 = $stack40;
+
+        $stack149 = this;
+
+        $stack45 = $stack149.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int decExponent>;
+
+        $stack150 = this;
+
+        $stack44 = $stack150.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int nDigits>;
+
+        $stack151 = $stack45 - $stack44;
+
+        exp#55 = $stack151;
+
+        $stack152 = i_1#47;
+
+        $stack46 = staticinvoke <java.lang.Float: int floatToRawIntBits(float)>($stack152);
+
+        ieeeBits#56 = $stack46;
+
+        $stack153 = exp#55;
+
+        $stack47 = neg $stack153;
+
+        $stack48 = staticinvoke <java.lang.Math: int max(int,int)>(0, $stack47);
+
+        B5 = $stack48;
+
+        $stack156 = exp#55;
+
+        $stack49 = staticinvoke <java.lang.Math: int max(int,int)>(0, $stack156);
+
+        D5 = $stack49;
+
+        $stack159 = i_2#54;
+
+        $stack157 = D5;
+
+        $stack50 = virtualinvoke $stack159.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger multByPow52(int,int)>($stack157, 0);
+
+        i_2#57 = $stack50;
+
+        $stack160 = i_2#57;
+
+        virtualinvoke $stack160.<jdk.internal.math.FDBigInteger: void makeImmutable()>();
+
+        bigD#58 = null;
+
+        prevD2#59 = 0;
+
+     label38:
+        $stack68#60 = ieeeBits#56;
+
+        $stack68#61 = $stack68#60;
+
+        $stack69#64 = $stack68#61 >>> 23;
+
+        $stack69#65 = $stack69#64;
+
+        binexp#66 = $stack69#65;
+
+        $stack71#67 = ieeeBits#56;
+
+        $stack71#68 = $stack71#67;
+
+        $stack72#71 = $stack71#68 & 8388607;
+
+        $stack72#72 = $stack72#71;
+
+        bigBbits#73 = $stack72#72;
+
+        $stack73#74 = binexp#66;
+
+        $stack73#75 = $stack73#74;
+
+        if $stack73#75 <= 0 goto label39;
+
+        bigBbits#76 = bigBbits#73 | 8388608;
+
+        goto label41;
+
+     label39:
+        $stack51 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean $assertionsDisabled>;
+
+        if $stack51 != 0 goto label40;
+
+        if bigBbits#73 != 0 goto label40;
+
+        $u1 = new java.lang.AssertionError;
+
+        $stack143 = $u1;
+
+        specialinvoke $u1.<java.lang.AssertionError: void <init>(int)>(bigBbits#73);
+
+        throw $stack143;
+
+     label40:
+        $stack119 = bigBbits#73;
+
+        $stack52 = staticinvoke <java.lang.Integer: int numberOfLeadingZeros(int)>($stack119);
+
+        leadingZeros#77 = $stack52;
+
+        $stack121 = leadingZeros#77;
+
+        $stack122 = $stack121 - 8;
+
+        shift#78 = $stack122;
+
+        $stack124 = bigBbits#73;
+
+        $stack123 = shift#78;
+
+        $stack125 = $stack124 << $stack123;
+
+        bigBbits#76 = $stack125;
+
+        $stack126 = shift#78;
+
+        $stack128 = 1 - $stack126;
+
+        binexp#66 = $stack128;
+
+     label41:
+        $i4 = (int) -127;
+
+        binexp#79 = binexp#66 + $i4;
+
+        $stack129#80 = bigBbits#76;
+
+        $stack129#81 = $stack129#80;
+
+        $stack53#82 = staticinvoke <java.lang.Integer: int numberOfTrailingZeros(int)>($stack129#81);
+
+        $stack53#83 = $stack53#82;
+
+        leadingZeros#84 = $stack53#83;
+
+        $stack131#85 = bigBbits#76;
+
+        $stack131#86 = $stack131#85;
+
+        $stack130#87 = leadingZeros#84;
+
+        $stack130#88 = $stack130#87;
+
+        $stack132#89 = $stack131#86 >>> $stack130#88;
+
+        $stack132#90 = $stack132#89;
+
+        bigBbits#91 = $stack132#90;
+
+        $stack134#92 = binexp#79;
+
+        $stack134#93 = $stack134#92;
+
+        $stack54#96 = $stack134#93 - 23;
+
+        $stack54#97 = $stack54#96;
+
+        $stack135#98 = leadingZeros#84;
+
+        $stack135#99 = $stack135#98;
+
+        $stack136#100 = $stack54#97 + $stack135#99;
+
+        $stack136#101 = $stack136#100;
+
+        shift#102 = $stack136#101;
+
+        $stack137#105 = leadingZeros#84;
+
+        $stack137#106 = $stack137#105;
+
+        $stack139#107 = 24 - $stack137#106;
+
+        $stack139#108 = $stack139#107;
+
+        bigIntNBits = $stack139#108;
+
+        $stack140#109 = B5;
+
+        $stack140#110 = $stack140#109;
+
+        B2#111 = $stack140#110;
+
+        $stack141#112 = D5;
+
+        $stack141#113 = $stack141#112;
+
+        D2#114 = $stack141#113;
+
+        $stack142#115 = shift#102;
+
+        $stack142#116 = $stack142#115;
+
+        if $stack142#116 < 0 goto label42;
+
+        B2#111 = B2#111 + shift#102;
+
+        goto label43;
+
+     label42:
+        D2#114 = D2#114 - shift#102;
+
+     label43:
+        $stack116 = B2#111;
+
+        Ulp2#117 = $stack116;
+
+        $stack118 = binexp#79;
+
+        $i5 = (int) -127;
+
+        if $stack118 > $i5 goto label44;
+
+        $stack93 = binexp#79 + leadingZeros#84;
+
+        hulpbias#118 = $stack93 + 127;
+
+        goto label45;
+
+     label44:
+        hulpbias#118 = 1 + leadingZeros#84;
+
+     label45:
+        $stack95 = B2#111;
+
+        $stack94 = hulpbias#118;
+
+        $stack96 = $stack95 + $stack94;
+
+        B2#119 = $stack96;
+
+        $stack98 = D2#114;
+
+        $stack97 = hulpbias#118;
+
+        $stack99 = $stack98 + $stack97;
+
+        D2#120 = $stack99;
+
+        $stack102 = B2#119;
+
+        $stack100 = D2#120;
+
+        $stack101 = Ulp2#117;
+
+        $stack55 = staticinvoke <java.lang.Math: int min(int,int)>($stack100, $stack101);
+
+        $stack56 = staticinvoke <java.lang.Math: int min(int,int)>($stack102, $stack55);
+
+        common2 = $stack56;
+
+        $stack104 = B2#119;
+
+        $stack103 = common2;
+
+        $stack105 = $stack104 - $stack103;
+
+        B2#121 = $stack105;
+
+        $stack107 = D2#120;
+
+        $stack106 = common2;
+
+        $stack108 = $stack107 - $stack106;
+
+        D2#122 = $stack108;
+
+        $stack110 = Ulp2#117;
+
+        $stack109 = common2;
+
+        $stack111 = $stack110 - $stack109;
+
+        Ulp2#123 = $stack111;
+
+        $stack112 = bigBbits#91;
+
+        $stack57 = (long) $stack112;
+
+        $stack113 = B5;
+
+        $stack114 = B2#121;
+
+        $stack58 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger valueOfMulPow52(long,int,int)>($stack57, $stack113, $stack114);
+
+        bigB = $stack58;
+
+        $stack115 = bigD#58;
+
+        if $stack115 == null goto label46;
+
+        if prevD2#59 == D2#122 goto label47;
+
+     label46:
+        $stack91 = i_2#57;
+
+        $stack90 = D2#122;
+
+        $stack59 = virtualinvoke $stack91.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftShift(int)>($stack90);
+
+        bigD#58 = $stack59;
+
+        $stack92 = D2#122;
+
+        prevD2#59 = $stack92;
+
+     label47:
+        $stack89#124 = bigB;
+
+        $stack89#125 = $stack89#124;
+
+        $stack88#126 = bigD#58;
+
+        $stack88#127 = $stack88#126;
+
+        $stack60#128 = virtualinvoke $stack89#125.<jdk.internal.math.FDBigInteger: int 'cmp'(jdk.internal.math.FDBigInteger)>($stack88#127);
+
+        $stack60#129 = $stack60#128;
+
+        cmpResult#130 = $stack60#129;
+
+        if $stack60#129 <= 0 goto label48;
+
+        overvalue#131 = 1;
+
+        $stack82 = virtualinvoke bigB.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftInplaceSub(jdk.internal.math.FDBigInteger)>(bigD#58);
+
+        diff#132 = $stack82;
+
+        if bigIntNBits != 1 goto label49;
+
+        $i6 = (int) -126;
+
+        if shift#102 <= $i6 goto label49;
+
+        $i7 = (int) -1;
+
+        Ulp2#123 = Ulp2#123 + $i7;
+
+        if Ulp2#123 >= 0 goto label49;
+
+        Ulp2#123 = 0;
+
+        $stack87 = virtualinvoke diff#132.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftShift(int)>(1);
+
+        diff#132 = $stack87;
+
+        goto label49;
+
+     label48:
+        if cmpResult#130 >= 0 goto label56;
+
+        overvalue#131 = 0;
+
+        $stack64 = virtualinvoke bigD#58.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger rightInplaceSub(jdk.internal.math.FDBigInteger)>(bigB);
+
+        diff#132 = $stack64;
+
+     label49:
+        $stack85#133 = diff#132;
+
+        $stack85#134 = $stack85#133;
+
+        $stack83#135 = B5;
+
+        $stack83#136 = $stack83#135;
+
+        $stack84#137 = Ulp2#123;
+
+        $stack84#138 = $stack84#137;
+
+        $stack65#139 = virtualinvoke $stack85#134.<jdk.internal.math.FDBigInteger: int cmpPow52(int,int)>($stack83#136, $stack84#138);
+
+        $stack65#140 = $stack65#139;
+
+        cmpResult#141 = $stack65#140;
+
+        $stack86#142 = cmpResult#141;
+
+        $stack86#143 = $stack86#142;
+
+        if $stack86#143 >= 0 goto label50;
+
+        goto label56;
+
+     label50:
+        if cmpResult#141 != 0 goto label53;
+
+        $stack78 = ieeeBits#56 & 1;
+
+        if $stack78 == 0 goto label56;
+
+        $stack80 = ieeeBits#56;
+
+        if overvalue#131 == 0 goto label51;
+
+        $stack79#144 = -1;
+
+        goto label52;
+
+     label51:
+        $stack79#144 = 1;
+
+     label52:
+        $stack81 = $stack80 + $stack79#144;
+
+        ieeeBits#56 = $stack81;
+
+        goto label56;
+
+     label53:
+        $stack75 = ieeeBits#56;
+
+        if overvalue#131 == 0 goto label54;
+
+        $stack74#145 = -1;
+
+        goto label55;
+
+     label54:
+        $stack74#145 = 1;
+
+     label55:
+        $stack76 = $stack75 + $stack74#145;
+
+        ieeeBits#56 = $stack76;
+
+        $stack77 = ieeeBits#56;
+
+        if $stack77 == 0 goto label56;
+
+        if ieeeBits#56 != 2139095040 goto label38;
+
+        goto label56;
+
+     label56:
+        $stack66#146 = this;
+
+        $stack66#147 = $stack66#146;
+
+        $stack61#148 = $stack66#147.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean isNegative>;
+
+        $stack61#149 = $stack61#148;
+
+        if $stack61#149 == 0 goto label57;
+
+        ieeeBits#56 = ieeeBits#56 | -2147483648;
+
+     label57:
+        $stack63 = ieeeBits#56;
+
+        $stack62 = staticinvoke <java.lang.Float: float intBitsToFloat(int)>($stack63);
+
+        return $stack62;
+    }
+
+    static void <clinit>()
+    {
+        byte $stack13, $stack15, $stack17, $stack19, $stack21, $stack23, $stack25, $stack27, $stack29, $stack31, $stack33, $stack35, $stack37, $stack39, $stack41, $stack43, $stack45, $stack47, $stack49, $stack51, $stack53, $stack55, $stack57, $stack59, $stack60, $stack62, $stack64, $stack66, $stack68, $stack70, $stack72, $stack74, $stack76, $stack78, $stack80, $stack82, $stack83, $stack85, $stack87, $stack89, $stack91, $stack93, $stack94, $stack96, $stack98, $stack100, $stack102, $stack104;
+        bottom_type $stack12;
+        double[] $stack2, $stack4, $stack5, $stack6;
+        float[] $stack3, $stack9;
+        boolean $stack1, $stack105, $stack106, $stack12#1;
+        float $stack61, $stack63, $stack65, $stack67, $stack69, $stack71, $stack73, $stack75, $stack77, $stack79, $stack81;
+        int $stack7, $stack8, $stack10, $stack11;
+        double $stack14, $stack16, $stack18, $stack20, $stack22, $stack24, $stack26, $stack28, $stack30, $stack32, $stack34, $stack36, $stack38, $stack40, $stack42, $stack44, $stack46, $stack48, $stack50, $stack52, $stack54, $stack56, $stack58, $stack84, $stack86, $stack88, $stack90, $stack92, $stack95, $stack97, $stack99, $stack101, $stack103;
+        java.lang.Class $stack0;
+
+        $stack0 = class "Ljdk/internal/math/FloatingDecimal;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack12#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack12#1 = 0;
+
+     label2:
+        <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: boolean $assertionsDisabled> = $stack12#1;
+
+        $stack13 = 23;
+
+        $stack2 = newarray (double)[$stack13];
+
+        $stack15 = 0;
+
+        $stack14 = 1.0;
+
+        $stack2[$stack15] = $stack14;
+
+        $stack17 = 1;
+
+        $stack16 = 10.0;
+
+        $stack2[$stack17] = $stack16;
+
+        $stack19 = 2;
+
+        $stack18 = 100.0;
+
+        $stack2[$stack19] = $stack18;
+
+        $stack21 = 3;
+
+        $stack20 = 1000.0;
+
+        $stack2[$stack21] = $stack20;
+
+        $stack23 = 4;
+
+        $stack22 = 10000.0;
+
+        $stack2[$stack23] = $stack22;
+
+        $stack25 = 5;
+
+        $stack24 = 100000.0;
+
+        $stack2[$stack25] = $stack24;
+
+        $stack27 = 6;
+
+        $stack26 = 1000000.0;
+
+        $stack2[$stack27] = $stack26;
+
+        $stack29 = 7;
+
+        $stack28 = 1.0E7;
+
+        $stack2[$stack29] = $stack28;
+
+        $stack31 = 8;
+
+        $stack30 = 1.0E8;
+
+        $stack2[$stack31] = $stack30;
+
+        $stack33 = 9;
+
+        $stack32 = 1.0E9;
+
+        $stack2[$stack33] = $stack32;
+
+        $stack35 = 10;
+
+        $stack34 = 1.0E10;
+
+        $stack2[$stack35] = $stack34;
+
+        $stack37 = 11;
+
+        $stack36 = 1.0E11;
+
+        $stack2[$stack37] = $stack36;
+
+        $stack39 = 12;
+
+        $stack38 = 1.0E12;
+
+        $stack2[$stack39] = $stack38;
+
+        $stack41 = 13;
+
+        $stack40 = 1.0E13;
+
+        $stack2[$stack41] = $stack40;
+
+        $stack43 = 14;
+
+        $stack42 = 1.0E14;
+
+        $stack2[$stack43] = $stack42;
+
+        $stack45 = 15;
+
+        $stack44 = 1.0E15;
+
+        $stack2[$stack45] = $stack44;
+
+        $stack47 = 16;
+
+        $stack46 = 1.0E16;
+
+        $stack2[$stack47] = $stack46;
+
+        $stack49 = 17;
+
+        $stack48 = 1.0E17;
+
+        $stack2[$stack49] = $stack48;
+
+        $stack51 = 18;
+
+        $stack50 = 1.0E18;
+
+        $stack2[$stack51] = $stack50;
+
+        $stack53 = 19;
+
+        $stack52 = 1.0E19;
+
+        $stack2[$stack53] = $stack52;
+
+        $stack55 = 20;
+
+        $stack54 = 1.0E20;
+
+        $stack2[$stack55] = $stack54;
+
+        $stack57 = 21;
+
+        $stack56 = 1.0E21;
+
+        $stack2[$stack57] = $stack56;
+
+        $stack59 = 22;
+
+        $stack58 = 1.0E22;
+
+        $stack2[$stack59] = $stack58;
+
+        <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW> = $stack2;
+
+        $stack60 = 11;
+
+        $stack3 = newarray (float)[$stack60];
+
+        $stack62 = 0;
+
+        $stack61 = 1.0F;
+
+        $stack3[$stack62] = $stack61;
+
+        $stack64 = 1;
+
+        $stack63 = 10.0F;
+
+        $stack3[$stack64] = $stack63;
+
+        $stack66 = 2;
+
+        $stack65 = 100.0F;
+
+        $stack3[$stack66] = $stack65;
+
+        $stack68 = 3;
+
+        $stack67 = 1000.0F;
+
+        $stack3[$stack68] = $stack67;
+
+        $stack70 = 4;
+
+        $stack69 = 10000.0F;
+
+        $stack3[$stack70] = $stack69;
+
+        $stack72 = 5;
+
+        $stack71 = 100000.0F;
+
+        $stack3[$stack72] = $stack71;
+
+        $stack74 = 6;
+
+        $stack73 = 1000000.0F;
+
+        $stack3[$stack74] = $stack73;
+
+        $stack76 = 7;
+
+        $stack75 = 1.0E7F;
+
+        $stack3[$stack76] = $stack75;
+
+        $stack78 = 8;
+
+        $stack77 = 1.0E8F;
+
+        $stack3[$stack78] = $stack77;
+
+        $stack80 = 9;
+
+        $stack79 = 1.0E9F;
+
+        $stack3[$stack80] = $stack79;
+
+        $stack82 = 10;
+
+        $stack81 = 1.0E10F;
+
+        $stack3[$stack82] = $stack81;
+
+        <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: float[] SINGLE_SMALL_10_POW> = $stack3;
+
+        $stack83 = 5;
+
+        $stack4 = newarray (double)[$stack83];
+
+        $stack85 = 0;
+
+        $stack84 = 1.0E16;
+
+        $stack4[$stack85] = $stack84;
+
+        $stack87 = 1;
+
+        $stack86 = 1.0E32;
+
+        $stack4[$stack87] = $stack86;
+
+        $stack89 = 2;
+
+        $stack88 = 1.0E64;
+
+        $stack4[$stack89] = $stack88;
+
+        $stack91 = 3;
+
+        $stack90 = 1.0E128;
+
+        $stack4[$stack91] = $stack90;
+
+        $stack93 = 4;
+
+        $stack92 = 1.0E256;
+
+        $stack4[$stack93] = $stack92;
+
+        <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] BIG_10_POW> = $stack4;
+
+        $stack94 = 5;
+
+        $stack5 = newarray (double)[$stack94];
+
+        $stack96 = 0;
+
+        $stack95 = 1.0E-16;
+
+        $stack5[$stack96] = $stack95;
+
+        $stack98 = 1;
+
+        $stack97 = 1.0E-32;
+
+        $stack5[$stack98] = $stack97;
+
+        $stack100 = 2;
+
+        $stack99 = 1.0E-64;
+
+        $stack5[$stack100] = $stack99;
+
+        $stack102 = 3;
+
+        $stack101 = 1.0E-128;
+
+        $stack5[$stack102] = $stack101;
+
+        $stack104 = 4;
+
+        $stack103 = 1.0E-256;
+
+        $stack5[$stack104] = $stack103;
+
+        <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] TINY_10_POW> = $stack5;
+
+        $stack6 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: double[] SMALL_10_POW>;
+
+        $stack7 = lengthof $stack6;
+
+        $stack105 = 1;
+
+        $stack8 = $stack7 - $stack105;
+
+        <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int MAX_SMALL_TEN> = $stack8;
+
+        $stack9 = <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: float[] SINGLE_SMALL_10_POW>;
+
+        $stack10 = lengthof $stack9;
+
+        $stack106 = 1;
+
+        $stack11 = $stack10 - $stack106;
+
+        <jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: int SINGLE_MAX_SMALL_TEN> = $stack11;
+
+        return;
+    }
+}

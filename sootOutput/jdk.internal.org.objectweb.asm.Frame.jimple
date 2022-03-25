@@ -1,0 +1,3112 @@
+class jdk.internal.org.objectweb.asm.Frame extends java.lang.Object
+{
+    static final int DIM;
+    static final int ARRAY_OF;
+    static final int ELEMENT_OF;
+    static final int KIND;
+    static final int TOP_IF_LONG_OR_DOUBLE;
+    static final int VALUE;
+    static final int BASE_KIND;
+    static final int BASE_VALUE;
+    static final int BASE;
+    static final int OBJECT;
+    static final int UNINITIALIZED;
+    private static final int LOCAL;
+    private static final int STACK;
+    static final int TOP;
+    static final int BOOLEAN;
+    static final int BYTE;
+    static final int CHAR;
+    static final int SHORT;
+    static final int INTEGER;
+    static final int FLOAT;
+    static final int DOUBLE;
+    static final int LONG;
+    static final int NULL;
+    static final int UNINITIALIZED_THIS;
+    static final int[] SIZE;
+    jdk.internal.org.objectweb.asm.Label owner;
+    int[] inputLocals;
+    int[] inputStack;
+    private int[] outputLocals;
+    private int[] outputStack;
+    int outputStackTop;
+    private int initializationCount;
+    private int[] initializations;
+
+    void <init>()
+    {
+        jdk.internal.org.objectweb.asm.Frame this;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    final void set(jdk.internal.org.objectweb.asm.ClassWriter, int, java.lang.Object[], int, java.lang.Object[])
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter cw;
+        java.lang.Object[] local, stack, $stack24;
+        java.lang.Integer $stack16, $stack20;
+        int[] $stack9, $stack13, $stack14, $stack23;
+        bottom_type i, nStackTop, j;
+        int nLocal, $stack10, $stack11, nStack, $stack12, $stack15, $stack18, $stack19, $stack22, $stack25, i#1, nStackTop#2, j#3;
+        jdk.internal.org.objectweb.asm.Frame this;
+        java.lang.Object $stack17, $stack21;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        nLocal := @parameter1: int;
+
+        local := @parameter2: java.lang.Object[];
+
+        nStack := @parameter3: int;
+
+        stack := @parameter4: java.lang.Object[];
+
+        $stack9 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack10 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: int convert(jdk.internal.org.objectweb.asm.ClassWriter,int,java.lang.Object[],int[])>(cw, nLocal, local, $stack9);
+
+        i#1 = $stack10;
+
+     label1:
+        $stack25 = i#1;
+
+        $stack24 = local;
+
+        $stack11 = lengthof $stack24;
+
+        if $stack25 >= $stack11 goto label2;
+
+        $stack23 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack22 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack23[$stack22] = 16777216;
+
+        goto label1;
+
+     label2:
+        nStackTop#2 = 0;
+
+        j#3 = 0;
+
+     label3:
+        $stack19 = j#3;
+
+        $stack18 = nStack;
+
+        if $stack19 >= $stack18 goto label6;
+
+        $stack17 = stack[j#3];
+
+        $stack16 = <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer LONG>;
+
+        if $stack17 == $stack16 goto label4;
+
+        $stack21 = stack[j#3];
+
+        $stack20 = <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer DOUBLE>;
+
+        if $stack21 != $stack20 goto label5;
+
+     label4:
+        nStackTop#2 = nStackTop#2 + 1;
+
+     label5:
+        j#3 = j#3 + 1;
+
+        goto label3;
+
+     label6:
+        $stack12 = nStack + nStackTop#2;
+
+        $stack13 = newarray (int)[$stack12];
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack> = $stack13;
+
+        $stack14 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        $stack15 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: int convert(jdk.internal.org.objectweb.asm.ClassWriter,int,java.lang.Object[],int[])>(cw, nStack, stack, $stack14);
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop> = 0;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int initializationCount> = 0;
+
+        return;
+
+        nop;
+    }
+
+    private static int convert(jdk.internal.org.objectweb.asm.ClassWriter, int, java.lang.Object[], int[])
+    {
+        java.lang.Integer $stack27, $stack31, $stack34;
+        bottom_type i, j;
+        int[] output, $stack37;
+        boolean $stack7, $stack9;
+        jdk.internal.org.objectweb.asm.Type $stack22;
+        jdk.internal.org.objectweb.asm.ClassWriter cw;
+        java.lang.Object[] input;
+        int nInput, $stack10, $stack13, $stack14, $stack15, $stack16, $stack17, $stack18, $stack19, $stack24, $stack25, $stack28, $stack29, $stack30, $stack33, $stack36, i#1, j#2;
+        java.lang.String $stack21, $stack23;
+        jdk.internal.org.objectweb.asm.Label $stack12;
+        java.lang.Object $stack6, $stack8, $stack11, $stack20, $stack26, $stack32, $stack35;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        nInput := @parameter1: int;
+
+        input := @parameter2: java.lang.Object[];
+
+        output := @parameter3: int[];
+
+        i#1 = 0;
+
+        j#2 = 0;
+
+     label1:
+        $stack18 = j#2;
+
+        $stack17 = nInput;
+
+        if $stack18 >= $stack17 goto label6;
+
+        $stack6 = input[j#2];
+
+        $stack7 = $stack6 instanceof java.lang.Integer;
+
+        if $stack7 == 0 goto label3;
+
+        $stack25 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack28 = 16777216;
+
+        $stack26 = input[j#2];
+
+        $stack27 = (java.lang.Integer) $stack26;
+
+        $stack29 = virtualinvoke $stack27.<java.lang.Integer: int intValue()>();
+
+        $stack30 = $stack28 | $stack29;
+
+        output[$stack25] = $stack30;
+
+        $stack32 = input[j#2];
+
+        $stack31 = <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer LONG>;
+
+        if $stack32 == $stack31 goto label2;
+
+        $stack35 = input[j#2];
+
+        $stack34 = <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer DOUBLE>;
+
+        if $stack35 != $stack34 goto label5;
+
+     label2:
+        $stack37 = output;
+
+        $stack33 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack36 = 16777216;
+
+        $stack37[$stack33] = $stack36;
+
+        goto label5;
+
+     label3:
+        $stack8 = input[j#2];
+
+        $stack9 = $stack8 instanceof java.lang.String;
+
+        if $stack9 == 0 goto label4;
+
+        $stack19 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack20 = input[j#2];
+
+        $stack21 = (java.lang.String) $stack20;
+
+        $stack22 = staticinvoke <jdk.internal.org.objectweb.asm.Type: jdk.internal.org.objectweb.asm.Type getObjectType(java.lang.String)>($stack21);
+
+        $stack23 = virtualinvoke $stack22.<jdk.internal.org.objectweb.asm.Type: java.lang.String getDescriptor()>();
+
+        $stack24 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: int type(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>(cw, $stack23);
+
+        output[$stack19] = $stack24;
+
+        goto label5;
+
+     label4:
+        $stack10 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack14 = 25165824;
+
+        $stack11 = input[j#2];
+
+        $stack12 = (jdk.internal.org.objectweb.asm.Label) $stack11;
+
+        $stack13 = $stack12.<jdk.internal.org.objectweb.asm.Label: int position>;
+
+        $stack15 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addUninitializedType(java.lang.String,int)>("", $stack13);
+
+        $stack16 = $stack14 | $stack15;
+
+        output[$stack10] = $stack16;
+
+     label5:
+        j#2 = j#2 + 1;
+
+        goto label1;
+
+     label6:
+        return i#1;
+
+        nop;
+    }
+
+    final void set(jdk.internal.org.objectweb.asm.Frame)
+    {
+        jdk.internal.org.objectweb.asm.Frame this, f;
+        int[] $stack2, $stack3, $stack4, $stack5, $stack8;
+        int $stack6, $stack7;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        f := @parameter0: jdk.internal.org.objectweb.asm.Frame;
+
+        $stack2 = f.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals> = $stack2;
+
+        $stack3 = f.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack> = $stack3;
+
+        $stack4 = f.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals> = $stack4;
+
+        $stack5 = f.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack>;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack> = $stack5;
+
+        $stack6 = f.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop> = $stack6;
+
+        $stack7 = f.<jdk.internal.org.objectweb.asm.Frame: int initializationCount>;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int initializationCount> = $stack7;
+
+        $stack8 = f.<jdk.internal.org.objectweb.asm.Frame: int[] initializations>;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] initializations> = $stack8;
+
+        return;
+
+        nop;
+    }
+
+    private int get(int)
+    {
+        jdk.internal.org.objectweb.asm.Frame this;
+        int[] $stack3, $stack5, $stack7, $stack9;
+        bottom_type type;
+        int local, $stack4, $stack6, $stack8, $stack10, $stack11, $stack12, type#1;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        local := @parameter0: int;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        if $stack3 == null goto label1;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        $stack6 = lengthof $stack5;
+
+        if local < $stack6 goto label2;
+
+     label1:
+        $stack12 = 33554432;
+
+        $stack11 = local;
+
+        $stack4 = $stack12 | $stack11;
+
+        return $stack4;
+
+     label2:
+        $stack7 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        type#1 = $stack7[local];
+
+        if type#1 != 0 goto label3;
+
+        $stack9 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        $stack8 = 33554432 | local;
+
+        $stack9[local] = $stack8;
+
+        type#1 = $stack8;
+
+     label3:
+        $stack10 = type#1;
+
+        return $stack10;
+
+        nop;
+    }
+
+    private void set(int, int)
+    {
+        int[] $stack5, $stack6, $stack7, t, $stack11, $stack15;
+        int n, local, type, $stack8, $stack9, $stack10, $stack13, $stack14, $stack17, $stack18, $stack19;
+        jdk.internal.org.objectweb.asm.Frame this, $stack12, $stack16;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        local := @parameter0: int;
+
+        type := @parameter1: int;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        if $stack5 != null goto label1;
+
+        $stack15 = newarray (int)[10];
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals> = $stack15;
+
+     label1:
+        $stack16 = this;
+
+        $stack6 = $stack16.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        $stack17 = lengthof $stack6;
+
+        n = $stack17;
+
+        $stack19 = local;
+
+        $stack18 = n;
+
+        if $stack19 < $stack18 goto label2;
+
+        $stack9 = local + 1;
+
+        $stack8 = 2 * n;
+
+        $stack10 = staticinvoke <java.lang.Math: int max(int,int)>($stack9, $stack8);
+
+        t = newarray (int)[$stack10];
+
+        $stack11 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($stack11, 0, t, 0, n);
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals> = t;
+
+     label2:
+        $stack12 = this;
+
+        $stack7 = $stack12.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        $stack14 = local;
+
+        $stack13 = type;
+
+        $stack7[$stack14] = $stack13;
+
+        return;
+
+        nop;
+    }
+
+    private void push(int)
+    {
+        int[] $stack4, $stack5, $stack9, $stack20, $stack30, t#1;
+        bottom_type t;
+        boolean $stack23;
+        jdk.internal.org.objectweb.asm.Frame this, $stack21, $stack22, $stack25, $stack26, $stack28, $stack31, $stack33;
+        int n, $stack6, $stack7, $stack8, type, $stack11, $stack12, $stack14, $stack16, $stack17, $stack18, $stack19, $stack24, $stack27, $stack29, $stack32, $stack34, t#2;
+        jdk.internal.org.objectweb.asm.Label $stack10, $stack13, $stack15;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        type := @parameter0: int;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack>;
+
+        if $stack4 != null goto label1;
+
+        $stack30 = newarray (int)[10];
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack> = $stack30;
+
+     label1:
+        $stack31 = this;
+
+        $stack5 = $stack31.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack>;
+
+        $stack32 = lengthof $stack5;
+
+        n = $stack32;
+
+        $stack33 = this;
+
+        $stack6 = $stack33.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        $stack34 = n;
+
+        if $stack6 < $stack34 goto label2;
+
+        $stack16 = this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        $stack18 = $stack16 + 1;
+
+        $stack17 = 2 * n;
+
+        $stack19 = staticinvoke <java.lang.Math: int max(int,int)>($stack18, $stack17);
+
+        t#1 = newarray (int)[$stack19];
+
+        $stack20 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($stack20, 0, t#1, 0, n);
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack> = t#1;
+
+     label2:
+        $stack21 = this;
+
+        $stack9 = $stack21.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack>;
+
+        $stack22 = this;
+
+        $stack7 = $stack22.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        $stack23 = 1;
+
+        $stack8 = $stack7 + $stack23;
+
+        $stack22.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop> = $stack8;
+
+        $stack24 = type;
+
+        $stack9[$stack7] = $stack24;
+
+        $stack25 = this;
+
+        $stack10 = $stack25.<jdk.internal.org.objectweb.asm.Frame: jdk.internal.org.objectweb.asm.Label owner>;
+
+        $stack12 = $stack10.<jdk.internal.org.objectweb.asm.Label: int inputStackTop>;
+
+        $stack26 = this;
+
+        $stack11 = $stack26.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        $stack27 = $stack12 + $stack11;
+
+        t#2 = $stack27;
+
+        $stack29 = t#2;
+
+        $stack28 = this;
+
+        $stack13 = $stack28.<jdk.internal.org.objectweb.asm.Frame: jdk.internal.org.objectweb.asm.Label owner>;
+
+        $stack14 = $stack13.<jdk.internal.org.objectweb.asm.Label: int outputStackMax>;
+
+        if $stack29 <= $stack14 goto label3;
+
+        $stack15 = this.<jdk.internal.org.objectweb.asm.Frame: jdk.internal.org.objectweb.asm.Label owner>;
+
+        $stack15.<jdk.internal.org.objectweb.asm.Label: int outputStackMax> = t#2;
+
+     label3:
+        return;
+
+        nop;
+    }
+
+    private void push(jdk.internal.org.objectweb.asm.ClassWriter, java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter cw;
+        int $stack4, type, $stack5;
+        java.lang.String desc;
+        jdk.internal.org.objectweb.asm.Frame this, $stack6;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        desc := @parameter1: java.lang.String;
+
+        $stack4 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: int type(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>(cw, desc);
+
+        type = $stack4;
+
+        if type == 0 goto label2;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(type);
+
+        if type == 16777220 goto label1;
+
+        if type != 16777219 goto label2;
+
+     label1:
+        $stack6 = this;
+
+        $stack5 = 16777216;
+
+        virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack5);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    static int type(jdk.internal.org.objectweb.asm.ClassWriter, java.lang.String)
+    {
+        byte $stack32, $stack22#12, $stack22#13;
+        bottom_type t, dims, data, $stack17, $stack18, $stack19, $stack20, $stack21, $stack22, $stack23, $stack34;
+        jdk.internal.org.objectweb.asm.ClassWriter cw;
+        int index, $stack8, $stack9, $stack10, $stack12, $stack13, $stack14, $stack24, $stack25, $stack26, $stack28, $stack29, $stack30, $stack33, $stack35, $stack34#1, dims#3, data#4, $stack21#6, $stack21#7, $stack20#8, $stack20#9, $stack17#10, $stack17#11, $stack18#14, $stack18#15, $stack23#16, $stack23#17, $stack19#18, $stack19#19, $i0, $i1, $i2, $i3;
+        java.lang.String desc, $stack11, $stack27, $stack31, $stack36, t#2, t#5;
+        char $stack6, $stack7, $stack15, $stack16;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        desc := @parameter1: java.lang.String;
+
+        $stack6 = virtualinvoke desc.<java.lang.String: char charAt(int)>(0);
+
+        $i0 = (int) $stack6;
+
+        if $i0 != 40 goto label01;
+
+        $stack33 = virtualinvoke desc.<java.lang.String: int indexOf(int)>(41);
+
+        $stack34#1 = $stack33 + 1;
+
+        goto label02;
+
+     label01:
+        $stack34#1 = 0;
+
+     label02:
+        index = $stack34#1;
+
+        $stack36 = desc;
+
+        $stack35 = index;
+
+        $stack7 = virtualinvoke $stack36.<java.lang.String: char charAt(int)>($stack35);
+
+        $i1 = (int) $stack7;
+
+        tableswitch($i1)
+        {
+            case 66: goto label04;
+            case 67: goto label04;
+            case 68: goto label07;
+            case 69: goto label09;
+            case 70: goto label05;
+            case 71: goto label09;
+            case 72: goto label09;
+            case 73: goto label04;
+            case 74: goto label06;
+            case 75: goto label09;
+            case 76: goto label08;
+            case 77: goto label09;
+            case 78: goto label09;
+            case 79: goto label09;
+            case 80: goto label09;
+            case 81: goto label09;
+            case 82: goto label09;
+            case 83: goto label04;
+            case 84: goto label09;
+            case 85: goto label09;
+            case 86: goto label03;
+            case 87: goto label09;
+            case 88: goto label09;
+            case 89: goto label09;
+            case 90: goto label04;
+            default: goto label09;
+        };
+
+     label03:
+        return 0;
+
+     label04:
+        return 16777217;
+
+     label05:
+        return 16777218;
+
+     label06:
+        return 16777220;
+
+     label07:
+        return 16777219;
+
+     label08:
+        $stack8 = index + 1;
+
+        $stack9 = virtualinvoke desc.<java.lang.String: int length()>();
+
+        $stack10 = $stack9 - 1;
+
+        $stack11 = virtualinvoke desc.<java.lang.String: java.lang.String substring(int,int)>($stack8, $stack10);
+
+        t#2 = $stack11;
+
+        $stack12 = 24117248;
+
+        $stack13 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>(t#2);
+
+        $stack14 = $stack12 | $stack13;
+
+        return $stack14;
+
+     label09:
+        dims#3 = index + 1;
+
+     label10:
+        $stack31 = desc;
+
+        $stack30 = dims#3;
+
+        $stack15 = virtualinvoke $stack31.<java.lang.String: char charAt(int)>($stack30);
+
+        $stack32 = 91;
+
+        $i2 = (int) $stack15;
+
+        if $i2 != $stack32 goto label11;
+
+        dims#3 = dims#3 + 1;
+
+        goto label10;
+
+     label11:
+        $stack16 = virtualinvoke desc.<java.lang.String: char charAt(int)>(dims#3);
+
+        $i3 = (int) $stack16;
+
+        tableswitch($i3)
+        {
+            case 66: goto label14;
+            case 67: goto label13;
+            case 68: goto label19;
+            case 69: goto label20;
+            case 70: goto label17;
+            case 71: goto label20;
+            case 72: goto label20;
+            case 73: goto label16;
+            case 74: goto label18;
+            case 75: goto label20;
+            case 76: goto label20;
+            case 77: goto label20;
+            case 78: goto label20;
+            case 79: goto label20;
+            case 80: goto label20;
+            case 81: goto label20;
+            case 82: goto label20;
+            case 83: goto label15;
+            case 84: goto label20;
+            case 85: goto label20;
+            case 86: goto label20;
+            case 87: goto label20;
+            case 88: goto label20;
+            case 89: goto label20;
+            case 90: goto label12;
+            default: goto label20;
+        };
+
+     label12:
+        data#4 = 16777225;
+
+        goto label21;
+
+     label13:
+        data#4 = 16777227;
+
+        goto label21;
+
+     label14:
+        data#4 = 16777226;
+
+        goto label21;
+
+     label15:
+        data#4 = 16777228;
+
+        goto label21;
+
+     label16:
+        data#4 = 16777217;
+
+        goto label21;
+
+     label17:
+        data#4 = 16777218;
+
+        goto label21;
+
+     label18:
+        data#4 = 16777220;
+
+        goto label21;
+
+     label19:
+        data#4 = 16777219;
+
+        goto label21;
+
+     label20:
+        $stack24 = dims#3 + 1;
+
+        $stack25 = virtualinvoke desc.<java.lang.String: int length()>();
+
+        $stack26 = $stack25 - 1;
+
+        $stack27 = virtualinvoke desc.<java.lang.String: java.lang.String substring(int,int)>($stack24, $stack26);
+
+        t#5 = $stack27;
+
+        $stack28 = 24117248;
+
+        $stack29 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>(t#5);
+
+        data#4 = $stack28 | $stack29;
+
+     label21:
+        $stack21#6 = dims#3;
+
+        $stack21#7 = $stack21#6;
+
+        $stack20#8 = index;
+
+        $stack20#9 = $stack20#8;
+
+        $stack17#10 = $stack21#7 - $stack20#9;
+
+        $stack17#11 = $stack17#10;
+
+        $stack22#12 = 28;
+
+        $stack22#13 = $stack22#12;
+
+        $stack18#14 = $stack17#11 << $stack22#13;
+
+        $stack18#15 = $stack18#14;
+
+        $stack23#16 = data#4;
+
+        $stack23#17 = $stack23#16;
+
+        $stack19#18 = $stack18#15 | $stack23#17;
+
+        $stack19#19 = $stack19#18;
+
+        return $stack19#19;
+
+        nop;
+    }
+
+    private int pop()
+    {
+        jdk.internal.org.objectweb.asm.Frame this;
+        jdk.internal.org.objectweb.asm.Label $stack2;
+        int[] $stack10;
+        int $stack1, $stack3, $stack4, $stack5, $stack6, $stack7, $stack8, $stack9, $stack11;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        $stack1 = this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        if $stack1 <= 0 goto label1;
+
+        $stack10 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack>;
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        $stack9 = $stack8 - 1;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop> = $stack9;
+
+        $stack11 = $stack10[$stack9];
+
+        return $stack11;
+
+     label1:
+        $stack5 = 50331648;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.Frame: jdk.internal.org.objectweb.asm.Label owner>;
+
+        $stack3 = $stack2.<jdk.internal.org.objectweb.asm.Label: int inputStackTop>;
+
+        $stack4 = $stack3 - 1;
+
+        $stack2.<jdk.internal.org.objectweb.asm.Label: int inputStackTop> = $stack4;
+
+        $stack6 = neg $stack4;
+
+        $stack7 = $stack5 | $stack6;
+
+        return $stack7;
+
+        nop;
+    }
+
+    private void pop(int)
+    {
+        jdk.internal.org.objectweb.asm.Frame this;
+        jdk.internal.org.objectweb.asm.Label $stack3;
+        int elements, $stack2, $stack4, $stack5, $stack6, $stack7, $stack8, $stack9;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        elements := @parameter0: int;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        if $stack2 < elements goto label1;
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        $stack9 = $stack8 - elements;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop> = $stack9;
+
+        goto label2;
+
+     label1:
+        $stack3 = this.<jdk.internal.org.objectweb.asm.Frame: jdk.internal.org.objectweb.asm.Label owner>;
+
+        $stack6 = $stack3.<jdk.internal.org.objectweb.asm.Label: int inputStackTop>;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        $stack5 = elements - $stack4;
+
+        $stack7 = $stack6 - $stack5;
+
+        $stack3.<jdk.internal.org.objectweb.asm.Label: int inputStackTop> = $stack7;
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop> = 0;
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    private void pop(java.lang.String)
+    {
+        char $stack3, c;
+        jdk.internal.org.objectweb.asm.Frame this, $stack5;
+        byte $stack4;
+        int $stack6, $stack7, $stack8, $i0, $i1, $i2;
+        java.lang.String desc;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        desc := @parameter0: java.lang.String;
+
+        $stack3 = virtualinvoke desc.<java.lang.String: char charAt(int)>(0);
+
+        c = $stack3;
+
+        $i0 = (int) c;
+
+        if $i0 != 40 goto label1;
+
+        $stack6 = staticinvoke <jdk.internal.org.objectweb.asm.Type: int getArgumentsAndReturnSizes(java.lang.String)>(desc);
+
+        $stack7 = $stack6 >> 2;
+
+        $stack8 = $stack7 - 1;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>($stack8);
+
+        goto label4;
+
+     label1:
+        $i1 = (int) c;
+
+        if $i1 == 74 goto label2;
+
+        $i2 = (int) c;
+
+        if $i2 != 68 goto label3;
+
+     label2:
+        $stack5 = this;
+
+        $stack4 = 2;
+
+        virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>($stack4);
+
+        goto label4;
+
+     label3:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(1);
+
+     label4:
+        return;
+
+        nop;
+    }
+
+    private void init(int)
+    {
+        int[] $stack4, $stack5, $stack9, t, $stack14, $stack19;
+        int n, $stack6, $stack7, $stack8, var, $stack10, $stack11, $stack12, $stack13, $stack18, $stack21, $stack23;
+        boolean $stack17;
+        jdk.internal.org.objectweb.asm.Frame this, $stack15, $stack16, $stack20, $stack22;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        var := @parameter0: int;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.Frame: int[] initializations>;
+
+        if $stack4 != null goto label1;
+
+        $stack19 = newarray (int)[2];
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] initializations> = $stack19;
+
+     label1:
+        $stack20 = this;
+
+        $stack5 = $stack20.<jdk.internal.org.objectweb.asm.Frame: int[] initializations>;
+
+        $stack21 = lengthof $stack5;
+
+        n = $stack21;
+
+        $stack22 = this;
+
+        $stack6 = $stack22.<jdk.internal.org.objectweb.asm.Frame: int initializationCount>;
+
+        $stack23 = n;
+
+        if $stack6 < $stack23 goto label2;
+
+        $stack10 = this.<jdk.internal.org.objectweb.asm.Frame: int initializationCount>;
+
+        $stack12 = $stack10 + 1;
+
+        $stack11 = 2 * n;
+
+        $stack13 = staticinvoke <java.lang.Math: int max(int,int)>($stack12, $stack11);
+
+        t = newarray (int)[$stack13];
+
+        $stack14 = this.<jdk.internal.org.objectweb.asm.Frame: int[] initializations>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($stack14, 0, t, 0, n);
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] initializations> = t;
+
+     label2:
+        $stack15 = this;
+
+        $stack9 = $stack15.<jdk.internal.org.objectweb.asm.Frame: int[] initializations>;
+
+        $stack16 = this;
+
+        $stack7 = $stack16.<jdk.internal.org.objectweb.asm.Frame: int initializationCount>;
+
+        $stack17 = 1;
+
+        $stack8 = $stack7 + $stack17;
+
+        $stack16.<jdk.internal.org.objectweb.asm.Frame: int initializationCount> = $stack8;
+
+        $stack18 = var;
+
+        $stack9[$stack7] = $stack18;
+
+        return;
+
+        nop;
+    }
+
+    private int init(jdk.internal.org.objectweb.asm.ClassWriter, int)
+    {
+        jdk.internal.org.objectweb.asm.Item[] $stack10;
+        byte $stack32;
+        bottom_type type, s, $stack14, u, $stack16, $stack17, $stack24, $stack25;
+        int[] $stack15, $stack18, $stack22, $stack27;
+        jdk.internal.org.objectweb.asm.Frame this, $stack16#6, $stack16#7;
+        jdk.internal.org.objectweb.asm.ClassWriter cw;
+        int t, $stack8, $stack9, $stack12, $stack13, dim, kind, $stack19, $stack20, $stack21, $stack23, $stack26, $stack28, $stack30, $stack31, s#1, type#3, $stack17#4, $stack17#5, $stack14#8, $stack14#9, u#10, $stack25#11, $stack25#12, $stack24#13, $stack24#14;
+        java.lang.String $stack29, type#2;
+        jdk.internal.org.objectweb.asm.Item $stack11;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        t := @parameter1: int;
+
+        if t != 16777222 goto label1;
+
+        $stack30 = 24117248;
+
+        $stack29 = cw.<jdk.internal.org.objectweb.asm.ClassWriter: java.lang.String thisName>;
+
+        $stack31 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>($stack29);
+
+        s#1 = $stack30 | $stack31;
+
+        goto label3;
+
+     label1:
+        $stack8 = t & -1048576;
+
+        if $stack8 != 25165824 goto label2;
+
+        $stack10 = cw.<jdk.internal.org.objectweb.asm.ClassWriter: jdk.internal.org.objectweb.asm.Item[] typeTable>;
+
+        $stack9 = t & 1048575;
+
+        $stack11 = $stack10[$stack9];
+
+        type#2 = $stack11.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+
+        $stack12 = 24117248;
+
+        $stack13 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>(type#2);
+
+        s#1 = $stack12 | $stack13;
+
+        goto label3;
+
+     label2:
+        return t;
+
+     label3:
+        $stack32 = 0;
+
+        type#3 = $stack32;
+
+     label4:
+        $stack17#4 = type#3;
+
+        $stack17#5 = $stack17#4;
+
+        $stack16#6 = this;
+
+        $stack16#7 = $stack16#6;
+
+        $stack14#8 = $stack16#7.<jdk.internal.org.objectweb.asm.Frame: int initializationCount>;
+
+        $stack14#9 = $stack14#8;
+
+        if $stack17#5 >= $stack14#9 goto label8;
+
+        $stack15 = this.<jdk.internal.org.objectweb.asm.Frame: int[] initializations>;
+
+        u#10 = $stack15[type#3];
+
+        dim = u#10 & -268435456;
+
+        kind = u#10 & 251658240;
+
+        if kind != 33554432 goto label5;
+
+        $stack27 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack26 = u#10 & 8388607;
+
+        $stack28 = $stack27[$stack26];
+
+        u#10 = dim + $stack28;
+
+        goto label6;
+
+     label5:
+        if kind != 50331648 goto label6;
+
+        $stack22 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        $stack18 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        $stack20 = lengthof $stack18;
+
+        $stack19 = u#10 & 8388607;
+
+        $stack21 = $stack20 - $stack19;
+
+        $stack23 = $stack22[$stack21];
+
+        u#10 = dim + $stack23;
+
+     label6:
+        $stack25#11 = t;
+
+        $stack25#12 = $stack25#11;
+
+        $stack24#13 = u#10;
+
+        $stack24#14 = $stack24#13;
+
+        if $stack25#12 != $stack24#14 goto label7;
+
+        return s#1;
+
+     label7:
+        type#3 = type#3 + 1;
+
+        goto label4;
+
+     label8:
+        return t;
+
+        nop;
+    }
+
+    final void initInputFrame(jdk.internal.org.objectweb.asm.ClassWriter, int, jdk.internal.org.objectweb.asm.Type[], int)
+    {
+        byte $stack30#2, $stack30#3;
+        int[] $stack8, $stack9, $stack13, $stack20, $stack22, $stack29, $stack33;
+        bottom_type i, j, $stack11, $stack23, $stack24, $stack30;
+        jdk.internal.org.objectweb.asm.Type $stack16;
+        jdk.internal.org.objectweb.asm.Frame this, $stack25;
+        jdk.internal.org.objectweb.asm.ClassWriter cw;
+        int maxLocals, access, $stack10, $stack12, $stack14, $stack15, $stack18, t, $stack19, $stack21, $stack26, $stack27, $stack28, $stack31, $stack34, $stack35, $stack36, i#1, j#4, $stack24#5, $stack24#6, $stack11#9, $stack11#10;
+        jdk.internal.org.objectweb.asm.Type[] args, $stack23#7, $stack23#8;
+        java.lang.String $stack17, $stack32;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        access := @parameter1: int;
+
+        args := @parameter2: jdk.internal.org.objectweb.asm.Type[];
+
+        maxLocals := @parameter3: int;
+
+        $stack8 = newarray (int)[maxLocals];
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals> = $stack8;
+
+        $stack9 = newarray (int)[0];
+
+        this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack> = $stack9;
+
+        i#1 = 0;
+
+        $stack10 = access & 8;
+
+        if $stack10 != 0 goto label2;
+
+        $stack27 = access & 524288;
+
+        if $stack27 != 0 goto label1;
+
+        $stack33 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack31 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack34 = 24117248;
+
+        $stack32 = cw.<jdk.internal.org.objectweb.asm.ClassWriter: java.lang.String thisName>;
+
+        $stack35 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>($stack32);
+
+        $stack36 = $stack34 | $stack35;
+
+        $stack33[$stack31] = $stack36;
+
+        goto label2;
+
+     label1:
+        $stack29 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack28 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack29[$stack28] = 16777222;
+
+     label2:
+        $stack30#2 = 0;
+
+        $stack30#3 = $stack30#2;
+
+        j#4 = $stack30#3;
+
+     label3:
+        $stack24#5 = j#4;
+
+        $stack24#6 = $stack24#5;
+
+        $stack23#7 = args;
+
+        $stack23#8 = $stack23#7;
+
+        $stack11#9 = lengthof $stack23#8;
+
+        $stack11#10 = $stack11#9;
+
+        if $stack24#6 >= $stack11#10 goto label6;
+
+        $stack16 = args[j#4];
+
+        $stack17 = virtualinvoke $stack16.<jdk.internal.org.objectweb.asm.Type: java.lang.String getDescriptor()>();
+
+        $stack18 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: int type(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>(cw, $stack17);
+
+        t = $stack18;
+
+        $stack20 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack19 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack20[$stack19] = t;
+
+        if t == 16777220 goto label4;
+
+        if t != 16777219 goto label5;
+
+     label4:
+        $stack25 = this;
+
+        $stack22 = $stack25.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack21 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack26 = 16777216;
+
+        $stack22[$stack21] = $stack26;
+
+     label5:
+        j#4 = j#4 + 1;
+
+        goto label3;
+
+     label6:
+        $stack15 = i#1;
+
+        $stack14 = maxLocals;
+
+        if $stack15 >= $stack14 goto label7;
+
+        $stack13 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack12 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack13[$stack12] = 16777216;
+
+        goto label6;
+
+     label7:
+        return;
+
+        nop;
+    }
+
+    void execute(int, int, jdk.internal.org.objectweb.asm.ClassWriter, jdk.internal.org.objectweb.asm.Item)
+    {
+        java.lang.StringBuilder $stack20, $stack21, $stack22, $u1;
+        int opcode, $stack10, $stack12, $stack13, $stack14, $stack15, $stack17, $stack18, $stack19, $stack24, arg, $stack26, $stack27, $stack28, $stack33, $stack40, $stack45, $stack46, $stack47, $stack48, $stack49, $stack50, t4, $stack51, $stack52, $stack53, $stack54, $stack55, $stack56, $stack57, $stack58, $stack59, $stack60, $stack61, $stack62, $stack63, $stack64, $stack65, $stack66, $stack67, $stack68, $stack69, $stack71, $stack72, $stack74, $stack75, $stack76, $stack77, $stack78, $stack79, $stack80, $stack82, $stack83, $stack85, $stack88, $stack89, $stack90, $stack91, $stack92, $stack93, $stack94, $stack95, $stack96, $stack97, $stack98, $stack99, $stack100, $stack101, t1#1, $stack86#2, t1#3, t2#4, t1#5, t2#6, t1#7, t1#8, t2#9, t1#10, t2#11, t3#12, t1#13, t2#14, t1#15, t2#16, t3#17, t1#18, t2#19, t3#20, t1#21, t2#22, t1#23, $i0, $i1, $i2;
+        bottom_type s, $stack32, t1, $stack34, $stack35, $stack36, t2, t3, $stack86;
+        java.lang.String $stack23, $stack25, $stack29, $stack30, $stack31, $stack37, $stack39, $stack41, $stack42, $stack43, $stack102, $stack32#30, $stack32#31, s#32, s#33;
+        java.lang.RuntimeException $stack44, $u0;
+        jdk.internal.org.objectweb.asm.Item item, $stack34#28, $stack34#29;
+        boolean $stack70, $stack81;
+        jdk.internal.org.objectweb.asm.Frame this, $stack73, $stack84, $stack87, $stack36#24, $stack36#25;
+        jdk.internal.org.objectweb.asm.ClassWriter cw, $stack35#26, $stack35#27;
+        char $stack11, $stack16, $stack38;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        opcode := @parameter0: int;
+
+        arg := @parameter1: int;
+
+        cw := @parameter2: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        item := @parameter3: jdk.internal.org.objectweb.asm.Item;
+
+        tableswitch(opcode)
+        {
+            case 0: goto label01;
+            case 1: goto label02;
+            case 2: goto label03;
+            case 3: goto label03;
+            case 4: goto label03;
+            case 5: goto label03;
+            case 6: goto label03;
+            case 7: goto label03;
+            case 8: goto label03;
+            case 9: goto label04;
+            case 10: goto label04;
+            case 11: goto label05;
+            case 12: goto label05;
+            case 13: goto label05;
+            case 14: goto label06;
+            case 15: goto label06;
+            case 16: goto label03;
+            case 17: goto label03;
+            case 18: goto label07;
+            case 19: goto label74;
+            case 20: goto label74;
+            case 21: goto label03;
+            case 22: goto label04;
+            case 23: goto label05;
+            case 24: goto label06;
+            case 25: goto label16;
+            case 26: goto label74;
+            case 27: goto label74;
+            case 28: goto label74;
+            case 29: goto label74;
+            case 30: goto label74;
+            case 31: goto label74;
+            case 32: goto label74;
+            case 33: goto label74;
+            case 34: goto label74;
+            case 35: goto label74;
+            case 36: goto label74;
+            case 37: goto label74;
+            case 38: goto label74;
+            case 39: goto label74;
+            case 40: goto label74;
+            case 41: goto label74;
+            case 42: goto label74;
+            case 43: goto label74;
+            case 44: goto label74;
+            case 45: goto label74;
+            case 46: goto label17;
+            case 47: goto label18;
+            case 48: goto label19;
+            case 49: goto label20;
+            case 50: goto label21;
+            case 51: goto label17;
+            case 52: goto label17;
+            case 53: goto label17;
+            case 54: goto label24;
+            case 55: goto label27;
+            case 56: goto label24;
+            case 57: goto label27;
+            case 58: goto label24;
+            case 59: goto label74;
+            case 60: goto label74;
+            case 61: goto label74;
+            case 62: goto label74;
+            case 63: goto label74;
+            case 64: goto label74;
+            case 65: goto label74;
+            case 66: goto label74;
+            case 67: goto label74;
+            case 68: goto label74;
+            case 69: goto label74;
+            case 70: goto label74;
+            case 71: goto label74;
+            case 72: goto label74;
+            case 73: goto label74;
+            case 74: goto label74;
+            case 75: goto label74;
+            case 76: goto label74;
+            case 77: goto label74;
+            case 78: goto label74;
+            case 79: goto label30;
+            case 80: goto label31;
+            case 81: goto label30;
+            case 82: goto label31;
+            case 83: goto label30;
+            case 84: goto label30;
+            case 85: goto label30;
+            case 86: goto label30;
+            case 87: goto label32;
+            case 88: goto label33;
+            case 89: goto label34;
+            case 90: goto label35;
+            case 91: goto label36;
+            case 92: goto label37;
+            case 93: goto label38;
+            case 94: goto label39;
+            case 95: goto label40;
+            case 96: goto label41;
+            case 97: goto label42;
+            case 98: goto label43;
+            case 99: goto label44;
+            case 100: goto label41;
+            case 101: goto label42;
+            case 102: goto label43;
+            case 103: goto label44;
+            case 104: goto label41;
+            case 105: goto label42;
+            case 106: goto label43;
+            case 107: goto label44;
+            case 108: goto label41;
+            case 109: goto label42;
+            case 110: goto label43;
+            case 111: goto label44;
+            case 112: goto label41;
+            case 113: goto label42;
+            case 114: goto label43;
+            case 115: goto label44;
+            case 116: goto label01;
+            case 117: goto label01;
+            case 118: goto label01;
+            case 119: goto label01;
+            case 120: goto label41;
+            case 121: goto label45;
+            case 122: goto label41;
+            case 123: goto label45;
+            case 124: goto label41;
+            case 125: goto label45;
+            case 126: goto label41;
+            case 127: goto label42;
+            case 128: goto label41;
+            case 129: goto label42;
+            case 130: goto label41;
+            case 131: goto label42;
+            case 132: goto label46;
+            case 133: goto label47;
+            case 134: goto label48;
+            case 135: goto label49;
+            case 136: goto label41;
+            case 137: goto label43;
+            case 138: goto label20;
+            case 139: goto label50;
+            case 140: goto label47;
+            case 141: goto label49;
+            case 142: goto label41;
+            case 143: goto label18;
+            case 144: goto label43;
+            case 145: goto label01;
+            case 146: goto label01;
+            case 147: goto label01;
+            case 148: goto label51;
+            case 149: goto label41;
+            case 150: goto label41;
+            case 151: goto label51;
+            case 152: goto label51;
+            case 153: goto label32;
+            case 154: goto label32;
+            case 155: goto label32;
+            case 156: goto label32;
+            case 157: goto label32;
+            case 158: goto label32;
+            case 159: goto label33;
+            case 160: goto label33;
+            case 161: goto label33;
+            case 162: goto label33;
+            case 163: goto label33;
+            case 164: goto label33;
+            case 165: goto label33;
+            case 166: goto label33;
+            case 167: goto label01;
+            case 168: goto label52;
+            case 169: goto label52;
+            case 170: goto label32;
+            case 171: goto label32;
+            case 172: goto label32;
+            case 173: goto label33;
+            case 174: goto label32;
+            case 175: goto label33;
+            case 176: goto label32;
+            case 177: goto label01;
+            case 178: goto label53;
+            case 179: goto label54;
+            case 180: goto label55;
+            case 181: goto label56;
+            case 182: goto label57;
+            case 183: goto label57;
+            case 184: goto label57;
+            case 185: goto label57;
+            case 186: goto label59;
+            case 187: goto label60;
+            case 188: goto label61;
+            case 189: goto label70;
+            case 190: goto label50;
+            case 191: goto label32;
+            case 192: goto label72;
+            case 193: goto label50;
+            case 194: goto label32;
+            case 195: goto label32;
+            case 196: goto label74;
+            case 197: goto label74;
+            case 198: goto label32;
+            case 199: goto label32;
+            default: goto label74;
+        };
+
+     label01:
+        goto label75;
+
+     label02:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777221);
+
+        goto label75;
+
+     label03:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777217);
+
+        goto label75;
+
+     label04:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777220);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label05:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777218);
+
+        goto label75;
+
+     label06:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777219);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label07:
+        $stack89 = item.<jdk.internal.org.objectweb.asm.Item: int type>;
+
+        tableswitch($stack89)
+        {
+            case 3: goto label08;
+            case 4: goto label10;
+            case 5: goto label09;
+            case 6: goto label11;
+            case 7: goto label12;
+            case 8: goto label13;
+            case 9: goto label15;
+            case 10: goto label15;
+            case 11: goto label15;
+            case 12: goto label15;
+            case 13: goto label15;
+            case 14: goto label15;
+            case 15: goto label15;
+            case 16: goto label14;
+            default: goto label15;
+        };
+
+     label08:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777217);
+
+        goto label75;
+
+     label09:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777220);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label10:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777218);
+
+        goto label75;
+
+     label11:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777219);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label12:
+        $stack96 = 24117248;
+
+        $stack97 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>("java/lang/Class");
+
+        $stack98 = $stack96 | $stack97;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack98);
+
+        goto label75;
+
+     label13:
+        $stack93 = 24117248;
+
+        $stack94 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>("java/lang/String");
+
+        $stack95 = $stack93 | $stack94;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack95);
+
+        goto label75;
+
+     label14:
+        $stack90 = 24117248;
+
+        $stack91 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>("java/lang/invoke/MethodType");
+
+        $stack92 = $stack90 | $stack91;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack92);
+
+        goto label75;
+
+     label15:
+        $stack99 = 24117248;
+
+        $stack100 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>("java/lang/invoke/MethodHandle");
+
+        $stack101 = $stack99 | $stack100;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack101);
+
+        goto label75;
+
+     label16:
+        $stack88 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int get(int)>(arg);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack88);
+
+        goto label75;
+
+     label17:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(2);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777217);
+
+        goto label75;
+
+     label18:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(2);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777220);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label19:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(2);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777218);
+
+        goto label75;
+
+     label20:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(2);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777219);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label21:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(1);
+
+        $stack85 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#1 = $stack85;
+
+        $stack87 = this;
+
+        if t1#1 != 16777221 goto label22;
+
+        $stack86#2 = t1#1;
+
+        goto label23;
+
+     label22:
+        $stack86#2 = -268435456 + t1#1;
+
+     label23:
+        virtualinvoke $stack87.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack86#2);
+
+        goto label75;
+
+     label24:
+        $stack74 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#3 = $stack74;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void set(int,int)>(arg, t1#3);
+
+        if arg <= 0 goto label75;
+
+        $stack75 = arg - 1;
+
+        $stack76 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int get(int)>($stack75);
+
+        t2#4 = $stack76;
+
+        if t2#4 == 16777220 goto label25;
+
+        if t2#4 != 16777219 goto label26;
+
+     label25:
+        $stack84 = this;
+
+        $stack82 = arg;
+
+        $stack81 = 1;
+
+        $stack77 = $stack82 - $stack81;
+
+        $stack83 = 16777216;
+
+        virtualinvoke $stack84.<jdk.internal.org.objectweb.asm.Frame: void set(int,int)>($stack77, $stack83);
+
+        goto label75;
+
+     label26:
+        $stack78 = t2#4 & 251658240;
+
+        if $stack78 == 16777216 goto label75;
+
+        $stack80 = arg - 1;
+
+        $stack79 = t2#4 | 8388608;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void set(int,int)>($stack80, $stack79);
+
+        goto label75;
+
+     label27:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(1);
+
+        $stack62 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#5 = $stack62;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void set(int,int)>(arg, t1#5);
+
+        $stack63 = arg + 1;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void set(int,int)>($stack63, 16777216);
+
+        if arg <= 0 goto label75;
+
+        $stack64 = arg - 1;
+
+        $stack65 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int get(int)>($stack64);
+
+        t2#6 = $stack65;
+
+        if t2#6 == 16777220 goto label28;
+
+        if t2#6 != 16777219 goto label29;
+
+     label28:
+        $stack73 = this;
+
+        $stack71 = arg;
+
+        $stack70 = 1;
+
+        $stack66 = $stack71 - $stack70;
+
+        $stack72 = 16777216;
+
+        virtualinvoke $stack73.<jdk.internal.org.objectweb.asm.Frame: void set(int,int)>($stack66, $stack72);
+
+        goto label75;
+
+     label29:
+        $stack67 = t2#6 & 251658240;
+
+        if $stack67 == 16777216 goto label75;
+
+        $stack69 = arg - 1;
+
+        $stack68 = t2#6 | 8388608;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void set(int,int)>($stack69, $stack68);
+
+        goto label75;
+
+     label30:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(3);
+
+        goto label75;
+
+     label31:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(4);
+
+        goto label75;
+
+     label32:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(1);
+
+        goto label75;
+
+     label33:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(2);
+
+        goto label75;
+
+     label34:
+        $stack61 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#7 = $stack61;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#7);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#7);
+
+        goto label75;
+
+     label35:
+        $stack59 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#8 = $stack59;
+
+        $stack60 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t2#9 = $stack60;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#8);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t2#9);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#8);
+
+        goto label75;
+
+     label36:
+        $stack56 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#10 = $stack56;
+
+        $stack57 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t2#11 = $stack57;
+
+        $stack58 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t3#12 = $stack58;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#10);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t3#12);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t2#11);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#10);
+
+        goto label75;
+
+     label37:
+        $stack54 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#13 = $stack54;
+
+        $stack55 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t2#14 = $stack55;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t2#14);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#13);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t2#14);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#13);
+
+        goto label75;
+
+     label38:
+        $stack51 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#15 = $stack51;
+
+        $stack52 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t2#16 = $stack52;
+
+        $stack53 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t3#17 = $stack53;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t2#16);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#15);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t3#17);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t2#16);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#15);
+
+        goto label75;
+
+     label39:
+        $stack47 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#18 = $stack47;
+
+        $stack48 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t2#19 = $stack48;
+
+        $stack49 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t3#20 = $stack49;
+
+        $stack50 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t4 = $stack50;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t2#19);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#18);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t4);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t3#20);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t2#19);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#18);
+
+        goto label75;
+
+     label40:
+        $stack45 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#21 = $stack45;
+
+        $stack46 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t2#22 = $stack46;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t1#21);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(t2#22);
+
+        goto label75;
+
+     label41:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(2);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777217);
+
+        goto label75;
+
+     label42:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(4);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777220);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label43:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(2);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777218);
+
+        goto label75;
+
+     label44:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(4);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777219);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label45:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(3);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777220);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label46:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void set(int,int)>(arg, 16777217);
+
+        goto label75;
+
+     label47:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(1);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777220);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label48:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(1);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777218);
+
+        goto label75;
+
+     label49:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(1);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777219);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777216);
+
+        goto label75;
+
+     label50:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(1);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777217);
+
+        goto label75;
+
+     label51:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(4);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(16777217);
+
+        goto label75;
+
+     label52:
+        $u0 = new java.lang.RuntimeException;
+
+        $stack44 = $u0;
+
+        specialinvoke $u0.<java.lang.RuntimeException: void <init>(java.lang.String)>("JSR/RET are not supported with computeFrames option");
+
+        throw $stack44;
+
+     label53:
+        $stack43 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>(cw, $stack43);
+
+        goto label75;
+
+     label54:
+        $stack42 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(java.lang.String)>($stack42);
+
+        goto label75;
+
+     label55:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(1);
+
+        $stack41 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>(cw, $stack41);
+
+        goto label75;
+
+     label56:
+        $stack39 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(java.lang.String)>($stack39);
+
+        $stack40 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        goto label75;
+
+     label57:
+        $stack31 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(java.lang.String)>($stack31);
+
+        if opcode == 184 goto label58;
+
+        $stack33 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        t1#23 = $stack33;
+
+        if opcode != 183 goto label58;
+
+        $stack37 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+
+        $stack38 = virtualinvoke $stack37.<java.lang.String: char charAt(int)>(0);
+
+        $i0 = (int) $stack38;
+
+        if $i0 != 60 goto label58;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void init(int)>(t1#23);
+
+     label58:
+        $stack36#24 = this;
+
+        $stack36#25 = $stack36#24;
+
+        $stack35#26 = cw;
+
+        $stack35#27 = $stack35#26;
+
+        $stack34#28 = item;
+
+        $stack34#29 = $stack34#28;
+
+        $stack32#30 = $stack34#29.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
+
+        $stack32#31 = $stack32#30;
+
+        virtualinvoke $stack36#25.<jdk.internal.org.objectweb.asm.Frame: void push(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>($stack35#27, $stack32#31);
+
+        goto label75;
+
+     label59:
+        $stack29 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(java.lang.String)>($stack29);
+
+        $stack30 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>(cw, $stack30);
+
+        goto label75;
+
+     label60:
+        $stack26 = 25165824;
+
+        $stack25 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+
+        $stack27 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addUninitializedType(java.lang.String,int)>($stack25, arg);
+
+        $stack28 = $stack26 | $stack27;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack28);
+
+        goto label75;
+
+     label61:
+        $stack24 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        tableswitch(arg)
+        {
+            case 4: goto label62;
+            case 5: goto label63;
+            case 6: goto label67;
+            case 7: goto label68;
+            case 8: goto label64;
+            case 9: goto label65;
+            case 10: goto label66;
+            default: goto label69;
+        };
+
+     label62:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(285212681);
+
+        goto label75;
+
+     label63:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(285212683);
+
+        goto label75;
+
+     label64:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(285212682);
+
+        goto label75;
+
+     label65:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(285212684);
+
+        goto label75;
+
+     label66:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(285212673);
+
+        goto label75;
+
+     label67:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(285212674);
+
+        goto label75;
+
+     label68:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(285212675);
+
+        goto label75;
+
+     label69:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>(285212676);
+
+        goto label75;
+
+     label70:
+        s#32 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+
+        $stack15 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        $stack16 = virtualinvoke s#32.<java.lang.String: char charAt(int)>(0);
+
+        $i1 = (int) $stack16;
+
+        if $i1 != 91 goto label71;
+
+        $u1 = new java.lang.StringBuilder;
+
+        $stack20 = $u1;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        $stack21 = virtualinvoke $stack20.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(91);
+
+        $stack22 = virtualinvoke $stack21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(s#32);
+
+        $stack23 = virtualinvoke $stack22.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>(cw, $stack23);
+
+        goto label75;
+
+     label71:
+        $stack17 = 292552704;
+
+        $stack18 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>(s#32);
+
+        $stack19 = $stack17 | $stack18;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack19);
+
+        goto label75;
+
+     label72:
+        s#33 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+
+        $stack10 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int pop()>();
+
+        $stack11 = virtualinvoke s#33.<java.lang.String: char charAt(int)>(0);
+
+        $i2 = (int) $stack11;
+
+        if $i2 != 91 goto label73;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>(cw, s#33);
+
+        goto label75;
+
+     label73:
+        $stack12 = 24117248;
+
+        $stack13 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>(s#33);
+
+        $stack14 = $stack12 | $stack13;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(int)>($stack14);
+
+        goto label75;
+
+     label74:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void pop(int)>(arg);
+
+        $stack102 = item.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: void push(jdk.internal.org.objectweb.asm.ClassWriter,java.lang.String)>(cw, $stack102);
+
+     label75:
+        return;
+
+        nop;
+    }
+
+    final boolean merge(jdk.internal.org.objectweb.asm.ClassWriter, jdk.internal.org.objectweb.asm.Frame, int)
+    {
+        byte $stack65, $stack73, $stack116;
+        int[] $stack13, $stack14, $stack15, $stack16, $stack20, $stack22, $stack25, $stack30, $stack45, $stack49, $stack50, $stack51, $stack64, $stack66, $stack67, $stack69, $stack77, $stack78, $stack82, $stack83, $stack85, $stack96, $stack102, $stack105, $stack110, $stack114, $stack115, $stack84#13, $stack84#14, $stack28#31, $stack28#32;
+        int nLocal, nStack, edge, $stack18, $stack19, nInputStack, $stack21, $stack23, $stack24, $stack26, $stack27, $stack29, $stack33, $stack34, $stack36, $stack37, $stack39, $stack43, $stack44, $stack46, $stack47, $stack48, $stack55, $stack58, $stack59, $stack62, $stack63, $stack72, $stack80, $stack81, $stack89, $stack92, $stack93, $stack97, $stack99, $stack100, $stack103, $stack104, $stack106, $stack107, $stack108, $stack109, $stack111, $stack112, $stack113, i#2, $stack88#3, $stack88#4, $stack87#5, $stack87#6, s#7, t#8, dim#9, kind#10, i#15, t#16, i#18, $stack54#19, $stack54#20, $stack53#21, $stack53#22, t#23, i#24, s#25, dim#26, kind#27, t#28;
+        bottom_type changed, i, s, dim, kind, t, $stack28, $stack42, $stack53, $stack54, $stack84, $stack87, $stack88, $stack101;
+        boolean $stack31, $stack40, $stack41, $stack52, $stack60, $stack61, $stack68, $stack74, $stack75, $stack76, $stack79, $stack86, $stack94, $stack95, changed#1, changed#17;
+        jdk.internal.org.objectweb.asm.Frame this, frame, $stack32, $stack35, $stack56, $stack70, $stack90, $stack98, $stack101#11, $stack101#12, $stack42#29, $stack42#30;
+        jdk.internal.org.objectweb.asm.ClassWriter cw, $stack38, $stack57, $stack71, $stack91;
+        jdk.internal.org.objectweb.asm.Label $stack17;
+
+        this := @this: jdk.internal.org.objectweb.asm.Frame;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        frame := @parameter1: jdk.internal.org.objectweb.asm.Frame;
+
+        edge := @parameter2: int;
+
+        changed#1 = 0;
+
+        $stack13 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        nLocal = lengthof $stack13;
+
+        $stack14 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        nStack = lengthof $stack14;
+
+        $stack15 = frame.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        if $stack15 != null goto label01;
+
+        $stack115 = newarray (int)[nLocal];
+
+        frame.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals> = $stack115;
+
+        changed#1 = 1;
+
+     label01:
+        $stack116 = 0;
+
+        i#2 = $stack116;
+
+     label02:
+        $stack88#3 = i#2;
+
+        $stack88#4 = $stack88#3;
+
+        $stack87#5 = nLocal;
+
+        $stack87#6 = $stack87#5;
+
+        if $stack88#4 >= $stack87#6 goto label11;
+
+        $stack82 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        if $stack82 == null goto label08;
+
+        $stack96 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        $stack97 = lengthof $stack96;
+
+        if i#2 >= $stack97 goto label08;
+
+        $stack102 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputLocals>;
+
+        s#7 = $stack102[i#2];
+
+        if s#7 != 0 goto label03;
+
+        $stack114 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        t#8 = $stack114[i#2];
+
+        goto label09;
+
+     label03:
+        dim#9 = s#7 & -268435456;
+
+        kind#10 = s#7 & 251658240;
+
+        if kind#10 != 16777216 goto label04;
+
+        t#8 = s#7;
+
+        goto label09;
+
+     label04:
+        if kind#10 != 33554432 goto label05;
+
+        $stack110 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack109 = s#7 & 8388607;
+
+        $stack111 = $stack110[$stack109];
+
+        t#8 = dim#9 + $stack111;
+
+        goto label06;
+
+     label05:
+        $stack105 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        $stack103 = s#7 & 8388607;
+
+        $stack104 = nStack - $stack103;
+
+        $stack106 = $stack105[$stack104];
+
+        t#8 = dim#9 + $stack106;
+
+     label06:
+        $stack113 = s#7;
+
+        $stack112 = 8388608;
+
+        $stack107 = $stack113 & $stack112;
+
+        if $stack107 == 0 goto label09;
+
+        if t#8 == 16777220 goto label07;
+
+        if t#8 != 16777219 goto label09;
+
+     label07:
+        $stack108 = 16777216;
+
+        t#8 = $stack108;
+
+        goto label09;
+
+     label08:
+        $stack98 = this;
+
+        $stack83 = $stack98.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack99 = i#2;
+
+        $stack100 = $stack83[$stack99];
+
+        t#8 = $stack100;
+
+     label09:
+        $stack101#11 = this;
+
+        $stack101#12 = $stack101#11;
+
+        $stack84#13 = $stack101#12.<jdk.internal.org.objectweb.asm.Frame: int[] initializations>;
+
+        $stack84#14 = $stack84#13;
+
+        if $stack84#14 == null goto label10;
+
+        $stack89 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int init(jdk.internal.org.objectweb.asm.ClassWriter,int)>(cw, t#8);
+
+        t#8 = $stack89;
+
+     label10:
+        $stack94 = changed#1;
+
+        $stack91 = cw;
+
+        $stack92 = t#8;
+
+        $stack90 = frame;
+
+        $stack85 = $stack90.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack93 = i#2;
+
+        $stack86 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: boolean merge(jdk.internal.org.objectweb.asm.ClassWriter,int,int[],int)>($stack91, $stack92, $stack85, $stack93);
+
+        $stack95 = $stack94 | $stack86;
+
+        changed#1 = $stack95;
+
+        i#2 = i#2 + 1;
+
+        goto label02;
+
+     label11:
+        if edge <= 0 goto label15;
+
+        i#15 = 0;
+
+     label12:
+        $stack81 = i#15;
+
+        $stack80 = nLocal;
+
+        if $stack81 >= $stack80 goto label13;
+
+        $stack77 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        t#16 = $stack77[i#15];
+
+        $stack78 = frame.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack79 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: boolean merge(jdk.internal.org.objectweb.asm.ClassWriter,int,int[],int)>(cw, t#16, $stack78, i#15);
+
+        changed#1 = changed#1 | $stack79;
+
+        i#15 = i#15 + 1;
+
+        goto label12;
+
+     label13:
+        $stack66 = frame.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        if $stack66 != null goto label14;
+
+        $stack69 = newarray (int)[1];
+
+        frame.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack> = $stack69;
+
+        changed#1 = 1;
+
+     label14:
+        $stack74 = changed#1;
+
+        $stack71 = cw;
+
+        $stack72 = edge;
+
+        $stack70 = frame;
+
+        $stack67 = $stack70.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        $stack73 = 0;
+
+        $stack68 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: boolean merge(jdk.internal.org.objectweb.asm.ClassWriter,int,int[],int)>($stack71, $stack72, $stack67, $stack73);
+
+        $stack75 = $stack74 | $stack68;
+
+        changed#17 = $stack75;
+
+        $stack76 = changed#17;
+
+        return $stack76;
+
+     label15:
+        $stack16 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        $stack19 = lengthof $stack16;
+
+        $stack17 = this.<jdk.internal.org.objectweb.asm.Frame: jdk.internal.org.objectweb.asm.Label owner>;
+
+        $stack18 = $stack17.<jdk.internal.org.objectweb.asm.Label: int inputStackTop>;
+
+        nInputStack = $stack19 + $stack18;
+
+        $stack20 = frame.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        if $stack20 != null goto label16;
+
+        $stack62 = this.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        $stack63 = nInputStack + $stack62;
+
+        $stack64 = newarray (int)[$stack63];
+
+        frame.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack> = $stack64;
+
+        changed#1 = 1;
+
+     label16:
+        $stack65 = 0;
+
+        i#18 = $stack65;
+
+     label17:
+        $stack54#19 = i#18;
+
+        $stack54#20 = $stack54#19;
+
+        $stack53#21 = nInputStack;
+
+        $stack53#22 = $stack53#21;
+
+        if $stack54#20 >= $stack53#22 goto label19;
+
+        $stack49 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        t#23 = $stack49[i#18];
+
+        $stack50 = this.<jdk.internal.org.objectweb.asm.Frame: int[] initializations>;
+
+        if $stack50 == null goto label18;
+
+        $stack55 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int init(jdk.internal.org.objectweb.asm.ClassWriter,int)>(cw, t#23);
+
+        t#23 = $stack55;
+
+     label18:
+        $stack60 = changed#1;
+
+        $stack57 = cw;
+
+        $stack58 = t#23;
+
+        $stack56 = frame;
+
+        $stack51 = $stack56.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        $stack59 = i#18;
+
+        $stack52 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: boolean merge(jdk.internal.org.objectweb.asm.ClassWriter,int,int[],int)>($stack57, $stack58, $stack51, $stack59);
+
+        $stack61 = $stack60 | $stack52;
+
+        changed#1 = $stack61;
+
+        i#18 = i#18 + 1;
+
+        goto label17;
+
+     label19:
+        i#24 = 0;
+
+     label20:
+        $stack33 = i#24;
+
+        $stack32 = this;
+
+        $stack21 = $stack32.<jdk.internal.org.objectweb.asm.Frame: int outputStackTop>;
+
+        if $stack33 >= $stack21 goto label27;
+
+        $stack22 = this.<jdk.internal.org.objectweb.asm.Frame: int[] outputStack>;
+
+        s#25 = $stack22[i#24];
+
+        dim#26 = s#25 & -268435456;
+
+        kind#27 = s#25 & 251658240;
+
+        if kind#27 != 16777216 goto label21;
+
+        t#28 = s#25;
+
+        goto label25;
+
+     label21:
+        if kind#27 != 33554432 goto label22;
+
+        $stack45 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputLocals>;
+
+        $stack44 = s#25 & 8388607;
+
+        $stack46 = $stack45[$stack44];
+
+        t#28 = dim#26 + $stack46;
+
+        goto label23;
+
+     label22:
+        $stack25 = this.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        $stack23 = s#25 & 8388607;
+
+        $stack24 = nStack - $stack23;
+
+        $stack26 = $stack25[$stack24];
+
+        t#28 = dim#26 + $stack26;
+
+     label23:
+        $stack48 = s#25;
+
+        $stack47 = 8388608;
+
+        $stack27 = $stack48 & $stack47;
+
+        if $stack27 == 0 goto label25;
+
+        if t#28 == 16777220 goto label24;
+
+        if t#28 != 16777219 goto label25;
+
+     label24:
+        $stack43 = 16777216;
+
+        t#28 = $stack43;
+
+     label25:
+        $stack42#29 = this;
+
+        $stack42#30 = $stack42#29;
+
+        $stack28#31 = $stack42#30.<jdk.internal.org.objectweb.asm.Frame: int[] initializations>;
+
+        $stack28#32 = $stack28#31;
+
+        if $stack28#32 == null goto label26;
+
+        $stack34 = virtualinvoke this.<jdk.internal.org.objectweb.asm.Frame: int init(jdk.internal.org.objectweb.asm.ClassWriter,int)>(cw, t#28);
+
+        t#28 = $stack34;
+
+     label26:
+        $stack40 = changed#1;
+
+        $stack38 = cw;
+
+        $stack39 = t#28;
+
+        $stack35 = frame;
+
+        $stack30 = $stack35.<jdk.internal.org.objectweb.asm.Frame: int[] inputStack>;
+
+        $stack37 = nInputStack;
+
+        $stack36 = i#24;
+
+        $stack29 = $stack37 + $stack36;
+
+        $stack31 = staticinvoke <jdk.internal.org.objectweb.asm.Frame: boolean merge(jdk.internal.org.objectweb.asm.ClassWriter,int,int[],int)>($stack38, $stack39, $stack30, $stack29);
+
+        $stack41 = $stack40 | $stack31;
+
+        changed#1 = $stack41;
+
+        i#24 = i#24 + 1;
+
+        goto label20;
+
+     label27:
+        return changed#1;
+
+        nop;
+    }
+
+    private static boolean merge(jdk.internal.org.objectweb.asm.ClassWriter, int, int[], int)
+    {
+        bottom_type t, vdim, v, $stack23, $stack34, $stack39, $stack40, $stack55;
+        java.lang.String $stack28;
+        int[] types;
+        jdk.internal.org.objectweb.asm.ClassWriter cw, $stack29;
+        int index, u, $stack8, $stack9, $stack10, $stack11, $stack12, $stack13, $stack14, $stack15, $stack16, udim, $stack17, $stack18, $stack19, $stack20, $stack21, $stack22, $stack24, $stack25, $stack26, $stack27, $stack30, $stack31, $stack32, $stack33, $stack35, $stack36, $stack37, $stack38, $stack41, $stack42, $stack43, $stack44, $stack45, $stack46, $stack47, $stack48, $stack49, $stack50, $stack51, $stack52, $stack53, $stack54, $stack56, $stack57, $stack58, t#1, v#2, vdim#3, $stack34#4, vdim#5, $stack23#6, $stack55#7, $stack40#8, $stack40#9, $stack39#10, $stack39#11;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        t#1 := @parameter1: int;
+
+        types := @parameter2: int[];
+
+        index := @parameter3: int;
+
+        u = types[index];
+
+        if u != t#1 goto label01;
+
+        return 0;
+
+     label01:
+        $stack8 = t#1 & 268435455;
+
+        if $stack8 != 16777221 goto label03;
+
+        if u != 16777221 goto label02;
+
+        return 0;
+
+     label02:
+        t#1 = 16777221;
+
+     label03:
+        $stack58 = u;
+
+        if $stack58 != 0 goto label04;
+
+        types[index] = t#1;
+
+        return 1;
+
+     label04:
+        $stack9 = u & 267386880;
+
+        if $stack9 == 24117248 goto label05;
+
+        $stack52 = u & -268435456;
+
+        if $stack52 == 0 goto label17;
+
+     label05:
+        $stack57 = t#1;
+
+        $stack56 = 16777221;
+
+        if $stack57 != $stack56 goto label06;
+
+        return 0;
+
+     label06:
+        $stack11 = t#1 & -1048576;
+
+        $stack10 = u & -1048576;
+
+        if $stack11 != $stack10 goto label08;
+
+        $stack43 = u & 267386880;
+
+        if $stack43 != 24117248 goto label07;
+
+        $stack47 = t#1 & -268435456;
+
+        $stack50 = $stack47 | 24117248;
+
+        $stack49 = t#1 & 1048575;
+
+        $stack48 = u & 1048575;
+
+        $stack51 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int getMergedType(int,int)>($stack49, $stack48);
+
+        v#2 = $stack50 | $stack51;
+
+        goto label22;
+
+     label07:
+        $stack44 = u & -268435456;
+
+        vdim#3 = -268435456 + $stack44;
+
+        $stack45 = vdim#3 | 24117248;
+
+        $stack46 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>("java/lang/Object");
+
+        v#2 = $stack45 | $stack46;
+
+        goto label22;
+
+     label08:
+        $stack12 = t#1 & 267386880;
+
+        if $stack12 == 24117248 goto label09;
+
+        $stack38 = t#1 & -268435456;
+
+        if $stack38 == 0 goto label16;
+
+     label09:
+        $stack42 = t#1;
+
+        $stack41 = -268435456;
+
+        $stack13 = $stack42 & $stack41;
+
+        if $stack13 == 0 goto label10;
+
+        $stack31 = t#1 & 267386880;
+
+        if $stack31 != 24117248 goto label11;
+
+     label10:
+        $stack34#4 = 0;
+
+        goto label12;
+
+     label11:
+        $stack34#4 = -268435456;
+
+     label12:
+        $stack33 = t#1;
+
+        $stack32 = -268435456;
+
+        $stack14 = $stack33 & $stack32;
+
+        $stack35 = $stack34#4 + $stack14;
+
+        vdim#5 = $stack35;
+
+        $stack37 = u;
+
+        $stack36 = -268435456;
+
+        $stack15 = $stack37 & $stack36;
+
+        if $stack15 == 0 goto label13;
+
+        $stack20 = u & 267386880;
+
+        if $stack20 != 24117248 goto label14;
+
+     label13:
+        $stack23#6 = 0;
+
+        goto label15;
+
+     label14:
+        $stack23#6 = -268435456;
+
+     label15:
+        $stack22 = u;
+
+        $stack21 = -268435456;
+
+        $stack16 = $stack22 & $stack21;
+
+        $stack24 = $stack23#6 + $stack16;
+
+        udim = $stack24;
+
+        $stack25 = vdim#5;
+
+        $stack26 = udim;
+
+        $stack17 = staticinvoke <java.lang.Math: int min(int,int)>($stack25, $stack26);
+
+        $stack27 = 24117248;
+
+        $stack18 = $stack17 | $stack27;
+
+        $stack29 = cw;
+
+        $stack28 = "java/lang/Object";
+
+        $stack19 = virtualinvoke $stack29.<jdk.internal.org.objectweb.asm.ClassWriter: int addType(java.lang.String)>($stack28);
+
+        $stack30 = $stack18 | $stack19;
+
+        v#2 = $stack30;
+
+        goto label22;
+
+     label16:
+        v#2 = 16777216;
+
+        goto label22;
+
+     label17:
+        if u != 16777221 goto label21;
+
+        $stack53 = t#1 & 267386880;
+
+        if $stack53 == 24117248 goto label18;
+
+        $stack54 = t#1 & -268435456;
+
+        if $stack54 == 0 goto label19;
+
+     label18:
+        $stack55#7 = t#1;
+
+        goto label20;
+
+     label19:
+        $stack55#7 = 16777216;
+
+     label20:
+        v#2 = $stack55#7;
+
+        goto label22;
+
+     label21:
+        v#2 = 16777216;
+
+     label22:
+        $stack40#8 = u;
+
+        $stack40#9 = $stack40#8;
+
+        $stack39#10 = v#2;
+
+        $stack39#11 = $stack39#10;
+
+        if $stack40#9 == $stack39#11 goto label23;
+
+        types[index] = v#2;
+
+        return 1;
+
+     label23:
+        return 0;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        char $stack4;
+        int[] b, $stack6;
+        bottom_type i;
+        int $stack3, $stack5, $stack7, i#1, $i0;
+        java.lang.String s;
+
+        <jdk.internal.org.objectweb.asm.Frame: int UNINITIALIZED_THIS> = 16777222;
+
+        <jdk.internal.org.objectweb.asm.Frame: int NULL> = 16777221;
+
+        <jdk.internal.org.objectweb.asm.Frame: int LONG> = 16777220;
+
+        <jdk.internal.org.objectweb.asm.Frame: int DOUBLE> = 16777219;
+
+        <jdk.internal.org.objectweb.asm.Frame: int FLOAT> = 16777218;
+
+        <jdk.internal.org.objectweb.asm.Frame: int INTEGER> = 16777217;
+
+        <jdk.internal.org.objectweb.asm.Frame: int SHORT> = 16777228;
+
+        <jdk.internal.org.objectweb.asm.Frame: int CHAR> = 16777227;
+
+        <jdk.internal.org.objectweb.asm.Frame: int BYTE> = 16777226;
+
+        <jdk.internal.org.objectweb.asm.Frame: int BOOLEAN> = 16777225;
+
+        <jdk.internal.org.objectweb.asm.Frame: int TOP> = 16777216;
+
+        <jdk.internal.org.objectweb.asm.Frame: int STACK> = 50331648;
+
+        <jdk.internal.org.objectweb.asm.Frame: int LOCAL> = 33554432;
+
+        <jdk.internal.org.objectweb.asm.Frame: int UNINITIALIZED> = 25165824;
+
+        <jdk.internal.org.objectweb.asm.Frame: int OBJECT> = 24117248;
+
+        <jdk.internal.org.objectweb.asm.Frame: int BASE> = 16777216;
+
+        <jdk.internal.org.objectweb.asm.Frame: int BASE_VALUE> = 1048575;
+
+        <jdk.internal.org.objectweb.asm.Frame: int BASE_KIND> = 267386880;
+
+        <jdk.internal.org.objectweb.asm.Frame: int VALUE> = 8388607;
+
+        <jdk.internal.org.objectweb.asm.Frame: int TOP_IF_LONG_OR_DOUBLE> = 8388608;
+
+        <jdk.internal.org.objectweb.asm.Frame: int KIND> = 251658240;
+
+        <jdk.internal.org.objectweb.asm.Frame: int ELEMENT_OF> = -268435456;
+
+        <jdk.internal.org.objectweb.asm.Frame: int ARRAY_OF> = 268435456;
+
+        <jdk.internal.org.objectweb.asm.Frame: int DIM> = -268435456;
+
+        b = newarray (int)[202];
+
+        s = "EFFFFFFFFGGFFFGGFFFEEFGFGFEEEEEEEEEEEEEEEEEEEEDEDEDDDDDCDCDEEEEEEEEEEEEEEEEEEEEBABABBBBDCFFFGGGEDCDCDCDCDCDCDCDCDCDCEEEEDDDDDDDCDCDCEFEFDDEEFFDEDEEEBDDBBDDDDDDCCCCCCCCEFEDDDCDCDEEEEEEEEEEFEEEEEEDDEEDDEE";
+
+        i#1 = 0;
+
+     label1:
+        $stack7 = i#1;
+
+        $stack6 = b;
+
+        $stack3 = lengthof $stack6;
+
+        if $stack7 >= $stack3 goto label2;
+
+        $stack4 = virtualinvoke s.<java.lang.String: char charAt(int)>(i#1);
+
+        $i0 = (int) $stack4;
+
+        $stack5 = $i0 - 69;
+
+        b[i#1] = $stack5;
+
+        i#1 = i#1 + 1;
+
+        goto label1;
+
+     label2:
+        <jdk.internal.org.objectweb.asm.Frame: int[] SIZE> = b;
+
+        return;
+    }
+}

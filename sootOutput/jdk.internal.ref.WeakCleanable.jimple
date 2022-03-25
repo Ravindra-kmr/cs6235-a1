@@ -1,0 +1,327 @@
+public abstract class jdk.internal.ref.WeakCleanable extends java.lang.ref.WeakReference implements java.lang.ref.Cleaner$Cleanable
+{
+    jdk.internal.ref.WeakCleanable prev;
+    jdk.internal.ref.WeakCleanable next;
+    private final jdk.internal.ref.WeakCleanable list;
+
+    public void <init>(java.lang.Object, java.lang.ref.Cleaner)
+    {
+        java.lang.ref.Cleaner cleaner;
+        java.lang.ref.ReferenceQueue $stack5;
+        jdk.internal.ref.WeakCleanable this, $stack7;
+        java.lang.Object referent, $stack3;
+        jdk.internal.ref.CleanerImpl $stack4, $stack6;
+
+        this := @this: jdk.internal.ref.WeakCleanable;
+
+        referent := @parameter0: java.lang.Object;
+
+        cleaner := @parameter1: java.lang.ref.Cleaner;
+
+        $stack3 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(referent);
+
+        $stack4 = staticinvoke <jdk.internal.ref.CleanerImpl: jdk.internal.ref.CleanerImpl getCleanerImpl(java.lang.ref.Cleaner)>(cleaner);
+
+        $stack5 = $stack4.<jdk.internal.ref.CleanerImpl: java.lang.ref.ReferenceQueue queue>;
+
+        specialinvoke this.<java.lang.ref.WeakReference: void <init>(java.lang.Object,java.lang.ref.ReferenceQueue)>($stack3, $stack5);
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable prev> = this;
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next> = this;
+
+        $stack6 = staticinvoke <jdk.internal.ref.CleanerImpl: jdk.internal.ref.CleanerImpl getCleanerImpl(java.lang.ref.Cleaner)>(cleaner);
+
+        $stack7 = $stack6.<jdk.internal.ref.CleanerImpl: jdk.internal.ref.WeakCleanable weakCleanableList>;
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list> = $stack7;
+
+        virtualinvoke this.<jdk.internal.ref.WeakCleanable: void insert()>();
+
+        staticinvoke <java.lang.ref.Reference: void reachabilityFence(java.lang.Object)>(referent);
+
+        staticinvoke <java.lang.ref.Reference: void reachabilityFence(java.lang.Object)>(cleaner);
+
+        return;
+
+        nop;
+    }
+
+    void <init>()
+    {
+        jdk.internal.ref.WeakCleanable this;
+
+        this := @this: jdk.internal.ref.WeakCleanable;
+
+        specialinvoke this.<java.lang.ref.WeakReference: void <init>(java.lang.Object,java.lang.ref.ReferenceQueue)>(null, null);
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable prev> = this;
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next> = this;
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list> = this;
+
+        return;
+
+        nop;
+    }
+
+    private void insert()
+    {
+        java.lang.Throwable $stack10, l2;
+        jdk.internal.ref.WeakCleanable this, $stack3, l1, $stack4, $stack5, $stack6, $stack7, $stack8, $stack9, $stack11;
+
+        this := @this: jdk.internal.ref.WeakCleanable;
+
+        $stack3 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list>;
+
+        l1 = $stack3;
+
+        entermonitor $stack3;
+
+     label1:
+        $stack4 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list>;
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable prev> = $stack4;
+
+        $stack5 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list>;
+
+        $stack6 = $stack5.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next>;
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next> = $stack6;
+
+        $stack7 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next>;
+
+        $stack7.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable prev> = this;
+
+        $stack8 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list>;
+
+        $stack8.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next> = this;
+
+        $stack9 = l1;
+
+        exitmonitor $stack9;
+
+     label2:
+        goto label5;
+
+     label3:
+        $stack10 := @caughtexception;
+
+        l2 = $stack10;
+
+        $stack11 = l1;
+
+        exitmonitor $stack11;
+
+     label4:
+        throw l2;
+
+     label5:
+        return;
+
+        nop;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    private boolean remove()
+    {
+        java.lang.Throwable $stack11, l2;
+        jdk.internal.ref.WeakCleanable this, $stack3, l1, $stack4, $stack5, $stack6, $stack7, $stack8, $stack9, $stack10, $stack12;
+
+        this := @this: jdk.internal.ref.WeakCleanable;
+
+        $stack3 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list>;
+
+        l1 = $stack3;
+
+        entermonitor $stack3;
+
+     label1:
+        $stack4 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next>;
+
+        if $stack4 == this goto label3;
+
+        $stack7 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next>;
+
+        $stack6 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable prev>;
+
+        $stack7.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable prev> = $stack6;
+
+        $stack9 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable prev>;
+
+        $stack8 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next>;
+
+        $stack9.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next> = $stack8;
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable prev> = this;
+
+        this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next> = this;
+
+        $stack10 = l1;
+
+        exitmonitor $stack10;
+
+     label2:
+        return 1;
+
+     label3:
+        $stack5 = l1;
+
+        exitmonitor $stack5;
+
+     label4:
+        return 0;
+
+     label5:
+        $stack11 := @caughtexception;
+
+        l2 = $stack11;
+
+        $stack12 = l1;
+
+        exitmonitor $stack12;
+
+     label6:
+        throw l2;
+
+        nop;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    boolean isListEmpty()
+    {
+        java.lang.Throwable $stack9, l2;
+        jdk.internal.ref.WeakCleanable this, $stack3, l1, $stack4, $stack5, $stack6, $stack7, $stack10;
+        bottom_type $stack8;
+        boolean $stack8#1;
+
+        this := @this: jdk.internal.ref.WeakCleanable;
+
+        $stack3 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list>;
+
+        l1 = $stack3;
+
+        entermonitor $stack3;
+
+     label1:
+        $stack6 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list>;
+
+        $stack4 = this.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable list>;
+
+        $stack5 = $stack4.<jdk.internal.ref.WeakCleanable: jdk.internal.ref.WeakCleanable next>;
+
+        if $stack6 != $stack5 goto label2;
+
+        $stack8#1 = 1;
+
+        goto label3;
+
+     label2:
+        $stack8#1 = 0;
+
+     label3:
+        $stack7 = l1;
+
+        exitmonitor $stack7;
+
+     label4:
+        return $stack8#1;
+
+     label5:
+        $stack9 := @caughtexception;
+
+        l2 = $stack9;
+
+        $stack10 = l1;
+
+        exitmonitor $stack10;
+
+     label6:
+        throw l2;
+
+        nop;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public final void clean()
+    {
+        jdk.internal.ref.WeakCleanable this;
+        boolean $stack1;
+
+        this := @this: jdk.internal.ref.WeakCleanable;
+
+        $stack1 = virtualinvoke this.<jdk.internal.ref.WeakCleanable: boolean remove()>();
+
+        if $stack1 == 0 goto label1;
+
+        specialinvoke this.<java.lang.ref.WeakReference: void clear()>();
+
+        virtualinvoke this.<jdk.internal.ref.WeakCleanable: void performCleanup()>();
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void clear()
+    {
+        jdk.internal.ref.WeakCleanable this;
+        boolean $stack1;
+
+        this := @this: jdk.internal.ref.WeakCleanable;
+
+        $stack1 = virtualinvoke this.<jdk.internal.ref.WeakCleanable: boolean remove()>();
+
+        if $stack1 == 0 goto label1;
+
+        specialinvoke this.<java.lang.ref.WeakReference: void clear()>();
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    protected abstract void performCleanup();
+
+    public final boolean isEnqueued()
+    {
+        java.lang.UnsupportedOperationException $stack1;
+        jdk.internal.ref.WeakCleanable this;
+
+        this := @this: jdk.internal.ref.WeakCleanable;
+
+        $stack1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $stack1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("isEnqueued");
+
+        throw $stack1;
+
+        nop;
+    }
+
+    public final boolean enqueue()
+    {
+        java.lang.UnsupportedOperationException $stack1;
+        jdk.internal.ref.WeakCleanable this;
+
+        this := @this: jdk.internal.ref.WeakCleanable;
+
+        $stack1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $stack1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("enqueue");
+
+        throw $stack1;
+
+        nop;
+    }
+}

@@ -1,0 +1,296 @@
+public final class jdk.internal.module.ModuleLoaderMap extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        jdk.internal.module.ModuleLoaderMap this;
+
+        this := @this: jdk.internal.module.ModuleLoaderMap;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public static java.util.Set bootModules()
+    {
+        java.lang.String[] $stack6, BOOT_MODULES, l2;
+        java.util.HashSet $stack7, bootModules;
+        bottom_type l4;
+        int $stack8, l3, $stack10, $stack11, l4#1;
+        java.lang.String mn;
+        boolean $stack9;
+
+        $stack6 = newarray (java.lang.String)[22];
+
+        $stack6[0] = "java.base";
+
+        $stack6[1] = "java.datatransfer";
+
+        $stack6[2] = "java.desktop";
+
+        $stack6[3] = "java.instrument";
+
+        $stack6[4] = "java.logging";
+
+        $stack6[5] = "java.management";
+
+        $stack6[6] = "java.management.rmi";
+
+        $stack6[7] = "java.naming";
+
+        $stack6[8] = "java.prefs";
+
+        $stack6[9] = "java.rmi";
+
+        $stack6[10] = "java.security.sasl";
+
+        $stack6[11] = "java.xml";
+
+        $stack6[12] = "jdk.internal.vm.ci";
+
+        $stack6[13] = "jdk.jfr";
+
+        $stack6[14] = "jdk.management";
+
+        $stack6[15] = "jdk.management.agent";
+
+        $stack6[16] = "jdk.management.jfr";
+
+        $stack6[17] = "jdk.naming.ldap";
+
+        $stack6[18] = "jdk.naming.rmi";
+
+        $stack6[19] = "jdk.net";
+
+        $stack6[20] = "jdk.sctp";
+
+        $stack6[21] = "jdk.unsupported";
+
+        BOOT_MODULES = $stack6;
+
+        $stack7 = new java.util.HashSet;
+
+        $stack8 = lengthof BOOT_MODULES;
+
+        specialinvoke $stack7.<java.util.HashSet: void <init>(int)>($stack8);
+
+        bootModules = $stack7;
+
+        l2 = BOOT_MODULES;
+
+        l3 = lengthof l2;
+
+        l4#1 = 0;
+
+     label1:
+        $stack11 = l4#1;
+
+        $stack10 = l3;
+
+        if $stack11 >= $stack10 goto label2;
+
+        mn = l2[l4#1];
+
+        $stack9 = interfaceinvoke bootModules.<java.util.Set: boolean add(java.lang.Object)>(mn);
+
+        l4#1 = l4#1 + 1;
+
+        goto label1;
+
+     label2:
+        return bootModules;
+
+        nop;
+    }
+
+    public static java.util.Set platformModules()
+    {
+        java.lang.String[] $stack6, PLATFORM_MODULES, l2;
+        java.util.HashSet $stack7, platformModules;
+        bottom_type l4;
+        int $stack8, l3, $stack10, $stack11, l4#1;
+        java.lang.String mn;
+        boolean $stack9;
+
+        $stack6 = newarray (java.lang.String)[27];
+
+        $stack6[0] = "java.compiler";
+
+        $stack6[1] = "java.net.http";
+
+        $stack6[2] = "java.scripting";
+
+        $stack6[3] = "java.se";
+
+        $stack6[4] = "java.security.jgss";
+
+        $stack6[5] = "java.smartcardio";
+
+        $stack6[6] = "java.sql";
+
+        $stack6[7] = "java.sql.rowset";
+
+        $stack6[8] = "java.transaction.xa";
+
+        $stack6[9] = "java.xml.crypto";
+
+        $stack6[10] = "jdk.accessibility";
+
+        $stack6[11] = "jdk.aot";
+
+        $stack6[12] = "jdk.charsets";
+
+        $stack6[13] = "jdk.crypto.cryptoki";
+
+        $stack6[14] = "jdk.crypto.ec";
+
+        $stack6[15] = "jdk.dynalink";
+
+        $stack6[16] = "jdk.httpserver";
+
+        $stack6[17] = "jdk.internal.vm.compiler";
+
+        $stack6[18] = "jdk.internal.vm.compiler.management";
+
+        $stack6[19] = "jdk.jsobject";
+
+        $stack6[20] = "jdk.localedata";
+
+        $stack6[21] = "jdk.naming.dns";
+
+        $stack6[22] = "jdk.scripting.nashorn";
+
+        $stack6[23] = "jdk.security.auth";
+
+        $stack6[24] = "jdk.security.jgss";
+
+        $stack6[25] = "jdk.xml.dom";
+
+        $stack6[26] = "jdk.zipfs";
+
+        PLATFORM_MODULES = $stack6;
+
+        $stack7 = new java.util.HashSet;
+
+        $stack8 = lengthof PLATFORM_MODULES;
+
+        specialinvoke $stack7.<java.util.HashSet: void <init>(int)>($stack8);
+
+        platformModules = $stack7;
+
+        l2 = PLATFORM_MODULES;
+
+        l3 = lengthof l2;
+
+        l4#1 = 0;
+
+     label1:
+        $stack11 = l4#1;
+
+        $stack10 = l3;
+
+        if $stack11 >= $stack10 goto label2;
+
+        mn = l2[l4#1];
+
+        $stack9 = interfaceinvoke platformModules.<java.util.Set: boolean add(java.lang.Object)>(mn);
+
+        l4#1 = l4#1 + 1;
+
+        goto label1;
+
+     label2:
+        return platformModules;
+
+        nop;
+    }
+
+    static java.util.function.Function mappingFunction(java.lang.module.Configuration)
+    {
+        java.util.HashMap $stack13, map;
+        java.lang.module.ResolvedModule resolvedModule;
+        java.lang.String $stack19, mn;
+        boolean $stack16, $stack20, $stack22;
+        java.util.Iterator $stack15, l6, $stack21;
+        java.util.Set $stack9, bootModules, $stack10, platformModules, $stack14;
+        java.lang.module.Configuration cf;
+        jdk.internal.module.ModuleLoaderMap$Mapper $stack17;
+        java.lang.Object $stack18, $stack23, $stack24;
+        java.lang.ClassLoader $stack11, platformClassLoader, $stack12, appClassLoader;
+
+        cf := @parameter0: java.lang.module.Configuration;
+
+        $stack9 = staticinvoke <jdk.internal.module.ModuleLoaderMap: java.util.Set bootModules()>();
+
+        bootModules = $stack9;
+
+        $stack10 = staticinvoke <jdk.internal.module.ModuleLoaderMap: java.util.Set platformModules()>();
+
+        platformModules = $stack10;
+
+        $stack11 = staticinvoke <jdk.internal.loader.ClassLoaders: java.lang.ClassLoader platformClassLoader()>();
+
+        platformClassLoader = $stack11;
+
+        $stack12 = staticinvoke <jdk.internal.loader.ClassLoaders: java.lang.ClassLoader appClassLoader()>();
+
+        appClassLoader = $stack12;
+
+        $stack13 = new java.util.HashMap;
+
+        specialinvoke $stack13.<java.util.HashMap: void <init>()>();
+
+        map = $stack13;
+
+        $stack14 = virtualinvoke cf.<java.lang.module.Configuration: java.util.Set modules()>();
+
+        $stack15 = interfaceinvoke $stack14.<java.util.Set: java.util.Iterator iterator()>();
+
+        l6 = $stack15;
+
+     label1:
+        $stack21 = l6;
+
+        $stack16 = interfaceinvoke $stack21.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack16 == 0 goto label4;
+
+        $stack18 = interfaceinvoke l6.<java.util.Iterator: java.lang.Object next()>();
+
+        resolvedModule = (java.lang.module.ResolvedModule) $stack18;
+
+        $stack19 = virtualinvoke resolvedModule.<java.lang.module.ResolvedModule: java.lang.String name()>();
+
+        mn = $stack19;
+
+        $stack20 = interfaceinvoke bootModules.<java.util.Set: boolean contains(java.lang.Object)>(mn);
+
+        if $stack20 != 0 goto label3;
+
+        $stack22 = interfaceinvoke platformModules.<java.util.Set: boolean contains(java.lang.Object)>(mn);
+
+        if $stack22 == 0 goto label2;
+
+        $stack24 = interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(mn, platformClassLoader);
+
+        goto label3;
+
+     label2:
+        $stack23 = interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(mn, appClassLoader);
+
+     label3:
+        goto label1;
+
+     label4:
+        $stack17 = new jdk.internal.module.ModuleLoaderMap$Mapper;
+
+        specialinvoke $stack17.<jdk.internal.module.ModuleLoaderMap$Mapper: void <init>(java.util.Map)>(map);
+
+        return $stack17;
+
+        nop;
+    }
+}

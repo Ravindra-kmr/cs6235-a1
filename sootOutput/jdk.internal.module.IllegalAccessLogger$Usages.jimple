@@ -1,0 +1,77 @@
+class jdk.internal.module.IllegalAccessLogger$Usages extends java.util.LinkedHashMap
+{
+
+    void <init>()
+    {
+        jdk.internal.module.IllegalAccessLogger$Usages this;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger$Usages;
+
+        specialinvoke this.<java.util.LinkedHashMap: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    boolean add(jdk.internal.module.IllegalAccessLogger$Usage)
+    {
+        jdk.internal.module.IllegalAccessLogger$Usages this;
+        jdk.internal.module.IllegalAccessLogger$Usage u;
+        bottom_type $stack4;
+        java.lang.Boolean $stack2;
+        java.lang.Object $stack3;
+        boolean $stack4#1;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger$Usages;
+
+        u := @parameter0: jdk.internal.module.IllegalAccessLogger$Usage;
+
+        $stack2 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        $stack3 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger$Usages: java.lang.Object putIfAbsent(java.lang.Object,java.lang.Object)>(u, $stack2);
+
+        if $stack3 != null goto label1;
+
+        $stack4#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack4#1 = 0;
+
+     label2:
+        return $stack4#1;
+
+        nop;
+    }
+
+    protected boolean removeEldestEntry(java.util.Map$Entry)
+    {
+        java.util.Map$Entry oldest;
+        jdk.internal.module.IllegalAccessLogger$Usages this;
+        bottom_type $stack3;
+        int $stack2;
+        boolean $stack3#1;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger$Usages;
+
+        oldest := @parameter0: java.util.Map$Entry;
+
+        $stack2 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger$Usages: int size()>();
+
+        if $stack2 <= 16 goto label1;
+
+        $stack3#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = 0;
+
+     label2:
+        return $stack3#1;
+
+        nop;
+    }
+}

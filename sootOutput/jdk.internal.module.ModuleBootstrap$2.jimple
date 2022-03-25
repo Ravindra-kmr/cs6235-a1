@@ -1,0 +1,107 @@
+class jdk.internal.module.ModuleBootstrap$2 extends java.lang.Object implements java.util.Iterator
+{
+    final java.util.Iterator val$iterator1;
+    final java.util.Iterator val$iterator2;
+
+    void <init>(java.util.Iterator, java.util.Iterator)
+    {
+        jdk.internal.module.ModuleBootstrap$2 this;
+        java.util.Iterator l1, l2;
+
+        this := @this: jdk.internal.module.ModuleBootstrap$2;
+
+        l1 := @parameter0: java.util.Iterator;
+
+        l2 := @parameter1: java.util.Iterator;
+
+        this.<jdk.internal.module.ModuleBootstrap$2: java.util.Iterator val$iterator1> = l1;
+
+        this.<jdk.internal.module.ModuleBootstrap$2: java.util.Iterator val$iterator2> = l2;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public boolean hasNext()
+    {
+        java.util.Iterator $stack1, $stack3;
+        bottom_type $stack5;
+        jdk.internal.module.ModuleBootstrap$2 this;
+        boolean $stack2, $stack4, $stack5#1;
+
+        this := @this: jdk.internal.module.ModuleBootstrap$2;
+
+        $stack1 = this.<jdk.internal.module.ModuleBootstrap$2: java.util.Iterator val$iterator1>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack2 != 0 goto label1;
+
+        $stack3 = this.<jdk.internal.module.ModuleBootstrap$2: java.util.Iterator val$iterator2>;
+
+        $stack4 = interfaceinvoke $stack3.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack4 == 0 goto label2;
+
+     label1:
+        $stack5#1 = 1;
+
+        goto label3;
+
+     label2:
+        $stack5#1 = 0;
+
+     label3:
+        return $stack5#1;
+
+        nop;
+    }
+
+    public java.lang.Object next()
+    {
+        java.util.Iterator $stack1, $stack3, $stack6, $stack8;
+        jdk.internal.module.ModuleBootstrap$2 this;
+        java.lang.Object $stack7, $stack9;
+        java.util.NoSuchElementException $stack5;
+        boolean $stack2, $stack4;
+
+        this := @this: jdk.internal.module.ModuleBootstrap$2;
+
+        $stack1 = this.<jdk.internal.module.ModuleBootstrap$2: java.util.Iterator val$iterator1>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack2 == 0 goto label1;
+
+        $stack8 = this.<jdk.internal.module.ModuleBootstrap$2: java.util.Iterator val$iterator1>;
+
+        $stack9 = interfaceinvoke $stack8.<java.util.Iterator: java.lang.Object next()>();
+
+        return $stack9;
+
+     label1:
+        $stack3 = this.<jdk.internal.module.ModuleBootstrap$2: java.util.Iterator val$iterator2>;
+
+        $stack4 = interfaceinvoke $stack3.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack4 == 0 goto label2;
+
+        $stack6 = this.<jdk.internal.module.ModuleBootstrap$2: java.util.Iterator val$iterator2>;
+
+        $stack7 = interfaceinvoke $stack6.<java.util.Iterator: java.lang.Object next()>();
+
+        return $stack7;
+
+     label2:
+        $stack5 = new java.util.NoSuchElementException;
+
+        specialinvoke $stack5.<java.util.NoSuchElementException: void <init>()>();
+
+        throw $stack5;
+
+        nop;
+    }
+}

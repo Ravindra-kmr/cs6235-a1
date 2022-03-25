@@ -1,0 +1,685 @@
+final class jdk.internal.module.Builder extends java.lang.Object
+{
+    private static final jdk.internal.misc.JavaLangModuleAccess JLMA;
+    static java.lang.module.ModuleDescriptor$Version cachedVersion;
+    final java.lang.String name;
+    boolean open;
+    boolean synthetic;
+    boolean mandated;
+    java.util.Set requires;
+    java.util.Set exports;
+    java.util.Set opens;
+    java.util.Set packages;
+    java.util.Set uses;
+    java.util.Set provides;
+    java.lang.module.ModuleDescriptor$Version version;
+    java.lang.String mainClass;
+    static final boolean $assertionsDisabled;
+
+    public static java.lang.module.ModuleDescriptor$Requires newRequires(java.util.Set, java.lang.String, java.lang.String)
+    {
+        jdk.internal.misc.JavaLangModuleAccess $stack5#2, $stack5#3;
+        bottom_type version, $stack5, $stack6, $stack8, $stack9, $stack10;
+        java.lang.String compiledVersion, mn, $stack11, $stack13, $stack9#6, $stack9#7;
+        java.lang.module.ModuleDescriptor$Requires $stack6#10, $stack6#11;
+        boolean $stack12;
+        java.lang.module.ModuleDescriptor$Version ver, $stack7, version#1, $stack10#8, $stack10#9;
+        java.util.Set mods, $stack8#4, $stack8#5;
+
+        mods := @parameter0: java.util.Set;
+
+        mn := @parameter1: java.lang.String;
+
+        compiledVersion := @parameter2: java.lang.String;
+
+        version#1 = null;
+
+        if compiledVersion == null goto label2;
+
+        ver = <jdk.internal.module.Builder: java.lang.module.ModuleDescriptor$Version cachedVersion>;
+
+        if ver == null goto label1;
+
+        $stack11 = virtualinvoke ver.<java.lang.module.ModuleDescriptor$Version: java.lang.String toString()>();
+
+        $stack12 = virtualinvoke compiledVersion.<java.lang.String: boolean equals(java.lang.Object)>($stack11);
+
+        if $stack12 == 0 goto label1;
+
+        version#1 = ver;
+
+        goto label2;
+
+     label1:
+        $stack13 = compiledVersion;
+
+        $stack7 = staticinvoke <java.lang.module.ModuleDescriptor$Version: java.lang.module.ModuleDescriptor$Version parse(java.lang.String)>($stack13);
+
+        version#1 = $stack7;
+
+     label2:
+        $stack5#2 = <jdk.internal.module.Builder: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        $stack5#3 = $stack5#2;
+
+        $stack8#4 = mods;
+
+        $stack8#5 = $stack8#4;
+
+        $stack9#6 = mn;
+
+        $stack9#7 = $stack9#6;
+
+        $stack10#8 = version#1;
+
+        $stack10#9 = $stack10#8;
+
+        $stack6#10 = interfaceinvoke $stack5#3.<jdk.internal.misc.JavaLangModuleAccess: java.lang.module.ModuleDescriptor$Requires newRequires(java.util.Set,java.lang.String,java.lang.module.ModuleDescriptor$Version)>($stack8#5, $stack9#7, $stack10#9);
+
+        $stack6#11 = $stack6#10;
+
+        return $stack6#11;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleDescriptor$Requires newRequires(java.util.Set, java.lang.String)
+    {
+        java.util.Set mods;
+        java.lang.String mn;
+        java.lang.module.ModuleDescriptor$Requires $stack2;
+
+        mods := @parameter0: java.util.Set;
+
+        mn := @parameter1: java.lang.String;
+
+        $stack2 = staticinvoke <jdk.internal.module.Builder: java.lang.module.ModuleDescriptor$Requires newRequires(java.util.Set,java.lang.String,java.lang.String)>(mods, mn, null);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleDescriptor$Exports newExports(java.util.Set, java.lang.String, java.util.Set)
+    {
+        java.util.Set ms, targets;
+        jdk.internal.misc.JavaLangModuleAccess $stack3;
+        java.lang.String pn;
+        java.lang.module.ModuleDescriptor$Exports $stack4;
+
+        ms := @parameter0: java.util.Set;
+
+        pn := @parameter1: java.lang.String;
+
+        targets := @parameter2: java.util.Set;
+
+        $stack3 = <jdk.internal.module.Builder: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        $stack4 = interfaceinvoke $stack3.<jdk.internal.misc.JavaLangModuleAccess: java.lang.module.ModuleDescriptor$Exports newExports(java.util.Set,java.lang.String,java.util.Set)>(ms, pn, targets);
+
+        return $stack4;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleDescriptor$Opens newOpens(java.util.Set, java.lang.String)
+    {
+        java.util.Set ms;
+        jdk.internal.misc.JavaLangModuleAccess $stack2;
+        java.lang.String pn;
+        java.lang.module.ModuleDescriptor$Opens $stack3;
+
+        ms := @parameter0: java.util.Set;
+
+        pn := @parameter1: java.lang.String;
+
+        $stack2 = <jdk.internal.module.Builder: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        $stack3 = interfaceinvoke $stack2.<jdk.internal.misc.JavaLangModuleAccess: java.lang.module.ModuleDescriptor$Opens newOpens(java.util.Set,java.lang.String)>(ms, pn);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleDescriptor$Opens newOpens(java.util.Set, java.lang.String, java.util.Set)
+    {
+        java.util.Set ms, targets;
+        jdk.internal.misc.JavaLangModuleAccess $stack3;
+        java.lang.String pn;
+        java.lang.module.ModuleDescriptor$Opens $stack4;
+
+        ms := @parameter0: java.util.Set;
+
+        pn := @parameter1: java.lang.String;
+
+        targets := @parameter2: java.util.Set;
+
+        $stack3 = <jdk.internal.module.Builder: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        $stack4 = interfaceinvoke $stack3.<jdk.internal.misc.JavaLangModuleAccess: java.lang.module.ModuleDescriptor$Opens newOpens(java.util.Set,java.lang.String,java.util.Set)>(ms, pn, targets);
+
+        return $stack4;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleDescriptor$Exports newExports(java.util.Set, java.lang.String)
+    {
+        java.util.Set ms;
+        jdk.internal.misc.JavaLangModuleAccess $stack2;
+        java.lang.String pn;
+        java.lang.module.ModuleDescriptor$Exports $stack3;
+
+        ms := @parameter0: java.util.Set;
+
+        pn := @parameter1: java.lang.String;
+
+        $stack2 = <jdk.internal.module.Builder: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        $stack3 = interfaceinvoke $stack2.<jdk.internal.misc.JavaLangModuleAccess: java.lang.module.ModuleDescriptor$Exports newExports(java.util.Set,java.lang.String)>(ms, pn);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleDescriptor$Provides newProvides(java.lang.String, java.util.List)
+    {
+        java.util.List pcs;
+        java.lang.module.ModuleDescriptor$Provides $stack3;
+        jdk.internal.misc.JavaLangModuleAccess $stack2;
+        java.lang.String st;
+
+        st := @parameter0: java.lang.String;
+
+        pcs := @parameter1: java.util.List;
+
+        $stack2 = <jdk.internal.module.Builder: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        $stack3 = interfaceinvoke $stack2.<jdk.internal.misc.JavaLangModuleAccess: java.lang.module.ModuleDescriptor$Provides newProvides(java.lang.String,java.util.List)>(st, pcs);
+
+        return $stack3;
+
+        nop;
+    }
+
+    void <init>(java.lang.String)
+    {
+        jdk.internal.module.Builder this;
+        java.util.Set $stack2, $stack3, $stack4, $stack5, $stack6;
+        java.lang.String name;
+
+        this := @this: jdk.internal.module.Builder;
+
+        name := @parameter0: java.lang.String;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.module.Builder: java.lang.String name> = name;
+
+        $stack2 = staticinvoke <java.util.Set: java.util.Set of()>();
+
+        this.<jdk.internal.module.Builder: java.util.Set requires> = $stack2;
+
+        $stack3 = staticinvoke <java.util.Set: java.util.Set of()>();
+
+        this.<jdk.internal.module.Builder: java.util.Set exports> = $stack3;
+
+        $stack4 = staticinvoke <java.util.Set: java.util.Set of()>();
+
+        this.<jdk.internal.module.Builder: java.util.Set opens> = $stack4;
+
+        $stack5 = staticinvoke <java.util.Set: java.util.Set of()>();
+
+        this.<jdk.internal.module.Builder: java.util.Set provides> = $stack5;
+
+        $stack6 = staticinvoke <java.util.Set: java.util.Set of()>();
+
+        this.<jdk.internal.module.Builder: java.util.Set uses> = $stack6;
+
+        return;
+
+        nop;
+    }
+
+    jdk.internal.module.Builder open(boolean)
+    {
+        jdk.internal.module.Builder this;
+        boolean value;
+
+        this := @this: jdk.internal.module.Builder;
+
+        value := @parameter0: boolean;
+
+        this.<jdk.internal.module.Builder: boolean open> = value;
+
+        return this;
+
+        nop;
+    }
+
+    jdk.internal.module.Builder synthetic(boolean)
+    {
+        jdk.internal.module.Builder this;
+        boolean value;
+
+        this := @this: jdk.internal.module.Builder;
+
+        value := @parameter0: boolean;
+
+        this.<jdk.internal.module.Builder: boolean synthetic> = value;
+
+        return this;
+
+        nop;
+    }
+
+    jdk.internal.module.Builder mandated(boolean)
+    {
+        jdk.internal.module.Builder this;
+        boolean value;
+
+        this := @this: jdk.internal.module.Builder;
+
+        value := @parameter0: boolean;
+
+        this.<jdk.internal.module.Builder: boolean mandated> = value;
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.module.Builder exports(java.lang.module.ModuleDescriptor$Exports[])
+    {
+        jdk.internal.module.Builder this;
+        java.lang.module.ModuleDescriptor$Exports[] exports;
+        java.util.Set $stack2;
+
+        this := @this: jdk.internal.module.Builder;
+
+        exports := @parameter0: java.lang.module.ModuleDescriptor$Exports[];
+
+        $stack2 = staticinvoke <java.util.Set: java.util.Set of(java.lang.Object[])>(exports);
+
+        this.<jdk.internal.module.Builder: java.util.Set exports> = $stack2;
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.module.Builder opens(java.lang.module.ModuleDescriptor$Opens[])
+    {
+        jdk.internal.module.Builder this;
+        java.lang.module.ModuleDescriptor$Opens[] opens;
+        java.util.Set $stack2;
+
+        this := @this: jdk.internal.module.Builder;
+
+        opens := @parameter0: java.lang.module.ModuleDescriptor$Opens[];
+
+        $stack2 = staticinvoke <java.util.Set: java.util.Set of(java.lang.Object[])>(opens);
+
+        this.<jdk.internal.module.Builder: java.util.Set opens> = $stack2;
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.module.Builder requires(java.lang.module.ModuleDescriptor$Requires[])
+    {
+        jdk.internal.module.Builder this;
+        java.lang.module.ModuleDescriptor$Requires[] requires;
+        java.util.Set $stack2;
+
+        this := @this: jdk.internal.module.Builder;
+
+        requires := @parameter0: java.lang.module.ModuleDescriptor$Requires[];
+
+        $stack2 = staticinvoke <java.util.Set: java.util.Set of(java.lang.Object[])>(requires);
+
+        this.<jdk.internal.module.Builder: java.util.Set requires> = $stack2;
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.module.Builder packages(java.util.Set)
+    {
+        jdk.internal.module.Builder this;
+        java.util.Set packages;
+
+        this := @this: jdk.internal.module.Builder;
+
+        packages := @parameter0: java.util.Set;
+
+        this.<jdk.internal.module.Builder: java.util.Set packages> = packages;
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.module.Builder uses(java.util.Set)
+    {
+        jdk.internal.module.Builder this;
+        java.util.Set uses;
+
+        this := @this: jdk.internal.module.Builder;
+
+        uses := @parameter0: java.util.Set;
+
+        this.<jdk.internal.module.Builder: java.util.Set uses> = uses;
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.module.Builder provides(java.lang.module.ModuleDescriptor$Provides[])
+    {
+        jdk.internal.module.Builder this;
+        java.lang.module.ModuleDescriptor$Provides[] provides;
+        java.util.Set $stack2;
+
+        this := @this: jdk.internal.module.Builder;
+
+        provides := @parameter0: java.lang.module.ModuleDescriptor$Provides[];
+
+        $stack2 = staticinvoke <java.util.Set: java.util.Set of(java.lang.Object[])>(provides);
+
+        this.<jdk.internal.module.Builder: java.util.Set provides> = $stack2;
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.module.Builder version(java.lang.String)
+    {
+        java.lang.module.ModuleDescriptor$Version ver, $stack3;
+        jdk.internal.module.Builder this, $stack7, $stack8#1, $stack8#2;
+        bottom_type $stack8;
+        java.lang.String v, $stack4, $stack6;
+        boolean $stack5;
+
+        this := @this: jdk.internal.module.Builder;
+
+        v := @parameter0: java.lang.String;
+
+        ver = <jdk.internal.module.Builder: java.lang.module.ModuleDescriptor$Version cachedVersion>;
+
+        if ver == null goto label1;
+
+        $stack4 = virtualinvoke ver.<java.lang.module.ModuleDescriptor$Version: java.lang.String toString()>();
+
+        $stack5 = virtualinvoke v.<java.lang.String: boolean equals(java.lang.Object)>($stack4);
+
+        if $stack5 == 0 goto label1;
+
+        this.<jdk.internal.module.Builder: java.lang.module.ModuleDescriptor$Version version> = ver;
+
+        goto label2;
+
+     label1:
+        $stack7 = this;
+
+        $stack6 = v;
+
+        $stack3 = staticinvoke <java.lang.module.ModuleDescriptor$Version: java.lang.module.ModuleDescriptor$Version parse(java.lang.String)>($stack6);
+
+        $stack7.<jdk.internal.module.Builder: java.lang.module.ModuleDescriptor$Version version> = $stack3;
+
+        <jdk.internal.module.Builder: java.lang.module.ModuleDescriptor$Version cachedVersion> = $stack3;
+
+     label2:
+        $stack8#1 = this;
+
+        $stack8#2 = $stack8#1;
+
+        return $stack8#2;
+
+        nop;
+    }
+
+    public jdk.internal.module.Builder mainClass(java.lang.String)
+    {
+        jdk.internal.module.Builder this;
+        java.lang.String mc;
+
+        this := @this: jdk.internal.module.Builder;
+
+        mc := @parameter0: java.lang.String;
+
+        this.<jdk.internal.module.Builder: java.lang.String mainClass> = mc;
+
+        return this;
+
+        nop;
+    }
+
+    private java.util.Set modifiers()
+    {
+        jdk.internal.module.Builder this, $stack13, $stack15, $stack18, $stack19;
+        byte $b0, $b1, $b2;
+        bottom_type n;
+        int $stack17, n#1, n#2, $i0, $i1, $i2;
+        boolean $stack3, $stack4, $stack5, $stack6, $stack7, $stack8;
+        java.lang.module.ModuleDescriptor$Modifier $stack10, $stack12, $stack14;
+        java.util.Set $stack9, $stack16;
+        java.lang.module.ModuleDescriptor$Modifier[] mods, $stack11;
+
+        this := @this: jdk.internal.module.Builder;
+
+        n#1 = 0;
+
+        $stack3 = this.<jdk.internal.module.Builder: boolean open>;
+
+        if $stack3 == 0 goto label1;
+
+        n#1 = n#1 + 1;
+
+     label1:
+        $stack19 = this;
+
+        $stack4 = $stack19.<jdk.internal.module.Builder: boolean synthetic>;
+
+        if $stack4 == 0 goto label2;
+
+        n#1 = n#1 + 1;
+
+     label2:
+        $stack18 = this;
+
+        $stack5 = $stack18.<jdk.internal.module.Builder: boolean mandated>;
+
+        if $stack5 == 0 goto label3;
+
+        n#1 = n#1 + 1;
+
+     label3:
+        $stack17 = n#1;
+
+        if $stack17 != 0 goto label4;
+
+        $stack16 = staticinvoke <java.util.Set: java.util.Set of()>();
+
+        return $stack16;
+
+     label4:
+        mods = newarray (java.lang.module.ModuleDescriptor$Modifier)[n#1];
+
+        $stack6 = this.<jdk.internal.module.Builder: boolean open>;
+
+        if $stack6 == 0 goto label5;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        n#1 = n#1 + $i0;
+
+        $stack14 = <java.lang.module.ModuleDescriptor$Modifier: java.lang.module.ModuleDescriptor$Modifier OPEN>;
+
+        mods[n#1] = $stack14;
+
+     label5:
+        $stack15 = this;
+
+        $stack7 = $stack15.<jdk.internal.module.Builder: boolean synthetic>;
+
+        if $stack7 == 0 goto label6;
+
+        $b1 = -1;
+
+        $i1 = (int) $b1;
+
+        n#1 = n#1 + $i1;
+
+        $stack12 = <java.lang.module.ModuleDescriptor$Modifier: java.lang.module.ModuleDescriptor$Modifier SYNTHETIC>;
+
+        mods[n#1] = $stack12;
+
+     label6:
+        $stack13 = this;
+
+        $stack8 = $stack13.<jdk.internal.module.Builder: boolean mandated>;
+
+        if $stack8 == 0 goto label7;
+
+        $b2 = -1;
+
+        $i2 = (int) $b2;
+
+        n#2 = n#1 + $i2;
+
+        $stack10 = <java.lang.module.ModuleDescriptor$Modifier: java.lang.module.ModuleDescriptor$Modifier MANDATED>;
+
+        mods[n#2] = $stack10;
+
+     label7:
+        $stack11 = mods;
+
+        $stack9 = staticinvoke <java.util.Set: java.util.Set of(java.lang.Object[])>($stack11);
+
+        return $stack9;
+
+        nop;
+    }
+
+    public java.lang.module.ModuleDescriptor build(int)
+    {
+        java.lang.module.ModuleDescriptor $stack14;
+        jdk.internal.misc.JavaLangModuleAccess $stack3;
+        java.lang.AssertionError $stack27;
+        jdk.internal.module.Builder this, $stack16, $stack17, $stack18, $stack19, $stack20, $stack21, $stack22, $stack23, $stack24, $stack25;
+        int hashCode, $stack26;
+        java.lang.String $stack4, $stack7, $stack15;
+        boolean $stack2;
+        java.lang.module.ModuleDescriptor$Version $stack5;
+        java.util.Set $stack6, $stack8, $stack9, $stack10, $stack11, $stack12, $stack13;
+
+        this := @this: jdk.internal.module.Builder;
+
+        hashCode := @parameter0: int;
+
+        $stack2 = <jdk.internal.module.Builder: boolean $assertionsDisabled>;
+
+        if $stack2 != 0 goto label1;
+
+        $stack15 = this.<jdk.internal.module.Builder: java.lang.String name>;
+
+        if $stack15 != null goto label1;
+
+        $stack27 = new java.lang.AssertionError;
+
+        specialinvoke $stack27.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack27;
+
+     label1:
+        $stack3 = <jdk.internal.module.Builder: jdk.internal.misc.JavaLangModuleAccess JLMA>;
+
+        $stack16 = this;
+
+        $stack4 = $stack16.<jdk.internal.module.Builder: java.lang.String name>;
+
+        $stack17 = this;
+
+        $stack5 = $stack17.<jdk.internal.module.Builder: java.lang.module.ModuleDescriptor$Version version>;
+
+        $stack18 = this;
+
+        $stack6 = virtualinvoke $stack18.<jdk.internal.module.Builder: java.util.Set modifiers()>();
+
+        $stack19 = this;
+
+        $stack13 = $stack19.<jdk.internal.module.Builder: java.util.Set requires>;
+
+        $stack20 = this;
+
+        $stack12 = $stack20.<jdk.internal.module.Builder: java.util.Set exports>;
+
+        $stack21 = this;
+
+        $stack11 = $stack21.<jdk.internal.module.Builder: java.util.Set opens>;
+
+        $stack22 = this;
+
+        $stack10 = $stack22.<jdk.internal.module.Builder: java.util.Set uses>;
+
+        $stack23 = this;
+
+        $stack9 = $stack23.<jdk.internal.module.Builder: java.util.Set provides>;
+
+        $stack24 = this;
+
+        $stack8 = $stack24.<jdk.internal.module.Builder: java.util.Set packages>;
+
+        $stack25 = this;
+
+        $stack7 = $stack25.<jdk.internal.module.Builder: java.lang.String mainClass>;
+
+        $stack26 = hashCode;
+
+        $stack14 = interfaceinvoke $stack3.<jdk.internal.misc.JavaLangModuleAccess: java.lang.module.ModuleDescriptor newModuleDescriptor(java.lang.String,java.lang.module.ModuleDescriptor$Version,java.util.Set,java.util.Set,java.util.Set,java.util.Set,java.util.Set,java.util.Set,java.util.Set,java.lang.String,int)>($stack4, $stack5, $stack6, $stack13, $stack12, $stack11, $stack10, $stack9, $stack8, $stack7, $stack26);
+
+        return $stack14;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack3;
+        java.lang.Class $stack0;
+        jdk.internal.misc.JavaLangModuleAccess $stack2;
+        boolean $stack1, $stack3#1;
+
+        $stack0 = class "Ljdk/internal/module/Builder;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack3#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = 0;
+
+     label2:
+        <jdk.internal.module.Builder: boolean $assertionsDisabled> = $stack3#1;
+
+        $stack2 = staticinvoke <jdk.internal.misc.SharedSecrets: jdk.internal.misc.JavaLangModuleAccess getJavaLangModuleAccess()>();
+
+        <jdk.internal.module.Builder: jdk.internal.misc.JavaLangModuleAccess JLMA> = $stack2;
+
+        return;
+    }
+}

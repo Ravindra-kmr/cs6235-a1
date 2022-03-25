@@ -1,0 +1,30 @@
+class jdk.internal.math.FormattedFloatingDecimal$1 extends java.lang.ThreadLocal
+{
+
+    void <init>()
+    {
+        jdk.internal.math.FormattedFloatingDecimal$1 this;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal$1;
+
+        specialinvoke this.<java.lang.ThreadLocal: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    protected java.lang.Object initialValue()
+    {
+        char[] $stack1;
+        jdk.internal.math.FormattedFloatingDecimal$1 this;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal$1;
+
+        $stack1 = newarray (char)[20];
+
+        return $stack1;
+
+        nop;
+    }
+}

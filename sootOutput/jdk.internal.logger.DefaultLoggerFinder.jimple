@@ -1,0 +1,187 @@
+public class jdk.internal.logger.DefaultLoggerFinder extends java.lang.System$LoggerFinder
+{
+    static final java.lang.RuntimePermission LOGGERFINDER_PERMISSION;
+
+    protected void <init>()
+    {
+        java.lang.Void $stack1;
+        jdk.internal.logger.DefaultLoggerFinder this;
+
+        this := @this: jdk.internal.logger.DefaultLoggerFinder;
+
+        $stack1 = staticinvoke <jdk.internal.logger.DefaultLoggerFinder: java.lang.Void checkPermission()>();
+
+        specialinvoke this.<jdk.internal.logger.DefaultLoggerFinder: void <init>(java.lang.Void)>($stack1);
+
+        return;
+
+        nop;
+    }
+
+    private void <init>(java.lang.Void)
+    {
+        java.lang.Void unused;
+        jdk.internal.logger.DefaultLoggerFinder this;
+
+        this := @this: jdk.internal.logger.DefaultLoggerFinder;
+
+        unused := @parameter0: java.lang.Void;
+
+        specialinvoke this.<java.lang.System$LoggerFinder: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    private static java.lang.Void checkPermission()
+    {
+        java.lang.RuntimePermission $stack2;
+        java.lang.SecurityManager $stack1, sm;
+
+        $stack1 = staticinvoke <java.lang.System: java.lang.SecurityManager getSecurityManager()>();
+
+        sm = $stack1;
+
+        if sm == null goto label1;
+
+        $stack2 = <jdk.internal.logger.DefaultLoggerFinder: java.lang.RuntimePermission LOGGERFINDER_PERMISSION>;
+
+        virtualinvoke sm.<java.lang.SecurityManager: void checkPermission(java.security.Permission)>($stack2);
+
+     label1:
+        return null;
+    }
+
+    public static boolean isSystem(java.lang.Module)
+    {
+        java.lang.Module m;
+        jdk.internal.logger.DefaultLoggerFinder$1 $stack1;
+        java.lang.Boolean $stack3;
+        java.lang.Object $stack2;
+        boolean $stack4;
+
+        m := @parameter0: java.lang.Module;
+
+        $stack1 = new jdk.internal.logger.DefaultLoggerFinder$1;
+
+        specialinvoke $stack1.<jdk.internal.logger.DefaultLoggerFinder$1: void <init>(java.lang.Module)>(m);
+
+        $stack2 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedAction)>($stack1);
+
+        $stack3 = (java.lang.Boolean) $stack2;
+
+        $stack4 = virtualinvoke $stack3.<java.lang.Boolean: boolean booleanValue()>();
+
+        return $stack4;
+
+        nop;
+    }
+
+    public final java.lang.System$Logger getLogger(java.lang.String, java.lang.Module)
+    {
+        java.lang.Void $stack5;
+        java.lang.System$Logger $stack6;
+        java.lang.Module module;
+        java.lang.Object $stack3, $stack4;
+        java.lang.String name;
+        jdk.internal.logger.DefaultLoggerFinder this;
+
+        this := @this: jdk.internal.logger.DefaultLoggerFinder;
+
+        name := @parameter0: java.lang.String;
+
+        module := @parameter1: java.lang.Module;
+
+        $stack3 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object,java.lang.String)>(name, "name");
+
+        $stack4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object,java.lang.String)>(module, "module");
+
+        $stack5 = staticinvoke <jdk.internal.logger.DefaultLoggerFinder: java.lang.Void checkPermission()>();
+
+        $stack6 = virtualinvoke this.<jdk.internal.logger.DefaultLoggerFinder: java.lang.System$Logger demandLoggerFor(java.lang.String,java.lang.Module)>(name, module);
+
+        return $stack6;
+
+        nop;
+    }
+
+    public final java.lang.System$Logger getLocalizedLogger(java.lang.String, java.util.ResourceBundle, java.lang.Module)
+    {
+        java.lang.System$Logger $stack4;
+        java.util.ResourceBundle bundle;
+        java.lang.Module module;
+        java.lang.String name;
+        jdk.internal.logger.DefaultLoggerFinder this;
+
+        this := @this: jdk.internal.logger.DefaultLoggerFinder;
+
+        name := @parameter0: java.lang.String;
+
+        bundle := @parameter1: java.util.ResourceBundle;
+
+        module := @parameter2: java.lang.Module;
+
+        $stack4 = specialinvoke this.<java.lang.System$LoggerFinder: java.lang.System$Logger getLocalizedLogger(java.lang.String,java.util.ResourceBundle,java.lang.Module)>(name, bundle, module);
+
+        return $stack4;
+
+        nop;
+    }
+
+    protected java.lang.System$Logger demandLoggerFor(java.lang.String, java.lang.Module)
+    {
+        java.lang.Void $stack3;
+        java.lang.System$Logger $stack7, $stack10;
+        java.util.function.Function $stack6, $stack9;
+        java.lang.Module module;
+        jdk.internal.logger.DefaultLoggerFinder$SharedLoggers $stack5, $stack8;
+        java.lang.String name;
+        jdk.internal.logger.DefaultLoggerFinder this;
+        boolean $stack4;
+
+        this := @this: jdk.internal.logger.DefaultLoggerFinder;
+
+        name := @parameter0: java.lang.String;
+
+        module := @parameter1: java.lang.Module;
+
+        $stack3 = staticinvoke <jdk.internal.logger.DefaultLoggerFinder: java.lang.Void checkPermission()>();
+
+        $stack4 = staticinvoke <jdk.internal.logger.DefaultLoggerFinder: boolean isSystem(java.lang.Module)>(module);
+
+        if $stack4 == 0 goto label1;
+
+        $stack8 = <jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: jdk.internal.logger.DefaultLoggerFinder$SharedLoggers system>;
+
+        $stack9 = staticinvoke <jdk.internal.logger.DefaultLoggerFinder$makeSimpleLogger__92: java.util.function.Function bootstrap$()>();
+
+        $stack10 = virtualinvoke $stack8.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: java.lang.System$Logger get(java.util.function.Function,java.lang.String)>($stack9, name);
+
+        return $stack10;
+
+     label1:
+        $stack5 = <jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: jdk.internal.logger.DefaultLoggerFinder$SharedLoggers application>;
+
+        $stack6 = staticinvoke <jdk.internal.logger.DefaultLoggerFinder$makeSimpleLogger__91: java.util.function.Function bootstrap$()>();
+
+        $stack7 = virtualinvoke $stack5.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: java.lang.System$Logger get(java.util.function.Function,java.lang.String)>($stack6, name);
+
+        return $stack7;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        java.lang.RuntimePermission $stack0;
+
+        $stack0 = new java.lang.RuntimePermission;
+
+        specialinvoke $stack0.<java.lang.RuntimePermission: void <init>(java.lang.String)>("loggerFinder");
+
+        <jdk.internal.logger.DefaultLoggerFinder: java.lang.RuntimePermission LOGGERFINDER_PERMISSION> = $stack0;
+
+        return;
+    }
+}

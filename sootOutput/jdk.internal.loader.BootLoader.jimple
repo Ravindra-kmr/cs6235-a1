@@ -1,0 +1,322 @@
+public class jdk.internal.loader.BootLoader extends java.lang.Object
+{
+    private static final java.lang.Module UNNAMED_MODULE;
+    private static final java.lang.String JAVA_HOME;
+    private static final jdk.internal.module.ServicesCatalog SERVICES_CATALOG;
+    private static final java.util.concurrent.ConcurrentHashMap CLASS_LOADER_VALUE_MAP;
+
+    private void <init>()
+    {
+        jdk.internal.loader.BootLoader this;
+
+        this := @this: jdk.internal.loader.BootLoader;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public static java.lang.Module getUnnamedModule()
+    {
+        java.lang.Module $stack0;
+
+        $stack0 = <jdk.internal.loader.BootLoader: java.lang.Module UNNAMED_MODULE>;
+
+        return $stack0;
+    }
+
+    public static jdk.internal.module.ServicesCatalog getServicesCatalog()
+    {
+        jdk.internal.module.ServicesCatalog $stack0;
+
+        $stack0 = <jdk.internal.loader.BootLoader: jdk.internal.module.ServicesCatalog SERVICES_CATALOG>;
+
+        return $stack0;
+    }
+
+    public static java.util.concurrent.ConcurrentHashMap getClassLoaderValueMap()
+    {
+        java.util.concurrent.ConcurrentHashMap $stack0;
+
+        $stack0 = <jdk.internal.loader.BootLoader: java.util.concurrent.ConcurrentHashMap CLASS_LOADER_VALUE_MAP>;
+
+        return $stack0;
+    }
+
+    public static boolean hasClassPath()
+    {
+        jdk.internal.loader.BuiltinClassLoader $stack0;
+        boolean $stack1;
+
+        $stack0 = staticinvoke <jdk.internal.loader.ClassLoaders: jdk.internal.loader.BuiltinClassLoader bootLoader()>();
+
+        $stack1 = virtualinvoke $stack0.<jdk.internal.loader.BuiltinClassLoader: boolean hasClassPath()>();
+
+        return $stack1;
+    }
+
+    public static void loadModule(java.lang.module.ModuleReference)
+    {
+        java.lang.module.ModuleReference mref;
+        jdk.internal.loader.BuiltinClassLoader $stack1;
+
+        mref := @parameter0: java.lang.module.ModuleReference;
+
+        $stack1 = staticinvoke <jdk.internal.loader.ClassLoaders: jdk.internal.loader.BuiltinClassLoader bootLoader()>();
+
+        virtualinvoke $stack1.<jdk.internal.loader.BuiltinClassLoader: void loadModule(java.lang.module.ModuleReference)>(mref);
+
+        return;
+
+        nop;
+    }
+
+    public static java.lang.Class loadClassOrNull(java.lang.String)
+    {
+        java.lang.Class $stack2;
+        java.lang.String name;
+        jdk.internal.loader.BuiltinClassLoader $stack1;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <jdk.internal.loader.ClassLoaders: jdk.internal.loader.BuiltinClassLoader bootLoader()>();
+
+        $stack2 = virtualinvoke $stack1.<jdk.internal.loader.BuiltinClassLoader: java.lang.Class loadClassOrNull(java.lang.String)>(name);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static java.lang.Class loadClass(java.lang.Module, java.lang.String)
+    {
+        java.lang.Module $stack4, module;
+        java.lang.Class $stack3, c;
+        java.lang.String name;
+
+        module := @parameter0: java.lang.Module;
+
+        name := @parameter1: java.lang.String;
+
+        $stack3 = staticinvoke <jdk.internal.loader.BootLoader: java.lang.Class loadClassOrNull(java.lang.String)>(name);
+
+        c = $stack3;
+
+        if c == null goto label1;
+
+        $stack4 = virtualinvoke c.<java.lang.Class: java.lang.Module getModule()>();
+
+        if $stack4 != module goto label1;
+
+        return c;
+
+     label1:
+        return null;
+    }
+
+    public static java.net.URL findResource(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        java.net.URL $stack3;
+        java.lang.String mn, name;
+        jdk.internal.loader.BuiltinClassLoader $stack2;
+
+        mn := @parameter0: java.lang.String;
+
+        name := @parameter1: java.lang.String;
+
+        $stack2 = staticinvoke <jdk.internal.loader.ClassLoaders: jdk.internal.loader.BuiltinClassLoader bootLoader()>();
+
+        $stack3 = virtualinvoke $stack2.<jdk.internal.loader.BuiltinClassLoader: java.net.URL findResource(java.lang.String,java.lang.String)>(mn, name);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public static java.io.InputStream findResourceAsStream(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        java.lang.String mn, name;
+        jdk.internal.loader.BuiltinClassLoader $stack2;
+        java.io.InputStream $stack3;
+
+        mn := @parameter0: java.lang.String;
+
+        name := @parameter1: java.lang.String;
+
+        $stack2 = staticinvoke <jdk.internal.loader.ClassLoaders: jdk.internal.loader.BuiltinClassLoader bootLoader()>();
+
+        $stack3 = virtualinvoke $stack2.<jdk.internal.loader.BuiltinClassLoader: java.io.InputStream findResourceAsStream(java.lang.String,java.lang.String)>(mn, name);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public static java.net.URL findResource(java.lang.String)
+    {
+        java.lang.String name;
+        jdk.internal.loader.BuiltinClassLoader $stack1;
+        java.net.URL $stack2;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <jdk.internal.loader.ClassLoaders: jdk.internal.loader.BuiltinClassLoader bootLoader()>();
+
+        $stack2 = virtualinvoke $stack1.<jdk.internal.loader.BuiltinClassLoader: java.net.URL findResource(java.lang.String)>(name);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static java.util.Enumeration findResources(java.lang.String) throws java.io.IOException
+    {
+        java.lang.String name;
+        jdk.internal.loader.BuiltinClassLoader $stack1;
+        java.util.Enumeration $stack2;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <jdk.internal.loader.ClassLoaders: jdk.internal.loader.BuiltinClassLoader bootLoader()>();
+
+        $stack2 = virtualinvoke $stack1.<jdk.internal.loader.BuiltinClassLoader: java.util.Enumeration findResources(java.lang.String)>(name);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static java.lang.Package definePackage(java.lang.Class)
+    {
+        java.lang.Class c;
+        java.lang.String $stack1;
+        java.lang.Package $stack2;
+
+        c := @parameter0: java.lang.Class;
+
+        $stack1 = virtualinvoke c.<java.lang.Class: java.lang.String getPackageName()>();
+
+        $stack2 = staticinvoke <jdk.internal.loader.BootLoader: java.lang.Package getDefinedPackage(java.lang.String)>($stack1);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static java.lang.Package getDefinedPackage(java.lang.String)
+    {
+        java.lang.Package $stack4, $stack9, pkg#1, $stack7#2, $stack7#3;
+        jdk.internal.loader.BuiltinClassLoader $stack3;
+        bottom_type pkg, $stack7;
+        java.lang.String pn, $stack5, $stack6, location, $stack8;
+
+        pn := @parameter0: java.lang.String;
+
+        $stack3 = staticinvoke <jdk.internal.loader.ClassLoaders: jdk.internal.loader.BuiltinClassLoader bootLoader()>();
+
+        $stack4 = virtualinvoke $stack3.<jdk.internal.loader.BuiltinClassLoader: java.lang.Package getDefinedPackage(java.lang.String)>(pn);
+
+        pkg#1 = $stack4;
+
+        if pkg#1 != null goto label1;
+
+        $stack5 = virtualinvoke pn.<java.lang.String: java.lang.String replace(char,char)>(46, 47);
+
+        $stack6 = staticinvoke <jdk.internal.loader.BootLoader: java.lang.String getSystemPackageLocation(java.lang.String)>($stack5);
+
+        location = $stack6;
+
+        if location == null goto label1;
+
+        $stack8 = virtualinvoke pn.<java.lang.String: java.lang.String intern()>();
+
+        $stack9 = staticinvoke <jdk.internal.loader.BootLoader$PackageHelper: java.lang.Package definePackage(java.lang.String,java.lang.String)>($stack8, location);
+
+        pkg#1 = $stack9;
+
+     label1:
+        $stack7#2 = pkg#1;
+
+        $stack7#3 = $stack7#2;
+
+        return $stack7#3;
+
+        nop;
+    }
+
+    public static java.util.stream.Stream packages()
+    {
+        java.util.stream.Stream $stack1, $stack3;
+        java.lang.String[] $stack0;
+        java.util.function.Function $stack2;
+
+        $stack0 = staticinvoke <jdk.internal.loader.BootLoader: java.lang.String[] getSystemPackageNames()>();
+
+        $stack1 = staticinvoke <java.util.Arrays: java.util.stream.Stream stream(java.lang.Object[])>($stack0);
+
+        $stack2 = staticinvoke <jdk.internal.loader.BootLoader$lambda_packages_0__188: java.util.function.Function bootstrap$()>();
+
+        $stack3 = interfaceinvoke $stack1.<java.util.stream.Stream: java.util.stream.Stream map(java.util.function.Function)>($stack2);
+
+        return $stack3;
+    }
+
+    private static native java.lang.String[] getSystemPackageNames();
+
+    private static native java.lang.String getSystemPackageLocation(java.lang.String);
+
+    private static native void setBootLoaderUnnamedModule0(java.lang.Module);
+
+    public static java.lang.Package lambda$packages$0(java.lang.String)
+    {
+        java.lang.String name, $stack1;
+        java.lang.Package $stack2;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = virtualinvoke name.<java.lang.String: java.lang.String replace(char,char)>(47, 46);
+
+        $stack2 = staticinvoke <jdk.internal.loader.BootLoader: java.lang.Package getDefinedPackage(java.lang.String)>($stack1);
+
+        return $stack2;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        java.lang.Module $stack2, $stack3;
+        java.util.concurrent.ConcurrentHashMap $stack5;
+        java.lang.String $stack0;
+        jdk.internal.module.ServicesCatalog $stack4;
+        jdk.internal.misc.JavaLangAccess $stack1;
+
+        $stack0 = staticinvoke <jdk.internal.util.StaticProperty: java.lang.String javaHome()>();
+
+        <jdk.internal.loader.BootLoader: java.lang.String JAVA_HOME> = $stack0;
+
+        $stack1 = staticinvoke <jdk.internal.misc.SharedSecrets: jdk.internal.misc.JavaLangAccess getJavaLangAccess()>();
+
+        $stack2 = interfaceinvoke $stack1.<jdk.internal.misc.JavaLangAccess: java.lang.Module defineUnnamedModule(java.lang.ClassLoader)>(null);
+
+        <jdk.internal.loader.BootLoader: java.lang.Module UNNAMED_MODULE> = $stack2;
+
+        $stack3 = <jdk.internal.loader.BootLoader: java.lang.Module UNNAMED_MODULE>;
+
+        staticinvoke <jdk.internal.loader.BootLoader: void setBootLoaderUnnamedModule0(java.lang.Module)>($stack3);
+
+        $stack4 = staticinvoke <jdk.internal.module.ServicesCatalog: jdk.internal.module.ServicesCatalog create()>();
+
+        <jdk.internal.loader.BootLoader: jdk.internal.module.ServicesCatalog SERVICES_CATALOG> = $stack4;
+
+        $stack5 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $stack5.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        <jdk.internal.loader.BootLoader: java.util.concurrent.ConcurrentHashMap CLASS_LOADER_VALUE_MAP> = $stack5;
+
+        return;
+    }
+}

@@ -1,0 +1,1058 @@
+public abstract class jdk.internal.org.objectweb.asm.MethodVisitor extends java.lang.Object
+{
+    protected final int api;
+    protected jdk.internal.org.objectweb.asm.MethodVisitor mv;
+
+    public void <init>(int)
+    {
+        int api;
+        jdk.internal.org.objectweb.asm.MethodVisitor this;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        api := @parameter0: int;
+
+        specialinvoke this.<jdk.internal.org.objectweb.asm.MethodVisitor: void <init>(int,jdk.internal.org.objectweb.asm.MethodVisitor)>(api, null);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(int, jdk.internal.org.objectweb.asm.MethodVisitor)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, mv;
+        int api;
+        java.lang.IllegalArgumentException $stack3;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        api := @parameter0: int;
+
+        mv := @parameter1: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        if api < 262144 goto label1;
+
+        if api <= 393216 goto label2;
+
+     label1:
+        $stack3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack3.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $stack3;
+
+     label2:
+        this.<jdk.internal.org.objectweb.asm.MethodVisitor: int api> = api;
+
+        this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv> = mv;
+
+        return;
+
+        nop;
+    }
+
+    public void visitParameter(java.lang.String, int)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack4, $stack5;
+        int $stack3, access;
+        java.lang.String name;
+        java.lang.RuntimeException $stack6;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        name := @parameter0: java.lang.String;
+
+        access := @parameter1: int;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: int api>;
+
+        if $stack3 >= 327680 goto label1;
+
+        $stack6 = new java.lang.RuntimeException;
+
+        specialinvoke $stack6.<java.lang.RuntimeException: void <init>()>();
+
+        throw $stack6;
+
+     label1:
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack4 == null goto label2;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitParameter(java.lang.String,int)>(name, access);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotationDefault()
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack1, $stack2;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack3;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        $stack1 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack1 == null goto label1;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        $stack3 = virtualinvoke $stack2.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotationDefault()>();
+
+        return $stack3;
+
+     label1:
+        return null;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack3, $stack4;
+        java.lang.String desc;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack5;
+        boolean visible;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        desc := @parameter0: java.lang.String;
+
+        visible := @parameter1: boolean;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        $stack5 = virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String,boolean)>(desc, visible);
+
+        return $stack5;
+
+     label1:
+        return null;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitTypeAnnotation(int, jdk.internal.org.objectweb.asm.TypePath, java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.TypePath typePath;
+        java.lang.RuntimeException $stack9;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack8;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack6, $stack7;
+        int $stack5, typeRef;
+        java.lang.String desc;
+        boolean visible;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        typeRef := @parameter0: int;
+
+        typePath := @parameter1: jdk.internal.org.objectweb.asm.TypePath;
+
+        desc := @parameter2: java.lang.String;
+
+        visible := @parameter3: boolean;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: int api>;
+
+        if $stack5 >= 327680 goto label1;
+
+        $stack9 = new java.lang.RuntimeException;
+
+        specialinvoke $stack9.<java.lang.RuntimeException: void <init>()>();
+
+        throw $stack9;
+
+     label1:
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack6 == null goto label2;
+
+        $stack7 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        $stack8 = virtualinvoke $stack7.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitTypeAnnotation(int,jdk.internal.org.objectweb.asm.TypePath,java.lang.String,boolean)>(typeRef, typePath, desc, visible);
+
+        return $stack8;
+
+     label2:
+        return null;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitParameterAnnotation(int, java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack4, $stack5;
+        int parameter;
+        java.lang.String desc;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack6;
+        boolean visible;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        parameter := @parameter0: int;
+
+        desc := @parameter1: java.lang.String;
+
+        visible := @parameter2: boolean;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack4 == null goto label1;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        $stack6 = virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitParameterAnnotation(int,java.lang.String,boolean)>(parameter, desc, visible);
+
+        return $stack6;
+
+     label1:
+        return null;
+
+        nop;
+    }
+
+    public void visitAttribute(jdk.internal.org.objectweb.asm.Attribute)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack2, $stack3;
+        jdk.internal.org.objectweb.asm.Attribute attr;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        attr := @parameter0: jdk.internal.org.objectweb.asm.Attribute;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack2 == null goto label1;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitAttribute(jdk.internal.org.objectweb.asm.Attribute)>(attr);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitCode()
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack1, $stack2;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        $stack1 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack1 == null goto label1;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack2.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitCode()>();
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitFrame(int, int, java.lang.Object[], int, java.lang.Object[])
+    {
+        java.lang.Object[] local, stack;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack6, $stack7;
+        int type, nLocal, nStack;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        type := @parameter0: int;
+
+        nLocal := @parameter1: int;
+
+        local := @parameter2: java.lang.Object[];
+
+        nStack := @parameter3: int;
+
+        stack := @parameter4: java.lang.Object[];
+
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack6 == null goto label1;
+
+        $stack7 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack7.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitFrame(int,int,java.lang.Object[],int,java.lang.Object[])>(type, nLocal, local, nStack, stack);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitInsn(int)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack2, $stack3;
+        int opcode;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        opcode := @parameter0: int;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack2 == null goto label1;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitInsn(int)>(opcode);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitIntInsn(int, int)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack3, $stack4;
+        int opcode, operand;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        opcode := @parameter0: int;
+
+        operand := @parameter1: int;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitIntInsn(int,int)>(opcode, operand);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitVarInsn(int, int)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack3, $stack4;
+        int opcode, var;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        opcode := @parameter0: int;
+
+        var := @parameter1: int;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitVarInsn(int,int)>(opcode, var);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitTypeInsn(int, java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack3, $stack4;
+        int opcode;
+        java.lang.String type;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        opcode := @parameter0: int;
+
+        type := @parameter1: java.lang.String;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitTypeInsn(int,java.lang.String)>(opcode, type);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitFieldInsn(int, java.lang.String, java.lang.String, java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack5, $stack6;
+        int opcode;
+        java.lang.String owner, name, desc;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        opcode := @parameter0: int;
+
+        owner := @parameter1: java.lang.String;
+
+        name := @parameter2: java.lang.String;
+
+        desc := @parameter3: java.lang.String;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack5 == null goto label1;
+
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitFieldInsn(int,java.lang.String,java.lang.String,java.lang.String)>(opcode, owner, name, desc);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitMethodInsn(int, java.lang.String, java.lang.String, java.lang.String)
+    {
+        bottom_type $stack9;
+        int $stack6, opcode, $stack10;
+        java.lang.String owner, name, desc, $stack11, $stack12, $stack13;
+        boolean itf, $stack14, $stack9#1;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack7, $stack8, $stack15;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        opcode := @parameter0: int;
+
+        owner := @parameter1: java.lang.String;
+
+        name := @parameter2: java.lang.String;
+
+        desc := @parameter3: java.lang.String;
+
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: int api>;
+
+        if $stack6 < 327680 goto label3;
+
+        if opcode != 185 goto label1;
+
+        $stack9#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack9#1 = 0;
+
+     label2:
+        itf = $stack9#1;
+
+        $stack15 = this;
+
+        $stack10 = opcode;
+
+        $stack11 = owner;
+
+        $stack12 = name;
+
+        $stack13 = desc;
+
+        $stack14 = itf;
+
+        virtualinvoke $stack15.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitMethodInsn(int,java.lang.String,java.lang.String,java.lang.String,boolean)>($stack10, $stack11, $stack12, $stack13, $stack14);
+
+        return;
+
+     label3:
+        $stack7 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack7 == null goto label4;
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack8.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitMethodInsn(int,java.lang.String,java.lang.String,java.lang.String)>(opcode, owner, name, desc);
+
+     label4:
+        return;
+
+        nop;
+    }
+
+    public void visitMethodInsn(int, java.lang.String, java.lang.String, java.lang.String, boolean)
+    {
+        java.lang.IllegalArgumentException $stack9;
+        bottom_type $stack10;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack7, $stack8;
+        int $stack6, opcode;
+        java.lang.String owner, name, desc;
+        boolean itf, $stack11, $stack10#1;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        opcode := @parameter0: int;
+
+        owner := @parameter1: java.lang.String;
+
+        name := @parameter2: java.lang.String;
+
+        desc := @parameter3: java.lang.String;
+
+        itf := @parameter4: boolean;
+
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: int api>;
+
+        if $stack6 >= 327680 goto label4;
+
+        $stack11 = itf;
+
+        if opcode != 185 goto label1;
+
+        $stack10#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack10#1 = 0;
+
+     label2:
+        if $stack11 == $stack10#1 goto label3;
+
+        $stack9 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("INVOKESPECIAL/STATIC on interfaces require ASM 5");
+
+        throw $stack9;
+
+     label3:
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitMethodInsn(int,java.lang.String,java.lang.String,java.lang.String)>(opcode, owner, name, desc);
+
+        return;
+
+     label4:
+        $stack7 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack7 == null goto label5;
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack8.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitMethodInsn(int,java.lang.String,java.lang.String,java.lang.String,boolean)>(opcode, owner, name, desc, itf);
+
+     label5:
+        return;
+
+        nop;
+    }
+
+    public transient void visitInvokeDynamicInsn(java.lang.String, java.lang.String, jdk.internal.org.objectweb.asm.Handle, java.lang.Object[])
+    {
+        java.lang.Object[] bsmArgs;
+        jdk.internal.org.objectweb.asm.Handle bsm;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack5, $stack6;
+        java.lang.String name, desc;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        name := @parameter0: java.lang.String;
+
+        desc := @parameter1: java.lang.String;
+
+        bsm := @parameter2: jdk.internal.org.objectweb.asm.Handle;
+
+        bsmArgs := @parameter3: java.lang.Object[];
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack5 == null goto label1;
+
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitInvokeDynamicInsn(java.lang.String,java.lang.String,jdk.internal.org.objectweb.asm.Handle,java.lang.Object[])>(name, desc, bsm, bsmArgs);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitJumpInsn(int, jdk.internal.org.objectweb.asm.Label)
+    {
+        jdk.internal.org.objectweb.asm.Label label;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack3, $stack4;
+        int opcode;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        opcode := @parameter0: int;
+
+        label := @parameter1: jdk.internal.org.objectweb.asm.Label;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitJumpInsn(int,jdk.internal.org.objectweb.asm.Label)>(opcode, label);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitLabel(jdk.internal.org.objectweb.asm.Label)
+    {
+        jdk.internal.org.objectweb.asm.Label label;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack2, $stack3;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        label := @parameter0: jdk.internal.org.objectweb.asm.Label;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack2 == null goto label1;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitLabel(jdk.internal.org.objectweb.asm.Label)>(label);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitLdcInsn(java.lang.Object)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack2, $stack3;
+        java.lang.Object cst;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        cst := @parameter0: java.lang.Object;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack2 == null goto label1;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitLdcInsn(java.lang.Object)>(cst);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitIincInsn(int, int)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack3, $stack4;
+        int var, increment;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        var := @parameter0: int;
+
+        increment := @parameter1: int;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitIincInsn(int,int)>(var, increment);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public transient void visitTableSwitchInsn(int, int, jdk.internal.org.objectweb.asm.Label, jdk.internal.org.objectweb.asm.Label[])
+    {
+        jdk.internal.org.objectweb.asm.Label dflt;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack5, $stack6;
+        int min, max;
+        jdk.internal.org.objectweb.asm.Label[] labels;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        min := @parameter0: int;
+
+        max := @parameter1: int;
+
+        dflt := @parameter2: jdk.internal.org.objectweb.asm.Label;
+
+        labels := @parameter3: jdk.internal.org.objectweb.asm.Label[];
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack5 == null goto label1;
+
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitTableSwitchInsn(int,int,jdk.internal.org.objectweb.asm.Label,jdk.internal.org.objectweb.asm.Label[])>(min, max, dflt, labels);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitLookupSwitchInsn(jdk.internal.org.objectweb.asm.Label, int[], jdk.internal.org.objectweb.asm.Label[])
+    {
+        jdk.internal.org.objectweb.asm.Label dflt;
+        int[] keys;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack4, $stack5;
+        jdk.internal.org.objectweb.asm.Label[] labels;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        dflt := @parameter0: jdk.internal.org.objectweb.asm.Label;
+
+        keys := @parameter1: int[];
+
+        labels := @parameter2: jdk.internal.org.objectweb.asm.Label[];
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack4 == null goto label1;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitLookupSwitchInsn(jdk.internal.org.objectweb.asm.Label,int[],jdk.internal.org.objectweb.asm.Label[])>(dflt, keys, labels);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitMultiANewArrayInsn(java.lang.String, int)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack3, $stack4;
+        int dims;
+        java.lang.String desc;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        desc := @parameter0: java.lang.String;
+
+        dims := @parameter1: int;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitMultiANewArrayInsn(java.lang.String,int)>(desc, dims);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitInsnAnnotation(int, jdk.internal.org.objectweb.asm.TypePath, java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.TypePath typePath;
+        java.lang.RuntimeException $stack9;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack8;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack6, $stack7;
+        int $stack5, typeRef;
+        java.lang.String desc;
+        boolean visible;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        typeRef := @parameter0: int;
+
+        typePath := @parameter1: jdk.internal.org.objectweb.asm.TypePath;
+
+        desc := @parameter2: java.lang.String;
+
+        visible := @parameter3: boolean;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: int api>;
+
+        if $stack5 >= 327680 goto label1;
+
+        $stack9 = new java.lang.RuntimeException;
+
+        specialinvoke $stack9.<java.lang.RuntimeException: void <init>()>();
+
+        throw $stack9;
+
+     label1:
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack6 == null goto label2;
+
+        $stack7 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        $stack8 = virtualinvoke $stack7.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitInsnAnnotation(int,jdk.internal.org.objectweb.asm.TypePath,java.lang.String,boolean)>(typeRef, typePath, desc, visible);
+
+        return $stack8;
+
+     label2:
+        return null;
+
+        nop;
+    }
+
+    public void visitTryCatchBlock(jdk.internal.org.objectweb.asm.Label, jdk.internal.org.objectweb.asm.Label, jdk.internal.org.objectweb.asm.Label, java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.Label start, end, handler;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack5, $stack6;
+        java.lang.String type;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        start := @parameter0: jdk.internal.org.objectweb.asm.Label;
+
+        end := @parameter1: jdk.internal.org.objectweb.asm.Label;
+
+        handler := @parameter2: jdk.internal.org.objectweb.asm.Label;
+
+        type := @parameter3: java.lang.String;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack5 == null goto label1;
+
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitTryCatchBlock(jdk.internal.org.objectweb.asm.Label,jdk.internal.org.objectweb.asm.Label,jdk.internal.org.objectweb.asm.Label,java.lang.String)>(start, end, handler, type);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitTryCatchAnnotation(int, jdk.internal.org.objectweb.asm.TypePath, java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.TypePath typePath;
+        java.lang.RuntimeException $stack9;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack8;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack6, $stack7;
+        int $stack5, typeRef;
+        java.lang.String desc;
+        boolean visible;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        typeRef := @parameter0: int;
+
+        typePath := @parameter1: jdk.internal.org.objectweb.asm.TypePath;
+
+        desc := @parameter2: java.lang.String;
+
+        visible := @parameter3: boolean;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: int api>;
+
+        if $stack5 >= 327680 goto label1;
+
+        $stack9 = new java.lang.RuntimeException;
+
+        specialinvoke $stack9.<java.lang.RuntimeException: void <init>()>();
+
+        throw $stack9;
+
+     label1:
+        $stack6 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack6 == null goto label2;
+
+        $stack7 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        $stack8 = virtualinvoke $stack7.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitTryCatchAnnotation(int,jdk.internal.org.objectweb.asm.TypePath,java.lang.String,boolean)>(typeRef, typePath, desc, visible);
+
+        return $stack8;
+
+     label2:
+        return null;
+
+        nop;
+    }
+
+    public void visitLocalVariable(java.lang.String, java.lang.String, java.lang.String, jdk.internal.org.objectweb.asm.Label, jdk.internal.org.objectweb.asm.Label, int)
+    {
+        jdk.internal.org.objectweb.asm.Label start, end;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack7, $stack8;
+        int index;
+        java.lang.String name, desc, signature;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        name := @parameter0: java.lang.String;
+
+        desc := @parameter1: java.lang.String;
+
+        signature := @parameter2: java.lang.String;
+
+        start := @parameter3: jdk.internal.org.objectweb.asm.Label;
+
+        end := @parameter4: jdk.internal.org.objectweb.asm.Label;
+
+        index := @parameter5: int;
+
+        $stack7 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack7 == null goto label1;
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack8.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitLocalVariable(java.lang.String,java.lang.String,java.lang.String,jdk.internal.org.objectweb.asm.Label,jdk.internal.org.objectweb.asm.Label,int)>(name, desc, signature, start, end, index);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitLocalVariableAnnotation(int, jdk.internal.org.objectweb.asm.TypePath, jdk.internal.org.objectweb.asm.Label[], jdk.internal.org.objectweb.asm.Label[], int[], java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.TypePath typePath;
+        java.lang.RuntimeException $stack12;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack11;
+        jdk.internal.org.objectweb.asm.Label[] start, end;
+        int[] index;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack9, $stack10;
+        int $stack8, typeRef;
+        java.lang.String desc;
+        boolean visible;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        typeRef := @parameter0: int;
+
+        typePath := @parameter1: jdk.internal.org.objectweb.asm.TypePath;
+
+        start := @parameter2: jdk.internal.org.objectweb.asm.Label[];
+
+        end := @parameter3: jdk.internal.org.objectweb.asm.Label[];
+
+        index := @parameter4: int[];
+
+        desc := @parameter5: java.lang.String;
+
+        visible := @parameter6: boolean;
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: int api>;
+
+        if $stack8 >= 327680 goto label1;
+
+        $stack12 = new java.lang.RuntimeException;
+
+        specialinvoke $stack12.<java.lang.RuntimeException: void <init>()>();
+
+        throw $stack12;
+
+     label1:
+        $stack9 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack9 == null goto label2;
+
+        $stack10 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        $stack11 = virtualinvoke $stack10.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitLocalVariableAnnotation(int,jdk.internal.org.objectweb.asm.TypePath,jdk.internal.org.objectweb.asm.Label[],jdk.internal.org.objectweb.asm.Label[],int[],java.lang.String,boolean)>(typeRef, typePath, start, end, index, desc, visible);
+
+        return $stack11;
+
+     label2:
+        return null;
+
+        nop;
+    }
+
+    public void visitLineNumber(int, jdk.internal.org.objectweb.asm.Label)
+    {
+        jdk.internal.org.objectweb.asm.Label start;
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack3, $stack4;
+        int line;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        line := @parameter0: int;
+
+        start := @parameter1: jdk.internal.org.objectweb.asm.Label;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitLineNumber(int,jdk.internal.org.objectweb.asm.Label)>(line, start);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitMaxs(int, int)
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack3, $stack4;
+        int maxStack, maxLocals;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        maxStack := @parameter0: int;
+
+        maxLocals := @parameter1: int;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitMaxs(int,int)>(maxStack, maxLocals);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitEnd()
+    {
+        jdk.internal.org.objectweb.asm.MethodVisitor this, $stack1, $stack2;
+
+        this := @this: jdk.internal.org.objectweb.asm.MethodVisitor;
+
+        $stack1 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        if $stack1 == null goto label1;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.MethodVisitor: jdk.internal.org.objectweb.asm.MethodVisitor mv>;
+
+        virtualinvoke $stack2.<jdk.internal.org.objectweb.asm.MethodVisitor: void visitEnd()>();
+
+     label1:
+        return;
+
+        nop;
+    }
+}

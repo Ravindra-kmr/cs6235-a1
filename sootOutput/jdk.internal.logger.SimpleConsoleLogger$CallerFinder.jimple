@@ -1,0 +1,194 @@
+final class jdk.internal.logger.SimpleConsoleLogger$CallerFinder extends java.lang.Object implements java.util.function.Predicate
+{
+    private static final java.lang.StackWalker WALKER;
+    private boolean lookingForLogger;
+
+    void <init>()
+    {
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder this;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$CallerFinder;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.logger.SimpleConsoleLogger$CallerFinder: boolean lookingForLogger> = 1;
+
+        return;
+
+        nop;
+    }
+
+    java.util.Optional get()
+    {
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder this;
+        java.lang.StackWalker $stack1;
+        java.util.Optional $stack4;
+        java.lang.Object $stack3;
+        java.util.function.Function $stack2;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$CallerFinder;
+
+        $stack1 = <jdk.internal.logger.SimpleConsoleLogger$CallerFinder: java.lang.StackWalker WALKER>;
+
+        $stack2 = staticinvoke <jdk.internal.logger.SimpleConsoleLogger$CallerFinder$lambda_get_0__191: java.util.function.Function bootstrap$(jdk.internal.logger.SimpleConsoleLogger$CallerFinder)>(this);
+
+        $stack3 = virtualinvoke $stack1.<java.lang.StackWalker: java.lang.Object walk(java.util.function.Function)>($stack2);
+
+        $stack4 = (java.util.Optional) $stack3;
+
+        return $stack4;
+
+        nop;
+    }
+
+    public boolean test(java.lang.StackWalker$StackFrame)
+    {
+        java.lang.StackWalker$StackFrame t;
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder this, $stack9;
+        bottom_type $stack6, $stack8;
+        java.lang.String $stack3, cname;
+        boolean $stack4, $stack5, $stack7, $stack10, $stack8#1, $stack6#2;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$CallerFinder;
+
+        t := @parameter0: java.lang.StackWalker$StackFrame;
+
+        $stack3 = interfaceinvoke t.<java.lang.StackWalker$StackFrame: java.lang.String getClassName()>();
+
+        cname = $stack3;
+
+        $stack4 = this.<jdk.internal.logger.SimpleConsoleLogger$CallerFinder: boolean lookingForLogger>;
+
+        if $stack4 == 0 goto label3;
+
+        $stack9 = this;
+
+        $stack7 = virtualinvoke this.<jdk.internal.logger.SimpleConsoleLogger$CallerFinder: boolean isLoggerImplFrame(java.lang.String)>(cname);
+
+        if $stack7 != 0 goto label1;
+
+        $stack8#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack8#1 = 0;
+
+     label2:
+        $stack9.<jdk.internal.logger.SimpleConsoleLogger$CallerFinder: boolean lookingForLogger> = $stack8#1;
+
+        $stack10 = 0;
+
+        return $stack10;
+
+     label3:
+        $stack5 = staticinvoke <jdk.internal.logger.SimpleConsoleLogger$Formatting: boolean isFilteredFrame(java.lang.StackWalker$StackFrame)>(t);
+
+        if $stack5 != 0 goto label4;
+
+        $stack6#2 = 1;
+
+        goto label5;
+
+     label4:
+        $stack6#2 = 0;
+
+     label5:
+        return $stack6#2;
+
+        nop;
+    }
+
+    private boolean isLoggerImplFrame(java.lang.String)
+    {
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder this;
+        bottom_type $stack4;
+        java.lang.String cname;
+        boolean $stack2, $stack3, $stack4#1;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$CallerFinder;
+
+        cname := @parameter0: java.lang.String;
+
+        $stack2 = virtualinvoke cname.<java.lang.String: boolean equals(java.lang.Object)>("sun.util.logging.PlatformLogger");
+
+        if $stack2 != 0 goto label1;
+
+        $stack3 = virtualinvoke cname.<java.lang.String: boolean equals(java.lang.Object)>("jdk.internal.logger.SimpleConsoleLogger");
+
+        if $stack3 == 0 goto label2;
+
+     label1:
+        $stack4#1 = 1;
+
+        goto label3;
+
+     label2:
+        $stack4#1 = 0;
+
+     label3:
+        return $stack4#1;
+
+        nop;
+    }
+
+    public volatile boolean test(java.lang.Object)
+    {
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder this;
+        java.lang.StackWalker$StackFrame $stack2;
+        java.lang.Object l1;
+        boolean $stack3;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$CallerFinder;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (java.lang.StackWalker$StackFrame) l1;
+
+        $stack3 = virtualinvoke this.<jdk.internal.logger.SimpleConsoleLogger$CallerFinder: boolean test(java.lang.StackWalker$StackFrame)>($stack2);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public java.util.Optional lambda$get$0(java.util.stream.Stream)
+    {
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder this;
+        java.util.stream.Stream s, $stack2;
+        java.util.Optional $stack3;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$CallerFinder;
+
+        s := @parameter0: java.util.stream.Stream;
+
+        $stack2 = interfaceinvoke s.<java.util.stream.Stream: java.util.stream.Stream filter(java.util.function.Predicate)>(this);
+
+        $stack3 = interfaceinvoke $stack2.<java.util.stream.Stream: java.util.Optional findFirst()>();
+
+        return $stack3;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1 $stack1, action;
+        java.lang.StackWalker $stack3;
+        java.lang.Object $stack2;
+
+        $stack1 = new jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1;
+
+        specialinvoke $stack1.<jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1: void <init>()>();
+
+        action = $stack1;
+
+        $stack2 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedAction)>(action);
+
+        $stack3 = (java.lang.StackWalker) $stack2;
+
+        <jdk.internal.logger.SimpleConsoleLogger$CallerFinder: java.lang.StackWalker WALKER> = $stack3;
+
+        return;
+    }
+}

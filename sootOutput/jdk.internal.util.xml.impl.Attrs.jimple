@@ -1,0 +1,1044 @@
+public class jdk.internal.util.xml.impl.Attrs extends java.lang.Object implements jdk.internal.org.xml.sax.Attributes
+{
+    java.lang.String[] mItems;
+    private char mLength;
+    private char mAttrIdx;
+
+    public void <init>()
+    {
+        java.lang.String[] $stack1;
+        jdk.internal.util.xml.impl.Attrs this;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.util.xml.impl.Attrs: char mAttrIdx> = 0;
+
+        $stack1 = newarray (java.lang.String)[64];
+
+        this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems> = $stack1;
+
+        return;
+
+        nop;
+    }
+
+    public void setLength(char)
+    {
+        char length, $stack5, $stack8;
+        java.lang.String[] $stack2, $stack7;
+        jdk.internal.util.xml.impl.Attrs this, $stack9;
+        int $stack3, $stack4, $stack6, $i0, $i1, $i2;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        length := @parameter0: char;
+
+        $stack2 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack3 = lengthof $stack2;
+
+        $stack4 = $stack3 >> 3;
+
+        $stack5 = (char) $stack4;
+
+        $i0 = (int) length;
+
+        $i1 = (int) $stack5;
+
+        if $i0 <= $i1 goto label1;
+
+        $i2 = (int) length;
+
+        $stack6 = $i2 << 3;
+
+        $stack7 = newarray (java.lang.String)[$stack6];
+
+        this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems> = $stack7;
+
+     label1:
+        $stack9 = this;
+
+        $stack8 = length;
+
+        $stack9.<jdk.internal.util.xml.impl.Attrs: char mLength> = $stack8;
+
+        return;
+
+        nop;
+    }
+
+    public int getLength()
+    {
+        int $i0;
+        char $stack1;
+        jdk.internal.util.xml.impl.Attrs this;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        $stack1 = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        $i0 = (int) $stack1;
+
+        return $i0;
+
+        nop;
+    }
+
+    public java.lang.String getURI(int)
+    {
+        char $stack2;
+        java.lang.String[] $stack5;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack3;
+        int index, $stack4, $i0;
+        java.lang.String $stack3#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        index := @parameter0: int;
+
+        if index < 0 goto label1;
+
+        $stack2 = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        $i0 = (int) $stack2;
+
+        if index >= $i0 goto label1;
+
+        $stack5 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack4 = index << 3;
+
+        $stack3#1 = $stack5[$stack4];
+
+        goto label2;
+
+     label1:
+        $stack3#1 = null;
+
+     label2:
+        return $stack3#1;
+
+        nop;
+    }
+
+    public java.lang.String getLocalName(int)
+    {
+        char $stack2;
+        java.lang.String[] $stack6;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack3;
+        int index, $stack4, $stack5, $i0;
+        java.lang.String $stack3#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        index := @parameter0: int;
+
+        if index < 0 goto label1;
+
+        $stack2 = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        $i0 = (int) $stack2;
+
+        if index >= $i0 goto label1;
+
+        $stack6 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack4 = index << 3;
+
+        $stack5 = $stack4 + 2;
+
+        $stack3#1 = $stack6[$stack5];
+
+        goto label2;
+
+     label1:
+        $stack3#1 = null;
+
+     label2:
+        return $stack3#1;
+
+        nop;
+    }
+
+    public java.lang.String getQName(int)
+    {
+        char $stack2;
+        java.lang.String[] $stack5;
+        jdk.internal.util.xml.impl.Attrs this;
+        int index, $stack3, $stack4, $i0;
+        java.lang.String $stack6;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        index := @parameter0: int;
+
+        if index < 0 goto label1;
+
+        $stack2 = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        $i0 = (int) $stack2;
+
+        if index < $i0 goto label2;
+
+     label1:
+        return null;
+
+     label2:
+        $stack5 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack3 = index << 3;
+
+        $stack4 = $stack3 + 1;
+
+        $stack6 = $stack5[$stack4];
+
+        return $stack6;
+    }
+
+    public java.lang.String getType(int)
+    {
+        java.lang.String[] $stack2, $stack8;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack5;
+        int index, $stack3, $stack4, $stack6, $stack7;
+        java.lang.String $stack5#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        index := @parameter0: int;
+
+        if index < 0 goto label1;
+
+        $stack2 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack3 = lengthof $stack2;
+
+        $stack4 = $stack3 >> 3;
+
+        if index >= $stack4 goto label1;
+
+        $stack8 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack6 = index << 3;
+
+        $stack7 = $stack6 + 4;
+
+        $stack5#1 = $stack8[$stack7];
+
+        goto label2;
+
+     label1:
+        $stack5#1 = null;
+
+     label2:
+        return $stack5#1;
+
+        nop;
+    }
+
+    public java.lang.String getValue(int)
+    {
+        char $stack2;
+        java.lang.String[] $stack6;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack3;
+        int index, $stack4, $stack5, $i0;
+        java.lang.String $stack3#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        index := @parameter0: int;
+
+        if index < 0 goto label1;
+
+        $stack2 = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        $i0 = (int) $stack2;
+
+        if index >= $i0 goto label1;
+
+        $stack6 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack4 = index << 3;
+
+        $stack5 = $stack4 + 3;
+
+        $stack3#1 = $stack6[$stack5];
+
+        goto label2;
+
+     label1:
+        $stack3#1 = null;
+
+     label2:
+        return $stack3#1;
+
+        nop;
+    }
+
+    public int getIndex(java.lang.String, java.lang.String)
+    {
+        java.lang.String[] $stack6, $stack14;
+        byte $b0;
+        bottom_type idx;
+        int $stack5, $stack9, $stack11, $stack12, $stack13, $stack18, idx#1, $i0, $i1;
+        java.lang.String uri, $stack7, localName, $stack15;
+        boolean $stack8, $stack16, $stack17;
+        char len, $stack10, $stack19;
+        jdk.internal.util.xml.impl.Attrs this;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        uri := @parameter0: java.lang.String;
+
+        localName := @parameter1: java.lang.String;
+
+        len = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        idx#1 = 0;
+
+     label1:
+        $stack11 = idx#1;
+
+        $stack10 = len;
+
+        $i0 = (int) $stack10;
+
+        if $stack11 >= $i0 goto label3;
+
+        $stack6 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack5 = idx#1 << 3;
+
+        $stack7 = $stack6[$stack5];
+
+        $stack8 = virtualinvoke $stack7.<java.lang.String: boolean equals(java.lang.Object)>(uri);
+
+        if $stack8 == 0 goto label2;
+
+        $stack14 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack12 = idx#1 << 3;
+
+        $stack13 = $stack12 + 2;
+
+        $stack15 = $stack14[$stack13];
+
+        $stack16 = virtualinvoke $stack15.<java.lang.String: boolean equals(java.lang.Object)>(localName);
+
+        if $stack16 == 0 goto label2;
+
+        return idx#1;
+
+     label2:
+        $stack18 = idx#1;
+
+        $stack17 = 1;
+
+        $stack9 = $stack18 + $stack17;
+
+        $stack19 = (char) $stack9;
+
+        idx#1 = $stack19;
+
+        goto label1;
+
+     label3:
+        $b0 = -1;
+
+        $i1 = (int) $b0;
+
+        return $i1;
+
+        nop;
+    }
+
+    int getIndexNullNS(java.lang.String, java.lang.String)
+    {
+        byte $stack13;
+        bottom_type idx;
+        boolean $stack9, $stack17, $stack25, $stack26;
+        java.lang.String[] $stack7, $stack15, $stack23;
+        int $stack5, $stack6, $stack10, $stack12, $stack14, $stack18, $stack20, $stack21, $stack22, $stack27, idx#1, idx#2, $i0, $i1, $i2;
+        java.lang.String uri, localName, $stack8, $stack16, $stack24;
+        char len, $stack11, $stack19, $stack28;
+        jdk.internal.util.xml.impl.Attrs this;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        uri := @parameter0: java.lang.String;
+
+        localName := @parameter1: java.lang.String;
+
+        len = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        if uri == null goto label4;
+
+        idx#1 = 0;
+
+     label1:
+        $stack20 = idx#1;
+
+        $stack19 = len;
+
+        $i0 = (int) $stack19;
+
+        if $stack20 >= $i0 goto label3;
+
+        $stack15 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack14 = idx#1 << 3;
+
+        $stack16 = $stack15[$stack14];
+
+        $stack17 = virtualinvoke $stack16.<java.lang.String: boolean equals(java.lang.Object)>(uri);
+
+        if $stack17 == 0 goto label2;
+
+        $stack23 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack21 = idx#1 << 3;
+
+        $stack22 = $stack21 + 2;
+
+        $stack24 = $stack23[$stack22];
+
+        $stack25 = virtualinvoke $stack24.<java.lang.String: boolean equals(java.lang.Object)>(localName);
+
+        if $stack25 == 0 goto label2;
+
+        return idx#1;
+
+     label2:
+        $stack27 = idx#1;
+
+        $stack26 = 1;
+
+        $stack18 = $stack27 + $stack26;
+
+        $stack28 = (char) $stack18;
+
+        idx#1 = $stack28;
+
+        goto label1;
+
+     label3:
+        goto label7;
+
+     label4:
+        idx#2 = 0;
+
+     label5:
+        $stack12 = idx#2;
+
+        $stack11 = len;
+
+        $i1 = (int) $stack11;
+
+        if $stack12 >= $i1 goto label7;
+
+        $stack7 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack5 = idx#2 << 3;
+
+        $stack6 = $stack5 + 2;
+
+        $stack8 = $stack7[$stack6];
+
+        $stack9 = virtualinvoke $stack8.<java.lang.String: boolean equals(java.lang.Object)>(localName);
+
+        if $stack9 == 0 goto label6;
+
+        return idx#2;
+
+     label6:
+        $stack10 = idx#2 + 1;
+
+        idx#2 = (char) $stack10;
+
+        goto label5;
+
+     label7:
+        $stack13 = -1;
+
+        $i2 = (int) $stack13;
+
+        return $i2;
+
+        nop;
+    }
+
+    public int getIndex(java.lang.String)
+    {
+        java.lang.String[] $stack6;
+        byte $b0;
+        bottom_type idx;
+        int $stack4, $stack5, $stack9, $stack11, idx#1, $i0, $i1;
+        java.lang.String qName, $stack7;
+        boolean $stack8;
+        char len, $stack10;
+        jdk.internal.util.xml.impl.Attrs this;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        qName := @parameter0: java.lang.String;
+
+        len = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        idx#1 = 0;
+
+     label1:
+        $stack11 = idx#1;
+
+        $stack10 = len;
+
+        $i0 = (int) $stack10;
+
+        if $stack11 >= $i0 goto label3;
+
+        $stack6 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack4 = idx#1 << 3;
+
+        $stack5 = $stack4 + 1;
+
+        $stack7 = $stack6[$stack5];
+
+        $stack8 = virtualinvoke $stack7.<java.lang.String: boolean equals(java.lang.Object)>(qName);
+
+        if $stack8 == 0 goto label2;
+
+        return idx#1;
+
+     label2:
+        $stack9 = idx#1 + 1;
+
+        idx#1 = (char) $stack9;
+
+        goto label1;
+
+     label3:
+        $b0 = -1;
+
+        $i1 = (int) $b0;
+
+        return $i1;
+
+        nop;
+    }
+
+    public java.lang.String getType(java.lang.String, java.lang.String)
+    {
+        java.lang.String[] $stack7;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack8;
+        int $stack4, idx, $stack5, $stack6;
+        java.lang.String uri, localName, $stack8#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        uri := @parameter0: java.lang.String;
+
+        localName := @parameter1: java.lang.String;
+
+        $stack4 = virtualinvoke this.<jdk.internal.util.xml.impl.Attrs: int getIndex(java.lang.String,java.lang.String)>(uri, localName);
+
+        idx = $stack4;
+
+        if idx < 0 goto label1;
+
+        $stack7 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack5 = idx << 3;
+
+        $stack6 = $stack5 + 4;
+
+        $stack8#1 = $stack7[$stack6];
+
+        goto label2;
+
+     label1:
+        $stack8#1 = null;
+
+     label2:
+        return $stack8#1;
+
+        nop;
+    }
+
+    public java.lang.String getType(java.lang.String)
+    {
+        java.lang.String[] $stack6;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack7;
+        int $stack3, idx, $stack4, $stack5;
+        java.lang.String qName, $stack7#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        qName := @parameter0: java.lang.String;
+
+        $stack3 = virtualinvoke this.<jdk.internal.util.xml.impl.Attrs: int getIndex(java.lang.String)>(qName);
+
+        idx = $stack3;
+
+        if idx < 0 goto label1;
+
+        $stack6 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack4 = idx << 3;
+
+        $stack5 = $stack4 + 4;
+
+        $stack7#1 = $stack6[$stack5];
+
+        goto label2;
+
+     label1:
+        $stack7#1 = null;
+
+     label2:
+        return $stack7#1;
+
+        nop;
+    }
+
+    public java.lang.String getValue(java.lang.String, java.lang.String)
+    {
+        java.lang.String[] $stack7;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack8;
+        int $stack4, idx, $stack5, $stack6;
+        java.lang.String uri, localName, $stack8#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        uri := @parameter0: java.lang.String;
+
+        localName := @parameter1: java.lang.String;
+
+        $stack4 = virtualinvoke this.<jdk.internal.util.xml.impl.Attrs: int getIndex(java.lang.String,java.lang.String)>(uri, localName);
+
+        idx = $stack4;
+
+        if idx < 0 goto label1;
+
+        $stack7 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack5 = idx << 3;
+
+        $stack6 = $stack5 + 3;
+
+        $stack8#1 = $stack7[$stack6];
+
+        goto label2;
+
+     label1:
+        $stack8#1 = null;
+
+     label2:
+        return $stack8#1;
+
+        nop;
+    }
+
+    public java.lang.String getValue(java.lang.String)
+    {
+        java.lang.String[] $stack6;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack7;
+        int $stack3, idx, $stack4, $stack5;
+        java.lang.String qName, $stack7#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        qName := @parameter0: java.lang.String;
+
+        $stack3 = virtualinvoke this.<jdk.internal.util.xml.impl.Attrs: int getIndex(java.lang.String)>(qName);
+
+        idx = $stack3;
+
+        if idx < 0 goto label1;
+
+        $stack6 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack4 = idx << 3;
+
+        $stack5 = $stack4 + 3;
+
+        $stack7#1 = $stack6[$stack5];
+
+        goto label2;
+
+     label1:
+        $stack7#1 = null;
+
+     label2:
+        return $stack7#1;
+
+        nop;
+    }
+
+    public boolean isDeclared(int)
+    {
+        char $stack3;
+        java.lang.String[] $stack6;
+        java.lang.ArrayIndexOutOfBoundsException $stack2, $u0;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack8;
+        int index, $stack4, $stack5, $i0;
+        java.lang.String $stack7, $stack9;
+        boolean $stack8#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        index := @parameter0: int;
+
+        if index < 0 goto label1;
+
+        $stack3 = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        $i0 = (int) $stack3;
+
+        if index < $i0 goto label2;
+
+     label1:
+        $u0 = new java.lang.ArrayIndexOutOfBoundsException;
+
+        $stack2 = $u0;
+
+        $stack9 = "";
+
+        specialinvoke $u0.<java.lang.ArrayIndexOutOfBoundsException: void <init>(java.lang.String)>($stack9);
+
+        throw $stack2;
+
+     label2:
+        $stack6 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack4 = index << 3;
+
+        $stack5 = $stack4 + 5;
+
+        $stack7 = $stack6[$stack5];
+
+        if $stack7 == null goto label3;
+
+        $stack8#1 = 1;
+
+        goto label4;
+
+     label3:
+        $stack8#1 = 0;
+
+     label4:
+        return $stack8#1;
+
+        nop;
+    }
+
+    public boolean isDeclared(java.lang.String)
+    {
+        java.lang.String[] $stack6;
+        jdk.internal.util.xml.impl.Attrs this;
+        java.lang.IllegalArgumentException $stack9;
+        bottom_type $stack8;
+        int $stack3, idx, $stack4, $stack5;
+        java.lang.String qName, $stack7;
+        boolean $stack8#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        qName := @parameter0: java.lang.String;
+
+        $stack3 = virtualinvoke this.<jdk.internal.util.xml.impl.Attrs: int getIndex(java.lang.String)>(qName);
+
+        idx = $stack3;
+
+        if idx >= 0 goto label1;
+
+        $stack9 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("");
+
+        throw $stack9;
+
+     label1:
+        $stack6 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack4 = idx << 3;
+
+        $stack5 = $stack4 + 5;
+
+        $stack7 = $stack6[$stack5];
+
+        if $stack7 == null goto label2;
+
+        $stack8#1 = 1;
+
+        goto label3;
+
+     label2:
+        $stack8#1 = 0;
+
+     label3:
+        return $stack8#1;
+
+        nop;
+    }
+
+    public boolean isDeclared(java.lang.String, java.lang.String)
+    {
+        java.lang.String[] $stack7;
+        jdk.internal.util.xml.impl.Attrs this;
+        java.lang.IllegalArgumentException $stack10;
+        bottom_type $stack9;
+        int $stack4, idx, $stack5, $stack6;
+        java.lang.String uri, localName, $stack8;
+        boolean $stack9#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        uri := @parameter0: java.lang.String;
+
+        localName := @parameter1: java.lang.String;
+
+        $stack4 = virtualinvoke this.<jdk.internal.util.xml.impl.Attrs: int getIndex(java.lang.String,java.lang.String)>(uri, localName);
+
+        idx = $stack4;
+
+        if idx >= 0 goto label1;
+
+        $stack10 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack10.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("");
+
+        throw $stack10;
+
+     label1:
+        $stack7 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack5 = idx << 3;
+
+        $stack6 = $stack5 + 5;
+
+        $stack8 = $stack7[$stack6];
+
+        if $stack8 == null goto label2;
+
+        $stack9#1 = 1;
+
+        goto label3;
+
+     label2:
+        $stack9#1 = 0;
+
+     label3:
+        return $stack9#1;
+
+        nop;
+    }
+
+    public boolean isSpecified(int)
+    {
+        char $stack4, $stack8;
+        java.lang.String[] $stack7;
+        java.lang.ArrayIndexOutOfBoundsException $stack3, $u0;
+        jdk.internal.util.xml.impl.Attrs this;
+        bottom_type $stack9;
+        int index, $stack5, $stack6, $i0, $i1;
+        java.lang.String str, $stack10;
+        boolean $stack9#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        index := @parameter0: int;
+
+        if index < 0 goto label1;
+
+        $stack4 = this.<jdk.internal.util.xml.impl.Attrs: char mLength>;
+
+        $i0 = (int) $stack4;
+
+        if index < $i0 goto label2;
+
+     label1:
+        $u0 = new java.lang.ArrayIndexOutOfBoundsException;
+
+        $stack3 = $u0;
+
+        $stack10 = "";
+
+        specialinvoke $u0.<java.lang.ArrayIndexOutOfBoundsException: void <init>(java.lang.String)>($stack10);
+
+        throw $stack3;
+
+     label2:
+        $stack7 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack5 = index << 3;
+
+        $stack6 = $stack5 + 5;
+
+        str = $stack7[$stack6];
+
+        if str == null goto label4;
+
+        $stack8 = virtualinvoke str.<java.lang.String: char charAt(int)>(0);
+
+        $i1 = (int) $stack8;
+
+        if $i1 != 100 goto label3;
+
+        $stack9#1 = 1;
+
+        goto label5;
+
+     label3:
+        $stack9#1 = 0;
+
+        goto label5;
+
+     label4:
+        $stack9#1 = 1;
+
+     label5:
+        return $stack9#1;
+
+        nop;
+    }
+
+    public boolean isSpecified(java.lang.String, java.lang.String)
+    {
+        java.lang.String[] $stack8;
+        char $stack9;
+        jdk.internal.util.xml.impl.Attrs this;
+        java.lang.IllegalArgumentException $stack11, $u0;
+        bottom_type $stack10;
+        int $stack5, idx, $stack6, $stack7, $i0;
+        java.lang.String uri, localName, str;
+        boolean $stack10#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        uri := @parameter0: java.lang.String;
+
+        localName := @parameter1: java.lang.String;
+
+        $stack5 = virtualinvoke this.<jdk.internal.util.xml.impl.Attrs: int getIndex(java.lang.String,java.lang.String)>(uri, localName);
+
+        idx = $stack5;
+
+        if idx >= 0 goto label1;
+
+        $u0 = new java.lang.IllegalArgumentException;
+
+        $stack11 = $u0;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("");
+
+        throw $stack11;
+
+     label1:
+        $stack8 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack6 = idx << 3;
+
+        $stack7 = $stack6 + 5;
+
+        str = $stack8[$stack7];
+
+        if str == null goto label3;
+
+        $stack9 = virtualinvoke str.<java.lang.String: char charAt(int)>(0);
+
+        $i0 = (int) $stack9;
+
+        if $i0 != 100 goto label2;
+
+        $stack10#1 = 1;
+
+        goto label4;
+
+     label2:
+        $stack10#1 = 0;
+
+        goto label4;
+
+     label3:
+        $stack10#1 = 1;
+
+     label4:
+        return $stack10#1;
+
+        nop;
+    }
+
+    public boolean isSpecified(java.lang.String)
+    {
+        java.lang.String[] $stack7;
+        char $stack8;
+        jdk.internal.util.xml.impl.Attrs this;
+        java.lang.IllegalArgumentException $stack10, $u0;
+        bottom_type $stack9;
+        int $stack4, idx, $stack5, $stack6, $i0;
+        java.lang.String qName, str;
+        boolean $stack9#1;
+
+        this := @this: jdk.internal.util.xml.impl.Attrs;
+
+        qName := @parameter0: java.lang.String;
+
+        $stack4 = virtualinvoke this.<jdk.internal.util.xml.impl.Attrs: int getIndex(java.lang.String)>(qName);
+
+        idx = $stack4;
+
+        if idx >= 0 goto label1;
+
+        $u0 = new java.lang.IllegalArgumentException;
+
+        $stack10 = $u0;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("");
+
+        throw $stack10;
+
+     label1:
+        $stack7 = this.<jdk.internal.util.xml.impl.Attrs: java.lang.String[] mItems>;
+
+        $stack5 = idx << 3;
+
+        $stack6 = $stack5 + 5;
+
+        str = $stack7[$stack6];
+
+        if str == null goto label3;
+
+        $stack8 = virtualinvoke str.<java.lang.String: char charAt(int)>(0);
+
+        $i0 = (int) $stack8;
+
+        if $i0 != 100 goto label2;
+
+        $stack9#1 = 1;
+
+        goto label4;
+
+     label2:
+        $stack9#1 = 0;
+
+        goto label4;
+
+     label3:
+        $stack9#1 = 1;
+
+     label4:
+        return $stack9#1;
+
+        nop;
+    }
+}

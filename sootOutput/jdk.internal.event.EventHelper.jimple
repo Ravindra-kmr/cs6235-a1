@@ -1,0 +1,602 @@
+public final class jdk.internal.event.EventHelper extends java.lang.Object
+{
+    private static final jdk.internal.misc.JavaUtilJarAccess JUJA;
+    private static volatile boolean loggingSecurity;
+    private static volatile java.lang.System$Logger securityLogger;
+    private static final java.lang.invoke.VarHandle LOGGER_HANDLE;
+    private static final java.lang.System$Logger$Level LOG_LEVEL;
+    private static final java.lang.String SECURITY_LOGGER_NAME;
+    static final boolean $assertionsDisabled;
+
+    public void <init>()
+    {
+        jdk.internal.event.EventHelper this;
+
+        this := @this: jdk.internal.event.EventHelper;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public static void logTLSHandshakeEvent(java.time.Instant, java.lang.String, int, java.lang.String, java.lang.String, long)
+    {
+        java.lang.Integer $stack18;
+        java.lang.System$Logger$Level $stack12;
+        byte $stack17, $stack19, $stack25, $stack27, $stack30, $stack32;
+        java.lang.Long $stack20;
+        boolean $stack8;
+        java.time.Instant start, $stack22;
+        java.lang.StringBuilder $stack10, $stack13, $stack14;
+        java.lang.Object[] $stack16;
+        long peerCertId, $stack33;
+        java.lang.AssertionError $stack34;
+        int peerPort, $stack28;
+        java.lang.String $stack9, prepend, $stack15, peerHost, protocolVersion, cipherSuite, $stack23, $stack24, $stack26, $stack29, $stack31;
+        java.lang.System$Logger $stack11, $stack21;
+
+        start := @parameter0: java.time.Instant;
+
+        peerHost := @parameter1: java.lang.String;
+
+        peerPort := @parameter2: int;
+
+        cipherSuite := @parameter3: java.lang.String;
+
+        protocolVersion := @parameter4: java.lang.String;
+
+        peerCertId := @parameter5: long;
+
+        $stack8 = <jdk.internal.event.EventHelper: boolean $assertionsDisabled>;
+
+        if $stack8 != 0 goto label1;
+
+        $stack21 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        if $stack21 != null goto label1;
+
+        $stack34 = new java.lang.AssertionError;
+
+        specialinvoke $stack34.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack34;
+
+     label1:
+        $stack22 = start;
+
+        $stack9 = staticinvoke <jdk.internal.event.EventHelper: java.lang.String getDurationString(java.time.Instant)>($stack22);
+
+        prepend = $stack9;
+
+        $stack11 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        $stack12 = <jdk.internal.event.EventHelper: java.lang.System$Logger$Level LOG_LEVEL>;
+
+        $stack10 = new java.lang.StringBuilder;
+
+        specialinvoke $stack10.<java.lang.StringBuilder: void <init>()>();
+
+        $stack23 = prepend;
+
+        $stack13 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack23);
+
+        $stack24 = " TLSHandshake: {0}:{1,number,#}, {2}, {3}, {4,number,#}";
+
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack24);
+
+        $stack15 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack25 = 5;
+
+        $stack16 = newarray (java.lang.Object)[$stack25];
+
+        $stack27 = 0;
+
+        $stack26 = peerHost;
+
+        $stack16[$stack27] = $stack26;
+
+        $stack17 = 1;
+
+        $stack28 = peerPort;
+
+        $stack18 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack28);
+
+        $stack16[$stack17] = $stack18;
+
+        $stack30 = 2;
+
+        $stack29 = protocolVersion;
+
+        $stack16[$stack30] = $stack29;
+
+        $stack32 = 3;
+
+        $stack31 = cipherSuite;
+
+        $stack16[$stack32] = $stack31;
+
+        $stack19 = 4;
+
+        $stack33 = peerCertId;
+
+        $stack20 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack33);
+
+        $stack16[$stack19] = $stack20;
+
+        interfaceinvoke $stack11.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Object[])>($stack12, $stack15, $stack16);
+
+        return;
+
+        nop;
+    }
+
+    public static void logSecurityPropertyEvent(java.lang.String, java.lang.String)
+    {
+        java.lang.System$Logger $stack5, $stack6;
+        java.lang.Object[] $stack3;
+        java.lang.AssertionError $stack13;
+        java.lang.System$Logger$Level $stack4;
+        byte $stack7, $stack9, $stack11;
+        java.lang.String key, value, $stack8, $stack10, $stack12;
+        boolean $stack2;
+
+        key := @parameter0: java.lang.String;
+
+        value := @parameter1: java.lang.String;
+
+        $stack2 = <jdk.internal.event.EventHelper: boolean $assertionsDisabled>;
+
+        if $stack2 != 0 goto label1;
+
+        $stack6 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        if $stack6 != null goto label1;
+
+        $stack13 = new java.lang.AssertionError;
+
+        specialinvoke $stack13.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack13;
+
+     label1:
+        $stack5 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        $stack4 = <jdk.internal.event.EventHelper: java.lang.System$Logger$Level LOG_LEVEL>;
+
+        $stack12 = "SecurityPropertyModification: key:{0}, value:{1}";
+
+        $stack7 = 2;
+
+        $stack3 = newarray (java.lang.Object)[$stack7];
+
+        $stack9 = 0;
+
+        $stack8 = key;
+
+        $stack3[$stack9] = $stack8;
+
+        $stack11 = 1;
+
+        $stack10 = value;
+
+        $stack3[$stack11] = $stack10;
+
+        interfaceinvoke $stack5.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Object[])>($stack4, $stack12, $stack3);
+
+        return;
+
+        nop;
+    }
+
+    public static void logX509ValidationEvent(int, int[])
+    {
+        java.util.stream.IntStream $stack4;
+        java.lang.Object[] $stack9;
+        java.lang.AssertionError $stack23;
+        java.lang.Integer $stack14;
+        java.lang.System$Logger$Level $stack11;
+        byte $stack13, $stack19, $stack22;
+        int[] certIds, $stack16;
+        int anchorCertId, $stack20;
+        java.util.stream.Collector $stack7;
+        java.lang.String codes, $stack12, $stack17, $stack18, $stack21;
+        boolean $stack3;
+        java.util.function.IntFunction $stack5;
+        java.lang.System$Logger $stack10, $stack15;
+        java.util.stream.Stream $stack6;
+        java.lang.Object $stack8;
+
+        anchorCertId := @parameter0: int;
+
+        certIds := @parameter1: int[];
+
+        $stack3 = <jdk.internal.event.EventHelper: boolean $assertionsDisabled>;
+
+        if $stack3 != 0 goto label1;
+
+        $stack15 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        if $stack15 != null goto label1;
+
+        $stack23 = new java.lang.AssertionError;
+
+        specialinvoke $stack23.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack23;
+
+     label1:
+        $stack16 = certIds;
+
+        $stack4 = staticinvoke <java.util.stream.IntStream: java.util.stream.IntStream of(int[])>($stack16);
+
+        $stack5 = staticinvoke <jdk.internal.event.EventHelper$toString__472: java.util.function.IntFunction bootstrap$()>();
+
+        $stack6 = interfaceinvoke $stack4.<java.util.stream.IntStream: java.util.stream.Stream mapToObj(java.util.function.IntFunction)>($stack5);
+
+        $stack17 = ", ";
+
+        $stack7 = staticinvoke <java.util.stream.Collectors: java.util.stream.Collector joining(java.lang.CharSequence)>($stack17);
+
+        $stack8 = interfaceinvoke $stack6.<java.util.stream.Stream: java.lang.Object collect(java.util.stream.Collector)>($stack7);
+
+        $stack18 = (java.lang.String) $stack8;
+
+        codes = $stack18;
+
+        $stack10 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        $stack11 = <jdk.internal.event.EventHelper: java.lang.System$Logger$Level LOG_LEVEL>;
+
+        $stack12 = "ValidationChain: {0,number,#}, {1}";
+
+        $stack19 = 2;
+
+        $stack9 = newarray (java.lang.Object)[$stack19];
+
+        $stack13 = 0;
+
+        $stack20 = anchorCertId;
+
+        $stack14 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack20);
+
+        $stack9[$stack13] = $stack14;
+
+        $stack22 = 1;
+
+        $stack21 = codes;
+
+        $stack9[$stack22] = $stack21;
+
+        interfaceinvoke $stack10.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Object[])>($stack11, $stack12, $stack9);
+
+        return;
+
+        nop;
+    }
+
+    public static void logX509CertificateEvent(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, long, long, long)
+    {
+        java.util.Date $stack21, $stack23;
+        java.lang.Integer $stack18;
+        java.lang.System$Logger$Level $stack15;
+        byte $stack17, $stack19, $stack22, $stack24, $stack26, $stack28, $stack30, $stack32, $stack34, $stack36;
+        java.lang.Long $stack20;
+        boolean $stack12;
+        java.lang.Object[] $stack13;
+        long certId, beginDate, endDate, $stack38, $stack39, $stack40;
+        java.lang.AssertionError $stack41;
+        int length, $stack37;
+        java.lang.String algId, serialNum, subject, issuer, keyType, $stack16, $stack27, $stack29, $stack31, $stack33, $stack35;
+        java.lang.System$Logger $stack14, $stack25;
+
+        algId := @parameter0: java.lang.String;
+
+        serialNum := @parameter1: java.lang.String;
+
+        subject := @parameter2: java.lang.String;
+
+        issuer := @parameter3: java.lang.String;
+
+        keyType := @parameter4: java.lang.String;
+
+        length := @parameter5: int;
+
+        certId := @parameter6: long;
+
+        beginDate := @parameter7: long;
+
+        endDate := @parameter8: long;
+
+        $stack12 = <jdk.internal.event.EventHelper: boolean $assertionsDisabled>;
+
+        if $stack12 != 0 goto label1;
+
+        $stack25 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        if $stack25 != null goto label1;
+
+        $stack41 = new java.lang.AssertionError;
+
+        specialinvoke $stack41.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack41;
+
+     label1:
+        $stack14 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        $stack15 = <jdk.internal.event.EventHelper: java.lang.System$Logger$Level LOG_LEVEL>;
+
+        $stack16 = "X509Certificate: Alg:{0}, Serial:{1}, Subject:{2}, Issuer:{3}, Key type:{4}, Length:{5,number,#}, Cert Id:{6,number,#}, Valid from:{7}, Valid until:{8}";
+
+        $stack26 = 9;
+
+        $stack13 = newarray (java.lang.Object)[$stack26];
+
+        $stack28 = 0;
+
+        $stack27 = algId;
+
+        $stack13[$stack28] = $stack27;
+
+        $stack30 = 1;
+
+        $stack29 = serialNum;
+
+        $stack13[$stack30] = $stack29;
+
+        $stack32 = 2;
+
+        $stack31 = subject;
+
+        $stack13[$stack32] = $stack31;
+
+        $stack34 = 3;
+
+        $stack33 = issuer;
+
+        $stack13[$stack34] = $stack33;
+
+        $stack36 = 4;
+
+        $stack35 = keyType;
+
+        $stack13[$stack36] = $stack35;
+
+        $stack17 = 5;
+
+        $stack37 = length;
+
+        $stack18 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack37);
+
+        $stack13[$stack17] = $stack18;
+
+        $stack19 = 6;
+
+        $stack38 = certId;
+
+        $stack20 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack38);
+
+        $stack13[$stack19] = $stack20;
+
+        $stack22 = 7;
+
+        $stack21 = new java.util.Date;
+
+        $stack39 = beginDate;
+
+        specialinvoke $stack21.<java.util.Date: void <init>(long)>($stack39);
+
+        $stack13[$stack22] = $stack21;
+
+        $stack24 = 8;
+
+        $stack23 = new java.util.Date;
+
+        $stack40 = endDate;
+
+        specialinvoke $stack23.<java.util.Date: void <init>(long)>($stack40);
+
+        $stack13[$stack24] = $stack23;
+
+        interfaceinvoke $stack14.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Object[])>($stack15, $stack16, $stack13);
+
+        return;
+
+        nop;
+    }
+
+    private static java.lang.String getDurationString(java.time.Instant)
+    {
+        long $stack6, micros, $stack10;
+        byte $stack7;
+        java.time.Duration $stack5, duration;
+        int $i0;
+        java.lang.String $stack15, $stack22;
+        double $stack11, $stack12, $stack18, $stack19;
+        java.time.Instant start, $stack4;
+        java.lang.StringBuilder $stack8, $stack9, $stack13, $stack14, $stack16, $stack17, $stack20, $stack21, $u0, $u1;
+
+        start := @parameter0: java.time.Instant;
+
+        if start == null goto label2;
+
+        $stack4 = staticinvoke <java.time.Instant: java.time.Instant now()>();
+
+        $stack5 = staticinvoke <java.time.Duration: java.time.Duration between(java.time.temporal.Temporal,java.time.temporal.Temporal)>(start, $stack4);
+
+        duration = $stack5;
+
+        $stack6 = virtualinvoke duration.<java.time.Duration: long toNanos()>();
+
+        micros = $stack6 / 1000L;
+
+        $stack7 = micros cmp 1000000L;
+
+        $i0 = (int) $stack7;
+
+        if $i0 >= 0 goto label1;
+
+        $u0 = new java.lang.StringBuilder;
+
+        $stack16 = $u0;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $stack17 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("duration = ");
+
+        $stack18 = (double) micros;
+
+        $stack19 = $stack18 / 1000.0;
+
+        $stack20 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>($stack19);
+
+        $stack21 = virtualinvoke $stack20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ms:");
+
+        $stack22 = virtualinvoke $stack21.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $stack22;
+
+     label1:
+        $u1 = new java.lang.StringBuilder;
+
+        $stack8 = $u1;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("duration = ");
+
+        $stack10 = micros / 1000L;
+
+        $stack11 = (double) $stack10;
+
+        $stack12 = $stack11 / 1000.0;
+
+        $stack13 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>($stack12);
+
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" s:");
+
+        $stack15 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $stack15;
+
+     label2:
+        return "";
+
+        nop;
+    }
+
+    public static boolean isLoggingSecurity()
+    {
+        jdk.internal.misc.JavaUtilJarAccess $stack2;
+        java.lang.System$Logger $stack0, $stack6, $stack9;
+        java.lang.invoke.VarHandle $stack4;
+        java.lang.System$Logger$Level $stack8;
+        boolean $stack3, $stack10, $stack1#1, $stack1#2;
+
+        $stack0 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        if $stack0 != null goto label1;
+
+        $stack2 = <jdk.internal.event.EventHelper: jdk.internal.misc.JavaUtilJarAccess JUJA>;
+
+        $stack3 = interfaceinvoke $stack2.<jdk.internal.misc.JavaUtilJarAccess: boolean isInitializing()>();
+
+        if $stack3 != 0 goto label1;
+
+        $stack4 = <jdk.internal.event.EventHelper: java.lang.invoke.VarHandle LOGGER_HANDLE>;
+
+        $stack6 = staticinvoke <java.lang.System: java.lang.System$Logger getLogger(java.lang.String)>("jdk.event.security");
+
+        virtualinvoke $stack4.<java.lang.invoke.VarHandle: boolean compareAndSet(java.lang.Void,java.lang.System$Logger)>(null, $stack6);
+
+        $stack9 = <jdk.internal.event.EventHelper: java.lang.System$Logger securityLogger>;
+
+        $stack8 = <jdk.internal.event.EventHelper: java.lang.System$Logger$Level LOG_LEVEL>;
+
+        $stack10 = interfaceinvoke $stack9.<java.lang.System$Logger: boolean isLoggable(java.lang.System$Logger$Level)>($stack8);
+
+        <jdk.internal.event.EventHelper: boolean loggingSecurity> = $stack10;
+
+     label1:
+        $stack1#1 = <jdk.internal.event.EventHelper: boolean loggingSecurity>;
+
+        $stack1#2 = $stack1#1;
+
+        return $stack1#2;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.misc.JavaUtilJarAccess $stack3;
+        java.lang.invoke.VarHandle $stack5;
+        java.lang.invoke.MethodHandles$Lookup $stack4;
+        java.lang.Error $stack12;
+        java.lang.ReflectiveOperationException $stack11, e;
+        java.lang.System$Logger$Level $stack6;
+        bottom_type $stack7;
+        java.lang.Class $stack1, $stack8, $stack10;
+        java.lang.String $stack9;
+        boolean $stack2, $stack7#1;
+
+        <jdk.internal.event.EventHelper: java.lang.String SECURITY_LOGGER_NAME> = "jdk.event.security";
+
+        $stack1 = class "Ljdk/internal/event/EventHelper;";
+
+        $stack2 = virtualinvoke $stack1.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack2 != 0 goto label1;
+
+        $stack7#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack7#1 = 0;
+
+     label2:
+        <jdk.internal.event.EventHelper: boolean $assertionsDisabled> = $stack7#1;
+
+        $stack3 = staticinvoke <jdk.internal.misc.SharedSecrets: jdk.internal.misc.JavaUtilJarAccess javaUtilJarAccess()>();
+
+        <jdk.internal.event.EventHelper: jdk.internal.misc.JavaUtilJarAccess JUJA> = $stack3;
+
+     label3:
+        $stack4 = staticinvoke <java.lang.invoke.MethodHandles: java.lang.invoke.MethodHandles$Lookup lookup()>();
+
+        $stack8 = class "Ljdk/internal/event/EventHelper;";
+
+        $stack9 = "securityLogger";
+
+        $stack10 = class "Ljava/lang/System$Logger;";
+
+        $stack5 = virtualinvoke $stack4.<java.lang.invoke.MethodHandles$Lookup: java.lang.invoke.VarHandle findStaticVarHandle(java.lang.Class,java.lang.String,java.lang.Class)>($stack8, $stack9, $stack10);
+
+        <jdk.internal.event.EventHelper: java.lang.invoke.VarHandle LOGGER_HANDLE> = $stack5;
+
+     label4:
+        goto label6;
+
+     label5:
+        $stack11 := @caughtexception;
+
+        e = $stack11;
+
+        $stack12 = new java.lang.Error;
+
+        specialinvoke $stack12.<java.lang.Error: void <init>(java.lang.Throwable)>(e);
+
+        throw $stack12;
+
+     label6:
+        $stack6 = <java.lang.System$Logger$Level: java.lang.System$Logger$Level DEBUG>;
+
+        <jdk.internal.event.EventHelper: java.lang.System$Logger$Level LOG_LEVEL> = $stack6;
+
+        return;
+
+        catch java.lang.ReflectiveOperationException from label3 to label4 with label5;
+    }
+}

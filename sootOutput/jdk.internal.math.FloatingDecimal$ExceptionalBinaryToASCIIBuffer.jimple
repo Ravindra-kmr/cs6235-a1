@@ -1,0 +1,216 @@
+class jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer extends java.lang.Object implements jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter
+{
+    private final java.lang.String image;
+    private boolean isNegative;
+    static final boolean $assertionsDisabled;
+
+    public void <init>(java.lang.String, boolean)
+    {
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer this;
+        java.lang.String image;
+        boolean isNegative;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        image := @parameter0: java.lang.String;
+
+        isNegative := @parameter1: boolean;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: java.lang.String image> = image;
+
+        this.<jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: boolean isNegative> = isNegative;
+
+        return;
+
+        nop;
+    }
+
+    public java.lang.String toJavaFormatString()
+    {
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer this;
+        java.lang.String $stack1;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        $stack1 = this.<jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: java.lang.String image>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public void appendTo(java.lang.Appendable)
+    {
+        java.lang.Appendable buf;
+        java.lang.AssertionError $stack5;
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer this;
+        java.lang.StringBuffer $stack7, $stack8;
+        java.lang.StringBuilder $stack10, $stack11;
+        java.lang.String $stack6, $stack9;
+        boolean $stack2, $stack3, $stack4;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        buf := @parameter0: java.lang.Appendable;
+
+        $stack2 = buf instanceof java.lang.StringBuilder;
+
+        if $stack2 == 0 goto label1;
+
+        $stack10 = (java.lang.StringBuilder) buf;
+
+        $stack9 = this.<jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: java.lang.String image>;
+
+        $stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack9);
+
+        goto label3;
+
+     label1:
+        $stack3 = buf instanceof java.lang.StringBuffer;
+
+        if $stack3 == 0 goto label2;
+
+        $stack7 = (java.lang.StringBuffer) buf;
+
+        $stack6 = this.<jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: java.lang.String image>;
+
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($stack6);
+
+        goto label3;
+
+     label2:
+        $stack4 = <jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: boolean $assertionsDisabled>;
+
+        if $stack4 != 0 goto label3;
+
+        $stack5 = new java.lang.AssertionError;
+
+        specialinvoke $stack5.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack5;
+
+     label3:
+        return;
+
+        nop;
+    }
+
+    public int getDecimalExponent()
+    {
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer this;
+        java.lang.IllegalArgumentException $stack1;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        $stack1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Exceptional value does not have an exponent");
+
+        throw $stack1;
+
+        nop;
+    }
+
+    public int getDigits(char[])
+    {
+        char[] digits;
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer this;
+        java.lang.IllegalArgumentException $stack2;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        digits := @parameter0: char[];
+
+        $stack2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Exceptional value does not have digits");
+
+        throw $stack2;
+
+        nop;
+    }
+
+    public boolean isNegative()
+    {
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer this;
+        boolean $stack1;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        $stack1 = this.<jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: boolean isNegative>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public boolean isExceptional()
+    {
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer this;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        return 1;
+
+        nop;
+    }
+
+    public boolean digitsRoundedUp()
+    {
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer this;
+        java.lang.IllegalArgumentException $stack1;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        $stack1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Exceptional value is not rounded");
+
+        throw $stack1;
+
+        nop;
+    }
+
+    public boolean decimalDigitsExact()
+    {
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer this;
+        java.lang.IllegalArgumentException $stack1;
+
+        this := @this: jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        $stack1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Exceptional value is not exact");
+
+        throw $stack1;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack2;
+        java.lang.Class $stack0;
+        boolean $stack1, $stack2#1;
+
+        $stack0 = class "Ljdk/internal/math/FloatingDecimal;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack2#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack2#1 = 0;
+
+     label2:
+        <jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: boolean $assertionsDisabled> = $stack2#1;
+
+        return;
+    }
+}

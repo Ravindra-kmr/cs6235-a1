@@ -1,0 +1,430 @@
+final class jdk.internal.logger.SimpleConsoleLogger$Formatting extends java.lang.Object
+{
+    static final java.lang.String DEFAULT_FORMAT;
+    static final java.lang.String DEFAULT_FORMAT_PROP_KEY;
+    static final java.lang.String JUL_FORMAT_PROP_KEY;
+    static final java.lang.String SIMPLE_CONSOLE_LOGGER_FORMAT;
+    private static final java.lang.String[] skips;
+
+    void <init>()
+    {
+        jdk.internal.logger.SimpleConsoleLogger$Formatting this;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$Formatting;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    static boolean isFilteredFrame(java.lang.StackWalker$StackFrame)
+    {
+        byte $stack29;
+        bottom_type $stack9, $stack10, $stack11, i;
+        boolean $stack6, $stack14, $stack17, $stack21, $stack22, $stack23, $stack24, $stack25, $stack26, $stack27, $stack28;
+        java.lang.String[] $stack12, $stack15, $stack19, $stack10#2, $stack10#3;
+        int $stack8, c, $stack13, $stack18, $stack30, $stack9#1, $stack11#4, $stack11#5, i#6;
+        java.lang.String $stack7, cname, $stack16, $stack20;
+        java.lang.StackWalker$StackFrame st;
+        java.lang.Class $stack4, $stack5;
+
+        st := @parameter0: java.lang.StackWalker$StackFrame;
+
+        $stack4 = class "Ljava/lang/System$Logger;";
+
+        $stack5 = interfaceinvoke st.<java.lang.StackWalker$StackFrame: java.lang.Class getDeclaringClass()>();
+
+        $stack6 = virtualinvoke $stack4.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($stack5);
+
+        if $stack6 == 0 goto label01;
+
+        return 1;
+
+     label01:
+        $stack7 = interfaceinvoke st.<java.lang.StackWalker$StackFrame: java.lang.String getClassName()>();
+
+        cname = $stack7;
+
+        $stack8 = virtualinvoke cname.<java.lang.String: int length()>();
+
+        if $stack8 >= 12 goto label02;
+
+        $stack9#1 = 0;
+
+        goto label03;
+
+     label02:
+        $stack9#1 = virtualinvoke cname.<java.lang.String: char charAt(int)>(0);
+
+     label03:
+        c = $stack9#1;
+
+        $stack30 = c;
+
+        $stack29 = 115;
+
+        if $stack30 != $stack29 goto label05;
+
+        $stack27 = virtualinvoke cname.<java.lang.String: boolean startsWith(java.lang.String)>("sun.util.logging.");
+
+        if $stack27 == 0 goto label04;
+
+        return 1;
+
+     label04:
+        $stack28 = virtualinvoke cname.<java.lang.String: boolean startsWith(java.lang.String)>("sun.rmi.runtime.Log");
+
+        if $stack28 == 0 goto label10;
+
+        return 1;
+
+     label05:
+        if c != 106 goto label10;
+
+        $stack22 = virtualinvoke cname.<java.lang.String: boolean startsWith(java.lang.String)>("jdk.internal.logger.BootstrapLogger$LogEvent");
+
+        if $stack22 == 0 goto label06;
+
+        return 0;
+
+     label06:
+        $stack23 = virtualinvoke cname.<java.lang.String: boolean startsWith(java.lang.String)>("jdk.internal.logger.");
+
+        if $stack23 == 0 goto label07;
+
+        return 1;
+
+     label07:
+        $stack24 = virtualinvoke cname.<java.lang.String: boolean startsWith(java.lang.String)>("java.util.logging.");
+
+        if $stack24 == 0 goto label08;
+
+        return 1;
+
+     label08:
+        $stack25 = virtualinvoke cname.<java.lang.String: boolean startsWith(java.lang.String)>("java.lang.invoke.MethodHandle");
+
+        if $stack25 == 0 goto label09;
+
+        return 1;
+
+     label09:
+        $stack26 = virtualinvoke cname.<java.lang.String: boolean startsWith(java.lang.String)>("java.security.AccessController");
+
+        if $stack26 == 0 goto label10;
+
+        return 1;
+
+     label10:
+        $stack10#2 = <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String[] skips>;
+
+        $stack10#3 = $stack10#2;
+
+        $stack11#4 = lengthof $stack10#3;
+
+        $stack11#5 = $stack11#4;
+
+        if $stack11#5 <= 0 goto label13;
+
+        i#6 = 0;
+
+     label11:
+        $stack18 = i#6;
+
+        $stack12 = <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String[] skips>;
+
+        $stack13 = lengthof $stack12;
+
+        if $stack18 >= $stack13 goto label13;
+
+        $stack15 = <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String[] skips>;
+
+        $stack16 = $stack15[i#6];
+
+        $stack17 = virtualinvoke $stack16.<java.lang.String: boolean isEmpty()>();
+
+        if $stack17 != 0 goto label12;
+
+        $stack19 = <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String[] skips>;
+
+        $stack20 = $stack19[i#6];
+
+        $stack21 = virtualinvoke cname.<java.lang.String: boolean startsWith(java.lang.String)>($stack20);
+
+        if $stack21 == 0 goto label12;
+
+        return 1;
+
+     label12:
+        i#6 = i#6 + 1;
+
+        goto label11;
+
+     label13:
+        $stack14 = 0;
+
+        return $stack14;
+
+        nop;
+    }
+
+    static java.lang.String getSimpleFormat(java.lang.String, java.util.function.Function)
+    {
+        java.lang.Object[] $stack7;
+        java.time.ZonedDateTime $stack9;
+        java.util.function.Function defaultPropertyGetter;
+        byte $stack8;
+        bottom_type format, $stack11, $stack12;
+        java.lang.String key, $stack4, $stack6, $stack10, $stack14, $stack16, $stack17, $stack22, format#1, $stack12#2, $stack12#3, $stack11#4, $stack11#5;
+        boolean $stack5, $stack15;
+        java.lang.IllegalArgumentException $stack18, $stack23, e;
+        java.lang.Object $stack13;
+        java.lang.StringBuilder $stack19, $stack20, $stack21;
+
+        key := @parameter0: java.lang.String;
+
+        defaultPropertyGetter := @parameter1: java.util.function.Function;
+
+        $stack4 = "jdk.system.logger.format";
+
+        $stack5 = virtualinvoke $stack4.<java.lang.String: boolean equals(java.lang.Object)>(key);
+
+        if $stack5 != 0 goto label1;
+
+        $stack14 = "java.util.logging.SimpleFormatter.format";
+
+        $stack15 = virtualinvoke $stack14.<java.lang.String: boolean equals(java.lang.Object)>(key);
+
+        if $stack15 != 0 goto label1;
+
+        $stack18 = new java.lang.IllegalArgumentException;
+
+        $stack19 = new java.lang.StringBuilder;
+
+        specialinvoke $stack19.<java.lang.StringBuilder: void <init>()>();
+
+        $stack20 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid property name: ");
+
+        $stack21 = virtualinvoke $stack20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(key);
+
+        $stack22 = virtualinvoke $stack21.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack18.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($stack22);
+
+        throw $stack18;
+
+     label1:
+        $stack16 = key;
+
+        $stack6 = staticinvoke <sun.security.action.GetPropertyAction: java.lang.String privilegedGetProperty(java.lang.String)>($stack16);
+
+        format#1 = $stack6;
+
+        $stack17 = format#1;
+
+        if $stack17 != null goto label2;
+
+        if defaultPropertyGetter == null goto label2;
+
+        $stack13 = interfaceinvoke defaultPropertyGetter.<java.util.function.Function: java.lang.Object apply(java.lang.Object)>(key);
+
+        format#1 = (java.lang.String) $stack13;
+
+     label2:
+        $stack12#2 = format#1;
+
+        $stack12#3 = $stack12#2;
+
+        if $stack12#3 == null goto label6;
+
+     label3:
+        $stack7 = newarray (java.lang.Object)[6];
+
+        $stack8 = 0;
+
+        $stack9 = staticinvoke <java.time.ZonedDateTime: java.time.ZonedDateTime now()>();
+
+        $stack7[$stack8] = $stack9;
+
+        $stack7[1] = "";
+
+        $stack7[2] = "";
+
+        $stack7[3] = "";
+
+        $stack7[4] = "";
+
+        $stack7[5] = "";
+
+        $stack10 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>(format#1, $stack7);
+
+     label4:
+        goto label7;
+
+     label5:
+        $stack23 := @caughtexception;
+
+        e = $stack23;
+
+        format#1 = "%1$tb %1$td, %1$tY %1$tl:%1$tM:%1$tS %1$Tp %2$s%n%4$s: %5$s%6$s%n";
+
+        goto label7;
+
+     label6:
+        format#1 = "%1$tb %1$td, %1$tY %1$tl:%1$tM:%1$tS %1$Tp %2$s%n%4$s: %5$s%6$s%n";
+
+     label7:
+        $stack11#4 = format#1;
+
+        $stack11#5 = $stack11#4;
+
+        return $stack11#5;
+
+        nop;
+
+        catch java.lang.IllegalArgumentException from label3 to label4 with label5;
+    }
+
+    static transient java.lang.String formatMessage(java.lang.String, java.lang.Object[])
+    {
+        java.lang.Object[] parameters;
+        byte $stack12;
+        bottom_type isJavaTestFormat, i;
+        int $stack7, $stack8, len, $stack9, $stack13, $stack14, $stack15, i#2, $i0, $i1, $i2;
+        java.lang.String format, $stack10, $stack18;
+        boolean $stack17, isJavaTestFormat#1;
+        char $stack11, c, $stack16, d;
+        java.lang.Exception $stack19, isJavaTestFormat#3;
+
+        format := @parameter0: java.lang.String;
+
+        parameters := @parameter1: java.lang.Object[];
+
+     label01:
+        if parameters == null goto label02;
+
+        $stack7 = lengthof parameters;
+
+        if $stack7 != 0 goto label04;
+
+     label02:
+        $stack18 = format;
+
+     label03:
+        return $stack18;
+
+     label04:
+        isJavaTestFormat#1 = 0;
+
+        $stack8 = virtualinvoke format.<java.lang.String: int length()>();
+
+        len = $stack8;
+
+        i#2 = 0;
+
+     label05:
+        $stack14 = i#2;
+
+        $stack13 = len;
+
+        $stack12 = 2;
+
+        $stack9 = $stack13 - $stack12;
+
+        if $stack14 >= $stack9 goto label07;
+
+        $stack11 = virtualinvoke format.<java.lang.String: char charAt(int)>(i#2);
+
+        c = $stack11;
+
+        $i0 = (int) c;
+
+        if $i0 != 123 goto label06;
+
+        $stack15 = i#2 + 1;
+
+        $stack16 = virtualinvoke format.<java.lang.String: char charAt(int)>($stack15);
+
+        d = $stack16;
+
+        $i1 = (int) d;
+
+        if $i1 < 48 goto label06;
+
+        $i2 = (int) d;
+
+        if $i2 > 57 goto label06;
+
+        isJavaTestFormat#1 = 1;
+
+        goto label07;
+
+     label06:
+        i#2 = i#2 + 1;
+
+        goto label05;
+
+     label07:
+        $stack17 = isJavaTestFormat#1;
+
+        if $stack17 == 0 goto label09;
+
+        $stack10 = staticinvoke <java.text.MessageFormat: java.lang.String format(java.lang.String,java.lang.Object[])>(format, parameters);
+
+     label08:
+        return $stack10;
+
+     label09:
+        return format;
+
+     label10:
+        $stack19 := @caughtexception;
+
+        isJavaTestFormat#3 = $stack19;
+
+        return format;
+
+        nop;
+
+        catch java.lang.Exception from label01 to label03 with label10;
+        catch java.lang.Exception from label04 to label08 with label10;
+        catch java.lang.Exception from label09 to label09 with label10;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack3;
+        java.lang.String[] $stack3#1;
+        java.lang.String $stack1, $stack2, additionalPkgs;
+
+        <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String JUL_FORMAT_PROP_KEY> = "java.util.logging.SimpleFormatter.format";
+
+        <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String DEFAULT_FORMAT_PROP_KEY> = "jdk.system.logger.format";
+
+        <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String DEFAULT_FORMAT> = "%1$tb %1$td, %1$tY %1$tl:%1$tM:%1$tS %1$Tp %2$s%n%4$s: %5$s%6$s%n";
+
+        $stack1 = staticinvoke <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String getSimpleFormat(java.lang.String,java.util.function.Function)>("jdk.system.logger.format", null);
+
+        <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String SIMPLE_CONSOLE_LOGGER_FORMAT> = $stack1;
+
+        $stack2 = staticinvoke <sun.security.action.GetPropertyAction: java.lang.String privilegedGetProperty(java.lang.String)>("jdk.logger.packages");
+
+        additionalPkgs = $stack2;
+
+        if additionalPkgs != null goto label1;
+
+        $stack3#1 = newarray (java.lang.String)[0];
+
+        goto label2;
+
+     label1:
+        $stack3#1 = virtualinvoke additionalPkgs.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");
+
+     label2:
+        <jdk.internal.logger.SimpleConsoleLogger$Formatting: java.lang.String[] skips> = $stack3#1;
+
+        return;
+    }
+}

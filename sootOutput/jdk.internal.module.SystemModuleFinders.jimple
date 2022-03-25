@@ -1,0 +1,762 @@
+public final class jdk.internal.module.SystemModuleFinders extends java.lang.Object
+{
+    private static final jdk.internal.misc.JavaNetUriAccess JNUA;
+    private static final boolean USE_FAST_PATH;
+    private static volatile java.lang.module.ModuleFinder cachedSystemModuleFinder;
+
+    private void <init>()
+    {
+        jdk.internal.module.SystemModuleFinders this;
+
+        this := @this: jdk.internal.module.SystemModuleFinders;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    static jdk.internal.module.SystemModules allSystemModules()
+    {
+        jdk.internal.module.SystemModules $stack1;
+        boolean $stack0;
+
+        $stack0 = <jdk.internal.module.SystemModuleFinders: boolean USE_FAST_PATH>;
+
+        if $stack0 == 0 goto label1;
+
+        $stack1 = staticinvoke <jdk.internal.module.SystemModulesMap: jdk.internal.module.SystemModules allSystemModules()>();
+
+        return $stack1;
+
+     label1:
+        return null;
+    }
+
+    static jdk.internal.module.SystemModules systemModules(java.lang.String)
+    {
+        java.lang.Object[] $stack17;
+        java.lang.String[] $stack7, initialModules, $stack11, $stack13;
+        jdk.internal.module.SystemModules $stack19, $stack20;
+        java.lang.reflect.Constructor $stack16, ctor#2;
+        int $stack8, $stack12, i#1;
+        java.lang.InternalError $stack22;
+        java.lang.String initialModule, moduleName, cn;
+        boolean $stack6, $stack10;
+        java.lang.Class[] $stack15;
+        java.lang.Exception $stack21, ctor#3;
+        java.lang.Class $stack14;
+        java.lang.Object $stack18;
+
+        initialModule := @parameter0: java.lang.String;
+
+        $stack6 = <jdk.internal.module.SystemModuleFinders: boolean USE_FAST_PATH>;
+
+        if $stack6 == 0 goto label7;
+
+        if initialModule != null goto label1;
+
+        $stack20 = staticinvoke <jdk.internal.module.SystemModulesMap: jdk.internal.module.SystemModules defaultSystemModules()>();
+
+        return $stack20;
+
+     label1:
+        $stack7 = staticinvoke <jdk.internal.module.SystemModulesMap: java.lang.String[] moduleNames()>();
+
+        initialModules = $stack7;
+
+        i#1 = 0;
+
+     label2:
+        $stack12 = i#1;
+
+        $stack11 = initialModules;
+
+        $stack8 = lengthof $stack11;
+
+        if $stack12 >= $stack8 goto label7;
+
+        moduleName = initialModules[i#1];
+
+        $stack10 = virtualinvoke initialModule.<java.lang.String: boolean equals(java.lang.Object)>(moduleName);
+
+        if $stack10 == 0 goto label6;
+
+        $stack13 = staticinvoke <jdk.internal.module.SystemModulesMap: java.lang.String[] classNames()>();
+
+        cn = $stack13[i#1];
+
+     label3:
+        $stack14 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>(cn);
+
+        $stack15 = newarray (java.lang.Class)[0];
+
+        $stack16 = virtualinvoke $stack14.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($stack15);
+
+        ctor#2 = $stack16;
+
+        $stack17 = newarray (java.lang.Object)[0];
+
+        $stack18 = virtualinvoke ctor#2.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($stack17);
+
+        $stack19 = (jdk.internal.module.SystemModules) $stack18;
+
+     label4:
+        return $stack19;
+
+     label5:
+        $stack21 := @caughtexception;
+
+        ctor#3 = $stack21;
+
+        $stack22 = new java.lang.InternalError;
+
+        specialinvoke $stack22.<java.lang.InternalError: void <init>(java.lang.Throwable)>(ctor#3);
+
+        throw $stack22;
+
+     label6:
+        i#1 = i#1 + 1;
+
+        goto label2;
+
+     label7:
+        return null;
+
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+
+    static java.lang.module.ModuleFinder of(jdk.internal.module.SystemModules)
+    {
+        jdk.internal.module.ModuleResolution $stack22;
+        java.lang.module.ModuleDescriptor $stack19, $stack25;
+        java.lang.module.ModuleReference $stack26, mref;
+        jdk.internal.module.SystemModules systemModules;
+        jdk.internal.module.ModuleHashes$HashSupplier $stack21, hashSupplier;
+        jdk.internal.module.SystemModuleFinders$SystemModuleFinder $stack18;
+        bottom_type i;
+        java.util.Map $stack17, nameToHash;
+        int moduleCount, $stack28, $stack29, i#1;
+        jdk.internal.module.ModuleTarget[] $stack14, targets;
+        java.lang.module.ModuleReference[] mrefs;
+        java.lang.String $stack20, name;
+        jdk.internal.module.ModuleHashes $stack23;
+        java.util.Map$Entry[] map;
+        java.util.Map$Entry $stack27;
+        java.lang.module.ModuleDescriptor[] $stack13, descriptors;
+        jdk.internal.module.ModuleHashes[] $stack15, recordedHashes;
+        jdk.internal.module.ModuleTarget $stack24;
+        jdk.internal.module.ModuleResolution[] $stack16, moduleResolutions;
+
+        systemModules := @parameter0: jdk.internal.module.SystemModules;
+
+        $stack13 = interfaceinvoke systemModules.<jdk.internal.module.SystemModules: java.lang.module.ModuleDescriptor[] moduleDescriptors()>();
+
+        descriptors = $stack13;
+
+        $stack14 = interfaceinvoke systemModules.<jdk.internal.module.SystemModules: jdk.internal.module.ModuleTarget[] moduleTargets()>();
+
+        targets = $stack14;
+
+        $stack15 = interfaceinvoke systemModules.<jdk.internal.module.SystemModules: jdk.internal.module.ModuleHashes[] moduleHashes()>();
+
+        recordedHashes = $stack15;
+
+        $stack16 = interfaceinvoke systemModules.<jdk.internal.module.SystemModules: jdk.internal.module.ModuleResolution[] moduleResolutions()>();
+
+        moduleResolutions = $stack16;
+
+        moduleCount = lengthof descriptors;
+
+        mrefs = newarray (java.lang.module.ModuleReference)[moduleCount];
+
+        map = newarray (java.util.Map$Entry)[moduleCount];
+
+        $stack17 = staticinvoke <jdk.internal.module.SystemModuleFinders: java.util.Map generateNameToHash(jdk.internal.module.ModuleHashes[])>(recordedHashes);
+
+        nameToHash = $stack17;
+
+        i#1 = 0;
+
+     label1:
+        $stack29 = i#1;
+
+        $stack28 = moduleCount;
+
+        if $stack29 >= $stack28 goto label2;
+
+        $stack19 = descriptors[i#1];
+
+        $stack20 = virtualinvoke $stack19.<java.lang.module.ModuleDescriptor: java.lang.String name()>();
+
+        name = $stack20;
+
+        $stack21 = staticinvoke <jdk.internal.module.SystemModuleFinders: jdk.internal.module.ModuleHashes$HashSupplier hashSupplier(java.util.Map,java.lang.String)>(nameToHash, name);
+
+        hashSupplier = $stack21;
+
+        $stack25 = descriptors[i#1];
+
+        $stack24 = targets[i#1];
+
+        $stack23 = recordedHashes[i#1];
+
+        $stack22 = moduleResolutions[i#1];
+
+        $stack26 = staticinvoke <jdk.internal.module.SystemModuleFinders: java.lang.module.ModuleReference toModuleReference(java.lang.module.ModuleDescriptor,jdk.internal.module.ModuleTarget,jdk.internal.module.ModuleHashes,jdk.internal.module.ModuleHashes$HashSupplier,jdk.internal.module.ModuleResolution)>($stack25, $stack24, $stack23, hashSupplier, $stack22);
+
+        mref = $stack26;
+
+        mrefs[i#1] = mref;
+
+        $stack27 = staticinvoke <java.util.Map: java.util.Map$Entry entry(java.lang.Object,java.lang.Object)>(name, mref);
+
+        map[i#1] = $stack27;
+
+        i#1 = i#1 + 1;
+
+        goto label1;
+
+     label2:
+        $stack18 = new jdk.internal.module.SystemModuleFinders$SystemModuleFinder;
+
+        specialinvoke $stack18.<jdk.internal.module.SystemModuleFinders$SystemModuleFinder: void <init>(java.lang.module.ModuleReference[],java.util.Map$Entry[])>(mrefs, map);
+
+        return $stack18;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleFinder ofSystem()
+    {
+        jdk.internal.module.ModulePatcher $stack14;
+        jdk.internal.module.SystemModuleFinders$1 $stack17;
+        java.lang.String[] $stack6, $stack10;
+        jdk.internal.module.SystemModules $stack23, systemModules#2;
+        bottom_type finder, systemModules, $stack24;
+        java.lang.module.ModuleFinder $stack16, f, $stack20, $stack21, $stack22, $stack25, finder#1, $stack24#3, $stack24#4;
+        java.lang.InternalError $stack18;
+        java.lang.String $stack5, home;
+        java.nio.file.Path $stack7, modules, $stack11, systemModules#5;
+        boolean $stack9, $stack13, $stack19;
+        java.nio.file.LinkOption[] $stack8, $stack12;
+        java.nio.file.Path[] $stack15;
+
+        finder#1 = <jdk.internal.module.SystemModuleFinders: java.lang.module.ModuleFinder cachedSystemModuleFinder>;
+
+        if finder#1 == null goto label1;
+
+        return finder#1;
+
+     label1:
+        $stack5 = staticinvoke <jdk.internal.util.StaticProperty: java.lang.String javaHome()>();
+
+        home = $stack5;
+
+        $stack6 = newarray (java.lang.String)[2];
+
+        $stack6[0] = "lib";
+
+        $stack6[1] = "modules";
+
+        $stack7 = staticinvoke <java.nio.file.Path: java.nio.file.Path of(java.lang.String,java.lang.String[])>(home, $stack6);
+
+        modules = $stack7;
+
+        $stack8 = newarray (java.nio.file.LinkOption)[0];
+
+        $stack9 = staticinvoke <java.nio.file.Files: boolean isRegularFile(java.nio.file.Path,java.nio.file.LinkOption[])>(modules, $stack8);
+
+        if $stack9 == 0 goto label4;
+
+        $stack19 = <jdk.internal.module.SystemModuleFinders: boolean USE_FAST_PATH>;
+
+        if $stack19 == 0 goto label2;
+
+        $stack23 = staticinvoke <jdk.internal.module.SystemModuleFinders: jdk.internal.module.SystemModules allSystemModules()>();
+
+        systemModules#2 = $stack23;
+
+        if systemModules#2 == null goto label2;
+
+        $stack25 = staticinvoke <jdk.internal.module.SystemModuleFinders: java.lang.module.ModuleFinder of(jdk.internal.module.SystemModules)>(systemModules#2);
+
+        finder#1 = $stack25;
+
+     label2:
+        $stack24#3 = finder#1;
+
+        $stack24#4 = $stack24#3;
+
+        if $stack24#4 != null goto label3;
+
+        $stack20 = staticinvoke <jdk.internal.module.SystemModuleFinders: java.lang.module.ModuleFinder ofModuleInfos()>();
+
+        finder#1 = $stack20;
+
+     label3:
+        $stack21 = finder#1;
+
+        <jdk.internal.module.SystemModuleFinders: java.lang.module.ModuleFinder cachedSystemModuleFinder> = $stack21;
+
+        $stack22 = finder#1;
+
+        return $stack22;
+
+     label4:
+        $stack10 = newarray (java.lang.String)[1];
+
+        $stack10[0] = "modules";
+
+        $stack11 = staticinvoke <java.nio.file.Path: java.nio.file.Path of(java.lang.String,java.lang.String[])>(home, $stack10);
+
+        systemModules#5 = $stack11;
+
+        $stack12 = newarray (java.nio.file.LinkOption)[0];
+
+        $stack13 = staticinvoke <java.nio.file.Files: boolean isDirectory(java.nio.file.Path,java.nio.file.LinkOption[])>(systemModules#5, $stack12);
+
+        if $stack13 != 0 goto label5;
+
+        $stack18 = new java.lang.InternalError;
+
+        specialinvoke $stack18.<java.lang.InternalError: void <init>(java.lang.String)>("Unable to detect the run-time image");
+
+        throw $stack18;
+
+     label5:
+        $stack14 = staticinvoke <jdk.internal.module.ModuleBootstrap: jdk.internal.module.ModulePatcher patcher()>();
+
+        $stack15 = newarray (java.nio.file.Path)[1];
+
+        $stack15[0] = systemModules#5;
+
+        $stack16 = staticinvoke <jdk.internal.module.ModulePath: java.lang.module.ModuleFinder of(jdk.internal.module.ModulePatcher,java.nio.file.Path[])>($stack14, $stack15);
+
+        f = $stack16;
+
+        $stack17 = new jdk.internal.module.SystemModuleFinders$1;
+
+        specialinvoke $stack17.<jdk.internal.module.SystemModuleFinders$1: void <init>(java.lang.module.ModuleFinder)>(f);
+
+        return $stack17;
+
+        nop;
+    }
+
+    private static java.lang.module.ModuleFinder ofModuleInfos()
+    {
+        jdk.internal.module.ModuleResolution $stack29;
+        java.lang.module.ModuleReference $stack30, mref#16;
+        bottom_type mrefs, nameToModule, l5, mn, loc, attrs, hashes, mref;
+        java.util.Set $stack18, $stack41;
+        jdk.internal.module.ModuleHashes$HashSupplier $stack25, hashes#15;
+        jdk.internal.module.SystemModuleFinders$SystemModuleFinder $stack21;
+        java.lang.String name, mn#4, loc#13;
+        java.util.Map$Entry mn#12;
+        jdk.internal.jimage.ImageReader $stack14, reader;
+        java.nio.ByteBuffer $stack35;
+        boolean $stack20, $stack31, $stack43;
+        jdk.internal.jimage.ImageLocation $stack34, loc#5;
+        jdk.internal.module.ModuleInfo$Attributes $stack36, attrs#6, attrs#14;
+        jdk.internal.module.ModuleTarget $stack27;
+        java.lang.module.ModuleDescriptor $stack26;
+        java.util.HashMap $stack12, nameToAttributes, $stack13, nameToHash, $stack17, nameToModule#10;
+        java.lang.String[] $stack15, mrefs#1;
+        java.util.function.Function $stack45;
+        java.util.HashSet $stack16, mrefs#9;
+        int $stack39, $stack40, nameToModule#2, l5#3;
+        jdk.internal.module.ModuleHashes $stack28, $stack38, hashes#7;
+        java.util.Iterator $stack19, $stack33, $stack42, $stack47, mref#8, l5#11;
+        java.lang.Object $stack22, $stack23, $stack24, $stack32, $stack37, $stack44, $stack46;
+
+        $stack12 = new java.util.HashMap;
+
+        specialinvoke $stack12.<java.util.HashMap: void <init>()>();
+
+        nameToAttributes = $stack12;
+
+        $stack13 = new java.util.HashMap;
+
+        specialinvoke $stack13.<java.util.HashMap: void <init>()>();
+
+        nameToHash = $stack13;
+
+        $stack14 = staticinvoke <jdk.internal.module.SystemModuleFinders$SystemImage: jdk.internal.jimage.ImageReader reader()>();
+
+        reader = $stack14;
+
+        $stack15 = virtualinvoke reader.<jdk.internal.jimage.ImageReader: java.lang.String[] getModuleNames()>();
+
+        mrefs#1 = $stack15;
+
+        nameToModule#2 = lengthof mrefs#1;
+
+        l5#3 = 0;
+
+     label1:
+        $stack40 = l5#3;
+
+        $stack39 = nameToModule#2;
+
+        if $stack40 >= $stack39 goto label4;
+
+        mn#4 = mrefs#1[l5#3];
+
+        $stack34 = virtualinvoke reader.<jdk.internal.jimage.ImageReader: jdk.internal.jimage.ImageLocation findLocation(java.lang.String,java.lang.String)>(mn#4, "module-info.class");
+
+        loc#5 = $stack34;
+
+        $stack35 = virtualinvoke reader.<jdk.internal.jimage.ImageReader: java.nio.ByteBuffer getResourceBuffer(jdk.internal.jimage.ImageLocation)>(loc#5);
+
+        $stack36 = staticinvoke <jdk.internal.module.ModuleInfo: jdk.internal.module.ModuleInfo$Attributes read(java.nio.ByteBuffer,java.util.function.Supplier)>($stack35, null);
+
+        attrs#6 = $stack36;
+
+        $stack37 = interfaceinvoke nameToAttributes.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(mn#4, attrs#6);
+
+        $stack38 = virtualinvoke attrs#6.<jdk.internal.module.ModuleInfo$Attributes: jdk.internal.module.ModuleHashes recordedHashes()>();
+
+        hashes#7 = $stack38;
+
+        if hashes#7 == null goto label3;
+
+        $stack41 = virtualinvoke hashes#7.<jdk.internal.module.ModuleHashes: java.util.Set names()>();
+
+        $stack42 = interfaceinvoke $stack41.<java.util.Set: java.util.Iterator iterator()>();
+
+        mref#8 = $stack42;
+
+     label2:
+        $stack47 = mref#8;
+
+        $stack43 = interfaceinvoke $stack47.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack43 == 0 goto label3;
+
+        $stack44 = interfaceinvoke mref#8.<java.util.Iterator: java.lang.Object next()>();
+
+        name = (java.lang.String) $stack44;
+
+        $stack45 = staticinvoke <jdk.internal.module.SystemModuleFinders$lambda_ofModuleInfos_0__426: java.util.function.Function bootstrap$(jdk.internal.module.ModuleHashes,java.lang.String)>(hashes#7, name);
+
+        $stack46 = interfaceinvoke nameToHash.<java.util.Map: java.lang.Object computeIfAbsent(java.lang.Object,java.util.function.Function)>(name, $stack45);
+
+        goto label2;
+
+     label3:
+        l5#3 = l5#3 + 1;
+
+        goto label1;
+
+     label4:
+        $stack16 = new java.util.HashSet;
+
+        specialinvoke $stack16.<java.util.HashSet: void <init>()>();
+
+        mrefs#9 = $stack16;
+
+        $stack17 = new java.util.HashMap;
+
+        specialinvoke $stack17.<java.util.HashMap: void <init>()>();
+
+        nameToModule#10 = $stack17;
+
+        $stack18 = interfaceinvoke nameToAttributes.<java.util.Map: java.util.Set entrySet()>();
+
+        $stack19 = interfaceinvoke $stack18.<java.util.Set: java.util.Iterator iterator()>();
+
+        l5#11 = $stack19;
+
+     label5:
+        $stack33 = l5#11;
+
+        $stack20 = interfaceinvoke $stack33.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack20 == 0 goto label6;
+
+        $stack22 = interfaceinvoke l5#11.<java.util.Iterator: java.lang.Object next()>();
+
+        mn#12 = (java.util.Map$Entry) $stack22;
+
+        $stack23 = interfaceinvoke mn#12.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        loc#13 = (java.lang.String) $stack23;
+
+        $stack24 = interfaceinvoke mn#12.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        attrs#14 = (jdk.internal.module.ModuleInfo$Attributes) $stack24;
+
+        $stack25 = staticinvoke <jdk.internal.module.SystemModuleFinders: jdk.internal.module.ModuleHashes$HashSupplier hashSupplier(java.util.Map,java.lang.String)>(nameToHash, loc#13);
+
+        hashes#15 = $stack25;
+
+        $stack26 = virtualinvoke attrs#14.<jdk.internal.module.ModuleInfo$Attributes: java.lang.module.ModuleDescriptor descriptor()>();
+
+        $stack27 = virtualinvoke attrs#14.<jdk.internal.module.ModuleInfo$Attributes: jdk.internal.module.ModuleTarget target()>();
+
+        $stack28 = virtualinvoke attrs#14.<jdk.internal.module.ModuleInfo$Attributes: jdk.internal.module.ModuleHashes recordedHashes()>();
+
+        $stack29 = virtualinvoke attrs#14.<jdk.internal.module.ModuleInfo$Attributes: jdk.internal.module.ModuleResolution moduleResolution()>();
+
+        $stack30 = staticinvoke <jdk.internal.module.SystemModuleFinders: java.lang.module.ModuleReference toModuleReference(java.lang.module.ModuleDescriptor,jdk.internal.module.ModuleTarget,jdk.internal.module.ModuleHashes,jdk.internal.module.ModuleHashes$HashSupplier,jdk.internal.module.ModuleResolution)>($stack26, $stack27, $stack28, hashes#15, $stack29);
+
+        mref#16 = $stack30;
+
+        $stack31 = interfaceinvoke mrefs#9.<java.util.Set: boolean add(java.lang.Object)>(mref#16);
+
+        $stack32 = interfaceinvoke nameToModule#10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(loc#13, mref#16);
+
+        goto label5;
+
+     label6:
+        $stack21 = new jdk.internal.module.SystemModuleFinders$SystemModuleFinder;
+
+        specialinvoke $stack21.<jdk.internal.module.SystemModuleFinders$SystemModuleFinder: void <init>(java.util.Set,java.util.Map)>(mrefs#9, nameToModule#10);
+
+        return $stack21;
+
+        nop;
+    }
+
+    static java.lang.module.ModuleReference toModuleReference(java.lang.module.ModuleDescriptor, jdk.internal.module.ModuleTarget, jdk.internal.module.ModuleHashes, jdk.internal.module.ModuleHashes$HashSupplier, jdk.internal.module.ModuleResolution)
+    {
+        jdk.internal.module.SystemModuleFinders$2 $stack15, readerSupplier;
+        jdk.internal.module.ModulePatcher $stack17;
+        jdk.internal.module.ModuleResolution mres;
+        java.lang.module.ModuleDescriptor descriptor;
+        java.lang.module.ModuleReference $stack18, mref#2;
+        jdk.internal.module.ModuleHashes$HashSupplier hasher;
+        bottom_type mref;
+        java.lang.String $stack9, mn, $stack10, $stack12, $stack13;
+        java.net.URI $stack14, uri;
+        jdk.internal.module.ModuleHashes recordedHashes;
+        jdk.internal.module.ModuleReferenceImpl $stack16, mref#1;
+        jdk.internal.module.ModuleTarget target;
+        jdk.internal.misc.JavaNetUriAccess $stack11;
+
+        descriptor := @parameter0: java.lang.module.ModuleDescriptor;
+
+        target := @parameter1: jdk.internal.module.ModuleTarget;
+
+        recordedHashes := @parameter2: jdk.internal.module.ModuleHashes;
+
+        hasher := @parameter3: jdk.internal.module.ModuleHashes$HashSupplier;
+
+        mres := @parameter4: jdk.internal.module.ModuleResolution;
+
+        $stack9 = virtualinvoke descriptor.<java.lang.module.ModuleDescriptor: java.lang.String name()>();
+
+        mn = $stack9;
+
+        $stack11 = <jdk.internal.module.SystemModuleFinders: jdk.internal.misc.JavaNetUriAccess JNUA>;
+
+        $stack12 = "jrt";
+
+        $stack10 = "/";
+
+        $stack13 = virtualinvoke $stack10.<java.lang.String: java.lang.String concat(java.lang.String)>(mn);
+
+        $stack14 = interfaceinvoke $stack11.<jdk.internal.misc.JavaNetUriAccess: java.net.URI create(java.lang.String,java.lang.String)>($stack12, $stack13);
+
+        uri = $stack14;
+
+        $stack15 = new jdk.internal.module.SystemModuleFinders$2;
+
+        specialinvoke $stack15.<jdk.internal.module.SystemModuleFinders$2: void <init>(java.lang.String,java.net.URI)>(mn, uri);
+
+        readerSupplier = $stack15;
+
+        $stack16 = new jdk.internal.module.ModuleReferenceImpl;
+
+        specialinvoke $stack16.<jdk.internal.module.ModuleReferenceImpl: void <init>(java.lang.module.ModuleDescriptor,java.net.URI,java.util.function.Supplier,jdk.internal.module.ModulePatcher,jdk.internal.module.ModuleTarget,jdk.internal.module.ModuleHashes,jdk.internal.module.ModuleHashes$HashSupplier,jdk.internal.module.ModuleResolution)>(descriptor, uri, readerSupplier, null, target, recordedHashes, hasher, mres);
+
+        mref#1 = $stack16;
+
+        $stack17 = staticinvoke <jdk.internal.module.ModuleBootstrap: jdk.internal.module.ModulePatcher patcher()>();
+
+        $stack18 = virtualinvoke $stack17.<jdk.internal.module.ModulePatcher: java.lang.module.ModuleReference patchIfNeeded(java.lang.module.ModuleReference)>(mref#1);
+
+        mref#2 = $stack18;
+
+        return mref#2;
+
+        nop;
+    }
+
+    static java.util.Map generateNameToHash(jdk.internal.module.ModuleHashes[])
+    {
+        java.util.HashMap $stack11;
+        bottom_type nameToHash, secondSeen, l5, $stack7;
+        java.util.Map $stack10, $stack13, $stack14, nameToHash#1, $stack7#4;
+        int l4, $stack8, $stack9, l5#3;
+        jdk.internal.module.ModuleHashes mh, $stack12;
+        boolean secondSeen#2;
+        jdk.internal.module.ModuleHashes[] recordedHashes, l3;
+
+        recordedHashes := @parameter0: jdk.internal.module.ModuleHashes[];
+
+        nameToHash#1 = null;
+
+        secondSeen#2 = 0;
+
+        l3 = recordedHashes;
+
+        l4 = lengthof l3;
+
+        l5#3 = 0;
+
+     label1:
+        $stack9 = l5#3;
+
+        $stack8 = l4;
+
+        if $stack9 >= $stack8 goto label5;
+
+        mh = l3[l5#3];
+
+        if mh == null goto label4;
+
+        if nameToHash#1 != null goto label2;
+
+        $stack14 = virtualinvoke mh.<jdk.internal.module.ModuleHashes: java.util.Map hashes()>();
+
+        nameToHash#1 = $stack14;
+
+        goto label4;
+
+     label2:
+        if secondSeen#2 != 0 goto label3;
+
+        $stack11 = new java.util.HashMap;
+
+        specialinvoke $stack11.<java.util.HashMap: void <init>(java.util.Map)>(nameToHash#1);
+
+        nameToHash#1 = $stack11;
+
+        secondSeen#2 = 1;
+
+     label3:
+        $stack13 = nameToHash#1;
+
+        $stack12 = mh;
+
+        $stack10 = virtualinvoke $stack12.<jdk.internal.module.ModuleHashes: java.util.Map hashes()>();
+
+        interfaceinvoke $stack13.<java.util.Map: void putAll(java.util.Map)>($stack10);
+
+     label4:
+        l5#3 = l5#3 + 1;
+
+        goto label1;
+
+     label5:
+        if nameToHash#1 == null goto label6;
+
+        $stack7#4 = nameToHash#1;
+
+        goto label7;
+
+     label6:
+        $stack7#4 = staticinvoke <java.util.Map: java.util.Map of()>();
+
+     label7:
+        return $stack7#4;
+
+        nop;
+    }
+
+    static jdk.internal.module.ModuleHashes$HashSupplier hashSupplier(java.util.Map, java.lang.String)
+    {
+        byte[] hash;
+        jdk.internal.module.SystemModuleFinders$3 $stack4;
+        java.util.Map nameToHash;
+        java.lang.Object $stack3;
+        java.lang.String name;
+
+        nameToHash := @parameter0: java.util.Map;
+
+        name := @parameter1: java.lang.String;
+
+        $stack3 = interfaceinvoke nameToHash.<java.util.Map: java.lang.Object get(java.lang.Object)>(name);
+
+        hash = (byte[]) $stack3;
+
+        if hash == null goto label1;
+
+        $stack4 = new jdk.internal.module.SystemModuleFinders$3;
+
+        specialinvoke $stack4.<jdk.internal.module.SystemModuleFinders$3: void <init>(byte[])>(hash);
+
+        return $stack4;
+
+     label1:
+        return null;
+
+        nop;
+    }
+
+    public static byte[] lambda$ofModuleInfos$0(jdk.internal.module.ModuleHashes, java.lang.String, java.lang.String)
+    {
+        byte[] $stack3;
+        jdk.internal.module.ModuleHashes hashes;
+        java.lang.String name, k;
+
+        hashes := @parameter0: jdk.internal.module.ModuleHashes;
+
+        name := @parameter1: java.lang.String;
+
+        k := @parameter2: java.lang.String;
+
+        $stack3 = virtualinvoke hashes.<jdk.internal.module.ModuleHashes: byte[] hashFor(java.lang.String)>(name);
+
+        return $stack3;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack5;
+        java.lang.String $stack2, value;
+        jdk.internal.misc.JavaNetUriAccess $stack1;
+        boolean $stack3, $stack4, $stack5#1;
+
+        $stack1 = staticinvoke <jdk.internal.misc.SharedSecrets: jdk.internal.misc.JavaNetUriAccess getJavaNetUriAccess()>();
+
+        <jdk.internal.module.SystemModuleFinders: jdk.internal.misc.JavaNetUriAccess JNUA> = $stack1;
+
+        $stack2 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("jdk.system.module.finder.disableFastPath");
+
+        value = $stack2;
+
+        if value != null goto label1;
+
+        <jdk.internal.module.SystemModuleFinders: boolean USE_FAST_PATH> = 1;
+
+        goto label4;
+
+     label1:
+        $stack3 = virtualinvoke value.<java.lang.String: boolean isEmpty()>();
+
+        if $stack3 != 0 goto label2;
+
+        $stack4 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>(value);
+
+        if $stack4 != 0 goto label2;
+
+        $stack5#1 = 1;
+
+        goto label3;
+
+     label2:
+        $stack5#1 = 0;
+
+     label3:
+        <jdk.internal.module.SystemModuleFinders: boolean USE_FAST_PATH> = $stack5#1;
+
+     label4:
+        return;
+    }
+}

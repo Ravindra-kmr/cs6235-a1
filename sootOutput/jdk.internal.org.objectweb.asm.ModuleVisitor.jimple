@@ -1,0 +1,254 @@
+public abstract class jdk.internal.org.objectweb.asm.ModuleVisitor extends java.lang.Object
+{
+    protected final int api;
+    protected jdk.internal.org.objectweb.asm.ModuleVisitor mv;
+
+    public void <init>(int)
+    {
+        int api;
+        jdk.internal.org.objectweb.asm.ModuleVisitor this;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        api := @parameter0: int;
+
+        specialinvoke this.<jdk.internal.org.objectweb.asm.ModuleVisitor: void <init>(int,jdk.internal.org.objectweb.asm.ModuleVisitor)>(api, null);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(int, jdk.internal.org.objectweb.asm.ModuleVisitor)
+    {
+        jdk.internal.org.objectweb.asm.ModuleVisitor this, mv;
+        int api;
+        java.lang.IllegalArgumentException $stack3;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        api := @parameter0: int;
+
+        mv := @parameter1: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        if api == 393216 goto label1;
+
+        $stack3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack3.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $stack3;
+
+     label1:
+        this.<jdk.internal.org.objectweb.asm.ModuleVisitor: int api> = api;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv> = mv;
+
+        return;
+
+        nop;
+    }
+
+    public void visitMainClass(java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.ModuleVisitor this, $stack2, $stack3;
+        java.lang.String mainClass;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        mainClass := @parameter0: java.lang.String;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        if $stack2 == null goto label1;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.ModuleVisitor: void visitMainClass(java.lang.String)>(mainClass);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitPackage(java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.ModuleVisitor this, $stack2, $stack3;
+        java.lang.String packaze;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        packaze := @parameter0: java.lang.String;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        if $stack2 == null goto label1;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.ModuleVisitor: void visitPackage(java.lang.String)>(packaze);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitRequire(java.lang.String, int, java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.ModuleVisitor this, $stack4, $stack5;
+        int access;
+        java.lang.String module, version;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        module := @parameter0: java.lang.String;
+
+        access := @parameter1: int;
+
+        version := @parameter2: java.lang.String;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        if $stack4 == null goto label1;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.ModuleVisitor: void visitRequire(java.lang.String,int,java.lang.String)>(module, access, version);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public transient void visitExport(java.lang.String, int, java.lang.String[])
+    {
+        jdk.internal.org.objectweb.asm.ModuleVisitor this, $stack4, $stack5;
+        int access;
+        java.lang.String[] modules;
+        java.lang.String packaze;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        packaze := @parameter0: java.lang.String;
+
+        access := @parameter1: int;
+
+        modules := @parameter2: java.lang.String[];
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        if $stack4 == null goto label1;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.ModuleVisitor: void visitExport(java.lang.String,int,java.lang.String[])>(packaze, access, modules);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public transient void visitOpen(java.lang.String, int, java.lang.String[])
+    {
+        jdk.internal.org.objectweb.asm.ModuleVisitor this, $stack4, $stack5;
+        int access;
+        java.lang.String[] modules;
+        java.lang.String packaze;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        packaze := @parameter0: java.lang.String;
+
+        access := @parameter1: int;
+
+        modules := @parameter2: java.lang.String[];
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        if $stack4 == null goto label1;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.ModuleVisitor: void visitOpen(java.lang.String,int,java.lang.String[])>(packaze, access, modules);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitUse(java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.ModuleVisitor this, $stack2, $stack3;
+        java.lang.String service;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        service := @parameter0: java.lang.String;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        if $stack2 == null goto label1;
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.ModuleVisitor: void visitUse(java.lang.String)>(service);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public transient void visitProvide(java.lang.String, java.lang.String[])
+    {
+        jdk.internal.org.objectweb.asm.ModuleVisitor this, $stack3, $stack4;
+        java.lang.String[] providers;
+        java.lang.String service;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        service := @parameter0: java.lang.String;
+
+        providers := @parameter1: java.lang.String[];
+
+        $stack3 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        if $stack3 == null goto label1;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.ModuleVisitor: void visitProvide(java.lang.String,java.lang.String[])>(service, providers);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void visitEnd()
+    {
+        jdk.internal.org.objectweb.asm.ModuleVisitor this, $stack1, $stack2;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleVisitor;
+
+        $stack1 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        if $stack1 == null goto label1;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.ModuleVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor mv>;
+
+        virtualinvoke $stack2.<jdk.internal.org.objectweb.asm.ModuleVisitor: void visitEnd()>();
+
+     label1:
+        return;
+
+        nop;
+    }
+}

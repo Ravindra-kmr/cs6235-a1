@@ -1,0 +1,417 @@
+public final class jdk.internal.module.Resources extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        jdk.internal.module.Resources this;
+
+        this := @this: jdk.internal.module.Resources;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public static boolean canEncapsulate(java.lang.String)
+    {
+        int $stack2, len;
+        java.lang.String name, $stack3, $stack6;
+        boolean $stack4, $stack5;
+
+        name := @parameter0: java.lang.String;
+
+        $stack2 = virtualinvoke name.<java.lang.String: int length()>();
+
+        len = $stack2;
+
+        if len <= 6 goto label1;
+
+        $stack5 = virtualinvoke name.<java.lang.String: boolean endsWith(java.lang.String)>(".class");
+
+        if $stack5 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $stack6 = name;
+
+        $stack3 = staticinvoke <jdk.internal.module.Resources: java.lang.String toPackageName(java.lang.String)>($stack6);
+
+        $stack4 = staticinvoke <jdk.internal.module.Checks: boolean isPackageName(java.lang.String)>($stack3);
+
+        return $stack4;
+
+        nop;
+    }
+
+    public static java.lang.String toPackageName(java.lang.String)
+    {
+        byte $b0;
+        int $stack2, index, $stack3, $stack4, $i0;
+        java.lang.String name, $stack5, $stack6, $stack7;
+
+        name := @parameter0: java.lang.String;
+
+        $stack2 = virtualinvoke name.<java.lang.String: int lastIndexOf(int)>(47);
+
+        index = $stack2;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        if index == $i0 goto label1;
+
+        $stack3 = virtualinvoke name.<java.lang.String: int length()>();
+
+        $stack4 = $stack3 - 1;
+
+        if index != $stack4 goto label2;
+
+     label1:
+        $stack7 = "";
+
+        return $stack7;
+
+     label2:
+        $stack5 = virtualinvoke name.<java.lang.String: java.lang.String substring(int,int)>(0, index);
+
+        $stack6 = virtualinvoke $stack5.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("/", ".");
+
+        return $stack6;
+
+        nop;
+    }
+
+    public static java.lang.String toResourceName(java.nio.file.Path, java.nio.file.Path)
+    {
+        bottom_type s, $stack10;
+        java.lang.String $stack4, $stack6, $stack14, s#1, $stack10#2, $stack10#3;
+        java.nio.file.Path dir, file, $stack3;
+        boolean $stack7, $stack9;
+        java.nio.file.LinkOption[] $stack8;
+        char $stack5;
+        java.lang.StringBuilder $stack11, $stack12, $stack13;
+
+        dir := @parameter0: java.nio.file.Path;
+
+        file := @parameter1: java.nio.file.Path;
+
+        $stack3 = interfaceinvoke dir.<java.nio.file.Path: java.nio.file.Path relativize(java.nio.file.Path)>(file);
+
+        $stack4 = interfaceinvoke $stack3.<java.nio.file.Path: java.lang.String toString()>();
+
+        $stack5 = <java.io.File: char separatorChar>;
+
+        $stack6 = virtualinvoke $stack4.<java.lang.String: java.lang.String replace(char,char)>($stack5, 47);
+
+        s#1 = $stack6;
+
+        $stack7 = virtualinvoke s#1.<java.lang.String: boolean isEmpty()>();
+
+        if $stack7 != 0 goto label1;
+
+        $stack8 = newarray (java.nio.file.LinkOption)[0];
+
+        $stack9 = staticinvoke <java.nio.file.Files: boolean isDirectory(java.nio.file.Path,java.nio.file.LinkOption[])>(file, $stack8);
+
+        if $stack9 == 0 goto label1;
+
+        $stack11 = new java.lang.StringBuilder;
+
+        specialinvoke $stack11.<java.lang.StringBuilder: void <init>()>();
+
+        $stack12 = virtualinvoke $stack11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(s#1);
+
+        $stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        s#1 = $stack14;
+
+     label1:
+        $stack10#2 = s#1;
+
+        $stack10#3 = $stack10#2;
+
+        return $stack10#3;
+
+        nop;
+    }
+
+    public static java.nio.file.Path toFilePath(java.nio.file.Path, java.lang.String) throws java.io.IOException
+    {
+        java.nio.file.NoSuchFileException $stack23;
+        int $stack17, $stack18;
+        java.lang.String $stack19, $stack21, name#1;
+        java.nio.file.Path dir, $stack8, path, $stack9, file, $stack15, $stack20, $stack22;
+        boolean $stack6, expectDirectory, $stack12, $stack13;
+        java.nio.file.LinkOption[] $stack10;
+        java.nio.file.FileSystem $stack7;
+        java.nio.file.attribute.BasicFileAttributes $stack11, attrs#2;
+
+        dir := @parameter0: java.nio.file.Path;
+
+        name#1 := @parameter1: java.lang.String;
+
+        $stack6 = virtualinvoke name#1.<java.lang.String: boolean endsWith(java.lang.String)>("/");
+
+        expectDirectory = $stack6;
+
+        if expectDirectory == 0 goto label1;
+
+        $stack17 = virtualinvoke name#1.<java.lang.String: int length()>();
+
+        $stack18 = $stack17 - 1;
+
+        $stack19 = virtualinvoke name#1.<java.lang.String: java.lang.String substring(int,int)>(0, $stack18);
+
+        name#1 = $stack19;
+
+     label1:
+        $stack20 = dir;
+
+        $stack7 = interfaceinvoke $stack20.<java.nio.file.Path: java.nio.file.FileSystem getFileSystem()>();
+
+        $stack21 = name#1;
+
+        $stack8 = staticinvoke <jdk.internal.module.Resources: java.nio.file.Path toSafeFilePath(java.nio.file.FileSystem,java.lang.String)>($stack7, $stack21);
+
+        path = $stack8;
+
+        $stack22 = path;
+
+        if $stack22 == null goto label7;
+
+        $stack9 = interfaceinvoke dir.<java.nio.file.Path: java.nio.file.Path resolve(java.nio.file.Path)>(path);
+
+        file = $stack9;
+
+     label2:
+        $stack10 = newarray (java.nio.file.LinkOption)[0];
+
+        $stack11 = staticinvoke <java.nio.file.Files: java.nio.file.attribute.BasicFileAttributes readAttributes(java.nio.file.Path,java.lang.Class,java.nio.file.LinkOption[])>(file, class "Ljava/nio/file/attribute/BasicFileAttributes;", $stack10);
+
+        attrs#2 = $stack11;
+
+        $stack12 = interfaceinvoke attrs#2.<java.nio.file.attribute.BasicFileAttributes: boolean isDirectory()>();
+
+        if $stack12 != 0 goto label3;
+
+        $stack13 = interfaceinvoke attrs#2.<java.nio.file.attribute.BasicFileAttributes: boolean isDirectory()>();
+
+        if $stack13 != 0 goto label5;
+
+        if expectDirectory != 0 goto label5;
+
+     label3:
+        $stack15 = file;
+
+     label4:
+        return $stack15;
+
+     label5:
+        goto label7;
+
+     label6:
+        $stack23 := @caughtexception;
+
+     label7:
+        return null;
+
+        catch java.nio.file.NoSuchFileException from label2 to label4 with label6;
+    }
+
+    private static java.nio.file.Path toSafeFilePath(java.nio.file.FileSystem, java.lang.String)
+    {
+        byte $stack22, $stack25;
+        bottom_type off, len, path, $stack17;
+        java.nio.file.Path $stack15, $stack16, $stack19, $stack20, path#4, $stack17#5;
+        boolean $stack8, $stack11, $stack21;
+        java.nio.file.FileSystem fs;
+        java.lang.String[] $stack14, $stack18;
+        int $stack6, next, $stack7, $stack23, off#1, len#2, len#3, $i0, $i1;
+        java.lang.String name, $stack10, $stack13, $stack24;
+        char $stack9, $stack12;
+
+        fs := @parameter0: java.nio.file.FileSystem;
+
+        name := @parameter1: java.lang.String;
+
+        off#1 = 0;
+
+     label1:
+        $stack24 = name;
+
+        $stack22 = 47;
+
+        $stack23 = off#1;
+
+        $stack6 = virtualinvoke $stack24.<java.lang.String: int indexOf(int,int)>($stack22, $stack23);
+
+        next = $stack6;
+
+        $stack25 = -1;
+
+        $i0 = (int) $stack25;
+
+        if $stack6 == $i0 goto label3;
+
+        len#2 = next - off#1;
+
+        $stack21 = staticinvoke <jdk.internal.module.Resources: boolean mayTranslate(java.lang.String,int,int)>(name, off#1, len#2);
+
+        if $stack21 != 0 goto label2;
+
+        return null;
+
+     label2:
+        off#1 = next + 1;
+
+        goto label1;
+
+     label3:
+        $stack7 = virtualinvoke name.<java.lang.String: int length()>();
+
+        len#3 = $stack7 - off#1;
+
+        $stack8 = staticinvoke <jdk.internal.module.Resources: boolean mayTranslate(java.lang.String,int,int)>(name, off#1, len#3);
+
+        if $stack8 != 0 goto label4;
+
+        return null;
+
+     label4:
+        $stack9 = <java.io.File: char separatorChar>;
+
+        $i1 = (int) $stack9;
+
+        if $i1 != 47 goto label5;
+
+        $stack18 = newarray (java.lang.String)[0];
+
+        $stack19 = virtualinvoke fs.<java.nio.file.FileSystem: java.nio.file.Path getPath(java.lang.String,java.lang.String[])>(name, $stack18);
+
+        path#4 = $stack19;
+
+        goto label7;
+
+     label5:
+        $stack10 = <java.io.File: java.lang.String separator>;
+
+        $stack11 = virtualinvoke name.<java.lang.String: boolean contains(java.lang.CharSequence)>($stack10);
+
+        if $stack11 == 0 goto label6;
+
+        return null;
+
+     label6:
+        $stack12 = <java.io.File: char separatorChar>;
+
+        $stack13 = virtualinvoke name.<java.lang.String: java.lang.String replace(char,char)>(47, $stack12);
+
+        $stack14 = newarray (java.lang.String)[0];
+
+        $stack15 = virtualinvoke fs.<java.nio.file.FileSystem: java.nio.file.Path getPath(java.lang.String,java.lang.String[])>($stack13, $stack14);
+
+        path#4 = $stack15;
+
+     label7:
+        $stack20 = path#4;
+
+        $stack16 = interfaceinvoke $stack20.<java.nio.file.Path: java.nio.file.Path getRoot()>();
+
+        if $stack16 != null goto label8;
+
+        $stack17#5 = path#4;
+
+        goto label9;
+
+     label8:
+        $stack17#5 = null;
+
+     label9:
+        return $stack17#5;
+
+        nop;
+    }
+
+    private static boolean mayTranslate(java.lang.String, int, int)
+    {
+        byte $stack8;
+        bottom_type $stack5, $stack10;
+        int len, off, $stack6, $stack9, $stack12, $i0, $i1;
+        java.lang.String name;
+        boolean starsWithDot, $stack11, $stack10#1, $stack5#2, $stack5#3;
+        char $stack4, $stack7;
+
+        name := @parameter0: java.lang.String;
+
+        off := @parameter1: int;
+
+        len := @parameter2: int;
+
+        if len > 2 goto label5;
+
+        if len != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $stack4 = virtualinvoke name.<java.lang.String: char charAt(int)>(off);
+
+        $i0 = (int) $stack4;
+
+        if $i0 != 46 goto label2;
+
+        $stack10#1 = 1;
+
+        goto label3;
+
+     label2:
+        $stack10#1 = 0;
+
+     label3:
+        starsWithDot = $stack10#1;
+
+        $stack12 = len;
+
+        $stack11 = 1;
+
+        if $stack12 != $stack11 goto label4;
+
+        if starsWithDot == 0 goto label4;
+
+        return 0;
+
+     label4:
+        $stack9 = len;
+
+        $stack8 = 2;
+
+        if $stack9 != $stack8 goto label5;
+
+        if starsWithDot == 0 goto label5;
+
+        $stack6 = off + 1;
+
+        $stack7 = virtualinvoke name.<java.lang.String: char charAt(int)>($stack6);
+
+        $i1 = (int) $stack7;
+
+        if $i1 != 46 goto label5;
+
+        return 0;
+
+     label5:
+        $stack5#2 = 1;
+
+        $stack5#3 = $stack5#2;
+
+        return $stack5#3;
+
+        nop;
+    }
+}

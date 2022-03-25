@@ -1,0 +1,57 @@
+class jdk.internal.org.objectweb.asm.CurrentFrame extends jdk.internal.org.objectweb.asm.Frame
+{
+
+    void <init>()
+    {
+        jdk.internal.org.objectweb.asm.CurrentFrame this;
+
+        this := @this: jdk.internal.org.objectweb.asm.CurrentFrame;
+
+        specialinvoke this.<jdk.internal.org.objectweb.asm.Frame: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    void execute(int, int, jdk.internal.org.objectweb.asm.ClassWriter, jdk.internal.org.objectweb.asm.Item)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter cw;
+        jdk.internal.org.objectweb.asm.CurrentFrame this;
+        jdk.internal.org.objectweb.asm.Frame $stack6, successor;
+        jdk.internal.org.objectweb.asm.Label $stack8;
+        jdk.internal.org.objectweb.asm.Item item;
+        int opcode, arg;
+        boolean $stack7;
+
+        this := @this: jdk.internal.org.objectweb.asm.CurrentFrame;
+
+        opcode := @parameter0: int;
+
+        arg := @parameter1: int;
+
+        cw := @parameter2: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        item := @parameter3: jdk.internal.org.objectweb.asm.Item;
+
+        specialinvoke this.<jdk.internal.org.objectweb.asm.Frame: void execute(int,int,jdk.internal.org.objectweb.asm.ClassWriter,jdk.internal.org.objectweb.asm.Item)>(opcode, arg, cw, item);
+
+        $stack6 = new jdk.internal.org.objectweb.asm.Frame;
+
+        specialinvoke $stack6.<jdk.internal.org.objectweb.asm.Frame: void <init>()>();
+
+        successor = $stack6;
+
+        $stack7 = virtualinvoke this.<jdk.internal.org.objectweb.asm.CurrentFrame: boolean merge(jdk.internal.org.objectweb.asm.ClassWriter,jdk.internal.org.objectweb.asm.Frame,int)>(cw, successor, 0);
+
+        virtualinvoke this.<jdk.internal.org.objectweb.asm.CurrentFrame: void set(jdk.internal.org.objectweb.asm.Frame)>(successor);
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.CurrentFrame: jdk.internal.org.objectweb.asm.Label owner>;
+
+        $stack8.<jdk.internal.org.objectweb.asm.Label: int inputStackTop> = 0;
+
+        return;
+
+        nop;
+    }
+}

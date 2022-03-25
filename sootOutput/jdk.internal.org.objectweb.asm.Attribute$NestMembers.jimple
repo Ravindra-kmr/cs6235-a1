@@ -1,0 +1,172 @@
+public class jdk.internal.org.objectweb.asm.Attribute$NestMembers extends jdk.internal.org.objectweb.asm.Attribute
+{
+    byte[] bytes;
+    java.lang.String[] classes;
+
+    public void <init>()
+    {
+        jdk.internal.org.objectweb.asm.Attribute$NestMembers this;
+
+        this := @this: jdk.internal.org.objectweb.asm.Attribute$NestMembers;
+
+        specialinvoke this.<jdk.internal.org.objectweb.asm.Attribute: void <init>(java.lang.String)>("NestMembers");
+
+        return;
+
+        nop;
+    }
+
+    protected jdk.internal.org.objectweb.asm.Attribute read(jdk.internal.org.objectweb.asm.ClassReader, int, int, char[], int, jdk.internal.org.objectweb.asm.Label[])
+    {
+        byte[] $stack15, $stack16;
+        java.lang.String[] $stack13, $stack17;
+        jdk.internal.org.objectweb.asm.Attribute$NestMembers $stack11, a, this, $u0;
+        short $stack12, size, $stack19;
+        bottom_type off, i;
+        int offset, len, $stack14, $stack20, codeOff, off#1, off#2, i#3, $i0, $i1;
+        java.lang.String $stack18;
+        jdk.internal.org.objectweb.asm.Label[] labels;
+        jdk.internal.org.objectweb.asm.ClassReader cr;
+        char[] buf;
+
+        this := @this: jdk.internal.org.objectweb.asm.Attribute$NestMembers;
+
+        cr := @parameter0: jdk.internal.org.objectweb.asm.ClassReader;
+
+        off#1 := @parameter1: int;
+
+        len := @parameter2: int;
+
+        buf := @parameter3: char[];
+
+        codeOff := @parameter4: int;
+
+        labels := @parameter5: jdk.internal.org.objectweb.asm.Label[];
+
+        offset = off#1;
+
+        $u0 = new jdk.internal.org.objectweb.asm.Attribute$NestMembers;
+
+        $stack11 = $u0;
+
+        specialinvoke $u0.<jdk.internal.org.objectweb.asm.Attribute$NestMembers: void <init>()>();
+
+        a = $stack11;
+
+        $stack12 = virtualinvoke cr.<jdk.internal.org.objectweb.asm.ClassReader: short readShort(int)>(off#1);
+
+        size = $stack12;
+
+        $i0 = (int) size;
+
+        $stack13 = newarray (java.lang.String)[$i0];
+
+        a.<jdk.internal.org.objectweb.asm.Attribute$NestMembers: java.lang.String[] classes> = $stack13;
+
+        off#2 = off#1 + 2;
+
+        i#3 = 0;
+
+     label1:
+        $stack20 = i#3;
+
+        $stack19 = size;
+
+        $i1 = (int) $stack19;
+
+        if $stack20 >= $i1 goto label2;
+
+        $stack17 = a.<jdk.internal.org.objectweb.asm.Attribute$NestMembers: java.lang.String[] classes>;
+
+        $stack18 = virtualinvoke cr.<jdk.internal.org.objectweb.asm.ClassReader: java.lang.String readClass(int,char[])>(off#2, buf);
+
+        $stack17[i#3] = $stack18;
+
+        off#2 = off#2 + 2;
+
+        i#3 = i#3 + 1;
+
+        goto label1;
+
+     label2:
+        $stack15 = cr.<jdk.internal.org.objectweb.asm.ClassReader: byte[] b>;
+
+        $stack14 = offset + len;
+
+        $stack16 = staticinvoke <java.util.Arrays: byte[] copyOfRange(byte[],int,int)>($stack15, offset, $stack14);
+
+        a.<jdk.internal.org.objectweb.asm.Attribute$NestMembers: byte[] bytes> = $stack16;
+
+        return a;
+
+        nop;
+    }
+
+    protected jdk.internal.org.objectweb.asm.ByteVector write(jdk.internal.org.objectweb.asm.ClassWriter, byte[], int, int, int)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter cw;
+        byte[] $stack12, code;
+        java.lang.String[] $stack14, l7;
+        jdk.internal.org.objectweb.asm.Attribute$NestMembers this;
+        jdk.internal.org.objectweb.asm.ByteVector $stack11, v, $stack16, $stack18;
+        bottom_type l9;
+        int $stack13, $stack15, l8, $stack17, $stack19, $stack20, len, maxStack, maxLocals, l9#1;
+        java.lang.String s;
+
+        this := @this: jdk.internal.org.objectweb.asm.Attribute$NestMembers;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        code := @parameter1: byte[];
+
+        len := @parameter2: int;
+
+        maxStack := @parameter3: int;
+
+        maxLocals := @parameter4: int;
+
+        $stack11 = new jdk.internal.org.objectweb.asm.ByteVector;
+
+        $stack12 = this.<jdk.internal.org.objectweb.asm.Attribute$NestMembers: byte[] bytes>;
+
+        $stack13 = lengthof $stack12;
+
+        specialinvoke $stack11.<jdk.internal.org.objectweb.asm.ByteVector: void <init>(int)>($stack13);
+
+        v = $stack11;
+
+        $stack14 = this.<jdk.internal.org.objectweb.asm.Attribute$NestMembers: java.lang.String[] classes>;
+
+        $stack15 = lengthof $stack14;
+
+        $stack16 = virtualinvoke v.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack15);
+
+        l7 = this.<jdk.internal.org.objectweb.asm.Attribute$NestMembers: java.lang.String[] classes>;
+
+        l8 = lengthof l7;
+
+        l9#1 = 0;
+
+     label1:
+        $stack20 = l9#1;
+
+        $stack19 = l8;
+
+        if $stack20 >= $stack19 goto label2;
+
+        s = l7[l9#1];
+
+        $stack17 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int newClass(java.lang.String)>(s);
+
+        $stack18 = virtualinvoke v.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack17);
+
+        l9#1 = l9#1 + 1;
+
+        goto label1;
+
+     label2:
+        return v;
+
+        nop;
+    }
+}

@@ -1,0 +1,670 @@
+public class jdk.internal.logger.LoggerWrapper extends jdk.internal.logger.AbstractLoggerWrapper
+{
+    final java.lang.System$Logger wrapped;
+    final sun.util.logging.PlatformLogger$Bridge platformProxy;
+
+    public void <init>(java.lang.System$Logger)
+    {
+        java.lang.System$Logger wrapped, $stack4;
+        java.lang.Void $stack3;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.Object $stack2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        wrapped := @parameter0: java.lang.System$Logger;
+
+        $stack2 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(wrapped);
+
+        $stack4 = (java.lang.System$Logger) $stack2;
+
+        $stack3 = (java.lang.Void) null;
+
+        specialinvoke this.<jdk.internal.logger.LoggerWrapper: void <init>(java.lang.System$Logger,java.lang.Void)>($stack4, $stack3);
+
+        return;
+
+        nop;
+    }
+
+    void <init>(java.lang.System$Logger, java.lang.Void)
+    {
+        java.lang.System$Logger wrapped;
+        java.lang.Void unused;
+        bottom_type $stack4;
+        jdk.internal.logger.LoggerWrapper this, $stack5;
+        sun.util.logging.PlatformLogger$Bridge $stack4#1;
+        boolean $stack3;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        wrapped := @parameter0: java.lang.System$Logger;
+
+        unused := @parameter1: java.lang.Void;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void <init>()>();
+
+        this.<jdk.internal.logger.LoggerWrapper: java.lang.System$Logger wrapped> = wrapped;
+
+        $stack5 = this;
+
+        $stack3 = wrapped instanceof sun.util.logging.PlatformLogger$Bridge;
+
+        if $stack3 == 0 goto label1;
+
+        $stack4#1 = (sun.util.logging.PlatformLogger$Bridge) wrapped;
+
+        goto label2;
+
+     label1:
+        $stack4#1 = null;
+
+     label2:
+        $stack5.<jdk.internal.logger.LoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy> = $stack4#1;
+
+        return;
+
+        nop;
+    }
+
+    public final java.lang.System$Logger wrapped()
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.System$Logger $stack1;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        $stack1 = this.<jdk.internal.logger.LoggerWrapper: java.lang.System$Logger wrapped>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public final sun.util.logging.PlatformLogger$Bridge platformProxy()
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        sun.util.logging.PlatformLogger$Bridge $stack1;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        $stack1 = this.<jdk.internal.logger.LoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public volatile sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration getLoggerConfiguration()
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration $stack1;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        $stack1 = specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration getLoggerConfiguration()>();
+
+        return $stack1;
+
+        nop;
+    }
+
+    public volatile void logrb(sun.util.logging.PlatformLogger$Level, java.util.ResourceBundle, java.lang.String, java.lang.Object[])
+    {
+        sun.util.logging.PlatformLogger$Level l1;
+        java.lang.Object[] l4;
+        java.util.ResourceBundle l2;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l3;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.util.ResourceBundle;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.lang.Object[];
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void logrb(sun.util.logging.PlatformLogger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Object[])>(l1, l2, l3, l4);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void logrb(sun.util.logging.PlatformLogger$Level, java.util.ResourceBundle, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable l4;
+        sun.util.logging.PlatformLogger$Level l1;
+        java.util.ResourceBundle l2;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l3;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.util.ResourceBundle;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.lang.Throwable;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void logrb(sun.util.logging.PlatformLogger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Throwable)>(l1, l2, l3, l4);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void logrb(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.util.ResourceBundle, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable l6;
+        sun.util.logging.PlatformLogger$Level l1;
+        java.util.ResourceBundle l4;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2, l3, l5;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.util.ResourceBundle;
+
+        l5 := @parameter4: java.lang.String;
+
+        l6 := @parameter5: java.lang.Throwable;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void logrb(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.util.ResourceBundle,java.lang.String,java.lang.Throwable)>(l1, l2, l3, l4, l5, l6);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void logrb(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.util.ResourceBundle, java.lang.String, java.lang.Object[])
+    {
+        sun.util.logging.PlatformLogger$Level l1;
+        java.lang.Object[] l6;
+        java.util.ResourceBundle l4;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2, l3, l5;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.util.ResourceBundle;
+
+        l5 := @parameter4: java.lang.String;
+
+        l6 := @parameter5: java.lang.Object[];
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void logrb(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.util.ResourceBundle,java.lang.String,java.lang.Object[])>(l1, l2, l3, l4, l5, l6);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.lang.Throwable, java.util.function.Supplier)
+    {
+        java.lang.Throwable l4;
+        sun.util.logging.PlatformLogger$Level l1;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2, l3;
+        java.util.function.Supplier l5;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.lang.Throwable;
+
+        l5 := @parameter4: java.util.function.Supplier;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.lang.Throwable,java.util.function.Supplier)>(l1, l2, l3, l4, l5);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable l5;
+        sun.util.logging.PlatformLogger$Level l1;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2, l3, l4;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.lang.String;
+
+        l5 := @parameter4: java.lang.Throwable;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.lang.String,java.lang.Throwable)>(l1, l2, l3, l4, l5);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.lang.String, java.lang.Object[])
+    {
+        sun.util.logging.PlatformLogger$Level l1;
+        java.lang.Object[] l5;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2, l3, l4;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.lang.String;
+
+        l5 := @parameter4: java.lang.Object[];
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.lang.String,java.lang.Object[])>(l1, l2, l3, l4, l5);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.util.function.Supplier)
+    {
+        sun.util.logging.PlatformLogger$Level l1;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2, l3;
+        java.util.function.Supplier l4;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.util.function.Supplier;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.util.function.Supplier)>(l1, l2, l3, l4);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.lang.String)
+    {
+        sun.util.logging.PlatformLogger$Level l1;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2, l3, l4;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.lang.String;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.lang.String)>(l1, l2, l3, l4);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(sun.util.logging.PlatformLogger$Level, java.lang.Throwable, java.util.function.Supplier)
+    {
+        java.lang.Throwable l2;
+        sun.util.logging.PlatformLogger$Level l1;
+        jdk.internal.logger.LoggerWrapper this;
+        java.util.function.Supplier l3;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.Throwable;
+
+        l3 := @parameter2: java.util.function.Supplier;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(sun.util.logging.PlatformLogger$Level,java.lang.Throwable,java.util.function.Supplier)>(l1, l2, l3);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(sun.util.logging.PlatformLogger$Level, java.util.function.Supplier)
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        sun.util.logging.PlatformLogger$Level l1;
+        java.util.function.Supplier l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.util.function.Supplier;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(sun.util.logging.PlatformLogger$Level,java.util.function.Supplier)>(l1, l2);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.Object[])
+    {
+        sun.util.logging.PlatformLogger$Level l1;
+        java.lang.Object[] l3;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.Object[];
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.Object[])>(l1, l2, l3);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable l3;
+        sun.util.logging.PlatformLogger$Level l1;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.Throwable;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.Throwable)>(l1, l2, l3);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(sun.util.logging.PlatformLogger$Level, java.lang.String)
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        sun.util.logging.PlatformLogger$Level l1;
+        java.lang.String l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(sun.util.logging.PlatformLogger$Level,java.lang.String)>(l1, l2);
+
+        return;
+
+        nop;
+    }
+
+    public volatile boolean isEnabled()
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        boolean $stack1;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        $stack1 = specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: boolean isEnabled()>();
+
+        return $stack1;
+
+        nop;
+    }
+
+    public volatile boolean isLoggable(sun.util.logging.PlatformLogger$Level)
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        sun.util.logging.PlatformLogger$Level l1;
+        boolean $stack2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        $stack2 = specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: boolean isLoggable(sun.util.logging.PlatformLogger$Level)>(l1);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public volatile void log(java.lang.System$Logger$Level, java.util.ResourceBundle, java.lang.String, java.lang.Object[])
+    {
+        java.lang.System$Logger$Level l1;
+        java.lang.Object[] l4;
+        java.util.ResourceBundle l2;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l3;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: java.lang.System$Logger$Level;
+
+        l2 := @parameter1: java.util.ResourceBundle;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.lang.Object[];
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Object[])>(l1, l2, l3, l4);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(java.lang.System$Logger$Level, java.util.ResourceBundle, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable l4;
+        java.lang.System$Logger$Level l1;
+        java.util.ResourceBundle l2;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l3;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: java.lang.System$Logger$Level;
+
+        l2 := @parameter1: java.util.ResourceBundle;
+
+        l3 := @parameter2: java.lang.String;
+
+        l4 := @parameter3: java.lang.Throwable;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Throwable)>(l1, l2, l3, l4);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(java.lang.System$Logger$Level, java.lang.String, java.lang.Object[])
+    {
+        java.lang.System$Logger$Level l1;
+        java.lang.Object[] l3;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: java.lang.System$Logger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.Object[];
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Object[])>(l1, l2, l3);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(java.lang.System$Logger$Level, java.util.function.Supplier, java.lang.Throwable)
+    {
+        java.lang.Throwable l3;
+        java.lang.System$Logger$Level l1;
+        jdk.internal.logger.LoggerWrapper this;
+        java.util.function.Supplier l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: java.lang.System$Logger$Level;
+
+        l2 := @parameter1: java.util.function.Supplier;
+
+        l3 := @parameter2: java.lang.Throwable;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(java.lang.System$Logger$Level,java.util.function.Supplier,java.lang.Throwable)>(l1, l2, l3);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(java.lang.System$Logger$Level, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable l3;
+        java.lang.System$Logger$Level l1;
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.String l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: java.lang.System$Logger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        l3 := @parameter2: java.lang.Throwable;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Throwable)>(l1, l2, l3);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(java.lang.System$Logger$Level, java.lang.Object)
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.System$Logger$Level l1;
+        java.lang.Object l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: java.lang.System$Logger$Level;
+
+        l2 := @parameter1: java.lang.Object;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(java.lang.System$Logger$Level,java.lang.Object)>(l1, l2);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(java.lang.System$Logger$Level, java.util.function.Supplier)
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.System$Logger$Level l1;
+        java.util.function.Supplier l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: java.lang.System$Logger$Level;
+
+        l2 := @parameter1: java.util.function.Supplier;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(java.lang.System$Logger$Level,java.util.function.Supplier)>(l1, l2);
+
+        return;
+
+        nop;
+    }
+
+    public volatile void log(java.lang.System$Logger$Level, java.lang.String)
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.System$Logger$Level l1;
+        java.lang.String l2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: java.lang.System$Logger$Level;
+
+        l2 := @parameter1: java.lang.String;
+
+        specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: void log(java.lang.System$Logger$Level,java.lang.String)>(l1, l2);
+
+        return;
+
+        nop;
+    }
+
+    public volatile boolean isLoggable(java.lang.System$Logger$Level)
+    {
+        jdk.internal.logger.LoggerWrapper this;
+        java.lang.System$Logger$Level l1;
+        boolean $stack2;
+
+        this := @this: jdk.internal.logger.LoggerWrapper;
+
+        l1 := @parameter0: java.lang.System$Logger$Level;
+
+        $stack2 = specialinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: boolean isLoggable(java.lang.System$Logger$Level)>(l1);
+
+        return $stack2;
+
+        nop;
+    }
+}

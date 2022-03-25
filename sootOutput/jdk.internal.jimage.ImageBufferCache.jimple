@@ -1,0 +1,274 @@
+class jdk.internal.jimage.ImageBufferCache extends java.lang.Object
+{
+    private static final int MAX_CACHED_BUFFERS;
+    private static final int LARGE_BUFFER;
+    private static final java.lang.ThreadLocal CACHE;
+    private static java.util.Comparator DECREASING_CAPACITY_NULLS_LAST;
+
+    void <init>()
+    {
+        jdk.internal.jimage.ImageBufferCache this;
+
+        this := @this: jdk.internal.jimage.ImageBufferCache;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    private static java.nio.ByteBuffer allocateBuffer(long)
+    {
+        int $stack4;
+        long size, $stack2, $stack3;
+        java.nio.ByteBuffer $stack5;
+
+        size := @parameter0: long;
+
+        $stack2 = size + 4095L;
+
+        $stack3 = $stack2 & -4096L;
+
+        $stack4 = (int) $stack3;
+
+        $stack5 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocateDirect(int)>($stack4);
+
+        return $stack5;
+
+        nop;
+    }
+
+    static java.nio.ByteBuffer getBuffer(long)
+    {
+        java.lang.IndexOutOfBoundsException $stack8, $u0;
+        java.nio.ByteBuffer $stack14, $stack15, buffer, $stack24, $stack25, $stack26, result#1, $stack17#3, $stack17#4, $stack18#9, $stack18#10;
+        byte $stack7, $stack9, $stack10, $stack23, $b0;
+        bottom_type result, i, $stack13, $stack16, $stack17, $stack18;
+        java.lang.ThreadLocal $stack11;
+        jdk.internal.jimage.ImageBufferCache$BufferReference[] cache;
+        long size, $stack22, $stack16#5, $stack16#6;
+        jdk.internal.jimage.ImageBufferCache$BufferReference reference;
+        int $stack19, $stack21, i#2, $stack13#7, $stack13#8, $i0, $i1, $i2, $i3, $i4;
+        java.lang.String $stack27;
+        java.lang.Object $stack12, $stack20;
+
+        size := @parameter0: long;
+
+        $stack7 = size cmp 0L;
+
+        $i0 = (int) $stack7;
+
+        if $i0 < 0 goto label1;
+
+        $stack9 = 2147483647L cmp size;
+
+        $i1 = (int) $stack9;
+
+        if $i1 >= 0 goto label2;
+
+     label1:
+        $u0 = new java.lang.IndexOutOfBoundsException;
+
+        $stack8 = $u0;
+
+        $stack27 = "size";
+
+        specialinvoke $u0.<java.lang.IndexOutOfBoundsException: void <init>(java.lang.String)>($stack27);
+
+        throw $stack8;
+
+     label2:
+        result#1 = null;
+
+        $stack10 = size cmp 65536L;
+
+        $i2 = (int) $stack10;
+
+        if $i2 <= 0 goto label3;
+
+        $stack26 = staticinvoke <jdk.internal.jimage.ImageBufferCache: java.nio.ByteBuffer allocateBuffer(long)>(size);
+
+        result#1 = $stack26;
+
+        goto label7;
+
+     label3:
+        $stack11 = <jdk.internal.jimage.ImageBufferCache: java.lang.ThreadLocal CACHE>;
+
+        $stack12 = virtualinvoke $stack11.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        cache = (jdk.internal.jimage.ImageBufferCache$BufferReference[]) $stack12;
+
+        i#2 = 2;
+
+     label4:
+        $stack19 = i#2;
+
+        if $stack19 < 0 goto label6;
+
+        reference = cache[i#2];
+
+        if reference == null goto label5;
+
+        $stack20 = virtualinvoke reference.<jdk.internal.jimage.ImageBufferCache$BufferReference: java.lang.Object get()>();
+
+        buffer = (java.nio.ByteBuffer) $stack20;
+
+        if buffer == null goto label5;
+
+        $stack21 = virtualinvoke buffer.<java.nio.ByteBuffer: int capacity()>();
+
+        $stack22 = (long) $stack21;
+
+        $stack23 = size cmp $stack22;
+
+        $i3 = (int) $stack23;
+
+        if $i3 > 0 goto label5;
+
+        cache[i#2] = null;
+
+        result#1 = buffer;
+
+        $stack24 = virtualinvoke result#1.<java.nio.ByteBuffer: java.nio.ByteBuffer rewind()>();
+
+        goto label6;
+
+     label5:
+        $b0 = -1;
+
+        $i4 = (int) $b0;
+
+        i#2 = i#2 + $i4;
+
+        goto label4;
+
+     label6:
+        $stack25 = result#1;
+
+        if $stack25 != null goto label7;
+
+        $stack15 = staticinvoke <jdk.internal.jimage.ImageBufferCache: java.nio.ByteBuffer allocateBuffer(long)>(size);
+
+        result#1 = $stack15;
+
+     label7:
+        $stack17#3 = result#1;
+
+        $stack17#4 = $stack17#3;
+
+        $stack16#5 = size;
+
+        $stack16#6 = $stack16#5;
+
+        $stack13#7 = (int) $stack16#6;
+
+        $stack13#8 = $stack13#7;
+
+        $stack14 = virtualinvoke $stack17#4.<java.nio.ByteBuffer: java.nio.ByteBuffer limit(int)>($stack13#8);
+
+        $stack18#9 = result#1;
+
+        $stack18#10 = $stack18#9;
+
+        return $stack18#10;
+
+        nop;
+    }
+
+    static void releaseBuffer(java.nio.ByteBuffer)
+    {
+        java.lang.ThreadLocal $stack5;
+        jdk.internal.jimage.ImageBufferCache$BufferReference[] cache;
+        java.nio.ByteBuffer buffer;
+        byte $stack8, $stack10;
+        bottom_type i;
+        int $stack4, $stack11, i#1;
+        jdk.internal.jimage.ImageBufferCache$BufferReference $stack7, reference;
+        java.lang.Object $stack6, $stack12;
+        java.util.Comparator $stack9;
+
+        buffer := @parameter0: java.nio.ByteBuffer;
+
+        $stack4 = virtualinvoke buffer.<java.nio.ByteBuffer: int capacity()>();
+
+        if $stack4 <= 65536 goto label1;
+
+        return;
+
+     label1:
+        $stack5 = <jdk.internal.jimage.ImageBufferCache: java.lang.ThreadLocal CACHE>;
+
+        $stack6 = virtualinvoke $stack5.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        cache = (jdk.internal.jimage.ImageBufferCache$BufferReference[]) $stack6;
+
+        i#1 = 0;
+
+     label2:
+        $stack11 = i#1;
+
+        $stack10 = 3;
+
+        if $stack11 >= $stack10 goto label4;
+
+        reference = cache[i#1];
+
+        if reference == null goto label3;
+
+        $stack12 = virtualinvoke reference.<jdk.internal.jimage.ImageBufferCache$BufferReference: java.lang.Object get()>();
+
+        if $stack12 != null goto label3;
+
+        cache[i#1] = null;
+
+     label3:
+        i#1 = i#1 + 1;
+
+        goto label2;
+
+     label4:
+        $stack8 = 3;
+
+        $stack7 = new jdk.internal.jimage.ImageBufferCache$BufferReference;
+
+        specialinvoke $stack7.<jdk.internal.jimage.ImageBufferCache$BufferReference: void <init>(java.nio.ByteBuffer)>(buffer);
+
+        cache[$stack8] = $stack7;
+
+        $stack9 = <jdk.internal.jimage.ImageBufferCache: java.util.Comparator DECREASING_CAPACITY_NULLS_LAST>;
+
+        staticinvoke <java.util.Arrays: void sort(java.lang.Object[],java.util.Comparator)>(cache, $stack9);
+
+        cache[3] = null;
+
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.jimage.ImageBufferCache$2 $stack1;
+        jdk.internal.jimage.ImageBufferCache$1 $stack0;
+
+        <jdk.internal.jimage.ImageBufferCache: int LARGE_BUFFER> = 65536;
+
+        <jdk.internal.jimage.ImageBufferCache: int MAX_CACHED_BUFFERS> = 3;
+
+        $stack0 = new jdk.internal.jimage.ImageBufferCache$1;
+
+        specialinvoke $stack0.<jdk.internal.jimage.ImageBufferCache$1: void <init>()>();
+
+        <jdk.internal.jimage.ImageBufferCache: java.lang.ThreadLocal CACHE> = $stack0;
+
+        $stack1 = new jdk.internal.jimage.ImageBufferCache$2;
+
+        specialinvoke $stack1.<jdk.internal.jimage.ImageBufferCache$2: void <init>()>();
+
+        <jdk.internal.jimage.ImageBufferCache: java.util.Comparator DECREASING_CAPACITY_NULLS_LAST> = $stack1;
+
+        return;
+    }
+}

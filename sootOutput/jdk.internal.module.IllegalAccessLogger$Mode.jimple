@@ -1,0 +1,99 @@
+public final enum class jdk.internal.module.IllegalAccessLogger$Mode extends java.lang.Enum
+{
+    public static final enum jdk.internal.module.IllegalAccessLogger$Mode ONESHOT;
+    public static final enum jdk.internal.module.IllegalAccessLogger$Mode WARN;
+    public static final enum jdk.internal.module.IllegalAccessLogger$Mode DEBUG;
+    private static final jdk.internal.module.IllegalAccessLogger$Mode[] $VALUES;
+
+    public static jdk.internal.module.IllegalAccessLogger$Mode[] values()
+    {
+        java.lang.Object $stack1;
+        jdk.internal.module.IllegalAccessLogger$Mode[] $stack0, $stack2;
+
+        $stack0 = <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode[] $VALUES>;
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Object: java.lang.Object clone()>();
+
+        $stack2 = (jdk.internal.module.IllegalAccessLogger$Mode[]) $stack1;
+
+        return $stack2;
+    }
+
+    public static jdk.internal.module.IllegalAccessLogger$Mode valueOf(java.lang.String)
+    {
+        java.lang.String name;
+        java.lang.Enum $stack1;
+        jdk.internal.module.IllegalAccessLogger$Mode $stack2;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Ljdk/internal/module/IllegalAccessLogger$Mode;", name);
+
+        $stack2 = (jdk.internal.module.IllegalAccessLogger$Mode) $stack1;
+
+        return $stack2;
+
+        nop;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        int l2;
+        java.lang.String l1;
+        jdk.internal.module.IllegalAccessLogger$Mode this;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger$Mode;
+
+        l1 := @parameter0: java.lang.String;
+
+        l2 := @parameter1: int;
+
+        specialinvoke this.<java.lang.Enum: void <init>(java.lang.String,int)>(l1, l2);
+
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.module.IllegalAccessLogger$Mode $stack0, $stack1, $stack2, $stack4, $stack5, $stack6;
+        jdk.internal.module.IllegalAccessLogger$Mode[] $stack3;
+
+        $stack0 = new jdk.internal.module.IllegalAccessLogger$Mode;
+
+        specialinvoke $stack0.<jdk.internal.module.IllegalAccessLogger$Mode: void <init>(java.lang.String,int)>("ONESHOT", 0);
+
+        <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode ONESHOT> = $stack0;
+
+        $stack1 = new jdk.internal.module.IllegalAccessLogger$Mode;
+
+        specialinvoke $stack1.<jdk.internal.module.IllegalAccessLogger$Mode: void <init>(java.lang.String,int)>("WARN", 1);
+
+        <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode WARN> = $stack1;
+
+        $stack2 = new jdk.internal.module.IllegalAccessLogger$Mode;
+
+        specialinvoke $stack2.<jdk.internal.module.IllegalAccessLogger$Mode: void <init>(java.lang.String,int)>("DEBUG", 2);
+
+        <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode DEBUG> = $stack2;
+
+        $stack3 = newarray (jdk.internal.module.IllegalAccessLogger$Mode)[3];
+
+        $stack4 = <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode ONESHOT>;
+
+        $stack3[0] = $stack4;
+
+        $stack5 = <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode WARN>;
+
+        $stack3[1] = $stack5;
+
+        $stack6 = <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode DEBUG>;
+
+        $stack3[2] = $stack6;
+
+        <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode[] $VALUES> = $stack3;
+
+        return;
+    }
+}

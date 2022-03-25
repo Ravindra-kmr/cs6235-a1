@@ -1,0 +1,49 @@
+final class jdk.internal.logger.LazyLoggers$LazyLoggerFactories extends java.lang.Object
+{
+    final java.util.function.BiFunction loggerSupplier;
+
+    public void <init>(java.util.function.BiFunction)
+    {
+        java.lang.Void $stack3;
+        java.util.function.BiFunction loggerSupplier, $stack4;
+        java.lang.Object $stack2;
+        jdk.internal.logger.LazyLoggers$LazyLoggerFactories this;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerFactories;
+
+        loggerSupplier := @parameter0: java.util.function.BiFunction;
+
+        $stack2 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(loggerSupplier);
+
+        $stack4 = (java.util.function.BiFunction) $stack2;
+
+        $stack3 = (java.lang.Void) null;
+
+        specialinvoke this.<jdk.internal.logger.LazyLoggers$LazyLoggerFactories: void <init>(java.util.function.BiFunction,java.lang.Void)>($stack4, $stack3);
+
+        return;
+
+        nop;
+    }
+
+    private void <init>(java.util.function.BiFunction, java.lang.Void)
+    {
+        java.lang.Void unused;
+        jdk.internal.logger.LazyLoggers$LazyLoggerFactories this;
+        java.util.function.BiFunction loggerSupplier;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerFactories;
+
+        loggerSupplier := @parameter0: java.util.function.BiFunction;
+
+        unused := @parameter1: java.lang.Void;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerFactories: java.util.function.BiFunction loggerSupplier> = loggerSupplier;
+
+        return;
+
+        nop;
+    }
+}

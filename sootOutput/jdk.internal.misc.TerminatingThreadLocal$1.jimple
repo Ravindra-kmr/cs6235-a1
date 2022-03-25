@@ -1,0 +1,49 @@
+class jdk.internal.misc.TerminatingThreadLocal$1 extends java.lang.ThreadLocal
+{
+
+    void <init>()
+    {
+        jdk.internal.misc.TerminatingThreadLocal$1 this;
+
+        this := @this: jdk.internal.misc.TerminatingThreadLocal$1;
+
+        specialinvoke this.<java.lang.ThreadLocal: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    protected java.util.Collection initialValue()
+    {
+        java.util.Set $stack2;
+        java.util.IdentityHashMap $stack1;
+        jdk.internal.misc.TerminatingThreadLocal$1 this;
+
+        this := @this: jdk.internal.misc.TerminatingThreadLocal$1;
+
+        $stack1 = new java.util.IdentityHashMap;
+
+        specialinvoke $stack1.<java.util.IdentityHashMap: void <init>(int)>(4);
+
+        $stack2 = staticinvoke <java.util.Collections: java.util.Set newSetFromMap(java.util.Map)>($stack1);
+
+        return $stack2;
+
+        nop;
+    }
+
+    protected volatile java.lang.Object initialValue()
+    {
+        jdk.internal.misc.TerminatingThreadLocal$1 this;
+        java.util.Collection $stack1;
+
+        this := @this: jdk.internal.misc.TerminatingThreadLocal$1;
+
+        $stack1 = virtualinvoke this.<jdk.internal.misc.TerminatingThreadLocal$1: java.util.Collection initialValue()>();
+
+        return $stack1;
+
+        nop;
+    }
+}

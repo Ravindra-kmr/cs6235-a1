@@ -1,0 +1,105 @@
+class jdk.internal.math.FormattedFloatingDecimal$2 extends java.lang.Object
+{
+    static final int[] $SwitchMap$jdk$internal$math$FormattedFloatingDecimal$Form;
+
+    static void <clinit>()
+    {
+        jdk.internal.math.FormattedFloatingDecimal$Form $stack4, $stack7, $stack10, $stack13;
+        java.lang.NoSuchFieldError $stack16, $stack17, $stack19, $stack21, l0#1, l0#2, l0#3, l0#4;
+        byte $stack18, $stack20, $stack22;
+        int[] $stack3, $stack5, $stack8, $stack11, $stack14;
+        bottom_type l0;
+        int $stack2, $stack6, $stack9, $stack12, $stack15;
+        jdk.internal.math.FormattedFloatingDecimal$Form[] $stack1;
+
+        $stack1 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form[] values()>();
+
+        $stack2 = lengthof $stack1;
+
+        $stack3 = newarray (int)[$stack2];
+
+        <jdk.internal.math.FormattedFloatingDecimal$2: int[] $SwitchMap$jdk$internal$math$FormattedFloatingDecimal$Form> = $stack3;
+
+     label01:
+        $stack5 = <jdk.internal.math.FormattedFloatingDecimal$2: int[] $SwitchMap$jdk$internal$math$FormattedFloatingDecimal$Form>;
+
+        $stack4 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form COMPATIBLE>;
+
+        $stack6 = virtualinvoke $stack4.<jdk.internal.math.FormattedFloatingDecimal$Form: int ordinal()>();
+
+        $stack5[$stack6] = 1;
+
+     label02:
+        goto label04;
+
+     label03:
+        $stack21 := @caughtexception;
+
+        l0#1 = $stack21;
+
+     label04:
+        $stack8 = <jdk.internal.math.FormattedFloatingDecimal$2: int[] $SwitchMap$jdk$internal$math$FormattedFloatingDecimal$Form>;
+
+        $stack7 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form DECIMAL_FLOAT>;
+
+        $stack9 = virtualinvoke $stack7.<jdk.internal.math.FormattedFloatingDecimal$Form: int ordinal()>();
+
+        $stack22 = 2;
+
+        $stack8[$stack9] = $stack22;
+
+     label05:
+        goto label07;
+
+     label06:
+        $stack19 := @caughtexception;
+
+        l0#2 = $stack19;
+
+     label07:
+        $stack11 = <jdk.internal.math.FormattedFloatingDecimal$2: int[] $SwitchMap$jdk$internal$math$FormattedFloatingDecimal$Form>;
+
+        $stack10 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form SCIENTIFIC>;
+
+        $stack12 = virtualinvoke $stack10.<jdk.internal.math.FormattedFloatingDecimal$Form: int ordinal()>();
+
+        $stack20 = 3;
+
+        $stack11[$stack12] = $stack20;
+
+     label08:
+        goto label10;
+
+     label09:
+        $stack17 := @caughtexception;
+
+        l0#3 = $stack17;
+
+     label10:
+        $stack14 = <jdk.internal.math.FormattedFloatingDecimal$2: int[] $SwitchMap$jdk$internal$math$FormattedFloatingDecimal$Form>;
+
+        $stack13 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form GENERAL>;
+
+        $stack15 = virtualinvoke $stack13.<jdk.internal.math.FormattedFloatingDecimal$Form: int ordinal()>();
+
+        $stack18 = 4;
+
+        $stack14[$stack15] = $stack18;
+
+     label11:
+        goto label13;
+
+     label12:
+        $stack16 := @caughtexception;
+
+        l0#4 = $stack16;
+
+     label13:
+        return;
+
+        catch java.lang.NoSuchFieldError from label01 to label02 with label03;
+        catch java.lang.NoSuchFieldError from label04 to label05 with label06;
+        catch java.lang.NoSuchFieldError from label07 to label08 with label09;
+        catch java.lang.NoSuchFieldError from label10 to label11 with label12;
+    }
+}

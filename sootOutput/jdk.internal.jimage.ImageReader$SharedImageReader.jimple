@@ -1,0 +1,1609 @@
+final class jdk.internal.jimage.ImageReader$SharedImageReader extends jdk.internal.jimage.BasicImageReader
+{
+    static final int SIZE_OF_OFFSET;
+    static final java.util.Map OPEN_FILES;
+    final java.util.Set openers;
+    java.nio.file.attribute.BasicFileAttributes imageFileAttributes;
+    final java.util.HashMap nodes;
+    volatile jdk.internal.jimage.ImageReader$Directory rootDir;
+    jdk.internal.jimage.ImageReader$Directory packagesDir;
+    jdk.internal.jimage.ImageReader$Directory modulesDir;
+    static final boolean $assertionsDisabled;
+
+    private void <init>(java.nio.file.Path, java.nio.ByteOrder) throws java.io.IOException
+    {
+        java.util.HashSet $stack3;
+        java.nio.ByteOrder byteOrder;
+        java.util.HashMap $stack4;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.nio.file.Path imagePath;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        imagePath := @parameter0: java.nio.file.Path;
+
+        byteOrder := @parameter1: java.nio.ByteOrder;
+
+        specialinvoke this.<jdk.internal.jimage.BasicImageReader: void <init>(java.nio.file.Path,java.nio.ByteOrder)>(imagePath, byteOrder);
+
+        $stack3 = new java.util.HashSet;
+
+        specialinvoke $stack3.<java.util.HashSet: void <init>()>();
+
+        this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Set openers> = $stack3;
+
+        $stack4 = new java.util.HashMap;
+
+        specialinvoke $stack4.<java.util.HashMap: void <init>()>();
+
+        this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.HashMap nodes> = $stack4;
+
+        return;
+
+        nop;
+    }
+
+    public static jdk.internal.jimage.ImageReader open(java.nio.file.Path, java.nio.ByteOrder) throws java.io.IOException
+    {
+        jdk.internal.jimage.ImageReader $stack12, image, $stack28, $stack29;
+        bottom_type reader;
+        java.util.Map $stack8, l2, $stack9, $stack15, $stack24, $stack31;
+        java.nio.file.Path imagePath;
+        boolean $stack14;
+        java.util.Set $stack13;
+        java.nio.ByteOrder byteOrder, $stack11;
+        java.lang.StringBuilder $stack17, $stack18, $stack20, $stack21;
+        java.lang.Throwable $stack30, l5;
+        jdk.internal.jimage.ImageReader$SharedImageReader $stack23, $stack26, $stack27, reader#1;
+        java.lang.String $stack19, $stack22;
+        java.io.IOException $stack16;
+        java.lang.Object $stack6, $stack7, $stack10, $stack25;
+
+        imagePath := @parameter0: java.nio.file.Path;
+
+        byteOrder := @parameter1: java.nio.ByteOrder;
+
+        $stack6 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(imagePath);
+
+        $stack7 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(byteOrder);
+
+        $stack8 = <jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Map OPEN_FILES>;
+
+        l2 = $stack8;
+
+        entermonitor $stack8;
+
+     label1:
+        $stack9 = <jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Map OPEN_FILES>;
+
+        $stack10 = interfaceinvoke $stack9.<java.util.Map: java.lang.Object get(java.lang.Object)>(imagePath);
+
+        reader#1 = (jdk.internal.jimage.ImageReader$SharedImageReader) $stack10;
+
+        if reader#1 != null goto label2;
+
+        $stack23 = new jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        specialinvoke $stack23.<jdk.internal.jimage.ImageReader$SharedImageReader: void <init>(java.nio.file.Path,java.nio.ByteOrder)>(imagePath, byteOrder);
+
+        reader#1 = $stack23;
+
+        $stack24 = <jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Map OPEN_FILES>;
+
+        $stack25 = interfaceinvoke $stack24.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(imagePath, reader#1);
+
+        goto label3;
+
+     label2:
+        $stack11 = virtualinvoke reader#1.<jdk.internal.jimage.ImageReader$SharedImageReader: java.nio.ByteOrder getByteOrder()>();
+
+        if $stack11 == byteOrder goto label3;
+
+        $stack16 = new java.io.IOException;
+
+        $stack17 = new java.lang.StringBuilder;
+
+        specialinvoke $stack17.<java.lang.StringBuilder: void <init>()>();
+
+        $stack18 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\"");
+
+        $stack19 = virtualinvoke reader#1.<jdk.internal.jimage.ImageReader$SharedImageReader: java.lang.String getName()>();
+
+        $stack20 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack19);
+
+        $stack21 = virtualinvoke $stack20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" is not an image file");
+
+        $stack22 = virtualinvoke $stack21.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack16.<java.io.IOException: void <init>(java.lang.String)>($stack22);
+
+        throw $stack16;
+
+     label3:
+        $stack12 = new jdk.internal.jimage.ImageReader;
+
+        $stack26 = reader#1;
+
+        specialinvoke $stack12.<jdk.internal.jimage.ImageReader: void <init>(jdk.internal.jimage.ImageReader$SharedImageReader)>($stack26);
+
+        image = $stack12;
+
+        $stack27 = reader#1;
+
+        $stack13 = $stack27.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Set openers>;
+
+        $stack28 = image;
+
+        $stack14 = interfaceinvoke $stack13.<java.util.Set: boolean add(java.lang.Object)>($stack28);
+
+        $stack29 = image;
+
+        $stack15 = l2;
+
+        exitmonitor $stack15;
+
+     label4:
+        return $stack29;
+
+     label5:
+        $stack30 := @caughtexception;
+
+        l5 = $stack30;
+
+        $stack31 = l2;
+
+        exitmonitor $stack31;
+
+     label6:
+        throw l5;
+
+        nop;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public void close(jdk.internal.jimage.ImageReader) throws java.io.IOException
+    {
+        java.lang.Throwable $stack17, l3;
+        jdk.internal.jimage.ImageReader image;
+        java.util.HashMap $stack11;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.util.Map $stack5, l2, $stack10, $stack12, $stack18;
+        java.nio.file.Path $stack13;
+        boolean $stack7, $stack9, $stack14;
+        java.util.Set $stack6, $stack8;
+        java.io.IOException $stack15, $stack16;
+        java.lang.Object $stack4;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        image := @parameter0: jdk.internal.jimage.ImageReader;
+
+        $stack4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(image);
+
+        $stack5 = <jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Map OPEN_FILES>;
+
+        l2 = $stack5;
+
+        entermonitor $stack5;
+
+     label1:
+        $stack6 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Set openers>;
+
+        $stack7 = interfaceinvoke $stack6.<java.util.Set: boolean remove(java.lang.Object)>(image);
+
+        if $stack7 != 0 goto label2;
+
+        $stack16 = new java.io.IOException;
+
+        specialinvoke $stack16.<java.io.IOException: void <init>(java.lang.String)>("image file already closed");
+
+        throw $stack16;
+
+     label2:
+        $stack8 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Set openers>;
+
+        $stack9 = interfaceinvoke $stack8.<java.util.Set: boolean isEmpty()>();
+
+        if $stack9 == 0 goto label3;
+
+        virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: void close()>();
+
+        $stack11 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.HashMap nodes>;
+
+        virtualinvoke $stack11.<java.util.HashMap: void clear()>();
+
+        this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory rootDir> = null;
+
+        $stack12 = <jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Map OPEN_FILES>;
+
+        $stack13 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.nio.file.Path getImagePath()>();
+
+        $stack14 = interfaceinvoke $stack12.<java.util.Map: boolean remove(java.lang.Object,java.lang.Object)>($stack13, this);
+
+        if $stack14 != 0 goto label3;
+
+        $stack15 = new java.io.IOException;
+
+        specialinvoke $stack15.<java.io.IOException: void <init>(java.lang.String)>("image file not found in open list");
+
+        throw $stack15;
+
+     label3:
+        $stack10 = l2;
+
+        exitmonitor $stack10;
+
+     label4:
+        goto label7;
+
+     label5:
+        $stack17 := @caughtexception;
+
+        l3 = $stack17;
+
+        $stack18 = l2;
+
+        exitmonitor $stack18;
+
+     label6:
+        throw l3;
+
+     label7:
+        return;
+
+        nop;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    void addOpener(jdk.internal.jimage.ImageReader)
+    {
+        java.lang.Throwable $stack8, l3;
+        java.util.Set $stack5;
+        jdk.internal.jimage.ImageReader reader;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.util.Map $stack4, l2, $stack7, $stack9;
+        boolean $stack6;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        reader := @parameter0: jdk.internal.jimage.ImageReader;
+
+        $stack4 = <jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Map OPEN_FILES>;
+
+        l2 = $stack4;
+
+        entermonitor $stack4;
+
+     label1:
+        $stack5 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Set openers>;
+
+        $stack6 = interfaceinvoke $stack5.<java.util.Set: boolean add(java.lang.Object)>(reader);
+
+        $stack7 = l2;
+
+        exitmonitor $stack7;
+
+     label2:
+        goto label5;
+
+     label3:
+        $stack8 := @caughtexception;
+
+        l3 = $stack8;
+
+        $stack9 = l2;
+
+        exitmonitor $stack9;
+
+     label4:
+        throw l3;
+
+     label5:
+        return;
+
+        nop;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    boolean removeOpener(jdk.internal.jimage.ImageReader)
+    {
+        java.lang.Throwable $stack8, l3;
+        java.util.Set $stack5;
+        jdk.internal.jimage.ImageReader reader;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.util.Map $stack4, l2, $stack7, $stack9;
+        boolean $stack6;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        reader := @parameter0: jdk.internal.jimage.ImageReader;
+
+        $stack4 = <jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Map OPEN_FILES>;
+
+        l2 = $stack4;
+
+        entermonitor $stack4;
+
+     label1:
+        $stack5 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Set openers>;
+
+        $stack6 = interfaceinvoke $stack5.<java.util.Set: boolean remove(java.lang.Object)>(reader);
+
+        $stack7 = l2;
+
+        exitmonitor $stack7;
+
+     label2:
+        return $stack6;
+
+     label3:
+        $stack8 := @caughtexception;
+
+        l3 = $stack8;
+
+        $stack9 = l2;
+
+        exitmonitor $stack9;
+
+     label4:
+        throw l3;
+
+        nop;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    jdk.internal.jimage.ImageReader$Directory getRootDirectory()
+    {
+        jdk.internal.jimage.ImageReader$Directory $stack1;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        $stack1 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory buildRootDirectory()>();
+
+        return $stack1;
+
+        nop;
+    }
+
+    synchronized jdk.internal.jimage.ImageReader$Node buildNode(java.lang.String)
+    {
+        jdk.internal.jimage.ImageReader$SharedImageReader this, $stack14;
+        bottom_type n, $stack10, $stack17, $stack18;
+        java.lang.String name, $stack13;
+        boolean $stack6, isPackages, isModules, $stack16, $stack17#1, $stack18#2, $stack18#3;
+        jdk.internal.jimage.ImageLocation $stack7, loc, $stack15;
+        jdk.internal.jimage.ImageReader$Node $stack8, $stack9, $stack11, $stack12, n#4, $stack10#5, $stack10#6;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        name := @parameter0: java.lang.String;
+
+        $stack6 = virtualinvoke name.<java.lang.String: boolean startsWith(java.lang.String)>("/packages");
+
+        isPackages = $stack6;
+
+        if isPackages != 0 goto label1;
+
+        $stack16 = virtualinvoke name.<java.lang.String: boolean startsWith(java.lang.String)>("/modules");
+
+        if $stack16 == 0 goto label1;
+
+        $stack17#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack17#1 = 0;
+
+     label2:
+        isModules = $stack17#1;
+
+        $stack18#2 = isModules;
+
+        $stack18#3 = $stack18#2;
+
+        if $stack18#3 != 0 goto label3;
+
+        if isPackages != 0 goto label3;
+
+        return null;
+
+     label3:
+        $stack14 = this;
+
+        $stack13 = name;
+
+        $stack7 = virtualinvoke $stack14.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageLocation findLocation(java.lang.String)>($stack13);
+
+        loc = $stack7;
+
+        $stack15 = loc;
+
+        if $stack15 == null goto label5;
+
+        if isPackages == 0 goto label4;
+
+        $stack12 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Node handlePackages(java.lang.String,jdk.internal.jimage.ImageLocation)>(name, loc);
+
+        n#4 = $stack12;
+
+        goto label7;
+
+     label4:
+        $stack11 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Node handleModulesSubTree(java.lang.String,jdk.internal.jimage.ImageLocation)>(name, loc);
+
+        n#4 = $stack11;
+
+        goto label7;
+
+     label5:
+        if isModules == 0 goto label6;
+
+        $stack9 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Node handleResource(java.lang.String)>(name);
+
+        n#4 = $stack9;
+
+        goto label7;
+
+     label6:
+        $stack8 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Node handleModuleLink(java.lang.String)>(name);
+
+        n#4 = $stack8;
+
+     label7:
+        $stack10#5 = n#4;
+
+        $stack10#6 = $stack10#5;
+
+        return $stack10#6;
+
+        nop;
+    }
+
+    synchronized jdk.internal.jimage.ImageReader$Directory buildRootDirectory()
+    {
+        jdk.internal.jimage.ImageReader$Directory $stack2, $stack3, $stack4, $stack5, $stack6, root#1, root#2;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        bottom_type root;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        root#1 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory rootDir>;
+
+        if root#1 == null goto label1;
+
+        return root#1;
+
+     label1:
+        $stack2 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory newDirectory(jdk.internal.jimage.ImageReader$Directory,java.lang.String)>(null, "/");
+
+        root#2 = $stack2;
+
+        virtualinvoke root#2.<jdk.internal.jimage.ImageReader$Directory: void setIsRootDir()>();
+
+        $stack3 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory newDirectory(jdk.internal.jimage.ImageReader$Directory,java.lang.String)>(root#2, "/packages");
+
+        this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory packagesDir> = $stack3;
+
+        $stack4 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory packagesDir>;
+
+        virtualinvoke $stack4.<jdk.internal.jimage.ImageReader$Directory: void setIsPackagesDir()>();
+
+        $stack5 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory newDirectory(jdk.internal.jimage.ImageReader$Directory,java.lang.String)>(root#2, "/modules");
+
+        this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory modulesDir> = $stack5;
+
+        $stack6 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory modulesDir>;
+
+        virtualinvoke $stack6.<jdk.internal.jimage.ImageReader$Directory: void setIsModulesDir()>();
+
+        virtualinvoke root#2.<jdk.internal.jimage.ImageReader$Directory: void setCompleted(boolean)>(1);
+
+        this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory rootDir> = root#2;
+
+        return root#2;
+
+        nop;
+    }
+
+    void visitLocation(jdk.internal.jimage.ImageLocation, jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor)
+    {
+        byte[] $stack9, offsets, $stack18;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.nio.ByteBuffer $stack10, buffer, $stack12;
+        byte $stack19;
+        java.nio.IntBuffer $stack13, intBuffer;
+        bottom_type i;
+        int $stack14, $stack15, $stack16, offset, $stack20, i#1;
+        jdk.internal.jimage.ImageLocation loc, $stack17, pkgLoc;
+        jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor visitor;
+        java.nio.ByteOrder $stack11;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        loc := @parameter0: jdk.internal.jimage.ImageLocation;
+
+        visitor := @parameter1: jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor;
+
+        $stack9 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: byte[] getResource(jdk.internal.jimage.ImageLocation)>(loc);
+
+        offsets = $stack9;
+
+        $stack10 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>(offsets);
+
+        buffer = $stack10;
+
+        $stack11 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.nio.ByteOrder getByteOrder()>();
+
+        $stack12 = virtualinvoke buffer.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($stack11);
+
+        $stack13 = virtualinvoke buffer.<java.nio.ByteBuffer: java.nio.IntBuffer asIntBuffer()>();
+
+        intBuffer = $stack13;
+
+        i#1 = 0;
+
+     label1:
+        $stack20 = i#1;
+
+        $stack18 = offsets;
+
+        $stack14 = lengthof $stack18;
+
+        $stack19 = 4;
+
+        $stack15 = $stack14 / $stack19;
+
+        if $stack20 >= $stack15 goto label2;
+
+        $stack16 = virtualinvoke intBuffer.<java.nio.IntBuffer: int get(int)>(i#1);
+
+        offset = $stack16;
+
+        $stack17 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageLocation getLocation(int)>(offset);
+
+        pkgLoc = $stack17;
+
+        interfaceinvoke visitor.<jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor: void visit(jdk.internal.jimage.ImageLocation)>(pkgLoc);
+
+        i#1 = i#1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    void visitPackageLocation(jdk.internal.jimage.ImageLocation)
+    {
+        byte[] $stack13, stringsOffsets, $stack28;
+        jdk.internal.jimage.ImageReader$LinkNode $stack46;
+        java.nio.ByteBuffer $stack14, buffer, $stack16;
+        byte $stack29;
+        java.nio.IntBuffer $stack17, intBuffer;
+        bottom_type i;
+        jdk.internal.jimage.ImageLocation loc;
+        jdk.internal.jimage.ImageReader$Node $stack27, targetNode;
+        java.nio.ByteOrder $stack15;
+        java.lang.StringBuilder $stack23, $stack24, $stack25, $stack31, $stack34, $stack35, $stack36, $stack40, $stack42, $stack43, $stack44;
+        java.util.HashMap $stack38;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        int $stack18, $stack19, $stack20, $stack21, offset, $stack30, i#1, i#2;
+        java.lang.String $stack12, pkgName, $stack22, moduleName, $stack26, $stack33, $stack37, pkgDirName, $stack41, $stack45;
+        jdk.internal.jimage.ImageReader$Directory $stack32, pkgDir;
+        java.lang.Object $stack39;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        loc := @parameter0: jdk.internal.jimage.ImageLocation;
+
+        $stack12 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.lang.String getBaseExt(jdk.internal.jimage.ImageLocation)>(loc);
+
+        pkgName = $stack12;
+
+        $stack13 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: byte[] getResource(jdk.internal.jimage.ImageLocation)>(loc);
+
+        stringsOffsets = $stack13;
+
+        $stack14 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>(stringsOffsets);
+
+        buffer = $stack14;
+
+        $stack15 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.nio.ByteOrder getByteOrder()>();
+
+        $stack16 = virtualinvoke buffer.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($stack15);
+
+        $stack17 = virtualinvoke buffer.<java.nio.ByteBuffer: java.nio.IntBuffer asIntBuffer()>();
+
+        intBuffer = $stack17;
+
+        i#1 = 0;
+
+     label1:
+        $stack30 = i#1;
+
+        $stack28 = stringsOffsets;
+
+        $stack18 = lengthof $stack28;
+
+        $stack29 = 4;
+
+        $stack19 = $stack18 / $stack29;
+
+        if $stack30 >= $stack19 goto label3;
+
+        $stack20 = virtualinvoke intBuffer.<java.nio.IntBuffer: int get(int)>(i#1);
+
+        i#2 = i#1 + 1;
+
+        $stack21 = virtualinvoke intBuffer.<java.nio.IntBuffer: int get(int)>(i#2);
+
+        offset = $stack21;
+
+        $stack22 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.lang.String getString(int)>(offset);
+
+        moduleName = $stack22;
+
+        $stack23 = new java.lang.StringBuilder;
+
+        specialinvoke $stack23.<java.lang.StringBuilder: void <init>()>();
+
+        $stack24 = virtualinvoke $stack23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/modules/");
+
+        $stack25 = virtualinvoke $stack24.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(moduleName);
+
+        $stack26 = virtualinvoke $stack25.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack27 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Node findNode(java.lang.String)>($stack26);
+
+        targetNode = $stack27;
+
+        if targetNode == null goto label2;
+
+        $stack31 = new java.lang.StringBuilder;
+
+        specialinvoke $stack31.<java.lang.StringBuilder: void <init>()>();
+
+        $stack32 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory packagesDir>;
+
+        $stack33 = virtualinvoke $stack32.<jdk.internal.jimage.ImageReader$Directory: java.lang.String getName()>();
+
+        $stack34 = virtualinvoke $stack31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack33);
+
+        $stack35 = virtualinvoke $stack34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $stack36 = virtualinvoke $stack35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(pkgName);
+
+        $stack37 = virtualinvoke $stack36.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        pkgDirName = $stack37;
+
+        $stack38 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.HashMap nodes>;
+
+        $stack39 = virtualinvoke $stack38.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(pkgDirName);
+
+        pkgDir = (jdk.internal.jimage.ImageReader$Directory) $stack39;
+
+        $stack40 = new java.lang.StringBuilder;
+
+        specialinvoke $stack40.<java.lang.StringBuilder: void <init>()>();
+
+        $stack41 = virtualinvoke pkgDir.<jdk.internal.jimage.ImageReader$Directory: java.lang.String getName()>();
+
+        $stack42 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack41);
+
+        $stack43 = virtualinvoke $stack42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $stack44 = virtualinvoke $stack43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(moduleName);
+
+        $stack45 = virtualinvoke $stack44.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack46 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$LinkNode newLinkNode(jdk.internal.jimage.ImageReader$Directory,java.lang.String,jdk.internal.jimage.ImageReader$Node)>(pkgDir, $stack45, targetNode);
+
+     label2:
+        i#1 = i#2 + 1;
+
+        goto label1;
+
+     label3:
+        return;
+
+        nop;
+    }
+
+    jdk.internal.jimage.ImageReader$Node handlePackages(java.lang.String, jdk.internal.jimage.ImageLocation)
+    {
+        jdk.internal.jimage.ImageReader$LinkNode $stack37, linkNode;
+        byte $stack14;
+        bottom_type n, pkgName, pkgDir_1, $stack38;
+        boolean $stack13;
+        jdk.internal.jimage.ImageLocation loc;
+        jdk.internal.jimage.ImageReader$Node $stack21, targetNode, n#1, $stack38#6, $stack38#7;
+        java.lang.StringBuilder $stack17, $stack18, $stack19, $stack22, $stack25, $stack26, $stack27, $stack31, $stack33, $stack34, $stack35, $stack40, $stack44, $stack45, $stack46;
+        long $stack12, size;
+        java.util.HashMap $stack29;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.lang.String name, $stack15, $stack16, $stack20, $stack24, $stack28, pkgDirName, $stack32, $stack36, $stack39, $stack43, $stack47, pkgName#2, pkgName#4, pkgDir_1#5;
+        jdk.internal.jimage.ImageReader$Directory $stack23, pkgDir_2, $stack41, $stack42, $stack48, $stack50, pkgDir_1#3;
+        jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor $stack49;
+        java.lang.Object $stack30;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        name := @parameter0: java.lang.String;
+
+        loc := @parameter1: jdk.internal.jimage.ImageLocation;
+
+        $stack12 = virtualinvoke loc.<jdk.internal.jimage.ImageLocation: long getUncompressedSize()>();
+
+        size = $stack12;
+
+        n#1 = null;
+
+        $stack13 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("/packages");
+
+        if $stack13 == 0 goto label1;
+
+        $stack49 = staticinvoke <jdk.internal.jimage.ImageReader$SharedImageReader$lambda_handlePackages_0__293: jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor bootstrap$(jdk.internal.jimage.ImageReader$SharedImageReader)>(this);
+
+        virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: void visitLocation(jdk.internal.jimage.ImageLocation,jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor)>(loc, $stack49);
+
+        $stack50 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory packagesDir>;
+
+        virtualinvoke $stack50.<jdk.internal.jimage.ImageReader$Directory: void setCompleted(boolean)>(1);
+
+        n#1 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory packagesDir>;
+
+        goto label3;
+
+     label1:
+        $stack14 = size cmp 0L;
+
+        if $stack14 == 0 goto label2;
+
+        $stack39 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.lang.String getBaseExt(jdk.internal.jimage.ImageLocation)>(loc);
+
+        pkgName#2 = $stack39;
+
+        $stack41 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory packagesDir>;
+
+        $stack40 = new java.lang.StringBuilder;
+
+        specialinvoke $stack40.<java.lang.StringBuilder: void <init>()>();
+
+        $stack42 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory packagesDir>;
+
+        $stack43 = virtualinvoke $stack42.<jdk.internal.jimage.ImageReader$Directory: java.lang.String getName()>();
+
+        $stack44 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack43);
+
+        $stack45 = virtualinvoke $stack44.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $stack46 = virtualinvoke $stack45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(pkgName#2);
+
+        $stack47 = virtualinvoke $stack46.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack48 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory newDirectory(jdk.internal.jimage.ImageReader$Directory,java.lang.String)>($stack41, $stack47);
+
+        pkgDir_1#3 = $stack48;
+
+        virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: void visitPackageLocation(jdk.internal.jimage.ImageLocation)>(loc);
+
+        virtualinvoke pkgDir_1#3.<jdk.internal.jimage.ImageReader$Directory: void setCompleted(boolean)>(1);
+
+        n#1 = pkgDir_1#3;
+
+        goto label3;
+
+     label2:
+        $stack15 = virtualinvoke loc.<jdk.internal.jimage.ImageLocation: java.lang.String getParent()>();
+
+        pkgName#4 = $stack15;
+
+        $stack16 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.lang.String getBaseExt(jdk.internal.jimage.ImageLocation)>(loc);
+
+        pkgDir_1#5 = $stack16;
+
+        $stack17 = new java.lang.StringBuilder;
+
+        specialinvoke $stack17.<java.lang.StringBuilder: void <init>()>();
+
+        $stack18 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/modules/");
+
+        $stack19 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(pkgDir_1#5);
+
+        $stack20 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack21 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Node findNode(java.lang.String)>($stack20);
+
+        targetNode = $stack21;
+
+        if targetNode == null goto label3;
+
+        $stack22 = new java.lang.StringBuilder;
+
+        specialinvoke $stack22.<java.lang.StringBuilder: void <init>()>();
+
+        $stack23 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory packagesDir>;
+
+        $stack24 = virtualinvoke $stack23.<jdk.internal.jimage.ImageReader$Directory: java.lang.String getName()>();
+
+        $stack25 = virtualinvoke $stack22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack24);
+
+        $stack26 = virtualinvoke $stack25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $stack27 = virtualinvoke $stack26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(pkgName#4);
+
+        $stack28 = virtualinvoke $stack27.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        pkgDirName = $stack28;
+
+        $stack29 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.HashMap nodes>;
+
+        $stack30 = virtualinvoke $stack29.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(pkgDirName);
+
+        pkgDir_2 = (jdk.internal.jimage.ImageReader$Directory) $stack30;
+
+        $stack31 = new java.lang.StringBuilder;
+
+        specialinvoke $stack31.<java.lang.StringBuilder: void <init>()>();
+
+        $stack32 = virtualinvoke pkgDir_2.<jdk.internal.jimage.ImageReader$Directory: java.lang.String getName()>();
+
+        $stack33 = virtualinvoke $stack31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack32);
+
+        $stack34 = virtualinvoke $stack33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $stack35 = virtualinvoke $stack34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(pkgDir_1#5);
+
+        $stack36 = virtualinvoke $stack35.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack37 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$LinkNode newLinkNode(jdk.internal.jimage.ImageReader$Directory,java.lang.String,jdk.internal.jimage.ImageReader$Node)>(pkgDir_2, $stack36, targetNode);
+
+        linkNode = $stack37;
+
+        n#1 = linkNode;
+
+     label3:
+        $stack38#6 = n#1;
+
+        $stack38#7 = $stack38#6;
+
+        return $stack38#7;
+
+        nop;
+    }
+
+    jdk.internal.jimage.ImageReader$Node handleModuleLink(java.lang.String)
+    {
+        byte $b0;
+        bottom_type 'ret', $stack15;
+        boolean $stack12, $stack24, $stack27;
+        jdk.internal.jimage.ImageReader$Node $stack21, n, child, ret#1, $stack15#2, $stack15#3;
+        java.util.List $stack22;
+        java.lang.StringBuilder $stack17, $stack18, $stack19, $u0;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        int $stack13, start, $stack14, pkgEnd, $i0;
+        java.lang.String radical, name, path, $stack16, pkg, $stack20, pkgPath, $stack26;
+        java.util.Iterator $stack23, l10, $stack28;
+        java.lang.Object $stack25;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        name := @parameter0: java.lang.String;
+
+        ret#1 = null;
+
+        radical = "/packages/";
+
+        path = name;
+
+        $stack12 = virtualinvoke path.<java.lang.String: boolean startsWith(java.lang.String)>(radical);
+
+        if $stack12 == 0 goto label3;
+
+        $stack13 = virtualinvoke radical.<java.lang.String: int length()>();
+
+        start = $stack13;
+
+        $stack14 = virtualinvoke path.<java.lang.String: int indexOf(int,int)>(47, start);
+
+        pkgEnd = $stack14;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        if pkgEnd == $i0 goto label3;
+
+        $stack16 = virtualinvoke path.<java.lang.String: java.lang.String substring(int,int)>(start, pkgEnd);
+
+        pkg = $stack16;
+
+        $u0 = new java.lang.StringBuilder;
+
+        $stack17 = $u0;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $stack18 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(radical);
+
+        $stack19 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(pkg);
+
+        $stack20 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        pkgPath = $stack20;
+
+        $stack21 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Node findNode(java.lang.String)>(pkgPath);
+
+        n = $stack21;
+
+        $stack22 = virtualinvoke n.<jdk.internal.jimage.ImageReader$Node: java.util.List getChildren()>();
+
+        $stack23 = interfaceinvoke $stack22.<java.util.List: java.util.Iterator iterator()>();
+
+        l10 = $stack23;
+
+     label1:
+        $stack28 = l10;
+
+        $stack24 = interfaceinvoke $stack28.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack24 == 0 goto label3;
+
+        $stack25 = interfaceinvoke l10.<java.util.Iterator: java.lang.Object next()>();
+
+        child = (jdk.internal.jimage.ImageReader$Node) $stack25;
+
+        $stack26 = child.<jdk.internal.jimage.ImageReader$Node: java.lang.String name>;
+
+        $stack27 = virtualinvoke $stack26.<java.lang.String: boolean equals(java.lang.Object)>(name);
+
+        if $stack27 == 0 goto label2;
+
+        ret#1 = child;
+
+        goto label3;
+
+     label2:
+        goto label1;
+
+     label3:
+        $stack15#2 = ret#1;
+
+        $stack15#3 = $stack15#2;
+
+        return $stack15#3;
+
+        nop;
+    }
+
+    jdk.internal.jimage.ImageReader$Node handleModulesSubTree(java.lang.String, jdk.internal.jimage.ImageLocation)
+    {
+        jdk.internal.jimage.ImageReader$SharedImageReader this, $stack11, $stack12, $stack15;
+        java.lang.AssertionError $stack20;
+        java.lang.String name, $stack8, $stack10;
+        boolean $stack5, $stack9, $stack16;
+        jdk.internal.jimage.ImageLocation loc, $stack14;
+        jdk.internal.jimage.ImageReader$Directory $stack6, dir, n, $stack13, $stack17, $stack18, $stack19;
+        jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor $stack7;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        name := @parameter0: java.lang.String;
+
+        loc := @parameter1: jdk.internal.jimage.ImageLocation;
+
+        $stack5 = <jdk.internal.jimage.ImageReader$SharedImageReader: boolean $assertionsDisabled>;
+
+        if $stack5 != 0 goto label1;
+
+        $stack8 = virtualinvoke loc.<jdk.internal.jimage.ImageLocation: java.lang.String getFullName()>();
+
+        $stack9 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>($stack8);
+
+        if $stack9 != 0 goto label1;
+
+        $stack20 = new java.lang.AssertionError;
+
+        specialinvoke $stack20.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack20;
+
+     label1:
+        $stack11 = this;
+
+        $stack10 = name;
+
+        $stack6 = virtualinvoke $stack11.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory makeDirectories(java.lang.String)>($stack10);
+
+        dir = $stack6;
+
+        $stack15 = this;
+
+        $stack14 = loc;
+
+        $stack12 = this;
+
+        $stack13 = dir;
+
+        $stack7 = staticinvoke <jdk.internal.jimage.ImageReader$SharedImageReader$lambda_handleModulesSubTree_1__294: jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor bootstrap$(jdk.internal.jimage.ImageReader$SharedImageReader,jdk.internal.jimage.ImageReader$Directory)>($stack12, $stack13);
+
+        virtualinvoke $stack15.<jdk.internal.jimage.ImageReader$SharedImageReader: void visitLocation(jdk.internal.jimage.ImageLocation,jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor)>($stack14, $stack7);
+
+        $stack17 = dir;
+
+        $stack16 = 1;
+
+        virtualinvoke $stack17.<jdk.internal.jimage.ImageReader$Directory: void setCompleted(boolean)>($stack16);
+
+        $stack18 = dir;
+
+        n = $stack18;
+
+        $stack19 = n;
+
+        return $stack19;
+
+        nop;
+    }
+
+    jdk.internal.jimage.ImageReader$Node handleResource(java.lang.String)
+    {
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        bottom_type n;
+        int $stack8;
+        java.lang.String name, $stack7, $stack9, locationPath, $stack11;
+        jdk.internal.jimage.ImageLocation $stack10, resourceLoc;
+        jdk.internal.jimage.ImageReader$Directory $stack12, dir;
+        jdk.internal.jimage.ImageReader$Resource $stack13, res, $stack14, n#1;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        name := @parameter0: java.lang.String;
+
+        n#1 = null;
+
+        $stack7 = "/modules";
+
+        $stack8 = virtualinvoke $stack7.<java.lang.String: int length()>();
+
+        $stack9 = virtualinvoke name.<java.lang.String: java.lang.String substring(int)>($stack8);
+
+        locationPath = $stack9;
+
+        $stack10 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageLocation findLocation(java.lang.String)>(locationPath);
+
+        resourceLoc = $stack10;
+
+        if resourceLoc == null goto label1;
+
+        $stack11 = virtualinvoke resourceLoc.<jdk.internal.jimage.ImageLocation: java.lang.String buildName(boolean,boolean,boolean)>(1, 1, 0);
+
+        $stack12 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory makeDirectories(java.lang.String)>($stack11);
+
+        dir = $stack12;
+
+        $stack13 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Resource newResource(jdk.internal.jimage.ImageReader$Directory,jdk.internal.jimage.ImageLocation)>(dir, resourceLoc);
+
+        res = $stack13;
+
+        n#1 = res;
+
+     label1:
+        $stack14 = n#1;
+
+        return $stack14;
+
+        nop;
+    }
+
+    java.lang.String getBaseExt(jdk.internal.jimage.ImageLocation)
+    {
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        bottom_type base, $stack7;
+        java.lang.String $stack4, $stack5, ext, $stack12, base#1, $stack7#2, $stack7#3;
+        boolean $stack6;
+        jdk.internal.jimage.ImageLocation loc;
+        java.lang.StringBuilder $stack8, $stack9, $stack10, $stack11;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        loc := @parameter0: jdk.internal.jimage.ImageLocation;
+
+        $stack4 = virtualinvoke loc.<jdk.internal.jimage.ImageLocation: java.lang.String getBase()>();
+
+        base#1 = $stack4;
+
+        $stack5 = virtualinvoke loc.<jdk.internal.jimage.ImageLocation: java.lang.String getExtension()>();
+
+        ext = $stack5;
+
+        if ext == null goto label1;
+
+        $stack6 = virtualinvoke ext.<java.lang.String: boolean isEmpty()>();
+
+        if $stack6 != 0 goto label1;
+
+        $stack8 = new java.lang.StringBuilder;
+
+        specialinvoke $stack8.<java.lang.StringBuilder: void <init>()>();
+
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(base#1);
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(ext);
+
+        $stack12 = virtualinvoke $stack11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        base#1 = $stack12;
+
+     label1:
+        $stack7#2 = base#1;
+
+        $stack7#3 = $stack7#2;
+
+        return $stack7#3;
+
+        nop;
+    }
+
+    synchronized jdk.internal.jimage.ImageReader$Node findNode(java.lang.String)
+    {
+        jdk.internal.jimage.ImageReader$Node $stack6, n#1, $stack8#2, $stack8#3;
+        jdk.internal.jimage.ImageReader$Directory $stack3;
+        java.util.HashMap $stack4;
+        jdk.internal.jimage.ImageReader$SharedImageReader this, $stack10;
+        bottom_type n, $stack8;
+        java.lang.Object $stack5;
+        java.lang.String name, $stack9;
+        boolean $stack7;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        name := @parameter0: java.lang.String;
+
+        $stack3 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory buildRootDirectory()>();
+
+        $stack4 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.HashMap nodes>;
+
+        $stack5 = virtualinvoke $stack4.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(name);
+
+        n#1 = (jdk.internal.jimage.ImageReader$Node) $stack5;
+
+        if n#1 == null goto label1;
+
+        $stack7 = virtualinvoke n#1.<jdk.internal.jimage.ImageReader$Node: boolean isCompleted()>();
+
+        if $stack7 != 0 goto label2;
+
+     label1:
+        $stack10 = this;
+
+        $stack9 = name;
+
+        $stack6 = virtualinvoke $stack10.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Node buildNode(java.lang.String)>($stack9);
+
+        n#1 = $stack6;
+
+     label2:
+        $stack8#2 = n#1;
+
+        $stack8#3 = $stack8#2;
+
+        return $stack8#3;
+
+        nop;
+    }
+
+    java.nio.file.attribute.BasicFileAttributes imageFileAttributes()
+    {
+        java.nio.file.LinkOption[] $stack4;
+        java.io.IOException $stack7, file#3;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.nio.file.attribute.BasicFileAttributes $stack5, $stack6, attrs#1;
+        java.io.UncheckedIOException $stack8;
+        bottom_type attrs, file;
+        java.nio.file.Path $stack3, file#2;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        attrs#1 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.nio.file.attribute.BasicFileAttributes imageFileAttributes>;
+
+        if attrs#1 != null goto label5;
+
+     label1:
+        $stack3 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.nio.file.Path getImagePath()>();
+
+        file#2 = $stack3;
+
+        $stack4 = newarray (java.nio.file.LinkOption)[0];
+
+        $stack5 = staticinvoke <java.nio.file.Files: java.nio.file.attribute.BasicFileAttributes readAttributes(java.nio.file.Path,java.lang.Class,java.nio.file.LinkOption[])>(file#2, class "Ljava/nio/file/attribute/BasicFileAttributes;", $stack4);
+
+        attrs#1 = $stack5;
+
+     label2:
+        goto label4;
+
+     label3:
+        $stack7 := @caughtexception;
+
+        file#3 = $stack7;
+
+        $stack8 = new java.io.UncheckedIOException;
+
+        specialinvoke $stack8.<java.io.UncheckedIOException: void <init>(java.io.IOException)>(file#3);
+
+        throw $stack8;
+
+     label4:
+        this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.nio.file.attribute.BasicFileAttributes imageFileAttributes> = attrs#1;
+
+     label5:
+        $stack6 = attrs#1;
+
+        return $stack6;
+
+        nop;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    jdk.internal.jimage.ImageReader$Directory newDirectory(jdk.internal.jimage.ImageReader$Directory, java.lang.String)
+    {
+        jdk.internal.jimage.ImageReader$Directory parent, $stack5, dir;
+        java.util.HashMap $stack6;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.nio.file.attribute.BasicFileAttributes $stack4;
+        java.lang.Object $stack8;
+        java.lang.String name, $stack7;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        parent := @parameter0: jdk.internal.jimage.ImageReader$Directory;
+
+        name := @parameter1: java.lang.String;
+
+        $stack4 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.nio.file.attribute.BasicFileAttributes imageFileAttributes()>();
+
+        $stack5 = staticinvoke <jdk.internal.jimage.ImageReader$Directory: jdk.internal.jimage.ImageReader$Directory create(jdk.internal.jimage.ImageReader$Directory,java.lang.String,java.nio.file.attribute.BasicFileAttributes)>(parent, name, $stack4);
+
+        dir = $stack5;
+
+        $stack6 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.HashMap nodes>;
+
+        $stack7 = virtualinvoke dir.<jdk.internal.jimage.ImageReader$Directory: java.lang.String getName()>();
+
+        $stack8 = virtualinvoke $stack6.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($stack7, dir);
+
+        return dir;
+
+        nop;
+    }
+
+    jdk.internal.jimage.ImageReader$Resource newResource(jdk.internal.jimage.ImageReader$Directory, jdk.internal.jimage.ImageLocation)
+    {
+        jdk.internal.jimage.ImageLocation loc;
+        jdk.internal.jimage.ImageReader$Directory parent;
+        java.util.HashMap $stack6;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.nio.file.attribute.BasicFileAttributes $stack4;
+        jdk.internal.jimage.ImageReader$Resource $stack5, res;
+        java.lang.Object $stack8;
+        java.lang.String $stack7;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        parent := @parameter0: jdk.internal.jimage.ImageReader$Directory;
+
+        loc := @parameter1: jdk.internal.jimage.ImageLocation;
+
+        $stack4 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.nio.file.attribute.BasicFileAttributes imageFileAttributes()>();
+
+        $stack5 = staticinvoke <jdk.internal.jimage.ImageReader$Resource: jdk.internal.jimage.ImageReader$Resource create(jdk.internal.jimage.ImageReader$Directory,jdk.internal.jimage.ImageLocation,java.nio.file.attribute.BasicFileAttributes)>(parent, loc, $stack4);
+
+        res = $stack5;
+
+        $stack6 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.HashMap nodes>;
+
+        $stack7 = virtualinvoke res.<jdk.internal.jimage.ImageReader$Resource: java.lang.String getName()>();
+
+        $stack8 = virtualinvoke $stack6.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($stack7, res);
+
+        return res;
+
+        nop;
+    }
+
+    jdk.internal.jimage.ImageReader$LinkNode newLinkNode(jdk.internal.jimage.ImageReader$Directory, java.lang.String, jdk.internal.jimage.ImageReader$Node)
+    {
+        jdk.internal.jimage.ImageReader$Node link;
+        jdk.internal.jimage.ImageReader$LinkNode $stack5, linkNode;
+        jdk.internal.jimage.ImageReader$Directory dir;
+        java.util.HashMap $stack6;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.lang.Object $stack8;
+        java.lang.String name, $stack7;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        dir := @parameter0: jdk.internal.jimage.ImageReader$Directory;
+
+        name := @parameter1: java.lang.String;
+
+        link := @parameter2: jdk.internal.jimage.ImageReader$Node;
+
+        $stack5 = staticinvoke <jdk.internal.jimage.ImageReader$LinkNode: jdk.internal.jimage.ImageReader$LinkNode create(jdk.internal.jimage.ImageReader$Directory,java.lang.String,jdk.internal.jimage.ImageReader$Node)>(dir, name, link);
+
+        linkNode = $stack5;
+
+        $stack6 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.HashMap nodes>;
+
+        $stack7 = virtualinvoke linkNode.<jdk.internal.jimage.ImageReader$LinkNode: java.lang.String getName()>();
+
+        $stack8 = virtualinvoke $stack6.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($stack7, linkNode);
+
+        return linkNode;
+
+        nop;
+    }
+
+    jdk.internal.jimage.ImageReader$Directory makeDirectories(java.lang.String)
+    {
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        byte $stack11;
+        bottom_type last, offset;
+        int $stack5, $stack9, $stack10, $stack12, offset#2, $i0;
+        java.lang.String parent, $stack7, dir;
+        jdk.internal.jimage.ImageReader$Directory $stack6, $stack8, last#1;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        parent := @parameter0: java.lang.String;
+
+        last#1 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory rootDir>;
+
+        $stack5 = virtualinvoke parent.<java.lang.String: int indexOf(int,int)>(47, 1);
+
+        offset#2 = $stack5;
+
+     label1:
+        $stack12 = offset#2;
+
+        $stack11 = -1;
+
+        $i0 = (int) $stack11;
+
+        if $stack12 == $i0 goto label2;
+
+        $stack7 = virtualinvoke parent.<java.lang.String: java.lang.String substring(int,int)>(0, offset#2);
+
+        dir = $stack7;
+
+        $stack8 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory makeDirectory(java.lang.String,jdk.internal.jimage.ImageReader$Directory)>(dir, last#1);
+
+        last#1 = $stack8;
+
+        $stack9 = offset#2 + 1;
+
+        $stack10 = virtualinvoke parent.<java.lang.String: int indexOf(int,int)>(47, $stack9);
+
+        offset#2 = $stack10;
+
+        goto label1;
+
+     label2:
+        $stack6 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory makeDirectory(java.lang.String,jdk.internal.jimage.ImageReader$Directory)>(parent, last#1);
+
+        return $stack6;
+
+        nop;
+    }
+
+    jdk.internal.jimage.ImageReader$Directory makeDirectory(java.lang.String, jdk.internal.jimage.ImageReader$Directory)
+    {
+        java.util.HashMap $stack4;
+        jdk.internal.jimage.ImageReader$Directory last, $stack6, $stack7, nextDir#1;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        bottom_type nextDir;
+        java.lang.Object $stack5;
+        java.lang.String dir;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        dir := @parameter0: java.lang.String;
+
+        last := @parameter1: jdk.internal.jimage.ImageReader$Directory;
+
+        $stack4 = this.<jdk.internal.jimage.ImageReader$SharedImageReader: java.util.HashMap nodes>;
+
+        $stack5 = virtualinvoke $stack4.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(dir);
+
+        nextDir#1 = (jdk.internal.jimage.ImageReader$Directory) $stack5;
+
+        if nextDir#1 != null goto label1;
+
+        $stack6 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory newDirectory(jdk.internal.jimage.ImageReader$Directory,java.lang.String)>(last, dir);
+
+        nextDir#1 = $stack6;
+
+     label1:
+        $stack7 = nextDir#1;
+
+        return $stack7;
+
+        nop;
+    }
+
+    byte[] getResource(jdk.internal.jimage.ImageReader$Node) throws java.io.IOException
+    {
+        jdk.internal.jimage.ImageReader$Node node;
+        jdk.internal.jimage.ImageLocation $stack8;
+        byte[] $stack9;
+        java.io.IOException $stack3;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.lang.StringBuilder $stack4, $stack5, $stack6;
+        java.lang.String $stack7;
+        boolean $stack2;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        node := @parameter0: jdk.internal.jimage.ImageReader$Node;
+
+        $stack2 = virtualinvoke node.<jdk.internal.jimage.ImageReader$Node: boolean isResource()>();
+
+        if $stack2 == 0 goto label1;
+
+        $stack8 = virtualinvoke node.<jdk.internal.jimage.ImageReader$Node: jdk.internal.jimage.ImageLocation getLocation()>();
+
+        $stack9 = specialinvoke this.<jdk.internal.jimage.BasicImageReader: byte[] getResource(jdk.internal.jimage.ImageLocation)>($stack8);
+
+        return $stack9;
+
+     label1:
+        $stack3 = new java.io.IOException;
+
+        $stack4 = new java.lang.StringBuilder;
+
+        specialinvoke $stack4.<java.lang.StringBuilder: void <init>()>();
+
+        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Not a resource: ");
+
+        $stack6 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(node);
+
+        $stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack3.<java.io.IOException: void <init>(java.lang.String)>($stack7);
+
+        throw $stack3;
+
+        nop;
+    }
+
+    byte[] getResource(jdk.internal.jimage.ImageReader$Resource) throws java.io.IOException
+    {
+        jdk.internal.jimage.ImageLocation $stack2;
+        byte[] $stack3;
+        jdk.internal.jimage.ImageReader$Resource rs;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        rs := @parameter0: jdk.internal.jimage.ImageReader$Resource;
+
+        $stack2 = virtualinvoke rs.<jdk.internal.jimage.ImageReader$Resource: jdk.internal.jimage.ImageLocation getLocation()>();
+
+        $stack3 = specialinvoke this.<jdk.internal.jimage.BasicImageReader: byte[] getResource(jdk.internal.jimage.ImageLocation)>($stack2);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public void lambda$handleModulesSubTree$1(jdk.internal.jimage.ImageReader$Directory, jdk.internal.jimage.ImageLocation)
+    {
+        jdk.internal.jimage.ImageLocation childloc;
+        jdk.internal.jimage.ImageReader$Directory $stack7, dir, $stack9;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        jdk.internal.jimage.ImageReader$Resource $stack8;
+        java.lang.String $stack4, path, $stack6;
+        boolean $stack5;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        dir := @parameter0: jdk.internal.jimage.ImageReader$Directory;
+
+        childloc := @parameter1: jdk.internal.jimage.ImageLocation;
+
+        $stack4 = virtualinvoke childloc.<jdk.internal.jimage.ImageLocation: java.lang.String getFullName()>();
+
+        path = $stack4;
+
+        $stack5 = virtualinvoke path.<java.lang.String: boolean startsWith(java.lang.String)>("/modules");
+
+        if $stack5 == 0 goto label1;
+
+        $stack9 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory makeDirectories(java.lang.String)>(path);
+
+        goto label2;
+
+     label1:
+        $stack6 = virtualinvoke childloc.<jdk.internal.jimage.ImageLocation: java.lang.String buildName(boolean,boolean,boolean)>(1, 1, 0);
+
+        $stack7 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Directory makeDirectories(java.lang.String)>($stack6);
+
+        $stack8 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Resource newResource(jdk.internal.jimage.ImageReader$Directory,jdk.internal.jimage.ImageLocation)>(dir, childloc);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    public void lambda$handlePackages$0(jdk.internal.jimage.ImageLocation)
+    {
+        jdk.internal.jimage.ImageLocation childloc;
+        jdk.internal.jimage.ImageReader$Node $stack3;
+        jdk.internal.jimage.ImageReader$SharedImageReader this;
+        java.lang.String $stack2;
+
+        this := @this: jdk.internal.jimage.ImageReader$SharedImageReader;
+
+        childloc := @parameter0: jdk.internal.jimage.ImageLocation;
+
+        $stack2 = virtualinvoke childloc.<jdk.internal.jimage.ImageLocation: java.lang.String getFullName()>();
+
+        $stack3 = virtualinvoke this.<jdk.internal.jimage.ImageReader$SharedImageReader: jdk.internal.jimage.ImageReader$Node findNode(java.lang.String)>($stack2);
+
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack3;
+        java.lang.Class $stack0;
+        java.util.HashMap $stack2;
+        boolean $stack1, $stack3#1;
+
+        <jdk.internal.jimage.ImageReader$SharedImageReader: int SIZE_OF_OFFSET> = 4;
+
+        $stack0 = class "Ljdk/internal/jimage/ImageReader;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack3#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = 0;
+
+     label2:
+        <jdk.internal.jimage.ImageReader$SharedImageReader: boolean $assertionsDisabled> = $stack3#1;
+
+        $stack2 = new java.util.HashMap;
+
+        specialinvoke $stack2.<java.util.HashMap: void <init>()>();
+
+        <jdk.internal.jimage.ImageReader$SharedImageReader: java.util.Map OPEN_FILES> = $stack2;
+
+        return;
+    }
+}

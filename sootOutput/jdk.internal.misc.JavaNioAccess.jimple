@@ -1,0 +1,9 @@
+public interface  jdk.internal.misc.JavaNioAccess extends java.lang.Object
+{
+
+    public abstract jdk.internal.misc.JavaNioAccess$BufferPool getDirectBufferPool();
+
+    public abstract java.nio.ByteBuffer newDirectByteBuffer(long, int, java.lang.Object);
+
+    public abstract void truncate(java.nio.Buffer);
+}

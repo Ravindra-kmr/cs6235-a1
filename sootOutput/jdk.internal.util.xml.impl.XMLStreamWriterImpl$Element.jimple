@@ -1,0 +1,134 @@
+public class jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element extends java.lang.Object
+{
+    protected jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element _parent;
+    protected short _Depth;
+    boolean _isEmptyElement;
+    java.lang.String _localpart;
+    int _state;
+    final jdk.internal.util.xml.impl.XMLStreamWriterImpl this$0;
+
+    public void <init>(jdk.internal.util.xml.impl.XMLStreamWriterImpl)
+    {
+        jdk.internal.util.xml.impl.XMLStreamWriterImpl this$0;
+        jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element this;
+
+        this := @this: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element;
+
+        this$0 := @parameter0: jdk.internal.util.xml.impl.XMLStreamWriterImpl;
+
+        this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: jdk.internal.util.xml.impl.XMLStreamWriterImpl this$0> = this$0;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: boolean _isEmptyElement> = 0;
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(jdk.internal.util.xml.impl.XMLStreamWriterImpl, jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element, java.lang.String, boolean)
+    {
+        jdk.internal.util.xml.impl.XMLStreamWriterImpl this$0;
+        jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element this, parent;
+        java.lang.String localpart;
+        boolean isEmpty;
+
+        this := @this: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element;
+
+        this$0 := @parameter0: jdk.internal.util.xml.impl.XMLStreamWriterImpl;
+
+        parent := @parameter1: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element;
+
+        localpart := @parameter2: java.lang.String;
+
+        isEmpty := @parameter3: boolean;
+
+        this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: jdk.internal.util.xml.impl.XMLStreamWriterImpl this$0> = this$0;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: boolean _isEmptyElement> = 0;
+
+        this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element _parent> = parent;
+
+        this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: java.lang.String _localpart> = localpart;
+
+        this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: boolean _isEmptyElement> = isEmpty;
+
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element getParent()
+    {
+        jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element this, $stack1;
+
+        this := @this: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element;
+
+        $stack1 = this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element _parent>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public java.lang.String getLocalName()
+    {
+        jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element this;
+        java.lang.String $stack1;
+
+        this := @this: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element;
+
+        $stack1 = this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: java.lang.String _localpart>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public int getState()
+    {
+        int $stack1;
+        jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element this;
+
+        this := @this: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element;
+
+        $stack1 = this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: int _state>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public void setState(int)
+    {
+        int state;
+        jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element this;
+
+        this := @this: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element;
+
+        state := @parameter0: int;
+
+        this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: int _state> = state;
+
+        return;
+
+        nop;
+    }
+
+    public boolean isEmpty()
+    {
+        jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element this;
+        boolean $stack1;
+
+        this := @this: jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element;
+
+        $stack1 = this.<jdk.internal.util.xml.impl.XMLStreamWriterImpl$Element: boolean _isEmptyElement>;
+
+        return $stack1;
+
+        nop;
+    }
+}

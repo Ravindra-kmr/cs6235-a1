@@ -1,0 +1,63 @@
+class jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask extends java.lang.Object implements java.lang.Runnable
+{
+    java.util.concurrent.ExecutorService owner;
+    java.lang.Runnable run;
+
+    public void <init>(java.util.concurrent.ExecutorService, java.lang.Runnable)
+    {
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask this;
+        java.lang.Runnable r;
+        java.util.concurrent.ExecutorService owner;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask;
+
+        owner := @parameter0: java.util.concurrent.ExecutorService;
+
+        r := @parameter1: java.lang.Runnable;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask: java.util.concurrent.ExecutorService owner> = owner;
+
+        this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask: java.lang.Runnable run> = r;
+
+        return;
+
+        nop;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable $stack3, l1;
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask this;
+        java.lang.Runnable $stack2;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask;
+
+     label1:
+        $stack2 = this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask: java.lang.Runnable run>;
+
+        interfaceinvoke $stack2.<java.lang.Runnable: void run()>();
+
+     label2:
+        this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask: java.util.concurrent.ExecutorService owner> = null;
+
+        goto label4;
+
+     label3:
+        $stack3 := @caughtexception;
+
+        l1 = $stack3;
+
+        this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask: java.util.concurrent.ExecutorService owner> = null;
+
+        throw l1;
+
+     label4:
+        return;
+
+        nop;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

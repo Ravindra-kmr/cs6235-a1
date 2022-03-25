@@ -1,0 +1,1386 @@
+public class jdk.internal.math.FormattedFloatingDecimal extends java.lang.Object
+{
+    private int decExponentRounded;
+    private char[] mantissa;
+    private char[] exponent;
+    private static final java.lang.ThreadLocal threadLocalCharBuffer;
+    static final boolean $assertionsDisabled;
+
+    public static jdk.internal.math.FormattedFloatingDecimal valueOf(double, int, jdk.internal.math.FormattedFloatingDecimal$Form)
+    {
+        jdk.internal.math.FormattedFloatingDecimal$Form form, $stack5, $stack11;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter $stack6, fdConverter, $stack12;
+        jdk.internal.math.FormattedFloatingDecimal $stack7;
+        bottom_type $stack9;
+        int precision, $stack10;
+        double d, $stack8;
+        boolean $stack9#1;
+
+        d := @parameter0: double;
+
+        precision := @parameter1: int;
+
+        form := @parameter2: jdk.internal.math.FormattedFloatingDecimal$Form;
+
+        $stack8 = d;
+
+        $stack5 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form COMPATIBLE>;
+
+        if form != $stack5 goto label1;
+
+        $stack9#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack9#1 = 0;
+
+     label2:
+        $stack6 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter getBinaryToASCIIConverter(double,boolean)>($stack8, $stack9#1);
+
+        fdConverter = $stack6;
+
+        $stack7 = new jdk.internal.math.FormattedFloatingDecimal;
+
+        $stack10 = precision;
+
+        $stack11 = form;
+
+        $stack12 = fdConverter;
+
+        specialinvoke $stack7.<jdk.internal.math.FormattedFloatingDecimal: void <init>(int,jdk.internal.math.FormattedFloatingDecimal$Form,jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter)>($stack10, $stack11, $stack12);
+
+        return $stack7;
+
+        nop;
+    }
+
+    private static char[] getBuffer()
+    {
+        char[] $stack2;
+        java.lang.ThreadLocal $stack0;
+        java.lang.Object $stack1;
+
+        $stack0 = <jdk.internal.math.FormattedFloatingDecimal: java.lang.ThreadLocal threadLocalCharBuffer>;
+
+        $stack1 = virtualinvoke $stack0.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $stack2 = (char[]) $stack1;
+
+        return $stack2;
+    }
+
+    private void <init>(int, jdk.internal.math.FormattedFloatingDecimal$Form, jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter)
+    {
+        byte $b0, $b1;
+        int[] $stack14;
+        bottom_type precision, exp;
+        boolean $stack9, $stack13, isNegative, $stack26, $stack32;
+        jdk.internal.math.FormattedFloatingDecimal$Form form;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter fdConverter;
+        java.lang.AssertionError $stack33, $u0;
+        int $stack11, nDigits, $stack12, decExp, $stack15, $stack16, $stack17, $stack18, $stack19, $stack20, $stack22, $stack24, $stack25, $stack28, $stack29, $stack30, $stack31, precision#1, exp#2, exp#3, exp#4, exp#5, precision#6, precision#7, $i0, $i1;
+        java.lang.String $stack34;
+        jdk.internal.math.FormattedFloatingDecimal this, $stack21, $stack27;
+        char[] $stack10, digits, $stack23, $stack35;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal;
+
+        precision#1 := @parameter0: int;
+
+        form := @parameter1: jdk.internal.math.FormattedFloatingDecimal$Form;
+
+        fdConverter := @parameter2: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack9 = interfaceinvoke fdConverter.<jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter: boolean isExceptional()>();
+
+        if $stack9 == 0 goto label01;
+
+        $stack34 = interfaceinvoke fdConverter.<jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter: java.lang.String toJavaFormatString()>();
+
+        $stack35 = virtualinvoke $stack34.<java.lang.String: char[] toCharArray()>();
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack35;
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent> = null;
+
+        return;
+
+     label01:
+        $stack10 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] getBuffer()>();
+
+        digits = $stack10;
+
+        $stack11 = interfaceinvoke fdConverter.<jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter: int getDigits(char[])>(digits);
+
+        nDigits = $stack11;
+
+        $stack12 = interfaceinvoke fdConverter.<jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter: int getDecimalExponent()>();
+
+        decExp = $stack12;
+
+        $stack13 = interfaceinvoke fdConverter.<jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter: boolean isNegative()>();
+
+        isNegative = $stack13;
+
+        $stack14 = <jdk.internal.math.FormattedFloatingDecimal$2: int[] $SwitchMap$jdk$internal$math$FormattedFloatingDecimal$Form>;
+
+        $stack15 = virtualinvoke form.<jdk.internal.math.FormattedFloatingDecimal$Form: int ordinal()>();
+
+        $stack16 = $stack14[$stack15];
+
+        tableswitch($stack16)
+        {
+            case 1: goto label02;
+            case 2: goto label03;
+            case 3: goto label04;
+            case 4: goto label05;
+            default: goto label09;
+        };
+
+     label02:
+        exp#2 = decExp;
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: int decExponentRounded> = exp#2;
+
+        virtualinvoke this.<jdk.internal.math.FormattedFloatingDecimal: void fillCompatible(int,char[],int,int,boolean)>(precision#1, digits, nDigits, exp#2, isNegative);
+
+        goto label10;
+
+     label03:
+        $stack30 = decExp + precision#1;
+
+        $stack31 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: int applyPrecision(int,char[],int,int)>(decExp, digits, nDigits, $stack30);
+
+        exp#3 = $stack31;
+
+        virtualinvoke this.<jdk.internal.math.FormattedFloatingDecimal: void fillDecimal(int,char[],int,int,boolean)>(precision#1, digits, nDigits, exp#3, isNegative);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: int decExponentRounded> = exp#3;
+
+        goto label10;
+
+     label04:
+        $stack28 = precision#1 + 1;
+
+        $stack29 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: int applyPrecision(int,char[],int,int)>(decExp, digits, nDigits, $stack28);
+
+        exp#4 = $stack29;
+
+        virtualinvoke this.<jdk.internal.math.FormattedFloatingDecimal: void fillScientific(int,char[],int,int,boolean)>(precision#1, digits, nDigits, exp#4, isNegative);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: int decExponentRounded> = exp#4;
+
+        goto label10;
+
+     label05:
+        $stack17 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: int applyPrecision(int,char[],int,int)>(decExp, digits, nDigits, precision#1);
+
+        exp#5 = $stack17;
+
+        $stack18 = exp#5 - 1;
+
+        $b0 = -4;
+
+        $i0 = (int) $b0;
+
+        if $stack18 < $i0 goto label06;
+
+        $stack19 = exp#5 - 1;
+
+        if $stack19 < precision#1 goto label07;
+
+     label06:
+        $b1 = -1;
+
+        $i1 = (int) $b1;
+
+        precision#6 = precision#1 + $i1;
+
+        $stack27 = this;
+
+        $stack22 = precision#6;
+
+        $stack23 = digits;
+
+        $stack24 = nDigits;
+
+        $stack25 = exp#5;
+
+        $stack26 = isNegative;
+
+        virtualinvoke $stack27.<jdk.internal.math.FormattedFloatingDecimal: void fillScientific(int,char[],int,int,boolean)>($stack22, $stack23, $stack24, $stack25, $stack26);
+
+        goto label08;
+
+     label07:
+        precision#7 = precision#1 - exp#5;
+
+        virtualinvoke this.<jdk.internal.math.FormattedFloatingDecimal: void fillDecimal(int,char[],int,int,boolean)>(precision#7, digits, nDigits, exp#5, isNegative);
+
+     label08:
+        $stack21 = this;
+
+        $stack20 = exp#5;
+
+        $stack21.<jdk.internal.math.FormattedFloatingDecimal: int decExponentRounded> = $stack20;
+
+        goto label10;
+
+     label09:
+        $stack32 = <jdk.internal.math.FormattedFloatingDecimal: boolean $assertionsDisabled>;
+
+        if $stack32 != 0 goto label10;
+
+        $u0 = new java.lang.AssertionError;
+
+        $stack33 = $u0;
+
+        specialinvoke $u0.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack33;
+
+     label10:
+        return;
+
+        nop;
+    }
+
+    public int getExponentRounded()
+    {
+        int $stack1, $stack2;
+        jdk.internal.math.FormattedFloatingDecimal this;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal;
+
+        $stack1 = this.<jdk.internal.math.FormattedFloatingDecimal: int decExponentRounded>;
+
+        $stack2 = $stack1 - 1;
+
+        return $stack2;
+
+        nop;
+    }
+
+    public char[] getMantissa()
+    {
+        char[] $stack1;
+        jdk.internal.math.FormattedFloatingDecimal this;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal;
+
+        $stack1 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public char[] getExponent()
+    {
+        char[] $stack1;
+        jdk.internal.math.FormattedFloatingDecimal this;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal;
+
+        $stack1 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    private static int applyPrecision(int, char[], int, int)
+    {
+        byte $stack20, $stack22, $b0, $b1;
+        bottom_type q, i;
+        boolean $stack10, $stack14;
+        int prec, nDigits, decExp, $stack6, $stack8, $stack9, $stack12, $stack15, $stack17, $stack19, $stack25, $stack26, i#2, i#3, $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7;
+        char $stack7, $stack11, $stack18, $stack21, $stack23, $stack24, q#1, q#4;
+        char[] digits, $stack13, $stack16;
+
+        decExp := @parameter0: int;
+
+        digits := @parameter1: char[];
+
+        nDigits := @parameter2: int;
+
+        prec := @parameter3: int;
+
+        if prec >= nDigits goto label1;
+
+        if prec >= 0 goto label2;
+
+     label1:
+        $stack26 = decExp;
+
+        return $stack26;
+
+     label2:
+        if prec != 0 goto label4;
+
+        $stack24 = digits[0];
+
+        $i0 = (int) $stack24;
+
+        if $i0 < 53 goto label3;
+
+        digits[0] = 49;
+
+        staticinvoke <java.util.Arrays: void fill(char[],int,int,char)>(digits, 1, nDigits, 48);
+
+        $stack25 = decExp + 1;
+
+        return $stack25;
+
+     label3:
+        staticinvoke <java.util.Arrays: void fill(char[],int,int,char)>(digits, 0, nDigits, 48);
+
+        return decExp;
+
+     label4:
+        q#1 = digits[prec];
+
+        $i1 = (int) q#1;
+
+        if $i1 < 53 goto label8;
+
+        i#2 = prec;
+
+        $b0 = -1;
+
+        $i2 = (int) $b0;
+
+        i#3 = i#2 + $i2;
+
+        q#4 = digits[i#3];
+
+        $i3 = (int) q#4;
+
+        if $i3 != 57 goto label7;
+
+     label5:
+        $stack23 = q#4;
+
+        $stack22 = 57;
+
+        $i4 = (int) $stack23;
+
+        if $i4 != $stack22 goto label6;
+
+        if i#3 <= 0 goto label6;
+
+        $b1 = -1;
+
+        $i5 = (int) $b1;
+
+        i#3 = i#3 + $i5;
+
+        q#4 = digits[i#3];
+
+        goto label5;
+
+     label6:
+        $stack21 = q#4;
+
+        $stack20 = 57;
+
+        $i6 = (int) $stack21;
+
+        if $i6 != $stack20 goto label7;
+
+        digits[0] = 49;
+
+        staticinvoke <java.util.Arrays: void fill(char[],int,int,char)>(digits, 1, nDigits, 48);
+
+        $stack19 = decExp + 1;
+
+        return $stack19;
+
+     label7:
+        $stack13 = digits;
+
+        $stack12 = i#3;
+
+        $stack11 = q#4;
+
+        $stack10 = 1;
+
+        $i7 = (int) $stack11;
+
+        $stack6 = $i7 + $stack10;
+
+        $stack7 = (char) $stack6;
+
+        $stack13[$stack12] = $stack7;
+
+        $stack16 = digits;
+
+        $stack15 = i#3;
+
+        $stack14 = 1;
+
+        $stack8 = $stack15 + $stack14;
+
+        $stack17 = nDigits;
+
+        $stack18 = 48;
+
+        staticinvoke <java.util.Arrays: void fill(char[],int,int,char)>($stack16, $stack8, $stack17, $stack18);
+
+        goto label9;
+
+     label8:
+        staticinvoke <java.util.Arrays: void fill(char[],int,int,char)>(digits, prec, nDigits, 48);
+
+     label9:
+        $stack9 = decExp;
+
+        return $stack9;
+
+        nop;
+    }
+
+    private void fillCompatible(int, char[], int, int, boolean)
+    {
+        byte startIndex, $stack47, $stack64, $stack68, $stack129#1, t#8, $b0;
+        int exp, nDigits, $stack13, $stack15, $stack18, $stack19, $stack22, $stack23, $stack25, $stack27, $stack28, $stack30, $stack33, $stack34, $stack37, $stack38, $stack40, $stack43, $stack46, $stack48, $stack51, $stack55, $stack57, $stack58, $stack60, $stack62, precision, $stack63, $stack65, $stack66, $stack67, $stack69, $stack70, $stack73, $stack74, $stack77, $stack79, $stack81, $stack82, $stack85, $stack87, $stack88, $stack89, $stack91, $stack92, $stack94, $stack95, $stack98, $stack100, $stack101, $stack103, $stack104, $stack105, $stack106, $stack109, $stack111, $stack112, $stack114, $stack115, $stack118, $stack119, $stack120, $stack122, $stack123, $stack125, $stack126, $stack127, $stack130, extraZeros#2, extraZeros#3, extraZeros#4, t#5, extraZeros#7, extraZeros#9, $i0;
+        bottom_type extraZeros, t, $stack49, $stack129;
+        jdk.internal.math.FormattedFloatingDecimal this;
+        char[] $stack10, digits, $stack12, $stack14, $stack16, $stack17, $stack21, $stack26, $stack31, $stack32, $stack36, $stack41, $stack42, $stack45, $stack52, $stack54, $stack56, $stack59, $stack71, $stack72, $stack75, $stack76, $stack78, $stack80, $stack83, $stack84, $stack86, $stack90, $stack93, $stack96, $stack97, $stack99, $stack102, $stack107, $stack108, $stack110, $stack113, $stack116, $stack117, $stack121, $stack124, $stack128;
+        boolean isNegative, isNegExp, $stack50, $stack61, $stack49#6;
+        char $stack11, $stack20, $stack24, $stack29, $stack35, $stack39, $stack44, $stack53;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal;
+
+        precision := @parameter0: int;
+
+        digits := @parameter1: char[];
+
+        nDigits := @parameter2: int;
+
+        exp := @parameter3: int;
+
+        isNegative := @parameter4: boolean;
+
+        if isNegative == 0 goto label01;
+
+        $stack129#1 = 1;
+
+        goto label02;
+
+     label01:
+        $stack129#1 = 0;
+
+     label02:
+        startIndex = $stack129#1;
+
+        $stack130 = exp;
+
+        if $stack130 <= 0 goto label05;
+
+        if exp >= 8 goto label05;
+
+        if nDigits >= exp goto label03;
+
+        extraZeros#2 = exp - nDigits;
+
+        $stack114 = nDigits + extraZeros#2;
+
+        $stack115 = $stack114 + 2;
+
+        $stack116 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, $stack115);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack116;
+
+        $stack117 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 0, $stack117, startIndex, nDigits);
+
+        $stack121 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack120 = startIndex + nDigits;
+
+        $stack118 = startIndex + nDigits;
+
+        $stack119 = $stack118 + extraZeros#2;
+
+        staticinvoke <java.util.Arrays: void fill(char[],int,int,char)>($stack121, $stack120, $stack119, 48);
+
+        $stack124 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack122 = startIndex + nDigits;
+
+        $stack123 = $stack122 + extraZeros#2;
+
+        $stack124[$stack123] = 46;
+
+        $stack128 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack125 = startIndex + nDigits;
+
+        $stack126 = $stack125 + extraZeros#2;
+
+        $stack127 = $stack126 + 1;
+
+        $stack128[$stack127] = 48;
+
+        goto label18;
+
+     label03:
+        if exp >= nDigits goto label04;
+
+        $stack103 = nDigits - exp;
+
+        $stack104 = staticinvoke <java.lang.Math: int min(int,int)>($stack103, precision);
+
+        extraZeros#3 = $stack104;
+
+        $stack105 = exp + 1;
+
+        $stack106 = $stack105 + extraZeros#3;
+
+        $stack107 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, $stack106);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack107;
+
+        $stack108 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 0, $stack108, startIndex, exp);
+
+        $stack110 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack109 = startIndex + exp;
+
+        $stack110[$stack109] = 46;
+
+        $stack113 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack111 = startIndex + exp;
+
+        $stack112 = $stack111 + 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, exp, $stack113, $stack112, extraZeros#3);
+
+        goto label18;
+
+     label04:
+        $stack95 = nDigits + 2;
+
+        $stack96 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, $stack95);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack96;
+
+        $stack97 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 0, $stack97, startIndex, nDigits);
+
+        $stack99 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack98 = startIndex + nDigits;
+
+        $stack99[$stack98] = 46;
+
+        $stack102 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack100 = startIndex + nDigits;
+
+        $stack101 = $stack100 + 1;
+
+        $stack102[$stack101] = 48;
+
+        goto label18;
+
+     label05:
+        $stack94 = exp;
+
+        if $stack94 > 0 goto label09;
+
+        $b0 = -3;
+
+        $i0 = (int) $b0;
+
+        if exp <= $i0 goto label09;
+
+        $stack64 = 0;
+
+        $stack63 = neg exp;
+
+        $stack65 = staticinvoke <java.lang.Math: int min(int,int)>($stack63, precision);
+
+        $stack66 = staticinvoke <java.lang.Math: int max(int,int)>($stack64, $stack65);
+
+        extraZeros#4 = $stack66;
+
+        $stack68 = 0;
+
+        $stack67 = precision + exp;
+
+        $stack69 = staticinvoke <java.lang.Math: int min(int,int)>(nDigits, $stack67);
+
+        $stack70 = staticinvoke <java.lang.Math: int max(int,int)>($stack68, $stack69);
+
+        t#5 = $stack70;
+
+        if extraZeros#4 <= 0 goto label06;
+
+        $stack81 = extraZeros#4 + 2;
+
+        $stack82 = $stack81 + t#5;
+
+        $stack83 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, $stack82);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack83;
+
+        $stack84 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack84[startIndex] = 48;
+
+        $stack86 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack85 = startIndex + 1;
+
+        $stack86[$stack85] = 46;
+
+        $stack90 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack89 = startIndex + 2;
+
+        $stack87 = startIndex + 2;
+
+        $stack88 = $stack87 + extraZeros#4;
+
+        staticinvoke <java.util.Arrays: void fill(char[],int,int,char)>($stack90, $stack89, $stack88, 48);
+
+        if t#5 <= 0 goto label08;
+
+        $stack93 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack91 = startIndex + 2;
+
+        $stack92 = $stack91 + extraZeros#4;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 0, $stack93, $stack92, t#5);
+
+        goto label08;
+
+     label06:
+        if t#5 <= 0 goto label07;
+
+        $stack73 = extraZeros#4 + 2;
+
+        $stack74 = $stack73 + t#5;
+
+        $stack75 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, $stack74);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack75;
+
+        $stack76 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack76[startIndex] = 48;
+
+        $stack78 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack77 = startIndex + 1;
+
+        $stack78[$stack77] = 46;
+
+        $stack80 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack79 = startIndex + 2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 0, $stack80, $stack79, t#5);
+
+        goto label08;
+
+     label07:
+        $stack71 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, 1);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack71;
+
+        $stack72 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack72[startIndex] = 48;
+
+     label08:
+        goto label18;
+
+     label09:
+        $stack62 = nDigits;
+
+        $stack61 = 1;
+
+        if $stack62 <= $stack61 goto label10;
+
+        $stack51 = nDigits + 1;
+
+        $stack52 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, $stack51);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack52;
+
+        $stack54 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack53 = digits[0];
+
+        $stack54[startIndex] = $stack53;
+
+        $stack56 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack55 = startIndex + 1;
+
+        $stack56[$stack55] = 46;
+
+        $stack59 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack58 = startIndex + 2;
+
+        $stack57 = nDigits - 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 1, $stack59, $stack58, $stack57);
+
+        goto label11;
+
+     label10:
+        $stack10 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, 3);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack10;
+
+        $stack12 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack11 = digits[0];
+
+        $stack12[startIndex] = $stack11;
+
+        $stack14 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack13 = startIndex + 1;
+
+        $stack14[$stack13] = 46;
+
+        $stack16 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack15 = startIndex + 2;
+
+        $stack16[$stack15] = 48;
+
+     label11:
+        $stack60 = exp;
+
+        if $stack60 > 0 goto label12;
+
+        $stack49#6 = 1;
+
+        goto label13;
+
+     label12:
+        $stack49#6 = 0;
+
+     label13:
+        isNegExp = $stack49#6;
+
+        $stack50 = isNegExp;
+
+        if $stack50 == 0 goto label14;
+
+        $stack46 = neg exp;
+
+        extraZeros#7 = $stack46 + 1;
+
+        t#8 = 1;
+
+        goto label15;
+
+     label14:
+        extraZeros#7 = exp - 1;
+
+        t#8 = 0;
+
+     label15:
+        $stack48 = extraZeros#7;
+
+        $stack47 = 9;
+
+        if $stack48 > $stack47 goto label16;
+
+        $stack42 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegExp, 1);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent> = $stack42;
+
+        $stack45 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent>;
+
+        $stack43 = extraZeros#7 + 48;
+
+        $stack44 = (char) $stack43;
+
+        $stack45[t#8] = $stack44;
+
+        goto label18;
+
+     label16:
+        if extraZeros#7 > 99 goto label17;
+
+        $stack32 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegExp, 2);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent> = $stack32;
+
+        $stack36 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent>;
+
+        $stack33 = extraZeros#7 / 10;
+
+        $stack34 = $stack33 + 48;
+
+        $stack35 = (char) $stack34;
+
+        $stack36[t#8] = $stack35;
+
+        $stack41 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent>;
+
+        $stack40 = t#8 + 1;
+
+        $stack37 = extraZeros#7 % 10;
+
+        $stack38 = $stack37 + 48;
+
+        $stack39 = (char) $stack38;
+
+        $stack41[$stack40] = $stack39;
+
+        goto label18;
+
+     label17:
+        $stack17 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegExp, 3);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent> = $stack17;
+
+        $stack21 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent>;
+
+        $stack18 = extraZeros#7 / 100;
+
+        $stack19 = $stack18 + 48;
+
+        $stack20 = (char) $stack19;
+
+        $stack21[t#8] = $stack20;
+
+        extraZeros#9 = extraZeros#7 % 100;
+
+        $stack26 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent>;
+
+        $stack25 = t#8 + 1;
+
+        $stack22 = extraZeros#9 / 10;
+
+        $stack23 = $stack22 + 48;
+
+        $stack24 = (char) $stack23;
+
+        $stack26[$stack25] = $stack24;
+
+        $stack31 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent>;
+
+        $stack30 = t#8 + 2;
+
+        $stack27 = extraZeros#9 % 10;
+
+        $stack28 = $stack27 + 48;
+
+        $stack29 = (char) $stack28;
+
+        $stack31[$stack30] = $stack29;
+
+     label18:
+        return;
+
+        nop;
+    }
+
+    private static char[] create(boolean, int)
+    {
+        int size, $stack4;
+        char[] $stack3, r;
+        boolean isNegative;
+
+        isNegative := @parameter0: boolean;
+
+        size := @parameter1: int;
+
+        if isNegative == 0 goto label1;
+
+        $stack4 = size + 1;
+
+        r = newarray (char)[$stack4];
+
+        r[0] = 45;
+
+        return r;
+
+     label1:
+        $stack3 = newarray (char)[size];
+
+        return $stack3;
+
+        nop;
+    }
+
+    private void fillDecimal(int, char[], int, int, boolean)
+    {
+        byte startIndex, $stack10, $stack14, $stack56, $stack57, $stack65#1;
+        bottom_type t_1, $stack50, $stack65;
+        jdk.internal.math.FormattedFloatingDecimal this, $stack53, $stack54;
+        char[] $stack17, $stack18, $stack21, $stack22, $stack24, digits, $stack26, $stack29, $stack30, $stack32, $stack36, $stack39, $stack43, $stack44, $stack46, $stack49, $stack55, $stack60, $stack61, $stack64;
+        boolean isNegative, $stack52;
+        int exp, precision, $stack9, $stack11, $stack12, nDigits, $stack13, $stack15, $stack16, t_2, $stack19, $stack20, $stack23, $stack25, $stack27, $stack28, $stack31, $stack33, $stack34, $stack35, $stack37, $stack38, $stack40, $stack41, $stack42, $stack45, $stack47, $stack48, $stack51, $stack58, $stack59, $stack62, $stack63, $stack66, t_1#2, $stack50#3, t_1#4;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal;
+
+        precision := @parameter0: int;
+
+        digits := @parameter1: char[];
+
+        nDigits := @parameter2: int;
+
+        exp := @parameter3: int;
+
+        isNegative := @parameter4: boolean;
+
+        if isNegative == 0 goto label01;
+
+        $stack65#1 = 1;
+
+        goto label02;
+
+     label01:
+        $stack65#1 = 0;
+
+     label02:
+        startIndex = $stack65#1;
+
+        $stack66 = exp;
+
+        if $stack66 <= 0 goto label07;
+
+        if nDigits >= exp goto label03;
+
+        $stack60 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, exp);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack60;
+
+        $stack61 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 0, $stack61, startIndex, nDigits);
+
+        $stack64 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack63 = startIndex + nDigits;
+
+        $stack62 = startIndex + exp;
+
+        staticinvoke <java.util.Arrays: void fill(char[],int,int,char)>($stack64, $stack63, $stack62, 48);
+
+        goto label10;
+
+     label03:
+        $stack40 = nDigits - exp;
+
+        $stack41 = staticinvoke <java.lang.Math: int min(int,int)>($stack40, precision);
+
+        t_1#2 = $stack41;
+
+        $stack53 = this;
+
+        $stack52 = isNegative;
+
+        $stack51 = exp;
+
+        if t_1#2 <= 0 goto label04;
+
+        $stack50#3 = t_1#2 + 1;
+
+        goto label05;
+
+     label04:
+        $stack50#3 = 0;
+
+     label05:
+        $stack42 = $stack51 + $stack50#3;
+
+        $stack43 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>($stack52, $stack42);
+
+        $stack53.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack43;
+
+        $stack55 = digits;
+
+        $stack56 = 0;
+
+        $stack54 = this;
+
+        $stack44 = $stack54.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack57 = startIndex;
+
+        $stack58 = exp;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($stack55, $stack56, $stack44, $stack57, $stack58);
+
+        $stack59 = t_1#2;
+
+        if $stack59 <= 0 goto label06;
+
+        $stack46 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack45 = startIndex + exp;
+
+        $stack46[$stack45] = 46;
+
+        $stack49 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack47 = startIndex + exp;
+
+        $stack48 = $stack47 + 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, exp, $stack49, $stack48, t_1#2);
+
+     label06:
+        goto label10;
+
+     label07:
+        if exp > 0 goto label10;
+
+        $stack10 = 0;
+
+        $stack9 = neg exp;
+
+        $stack11 = staticinvoke <java.lang.Math: int min(int,int)>($stack9, precision);
+
+        $stack12 = staticinvoke <java.lang.Math: int max(int,int)>($stack10, $stack11);
+
+        t_1#4 = $stack12;
+
+        $stack14 = 0;
+
+        $stack13 = precision + exp;
+
+        $stack15 = staticinvoke <java.lang.Math: int min(int,int)>(nDigits, $stack13);
+
+        $stack16 = staticinvoke <java.lang.Math: int max(int,int)>($stack14, $stack15);
+
+        t_2 = $stack16;
+
+        if t_1#4 <= 0 goto label08;
+
+        $stack27 = t_1#4 + 2;
+
+        $stack28 = $stack27 + t_2;
+
+        $stack29 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, $stack28);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack29;
+
+        $stack30 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack30[startIndex] = 48;
+
+        $stack32 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack31 = startIndex + 1;
+
+        $stack32[$stack31] = 46;
+
+        $stack36 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack35 = startIndex + 2;
+
+        $stack33 = startIndex + 2;
+
+        $stack34 = $stack33 + t_1#4;
+
+        staticinvoke <java.util.Arrays: void fill(char[],int,int,char)>($stack36, $stack35, $stack34, 48);
+
+        if t_2 <= 0 goto label10;
+
+        $stack39 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack37 = startIndex + 2;
+
+        $stack38 = $stack37 + t_1#4;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 0, $stack39, $stack38, t_2);
+
+        goto label10;
+
+     label08:
+        if t_2 <= 0 goto label09;
+
+        $stack19 = t_1#4 + 2;
+
+        $stack20 = $stack19 + t_2;
+
+        $stack21 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, $stack20);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack21;
+
+        $stack22 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack22[startIndex] = 48;
+
+        $stack24 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack23 = startIndex + 1;
+
+        $stack24[$stack23] = 46;
+
+        $stack26 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack25 = startIndex + 2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 0, $stack26, $stack25, t_2);
+
+        goto label10;
+
+     label09:
+        $stack17 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, 1);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack17;
+
+        $stack18 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack18[startIndex] = 48;
+
+     label10:
+        return;
+
+        nop;
+    }
+
+    private void fillScientific(int, char[], int, int, boolean)
+    {
+        byte startIndex, $stack12, $stack38, $stack49#1;
+        bottom_type expSign, e, $stack49;
+        boolean isNegative, $stack50;
+        int nDigits, precision, $stack11, $stack13, $stack14, t, exp, $stack18, $stack19, $stack21, $stack22, $stack24, $stack25, $stack28, $stack29, $stack31, $stack32, $stack35, $stack37, $stack39, $stack40, $stack44, $stack46, $stack48, $stack51, $stack52, $stack53, e#3, e#4;
+        char $stack16, hiExpChar, $stack23, $stack26, $stack30, $stack33, $stack36, $stack42, expSign#2;
+        jdk.internal.math.FormattedFloatingDecimal this;
+        char[] $stack15, digits, $stack17, $stack20, $stack27, $stack34, $stack41, $stack43, $stack45, $stack47;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal;
+
+        precision := @parameter0: int;
+
+        digits := @parameter1: char[];
+
+        nDigits := @parameter2: int;
+
+        exp := @parameter3: int;
+
+        isNegative := @parameter4: boolean;
+
+        if isNegative == 0 goto label1;
+
+        $stack49#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack49#1 = 0;
+
+     label2:
+        startIndex = $stack49#1;
+
+        $stack12 = 0;
+
+        $stack51 = nDigits;
+
+        $stack50 = 1;
+
+        $stack11 = $stack51 - $stack50;
+
+        $stack52 = precision;
+
+        $stack13 = staticinvoke <java.lang.Math: int min(int,int)>($stack11, $stack52);
+
+        $stack14 = staticinvoke <java.lang.Math: int max(int,int)>($stack12, $stack13);
+
+        t = $stack14;
+
+        $stack53 = t;
+
+        if $stack53 <= 0 goto label3;
+
+        $stack40 = t + 2;
+
+        $stack41 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, $stack40);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack41;
+
+        $stack43 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack42 = digits[0];
+
+        $stack43[startIndex] = $stack42;
+
+        $stack45 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack44 = startIndex + 1;
+
+        $stack45[$stack44] = 46;
+
+        $stack47 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack46 = startIndex + 2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(digits, 1, $stack47, $stack46, t);
+
+        goto label4;
+
+     label3:
+        $stack15 = staticinvoke <jdk.internal.math.FormattedFloatingDecimal: char[] create(boolean,int)>(isNegative, 1);
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa> = $stack15;
+
+        $stack17 = this.<jdk.internal.math.FormattedFloatingDecimal: char[] mantissa>;
+
+        $stack16 = digits[0];
+
+        $stack17[startIndex] = $stack16;
+
+     label4:
+        $stack48 = exp;
+
+        if $stack48 > 0 goto label5;
+
+        expSign#2 = 45;
+
+        $stack37 = neg exp;
+
+        e#3 = $stack37 + 1;
+
+        goto label6;
+
+     label5:
+        expSign#2 = 43;
+
+        e#3 = exp - 1;
+
+     label6:
+        $stack39 = e#3;
+
+        $stack38 = 9;
+
+        if $stack39 > $stack38 goto label7;
+
+        $stack34 = newarray (char)[3];
+
+        $stack34[0] = expSign#2;
+
+        $stack34[1] = 48;
+
+        $stack35 = e#3 + 48;
+
+        $stack36 = (char) $stack35;
+
+        $stack34[2] = $stack36;
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent> = $stack34;
+
+        goto label9;
+
+     label7:
+        if e#3 > 99 goto label8;
+
+        $stack27 = newarray (char)[3];
+
+        $stack27[0] = expSign#2;
+
+        $stack28 = e#3 / 10;
+
+        $stack29 = $stack28 + 48;
+
+        $stack30 = (char) $stack29;
+
+        $stack27[1] = $stack30;
+
+        $stack31 = e#3 % 10;
+
+        $stack32 = $stack31 + 48;
+
+        $stack33 = (char) $stack32;
+
+        $stack27[2] = $stack33;
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent> = $stack27;
+
+        goto label9;
+
+     label8:
+        $stack18 = e#3 / 100;
+
+        $stack19 = $stack18 + 48;
+
+        hiExpChar = (char) $stack19;
+
+        e#4 = e#3 % 100;
+
+        $stack20 = newarray (char)[4];
+
+        $stack20[0] = expSign#2;
+
+        $stack20[1] = hiExpChar;
+
+        $stack21 = e#4 / 10;
+
+        $stack22 = $stack21 + 48;
+
+        $stack23 = (char) $stack22;
+
+        $stack20[2] = $stack23;
+
+        $stack24 = e#4 % 10;
+
+        $stack25 = $stack24 + 48;
+
+        $stack26 = (char) $stack25;
+
+        $stack20[3] = $stack26;
+
+        this.<jdk.internal.math.FormattedFloatingDecimal: char[] exponent> = $stack20;
+
+     label9:
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.math.FormattedFloatingDecimal$1 $stack2;
+        bottom_type $stack3;
+        java.lang.Class $stack0;
+        boolean $stack1, $stack3#1;
+
+        $stack0 = class "Ljdk/internal/math/FormattedFloatingDecimal;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack3#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = 0;
+
+     label2:
+        <jdk.internal.math.FormattedFloatingDecimal: boolean $assertionsDisabled> = $stack3#1;
+
+        $stack2 = new jdk.internal.math.FormattedFloatingDecimal$1;
+
+        specialinvoke $stack2.<jdk.internal.math.FormattedFloatingDecimal$1: void <init>()>();
+
+        <jdk.internal.math.FormattedFloatingDecimal: java.lang.ThreadLocal threadLocalCharBuffer> = $stack2;
+
+        return;
+    }
+}

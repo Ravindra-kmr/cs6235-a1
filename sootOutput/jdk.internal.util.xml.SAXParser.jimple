@@ -1,0 +1,233 @@
+public abstract class jdk.internal.util.xml.SAXParser extends java.lang.Object
+{
+
+    protected void <init>()
+    {
+        jdk.internal.util.xml.SAXParser this;
+
+        this := @this: jdk.internal.util.xml.SAXParser;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public void parse(java.io.InputStream, jdk.internal.org.xml.sax.helpers.DefaultHandler) throws jdk.internal.org.xml.sax.SAXException, java.io.IOException
+    {
+        jdk.internal.util.xml.SAXParser this;
+        java.lang.IllegalArgumentException $stack5;
+        jdk.internal.org.xml.sax.InputSource $stack4, input;
+        java.io.InputStream is;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler dh;
+
+        this := @this: jdk.internal.util.xml.SAXParser;
+
+        is := @parameter0: java.io.InputStream;
+
+        dh := @parameter1: jdk.internal.org.xml.sax.helpers.DefaultHandler;
+
+        if is != null goto label1;
+
+        $stack5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("InputStream cannot be null");
+
+        throw $stack5;
+
+     label1:
+        $stack4 = new jdk.internal.org.xml.sax.InputSource;
+
+        specialinvoke $stack4.<jdk.internal.org.xml.sax.InputSource: void <init>(java.io.InputStream)>(is);
+
+        input = $stack4;
+
+        virtualinvoke this.<jdk.internal.util.xml.SAXParser: void parse(jdk.internal.org.xml.sax.InputSource,jdk.internal.org.xml.sax.helpers.DefaultHandler)>(input, dh);
+
+        return;
+
+        nop;
+    }
+
+    public void parse(java.lang.String, jdk.internal.org.xml.sax.helpers.DefaultHandler) throws jdk.internal.org.xml.sax.SAXException, java.io.IOException
+    {
+        jdk.internal.util.xml.SAXParser this;
+        java.lang.String uri;
+        java.lang.IllegalArgumentException $stack5;
+        jdk.internal.org.xml.sax.InputSource $stack4, input;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler dh;
+
+        this := @this: jdk.internal.util.xml.SAXParser;
+
+        uri := @parameter0: java.lang.String;
+
+        dh := @parameter1: jdk.internal.org.xml.sax.helpers.DefaultHandler;
+
+        if uri != null goto label1;
+
+        $stack5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("uri cannot be null");
+
+        throw $stack5;
+
+     label1:
+        $stack4 = new jdk.internal.org.xml.sax.InputSource;
+
+        specialinvoke $stack4.<jdk.internal.org.xml.sax.InputSource: void <init>(java.lang.String)>(uri);
+
+        input = $stack4;
+
+        virtualinvoke this.<jdk.internal.util.xml.SAXParser: void parse(jdk.internal.org.xml.sax.InputSource,jdk.internal.org.xml.sax.helpers.DefaultHandler)>(input, dh);
+
+        return;
+
+        nop;
+    }
+
+    public void parse(java.io.File, jdk.internal.org.xml.sax.helpers.DefaultHandler) throws jdk.internal.org.xml.sax.SAXException, java.io.IOException
+    {
+        java.lang.IllegalArgumentException $stack7;
+        java.io.File f;
+        jdk.internal.org.xml.sax.InputSource $stack4, input;
+        jdk.internal.util.xml.SAXParser this;
+        java.net.URI $stack5;
+        java.lang.String $stack6;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler dh;
+
+        this := @this: jdk.internal.util.xml.SAXParser;
+
+        f := @parameter0: java.io.File;
+
+        dh := @parameter1: jdk.internal.org.xml.sax.helpers.DefaultHandler;
+
+        if f != null goto label1;
+
+        $stack7 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack7.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("File cannot be null");
+
+        throw $stack7;
+
+     label1:
+        $stack4 = new jdk.internal.org.xml.sax.InputSource;
+
+        $stack5 = virtualinvoke f.<java.io.File: java.net.URI toURI()>();
+
+        $stack6 = virtualinvoke $stack5.<java.net.URI: java.lang.String toASCIIString()>();
+
+        specialinvoke $stack4.<jdk.internal.org.xml.sax.InputSource: void <init>(java.lang.String)>($stack6);
+
+        input = $stack4;
+
+        virtualinvoke this.<jdk.internal.util.xml.SAXParser: void parse(jdk.internal.org.xml.sax.InputSource,jdk.internal.org.xml.sax.helpers.DefaultHandler)>(input, dh);
+
+        return;
+
+        nop;
+    }
+
+    public void parse(jdk.internal.org.xml.sax.InputSource, jdk.internal.org.xml.sax.helpers.DefaultHandler) throws jdk.internal.org.xml.sax.SAXException, java.io.IOException
+    {
+        java.lang.IllegalArgumentException $stack7;
+        jdk.internal.org.xml.sax.InputSource is, $stack5;
+        jdk.internal.util.xml.SAXParser this;
+        jdk.internal.org.xml.sax.XMLReader $stack4, reader, $stack6;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler dh;
+
+        this := @this: jdk.internal.util.xml.SAXParser;
+
+        is := @parameter0: jdk.internal.org.xml.sax.InputSource;
+
+        dh := @parameter1: jdk.internal.org.xml.sax.helpers.DefaultHandler;
+
+        if is != null goto label1;
+
+        $stack7 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack7.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("InputSource cannot be null");
+
+        throw $stack7;
+
+     label1:
+        $stack4 = virtualinvoke this.<jdk.internal.util.xml.SAXParser: jdk.internal.org.xml.sax.XMLReader getXMLReader()>();
+
+        reader = $stack4;
+
+        if dh == null goto label2;
+
+        interfaceinvoke reader.<jdk.internal.org.xml.sax.XMLReader: void setContentHandler(jdk.internal.org.xml.sax.ContentHandler)>(dh);
+
+        interfaceinvoke reader.<jdk.internal.org.xml.sax.XMLReader: void setEntityResolver(jdk.internal.org.xml.sax.EntityResolver)>(dh);
+
+        interfaceinvoke reader.<jdk.internal.org.xml.sax.XMLReader: void setErrorHandler(jdk.internal.org.xml.sax.ErrorHandler)>(dh);
+
+        interfaceinvoke reader.<jdk.internal.org.xml.sax.XMLReader: void setDTDHandler(jdk.internal.org.xml.sax.DTDHandler)>(dh);
+
+     label2:
+        $stack6 = reader;
+
+        $stack5 = is;
+
+        interfaceinvoke $stack6.<jdk.internal.org.xml.sax.XMLReader: void parse(jdk.internal.org.xml.sax.InputSource)>($stack5);
+
+        return;
+
+        nop;
+    }
+
+    public abstract jdk.internal.org.xml.sax.XMLReader getXMLReader() throws jdk.internal.org.xml.sax.SAXException;
+
+    public abstract boolean isNamespaceAware();
+
+    public abstract boolean isValidating();
+
+    public boolean isXIncludeAware()
+    {
+        java.lang.UnsupportedOperationException $stack1;
+        java.lang.Package $stack5, $stack10;
+        jdk.internal.util.xml.SAXParser this;
+        java.lang.StringBuilder $stack2, $stack3, $stack7, $stack8, $stack12, $stack13;
+        java.lang.Class $stack4, $stack9;
+        java.lang.String $stack6, $stack11, $stack14;
+
+        this := @this: jdk.internal.util.xml.SAXParser;
+
+        $stack1 = new java.lang.UnsupportedOperationException;
+
+        $stack2 = new java.lang.StringBuilder;
+
+        specialinvoke $stack2.<java.lang.StringBuilder: void <init>()>();
+
+        $stack3 = virtualinvoke $stack2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("This parser does not support specification \"");
+
+        $stack4 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $stack5 = virtualinvoke $stack4.<java.lang.Class: java.lang.Package getPackage()>();
+
+        $stack6 = virtualinvoke $stack5.<java.lang.Package: java.lang.String getSpecificationTitle()>();
+
+        $stack7 = virtualinvoke $stack3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack6);
+
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" version \"");
+
+        $stack9 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $stack10 = virtualinvoke $stack9.<java.lang.Class: java.lang.Package getPackage()>();
+
+        $stack11 = virtualinvoke $stack10.<java.lang.Package: java.lang.String getSpecificationVersion()>();
+
+        $stack12 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11);
+
+        $stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\"");
+
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>($stack14);
+
+        throw $stack1;
+
+        nop;
+    }
+}

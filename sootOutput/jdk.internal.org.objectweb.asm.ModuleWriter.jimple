@@ -1,0 +1,938 @@
+final class jdk.internal.org.objectweb.asm.ModuleWriter extends jdk.internal.org.objectweb.asm.ModuleVisitor
+{
+    private final jdk.internal.org.objectweb.asm.ClassWriter cw;
+    int size;
+    int attributeCount;
+    int attributesSize;
+    private final int name;
+    private final int access;
+    private final int version;
+    private int mainClass;
+    private int packageCount;
+    private jdk.internal.org.objectweb.asm.ByteVector packages;
+    private int requireCount;
+    private jdk.internal.org.objectweb.asm.ByteVector requires;
+    private int exportCount;
+    private jdk.internal.org.objectweb.asm.ByteVector exports;
+    private int openCount;
+    private jdk.internal.org.objectweb.asm.ByteVector opens;
+    private int useCount;
+    private jdk.internal.org.objectweb.asm.ByteVector uses;
+    private int provideCount;
+    private jdk.internal.org.objectweb.asm.ByteVector provides;
+
+    void <init>(jdk.internal.org.objectweb.asm.ClassWriter, int, int, int)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter cw;
+        int name, access, version;
+        jdk.internal.org.objectweb.asm.ModuleWriter this;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        name := @parameter1: int;
+
+        access := @parameter2: int;
+
+        version := @parameter3: int;
+
+        specialinvoke this.<jdk.internal.org.objectweb.asm.ModuleVisitor: void <init>(int)>(393216);
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw> = cw;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size> = 16;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int name> = name;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int access> = access;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int version> = version;
+
+        return;
+
+        nop;
+    }
+
+    public void visitMainClass(java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter $stack3, $stack5;
+        int $stack2, $stack4, $stack6, $stack7, $stack8, $stack9, $stack10;
+        jdk.internal.org.objectweb.asm.ModuleWriter this, $stack11, $stack13;
+        java.lang.String mainClass, $stack12;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        mainClass := @parameter0: java.lang.String;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int mainClass>;
+
+        if $stack2 != 0 goto label1;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack6 = virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("ModuleMainClass");
+
+        $stack7 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributeCount>;
+
+        $stack8 = $stack7 + 1;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributeCount> = $stack8;
+
+        $stack9 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributesSize>;
+
+        $stack10 = $stack9 + 8;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributesSize> = $stack10;
+
+     label1:
+        $stack13 = this;
+
+        $stack11 = this;
+
+        $stack3 = $stack11.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack12 = mainClass;
+
+        $stack4 = virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.ClassWriter: int newClass(java.lang.String)>($stack12);
+
+        $stack13.<jdk.internal.org.objectweb.asm.ModuleWriter: int mainClass> = $stack4;
+
+        return;
+
+        nop;
+    }
+
+    public void visitPackage(java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter $stack3, $stack11;
+        jdk.internal.org.objectweb.asm.ByteVector $stack2, $stack4, $stack6, $stack13;
+        byte $stack24;
+        int $stack5, $stack7, $stack8, $stack9, $stack10, $stack12, $stack14, $stack15, $stack16, $stack17;
+        jdk.internal.org.objectweb.asm.ModuleWriter this, $stack18, $stack19, $stack21, $stack23;
+        java.lang.String packaze, $stack20;
+        boolean $stack22;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        packaze := @parameter0: java.lang.String;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector packages>;
+
+        if $stack2 != null goto label1;
+
+        $stack11 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack12 = virtualinvoke $stack11.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("ModulePackages");
+
+        $stack13 = new jdk.internal.org.objectweb.asm.ByteVector;
+
+        specialinvoke $stack13.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector packages> = $stack13;
+
+        $stack14 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributeCount>;
+
+        $stack15 = $stack14 + 1;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributeCount> = $stack15;
+
+        $stack16 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributesSize>;
+
+        $stack17 = $stack16 + 8;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributesSize> = $stack17;
+
+     label1:
+        $stack18 = this;
+
+        $stack4 = $stack18.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector packages>;
+
+        $stack19 = this;
+
+        $stack3 = $stack19.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack20 = packaze;
+
+        $stack5 = virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.ClassWriter: int newPackage(java.lang.String)>($stack20);
+
+        $stack6 = virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack5);
+
+        $stack21 = this;
+
+        $stack7 = $stack21.<jdk.internal.org.objectweb.asm.ModuleWriter: int packageCount>;
+
+        $stack22 = 1;
+
+        $stack8 = $stack7 + $stack22;
+
+        $stack21.<jdk.internal.org.objectweb.asm.ModuleWriter: int packageCount> = $stack8;
+
+        $stack23 = this;
+
+        $stack9 = $stack23.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributesSize>;
+
+        $stack24 = 2;
+
+        $stack10 = $stack9 + $stack24;
+
+        $stack23.<jdk.internal.org.objectweb.asm.ModuleWriter: int attributesSize> = $stack10;
+
+        return;
+
+        nop;
+    }
+
+    public void visitRequire(java.lang.String, int, java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter $stack5, $stack10;
+        jdk.internal.org.objectweb.asm.ByteVector $stack4, $stack6, $stack8, $stack9, $stack12, $stack21;
+        byte $stack20;
+        bottom_type $stack11;
+        int $stack7, access, $stack13, $stack14, $stack15, $stack16, $stack25, $stack11#1;
+        jdk.internal.org.objectweb.asm.ModuleWriter this, $stack17, $stack19, $stack22, $stack23;
+        java.lang.String module, version, $stack24, $stack26;
+        boolean $stack18;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        module := @parameter0: java.lang.String;
+
+        access := @parameter1: int;
+
+        version := @parameter2: java.lang.String;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector requires>;
+
+        if $stack4 != null goto label1;
+
+        $stack21 = new jdk.internal.org.objectweb.asm.ByteVector;
+
+        specialinvoke $stack21.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector requires> = $stack21;
+
+     label1:
+        $stack22 = this;
+
+        $stack6 = $stack22.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector requires>;
+
+        $stack23 = this;
+
+        $stack5 = $stack23.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack24 = module;
+
+        $stack7 = virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.ClassWriter: int newModule(java.lang.String)>($stack24);
+
+        $stack8 = virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack7);
+
+        $stack25 = access;
+
+        $stack9 = virtualinvoke $stack8.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack25);
+
+        $stack26 = version;
+
+        if $stack26 != null goto label2;
+
+        $stack11#1 = 0;
+
+        goto label3;
+
+     label2:
+        $stack10 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack11#1 = virtualinvoke $stack10.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>(version);
+
+     label3:
+        $stack12 = virtualinvoke $stack9.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack11#1);
+
+        $stack17 = this;
+
+        $stack13 = $stack17.<jdk.internal.org.objectweb.asm.ModuleWriter: int requireCount>;
+
+        $stack18 = 1;
+
+        $stack14 = $stack13 + $stack18;
+
+        $stack17.<jdk.internal.org.objectweb.asm.ModuleWriter: int requireCount> = $stack14;
+
+        $stack19 = this;
+
+        $stack15 = $stack19.<jdk.internal.org.objectweb.asm.ModuleWriter: int size>;
+
+        $stack20 = 6;
+
+        $stack16 = $stack15 + $stack20;
+
+        $stack19.<jdk.internal.org.objectweb.asm.ModuleWriter: int size> = $stack16;
+
+        return;
+
+        nop;
+    }
+
+    public transient void visitExport(java.lang.String, int, java.lang.String[])
+    {
+        bottom_type l6;
+        jdk.internal.org.objectweb.asm.ModuleWriter this, $stack34, $stack37, $stack38;
+        boolean $stack35;
+        jdk.internal.org.objectweb.asm.ClassWriter $stack9, $stack24;
+        java.lang.String[] modules, l4, $stack41;
+        jdk.internal.org.objectweb.asm.ByteVector $stack8, $stack10, $stack12, $stack13, $stack15, $stack16, $stack25, $stack27, $stack30, $stack31, $stack36;
+        int $stack11, access, $stack14, l5, $stack17, $stack18, $stack19, $stack20, $stack21, $stack22, $stack23, $stack26, $stack28, $stack29, $stack32, $stack33, $stack40, l6#1;
+        java.lang.String packaze, module, $stack39;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        packaze := @parameter0: java.lang.String;
+
+        access := @parameter1: int;
+
+        modules := @parameter2: java.lang.String[];
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector exports>;
+
+        if $stack8 != null goto label1;
+
+        $stack36 = new jdk.internal.org.objectweb.asm.ByteVector;
+
+        specialinvoke $stack36.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector exports> = $stack36;
+
+     label1:
+        $stack37 = this;
+
+        $stack10 = $stack37.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector exports>;
+
+        $stack38 = this;
+
+        $stack9 = $stack38.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack39 = packaze;
+
+        $stack11 = virtualinvoke $stack9.<jdk.internal.org.objectweb.asm.ClassWriter: int newPackage(java.lang.String)>($stack39);
+
+        $stack12 = virtualinvoke $stack10.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack11);
+
+        $stack40 = access;
+
+        $stack13 = virtualinvoke $stack12.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack40);
+
+        $stack41 = modules;
+
+        if $stack41 != null goto label2;
+
+        $stack30 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector exports>;
+
+        $stack31 = virtualinvoke $stack30.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>(0);
+
+        $stack32 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size>;
+
+        $stack33 = $stack32 + 6;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size> = $stack33;
+
+        goto label5;
+
+     label2:
+        $stack15 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector exports>;
+
+        $stack14 = lengthof modules;
+
+        $stack16 = virtualinvoke $stack15.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack14);
+
+        l4 = modules;
+
+        l5 = lengthof l4;
+
+        l6#1 = 0;
+
+     label3:
+        $stack29 = l6#1;
+
+        $stack28 = l5;
+
+        if $stack29 >= $stack28 goto label4;
+
+        module = l4[l6#1];
+
+        $stack25 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector exports>;
+
+        $stack24 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack26 = virtualinvoke $stack24.<jdk.internal.org.objectweb.asm.ClassWriter: int newModule(java.lang.String)>(module);
+
+        $stack27 = virtualinvoke $stack25.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack26);
+
+        l6#1 = l6#1 + 1;
+
+        goto label3;
+
+     label4:
+        $stack20 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size>;
+
+        $stack17 = lengthof modules;
+
+        $stack18 = 2 * $stack17;
+
+        $stack19 = 6 + $stack18;
+
+        $stack21 = $stack20 + $stack19;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size> = $stack21;
+
+     label5:
+        $stack34 = this;
+
+        $stack22 = $stack34.<jdk.internal.org.objectweb.asm.ModuleWriter: int exportCount>;
+
+        $stack35 = 1;
+
+        $stack23 = $stack22 + $stack35;
+
+        $stack34.<jdk.internal.org.objectweb.asm.ModuleWriter: int exportCount> = $stack23;
+
+        return;
+
+        nop;
+    }
+
+    public transient void visitOpen(java.lang.String, int, java.lang.String[])
+    {
+        bottom_type l6;
+        jdk.internal.org.objectweb.asm.ModuleWriter this, $stack34, $stack37, $stack38;
+        boolean $stack35;
+        jdk.internal.org.objectweb.asm.ClassWriter $stack9, $stack24;
+        java.lang.String[] modules, l4, $stack41;
+        jdk.internal.org.objectweb.asm.ByteVector $stack8, $stack10, $stack12, $stack13, $stack15, $stack16, $stack25, $stack27, $stack30, $stack31, $stack36;
+        int $stack11, access, $stack14, l5, $stack17, $stack18, $stack19, $stack20, $stack21, $stack22, $stack23, $stack26, $stack28, $stack29, $stack32, $stack33, $stack40, l6#1;
+        java.lang.String packaze, module, $stack39;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        packaze := @parameter0: java.lang.String;
+
+        access := @parameter1: int;
+
+        modules := @parameter2: java.lang.String[];
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector opens>;
+
+        if $stack8 != null goto label1;
+
+        $stack36 = new jdk.internal.org.objectweb.asm.ByteVector;
+
+        specialinvoke $stack36.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector opens> = $stack36;
+
+     label1:
+        $stack37 = this;
+
+        $stack10 = $stack37.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector opens>;
+
+        $stack38 = this;
+
+        $stack9 = $stack38.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack39 = packaze;
+
+        $stack11 = virtualinvoke $stack9.<jdk.internal.org.objectweb.asm.ClassWriter: int newPackage(java.lang.String)>($stack39);
+
+        $stack12 = virtualinvoke $stack10.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack11);
+
+        $stack40 = access;
+
+        $stack13 = virtualinvoke $stack12.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack40);
+
+        $stack41 = modules;
+
+        if $stack41 != null goto label2;
+
+        $stack30 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector opens>;
+
+        $stack31 = virtualinvoke $stack30.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>(0);
+
+        $stack32 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size>;
+
+        $stack33 = $stack32 + 6;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size> = $stack33;
+
+        goto label5;
+
+     label2:
+        $stack15 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector opens>;
+
+        $stack14 = lengthof modules;
+
+        $stack16 = virtualinvoke $stack15.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack14);
+
+        l4 = modules;
+
+        l5 = lengthof l4;
+
+        l6#1 = 0;
+
+     label3:
+        $stack29 = l6#1;
+
+        $stack28 = l5;
+
+        if $stack29 >= $stack28 goto label4;
+
+        module = l4[l6#1];
+
+        $stack25 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector opens>;
+
+        $stack24 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack26 = virtualinvoke $stack24.<jdk.internal.org.objectweb.asm.ClassWriter: int newModule(java.lang.String)>(module);
+
+        $stack27 = virtualinvoke $stack25.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack26);
+
+        l6#1 = l6#1 + 1;
+
+        goto label3;
+
+     label4:
+        $stack20 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size>;
+
+        $stack17 = lengthof modules;
+
+        $stack18 = 2 * $stack17;
+
+        $stack19 = 6 + $stack18;
+
+        $stack21 = $stack20 + $stack19;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size> = $stack21;
+
+     label5:
+        $stack34 = this;
+
+        $stack22 = $stack34.<jdk.internal.org.objectweb.asm.ModuleWriter: int openCount>;
+
+        $stack35 = 1;
+
+        $stack23 = $stack22 + $stack35;
+
+        $stack34.<jdk.internal.org.objectweb.asm.ModuleWriter: int openCount> = $stack23;
+
+        return;
+
+        nop;
+    }
+
+    public void visitUse(java.lang.String)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter $stack3;
+        jdk.internal.org.objectweb.asm.ByteVector $stack2, $stack4, $stack6, $stack11;
+        byte $stack18;
+        int $stack5, $stack7, $stack8, $stack9, $stack10;
+        jdk.internal.org.objectweb.asm.ModuleWriter this, $stack12, $stack13, $stack15, $stack17;
+        java.lang.String service, $stack14;
+        boolean $stack16;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        service := @parameter0: java.lang.String;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector uses>;
+
+        if $stack2 != null goto label1;
+
+        $stack11 = new jdk.internal.org.objectweb.asm.ByteVector;
+
+        specialinvoke $stack11.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector uses> = $stack11;
+
+     label1:
+        $stack12 = this;
+
+        $stack4 = $stack12.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector uses>;
+
+        $stack13 = this;
+
+        $stack3 = $stack13.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack14 = service;
+
+        $stack5 = virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.ClassWriter: int newClass(java.lang.String)>($stack14);
+
+        $stack6 = virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack5);
+
+        $stack15 = this;
+
+        $stack7 = $stack15.<jdk.internal.org.objectweb.asm.ModuleWriter: int useCount>;
+
+        $stack16 = 1;
+
+        $stack8 = $stack7 + $stack16;
+
+        $stack15.<jdk.internal.org.objectweb.asm.ModuleWriter: int useCount> = $stack8;
+
+        $stack17 = this;
+
+        $stack9 = $stack17.<jdk.internal.org.objectweb.asm.ModuleWriter: int size>;
+
+        $stack18 = 2;
+
+        $stack10 = $stack9 + $stack18;
+
+        $stack17.<jdk.internal.org.objectweb.asm.ModuleWriter: int size> = $stack10;
+
+        return;
+
+        nop;
+    }
+
+    public transient void visitProvide(java.lang.String, java.lang.String[])
+    {
+        byte $stack37;
+        bottom_type l5, $stack26, $stack27;
+        jdk.internal.org.objectweb.asm.ModuleWriter this, $stack29, $stack30, $stack32;
+        jdk.internal.org.objectweb.asm.ClassWriter $stack8, $stack22;
+        java.lang.String[] providers, l3, $stack33, $stack34, $stack35;
+        jdk.internal.org.objectweb.asm.ByteVector $stack7, $stack9, $stack11, $stack13, $stack14, $stack23, $stack25, $stack28;
+        int $stack10, $stack12, l4, $stack15, $stack16, $stack17, $stack18, $stack19, $stack20, $stack21, $stack24, $stack36, l5#1, $stack27#2, $stack27#3, $stack26#4, $stack26#5;
+        java.lang.String service, provider, $stack31;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        service := @parameter0: java.lang.String;
+
+        providers := @parameter1: java.lang.String[];
+
+        $stack7 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector provides>;
+
+        if $stack7 != null goto label1;
+
+        $stack28 = new jdk.internal.org.objectweb.asm.ByteVector;
+
+        specialinvoke $stack28.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector provides> = $stack28;
+
+     label1:
+        $stack29 = this;
+
+        $stack9 = $stack29.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector provides>;
+
+        $stack30 = this;
+
+        $stack8 = $stack30.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack31 = service;
+
+        $stack10 = virtualinvoke $stack8.<jdk.internal.org.objectweb.asm.ClassWriter: int newClass(java.lang.String)>($stack31);
+
+        $stack11 = virtualinvoke $stack9.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack10);
+
+        $stack32 = this;
+
+        $stack13 = $stack32.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector provides>;
+
+        $stack33 = providers;
+
+        $stack12 = lengthof $stack33;
+
+        $stack14 = virtualinvoke $stack13.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack12);
+
+        $stack34 = providers;
+
+        l3 = $stack34;
+
+        $stack35 = l3;
+
+        $stack36 = lengthof $stack35;
+
+        l4 = $stack36;
+
+        $stack37 = 0;
+
+        l5#1 = $stack37;
+
+     label2:
+        $stack27#2 = l5#1;
+
+        $stack27#3 = $stack27#2;
+
+        $stack26#4 = l4;
+
+        $stack26#5 = $stack26#4;
+
+        if $stack27#3 >= $stack26#5 goto label3;
+
+        provider = l3[l5#1];
+
+        $stack23 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector provides>;
+
+        $stack22 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack24 = virtualinvoke $stack22.<jdk.internal.org.objectweb.asm.ClassWriter: int newClass(java.lang.String)>(provider);
+
+        $stack25 = virtualinvoke $stack23.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack24);
+
+        l5#1 = l5#1 + 1;
+
+        goto label2;
+
+     label3:
+        $stack15 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int provideCount>;
+
+        $stack16 = $stack15 + 1;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int provideCount> = $stack16;
+
+        $stack20 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size>;
+
+        $stack17 = lengthof providers;
+
+        $stack18 = 2 * $stack17;
+
+        $stack19 = 4 + $stack18;
+
+        $stack21 = $stack20 + $stack19;
+
+        this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size> = $stack21;
+
+        return;
+
+        nop;
+    }
+
+    public void visitEnd()
+    {
+        jdk.internal.org.objectweb.asm.ModuleWriter this;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        return;
+
+        nop;
+    }
+
+    void putAttributes(jdk.internal.org.objectweb.asm.ByteVector)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter $stack4, $stack18;
+        byte[] $stack16;
+        jdk.internal.org.objectweb.asm.ByteVector $stack3, out, $stack6, $stack10, $stack12, $stack13, $stack14, $stack17, $stack20, $stack21, $stack23;
+        int $stack2, $stack5, $stack7, $stack8, $stack9, $stack11, $stack15, $stack19, $stack22;
+        jdk.internal.org.objectweb.asm.ModuleWriter this, $stack24;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        out := @parameter0: jdk.internal.org.objectweb.asm.ByteVector;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int mainClass>;
+
+        if $stack2 == 0 goto label1;
+
+        $stack18 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack19 = virtualinvoke $stack18.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("ModuleMainClass");
+
+        $stack20 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack19);
+
+        $stack21 = virtualinvoke $stack20.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>(2);
+
+        $stack22 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int mainClass>;
+
+        $stack23 = virtualinvoke $stack21.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack22);
+
+     label1:
+        $stack24 = this;
+
+        $stack3 = $stack24.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector packages>;
+
+        if $stack3 == null goto label2;
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack5 = virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("ModulePackages");
+
+        $stack6 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack5);
+
+        $stack7 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int packageCount>;
+
+        $stack8 = 2 * $stack7;
+
+        $stack9 = 2 + $stack8;
+
+        $stack10 = virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>($stack9);
+
+        $stack11 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int packageCount>;
+
+        $stack12 = virtualinvoke $stack10.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack11);
+
+        $stack13 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector packages>;
+
+        $stack16 = $stack13.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
+
+        $stack14 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector packages>;
+
+        $stack15 = $stack14.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+
+        $stack17 = virtualinvoke $stack12.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByteArray(byte[],int,int)>($stack16, 0, $stack15);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    void put(jdk.internal.org.objectweb.asm.ByteVector)
+    {
+        byte[] $stack28, $stack33, $stack41, $stack49, $stack57;
+        jdk.internal.org.objectweb.asm.ModuleWriter this, $stack35, $stack37, $stack43, $stack45, $stack51, $stack53, $stack59, $stack61;
+        jdk.internal.org.objectweb.asm.ByteVector out, $stack3, $stack5, $stack7, $stack9, $stack11, $stack12, $stack14, $stack15, $stack17, $stack18, $stack20, $stack21, $stack23, $stack24, $stack25, $stack26, $stack29, $stack30, $stack31, $stack34, $stack36, $stack38, $stack39, $stack42, $stack44, $stack46, $stack47, $stack50, $stack52, $stack54, $stack55, $stack58, $stack60;
+        int $stack2, $stack4, $stack6, $stack8, $stack10, $stack13, $stack16, $stack19, $stack22, $stack27, $stack32, $stack40, $stack48, $stack56;
+
+        this := @this: jdk.internal.org.objectweb.asm.ModuleWriter;
+
+        out := @parameter0: jdk.internal.org.objectweb.asm.ByteVector;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int size>;
+
+        $stack3 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>($stack2);
+
+        $stack4 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int name>;
+
+        $stack5 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack4);
+
+        $stack6 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int access>;
+
+        $stack7 = virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack6);
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int version>;
+
+        $stack9 = virtualinvoke $stack7.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack8);
+
+        $stack10 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: int requireCount>;
+
+        $stack11 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack10);
+
+        $stack12 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector requires>;
+
+        if $stack12 == null goto label1;
+
+        $stack54 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector requires>;
+
+        $stack57 = $stack54.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
+
+        $stack55 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector requires>;
+
+        $stack56 = $stack55.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+
+        $stack58 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByteArray(byte[],int,int)>($stack57, 0, $stack56);
+
+     label1:
+        $stack60 = out;
+
+        $stack59 = this;
+
+        $stack13 = $stack59.<jdk.internal.org.objectweb.asm.ModuleWriter: int exportCount>;
+
+        $stack14 = virtualinvoke $stack60.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack13);
+
+        $stack61 = this;
+
+        $stack15 = $stack61.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector exports>;
+
+        if $stack15 == null goto label2;
+
+        $stack46 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector exports>;
+
+        $stack49 = $stack46.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
+
+        $stack47 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector exports>;
+
+        $stack48 = $stack47.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+
+        $stack50 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByteArray(byte[],int,int)>($stack49, 0, $stack48);
+
+     label2:
+        $stack52 = out;
+
+        $stack51 = this;
+
+        $stack16 = $stack51.<jdk.internal.org.objectweb.asm.ModuleWriter: int openCount>;
+
+        $stack17 = virtualinvoke $stack52.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack16);
+
+        $stack53 = this;
+
+        $stack18 = $stack53.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector opens>;
+
+        if $stack18 == null goto label3;
+
+        $stack38 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector opens>;
+
+        $stack41 = $stack38.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
+
+        $stack39 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector opens>;
+
+        $stack40 = $stack39.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+
+        $stack42 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByteArray(byte[],int,int)>($stack41, 0, $stack40);
+
+     label3:
+        $stack44 = out;
+
+        $stack43 = this;
+
+        $stack19 = $stack43.<jdk.internal.org.objectweb.asm.ModuleWriter: int useCount>;
+
+        $stack20 = virtualinvoke $stack44.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack19);
+
+        $stack45 = this;
+
+        $stack21 = $stack45.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector uses>;
+
+        if $stack21 == null goto label4;
+
+        $stack30 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector uses>;
+
+        $stack33 = $stack30.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
+
+        $stack31 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector uses>;
+
+        $stack32 = $stack31.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+
+        $stack34 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByteArray(byte[],int,int)>($stack33, 0, $stack32);
+
+     label4:
+        $stack36 = out;
+
+        $stack35 = this;
+
+        $stack22 = $stack35.<jdk.internal.org.objectweb.asm.ModuleWriter: int provideCount>;
+
+        $stack23 = virtualinvoke $stack36.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack22);
+
+        $stack37 = this;
+
+        $stack24 = $stack37.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector provides>;
+
+        if $stack24 == null goto label5;
+
+        $stack25 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector provides>;
+
+        $stack28 = $stack25.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
+
+        $stack26 = this.<jdk.internal.org.objectweb.asm.ModuleWriter: jdk.internal.org.objectweb.asm.ByteVector provides>;
+
+        $stack27 = $stack26.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+
+        $stack29 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByteArray(byte[],int,int)>($stack28, 0, $stack27);
+
+     label5:
+        return;
+
+        nop;
+    }
+}

@@ -1,0 +1,946 @@
+public final class jdk.internal.module.IllegalAccessLogger extends java.lang.Object
+{
+    private static final jdk.internal.misc.JavaLangAccess JLA;
+    private static volatile jdk.internal.module.IllegalAccessLogger logger;
+    private final jdk.internal.module.IllegalAccessLogger$Mode mode;
+    private final java.io.PrintStream warningStream;
+    private final java.util.Map moduleToConcealedPackages;
+    private final java.util.Map moduleToExportedPackages;
+    private final java.util.Map callerToUsages;
+
+    private void <init>(jdk.internal.module.IllegalAccessLogger$Mode, java.io.PrintStream, java.util.Map, java.util.Map)
+    {
+        java.io.PrintStream warningStream;
+        jdk.internal.module.IllegalAccessLogger$Mode mode;
+        java.util.Map moduleToConcealedPackages, moduleToExportedPackages;
+        jdk.internal.module.IllegalAccessLogger this;
+        java.util.WeakHashMap $stack5;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        mode := @parameter0: jdk.internal.module.IllegalAccessLogger$Mode;
+
+        warningStream := @parameter1: java.io.PrintStream;
+
+        moduleToConcealedPackages := @parameter2: java.util.Map;
+
+        moduleToExportedPackages := @parameter3: java.util.Map;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack5 = new java.util.WeakHashMap;
+
+        specialinvoke $stack5.<java.util.WeakHashMap: void <init>()>();
+
+        this.<jdk.internal.module.IllegalAccessLogger: java.util.Map callerToUsages> = $stack5;
+
+        this.<jdk.internal.module.IllegalAccessLogger: jdk.internal.module.IllegalAccessLogger$Mode mode> = mode;
+
+        this.<jdk.internal.module.IllegalAccessLogger: java.io.PrintStream warningStream> = warningStream;
+
+        this.<jdk.internal.module.IllegalAccessLogger: java.util.Map moduleToConcealedPackages> = moduleToConcealedPackages;
+
+        this.<jdk.internal.module.IllegalAccessLogger: java.util.Map moduleToExportedPackages> = moduleToExportedPackages;
+
+        return;
+
+        nop;
+    }
+
+    public static jdk.internal.module.IllegalAccessLogger illegalAccessLogger()
+    {
+        jdk.internal.module.IllegalAccessLogger $stack0;
+
+        $stack0 = <jdk.internal.module.IllegalAccessLogger: jdk.internal.module.IllegalAccessLogger logger>;
+
+        return $stack0;
+    }
+
+    public boolean isExportedForIllegalAccess(java.lang.Module, java.lang.String)
+    {
+        java.util.Set packages;
+        jdk.internal.module.IllegalAccessLogger this;
+        java.lang.Module module;
+        java.util.Map $stack4;
+        java.lang.Object $stack5;
+        java.lang.String pn;
+        boolean $stack6, $stack7;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        module := @parameter0: java.lang.Module;
+
+        pn := @parameter1: java.lang.String;
+
+        $stack4 = this.<jdk.internal.module.IllegalAccessLogger: java.util.Map moduleToConcealedPackages>;
+
+        $stack5 = interfaceinvoke $stack4.<java.util.Map: java.lang.Object get(java.lang.Object)>(module);
+
+        packages = (java.util.Set) $stack5;
+
+        if packages == null goto label1;
+
+        $stack6 = interfaceinvoke packages.<java.util.Set: boolean contains(java.lang.Object)>(pn);
+
+        if $stack6 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $stack7 = 0;
+
+        return $stack7;
+
+        nop;
+    }
+
+    public boolean isOpenForIllegalAccess(java.lang.Module, java.lang.String)
+    {
+        java.util.Set packages;
+        jdk.internal.module.IllegalAccessLogger this;
+        java.lang.Module module;
+        java.util.Map $stack5;
+        java.lang.Object $stack6;
+        java.lang.String pn;
+        boolean $stack4, $stack7, $stack8;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        module := @parameter0: java.lang.Module;
+
+        pn := @parameter1: java.lang.String;
+
+        $stack4 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: boolean isExportedForIllegalAccess(java.lang.Module,java.lang.String)>(module, pn);
+
+        if $stack4 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $stack5 = this.<jdk.internal.module.IllegalAccessLogger: java.util.Map moduleToExportedPackages>;
+
+        $stack6 = interfaceinvoke $stack5.<java.util.Map: java.lang.Object get(java.lang.Object)>(module);
+
+        packages = (java.util.Set) $stack6;
+
+        if packages == null goto label2;
+
+        $stack7 = interfaceinvoke packages.<java.util.Set: boolean contains(java.lang.Object)>(pn);
+
+        if $stack7 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        $stack8 = 0;
+
+        return $stack8;
+
+        nop;
+    }
+
+    public void logIfExportedForIllegalAccess(java.lang.Class, java.lang.Class, java.util.function.Supplier)
+    {
+        jdk.internal.module.IllegalAccessLogger this;
+        jdk.internal.misc.JavaLangAccess $stack11;
+        java.util.function.Supplier whatSupplier;
+        java.lang.Module $stack7, targetModule, $stack10, callerModule;
+        java.lang.Class target, caller;
+        java.lang.Object $stack13;
+        java.lang.String $stack8, targetPackage, $stack14;
+        boolean $stack9, $stack12;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        caller := @parameter0: java.lang.Class;
+
+        target := @parameter1: java.lang.Class;
+
+        whatSupplier := @parameter2: java.util.function.Supplier;
+
+        $stack7 = virtualinvoke target.<java.lang.Class: java.lang.Module getModule()>();
+
+        targetModule = $stack7;
+
+        $stack8 = virtualinvoke target.<java.lang.Class: java.lang.String getPackageName()>();
+
+        targetPackage = $stack8;
+
+        $stack9 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: boolean isExportedForIllegalAccess(java.lang.Module,java.lang.String)>(targetModule, targetPackage);
+
+        if $stack9 == 0 goto label1;
+
+        $stack10 = virtualinvoke caller.<java.lang.Class: java.lang.Module getModule()>();
+
+        callerModule = $stack10;
+
+        $stack11 = <jdk.internal.module.IllegalAccessLogger: jdk.internal.misc.JavaLangAccess JLA>;
+
+        $stack12 = interfaceinvoke $stack11.<jdk.internal.misc.JavaLangAccess: boolean isReflectivelyExported(java.lang.Module,java.lang.String,java.lang.Module)>(targetModule, targetPackage, callerModule);
+
+        if $stack12 != 0 goto label1;
+
+        $stack13 = interfaceinvoke whatSupplier.<java.util.function.Supplier: java.lang.Object get()>();
+
+        $stack14 = (java.lang.String) $stack13;
+
+        virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: void log(java.lang.Class,java.lang.String)>(caller, $stack14);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void logIfOpenedForIllegalAccess(java.lang.Class, java.lang.Class, java.util.function.Supplier)
+    {
+        jdk.internal.module.IllegalAccessLogger this;
+        jdk.internal.misc.JavaLangAccess $stack11;
+        java.util.function.Supplier whatSupplier;
+        java.lang.Module $stack7, targetModule, $stack10, callerModule;
+        java.lang.Class target, caller;
+        java.lang.Object $stack13;
+        java.lang.String $stack8, targetPackage, $stack14;
+        boolean $stack9, $stack12;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        caller := @parameter0: java.lang.Class;
+
+        target := @parameter1: java.lang.Class;
+
+        whatSupplier := @parameter2: java.util.function.Supplier;
+
+        $stack7 = virtualinvoke target.<java.lang.Class: java.lang.Module getModule()>();
+
+        targetModule = $stack7;
+
+        $stack8 = virtualinvoke target.<java.lang.Class: java.lang.String getPackageName()>();
+
+        targetPackage = $stack8;
+
+        $stack9 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: boolean isOpenForIllegalAccess(java.lang.Module,java.lang.String)>(targetModule, targetPackage);
+
+        if $stack9 == 0 goto label1;
+
+        $stack10 = virtualinvoke caller.<java.lang.Class: java.lang.Module getModule()>();
+
+        callerModule = $stack10;
+
+        $stack11 = <jdk.internal.module.IllegalAccessLogger: jdk.internal.misc.JavaLangAccess JLA>;
+
+        $stack12 = interfaceinvoke $stack11.<jdk.internal.misc.JavaLangAccess: boolean isReflectivelyOpened(java.lang.Module,java.lang.String,java.lang.Module)>(targetModule, targetPackage, callerModule);
+
+        if $stack12 != 0 goto label1;
+
+        $stack13 = interfaceinvoke whatSupplier.<java.util.function.Supplier: java.lang.Object get()>();
+
+        $stack14 = (java.lang.String) $stack13;
+
+        virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: void log(java.lang.Class,java.lang.String)>(caller, $stack14);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void logIfOpenedForIllegalAccess(java.lang.invoke.MethodHandles$Lookup, java.lang.Class)
+    {
+        java.net.URL $stack16, url;
+        jdk.internal.misc.JavaLangAccess $stack14;
+        bottom_type source;
+        boolean $stack11, $stack15;
+        java.lang.invoke.MethodHandles$Lookup caller;
+        jdk.internal.module.IllegalAccessLogger this, $stack31;
+        java.lang.StringBuilder $stack17, $stack19, $stack20, $stack21, $stack22;
+        java.util.function.Supplier $stack25;
+        java.lang.String $stack10, targetPackage, $stack18, $stack23, $stack24, $stack26, $stack28, source#1;
+        java.lang.Module $stack9, targetModule, $stack13, callerModule;
+        java.lang.Class target, $stack12, callerClass, $stack27, $stack29, $stack30;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        caller := @parameter0: java.lang.invoke.MethodHandles$Lookup;
+
+        target := @parameter1: java.lang.Class;
+
+        $stack9 = virtualinvoke target.<java.lang.Class: java.lang.Module getModule()>();
+
+        targetModule = $stack9;
+
+        $stack10 = virtualinvoke target.<java.lang.Class: java.lang.String getPackageName()>();
+
+        targetPackage = $stack10;
+
+        $stack11 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: boolean isOpenForIllegalAccess(java.lang.Module,java.lang.String)>(targetModule, targetPackage);
+
+        if $stack11 == 0 goto label3;
+
+        $stack12 = virtualinvoke caller.<java.lang.invoke.MethodHandles$Lookup: java.lang.Class lookupClass()>();
+
+        callerClass = $stack12;
+
+        $stack13 = virtualinvoke callerClass.<java.lang.Class: java.lang.Module getModule()>();
+
+        callerModule = $stack13;
+
+        $stack14 = <jdk.internal.module.IllegalAccessLogger: jdk.internal.misc.JavaLangAccess JLA>;
+
+        $stack15 = interfaceinvoke $stack14.<jdk.internal.misc.JavaLangAccess: boolean isReflectivelyOpened(java.lang.Module,java.lang.String,java.lang.Module)>(targetModule, targetPackage, callerModule);
+
+        if $stack15 != 0 goto label3;
+
+        $stack16 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: java.net.URL codeSource(java.lang.Class)>(callerClass);
+
+        url = $stack16;
+
+        if url != null goto label1;
+
+        $stack26 = virtualinvoke callerClass.<java.lang.Class: java.lang.String getName()>();
+
+        source#1 = $stack26;
+
+        goto label2;
+
+     label1:
+        $stack17 = new java.lang.StringBuilder;
+
+        specialinvoke $stack17.<java.lang.StringBuilder: void <init>()>();
+
+        $stack18 = virtualinvoke callerClass.<java.lang.Class: java.lang.String getName()>();
+
+        $stack19 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack18);
+
+        $stack20 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (");
+
+        $stack21 = virtualinvoke $stack20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(url);
+
+        $stack22 = virtualinvoke $stack21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $stack23 = virtualinvoke $stack22.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        source#1 = $stack23;
+
+     label2:
+        $stack31 = this;
+
+        $stack30 = callerClass;
+
+        $stack27 = target;
+
+        $stack24 = virtualinvoke $stack27.<java.lang.Class: java.lang.String getName()>();
+
+        $stack28 = source#1;
+
+        $stack29 = target;
+
+        $stack25 = staticinvoke <jdk.internal.module.IllegalAccessLogger$lambda_logIfOpenedForIllegalAccess_0__84: java.util.function.Supplier bootstrap$(java.lang.String,java.lang.Class)>($stack28, $stack29);
+
+        virtualinvoke $stack31.<jdk.internal.module.IllegalAccessLogger: void log(java.lang.Class,java.lang.String,java.util.function.Supplier)>($stack30, $stack24, $stack25);
+
+     label3:
+        return;
+
+        nop;
+    }
+
+    private void log(java.lang.Class, java.lang.String)
+    {
+        java.lang.Class caller;
+        java.lang.String what;
+        jdk.internal.module.IllegalAccessLogger this;
+        java.util.function.Supplier $stack3;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        caller := @parameter0: java.lang.Class;
+
+        what := @parameter1: java.lang.String;
+
+        $stack3 = staticinvoke <jdk.internal.module.IllegalAccessLogger$lambda_log_1__339: java.util.function.Supplier bootstrap$(jdk.internal.module.IllegalAccessLogger,java.lang.Class,java.lang.String)>(this, caller, what);
+
+        virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: void log(java.lang.Class,java.lang.String,java.util.function.Supplier)>(caller, what, $stack3);
+
+        return;
+
+        nop;
+    }
+
+    private void log(java.lang.Class, java.lang.String, java.util.function.Supplier)
+    {
+        bottom_type stack, u, msg, sb;
+        java.util.Map $stack17;
+        boolean $stack21, added;
+        jdk.internal.module.IllegalAccessLogger$Usage $stack14, u#4;
+        jdk.internal.module.IllegalAccessLogger this, $stack16, $stack22, $stack30, $stack32, $stack38, msg#5;
+        java.util.List stack#3;
+        jdk.internal.module.IllegalAccessLogger$Usages $stack20;
+        java.lang.StringBuilder $stack27, sb#8;
+        java.lang.Throwable $stack37, $stack39, u#2, sb#6;
+        java.lang.StackWalker $stack11;
+        java.util.function.Function $stack12, $stack18;
+        java.util.function.Supplier msgSupplier;
+        int $stack15;
+        java.lang.String what, $stack29, $stack31, $stack35, msg#7;
+        java.io.PrintStream $stack26, $stack34;
+        java.util.function.Consumer $stack28;
+        jdk.internal.module.IllegalAccessLogger$Mode $stack9, $stack10, $stack24, $stack25;
+        java.lang.Object $stack13, $stack19, $stack23;
+        java.lang.Class caller, $stack33, $stack36, $stack40, stack#1;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        caller := @parameter0: java.lang.Class;
+
+        what := @parameter1: java.lang.String;
+
+        msgSupplier := @parameter2: java.util.function.Supplier;
+
+        $stack10 = this.<jdk.internal.module.IllegalAccessLogger: jdk.internal.module.IllegalAccessLogger$Mode mode>;
+
+        $stack9 = <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode ONESHOT>;
+
+        if $stack10 != $stack9 goto label08;
+
+        stack#1 = class "Ljdk/internal/module/IllegalAccessLogger;";
+
+        entermonitor class "Ljdk/internal/module/IllegalAccessLogger;";
+
+     label01:
+        $stack32 = <jdk.internal.module.IllegalAccessLogger: jdk.internal.module.IllegalAccessLogger logger>;
+
+        if $stack32 != null goto label03;
+
+        $stack36 = stack#1;
+
+        exitmonitor $stack36;
+
+     label02:
+        return;
+
+     label03:
+        <jdk.internal.module.IllegalAccessLogger: jdk.internal.module.IllegalAccessLogger logger> = null;
+
+        $stack33 = stack#1;
+
+        exitmonitor $stack33;
+
+     label04:
+        goto label07;
+
+     label05:
+        $stack39 := @caughtexception;
+
+        u#2 = $stack39;
+
+        $stack40 = stack#1;
+
+        exitmonitor $stack40;
+
+     label06:
+        throw u#2;
+
+     label07:
+        $stack34 = this.<jdk.internal.module.IllegalAccessLogger: java.io.PrintStream warningStream>;
+
+        $stack35 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: java.lang.String loudWarning(java.lang.Class,java.util.function.Supplier)>(caller, msgSupplier);
+
+        virtualinvoke $stack34.<java.io.PrintStream: void println(java.lang.String)>($stack35);
+
+        return;
+
+     label08:
+        $stack11 = <jdk.internal.module.IllegalAccessLogger$StackWalkerHolder: java.lang.StackWalker INSTANCE>;
+
+        $stack12 = staticinvoke <jdk.internal.module.IllegalAccessLogger$lambda_log_2__135: java.util.function.Function bootstrap$(jdk.internal.module.IllegalAccessLogger)>(this);
+
+        $stack13 = virtualinvoke $stack11.<java.lang.StackWalker: java.lang.Object walk(java.util.function.Function)>($stack12);
+
+        stack#3 = (java.util.List) $stack13;
+
+        $stack14 = new jdk.internal.module.IllegalAccessLogger$Usage;
+
+        $stack15 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: int hash(java.util.List)>(stack#3);
+
+        specialinvoke $stack14.<jdk.internal.module.IllegalAccessLogger$Usage: void <init>(java.lang.String,int)>(what, $stack15);
+
+        u#4 = $stack14;
+
+        $stack16 = this;
+
+        msg#5 = $stack16;
+
+        entermonitor $stack16;
+
+     label09:
+        $stack17 = this.<jdk.internal.module.IllegalAccessLogger: java.util.Map callerToUsages>;
+
+        $stack18 = staticinvoke <jdk.internal.module.IllegalAccessLogger$lambda_log_3__136: java.util.function.Function bootstrap$()>();
+
+        $stack19 = interfaceinvoke $stack17.<java.util.Map: java.lang.Object computeIfAbsent(java.lang.Object,java.util.function.Function)>(caller, $stack18);
+
+        $stack20 = (jdk.internal.module.IllegalAccessLogger$Usages) $stack19;
+
+        $stack21 = virtualinvoke $stack20.<jdk.internal.module.IllegalAccessLogger$Usages: boolean add(jdk.internal.module.IllegalAccessLogger$Usage)>(u#4);
+
+        added = $stack21;
+
+        $stack22 = msg#5;
+
+        exitmonitor $stack22;
+
+     label10:
+        goto label13;
+
+     label11:
+        $stack37 := @caughtexception;
+
+        sb#6 = $stack37;
+
+        $stack38 = msg#5;
+
+        exitmonitor $stack38;
+
+     label12:
+        throw sb#6;
+
+     label13:
+        if added == 0 goto label15;
+
+        $stack23 = interfaceinvoke msgSupplier.<java.util.function.Supplier: java.lang.Object get()>();
+
+        msg#7 = (java.lang.String) $stack23;
+
+        $stack25 = this.<jdk.internal.module.IllegalAccessLogger: jdk.internal.module.IllegalAccessLogger$Mode mode>;
+
+        $stack24 = <jdk.internal.module.IllegalAccessLogger$Mode: jdk.internal.module.IllegalAccessLogger$Mode DEBUG>;
+
+        if $stack25 != $stack24 goto label14;
+
+        $stack27 = new java.lang.StringBuilder;
+
+        specialinvoke $stack27.<java.lang.StringBuilder: void <init>(java.lang.String)>(msg#7);
+
+        sb#8 = $stack27;
+
+        $stack28 = staticinvoke <jdk.internal.module.IllegalAccessLogger$lambda_log_4__137: java.util.function.Consumer bootstrap$(java.lang.StringBuilder)>(sb#8);
+
+        interfaceinvoke stack#3.<java.util.List: void forEach(java.util.function.Consumer)>($stack28);
+
+        $stack29 = virtualinvoke sb#8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        msg#7 = $stack29;
+
+     label14:
+        $stack30 = this;
+
+        $stack26 = $stack30.<jdk.internal.module.IllegalAccessLogger: java.io.PrintStream warningStream>;
+
+        $stack31 = msg#7;
+
+        virtualinvoke $stack26.<java.io.PrintStream: void println(java.lang.String)>($stack31);
+
+     label15:
+        return;
+
+        nop;
+
+        catch java.lang.Throwable from label01 to label02 with label05;
+        catch java.lang.Throwable from label03 to label04 with label05;
+        catch java.lang.Throwable from label05 to label06 with label05;
+        catch java.lang.Throwable from label09 to label10 with label11;
+        catch java.lang.Throwable from label11 to label12 with label11;
+    }
+
+    private java.net.URL codeSource(java.lang.Class)
+    {
+        java.net.URL $stack9#1;
+        java.security.PrivilegedAction $stack5, pa;
+        jdk.internal.module.IllegalAccessLogger this;
+        bottom_type $stack9;
+        java.security.ProtectionDomain $stack7;
+        java.lang.Class clazz;
+        java.lang.Object $stack4, $stack6;
+        java.security.CodeSource $stack8, cs;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        clazz := @parameter0: java.lang.Class;
+
+        $stack4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(clazz);
+
+        $stack5 = staticinvoke <jdk.internal.module.IllegalAccessLogger$getProtectionDomain__134: java.security.PrivilegedAction bootstrap$(java.lang.Class)>(clazz);
+
+        pa = $stack5;
+
+        $stack6 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedAction)>(pa);
+
+        $stack7 = (java.security.ProtectionDomain) $stack6;
+
+        $stack8 = virtualinvoke $stack7.<java.security.ProtectionDomain: java.security.CodeSource getCodeSource()>();
+
+        cs = $stack8;
+
+        if cs == null goto label1;
+
+        $stack9#1 = virtualinvoke cs.<java.security.CodeSource: java.net.URL getLocation()>();
+
+        goto label2;
+
+     label1:
+        $stack9#1 = null;
+
+     label2:
+        return $stack9#1;
+
+        nop;
+    }
+
+    private java.lang.String loudWarning(java.lang.Class, java.util.function.Supplier)
+    {
+        java.util.function.Supplier msgSupplier;
+        java.lang.String $stack5, $stack12, $stack14, $stack18;
+        java.lang.CharSequence $stack8;
+        jdk.internal.module.IllegalAccessLogger this;
+        java.util.StringJoiner $stack4, sj, $stack6, $stack9, $stack15, $stack16, $stack17;
+        java.lang.Object $stack7;
+        java.lang.StringBuilder $stack10, $stack11, $stack13;
+        java.lang.Class caller;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        caller := @parameter0: java.lang.Class;
+
+        msgSupplier := @parameter1: java.util.function.Supplier;
+
+        $stack4 = new java.util.StringJoiner;
+
+        $stack5 = staticinvoke <java.lang.System: java.lang.String lineSeparator()>();
+
+        specialinvoke $stack4.<java.util.StringJoiner: void <init>(java.lang.CharSequence)>($stack5);
+
+        sj = $stack4;
+
+        $stack6 = virtualinvoke sj.<java.util.StringJoiner: java.util.StringJoiner add(java.lang.CharSequence)>("WARNING: An illegal reflective access operation has occurred");
+
+        $stack7 = interfaceinvoke msgSupplier.<java.util.function.Supplier: java.lang.Object get()>();
+
+        $stack8 = (java.lang.CharSequence) $stack7;
+
+        $stack9 = virtualinvoke sj.<java.util.StringJoiner: java.util.StringJoiner add(java.lang.CharSequence)>($stack8);
+
+        $stack10 = new java.lang.StringBuilder;
+
+        specialinvoke $stack10.<java.lang.StringBuilder: void <init>()>();
+
+        $stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WARNING: Please consider reporting this to the maintainers of ");
+
+        $stack12 = virtualinvoke caller.<java.lang.Class: java.lang.String getName()>();
+
+        $stack13 = virtualinvoke $stack11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack12);
+
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack15 = virtualinvoke sj.<java.util.StringJoiner: java.util.StringJoiner add(java.lang.CharSequence)>($stack14);
+
+        $stack16 = virtualinvoke sj.<java.util.StringJoiner: java.util.StringJoiner add(java.lang.CharSequence)>("WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations");
+
+        $stack17 = virtualinvoke sj.<java.util.StringJoiner: java.util.StringJoiner add(java.lang.CharSequence)>("WARNING: All illegal access operations will be denied in a future release");
+
+        $stack18 = virtualinvoke sj.<java.util.StringJoiner: java.lang.String toString()>();
+
+        return $stack18;
+
+        nop;
+    }
+
+    public boolean isJavaBase(java.lang.StackWalker$StackFrame)
+    {
+        java.lang.StackWalker$StackFrame frame;
+        jdk.internal.module.IllegalAccessLogger this;
+        java.lang.Module $stack4, caller;
+        java.lang.Class $stack3;
+        java.lang.String $stack5, $stack6;
+        boolean $stack7;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        frame := @parameter0: java.lang.StackWalker$StackFrame;
+
+        $stack3 = interfaceinvoke frame.<java.lang.StackWalker$StackFrame: java.lang.Class getDeclaringClass()>();
+
+        $stack4 = virtualinvoke $stack3.<java.lang.Class: java.lang.Module getModule()>();
+
+        caller = $stack4;
+
+        $stack5 = "java.base";
+
+        $stack6 = virtualinvoke caller.<java.lang.Module: java.lang.String getName()>();
+
+        $stack7 = virtualinvoke $stack5.<java.lang.String: boolean equals(java.lang.Object)>($stack6);
+
+        return $stack7;
+
+        nop;
+    }
+
+    private int hash(java.util.List)
+    {
+        java.lang.Object[] $stack8;
+        java.lang.Integer $stack16;
+        byte $stack10, $stack12, $stack14;
+        bottom_type hash;
+        int $stack9, $stack15, $stack17, hash#1;
+        java.lang.String $stack13;
+        boolean $stack6;
+        java.util.Iterator $stack5, l3, $stack18;
+        java.lang.StackWalker$StackFrame frame;
+        jdk.internal.module.IllegalAccessLogger this;
+        java.util.List stack;
+        java.lang.Object $stack7;
+        java.lang.Class $stack11;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        stack := @parameter0: java.util.List;
+
+        hash#1 = 0;
+
+        $stack5 = interfaceinvoke stack.<java.util.List: java.util.Iterator iterator()>();
+
+        l3 = $stack5;
+
+     label1:
+        $stack18 = l3;
+
+        $stack6 = interfaceinvoke $stack18.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack6 == 0 goto label2;
+
+        $stack7 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>();
+
+        frame = (java.lang.StackWalker$StackFrame) $stack7;
+
+        $stack9 = 31 * hash#1;
+
+        $stack8 = newarray (java.lang.Object)[3];
+
+        $stack10 = 0;
+
+        $stack11 = interfaceinvoke frame.<java.lang.StackWalker$StackFrame: java.lang.Class getDeclaringClass()>();
+
+        $stack8[$stack10] = $stack11;
+
+        $stack12 = 1;
+
+        $stack13 = interfaceinvoke frame.<java.lang.StackWalker$StackFrame: java.lang.String getMethodName()>();
+
+        $stack8[$stack12] = $stack13;
+
+        $stack14 = 2;
+
+        $stack15 = interfaceinvoke frame.<java.lang.StackWalker$StackFrame: int getByteCodeIndex()>();
+
+        $stack16 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack15);
+
+        $stack8[$stack14] = $stack16;
+
+        $stack17 = staticinvoke <java.util.Objects: int hash(java.lang.Object[])>($stack8);
+
+        hash#1 = $stack9 + $stack17;
+
+        goto label1;
+
+     label2:
+        return hash#1;
+
+        nop;
+    }
+
+    public static void lambda$log$4(java.lang.StringBuilder, java.lang.StackWalker$StackFrame)
+    {
+        java.lang.StackWalker$StackFrame f;
+        java.lang.StringBuilder sb, $stack3, $stack4, $stack5, $stack6, $stack8;
+        java.lang.String $stack2, $stack7;
+
+        sb := @parameter0: java.lang.StringBuilder;
+
+        f := @parameter1: java.lang.StackWalker$StackFrame;
+
+        $stack2 = staticinvoke <java.lang.System: java.lang.String lineSeparator()>();
+
+        $stack3 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack2);
+
+        $stack4 = new java.lang.StringBuilder;
+
+        specialinvoke $stack4.<java.lang.StringBuilder: void <init>()>();
+
+        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\tat ");
+
+        $stack6 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f);
+
+        $stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack8 = virtualinvoke $stack3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack7);
+
+        return;
+
+        nop;
+    }
+
+    public static jdk.internal.module.IllegalAccessLogger$Usages lambda$log$3(java.lang.Class)
+    {
+        java.lang.Class k;
+        jdk.internal.module.IllegalAccessLogger$Usages $stack1;
+
+        k := @parameter0: java.lang.Class;
+
+        $stack1 = new jdk.internal.module.IllegalAccessLogger$Usages;
+
+        specialinvoke $stack1.<jdk.internal.module.IllegalAccessLogger$Usages: void <init>()>();
+
+        return $stack1;
+
+        nop;
+    }
+
+    public java.util.List lambda$log$2(java.util.stream.Stream)
+    {
+        java.util.function.Predicate $stack2;
+        jdk.internal.module.IllegalAccessLogger this;
+        java.util.List $stack7;
+        java.util.stream.Stream s, $stack3, $stack4;
+        java.lang.Object $stack6;
+        java.util.stream.Collector $stack5;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        s := @parameter0: java.util.stream.Stream;
+
+        $stack2 = staticinvoke <jdk.internal.module.IllegalAccessLogger$isJavaBase__206: java.util.function.Predicate bootstrap$(jdk.internal.module.IllegalAccessLogger)>(this);
+
+        $stack3 = interfaceinvoke s.<java.util.stream.Stream: java.util.stream.Stream dropWhile(java.util.function.Predicate)>($stack2);
+
+        $stack4 = interfaceinvoke $stack3.<java.util.stream.Stream: java.util.stream.Stream limit(long)>(32L);
+
+        $stack5 = staticinvoke <java.util.stream.Collectors: java.util.stream.Collector toList()>();
+
+        $stack6 = interfaceinvoke $stack4.<java.util.stream.Stream: java.lang.Object collect(java.util.stream.Collector)>($stack5);
+
+        $stack7 = (java.util.List) $stack6;
+
+        return $stack7;
+
+        nop;
+    }
+
+    public java.lang.String lambda$log$1(java.lang.Class, java.lang.String)
+    {
+        java.net.URL $stack5, url;
+        bottom_type source;
+        java.lang.String $stack6, what, $stack12, $stack18, $stack19, $stack20, $stack21, $stack22, source#1;
+        jdk.internal.module.IllegalAccessLogger this;
+        java.lang.Class caller;
+        java.lang.StringBuilder $stack7, $stack8, $stack9, $stack10, $stack11, $stack13, $stack14, $stack15, $stack16, $stack17;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger;
+
+        caller := @parameter0: java.lang.Class;
+
+        what := @parameter1: java.lang.String;
+
+        $stack5 = virtualinvoke this.<jdk.internal.module.IllegalAccessLogger: java.net.URL codeSource(java.lang.Class)>(caller);
+
+        url = $stack5;
+
+        $stack6 = virtualinvoke caller.<java.lang.Class: java.lang.String getName()>();
+
+        source#1 = $stack6;
+
+        if url == null goto label1;
+
+        $stack13 = new java.lang.StringBuilder;
+
+        specialinvoke $stack13.<java.lang.StringBuilder: void <init>()>();
+
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(source#1);
+
+        $stack15 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (");
+
+        $stack16 = virtualinvoke $stack15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(url);
+
+        $stack17 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $stack18 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        source#1 = $stack18;
+
+     label1:
+        $stack7 = new java.lang.StringBuilder;
+
+        specialinvoke $stack7.<java.lang.StringBuilder: void <init>()>();
+
+        $stack19 = "WARNING: Illegal reflective access by ";
+
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack19);
+
+        $stack20 = source#1;
+
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack20);
+
+        $stack21 = " to ";
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack21);
+
+        $stack22 = what;
+
+        $stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack22);
+
+        $stack12 = virtualinvoke $stack11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $stack12;
+
+        nop;
+    }
+
+    public static java.lang.String lambda$logIfOpenedForIllegalAccess$0(java.lang.String, java.lang.Class)
+    {
+        java.lang.StringBuilder $stack2, $stack3, $stack4, $stack5, $stack6;
+        java.lang.Class target;
+        java.lang.String source, $stack7;
+
+        source := @parameter0: java.lang.String;
+
+        target := @parameter1: java.lang.Class;
+
+        $stack2 = new java.lang.StringBuilder;
+
+        specialinvoke $stack2.<java.lang.StringBuilder: void <init>()>();
+
+        $stack3 = virtualinvoke $stack2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WARNING: Illegal reflective access using Lookup on ");
+
+        $stack4 = virtualinvoke $stack3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(source);
+
+        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" to ");
+
+        $stack6 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(target);
+
+        $stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $stack7;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.misc.JavaLangAccess $stack0;
+
+        $stack0 = staticinvoke <jdk.internal.misc.SharedSecrets: jdk.internal.misc.JavaLangAccess getJavaLangAccess()>();
+
+        <jdk.internal.module.IllegalAccessLogger: jdk.internal.misc.JavaLangAccess JLA> = $stack0;
+
+        return;
+    }
+}

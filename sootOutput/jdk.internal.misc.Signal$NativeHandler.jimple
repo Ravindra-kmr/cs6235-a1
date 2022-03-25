@@ -1,0 +1,90 @@
+final class jdk.internal.misc.Signal$NativeHandler extends java.lang.Object implements jdk.internal.misc.Signal$Handler
+{
+    private final long handler;
+
+    long getHandler()
+    {
+        long $stack1;
+        jdk.internal.misc.Signal$NativeHandler this;
+
+        this := @this: jdk.internal.misc.Signal$NativeHandler;
+
+        $stack1 = this.<jdk.internal.misc.Signal$NativeHandler: long handler>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    void <init>(long)
+    {
+        long handler;
+        jdk.internal.misc.Signal$NativeHandler this;
+
+        this := @this: jdk.internal.misc.Signal$NativeHandler;
+
+        handler := @parameter0: long;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.misc.Signal$NativeHandler: long handler> = handler;
+
+        return;
+
+        nop;
+    }
+
+    public void handle(jdk.internal.misc.Signal)
+    {
+        java.lang.UnsupportedOperationException $stack2;
+        jdk.internal.misc.Signal sig;
+        jdk.internal.misc.Signal$NativeHandler this;
+
+        this := @this: jdk.internal.misc.Signal$NativeHandler;
+
+        sig := @parameter0: jdk.internal.misc.Signal;
+
+        $stack2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $stack2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("invoking native signal handle not supported");
+
+        throw $stack2;
+
+        nop;
+    }
+
+    public java.lang.String toString()
+    {
+        jdk.internal.misc.Signal$Handler $stack1, $stack2;
+        bottom_type $stack3;
+        jdk.internal.misc.Signal$NativeHandler this;
+        java.lang.String $stack3#1;
+
+        this := @this: jdk.internal.misc.Signal$NativeHandler;
+
+        $stack1 = <jdk.internal.misc.Signal$NativeHandler: jdk.internal.misc.Signal$Handler SIG_DFL>;
+
+        if this != $stack1 goto label1;
+
+        $stack3#1 = "SIG_DFL";
+
+        goto label3;
+
+     label1:
+        $stack2 = <jdk.internal.misc.Signal$NativeHandler: jdk.internal.misc.Signal$Handler SIG_IGN>;
+
+        if this != $stack2 goto label2;
+
+        $stack3#1 = "SIG_IGN";
+
+        goto label3;
+
+     label2:
+        $stack3#1 = specialinvoke this.<java.lang.Object: java.lang.String toString()>();
+
+     label3:
+        return $stack3#1;
+
+        nop;
+    }
+}

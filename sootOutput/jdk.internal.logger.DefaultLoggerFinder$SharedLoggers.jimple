@@ -1,0 +1,151 @@
+final class jdk.internal.logger.DefaultLoggerFinder$SharedLoggers extends java.lang.Object
+{
+    private final java.util.Map loggers;
+    private final java.lang.ref.ReferenceQueue queue;
+    static final jdk.internal.logger.DefaultLoggerFinder$SharedLoggers system;
+    static final jdk.internal.logger.DefaultLoggerFinder$SharedLoggers application;
+
+    void <init>()
+    {
+        java.util.HashMap $stack1;
+        java.lang.ref.ReferenceQueue $stack2;
+        jdk.internal.logger.DefaultLoggerFinder$SharedLoggers this;
+
+        this := @this: jdk.internal.logger.DefaultLoggerFinder$SharedLoggers;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack1 = new java.util.HashMap;
+
+        specialinvoke $stack1.<java.util.HashMap: void <init>()>();
+
+        this.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: java.util.Map loggers> = $stack1;
+
+        $stack2 = new java.lang.ref.ReferenceQueue;
+
+        specialinvoke $stack2.<java.lang.ref.ReferenceQueue: void <init>()>();
+
+        this.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: java.lang.ref.ReferenceQueue queue> = $stack2;
+
+        return;
+
+        nop;
+    }
+
+    synchronized java.lang.System$Logger get(java.util.function.Function, java.lang.String)
+    {
+        java.util.function.Function loggerSupplier;
+        java.lang.ref.ReferenceQueue $stack19, $stack9#7, $stack9#8;
+        jdk.internal.logger.DefaultLoggerFinder$SharedLoggers this, $stack12#5, $stack12#6;
+        java.util.Map $stack6, $stack13, $stack20;
+        java.lang.String name;
+        java.lang.ref.WeakReference $stack18;
+        java.lang.System$Logger $stack24, $stack23#2, w#3;
+        java.util.Collection $stack14, $stack16, values#4;
+        java.lang.ref.Reference $stack15, ref#1, $stack10#9, $stack10#10, ref#11;
+        java.lang.Object $stack7, $stack8, $stack17;
+
+        this := @this: jdk.internal.logger.DefaultLoggerFinder$SharedLoggers;
+
+        loggerSupplier := @parameter0: java.util.function.Function;
+
+        name := @parameter1: java.lang.String;
+
+        $stack6 = this.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: java.util.Map loggers>;
+
+        $stack7 = interfaceinvoke $stack6.<java.util.Map: java.lang.Object get(java.lang.Object)>(name);
+
+        ref#1 = (java.lang.ref.Reference) $stack7;
+
+        if ref#1 != null goto label1;
+
+        $stack23#2 = null;
+
+        goto label2;
+
+     label1:
+        $stack8 = virtualinvoke ref#1.<java.lang.ref.Reference: java.lang.Object get()>();
+
+        $stack23#2 = (java.lang.System$Logger) $stack8;
+
+     label2:
+        w#3 = $stack23#2;
+
+        $stack24 = w#3;
+
+        if $stack24 != null goto label3;
+
+        $stack17 = interfaceinvoke loggerSupplier.<java.util.function.Function: java.lang.Object apply(java.lang.Object)>(name);
+
+        w#3 = (java.lang.System$Logger) $stack17;
+
+        $stack20 = this.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: java.util.Map loggers>;
+
+        $stack18 = new java.lang.ref.WeakReference;
+
+        $stack19 = this.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: java.lang.ref.ReferenceQueue queue>;
+
+        specialinvoke $stack18.<java.lang.ref.WeakReference: void <init>(java.lang.Object,java.lang.ref.ReferenceQueue)>(w#3, $stack19);
+
+        interfaceinvoke $stack20.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(name, $stack18);
+
+     label3:
+        values#4 = null;
+
+     label4:
+        $stack12#5 = this;
+
+        $stack12#6 = $stack12#5;
+
+        $stack9#7 = $stack12#6.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: java.lang.ref.ReferenceQueue queue>;
+
+        $stack9#8 = $stack9#7;
+
+        $stack10#9 = virtualinvoke $stack9#8.<java.lang.ref.ReferenceQueue: java.lang.ref.Reference poll()>();
+
+        $stack10#10 = $stack10#9;
+
+        ref#11 = $stack10#10;
+
+        if $stack10#10 == null goto label6;
+
+        if values#4 != null goto label5;
+
+        $stack13 = this.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: java.util.Map loggers>;
+
+        $stack14 = interfaceinvoke $stack13.<java.util.Map: java.util.Collection values()>();
+
+        values#4 = $stack14;
+
+     label5:
+        $stack16 = values#4;
+
+        $stack15 = ref#11;
+
+        interfaceinvoke $stack16.<java.util.Collection: boolean remove(java.lang.Object)>($stack15);
+
+        goto label4;
+
+     label6:
+        return w#3;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.logger.DefaultLoggerFinder$SharedLoggers $stack0, $stack1;
+
+        $stack0 = new jdk.internal.logger.DefaultLoggerFinder$SharedLoggers;
+
+        specialinvoke $stack0.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: void <init>()>();
+
+        <jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: jdk.internal.logger.DefaultLoggerFinder$SharedLoggers system> = $stack0;
+
+        $stack1 = new jdk.internal.logger.DefaultLoggerFinder$SharedLoggers;
+
+        specialinvoke $stack1.<jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: void <init>()>();
+
+        <jdk.internal.logger.DefaultLoggerFinder$SharedLoggers: jdk.internal.logger.DefaultLoggerFinder$SharedLoggers application> = $stack1;
+
+        return;
+    }
+}

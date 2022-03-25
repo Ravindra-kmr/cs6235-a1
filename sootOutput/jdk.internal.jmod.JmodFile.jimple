@@ -1,0 +1,522 @@
+public class jdk.internal.jmod.JmodFile extends java.lang.Object implements java.lang.AutoCloseable
+{
+    private static final int JMOD_MAJOR_VERSION;
+    private static final int JMOD_MINOR_VERSION;
+    private static final byte[] JMOD_MAGIC_NUMBER;
+    private final java.nio.file.Path file;
+    private final java.util.zip.ZipFile zipfile;
+
+    public static void checkMagic(java.nio.file.Path) throws java.io.IOException
+    {
+        byte[] $stack9, $stack18, $stack39, $stack42, magic#2;
+        java.io.BufferedInputStream $stack7, $stack36, bis#1, $u0;
+        byte $stack10, $stack11, $stack19, $stack20, $stack21, $stack25, $stack28, $stack34, $stack35, $stack38, $stack41;
+        bottom_type bis, magic, $stack49;
+        java.nio.file.Path file, $stack44, $stack46;
+        java.lang.StringBuilder $stack13, $stack14, $stack16, $stack23, $stack24, $stack26, $stack27, $stack29, $stack30, $stack32, $u1, $u3;
+        java.lang.Throwable $stack47, $stack48, $stack50, l4, $stack51, $stack52, magic#3, bis#4, magic#5, $stack49#6, $stack49#7;
+        java.nio.file.OpenOption[] $stack5;
+        java.lang.String $stack15, $stack17, $stack31, $stack33, $stack37, $stack40, $stack43, $stack45;
+        java.io.IOException $stack12, $stack22, $u2, $u4;
+        int $stack8, $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7;
+        java.io.InputStream $stack6, in;
+
+        file := @parameter0: java.nio.file.Path;
+
+        $stack5 = newarray (java.nio.file.OpenOption)[0];
+
+        $stack6 = staticinvoke <java.nio.file.Files: java.io.InputStream newInputStream(java.nio.file.Path,java.nio.file.OpenOption[])>(file, $stack5);
+
+        in = $stack6;
+
+     label01:
+        $u0 = new java.io.BufferedInputStream;
+
+        $stack7 = $u0;
+
+        specialinvoke $u0.<java.io.BufferedInputStream: void <init>(java.io.InputStream)>(in);
+
+        bis#1 = $stack7;
+
+     label02:
+        magic#2 = newarray (byte)[4];
+
+        $stack8 = virtualinvoke bis#1.<java.io.BufferedInputStream: int read(byte[])>(magic#2);
+
+        $stack11 = magic#2[0];
+
+        $stack9 = <jdk.internal.jmod.JmodFile: byte[] JMOD_MAGIC_NUMBER>;
+
+        $stack10 = $stack9[0];
+
+        $i0 = (int) $stack11;
+
+        $i1 = (int) $stack10;
+
+        if $i0 != $i1 goto label03;
+
+        $stack20 = magic#2[1];
+
+        $stack18 = <jdk.internal.jmod.JmodFile: byte[] JMOD_MAGIC_NUMBER>;
+
+        $stack19 = $stack18[1];
+
+        $i2 = (int) $stack20;
+
+        $i3 = (int) $stack19;
+
+        if $i2 == $i3 goto label04;
+
+     label03:
+        $u2 = new java.io.IOException;
+
+        $stack12 = $u2;
+
+        $u1 = new java.lang.StringBuilder;
+
+        $stack13 = $u1;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        $stack45 = "Invalid JMOD file: ";
+
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack45);
+
+        $stack46 = file;
+
+        $stack15 = interfaceinvoke $stack46.<java.nio.file.Path: java.lang.String toString()>();
+
+        $stack16 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack15);
+
+        $stack17 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u2.<java.io.IOException: void <init>(java.lang.String)>($stack17);
+
+        throw $stack12;
+
+     label04:
+        $stack21 = magic#2[2];
+
+        $i4 = (int) $stack21;
+
+        if $i4 > 1 goto label05;
+
+        $stack34 = magic#2[2];
+
+        if $stack34 != 1 goto label06;
+
+        $stack35 = magic#2[3];
+
+        $i5 = (int) $stack35;
+
+        if $i5 <= 0 goto label06;
+
+     label05:
+        $u4 = new java.io.IOException;
+
+        $stack22 = $u4;
+
+        $u3 = new java.lang.StringBuilder;
+
+        $stack23 = $u3;
+
+        specialinvoke $u3.<java.lang.StringBuilder: void <init>()>();
+
+        $stack37 = "Unsupported jmod version: ";
+
+        $stack24 = virtualinvoke $stack23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack37);
+
+        $stack39 = magic#2;
+
+        $stack38 = 2;
+
+        $stack25 = $stack39[$stack38];
+
+        $i6 = (int) $stack25;
+
+        $stack26 = virtualinvoke $stack24.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i6);
+
+        $stack40 = ".";
+
+        $stack27 = virtualinvoke $stack26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack40);
+
+        $stack42 = magic#2;
+
+        $stack41 = 3;
+
+        $stack28 = $stack42[$stack41];
+
+        $i7 = (int) $stack28;
+
+        $stack29 = virtualinvoke $stack27.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i7);
+
+        $stack43 = " in ";
+
+        $stack30 = virtualinvoke $stack29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack43);
+
+        $stack44 = file;
+
+        $stack31 = interfaceinvoke $stack44.<java.nio.file.Path: java.lang.String toString()>();
+
+        $stack32 = virtualinvoke $stack30.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack31);
+
+        $stack33 = virtualinvoke $stack32.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u4.<java.io.IOException: void <init>(java.lang.String)>($stack33);
+
+        throw $stack22;
+
+     label06:
+        $stack36 = bis#1;
+
+        virtualinvoke $stack36.<java.io.BufferedInputStream: void close()>();
+
+        goto label12;
+
+     label07:
+        $stack51 := @caughtexception;
+
+        magic#3 = $stack51;
+
+     label08:
+        virtualinvoke bis#1.<java.io.BufferedInputStream: void close()>();
+
+     label09:
+        goto label11;
+
+     label10:
+        $stack50 := @caughtexception;
+
+        l4 = $stack50;
+
+        virtualinvoke magic#3.<java.lang.Throwable: void addSuppressed(java.lang.Throwable)>(l4);
+
+     label11:
+        $stack52 = magic#3;
+
+        throw $stack52;
+
+     label12:
+        if in == null goto label18;
+
+        virtualinvoke in.<java.io.InputStream: void close()>();
+
+        goto label18;
+
+     label13:
+        $stack48 := @caughtexception;
+
+        bis#4 = $stack48;
+
+        if in == null goto label17;
+
+     label14:
+        virtualinvoke in.<java.io.InputStream: void close()>();
+
+     label15:
+        goto label17;
+
+     label16:
+        $stack47 := @caughtexception;
+
+        magic#5 = $stack47;
+
+        virtualinvoke bis#4.<java.lang.Throwable: void addSuppressed(java.lang.Throwable)>(magic#5);
+
+     label17:
+        $stack49#6 = bis#4;
+
+        $stack49#7 = $stack49#6;
+
+        throw $stack49#7;
+
+     label18:
+        return;
+
+        nop;
+
+        catch java.lang.Throwable from label02 to label06 with label07;
+        catch java.lang.Throwable from label08 to label09 with label10;
+        catch java.lang.Throwable from label01 to label12 with label13;
+        catch java.lang.Throwable from label14 to label15 with label16;
+    }
+
+    public void <init>(java.nio.file.Path) throws java.io.IOException
+    {
+        jdk.internal.jmod.JmodFile this;
+        java.util.zip.ZipFile $stack2;
+        java.nio.file.Path file;
+        java.io.File $stack3;
+
+        this := @this: jdk.internal.jmod.JmodFile;
+
+        file := @parameter0: java.nio.file.Path;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        staticinvoke <jdk.internal.jmod.JmodFile: void checkMagic(java.nio.file.Path)>(file);
+
+        this.<jdk.internal.jmod.JmodFile: java.nio.file.Path file> = file;
+
+        $stack2 = new java.util.zip.ZipFile;
+
+        $stack3 = interfaceinvoke file.<java.nio.file.Path: java.io.File toFile()>();
+
+        specialinvoke $stack2.<java.util.zip.ZipFile: void <init>(java.io.File)>($stack3);
+
+        this.<jdk.internal.jmod.JmodFile: java.util.zip.ZipFile zipfile> = $stack2;
+
+        return;
+
+        nop;
+    }
+
+    public static void writeMagicNumber(java.io.OutputStream) throws java.io.IOException
+    {
+        java.io.OutputStream os;
+        byte[] $stack1;
+
+        os := @parameter0: java.io.OutputStream;
+
+        $stack1 = <jdk.internal.jmod.JmodFile: byte[] JMOD_MAGIC_NUMBER>;
+
+        virtualinvoke os.<java.io.OutputStream: void write(byte[])>($stack1);
+
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.jmod.JmodFile$Entry getEntry(jdk.internal.jmod.JmodFile$Section, java.lang.String)
+    {
+        jdk.internal.jmod.JmodFile$Section section;
+        jdk.internal.jmod.JmodFile this;
+        jdk.internal.jmod.JmodFile$Entry $stack13#1;
+        bottom_type $stack13;
+        java.lang.StringBuilder $stack5, $stack7, $stack8, $stack9;
+        java.util.zip.ZipFile $stack11;
+        java.lang.String $stack6, name, $stack10, entry;
+        java.util.zip.ZipEntry $stack12, ze;
+
+        this := @this: jdk.internal.jmod.JmodFile;
+
+        section := @parameter0: jdk.internal.jmod.JmodFile$Section;
+
+        name := @parameter1: java.lang.String;
+
+        $stack5 = new java.lang.StringBuilder;
+
+        specialinvoke $stack5.<java.lang.StringBuilder: void <init>()>();
+
+        $stack6 = virtualinvoke section.<jdk.internal.jmod.JmodFile$Section: java.lang.String jmodDir()>();
+
+        $stack7 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack6);
+
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        entry = $stack10;
+
+        $stack11 = this.<jdk.internal.jmod.JmodFile: java.util.zip.ZipFile zipfile>;
+
+        $stack12 = virtualinvoke $stack11.<java.util.zip.ZipFile: java.util.zip.ZipEntry getEntry(java.lang.String)>(entry);
+
+        ze = $stack12;
+
+        if ze == null goto label1;
+
+        $stack13#1 = new jdk.internal.jmod.JmodFile$Entry;
+
+        specialinvoke $stack13#1.<jdk.internal.jmod.JmodFile$Entry: void <init>(java.util.zip.ZipEntry)>(ze);
+
+        goto label2;
+
+     label1:
+        $stack13#1 = null;
+
+     label2:
+        return $stack13#1;
+
+        nop;
+    }
+
+    public java.io.InputStream getInputStream(jdk.internal.jmod.JmodFile$Section, java.lang.String) throws java.io.IOException
+    {
+        java.util.zip.ZipFile $stack11, $stack13;
+        java.lang.String $stack6, name, $stack10, entry, $stack21;
+        java.util.zip.ZipEntry $stack12, e;
+        java.nio.file.Path $stack19;
+        jdk.internal.jmod.JmodFile$Section section;
+        java.io.IOException $stack15;
+        jdk.internal.jmod.JmodFile this;
+        java.lang.StringBuilder $stack5, $stack7, $stack8, $stack9, $stack16, $stack17, $stack18, $stack20;
+        java.io.InputStream $stack14;
+
+        this := @this: jdk.internal.jmod.JmodFile;
+
+        section := @parameter0: jdk.internal.jmod.JmodFile$Section;
+
+        name := @parameter1: java.lang.String;
+
+        $stack5 = new java.lang.StringBuilder;
+
+        specialinvoke $stack5.<java.lang.StringBuilder: void <init>()>();
+
+        $stack6 = virtualinvoke section.<jdk.internal.jmod.JmodFile$Section: java.lang.String jmodDir()>();
+
+        $stack7 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack6);
+
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        entry = $stack10;
+
+        $stack11 = this.<jdk.internal.jmod.JmodFile: java.util.zip.ZipFile zipfile>;
+
+        $stack12 = virtualinvoke $stack11.<java.util.zip.ZipFile: java.util.zip.ZipEntry getEntry(java.lang.String)>(entry);
+
+        e = $stack12;
+
+        if e != null goto label1;
+
+        $stack15 = new java.io.IOException;
+
+        $stack16 = new java.lang.StringBuilder;
+
+        specialinvoke $stack16.<java.lang.StringBuilder: void <init>()>();
+
+        $stack17 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        $stack18 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" not found: ");
+
+        $stack19 = this.<jdk.internal.jmod.JmodFile: java.nio.file.Path file>;
+
+        $stack20 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack19);
+
+        $stack21 = virtualinvoke $stack20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack15.<java.io.IOException: void <init>(java.lang.String)>($stack21);
+
+        throw $stack15;
+
+     label1:
+        $stack13 = this.<jdk.internal.jmod.JmodFile: java.util.zip.ZipFile zipfile>;
+
+        $stack14 = virtualinvoke $stack13.<java.util.zip.ZipFile: java.io.InputStream getInputStream(java.util.zip.ZipEntry)>(e);
+
+        return $stack14;
+
+        nop;
+    }
+
+    public java.io.InputStream getInputStream(jdk.internal.jmod.JmodFile$Entry) throws java.io.IOException
+    {
+        jdk.internal.jmod.JmodFile this;
+        jdk.internal.jmod.JmodFile$Entry entry;
+        java.util.zip.ZipFile $stack2;
+        java.util.zip.ZipEntry $stack3;
+        java.io.InputStream $stack4;
+
+        this := @this: jdk.internal.jmod.JmodFile;
+
+        entry := @parameter0: jdk.internal.jmod.JmodFile$Entry;
+
+        $stack2 = this.<jdk.internal.jmod.JmodFile: java.util.zip.ZipFile zipfile>;
+
+        $stack3 = virtualinvoke entry.<jdk.internal.jmod.JmodFile$Entry: java.util.zip.ZipEntry zipEntry()>();
+
+        $stack4 = virtualinvoke $stack2.<java.util.zip.ZipFile: java.io.InputStream getInputStream(java.util.zip.ZipEntry)>($stack3);
+
+        return $stack4;
+
+        nop;
+    }
+
+    public java.util.stream.Stream stream()
+    {
+        jdk.internal.jmod.JmodFile this;
+        java.util.stream.Stream $stack2, $stack4;
+        java.util.zip.ZipFile $stack1;
+        java.util.function.Function $stack3;
+
+        this := @this: jdk.internal.jmod.JmodFile;
+
+        $stack1 = this.<jdk.internal.jmod.JmodFile: java.util.zip.ZipFile zipfile>;
+
+        $stack2 = virtualinvoke $stack1.<java.util.zip.ZipFile: java.util.stream.Stream stream()>();
+
+        $stack3 = staticinvoke <jdk.internal.jmod.JmodFile$lambda_stream_0__458: java.util.function.Function bootstrap$()>();
+
+        $stack4 = interfaceinvoke $stack2.<java.util.stream.Stream: java.util.stream.Stream map(java.util.function.Function)>($stack3);
+
+        return $stack4;
+
+        nop;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        jdk.internal.jmod.JmodFile this;
+        java.util.zip.ZipFile $stack1, $stack2;
+
+        this := @this: jdk.internal.jmod.JmodFile;
+
+        $stack1 = this.<jdk.internal.jmod.JmodFile: java.util.zip.ZipFile zipfile>;
+
+        if $stack1 == null goto label1;
+
+        $stack2 = this.<jdk.internal.jmod.JmodFile: java.util.zip.ZipFile zipfile>;
+
+        virtualinvoke $stack2.<java.util.zip.ZipFile: void close()>();
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public static jdk.internal.jmod.JmodFile$Entry lambda$stream$0(java.util.zip.ZipEntry)
+    {
+        jdk.internal.jmod.JmodFile$Entry $stack1;
+        java.util.zip.ZipEntry x$0;
+
+        x$0 := @parameter0: java.util.zip.ZipEntry;
+
+        $stack1 = new jdk.internal.jmod.JmodFile$Entry;
+
+        specialinvoke $stack1.<jdk.internal.jmod.JmodFile$Entry: void <init>(java.util.zip.ZipEntry)>(x$0);
+
+        return $stack1;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        byte[] $stack0;
+
+        <jdk.internal.jmod.JmodFile: int JMOD_MINOR_VERSION> = 0;
+
+        <jdk.internal.jmod.JmodFile: int JMOD_MAJOR_VERSION> = 1;
+
+        $stack0 = newarray (byte)[4];
+
+        $stack0[0] = 74;
+
+        $stack0[1] = 77;
+
+        $stack0[2] = 1;
+
+        $stack0[3] = 0;
+
+        <jdk.internal.jmod.JmodFile: byte[] JMOD_MAGIC_NUMBER> = $stack0;
+
+        return;
+    }
+}

@@ -1,0 +1,194 @@
+class jdk.internal.loader.ClassLoaders$AppClassLoader extends jdk.internal.loader.BuiltinClassLoader
+{
+    final jdk.internal.loader.URLClassPath ucp;
+
+    void <init>(jdk.internal.loader.ClassLoaders$PlatformClassLoader, jdk.internal.loader.URLClassPath)
+    {
+        jdk.internal.loader.ClassLoaders$AppClassLoader this;
+        jdk.internal.loader.ClassLoaders$PlatformClassLoader parent;
+        jdk.internal.loader.URLClassPath ucp;
+
+        this := @this: jdk.internal.loader.ClassLoaders$AppClassLoader;
+
+        parent := @parameter0: jdk.internal.loader.ClassLoaders$PlatformClassLoader;
+
+        ucp := @parameter1: jdk.internal.loader.URLClassPath;
+
+        specialinvoke this.<jdk.internal.loader.BuiltinClassLoader: void <init>(java.lang.String,jdk.internal.loader.BuiltinClassLoader,jdk.internal.loader.URLClassPath)>("app", parent, ucp);
+
+        this.<jdk.internal.loader.ClassLoaders$AppClassLoader: jdk.internal.loader.URLClassPath ucp> = ucp;
+
+        return;
+
+        nop;
+    }
+
+    protected java.lang.Class loadClass(java.lang.String, boolean) throws java.lang.ClassNotFoundException
+    {
+        byte $b0;
+        bottom_type $stack6, $stack8, $stack9, $stack10;
+        int $stack7, i, $i0;
+        java.lang.String cn, $stack11, $stack8#3, $stack8#4;
+        boolean resolve, $stack9#5, $stack9#6;
+        java.lang.SecurityManager $stack5, sm;
+        jdk.internal.loader.ClassLoaders$AppClassLoader this, $stack10#1, $stack10#2;
+        java.lang.Class $stack6#7, $stack6#8;
+
+        this := @this: jdk.internal.loader.ClassLoaders$AppClassLoader;
+
+        cn := @parameter0: java.lang.String;
+
+        resolve := @parameter1: boolean;
+
+        $stack5 = staticinvoke <java.lang.System: java.lang.SecurityManager getSecurityManager()>();
+
+        sm = $stack5;
+
+        if sm == null goto label1;
+
+        $stack7 = virtualinvoke cn.<java.lang.String: int lastIndexOf(int)>(46);
+
+        i = $stack7;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        if i == $i0 goto label1;
+
+        $stack11 = virtualinvoke cn.<java.lang.String: java.lang.String substring(int,int)>(0, i);
+
+        virtualinvoke sm.<java.lang.SecurityManager: void checkPackageAccess(java.lang.String)>($stack11);
+
+     label1:
+        $stack10#1 = this;
+
+        $stack10#2 = $stack10#1;
+
+        $stack8#3 = cn;
+
+        $stack8#4 = $stack8#3;
+
+        $stack9#5 = resolve;
+
+        $stack9#6 = $stack9#5;
+
+        $stack6#7 = specialinvoke $stack10#2.<jdk.internal.loader.BuiltinClassLoader: java.lang.Class loadClass(java.lang.String,boolean)>($stack8#4, $stack9#6);
+
+        $stack6#8 = $stack6#7;
+
+        return $stack6#8;
+
+        nop;
+    }
+
+    protected java.security.PermissionCollection getPermissions(java.security.CodeSource)
+    {
+        jdk.internal.loader.ClassLoaders$AppClassLoader this;
+        java.lang.RuntimePermission $stack4;
+        java.security.CodeSource cs;
+        java.security.PermissionCollection $stack3, perms;
+
+        this := @this: jdk.internal.loader.ClassLoaders$AppClassLoader;
+
+        cs := @parameter0: java.security.CodeSource;
+
+        $stack3 = specialinvoke this.<jdk.internal.loader.BuiltinClassLoader: java.security.PermissionCollection getPermissions(java.security.CodeSource)>(cs);
+
+        perms = $stack3;
+
+        $stack4 = new java.lang.RuntimePermission;
+
+        specialinvoke $stack4.<java.lang.RuntimePermission: void <init>(java.lang.String)>("exitVM");
+
+        virtualinvoke perms.<java.security.PermissionCollection: void add(java.security.Permission)>($stack4);
+
+        return perms;
+
+        nop;
+    }
+
+    void appendToClassPathForInstrumentation(java.lang.String)
+    {
+        jdk.internal.loader.ClassLoaders$AppClassLoader this;
+        java.lang.String path;
+        jdk.internal.loader.URLClassPath $stack2;
+
+        this := @this: jdk.internal.loader.ClassLoaders$AppClassLoader;
+
+        path := @parameter0: java.lang.String;
+
+        $stack2 = this.<jdk.internal.loader.ClassLoaders$AppClassLoader: jdk.internal.loader.URLClassPath ucp>;
+
+        virtualinvoke $stack2.<jdk.internal.loader.URLClassPath: void addFile(java.lang.String)>(path);
+
+        return;
+
+        nop;
+    }
+
+    private java.lang.Package definePackage(java.lang.String, java.lang.Module)
+    {
+        jdk.internal.loader.ClassLoaders$AppClassLoader this;
+        java.lang.Module module;
+        java.lang.Package $stack4;
+        java.lang.String pn;
+        jdk.internal.misc.JavaLangAccess $stack3;
+
+        this := @this: jdk.internal.loader.ClassLoaders$AppClassLoader;
+
+        pn := @parameter0: java.lang.String;
+
+        module := @parameter1: java.lang.Module;
+
+        $stack3 = <jdk.internal.loader.ClassLoaders: jdk.internal.misc.JavaLangAccess JLA>;
+
+        $stack4 = interfaceinvoke $stack3.<jdk.internal.misc.JavaLangAccess: java.lang.Package definePackage(java.lang.ClassLoader,java.lang.String,java.lang.Module)>(this, pn, module);
+
+        return $stack4;
+
+        nop;
+    }
+
+    protected java.lang.Package defineOrCheckPackage(java.lang.String, java.util.jar.Manifest, java.net.URL)
+    {
+        java.util.jar.Manifest man;
+        jdk.internal.loader.ClassLoaders$AppClassLoader this;
+        java.lang.Package $stack4;
+        java.net.URL url;
+        java.lang.String pn;
+
+        this := @this: jdk.internal.loader.ClassLoaders$AppClassLoader;
+
+        pn := @parameter0: java.lang.String;
+
+        man := @parameter1: java.util.jar.Manifest;
+
+        url := @parameter2: java.net.URL;
+
+        $stack4 = specialinvoke this.<jdk.internal.loader.BuiltinClassLoader: java.lang.Package defineOrCheckPackage(java.lang.String,java.util.jar.Manifest,java.net.URL)>(pn, man, url);
+
+        return $stack4;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        java.lang.InternalError $stack1;
+        boolean $stack0;
+
+        $stack0 = staticinvoke <java.lang.ClassLoader: boolean registerAsParallelCapable()>();
+
+        if $stack0 != 0 goto label1;
+
+        $stack1 = new java.lang.InternalError;
+
+        specialinvoke $stack1.<java.lang.InternalError: void <init>()>();
+
+        throw $stack1;
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,336 @@
+class jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator extends java.lang.Object implements java.util.Spliterator
+{
+    final java.lang.String moduleRoot;
+    final java.util.Deque stack;
+    java.util.Iterator iterator;
+    static final boolean $assertionsDisabled;
+
+    void <init>(java.lang.String) throws java.io.IOException
+    {
+        jdk.internal.jimage.ImageReader $stack8;
+        java.util.Deque $stack18;
+        java.lang.String module, $stack6, $stack9, $stack13, $stack16, $stack21;
+        boolean $stack17;
+        jdk.internal.jimage.ImageReader$Node $stack10, dir;
+        java.util.Iterator $stack19;
+        java.io.IOException $stack11;
+        jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator this, $stack20;
+        java.lang.StringBuilder $stack3, $stack4, $stack5, $stack12, $stack14, $stack15;
+        java.util.ArrayDeque $stack7;
+
+        this := @this: jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator;
+
+        module := @parameter0: java.lang.String;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack3 = new java.lang.StringBuilder;
+
+        specialinvoke $stack3.<java.lang.StringBuilder: void <init>()>();
+
+        $stack4 = virtualinvoke $stack3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/modules/");
+
+        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(module);
+
+        $stack6 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.lang.String moduleRoot> = $stack6;
+
+        $stack7 = new java.util.ArrayDeque;
+
+        specialinvoke $stack7.<java.util.ArrayDeque: void <init>()>();
+
+        this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.util.Deque stack> = $stack7;
+
+        $stack8 = staticinvoke <jdk.internal.module.SystemModuleFinders$SystemImage: jdk.internal.jimage.ImageReader reader()>();
+
+        $stack9 = this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.lang.String moduleRoot>;
+
+        $stack10 = virtualinvoke $stack8.<jdk.internal.jimage.ImageReader: jdk.internal.jimage.ImageReader$Node findNode(java.lang.String)>($stack9);
+
+        dir = $stack10;
+
+        if dir == null goto label1;
+
+        $stack17 = virtualinvoke dir.<jdk.internal.jimage.ImageReader$Node: boolean isDirectory()>();
+
+        if $stack17 != 0 goto label2;
+
+     label1:
+        $stack11 = new java.io.IOException;
+
+        $stack12 = new java.lang.StringBuilder;
+
+        specialinvoke $stack12.<java.lang.StringBuilder: void <init>()>();
+
+        $stack20 = this;
+
+        $stack13 = $stack20.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.lang.String moduleRoot>;
+
+        $stack14 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack13);
+
+        $stack21 = " not a directory";
+
+        $stack15 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack21);
+
+        $stack16 = virtualinvoke $stack15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack11.<java.io.IOException: void <init>(java.lang.String)>($stack16);
+
+        throw $stack11;
+
+     label2:
+        $stack18 = this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.util.Deque stack>;
+
+        interfaceinvoke $stack18.<java.util.Deque: void push(java.lang.Object)>(dir);
+
+        $stack19 = staticinvoke <java.util.Collections: java.util.Iterator emptyIterator()>();
+
+        this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.util.Iterator iterator> = $stack19;
+
+        return;
+
+        nop;
+    }
+
+    private java.lang.String next() throws java.io.IOException
+    {
+        jdk.internal.jimage.ImageReader $stack26;
+        bottom_type $stack4, $stack5, node, $stack13;
+        boolean $stack7, $stack10, $stack14, $stack21, $stack28, $stack30, $stack5#5, $stack5#6;
+        jdk.internal.jimage.ImageReader$Node $stack15, $stack27, dir, $stack32, node#7, node#8;
+        java.util.List $stack11;
+        java.lang.AssertionError $stack17, $stack33;
+        java.util.Deque $stack6, $stack8, $stack29;
+        int $stack23, $stack24;
+        java.lang.String $stack20, name, $stack22, $stack25;
+        java.util.Iterator $stack12, $stack18, $stack4#3, $stack4#4;
+        jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator this, $stack16, $stack31, $stack13#1, $stack13#2;
+        java.lang.Object $stack9, $stack19;
+
+        this := @this: jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator;
+
+     label1:
+        $stack13#1 = this;
+
+        $stack13#2 = $stack13#1;
+
+        $stack4#3 = $stack13#2.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.util.Iterator iterator>;
+
+        $stack4#4 = $stack4#3;
+
+        $stack5#5 = interfaceinvoke $stack4#4.<java.util.Iterator: boolean hasNext()>();
+
+        $stack5#6 = $stack5#5;
+
+        if $stack5#6 == 0 goto label5;
+
+        $stack18 = this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.util.Iterator iterator>;
+
+        $stack19 = interfaceinvoke $stack18.<java.util.Iterator: java.lang.Object next()>();
+
+        node#7 = (jdk.internal.jimage.ImageReader$Node) $stack19;
+
+        $stack20 = virtualinvoke node#7.<jdk.internal.jimage.ImageReader$Node: java.lang.String getName()>();
+
+        name = $stack20;
+
+        $stack21 = virtualinvoke node#7.<jdk.internal.jimage.ImageReader$Node: boolean isDirectory()>();
+
+        if $stack21 == 0 goto label3;
+
+        $stack26 = staticinvoke <jdk.internal.module.SystemModuleFinders$SystemImage: jdk.internal.jimage.ImageReader reader()>();
+
+        $stack27 = virtualinvoke $stack26.<jdk.internal.jimage.ImageReader: jdk.internal.jimage.ImageReader$Node findNode(java.lang.String)>(name);
+
+        dir = $stack27;
+
+        $stack28 = <jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: boolean $assertionsDisabled>;
+
+        if $stack28 != 0 goto label2;
+
+        $stack30 = virtualinvoke dir.<jdk.internal.jimage.ImageReader$Node: boolean isDirectory()>();
+
+        if $stack30 != 0 goto label2;
+
+        $stack33 = new java.lang.AssertionError;
+
+        specialinvoke $stack33.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack33;
+
+     label2:
+        $stack31 = this;
+
+        $stack29 = $stack31.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.util.Deque stack>;
+
+        $stack32 = dir;
+
+        interfaceinvoke $stack29.<java.util.Deque: void push(java.lang.Object)>($stack32);
+
+        goto label4;
+
+     label3:
+        $stack22 = this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.lang.String moduleRoot>;
+
+        $stack23 = virtualinvoke $stack22.<java.lang.String: int length()>();
+
+        $stack24 = $stack23 + 1;
+
+        $stack25 = virtualinvoke name.<java.lang.String: java.lang.String substring(int)>($stack24);
+
+        return $stack25;
+
+     label4:
+        goto label1;
+
+     label5:
+        $stack6 = this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.util.Deque stack>;
+
+        $stack7 = interfaceinvoke $stack6.<java.util.Deque: boolean isEmpty()>();
+
+        if $stack7 == 0 goto label6;
+
+        return null;
+
+     label6:
+        $stack8 = this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.util.Deque stack>;
+
+        $stack9 = interfaceinvoke $stack8.<java.util.Deque: java.lang.Object poll()>();
+
+        node#8 = (jdk.internal.jimage.ImageReader$Node) $stack9;
+
+        $stack10 = <jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: boolean $assertionsDisabled>;
+
+        if $stack10 != 0 goto label7;
+
+        $stack14 = virtualinvoke node#8.<jdk.internal.jimage.ImageReader$Node: boolean isDirectory()>();
+
+        if $stack14 != 0 goto label7;
+
+        $stack17 = new java.lang.AssertionError;
+
+        specialinvoke $stack17.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack17;
+
+     label7:
+        $stack16 = this;
+
+        $stack15 = node#8;
+
+        $stack11 = virtualinvoke $stack15.<jdk.internal.jimage.ImageReader$Node: java.util.List getChildren()>();
+
+        $stack12 = interfaceinvoke $stack11.<java.util.List: java.util.Iterator iterator()>();
+
+        $stack16.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.util.Iterator iterator> = $stack12;
+
+        goto label1;
+
+        nop;
+    }
+
+    public boolean tryAdvance(java.util.function.Consumer)
+    {
+        java.util.function.Consumer action;
+        java.io.UncheckedIOException $stack6;
+        jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator this;
+        java.io.IOException $stack5, ioe;
+        java.lang.String $stack4, next;
+
+        this := @this: jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator;
+
+        action := @parameter0: java.util.function.Consumer;
+
+     label1:
+        $stack4 = virtualinvoke this.<jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: java.lang.String next()>();
+
+        next = $stack4;
+
+     label2:
+        goto label4;
+
+     label3:
+        $stack5 := @caughtexception;
+
+        ioe = $stack5;
+
+        $stack6 = new java.io.UncheckedIOException;
+
+        specialinvoke $stack6.<java.io.UncheckedIOException: void <init>(java.io.IOException)>(ioe);
+
+        throw $stack6;
+
+     label4:
+        if next == null goto label5;
+
+        interfaceinvoke action.<java.util.function.Consumer: void accept(java.lang.Object)>(next);
+
+        return 1;
+
+     label5:
+        return 0;
+
+        nop;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public java.util.Spliterator trySplit()
+    {
+        jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator this;
+
+        this := @this: jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator;
+
+        return null;
+
+        nop;
+    }
+
+    public int characteristics()
+    {
+        jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator this;
+
+        this := @this: jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator;
+
+        return 1281;
+
+        nop;
+    }
+
+    public long estimateSize()
+    {
+        jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator this;
+
+        this := @this: jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator;
+
+        return 9223372036854775807L;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack2;
+        java.lang.Class $stack0;
+        boolean $stack1, $stack2#1;
+
+        $stack0 = class "Ljdk/internal/module/SystemModuleFinders;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack2#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack2#1 = 0;
+
+     label2:
+        <jdk.internal.module.SystemModuleFinders$ModuleContentSpliterator: boolean $assertionsDisabled> = $stack2#1;
+
+        return;
+    }
+}

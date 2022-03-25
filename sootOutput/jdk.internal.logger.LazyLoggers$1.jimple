@@ -1,0 +1,61 @@
+class jdk.internal.logger.LazyLoggers$1 extends java.lang.Object implements java.util.function.BiFunction
+{
+
+    void <init>()
+    {
+        jdk.internal.logger.LazyLoggers$1 this;
+
+        this := @this: jdk.internal.logger.LazyLoggers$1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public java.lang.System$Logger apply(java.lang.String, java.lang.Module)
+    {
+        java.lang.System$Logger $stack3;
+        jdk.internal.logger.LazyLoggers$1 this;
+        java.lang.Module module;
+        java.lang.String name;
+
+        this := @this: jdk.internal.logger.LazyLoggers$1;
+
+        name := @parameter0: java.lang.String;
+
+        module := @parameter1: java.lang.Module;
+
+        $stack3 = staticinvoke <jdk.internal.logger.LazyLoggers: java.lang.System$Logger getLoggerFromFinder(java.lang.String,java.lang.Module)>(name, module);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public volatile java.lang.Object apply(java.lang.Object, java.lang.Object)
+    {
+        java.lang.System$Logger $stack5;
+        jdk.internal.logger.LazyLoggers$1 this;
+        java.lang.Module $stack3;
+        java.lang.Object l1, l2;
+        java.lang.String $stack4;
+
+        this := @this: jdk.internal.logger.LazyLoggers$1;
+
+        l1 := @parameter0: java.lang.Object;
+
+        l2 := @parameter1: java.lang.Object;
+
+        $stack4 = (java.lang.String) l1;
+
+        $stack3 = (java.lang.Module) l2;
+
+        $stack5 = virtualinvoke this.<jdk.internal.logger.LazyLoggers$1: java.lang.System$Logger apply(java.lang.String,java.lang.Module)>($stack4, $stack3);
+
+        return $stack5;
+
+        nop;
+    }
+}

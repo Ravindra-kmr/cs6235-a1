@@ -1,0 +1,816 @@
+public class jdk.internal.jimage.ImageStream extends java.lang.Object
+{
+    private java.nio.ByteBuffer buffer;
+
+    public void <init>()
+    {
+        java.nio.ByteOrder $stack2;
+        short $stack1;
+        jdk.internal.jimage.ImageStream this;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = 1024;
+
+        $stack2 = staticinvoke <java.nio.ByteOrder: java.nio.ByteOrder nativeOrder()>();
+
+        specialinvoke this.<jdk.internal.jimage.ImageStream: void <init>(int,java.nio.ByteOrder)>($stack1, $stack2);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(int)
+    {
+        int size;
+        java.nio.ByteOrder $stack2;
+        jdk.internal.jimage.ImageStream this;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        size := @parameter0: int;
+
+        $stack2 = staticinvoke <java.nio.ByteOrder: java.nio.ByteOrder nativeOrder()>();
+
+        specialinvoke this.<jdk.internal.jimage.ImageStream: void <init>(int,java.nio.ByteOrder)>(size, $stack2);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(byte[])
+    {
+        byte[] bytes;
+        java.nio.ByteOrder $stack2;
+        jdk.internal.jimage.ImageStream this;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        bytes := @parameter0: byte[];
+
+        $stack2 = staticinvoke <java.nio.ByteOrder: java.nio.ByteOrder nativeOrder()>();
+
+        specialinvoke this.<jdk.internal.jimage.ImageStream: void <init>(byte[],java.nio.ByteOrder)>(bytes, $stack2);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(java.nio.ByteOrder)
+    {
+        java.nio.ByteOrder byteOrder;
+        jdk.internal.jimage.ImageStream this;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        byteOrder := @parameter0: java.nio.ByteOrder;
+
+        specialinvoke this.<jdk.internal.jimage.ImageStream: void <init>(int,java.nio.ByteOrder)>(1024, byteOrder);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(int, java.nio.ByteOrder)
+    {
+        java.nio.ByteBuffer $stack3, $stack4, $stack7;
+        java.nio.ByteOrder byteOrder, $stack6;
+        int size;
+        java.lang.Object $stack5;
+        jdk.internal.jimage.ImageStream this;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        size := @parameter0: int;
+
+        byteOrder := @parameter1: java.nio.ByteOrder;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack3 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(size);
+
+        this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer> = $stack3;
+
+        $stack4 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack5 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(byteOrder);
+
+        $stack6 = (java.nio.ByteOrder) $stack5;
+
+        $stack7 = virtualinvoke $stack4.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($stack6);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(byte[], java.nio.ByteOrder)
+    {
+        byte[] bytes, $stack4;
+        java.nio.ByteBuffer $stack5, $stack6, $stack9;
+        java.nio.ByteOrder byteOrder, $stack8;
+        java.lang.Object $stack3, $stack7;
+        jdk.internal.jimage.ImageStream this;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        bytes := @parameter0: byte[];
+
+        byteOrder := @parameter1: java.nio.ByteOrder;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack3 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(bytes);
+
+        $stack4 = (byte[]) $stack3;
+
+        $stack5 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>($stack4);
+
+        this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer> = $stack5;
+
+        $stack6 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack7 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(byteOrder);
+
+        $stack8 = (java.nio.ByteOrder) $stack7;
+
+        $stack9 = virtualinvoke $stack6.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($stack8);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(java.nio.ByteBuffer)
+    {
+        java.lang.Object $stack2;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer buffer, $stack3;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        buffer := @parameter0: java.nio.ByteBuffer;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack2 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(buffer);
+
+        $stack3 = (java.nio.ByteBuffer) $stack2;
+
+        this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer> = $stack3;
+
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.jimage.ImageStream align(int)
+    {
+        bottom_type i;
+        int $stack4, alignment, $stack5, $stack6, $stack7, padding, $stack9, $stack10, i#1;
+        jdk.internal.jimage.ImageStream this, $stack8;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        alignment := @parameter0: int;
+
+        $stack4 = virtualinvoke this.<jdk.internal.jimage.ImageStream: int getSize()>();
+
+        $stack7 = $stack4 - 1;
+
+        $stack5 = 1 << alignment;
+
+        $stack6 = $stack5 - 1;
+
+        padding = $stack7 & $stack6;
+
+        i#1 = 0;
+
+     label1:
+        $stack10 = i#1;
+
+        $stack9 = padding;
+
+        if $stack10 >= $stack9 goto label2;
+
+        $stack8 = virtualinvoke this.<jdk.internal.jimage.ImageStream: jdk.internal.jimage.ImageStream put(byte)>(0);
+
+        i#1 = i#1 + 1;
+
+        goto label1;
+
+     label2:
+        return this;
+
+        nop;
+    }
+
+    public void ensure(int)
+    {
+        byte[] $stack9, bytes, $stack27;
+        java.lang.IndexOutOfBoundsException $stack30;
+        java.nio.ByteBuffer $stack6, $stack8, $stack10, $stack12, $stack15, $stack16, $stack17, $stack18, $stack19;
+        byte $stack28;
+        bottom_type $stack21;
+        java.nio.ByteOrder $stack11, byteOrder, $stack25;
+        java.lang.StringBuilder $stack31, $stack32, $stack33;
+        jdk.internal.jimage.ImageStream this, $stack23, $stack24, $stack26;
+        int needs, $stack7, $stack13, position, $stack14, newSize, $stack20, $stack22, $stack29, $stack21#1;
+        java.lang.String $stack34;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        needs := @parameter0: int;
+
+        if needs >= 0 goto label1;
+
+        $stack30 = new java.lang.IndexOutOfBoundsException;
+
+        $stack31 = new java.lang.StringBuilder;
+
+        specialinvoke $stack31.<java.lang.StringBuilder: void <init>()>();
+
+        $stack32 = virtualinvoke $stack31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Bad value: ");
+
+        $stack33 = virtualinvoke $stack32.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(needs);
+
+        $stack34 = virtualinvoke $stack33.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack30.<java.lang.IndexOutOfBoundsException: void <init>(java.lang.String)>($stack34);
+
+        throw $stack30;
+
+     label1:
+        $stack6 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack7 = virtualinvoke $stack6.<java.nio.ByteBuffer: int remaining()>();
+
+        if needs <= $stack7 goto label4;
+
+        $stack8 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack9 = virtualinvoke $stack8.<java.nio.ByteBuffer: byte[] array()>();
+
+        bytes = $stack9;
+
+        $stack10 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack11 = virtualinvoke $stack10.<java.nio.ByteBuffer: java.nio.ByteOrder order()>();
+
+        byteOrder = $stack11;
+
+        $stack12 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack13 = virtualinvoke $stack12.<java.nio.ByteBuffer: int position()>();
+
+        position = $stack13;
+
+        $stack14 = lengthof bytes;
+
+        if needs > $stack14 goto label2;
+
+        $stack20 = lengthof bytes;
+
+        $stack21#1 = $stack20 << 1;
+
+        goto label3;
+
+     label2:
+        $stack21#1 = position + needs;
+
+     label3:
+        newSize = $stack21#1;
+
+        $stack23 = this;
+
+        $stack22 = newSize;
+
+        $stack15 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>($stack22);
+
+        $stack23.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer> = $stack15;
+
+        $stack24 = this;
+
+        $stack16 = $stack24.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack25 = byteOrder;
+
+        $stack17 = virtualinvoke $stack16.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($stack25);
+
+        $stack26 = this;
+
+        $stack18 = $stack26.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack27 = bytes;
+
+        $stack28 = 0;
+
+        $stack29 = position;
+
+        $stack19 = virtualinvoke $stack18.<java.nio.ByteBuffer: java.nio.ByteBuffer put(byte[],int,int)>($stack27, $stack28, $stack29);
+
+     label4:
+        return;
+
+        nop;
+    }
+
+    public boolean hasByte()
+    {
+        bottom_type $stack3;
+        int $stack2;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1;
+        boolean $stack3#1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = virtualinvoke $stack1.<java.nio.ByteBuffer: int remaining()>();
+
+        if $stack2 == 0 goto label1;
+
+        $stack3#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = 0;
+
+     label2:
+        return $stack3#1;
+
+        nop;
+    }
+
+    public boolean hasBytes(int)
+    {
+        bottom_type $stack4;
+        int needs, $stack3;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack2;
+        boolean $stack4#1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        needs := @parameter0: int;
+
+        $stack2 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack3 = virtualinvoke $stack2.<java.nio.ByteBuffer: int remaining()>();
+
+        if needs > $stack3 goto label1;
+
+        $stack4#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack4#1 = 0;
+
+     label2:
+        return $stack4#1;
+
+        nop;
+    }
+
+    public void skip(int)
+    {
+        java.lang.IndexOutOfBoundsException $stack7;
+        java.nio.ByteBuffer $stack2, $stack3, $stack6;
+        int n, $stack4, $stack5;
+        java.lang.StringBuilder $stack8, $stack9, $stack10;
+        java.lang.String $stack11;
+        jdk.internal.jimage.ImageStream this;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        n := @parameter0: int;
+
+        if n >= 0 goto label1;
+
+        $stack7 = new java.lang.IndexOutOfBoundsException;
+
+        $stack8 = new java.lang.StringBuilder;
+
+        specialinvoke $stack8.<java.lang.StringBuilder: void <init>()>();
+
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("skip value = ");
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(n);
+
+        $stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack7.<java.lang.IndexOutOfBoundsException: void <init>(java.lang.String)>($stack11);
+
+        throw $stack7;
+
+     label1:
+        $stack3 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack4 = virtualinvoke $stack2.<java.nio.ByteBuffer: int position()>();
+
+        $stack5 = $stack4 + n;
+
+        $stack6 = virtualinvoke $stack3.<java.nio.ByteBuffer: java.nio.ByteBuffer position(int)>($stack5);
+
+        return;
+
+        nop;
+    }
+
+    public int get()
+    {
+        short $stack3, $s0;
+        byte $stack2;
+        int $i0;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = virtualinvoke $stack1.<java.nio.ByteBuffer: byte get()>();
+
+        $s0 = (short) $stack2;
+
+        $stack3 = $s0 & 255;
+
+        $i0 = (int) $stack3;
+
+        return $i0;
+
+        nop;
+    }
+
+    public void get(byte[], int, int)
+    {
+        byte[] bytes;
+        int offset, size;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack4, $stack5;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        bytes := @parameter0: byte[];
+
+        offset := @parameter1: int;
+
+        size := @parameter2: int;
+
+        $stack4 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack5 = virtualinvoke $stack4.<java.nio.ByteBuffer: java.nio.ByteBuffer get(byte[],int,int)>(bytes, offset, size);
+
+        return;
+
+        nop;
+    }
+
+    public int getShort()
+    {
+        short $stack2;
+        int $i0;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = virtualinvoke $stack1.<java.nio.ByteBuffer: short getShort()>();
+
+        $i0 = (int) $stack2;
+
+        return $i0;
+
+        nop;
+    }
+
+    public int getInt()
+    {
+        int $stack2;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = virtualinvoke $stack1.<java.nio.ByteBuffer: int getInt()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    public long getLong()
+    {
+        long $stack2;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = virtualinvoke $stack1.<java.nio.ByteBuffer: long getLong()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    public jdk.internal.jimage.ImageStream put(byte)
+    {
+        byte byt;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack2, $stack3;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        byt := @parameter0: byte;
+
+        virtualinvoke this.<jdk.internal.jimage.ImageStream: void ensure(int)>(1);
+
+        $stack2 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack3 = virtualinvoke $stack2.<java.nio.ByteBuffer: java.nio.ByteBuffer put(byte)>(byt);
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.jimage.ImageStream put(int)
+    {
+        byte $stack2;
+        int byt;
+        jdk.internal.jimage.ImageStream this, $stack3;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        byt := @parameter0: int;
+
+        $stack2 = (byte) byt;
+
+        $stack3 = virtualinvoke this.<jdk.internal.jimage.ImageStream: jdk.internal.jimage.ImageStream put(byte)>($stack2);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public jdk.internal.jimage.ImageStream put(byte[], int, int)
+    {
+        byte[] bytes;
+        int size, offset;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack4, $stack5;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        bytes := @parameter0: byte[];
+
+        offset := @parameter1: int;
+
+        size := @parameter2: int;
+
+        virtualinvoke this.<jdk.internal.jimage.ImageStream: void ensure(int)>(size);
+
+        $stack4 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack5 = virtualinvoke $stack4.<java.nio.ByteBuffer: java.nio.ByteBuffer put(byte[],int,int)>(bytes, offset, size);
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.jimage.ImageStream put(jdk.internal.jimage.ImageStream)
+    {
+        byte[] $stack3;
+        java.nio.ByteBuffer $stack2, $stack4;
+        byte $stack5;
+        int $stack6;
+        jdk.internal.jimage.ImageStream this, stream, $stack7;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        stream := @parameter0: jdk.internal.jimage.ImageStream;
+
+        $stack2 = stream.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack3 = virtualinvoke $stack2.<java.nio.ByteBuffer: byte[] array()>();
+
+        $stack5 = 0;
+
+        $stack4 = stream.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack6 = virtualinvoke $stack4.<java.nio.ByteBuffer: int position()>();
+
+        $stack7 = virtualinvoke this.<jdk.internal.jimage.ImageStream: jdk.internal.jimage.ImageStream put(byte[],int,int)>($stack3, $stack5, $stack6);
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.jimage.ImageStream putShort(short)
+    {
+        short value;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack2, $stack3;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        value := @parameter0: short;
+
+        virtualinvoke this.<jdk.internal.jimage.ImageStream: void ensure(int)>(2);
+
+        $stack2 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack3 = virtualinvoke $stack2.<java.nio.ByteBuffer: java.nio.ByteBuffer putShort(short)>(value);
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.jimage.ImageStream putShort(int)
+    {
+        short $stack2;
+        int value;
+        jdk.internal.jimage.ImageStream this, $stack3;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        value := @parameter0: int;
+
+        $stack2 = (short) value;
+
+        $stack3 = virtualinvoke this.<jdk.internal.jimage.ImageStream: jdk.internal.jimage.ImageStream putShort(short)>($stack2);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public jdk.internal.jimage.ImageStream putInt(int)
+    {
+        int value;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack2, $stack3;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        value := @parameter0: int;
+
+        virtualinvoke this.<jdk.internal.jimage.ImageStream: void ensure(int)>(4);
+
+        $stack2 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack3 = virtualinvoke $stack2.<java.nio.ByteBuffer: java.nio.ByteBuffer putInt(int)>(value);
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.jimage.ImageStream putLong(long)
+    {
+        long value;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack3, $stack4;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        value := @parameter0: long;
+
+        virtualinvoke this.<jdk.internal.jimage.ImageStream: void ensure(int)>(8);
+
+        $stack3 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack4 = virtualinvoke $stack3.<java.nio.ByteBuffer: java.nio.ByteBuffer putLong(long)>(value);
+
+        return this;
+
+        nop;
+    }
+
+    public java.nio.ByteBuffer getBuffer()
+    {
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public int getPosition()
+    {
+        int $stack2;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = virtualinvoke $stack1.<java.nio.ByteBuffer: int position()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    public int getSize()
+    {
+        int $stack2;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = virtualinvoke $stack1.<java.nio.ByteBuffer: int position()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    public byte[] getBytes()
+    {
+        byte[] $stack2;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = virtualinvoke $stack1.<java.nio.ByteBuffer: byte[] array()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    public void setPosition(int)
+    {
+        int offset;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack2, $stack3;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        offset := @parameter0: int;
+
+        $stack2 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack3 = virtualinvoke $stack2.<java.nio.ByteBuffer: java.nio.ByteBuffer position(int)>(offset);
+
+        return;
+
+        nop;
+    }
+
+    public byte[] toArray()
+    {
+        byte[] $stack2, $stack5;
+        int $stack4;
+        jdk.internal.jimage.ImageStream this;
+        java.nio.ByteBuffer $stack1, $stack3;
+
+        this := @this: jdk.internal.jimage.ImageStream;
+
+        $stack1 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack2 = virtualinvoke $stack1.<java.nio.ByteBuffer: byte[] array()>();
+
+        $stack3 = this.<jdk.internal.jimage.ImageStream: java.nio.ByteBuffer buffer>;
+
+        $stack4 = virtualinvoke $stack3.<java.nio.ByteBuffer: int position()>();
+
+        $stack5 = staticinvoke <java.util.Arrays: byte[] copyOf(byte[],int)>($stack2, $stack4);
+
+        return $stack5;
+
+        nop;
+    }
+}

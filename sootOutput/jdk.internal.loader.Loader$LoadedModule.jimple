@@ -1,0 +1,159 @@
+class jdk.internal.loader.Loader$LoadedModule extends java.lang.Object
+{
+    private final java.lang.module.ModuleReference mref;
+    private final java.net.URL url;
+    private final java.security.CodeSource cs;
+
+    void <init>(java.lang.module.ModuleReference)
+    {
+        java.net.URL $stack11, url#1, $stack14#8, $stack14#9, $stack17#14, $stack17#15;
+        java.lang.module.ModuleReference mref, $stack12#4, $stack12#5;
+        java.net.URI $stack10;
+        java.security.CodeSigner[] $stack7#18, $stack7#19;
+        boolean $stack5;
+        java.lang.Exception $stack19;
+        jdk.internal.loader.Loader$LoadedModule this, $stack13#2, $stack13#3, $stack15#6, $stack15#7, $stack18#10, $stack18#11;
+        java.util.Optional $stack4, $stack8;
+        java.lang.Object $stack9;
+        java.security.CodeSource $stack6#12, $stack6#13;
+
+        this := @this: jdk.internal.loader.Loader$LoadedModule;
+
+        mref := @parameter0: java.lang.module.ModuleReference;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        url#1 = null;
+
+        $stack4 = virtualinvoke mref.<java.lang.module.ModuleReference: java.util.Optional location()>();
+
+        $stack5 = virtualinvoke $stack4.<java.util.Optional: boolean isPresent()>();
+
+        if $stack5 == 0 goto label4;
+
+     label1:
+        $stack8 = virtualinvoke mref.<java.lang.module.ModuleReference: java.util.Optional location()>();
+
+        $stack9 = virtualinvoke $stack8.<java.util.Optional: java.lang.Object get()>();
+
+        $stack10 = (java.net.URI) $stack9;
+
+        $stack11 = virtualinvoke $stack10.<java.net.URI: java.net.URL toURL()>();
+
+        url#1 = $stack11;
+
+     label2:
+        goto label4;
+
+     label3:
+        $stack19 := @caughtexception;
+
+     label4:
+        $stack13#2 = this;
+
+        $stack13#3 = $stack13#2;
+
+        $stack12#4 = mref;
+
+        $stack12#5 = $stack12#4;
+
+        $stack13#3.<jdk.internal.loader.Loader$LoadedModule: java.lang.module.ModuleReference mref> = $stack12#5;
+
+        $stack15#6 = this;
+
+        $stack15#7 = $stack15#6;
+
+        $stack14#8 = url#1;
+
+        $stack14#9 = $stack14#8;
+
+        $stack15#7.<jdk.internal.loader.Loader$LoadedModule: java.net.URL url> = $stack14#9;
+
+        $stack18#10 = this;
+
+        $stack18#11 = $stack18#10;
+
+        $stack6#12 = new java.security.CodeSource;
+
+        $stack6#13 = $stack6#12;
+
+        $stack17#14 = url#1;
+
+        $stack17#15 = $stack17#14;
+
+        $stack7#18 = (java.security.CodeSigner[]) null;
+
+        $stack7#19 = $stack7#18;
+
+        specialinvoke $stack6#13.<java.security.CodeSource: void <init>(java.net.URL,java.security.CodeSigner[])>($stack17#15, $stack7#19);
+
+        $stack18#11.<jdk.internal.loader.Loader$LoadedModule: java.security.CodeSource cs> = $stack6#13;
+
+        return;
+
+        catch java.net.MalformedURLException from label1 to label2 with label3;
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+    }
+
+    java.lang.module.ModuleReference mref()
+    {
+        java.lang.module.ModuleReference $stack1;
+        jdk.internal.loader.Loader$LoadedModule this;
+
+        this := @this: jdk.internal.loader.Loader$LoadedModule;
+
+        $stack1 = this.<jdk.internal.loader.Loader$LoadedModule: java.lang.module.ModuleReference mref>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    java.lang.String name()
+    {
+        jdk.internal.loader.Loader$LoadedModule this;
+        java.lang.module.ModuleDescriptor $stack2;
+        java.lang.module.ModuleReference $stack1;
+        java.lang.String $stack3;
+
+        this := @this: jdk.internal.loader.Loader$LoadedModule;
+
+        $stack1 = this.<jdk.internal.loader.Loader$LoadedModule: java.lang.module.ModuleReference mref>;
+
+        $stack2 = virtualinvoke $stack1.<java.lang.module.ModuleReference: java.lang.module.ModuleDescriptor descriptor()>();
+
+        $stack3 = virtualinvoke $stack2.<java.lang.module.ModuleDescriptor: java.lang.String name()>();
+
+        return $stack3;
+
+        nop;
+    }
+
+    java.net.URL location()
+    {
+        java.net.URL $stack1;
+        jdk.internal.loader.Loader$LoadedModule this;
+
+        this := @this: jdk.internal.loader.Loader$LoadedModule;
+
+        $stack1 = this.<jdk.internal.loader.Loader$LoadedModule: java.net.URL url>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    java.security.CodeSource codeSource()
+    {
+        java.security.CodeSource $stack1;
+        jdk.internal.loader.Loader$LoadedModule this;
+
+        this := @this: jdk.internal.loader.Loader$LoadedModule;
+
+        $stack1 = this.<jdk.internal.loader.Loader$LoadedModule: java.security.CodeSource cs>;
+
+        return $stack1;
+
+        nop;
+    }
+}

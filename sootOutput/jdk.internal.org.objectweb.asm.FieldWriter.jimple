@@ -1,0 +1,883 @@
+final class jdk.internal.org.objectweb.asm.FieldWriter extends jdk.internal.org.objectweb.asm.FieldVisitor
+{
+    private final jdk.internal.org.objectweb.asm.ClassWriter cw;
+    private final int access;
+    private final int name;
+    private final int desc;
+    private int signature;
+    private int value;
+    private jdk.internal.org.objectweb.asm.AnnotationWriter anns;
+    private jdk.internal.org.objectweb.asm.AnnotationWriter ianns;
+    private jdk.internal.org.objectweb.asm.AnnotationWriter tanns;
+    private jdk.internal.org.objectweb.asm.AnnotationWriter itanns;
+    private jdk.internal.org.objectweb.asm.Attribute attrs;
+
+    void <init>(jdk.internal.org.objectweb.asm.ClassWriter, int, java.lang.String, java.lang.String, java.lang.String, java.lang.Object)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter cw, $stack16, $stack17, $stack22, $stack25;
+        int access, $stack9, $stack10, $stack12, $stack13, $stack19;
+        java.lang.String name, desc, signature, $stack21, $stack24, $stack27;
+        jdk.internal.org.objectweb.asm.Item $stack11;
+        java.lang.Object value, $stack14;
+        jdk.internal.org.objectweb.asm.FieldWriter this, $stack7, $stack8, $stack15, $stack18, $stack20, $stack23, $stack26;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldWriter;
+
+        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+
+        access := @parameter1: int;
+
+        name := @parameter2: java.lang.String;
+
+        desc := @parameter3: java.lang.String;
+
+        signature := @parameter4: java.lang.String;
+
+        value := @parameter5: java.lang.Object;
+
+        specialinvoke this.<jdk.internal.org.objectweb.asm.FieldVisitor: void <init>(int)>(393216);
+
+        $stack7 = cw.<jdk.internal.org.objectweb.asm.ClassWriter: jdk.internal.org.objectweb.asm.FieldWriter firstField>;
+
+        if $stack7 != null goto label1;
+
+        cw.<jdk.internal.org.objectweb.asm.ClassWriter: jdk.internal.org.objectweb.asm.FieldWriter firstField> = this;
+
+        goto label2;
+
+     label1:
+        $stack8 = cw.<jdk.internal.org.objectweb.asm.ClassWriter: jdk.internal.org.objectweb.asm.FieldWriter lastField>;
+
+        $stack8.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.FieldVisitor fv> = this;
+
+     label2:
+        $stack16 = cw;
+
+        $stack15 = this;
+
+        $stack16.<jdk.internal.org.objectweb.asm.ClassWriter: jdk.internal.org.objectweb.asm.FieldWriter lastField> = $stack15;
+
+        $stack18 = this;
+
+        $stack17 = cw;
+
+        $stack18.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw> = $stack17;
+
+        $stack20 = this;
+
+        $stack19 = access;
+
+        $stack20.<jdk.internal.org.objectweb.asm.FieldWriter: int access> = $stack19;
+
+        $stack23 = this;
+
+        $stack22 = cw;
+
+        $stack21 = name;
+
+        $stack9 = virtualinvoke $stack22.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>($stack21);
+
+        $stack23.<jdk.internal.org.objectweb.asm.FieldWriter: int name> = $stack9;
+
+        $stack26 = this;
+
+        $stack25 = cw;
+
+        $stack24 = desc;
+
+        $stack10 = virtualinvoke $stack25.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>($stack24);
+
+        $stack26.<jdk.internal.org.objectweb.asm.FieldWriter: int desc> = $stack10;
+
+        $stack27 = signature;
+
+        if $stack27 == null goto label3;
+
+        $stack13 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>(signature);
+
+        this.<jdk.internal.org.objectweb.asm.FieldWriter: int signature> = $stack13;
+
+     label3:
+        $stack14 = value;
+
+        if $stack14 == null goto label4;
+
+        $stack11 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: jdk.internal.org.objectweb.asm.Item newConstItem(java.lang.Object)>(value);
+
+        $stack12 = $stack11.<jdk.internal.org.objectweb.asm.Item: int index>;
+
+        this.<jdk.internal.org.objectweb.asm.FieldWriter: int value> = $stack12;
+
+     label4:
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter $stack6, $stack11;
+        jdk.internal.org.objectweb.asm.AnnotationWriter $stack10, aw, $stack12, $stack13, $stack14;
+        jdk.internal.org.objectweb.asm.ByteVector $stack5, bv, $stack8, $stack9;
+        int $stack7;
+        java.lang.String desc;
+        jdk.internal.org.objectweb.asm.FieldWriter this;
+        boolean visible;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldWriter;
+
+        desc := @parameter0: java.lang.String;
+
+        visible := @parameter1: boolean;
+
+        $stack5 = new jdk.internal.org.objectweb.asm.ByteVector;
+
+        specialinvoke $stack5.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
+
+        bv = $stack5;
+
+        $stack6 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack7 = virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>(desc);
+
+        $stack8 = virtualinvoke bv.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack7);
+
+        $stack9 = virtualinvoke $stack8.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>(0);
+
+        $stack10 = new jdk.internal.org.objectweb.asm.AnnotationWriter;
+
+        $stack11 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        specialinvoke $stack10.<jdk.internal.org.objectweb.asm.AnnotationWriter: void <init>(jdk.internal.org.objectweb.asm.ClassWriter,boolean,jdk.internal.org.objectweb.asm.ByteVector,jdk.internal.org.objectweb.asm.ByteVector,int)>($stack11, 1, bv, bv, 2);
+
+        aw = $stack10;
+
+        if visible == 0 goto label1;
+
+        $stack13 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter anns>;
+
+        aw.<jdk.internal.org.objectweb.asm.AnnotationWriter: jdk.internal.org.objectweb.asm.AnnotationWriter next> = $stack13;
+
+        this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter anns> = aw;
+
+        goto label2;
+
+     label1:
+        $stack12 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter ianns>;
+
+        aw.<jdk.internal.org.objectweb.asm.AnnotationWriter: jdk.internal.org.objectweb.asm.AnnotationWriter next> = $stack12;
+
+        this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter ianns> = aw;
+
+     label2:
+        $stack14 = aw;
+
+        return $stack14;
+
+        nop;
+    }
+
+    public jdk.internal.org.objectweb.asm.AnnotationVisitor visitTypeAnnotation(int, jdk.internal.org.objectweb.asm.TypePath, java.lang.String, boolean)
+    {
+        jdk.internal.org.objectweb.asm.ClassWriter $stack8, $stack15;
+        jdk.internal.org.objectweb.asm.AnnotationWriter $stack12, aw, $stack16, $stack17, $stack18;
+        jdk.internal.org.objectweb.asm.ByteVector $stack7, bv, $stack10, $stack11;
+        int typeRef, $stack9, $stack13, $stack14;
+        java.lang.String desc;
+        boolean visible;
+        jdk.internal.org.objectweb.asm.TypePath typePath;
+        jdk.internal.org.objectweb.asm.FieldWriter this;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldWriter;
+
+        typeRef := @parameter0: int;
+
+        typePath := @parameter1: jdk.internal.org.objectweb.asm.TypePath;
+
+        desc := @parameter2: java.lang.String;
+
+        visible := @parameter3: boolean;
+
+        $stack7 = new jdk.internal.org.objectweb.asm.ByteVector;
+
+        specialinvoke $stack7.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
+
+        bv = $stack7;
+
+        staticinvoke <jdk.internal.org.objectweb.asm.AnnotationWriter: void putTarget(int,jdk.internal.org.objectweb.asm.TypePath,jdk.internal.org.objectweb.asm.ByteVector)>(typeRef, typePath, bv);
+
+        $stack8 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack9 = virtualinvoke $stack8.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>(desc);
+
+        $stack10 = virtualinvoke bv.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack9);
+
+        $stack11 = virtualinvoke $stack10.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>(0);
+
+        $stack12 = new jdk.internal.org.objectweb.asm.AnnotationWriter;
+
+        $stack15 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack13 = bv.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+
+        $stack14 = $stack13 - 2;
+
+        specialinvoke $stack12.<jdk.internal.org.objectweb.asm.AnnotationWriter: void <init>(jdk.internal.org.objectweb.asm.ClassWriter,boolean,jdk.internal.org.objectweb.asm.ByteVector,jdk.internal.org.objectweb.asm.ByteVector,int)>($stack15, 1, bv, bv, $stack14);
+
+        aw = $stack12;
+
+        if visible == 0 goto label1;
+
+        $stack17 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter tanns>;
+
+        aw.<jdk.internal.org.objectweb.asm.AnnotationWriter: jdk.internal.org.objectweb.asm.AnnotationWriter next> = $stack17;
+
+        this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter tanns> = aw;
+
+        goto label2;
+
+     label1:
+        $stack16 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter itanns>;
+
+        aw.<jdk.internal.org.objectweb.asm.AnnotationWriter: jdk.internal.org.objectweb.asm.AnnotationWriter next> = $stack16;
+
+        this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter itanns> = aw;
+
+     label2:
+        $stack18 = aw;
+
+        return $stack18;
+
+        nop;
+    }
+
+    public void visitAttribute(jdk.internal.org.objectweb.asm.Attribute)
+    {
+        jdk.internal.org.objectweb.asm.Attribute attr, $stack2;
+        jdk.internal.org.objectweb.asm.FieldWriter this;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldWriter;
+
+        attr := @parameter0: jdk.internal.org.objectweb.asm.Attribute;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.Attribute attrs>;
+
+        attr.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.Attribute next> = $stack2;
+
+        this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.Attribute attrs> = attr;
+
+        return;
+
+        nop;
+    }
+
+    public void visitEnd()
+    {
+        jdk.internal.org.objectweb.asm.FieldWriter this;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldWriter;
+
+        return;
+
+        nop;
+    }
+
+    int getSize()
+    {
+        byte $stack20, $stack27, $stack34, $stack41, $b0, $b1;
+        bottom_type size, $stack5, $stack6, $stack56, $stack57;
+        short $stack65;
+        java.lang.String $stack61;
+        jdk.internal.org.objectweb.asm.Attribute $stack12, $stack14;
+        jdk.internal.org.objectweb.asm.FieldWriter this, $stack23, $stack30, $stack37, $stack44, $stack47, $stack50, $stack60, $stack64, $stack56#2, $stack56#3;
+        jdk.internal.org.objectweb.asm.ClassWriter $stack13, $stack17, $stack24, $stack31, $stack38, $stack45, $stack48, $stack51, $stack54, $stack62;
+        jdk.internal.org.objectweb.asm.AnnotationWriter $stack8, $stack9, $stack10, $stack11, $stack19, $stack26, $stack33, $stack40;
+        int $stack2, $stack3, $stack4, $stack7, $stack15, $stack16, $stack18, $stack21, $stack22, $stack25, $stack28, $stack29, $stack32, $stack35, $stack36, $stack39, $stack42, $stack43, $stack46, $stack49, $stack52, $stack53, $stack55, $stack58, $stack59, $stack63, size#1, $stack5#4, $stack5#5, $stack57#6, $stack57#7, $stack6#8, $stack6#9, $i0, $i1, $i2;
+        char $c0;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldWriter;
+
+        size#1 = 8;
+
+        $stack2 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int value>;
+
+        if $stack2 == 0 goto label01;
+
+        $stack62 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack63 = virtualinvoke $stack62.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("ConstantValue");
+
+        size#1 = size#1 + 8;
+
+     label01:
+        $stack64 = this;
+
+        $stack3 = $stack64.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack65 = 4096;
+
+        $stack4 = $stack3 & $stack65;
+
+        if $stack4 == 0 goto label03;
+
+        $stack51 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack52 = $stack51.<jdk.internal.org.objectweb.asm.ClassWriter: int version>;
+
+        $c0 = 65535;
+
+        $i0 = (int) $c0;
+
+        $stack53 = $stack52 & $i0;
+
+        if $stack53 < 49 goto label02;
+
+        $stack58 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack59 = $stack58 & 262144;
+
+        if $stack59 == 0 goto label03;
+
+     label02:
+        $stack60 = this;
+
+        $stack54 = $stack60.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack61 = "Synthetic";
+
+        $stack55 = virtualinvoke $stack54.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>($stack61);
+
+        size#1 = size#1 + 6;
+
+     label03:
+        $stack56#2 = this;
+
+        $stack56#3 = $stack56#2;
+
+        $stack5#4 = $stack56#3.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack5#5 = $stack5#4;
+
+        $stack57#6 = 131072;
+
+        $stack57#7 = $stack57#6;
+
+        $stack6#8 = $stack5#5 & $stack57#7;
+
+        $stack6#9 = $stack6#8;
+
+        if $stack6#9 == 0 goto label04;
+
+        $stack48 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack49 = virtualinvoke $stack48.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("Deprecated");
+
+        size#1 = size#1 + 6;
+
+     label04:
+        $stack50 = this;
+
+        $stack7 = $stack50.<jdk.internal.org.objectweb.asm.FieldWriter: int signature>;
+
+        if $stack7 == 0 goto label05;
+
+        $stack45 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack46 = virtualinvoke $stack45.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("Signature");
+
+        size#1 = size#1 + 8;
+
+     label05:
+        $stack47 = this;
+
+        $stack8 = $stack47.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter anns>;
+
+        if $stack8 == null goto label06;
+
+        $stack38 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack39 = virtualinvoke $stack38.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("RuntimeVisibleAnnotations");
+
+        $stack41 = 8;
+
+        $stack40 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter anns>;
+
+        $stack42 = virtualinvoke $stack40.<jdk.internal.org.objectweb.asm.AnnotationWriter: int getSize()>();
+
+        $stack43 = $stack41 + $stack42;
+
+        size#1 = size#1 + $stack43;
+
+     label06:
+        $stack44 = this;
+
+        $stack9 = $stack44.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter ianns>;
+
+        if $stack9 == null goto label07;
+
+        $stack31 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack32 = virtualinvoke $stack31.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("RuntimeInvisibleAnnotations");
+
+        $stack34 = 8;
+
+        $stack33 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter ianns>;
+
+        $stack35 = virtualinvoke $stack33.<jdk.internal.org.objectweb.asm.AnnotationWriter: int getSize()>();
+
+        $stack36 = $stack34 + $stack35;
+
+        size#1 = size#1 + $stack36;
+
+     label07:
+        $stack37 = this;
+
+        $stack10 = $stack37.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter tanns>;
+
+        if $stack10 == null goto label08;
+
+        $stack24 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack25 = virtualinvoke $stack24.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("RuntimeVisibleTypeAnnotations");
+
+        $stack27 = 8;
+
+        $stack26 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter tanns>;
+
+        $stack28 = virtualinvoke $stack26.<jdk.internal.org.objectweb.asm.AnnotationWriter: int getSize()>();
+
+        $stack29 = $stack27 + $stack28;
+
+        size#1 = size#1 + $stack29;
+
+     label08:
+        $stack30 = this;
+
+        $stack11 = $stack30.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter itanns>;
+
+        if $stack11 == null goto label09;
+
+        $stack17 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack18 = virtualinvoke $stack17.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("RuntimeInvisibleTypeAnnotations");
+
+        $stack20 = 8;
+
+        $stack19 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter itanns>;
+
+        $stack21 = virtualinvoke $stack19.<jdk.internal.org.objectweb.asm.AnnotationWriter: int getSize()>();
+
+        $stack22 = $stack20 + $stack21;
+
+        size#1 = size#1 + $stack22;
+
+     label09:
+        $stack23 = this;
+
+        $stack12 = $stack23.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.Attribute attrs>;
+
+        if $stack12 == null goto label10;
+
+        $stack14 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.Attribute attrs>;
+
+        $stack13 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $b0 = -1;
+
+        $i1 = (int) $b0;
+
+        $b1 = -1;
+
+        $i2 = (int) $b1;
+
+        $stack15 = virtualinvoke $stack14.<jdk.internal.org.objectweb.asm.Attribute: int getSize(jdk.internal.org.objectweb.asm.ClassWriter,byte[],int,int,int)>($stack13, null, 0, $i1, $i2);
+
+        size#1 = size#1 + $stack15;
+
+     label10:
+        $stack16 = size#1;
+
+        return $stack16;
+
+        nop;
+    }
+
+    void put(jdk.internal.org.objectweb.asm.ByteVector)
+    {
+        byte FACTOR, $stack87, $b0, $b1, $b2;
+        short $stack95, $stack115;
+        int $stack5, $stack6, $stack7, mask, $stack8, $stack9, $stack10, $stack12, $stack14, $stack16, $stack17, $stack18, $stack21, $stack28, $stack29, $stack30, $stack33, $stack42, $stack47, $stack52, $stack57, $stack62, $stack65, $stack69, $stack74, $stack75, $stack77, $stack82, $stack83, $stack89, $stack92, $stack97, $stack98, $stack108, $stack109, $stack112, $stack113, attributeCount#1, $stack19#4, $stack19#5, $stack111#6, $stack111#7, $stack20#8, $stack20#9, $stack31#12, $stack31#13, $stack81#14, $stack81#15, $stack32#16, $stack32#17, $i0, $i1, $i2, $i3, $i4;
+        bottom_type attributeCount, $stack19, $stack20, $stack31, $stack32, $stack80, $stack81, $stack110, $stack111;
+        jdk.internal.org.objectweb.asm.ByteVector out, $stack11, $stack13, $stack15, $stack27, $stack43, $stack48, $stack53, $stack58, $stack63, $stack64, $stack66, $stack70, $stack71, $stack78, $stack79, $stack86, $stack90, $stack91, $stack93, $stack99;
+        java.lang.String $stack85;
+        jdk.internal.org.objectweb.asm.Attribute $stack26, $stack38, $stack40, $stack96;
+        jdk.internal.org.objectweb.asm.FieldWriter this, $stack45, $stack50, $stack55, $stack60, $stack67, $stack72, $stack84, $stack94, $stack100, $stack101, $stack102, $stack103, $stack104, $stack105, $stack106, $stack114, $stack110#2, $stack110#3, $stack80#10, $stack80#11;
+        jdk.internal.org.objectweb.asm.ClassWriter $stack39, $stack41, $stack46, $stack51, $stack56, $stack61, $stack68, $stack73, $stack76, $stack88, $stack107;
+        jdk.internal.org.objectweb.asm.AnnotationWriter $stack22, $stack23, $stack24, $stack25, $stack34, $stack35, $stack36, $stack37, $stack44, $stack49, $stack54, $stack59;
+        char $c0, $c1;
+
+        this := @this: jdk.internal.org.objectweb.asm.FieldWriter;
+
+        out := @parameter0: jdk.internal.org.objectweb.asm.ByteVector;
+
+        FACTOR = 64;
+
+        $stack5 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack6 = $stack5 & 262144;
+
+        $stack7 = $stack6 / 64;
+
+        mask = 393216 | $stack7;
+
+        $stack9 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        $stack8 = mask ^ $i0;
+
+        $stack10 = $stack9 & $stack8;
+
+        $stack11 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack10);
+
+        $stack12 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int name>;
+
+        $stack13 = virtualinvoke $stack11.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack12);
+
+        $stack14 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int desc>;
+
+        $stack15 = virtualinvoke $stack13.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack14);
+
+        attributeCount#1 = 0;
+
+        $stack16 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int value>;
+
+        if $stack16 == 0 goto label01;
+
+        attributeCount#1 = attributeCount#1 + 1;
+
+     label01:
+        $stack114 = this;
+
+        $stack17 = $stack114.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack115 = 4096;
+
+        $stack18 = $stack17 & $stack115;
+
+        if $stack18 == 0 goto label03;
+
+        $stack107 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack108 = $stack107.<jdk.internal.org.objectweb.asm.ClassWriter: int version>;
+
+        $c0 = 65535;
+
+        $i1 = (int) $c0;
+
+        $stack109 = $stack108 & $i1;
+
+        if $stack109 < 49 goto label02;
+
+        $stack112 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack113 = $stack112 & 262144;
+
+        if $stack113 == 0 goto label03;
+
+     label02:
+        attributeCount#1 = attributeCount#1 + 1;
+
+     label03:
+        $stack110#2 = this;
+
+        $stack110#3 = $stack110#2;
+
+        $stack19#4 = $stack110#3.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack19#5 = $stack19#4;
+
+        $stack111#6 = 131072;
+
+        $stack111#7 = $stack111#6;
+
+        $stack20#8 = $stack19#5 & $stack111#7;
+
+        $stack20#9 = $stack20#8;
+
+        if $stack20#9 == 0 goto label04;
+
+        attributeCount#1 = attributeCount#1 + 1;
+
+     label04:
+        $stack106 = this;
+
+        $stack21 = $stack106.<jdk.internal.org.objectweb.asm.FieldWriter: int signature>;
+
+        if $stack21 == 0 goto label05;
+
+        attributeCount#1 = attributeCount#1 + 1;
+
+     label05:
+        $stack105 = this;
+
+        $stack22 = $stack105.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter anns>;
+
+        if $stack22 == null goto label06;
+
+        attributeCount#1 = attributeCount#1 + 1;
+
+     label06:
+        $stack104 = this;
+
+        $stack23 = $stack104.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter ianns>;
+
+        if $stack23 == null goto label07;
+
+        attributeCount#1 = attributeCount#1 + 1;
+
+     label07:
+        $stack103 = this;
+
+        $stack24 = $stack103.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter tanns>;
+
+        if $stack24 == null goto label08;
+
+        attributeCount#1 = attributeCount#1 + 1;
+
+     label08:
+        $stack102 = this;
+
+        $stack25 = $stack102.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter itanns>;
+
+        if $stack25 == null goto label09;
+
+        attributeCount#1 = attributeCount#1 + 1;
+
+     label09:
+        $stack101 = this;
+
+        $stack26 = $stack101.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.Attribute attrs>;
+
+        if $stack26 == null goto label10;
+
+        $stack96 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.Attribute attrs>;
+
+        $stack97 = virtualinvoke $stack96.<jdk.internal.org.objectweb.asm.Attribute: int getCount()>();
+
+        attributeCount#1 = attributeCount#1 + $stack97;
+
+     label10:
+        $stack99 = out;
+
+        $stack98 = attributeCount#1;
+
+        $stack27 = virtualinvoke $stack99.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack98);
+
+        $stack100 = this;
+
+        $stack28 = $stack100.<jdk.internal.org.objectweb.asm.FieldWriter: int value>;
+
+        if $stack28 == 0 goto label11;
+
+        $stack88 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack89 = virtualinvoke $stack88.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("ConstantValue");
+
+        $stack90 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack89);
+
+        $stack91 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>(2);
+
+        $stack92 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int value>;
+
+        $stack93 = virtualinvoke $stack91.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack92);
+
+     label11:
+        $stack94 = this;
+
+        $stack29 = $stack94.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack95 = 4096;
+
+        $stack30 = $stack29 & $stack95;
+
+        if $stack30 == 0 goto label13;
+
+        $stack73 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack74 = $stack73.<jdk.internal.org.objectweb.asm.ClassWriter: int version>;
+
+        $c1 = 65535;
+
+        $i2 = (int) $c1;
+
+        $stack75 = $stack74 & $i2;
+
+        if $stack75 < 49 goto label12;
+
+        $stack82 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack83 = $stack82 & 262144;
+
+        if $stack83 == 0 goto label13;
+
+     label12:
+        $stack86 = out;
+
+        $stack84 = this;
+
+        $stack76 = $stack84.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack85 = "Synthetic";
+
+        $stack77 = virtualinvoke $stack76.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>($stack85);
+
+        $stack78 = virtualinvoke $stack86.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack77);
+
+        $stack87 = 0;
+
+        $stack79 = virtualinvoke $stack78.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>($stack87);
+
+     label13:
+        $stack80#10 = this;
+
+        $stack80#11 = $stack80#10;
+
+        $stack31#12 = $stack80#11.<jdk.internal.org.objectweb.asm.FieldWriter: int access>;
+
+        $stack31#13 = $stack31#12;
+
+        $stack81#14 = 131072;
+
+        $stack81#15 = $stack81#14;
+
+        $stack32#16 = $stack31#13 & $stack81#15;
+
+        $stack32#17 = $stack32#16;
+
+        if $stack32#17 == 0 goto label14;
+
+        $stack68 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack69 = virtualinvoke $stack68.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("Deprecated");
+
+        $stack70 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack69);
+
+        $stack71 = virtualinvoke $stack70.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>(0);
+
+     label14:
+        $stack72 = this;
+
+        $stack33 = $stack72.<jdk.internal.org.objectweb.asm.FieldWriter: int signature>;
+
+        if $stack33 == 0 goto label15;
+
+        $stack61 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack62 = virtualinvoke $stack61.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("Signature");
+
+        $stack63 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack62);
+
+        $stack64 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>(2);
+
+        $stack65 = this.<jdk.internal.org.objectweb.asm.FieldWriter: int signature>;
+
+        $stack66 = virtualinvoke $stack64.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack65);
+
+     label15:
+        $stack67 = this;
+
+        $stack34 = $stack67.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter anns>;
+
+        if $stack34 == null goto label16;
+
+        $stack56 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack57 = virtualinvoke $stack56.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("RuntimeVisibleAnnotations");
+
+        $stack58 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack57);
+
+        $stack59 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter anns>;
+
+        virtualinvoke $stack59.<jdk.internal.org.objectweb.asm.AnnotationWriter: void put(jdk.internal.org.objectweb.asm.ByteVector)>(out);
+
+     label16:
+        $stack60 = this;
+
+        $stack35 = $stack60.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter ianns>;
+
+        if $stack35 == null goto label17;
+
+        $stack51 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack52 = virtualinvoke $stack51.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("RuntimeInvisibleAnnotations");
+
+        $stack53 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack52);
+
+        $stack54 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter ianns>;
+
+        virtualinvoke $stack54.<jdk.internal.org.objectweb.asm.AnnotationWriter: void put(jdk.internal.org.objectweb.asm.ByteVector)>(out);
+
+     label17:
+        $stack55 = this;
+
+        $stack36 = $stack55.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter tanns>;
+
+        if $stack36 == null goto label18;
+
+        $stack46 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack47 = virtualinvoke $stack46.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("RuntimeVisibleTypeAnnotations");
+
+        $stack48 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack47);
+
+        $stack49 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter tanns>;
+
+        virtualinvoke $stack49.<jdk.internal.org.objectweb.asm.AnnotationWriter: void put(jdk.internal.org.objectweb.asm.ByteVector)>(out);
+
+     label18:
+        $stack50 = this;
+
+        $stack37 = $stack50.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter itanns>;
+
+        if $stack37 == null goto label19;
+
+        $stack41 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $stack42 = virtualinvoke $stack41.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>("RuntimeInvisibleTypeAnnotations");
+
+        $stack43 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack42);
+
+        $stack44 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.AnnotationWriter itanns>;
+
+        virtualinvoke $stack44.<jdk.internal.org.objectweb.asm.AnnotationWriter: void put(jdk.internal.org.objectweb.asm.ByteVector)>(out);
+
+     label19:
+        $stack45 = this;
+
+        $stack38 = $stack45.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.Attribute attrs>;
+
+        if $stack38 == null goto label20;
+
+        $stack40 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.Attribute attrs>;
+
+        $stack39 = this.<jdk.internal.org.objectweb.asm.FieldWriter: jdk.internal.org.objectweb.asm.ClassWriter cw>;
+
+        $b1 = -1;
+
+        $i3 = (int) $b1;
+
+        $b2 = -1;
+
+        $i4 = (int) $b2;
+
+        virtualinvoke $stack40.<jdk.internal.org.objectweb.asm.Attribute: void put(jdk.internal.org.objectweb.asm.ClassWriter,byte[],int,int,int,jdk.internal.org.objectweb.asm.ByteVector)>($stack39, null, 0, $i3, $i4, out);
+
+     label20:
+        return;
+
+        nop;
+    }
+}

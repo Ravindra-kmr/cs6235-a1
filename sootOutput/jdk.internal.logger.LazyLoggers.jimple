@@ -1,0 +1,226 @@
+public final class jdk.internal.logger.LazyLoggers extends java.lang.Object
+{
+    static final java.lang.RuntimePermission LOGGERFINDER_PERMISSION;
+    private static volatile java.lang.System$LoggerFinder provider;
+    private static final java.util.function.BiFunction loggerSupplier;
+    private static final jdk.internal.logger.LazyLoggers$LazyLoggerFactories factories;
+
+    private void <init>()
+    {
+        jdk.internal.logger.LazyLoggers this;
+        java.lang.InternalError $stack1;
+
+        this := @this: jdk.internal.logger.LazyLoggers;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack1 = new java.lang.InternalError;
+
+        specialinvoke $stack1.<java.lang.InternalError: void <init>()>();
+
+        throw $stack1;
+
+        nop;
+    }
+
+    private static java.lang.System$LoggerFinder accessLoggerFinder()
+    {
+        java.security.PrivilegedAction $stack3;
+        java.lang.SecurityManager $stack2, sm;
+        bottom_type prov, $stack5, $stack6;
+        java.lang.System$LoggerFinder $stack7, prov#1, $stack6#2, $stack5#3, $stack5#4;
+        java.lang.Object $stack4;
+
+        prov#1 = <jdk.internal.logger.LazyLoggers: java.lang.System$LoggerFinder provider>;
+
+        if prov#1 != null goto label3;
+
+        $stack2 = staticinvoke <java.lang.System: java.lang.SecurityManager getSecurityManager()>();
+
+        sm = $stack2;
+
+        if sm != null goto label1;
+
+        $stack6#2 = staticinvoke <java.lang.System$LoggerFinder: java.lang.System$LoggerFinder getLoggerFinder()>();
+
+        goto label2;
+
+     label1:
+        $stack3 = staticinvoke <jdk.internal.logger.LazyLoggers$getLoggerFinder__3: java.security.PrivilegedAction bootstrap$()>();
+
+        $stack4 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedAction)>($stack3);
+
+        $stack6#2 = (java.lang.System$LoggerFinder) $stack4;
+
+     label2:
+        prov#1 = $stack6#2;
+
+        $stack7 = prov#1;
+
+        <jdk.internal.logger.LazyLoggers: java.lang.System$LoggerFinder provider> = $stack7;
+
+     label3:
+        $stack5#3 = prov#1;
+
+        $stack5#4 = $stack5#3;
+
+        return $stack5#4;
+
+        nop;
+    }
+
+    static java.lang.System$Logger getLoggerFromFinder(java.lang.String, java.lang.Module)
+    {
+        java.security.Permission[] $stack5;
+        java.lang.System$Logger $stack8, $stack10;
+        java.security.PrivilegedAction $stack4;
+        java.lang.SecurityManager $stack3, sm;
+        java.lang.Module module;
+        java.lang.System$LoggerFinder $stack9;
+        java.lang.RuntimePermission $stack6;
+        java.lang.Object $stack7;
+        java.lang.String name;
+
+        name := @parameter0: java.lang.String;
+
+        module := @parameter1: java.lang.Module;
+
+        $stack3 = staticinvoke <java.lang.System: java.lang.SecurityManager getSecurityManager()>();
+
+        sm = $stack3;
+
+        if sm != null goto label1;
+
+        $stack9 = staticinvoke <jdk.internal.logger.LazyLoggers: java.lang.System$LoggerFinder accessLoggerFinder()>();
+
+        $stack10 = virtualinvoke $stack9.<java.lang.System$LoggerFinder: java.lang.System$Logger getLogger(java.lang.String,java.lang.Module)>(name, module);
+
+        return $stack10;
+
+     label1:
+        $stack4 = staticinvoke <jdk.internal.logger.LazyLoggers$lambda_getLoggerFromFinder_0__2: java.security.PrivilegedAction bootstrap$(java.lang.String,java.lang.Module)>(name, module);
+
+        $stack5 = newarray (java.security.Permission)[1];
+
+        $stack6 = <jdk.internal.logger.LazyLoggers: java.lang.RuntimePermission LOGGERFINDER_PERMISSION>;
+
+        $stack5[0] = $stack6;
+
+        $stack7 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedAction,java.security.AccessControlContext,java.security.Permission[])>($stack4, null, $stack5);
+
+        $stack8 = (java.lang.System$Logger) $stack7;
+
+        return $stack8;
+
+        nop;
+    }
+
+    public static final java.lang.System$Logger getLogger(java.lang.String, java.lang.Module)
+    {
+        java.lang.System$Logger $stack3, $stack4;
+        java.lang.Module module;
+        java.lang.String name;
+        boolean $stack2;
+
+        name := @parameter0: java.lang.String;
+
+        module := @parameter1: java.lang.Module;
+
+        $stack2 = staticinvoke <jdk.internal.logger.DefaultLoggerFinder: boolean isSystem(java.lang.Module)>(module);
+
+        if $stack2 == 0 goto label1;
+
+        $stack4 = staticinvoke <jdk.internal.logger.LazyLoggers: java.lang.System$Logger getLazyLogger(java.lang.String,java.lang.Module)>(name, module);
+
+        return $stack4;
+
+     label1:
+        $stack3 = staticinvoke <jdk.internal.logger.LazyLoggers: java.lang.System$Logger getLoggerFromFinder(java.lang.String,java.lang.Module)>(name, module);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public static final java.lang.System$Logger getLazyLogger(java.lang.String, java.lang.Module)
+    {
+        java.lang.System$Logger $stack4;
+        java.lang.Module module;
+        java.lang.String name;
+        jdk.internal.logger.LazyLoggers$JdkLazyLogger $stack5;
+        boolean $stack3, useLazyLogger;
+
+        name := @parameter0: java.lang.String;
+
+        module := @parameter1: java.lang.Module;
+
+        $stack3 = staticinvoke <jdk.internal.logger.BootstrapLogger: boolean useLazyLoggers()>();
+
+        useLazyLogger = $stack3;
+
+        if useLazyLogger == 0 goto label1;
+
+        $stack5 = new jdk.internal.logger.LazyLoggers$JdkLazyLogger;
+
+        specialinvoke $stack5.<jdk.internal.logger.LazyLoggers$JdkLazyLogger: void <init>(java.lang.String,java.lang.Module)>(name, module);
+
+        return $stack5;
+
+     label1:
+        $stack4 = staticinvoke <jdk.internal.logger.LazyLoggers: java.lang.System$Logger getLoggerFromFinder(java.lang.String,java.lang.Module)>(name, module);
+
+        return $stack4;
+
+        nop;
+    }
+
+    public static java.lang.System$Logger lambda$getLoggerFromFinder$0(java.lang.String, java.lang.Module)
+    {
+        java.lang.System$Logger $stack3;
+        java.lang.Module module;
+        java.lang.System$LoggerFinder $stack2;
+        java.lang.String name;
+
+        name := @parameter0: java.lang.String;
+
+        module := @parameter1: java.lang.Module;
+
+        $stack2 = staticinvoke <jdk.internal.logger.LazyLoggers: java.lang.System$LoggerFinder accessLoggerFinder()>();
+
+        $stack3 = virtualinvoke $stack2.<java.lang.System$LoggerFinder: java.lang.System$Logger getLogger(java.lang.String,java.lang.Module)>(name, module);
+
+        return $stack3;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.logger.LazyLoggers$1 $stack1;
+        java.util.function.BiFunction $stack3;
+        java.lang.RuntimePermission $stack0;
+        jdk.internal.logger.LazyLoggers$LazyLoggerFactories $stack2;
+
+        $stack0 = new java.lang.RuntimePermission;
+
+        specialinvoke $stack0.<java.lang.RuntimePermission: void <init>(java.lang.String)>("loggerFinder");
+
+        <jdk.internal.logger.LazyLoggers: java.lang.RuntimePermission LOGGERFINDER_PERMISSION> = $stack0;
+
+        $stack1 = new jdk.internal.logger.LazyLoggers$1;
+
+        specialinvoke $stack1.<jdk.internal.logger.LazyLoggers$1: void <init>()>();
+
+        <jdk.internal.logger.LazyLoggers: java.util.function.BiFunction loggerSupplier> = $stack1;
+
+        $stack2 = new jdk.internal.logger.LazyLoggers$LazyLoggerFactories;
+
+        $stack3 = <jdk.internal.logger.LazyLoggers: java.util.function.BiFunction loggerSupplier>;
+
+        specialinvoke $stack2.<jdk.internal.logger.LazyLoggers$LazyLoggerFactories: void <init>(java.util.function.BiFunction)>($stack3);
+
+        <jdk.internal.logger.LazyLoggers: jdk.internal.logger.LazyLoggers$LazyLoggerFactories factories> = $stack2;
+
+        return;
+    }
+}

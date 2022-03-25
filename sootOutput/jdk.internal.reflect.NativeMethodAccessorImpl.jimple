@@ -1,0 +1,145 @@
+class jdk.internal.reflect.NativeMethodAccessorImpl extends jdk.internal.reflect.MethodAccessorImpl
+{
+    private final java.lang.reflect.Method method;
+    private jdk.internal.reflect.DelegatingMethodAccessorImpl parent;
+    private int numInvocations;
+
+    void <init>(java.lang.reflect.Method)
+    {
+        jdk.internal.reflect.NativeMethodAccessorImpl this;
+        java.lang.reflect.Method method;
+
+        this := @this: jdk.internal.reflect.NativeMethodAccessorImpl;
+
+        method := @parameter0: java.lang.reflect.Method;
+
+        specialinvoke this.<jdk.internal.reflect.MethodAccessorImpl: void <init>()>();
+
+        this.<jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.reflect.Method method> = method;
+
+        return;
+
+        nop;
+    }
+
+    public java.lang.Object invoke(java.lang.Object, java.lang.Object[]) throws java.lang.IllegalArgumentException, java.lang.reflect.InvocationTargetException
+    {
+        jdk.internal.reflect.MethodAccessor $stack28;
+        jdk.internal.reflect.DelegatingMethodAccessorImpl $stack29;
+        bottom_type $stack7, $stack8, $stack12, $stack13, $stack14;
+        java.lang.reflect.Method $stack9, $stack16, $stack18, $stack20, $stack22, $stack24, $stack26, $stack7#3, $stack7#4;
+        boolean $stack11;
+        jdk.internal.reflect.MethodAccessorGenerator $stack15;
+        jdk.internal.reflect.MethodAccessorImpl acc;
+        jdk.internal.reflect.NativeMethodAccessorImpl this, $stack12#1, $stack12#2;
+        java.lang.Object[] args, $stack14#7, $stack14#8;
+        int $stack4, $stack5, $stack6, $stack27;
+        java.lang.String $stack19;
+        java.lang.Class[] $stack21, $stack25;
+        java.lang.Object obj, $stack13#5, $stack13#6, $stack8#9, $stack8#10;
+        java.lang.Class $stack10, $stack17, $stack23;
+
+        this := @this: jdk.internal.reflect.NativeMethodAccessorImpl;
+
+        obj := @parameter0: java.lang.Object;
+
+        args := @parameter1: java.lang.Object[];
+
+        $stack4 = this.<jdk.internal.reflect.NativeMethodAccessorImpl: int numInvocations>;
+
+        $stack5 = $stack4 + 1;
+
+        this.<jdk.internal.reflect.NativeMethodAccessorImpl: int numInvocations> = $stack5;
+
+        $stack6 = staticinvoke <jdk.internal.reflect.ReflectionFactory: int inflationThreshold()>();
+
+        if $stack5 <= $stack6 goto label1;
+
+        $stack9 = this.<jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.reflect.Method method>;
+
+        $stack10 = virtualinvoke $stack9.<java.lang.reflect.Method: java.lang.Class getDeclaringClass()>();
+
+        $stack11 = staticinvoke <sun.reflect.misc.ReflectUtil: boolean isVMAnonymousClass(java.lang.Class)>($stack10);
+
+        if $stack11 != 0 goto label1;
+
+        $stack15 = new jdk.internal.reflect.MethodAccessorGenerator;
+
+        specialinvoke $stack15.<jdk.internal.reflect.MethodAccessorGenerator: void <init>()>();
+
+        $stack16 = this.<jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.reflect.Method method>;
+
+        $stack17 = virtualinvoke $stack16.<java.lang.reflect.Method: java.lang.Class getDeclaringClass()>();
+
+        $stack18 = this.<jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.reflect.Method method>;
+
+        $stack19 = virtualinvoke $stack18.<java.lang.reflect.Method: java.lang.String getName()>();
+
+        $stack20 = this.<jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.reflect.Method method>;
+
+        $stack21 = virtualinvoke $stack20.<java.lang.reflect.Method: java.lang.Class[] getParameterTypes()>();
+
+        $stack22 = this.<jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.reflect.Method method>;
+
+        $stack23 = virtualinvoke $stack22.<java.lang.reflect.Method: java.lang.Class getReturnType()>();
+
+        $stack24 = this.<jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.reflect.Method method>;
+
+        $stack25 = virtualinvoke $stack24.<java.lang.reflect.Method: java.lang.Class[] getExceptionTypes()>();
+
+        $stack26 = this.<jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.reflect.Method method>;
+
+        $stack27 = virtualinvoke $stack26.<java.lang.reflect.Method: int getModifiers()>();
+
+        $stack28 = virtualinvoke $stack15.<jdk.internal.reflect.MethodAccessorGenerator: jdk.internal.reflect.MethodAccessor generateMethod(java.lang.Class,java.lang.String,java.lang.Class[],java.lang.Class,java.lang.Class[],int)>($stack17, $stack19, $stack21, $stack23, $stack25, $stack27);
+
+        acc = (jdk.internal.reflect.MethodAccessorImpl) $stack28;
+
+        $stack29 = this.<jdk.internal.reflect.NativeMethodAccessorImpl: jdk.internal.reflect.DelegatingMethodAccessorImpl parent>;
+
+        virtualinvoke $stack29.<jdk.internal.reflect.DelegatingMethodAccessorImpl: void setDelegate(jdk.internal.reflect.MethodAccessorImpl)>(acc);
+
+     label1:
+        $stack12#1 = this;
+
+        $stack12#2 = $stack12#1;
+
+        $stack7#3 = $stack12#2.<jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.reflect.Method method>;
+
+        $stack7#4 = $stack7#3;
+
+        $stack13#5 = obj;
+
+        $stack13#6 = $stack13#5;
+
+        $stack14#7 = args;
+
+        $stack14#8 = $stack14#7;
+
+        $stack8#9 = staticinvoke <jdk.internal.reflect.NativeMethodAccessorImpl: java.lang.Object invoke0(java.lang.reflect.Method,java.lang.Object,java.lang.Object[])>($stack7#4, $stack13#6, $stack14#8);
+
+        $stack8#10 = $stack8#9;
+
+        return $stack8#10;
+
+        nop;
+    }
+
+    void setParent(jdk.internal.reflect.DelegatingMethodAccessorImpl)
+    {
+        jdk.internal.reflect.NativeMethodAccessorImpl this;
+        jdk.internal.reflect.DelegatingMethodAccessorImpl parent;
+
+        this := @this: jdk.internal.reflect.NativeMethodAccessorImpl;
+
+        parent := @parameter0: jdk.internal.reflect.DelegatingMethodAccessorImpl;
+
+        this.<jdk.internal.reflect.NativeMethodAccessorImpl: jdk.internal.reflect.DelegatingMethodAccessorImpl parent> = parent;
+
+        return;
+
+        nop;
+    }
+
+    private static native java.lang.Object invoke0(java.lang.reflect.Method, java.lang.Object, java.lang.Object[]);
+}

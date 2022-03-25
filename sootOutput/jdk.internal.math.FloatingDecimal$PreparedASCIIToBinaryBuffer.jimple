@@ -1,0 +1,56 @@
+class jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer extends java.lang.Object implements jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter
+{
+    private final double doubleVal;
+    private final float floatVal;
+
+    public void <init>(double, float)
+    {
+        float floatVal;
+        jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer this;
+        double doubleVal;
+
+        this := @this: jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer;
+
+        doubleVal := @parameter0: double;
+
+        floatVal := @parameter1: float;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: double doubleVal> = doubleVal;
+
+        this.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: float floatVal> = floatVal;
+
+        return;
+
+        nop;
+    }
+
+    public double doubleValue()
+    {
+        jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer this;
+        double $stack1;
+
+        this := @this: jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer;
+
+        $stack1 = this.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: double doubleVal>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public float floatValue()
+    {
+        float $stack1;
+        jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer this;
+
+        this := @this: jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer;
+
+        $stack1 = this.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: float floatVal>;
+
+        return $stack1;
+
+        nop;
+    }
+}

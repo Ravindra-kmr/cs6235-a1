@@ -1,0 +1,10 @@
+2
+P2.main
+4
+a,p
+a,q
+temp,p
+p,q
+A.bar
+1
+x,y

@@ -1,0 +1,731 @@
+public class jdk.internal.module.Modules extends java.lang.Object
+{
+    private static final jdk.internal.misc.JavaLangAccess JLA;
+    private static volatile java.lang.ModuleLayer topLayer;
+    static final boolean $assertionsDisabled;
+
+    private void <init>()
+    {
+        jdk.internal.module.Modules this;
+
+        this := @this: jdk.internal.module.Modules;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public static java.lang.Module defineModule(java.lang.ClassLoader, java.lang.module.ModuleDescriptor, java.net.URI)
+    {
+        java.lang.Module $stack4;
+        java.lang.module.ModuleDescriptor descriptor;
+        java.lang.ClassLoader loader;
+        java.net.URI uri;
+        jdk.internal.misc.JavaLangAccess $stack3;
+
+        loader := @parameter0: java.lang.ClassLoader;
+
+        descriptor := @parameter1: java.lang.module.ModuleDescriptor;
+
+        uri := @parameter2: java.net.URI;
+
+        $stack3 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        $stack4 = interfaceinvoke $stack3.<jdk.internal.misc.JavaLangAccess: java.lang.Module defineModule(java.lang.ClassLoader,java.lang.module.ModuleDescriptor,java.net.URI)>(loader, descriptor, uri);
+
+        return $stack4;
+
+        nop;
+    }
+
+    public static void addReads(java.lang.Module, java.lang.Module)
+    {
+        java.lang.Module m1, m2;
+        jdk.internal.misc.JavaLangAccess $stack2;
+
+        m1 := @parameter0: java.lang.Module;
+
+        m2 := @parameter1: java.lang.Module;
+
+        $stack2 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        interfaceinvoke $stack2.<jdk.internal.misc.JavaLangAccess: void addReads(java.lang.Module,java.lang.Module)>(m1, m2);
+
+        return;
+
+        nop;
+    }
+
+    public static void addReadsAllUnnamed(java.lang.Module)
+    {
+        java.lang.Module m;
+        jdk.internal.misc.JavaLangAccess $stack1;
+
+        m := @parameter0: java.lang.Module;
+
+        $stack1 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        interfaceinvoke $stack1.<jdk.internal.misc.JavaLangAccess: void addReadsAllUnnamed(java.lang.Module)>(m);
+
+        return;
+
+        nop;
+    }
+
+    public static void addExports(java.lang.Module, java.lang.String, java.lang.Module)
+    {
+        java.lang.Module m1, m2;
+        java.lang.String pn;
+        jdk.internal.misc.JavaLangAccess $stack3;
+
+        m1 := @parameter0: java.lang.Module;
+
+        pn := @parameter1: java.lang.String;
+
+        m2 := @parameter2: java.lang.Module;
+
+        $stack3 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        interfaceinvoke $stack3.<jdk.internal.misc.JavaLangAccess: void addExports(java.lang.Module,java.lang.String,java.lang.Module)>(m1, pn, m2);
+
+        return;
+
+        nop;
+    }
+
+    public static void addExportsToAllUnnamed(java.lang.Module, java.lang.String)
+    {
+        java.lang.String pn;
+        java.lang.Module m;
+        jdk.internal.misc.JavaLangAccess $stack2;
+
+        m := @parameter0: java.lang.Module;
+
+        pn := @parameter1: java.lang.String;
+
+        $stack2 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        interfaceinvoke $stack2.<jdk.internal.misc.JavaLangAccess: void addExportsToAllUnnamed(java.lang.Module,java.lang.String)>(m, pn);
+
+        return;
+
+        nop;
+    }
+
+    public static void addOpens(java.lang.Module, java.lang.String, java.lang.Module)
+    {
+        java.lang.Module m1, m2;
+        java.lang.String pn;
+        jdk.internal.misc.JavaLangAccess $stack3;
+
+        m1 := @parameter0: java.lang.Module;
+
+        pn := @parameter1: java.lang.String;
+
+        m2 := @parameter2: java.lang.Module;
+
+        $stack3 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        interfaceinvoke $stack3.<jdk.internal.misc.JavaLangAccess: void addOpens(java.lang.Module,java.lang.String,java.lang.Module)>(m1, pn, m2);
+
+        return;
+
+        nop;
+    }
+
+    public static void addOpensToAllUnnamed(java.lang.Module, java.lang.String)
+    {
+        java.lang.String pn;
+        java.lang.Module m;
+        jdk.internal.misc.JavaLangAccess $stack2;
+
+        m := @parameter0: java.lang.Module;
+
+        pn := @parameter1: java.lang.String;
+
+        $stack2 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        interfaceinvoke $stack2.<jdk.internal.misc.JavaLangAccess: void addOpensToAllUnnamed(java.lang.Module,java.lang.String)>(m, pn);
+
+        return;
+
+        nop;
+    }
+
+    public static void addUses(java.lang.Module, java.lang.Class)
+    {
+        java.lang.Class service;
+        java.lang.Module m;
+        jdk.internal.misc.JavaLangAccess $stack2;
+
+        m := @parameter0: java.lang.Module;
+
+        service := @parameter1: java.lang.Class;
+
+        $stack2 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        interfaceinvoke $stack2.<jdk.internal.misc.JavaLangAccess: void addUses(java.lang.Module,java.lang.Class)>(m, service);
+
+        return;
+
+        nop;
+    }
+
+    public static void addProvides(java.lang.Module, java.lang.Class, java.lang.Class)
+    {
+        java.lang.ModuleLayer $stack8, layer, $stack21#4, $stack21#5;
+        jdk.internal.misc.JavaLangAccess $stack14;
+        bottom_type catalog, $stack21, $stack22;
+        java.security.PrivilegedAction $stack10, pa;
+        jdk.internal.module.ServicesCatalog $stack13, $stack15, $stack16, $stack20, catalog#3;
+        java.lang.Module m, $stack17;
+        java.lang.Object $stack9, $stack11;
+        java.lang.Class service, impl, $stack18, $stack19;
+        java.lang.ClassLoader loader, $stack12, platformClassLoader, $stack22#1, $stack22#2;
+
+        m := @parameter0: java.lang.Module;
+
+        service := @parameter1: java.lang.Class;
+
+        impl := @parameter2: java.lang.Class;
+
+        $stack8 = virtualinvoke m.<java.lang.Module: java.lang.ModuleLayer getLayer()>();
+
+        layer = $stack8;
+
+        $stack9 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(m);
+
+        $stack10 = staticinvoke <jdk.internal.module.Modules$getClassLoader__438: java.security.PrivilegedAction bootstrap$(java.lang.Module)>(m);
+
+        pa = $stack10;
+
+        $stack11 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedAction)>(pa);
+
+        loader = (java.lang.ClassLoader) $stack11;
+
+        $stack12 = staticinvoke <jdk.internal.loader.ClassLoaders: java.lang.ClassLoader platformClassLoader()>();
+
+        platformClassLoader = $stack12;
+
+        if layer == null goto label1;
+
+        if loader == null goto label1;
+
+        if loader != platformClassLoader goto label4;
+
+     label1:
+        $stack22#1 = loader;
+
+        $stack22#2 = $stack22#1;
+
+        if $stack22#2 != null goto label2;
+
+        $stack16 = staticinvoke <jdk.internal.loader.BootLoader: jdk.internal.module.ServicesCatalog getServicesCatalog()>();
+
+        catalog#3 = $stack16;
+
+        goto label3;
+
+     label2:
+        $stack13 = staticinvoke <jdk.internal.module.ServicesCatalog: jdk.internal.module.ServicesCatalog getServicesCatalog(java.lang.ClassLoader)>(loader);
+
+        catalog#3 = $stack13;
+
+     label3:
+        $stack20 = catalog#3;
+
+        $stack17 = m;
+
+        $stack18 = service;
+
+        $stack19 = impl;
+
+        virtualinvoke $stack20.<jdk.internal.module.ServicesCatalog: void addProvider(java.lang.Module,java.lang.Class,java.lang.Class)>($stack17, $stack18, $stack19);
+
+     label4:
+        $stack21#4 = layer;
+
+        $stack21#5 = $stack21#4;
+
+        if $stack21#5 == null goto label5;
+
+        $stack14 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        $stack15 = interfaceinvoke $stack14.<jdk.internal.misc.JavaLangAccess: jdk.internal.module.ServicesCatalog getServicesCatalog(java.lang.ModuleLayer)>(layer);
+
+        virtualinvoke $stack15.<jdk.internal.module.ServicesCatalog: void addProvider(java.lang.Module,java.lang.Class,java.lang.Class)>(m, service, impl);
+
+     label5:
+        return;
+
+        nop;
+    }
+
+    public static void transformedByAgent(java.lang.Module)
+    {
+        java.lang.Module m, $stack1, $stack3;
+        java.lang.ClassLoader $stack2;
+
+        m := @parameter0: java.lang.Module;
+
+        $stack1 = staticinvoke <jdk.internal.loader.BootLoader: java.lang.Module getUnnamedModule()>();
+
+        staticinvoke <jdk.internal.module.Modules: void addReads(java.lang.Module,java.lang.Module)>(m, $stack1);
+
+        $stack2 = staticinvoke <jdk.internal.loader.ClassLoaders: java.lang.ClassLoader appClassLoader()>();
+
+        $stack3 = virtualinvoke $stack2.<java.lang.ClassLoader: java.lang.Module getUnnamedModule()>();
+
+        staticinvoke <jdk.internal.module.Modules: void addReads(java.lang.Module,java.lang.Module)>(m, $stack3);
+
+        return;
+
+        nop;
+    }
+
+    public static synchronized java.lang.Module loadModule(java.lang.String)
+    {
+        java.lang.module.ModuleReference $stack41, mref;
+        java.lang.module.ModuleFinder $stack19, empty, $stack20, finder;
+        java.util.Map map;
+        java.util.stream.Collector $stack30;
+        java.util.Set $stack21, roots, $stack26, $stack33, $stack47, $stack61, $stack67;
+        java.util.stream.Stream $stack27, $stack62, $stack64, $stack68, $stack70;
+        java.lang.ClassLoader cl;
+        java.lang.AssertionError $stack58;
+        java.util.function.Supplier $stack37;
+        java.lang.module.ResolvedModule m#8;
+        java.lang.String name, $stack43, mn, $stack74;
+        java.lang.Module module, $stack39, $stack77, $stack78, m#4;
+        jdk.internal.misc.JavaLangAccess $stack32;
+        boolean $stack35, $stack49, $stack51, $stack52;
+        java.util.function.Predicate $stack63, $stack69;
+        java.lang.module.Configuration $stack22, $stack23, cf;
+        java.util.List $stack50, $stack57, parents#5;
+        java.util.Optional $stack16, $stack36;
+        java.lang.ModuleLayer $stack25, newLayer, $stack54, $stack73, $stack75, top#1, layer#2, $stack55#6;
+        java.lang.module.ModuleDescriptor $stack42, $stack60, $stack66;
+        java.util.function.Function $stack24, clf, $stack28, $stack29;
+        int $stack56;
+        java.util.Iterator $stack34, $stack46, $stack48, $stack72, parents#3, parents#7;
+        java.nio.file.Path[] $stack18;
+        jdk.internal.loader.BuiltinClassLoader $stack45;
+        java.util.function.Consumer $stack65, $stack71;
+        java.lang.Object $stack17, $stack31, $stack38, $stack40, $stack44, $stack53, $stack59;
+
+        name := @parameter0: java.lang.String;
+
+        top#1 = <jdk.internal.module.Modules: java.lang.ModuleLayer topLayer>;
+
+        if top#1 != null goto label01;
+
+        $stack73 = staticinvoke <java.lang.ModuleLayer: java.lang.ModuleLayer boot()>();
+
+        top#1 = $stack73;
+
+     label01:
+        $stack75 = top#1;
+
+        $stack74 = name;
+
+        $stack16 = virtualinvoke $stack75.<java.lang.ModuleLayer: java.util.Optional findModule(java.lang.String)>($stack74);
+
+        $stack17 = virtualinvoke $stack16.<java.util.Optional: java.lang.Object orElse(java.lang.Object)>(null);
+
+        $stack77 = (java.lang.Module) $stack17;
+
+        module = $stack77;
+
+        $stack78 = module;
+
+        if $stack78 == null goto label02;
+
+        return module;
+
+     label02:
+        $stack18 = newarray (java.nio.file.Path)[0];
+
+        $stack19 = staticinvoke <java.lang.module.ModuleFinder: java.lang.module.ModuleFinder of(java.nio.file.Path[])>($stack18);
+
+        empty = $stack19;
+
+        $stack20 = staticinvoke <jdk.internal.module.ModuleBootstrap: java.lang.module.ModuleFinder unlimitedFinder()>();
+
+        finder = $stack20;
+
+        $stack21 = staticinvoke <java.util.Set: java.util.Set of(java.lang.Object)>(name);
+
+        roots = $stack21;
+
+        $stack22 = virtualinvoke top#1.<java.lang.ModuleLayer: java.lang.module.Configuration configuration()>();
+
+        $stack23 = virtualinvoke $stack22.<java.lang.module.Configuration: java.lang.module.Configuration resolveAndBind(java.lang.module.ModuleFinder,java.lang.module.ModuleFinder,java.util.Collection)>(empty, finder, roots);
+
+        cf = $stack23;
+
+        $stack24 = staticinvoke <jdk.internal.module.ModuleLoaderMap: java.util.function.Function mappingFunction(java.lang.module.Configuration)>(cf);
+
+        clf = $stack24;
+
+        $stack25 = virtualinvoke top#1.<java.lang.ModuleLayer: java.lang.ModuleLayer defineModules(java.lang.module.Configuration,java.util.function.Function)>(cf, clf);
+
+        newLayer = $stack25;
+
+        $stack26 = virtualinvoke newLayer.<java.lang.ModuleLayer: java.util.Set modules()>();
+
+        $stack27 = interfaceinvoke $stack26.<java.util.Set: java.util.stream.Stream stream()>();
+
+        $stack28 = staticinvoke <jdk.internal.module.Modules$getName__440: java.util.function.Function bootstrap$()>();
+
+        $stack29 = staticinvoke <java.util.function.Function: java.util.function.Function identity()>();
+
+        $stack30 = staticinvoke <java.util.stream.Collectors: java.util.stream.Collector toMap(java.util.function.Function,java.util.function.Function)>($stack28, $stack29);
+
+        $stack31 = interfaceinvoke $stack27.<java.util.stream.Stream: java.lang.Object collect(java.util.stream.Collector)>($stack30);
+
+        map = (java.util.Map) $stack31;
+
+        layer#2 = top#1;
+
+     label03:
+        $stack54 = layer#2;
+
+        if $stack54 == null goto label09;
+
+        $stack47 = virtualinvoke layer#2.<java.lang.ModuleLayer: java.util.Set modules()>();
+
+        $stack48 = interfaceinvoke $stack47.<java.util.Set: java.util.Iterator iterator()>();
+
+        parents#3 = $stack48;
+
+     label04:
+        $stack72 = parents#3;
+
+        $stack49 = interfaceinvoke $stack72.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack49 == 0 goto label05;
+
+        $stack59 = interfaceinvoke parents#3.<java.util.Iterator: java.lang.Object next()>();
+
+        m#4 = (java.lang.Module) $stack59;
+
+        $stack60 = virtualinvoke m#4.<java.lang.Module: java.lang.module.ModuleDescriptor getDescriptor()>();
+
+        $stack61 = virtualinvoke $stack60.<java.lang.module.ModuleDescriptor: java.util.Set exports()>();
+
+        $stack62 = interfaceinvoke $stack61.<java.util.Set: java.util.stream.Stream stream()>();
+
+        $stack63 = staticinvoke <jdk.internal.module.Modules$isQualified__452: java.util.function.Predicate bootstrap$()>();
+
+        $stack64 = interfaceinvoke $stack62.<java.util.stream.Stream: java.util.stream.Stream filter(java.util.function.Predicate)>($stack63);
+
+        $stack65 = staticinvoke <jdk.internal.module.Modules$lambda_loadModule_1__454: java.util.function.Consumer bootstrap$(java.util.Map,java.lang.Module)>(map, m#4);
+
+        interfaceinvoke $stack64.<java.util.stream.Stream: void forEach(java.util.function.Consumer)>($stack65);
+
+        $stack66 = virtualinvoke m#4.<java.lang.Module: java.lang.module.ModuleDescriptor getDescriptor()>();
+
+        $stack67 = virtualinvoke $stack66.<java.lang.module.ModuleDescriptor: java.util.Set opens()>();
+
+        $stack68 = interfaceinvoke $stack67.<java.util.Set: java.util.stream.Stream stream()>();
+
+        $stack69 = staticinvoke <jdk.internal.module.Modules$isQualified__455: java.util.function.Predicate bootstrap$()>();
+
+        $stack70 = interfaceinvoke $stack68.<java.util.stream.Stream: java.util.stream.Stream filter(java.util.function.Predicate)>($stack69);
+
+        $stack71 = staticinvoke <jdk.internal.module.Modules$lambda_loadModule_3__456: java.util.function.Consumer bootstrap$(java.util.Map,java.lang.Module)>(map, m#4);
+
+        interfaceinvoke $stack70.<java.util.stream.Stream: void forEach(java.util.function.Consumer)>($stack71);
+
+        goto label04;
+
+     label05:
+        $stack50 = virtualinvoke layer#2.<java.lang.ModuleLayer: java.util.List parents()>();
+
+        parents#5 = $stack50;
+
+        $stack51 = <jdk.internal.module.Modules: boolean $assertionsDisabled>;
+
+        if $stack51 != 0 goto label06;
+
+        $stack56 = interfaceinvoke parents#5.<java.util.List: int size()>();
+
+        if $stack56 <= 1 goto label06;
+
+        $stack58 = new java.lang.AssertionError;
+
+        specialinvoke $stack58.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack58;
+
+     label06:
+        $stack57 = parents#5;
+
+        $stack52 = interfaceinvoke $stack57.<java.util.List: boolean isEmpty()>();
+
+        if $stack52 == 0 goto label07;
+
+        $stack55#6 = null;
+
+        goto label08;
+
+     label07:
+        $stack53 = interfaceinvoke parents#5.<java.util.List: java.lang.Object get(int)>(0);
+
+        $stack55#6 = (java.lang.ModuleLayer) $stack53;
+
+     label08:
+        layer#2 = $stack55#6;
+
+        goto label03;
+
+     label09:
+        $stack32 = <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA>;
+
+        interfaceinvoke $stack32.<jdk.internal.misc.JavaLangAccess: void addNonExportedPackages(java.lang.ModuleLayer)>(newLayer);
+
+        $stack33 = virtualinvoke cf.<java.lang.module.Configuration: java.util.Set modules()>();
+
+        $stack34 = interfaceinvoke $stack33.<java.util.Set: java.util.Iterator iterator()>();
+
+        parents#7 = $stack34;
+
+     label10:
+        $stack46 = parents#7;
+
+        $stack35 = interfaceinvoke $stack46.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack35 == 0 goto label13;
+
+        $stack40 = interfaceinvoke parents#7.<java.util.Iterator: java.lang.Object next()>();
+
+        m#8 = (java.lang.module.ResolvedModule) $stack40;
+
+        $stack41 = virtualinvoke m#8.<java.lang.module.ResolvedModule: java.lang.module.ModuleReference reference()>();
+
+        mref = $stack41;
+
+        $stack42 = virtualinvoke mref.<java.lang.module.ModuleReference: java.lang.module.ModuleDescriptor descriptor()>();
+
+        $stack43 = virtualinvoke $stack42.<java.lang.module.ModuleDescriptor: java.lang.String name()>();
+
+        mn = $stack43;
+
+        $stack44 = interfaceinvoke clf.<java.util.function.Function: java.lang.Object apply(java.lang.Object)>(mn);
+
+        cl = (java.lang.ClassLoader) $stack44;
+
+        if cl != null goto label11;
+
+        staticinvoke <jdk.internal.loader.BootLoader: void loadModule(java.lang.module.ModuleReference)>(mref);
+
+        goto label12;
+
+     label11:
+        $stack45 = (jdk.internal.loader.BuiltinClassLoader) cl;
+
+        virtualinvoke $stack45.<jdk.internal.loader.BuiltinClassLoader: void loadModule(java.lang.module.ModuleReference)>(mref);
+
+     label12:
+        goto label10;
+
+     label13:
+        <jdk.internal.module.Modules: java.lang.ModuleLayer topLayer> = newLayer;
+
+        $stack36 = virtualinvoke newLayer.<java.lang.ModuleLayer: java.util.Optional findModule(java.lang.String)>(name);
+
+        $stack37 = staticinvoke <jdk.internal.module.Modules$lambda_loadModule_4__443: java.util.function.Supplier bootstrap$()>();
+
+        $stack38 = virtualinvoke $stack36.<java.util.Optional: java.lang.Object orElseThrow(java.util.function.Supplier)>($stack37);
+
+        $stack39 = (java.lang.Module) $stack38;
+
+        return $stack39;
+    }
+
+    public static java.util.Optional findLoadedModule(java.lang.String)
+    {
+        bottom_type top;
+        java.util.Optional $stack2;
+        java.lang.ModuleLayer $stack3, $stack5, top#1;
+        java.lang.String name, $stack4;
+
+        name := @parameter0: java.lang.String;
+
+        top#1 = <jdk.internal.module.Modules: java.lang.ModuleLayer topLayer>;
+
+        if top#1 != null goto label1;
+
+        $stack3 = staticinvoke <java.lang.ModuleLayer: java.lang.ModuleLayer boot()>();
+
+        top#1 = $stack3;
+
+     label1:
+        $stack5 = top#1;
+
+        $stack4 = name;
+
+        $stack2 = virtualinvoke $stack5.<java.lang.ModuleLayer: java.util.Optional findModule(java.lang.String)>($stack4);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static java.lang.InternalError lambda$loadModule$4()
+    {
+        java.lang.InternalError $stack0;
+
+        $stack0 = new java.lang.InternalError;
+
+        specialinvoke $stack0.<java.lang.InternalError: void <init>(java.lang.String)>("module not loaded");
+
+        return $stack0;
+    }
+
+    public static void lambda$loadModule$3(java.util.Map, java.lang.Module, java.lang.module.ModuleDescriptor$Opens)
+    {
+        java.util.function.Consumer $stack4;
+        java.lang.Module m;
+        java.util.Map map;
+        java.util.Set $stack3;
+        java.lang.module.ModuleDescriptor$Opens o;
+
+        map := @parameter0: java.util.Map;
+
+        m := @parameter1: java.lang.Module;
+
+        o := @parameter2: java.lang.module.ModuleDescriptor$Opens;
+
+        $stack3 = virtualinvoke o.<java.lang.module.ModuleDescriptor$Opens: java.util.Set targets()>();
+
+        $stack4 = staticinvoke <jdk.internal.module.Modules$lambda_loadModule_2__441: java.util.function.Consumer bootstrap$(java.util.Map,java.lang.Module,java.lang.module.ModuleDescriptor$Opens)>(map, m, o);
+
+        interfaceinvoke $stack3.<java.util.Set: void forEach(java.util.function.Consumer)>($stack4);
+
+        return;
+
+        nop;
+    }
+
+    public static void lambda$loadModule$2(java.util.Map, java.lang.Module, java.lang.module.ModuleDescriptor$Opens, java.lang.String)
+    {
+        java.lang.Module other, m;
+        java.util.Map map;
+        java.lang.Object $stack5;
+        java.lang.String target, $stack6;
+        java.lang.module.ModuleDescriptor$Opens o;
+
+        map := @parameter0: java.util.Map;
+
+        m := @parameter1: java.lang.Module;
+
+        o := @parameter2: java.lang.module.ModuleDescriptor$Opens;
+
+        target := @parameter3: java.lang.String;
+
+        $stack5 = interfaceinvoke map.<java.util.Map: java.lang.Object get(java.lang.Object)>(target);
+
+        other = (java.lang.Module) $stack5;
+
+        if other == null goto label1;
+
+        $stack6 = virtualinvoke o.<java.lang.module.ModuleDescriptor$Opens: java.lang.String source()>();
+
+        staticinvoke <jdk.internal.module.Modules: void addOpens(java.lang.Module,java.lang.String,java.lang.Module)>(m, $stack6, other);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public static void lambda$loadModule$1(java.util.Map, java.lang.Module, java.lang.module.ModuleDescriptor$Exports)
+    {
+        java.util.function.Consumer $stack4;
+        java.lang.Module m;
+        java.util.Map map;
+        java.util.Set $stack3;
+        java.lang.module.ModuleDescriptor$Exports e;
+
+        map := @parameter0: java.util.Map;
+
+        m := @parameter1: java.lang.Module;
+
+        e := @parameter2: java.lang.module.ModuleDescriptor$Exports;
+
+        $stack3 = virtualinvoke e.<java.lang.module.ModuleDescriptor$Exports: java.util.Set targets()>();
+
+        $stack4 = staticinvoke <jdk.internal.module.Modules$lambda_loadModule_0__442: java.util.function.Consumer bootstrap$(java.util.Map,java.lang.Module,java.lang.module.ModuleDescriptor$Exports)>(map, m, e);
+
+        interfaceinvoke $stack3.<java.util.Set: void forEach(java.util.function.Consumer)>($stack4);
+
+        return;
+
+        nop;
+    }
+
+    public static void lambda$loadModule$0(java.util.Map, java.lang.Module, java.lang.module.ModuleDescriptor$Exports, java.lang.String)
+    {
+        java.lang.Module other, m;
+        java.util.Map map;
+        java.lang.Object $stack5;
+        java.lang.String target, $stack6;
+        java.lang.module.ModuleDescriptor$Exports e;
+
+        map := @parameter0: java.util.Map;
+
+        m := @parameter1: java.lang.Module;
+
+        e := @parameter2: java.lang.module.ModuleDescriptor$Exports;
+
+        target := @parameter3: java.lang.String;
+
+        $stack5 = interfaceinvoke map.<java.util.Map: java.lang.Object get(java.lang.Object)>(target);
+
+        other = (java.lang.Module) $stack5;
+
+        if other == null goto label1;
+
+        $stack6 = virtualinvoke e.<java.lang.module.ModuleDescriptor$Exports: java.lang.String source()>();
+
+        staticinvoke <jdk.internal.module.Modules: void addExports(java.lang.Module,java.lang.String,java.lang.Module)>(m, $stack6, other);
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack3;
+        java.lang.Class $stack0;
+        jdk.internal.misc.JavaLangAccess $stack2;
+        boolean $stack1, $stack3#1;
+
+        $stack0 = class "Ljdk/internal/module/Modules;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack3#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = 0;
+
+     label2:
+        <jdk.internal.module.Modules: boolean $assertionsDisabled> = $stack3#1;
+
+        $stack2 = staticinvoke <jdk.internal.misc.SharedSecrets: jdk.internal.misc.JavaLangAccess getJavaLangAccess()>();
+
+        <jdk.internal.module.Modules: jdk.internal.misc.JavaLangAccess JLA> = $stack2;
+
+        return;
+    }
+}

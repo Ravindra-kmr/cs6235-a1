@@ -1,0 +1,110 @@
+final enum class jdk.internal.logger.LoggerFinderLoader$ErrorPolicy extends java.lang.Enum
+{
+    public static final enum jdk.internal.logger.LoggerFinderLoader$ErrorPolicy ERROR;
+    public static final enum jdk.internal.logger.LoggerFinderLoader$ErrorPolicy WARNING;
+    public static final enum jdk.internal.logger.LoggerFinderLoader$ErrorPolicy DEBUG;
+    public static final enum jdk.internal.logger.LoggerFinderLoader$ErrorPolicy QUIET;
+    private static final jdk.internal.logger.LoggerFinderLoader$ErrorPolicy[] $VALUES;
+
+    public static jdk.internal.logger.LoggerFinderLoader$ErrorPolicy[] values()
+    {
+        jdk.internal.logger.LoggerFinderLoader$ErrorPolicy[] $stack0, $stack2;
+        java.lang.Object $stack1;
+
+        $stack0 = <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy[] $VALUES>;
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Object: java.lang.Object clone()>();
+
+        $stack2 = (jdk.internal.logger.LoggerFinderLoader$ErrorPolicy[]) $stack1;
+
+        return $stack2;
+    }
+
+    public static jdk.internal.logger.LoggerFinderLoader$ErrorPolicy valueOf(java.lang.String)
+    {
+        java.lang.String name;
+        java.lang.Enum $stack1;
+        jdk.internal.logger.LoggerFinderLoader$ErrorPolicy $stack2;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Ljdk/internal/logger/LoggerFinderLoader$ErrorPolicy;", name);
+
+        $stack2 = (jdk.internal.logger.LoggerFinderLoader$ErrorPolicy) $stack1;
+
+        return $stack2;
+
+        nop;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        int l2;
+        java.lang.String l1;
+        jdk.internal.logger.LoggerFinderLoader$ErrorPolicy this;
+
+        this := @this: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy;
+
+        l1 := @parameter0: java.lang.String;
+
+        l2 := @parameter1: int;
+
+        specialinvoke this.<java.lang.Enum: void <init>(java.lang.String,int)>(l1, l2);
+
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.logger.LoggerFinderLoader$ErrorPolicy[] $stack4;
+        jdk.internal.logger.LoggerFinderLoader$ErrorPolicy $stack0, $stack1, $stack2, $stack3, $stack5, $stack6, $stack7, $stack8;
+
+        $stack0 = new jdk.internal.logger.LoggerFinderLoader$ErrorPolicy;
+
+        specialinvoke $stack0.<jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: void <init>(java.lang.String,int)>("ERROR", 0);
+
+        <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy ERROR> = $stack0;
+
+        $stack1 = new jdk.internal.logger.LoggerFinderLoader$ErrorPolicy;
+
+        specialinvoke $stack1.<jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: void <init>(java.lang.String,int)>("WARNING", 1);
+
+        <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy WARNING> = $stack1;
+
+        $stack2 = new jdk.internal.logger.LoggerFinderLoader$ErrorPolicy;
+
+        specialinvoke $stack2.<jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: void <init>(java.lang.String,int)>("DEBUG", 2);
+
+        <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy DEBUG> = $stack2;
+
+        $stack3 = new jdk.internal.logger.LoggerFinderLoader$ErrorPolicy;
+
+        specialinvoke $stack3.<jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: void <init>(java.lang.String,int)>("QUIET", 3);
+
+        <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy QUIET> = $stack3;
+
+        $stack4 = newarray (jdk.internal.logger.LoggerFinderLoader$ErrorPolicy)[4];
+
+        $stack5 = <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy ERROR>;
+
+        $stack4[0] = $stack5;
+
+        $stack6 = <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy WARNING>;
+
+        $stack4[1] = $stack6;
+
+        $stack7 = <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy DEBUG>;
+
+        $stack4[2] = $stack7;
+
+        $stack8 = <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy QUIET>;
+
+        $stack4[3] = $stack8;
+
+        <jdk.internal.logger.LoggerFinderLoader$ErrorPolicy: jdk.internal.logger.LoggerFinderLoader$ErrorPolicy[] $VALUES> = $stack4;
+
+        return;
+    }
+}

@@ -1,0 +1,104 @@
+class jdk.internal.logger.BootstrapLogger$DetectBackend$1 extends java.lang.Object implements java.security.PrivilegedAction
+{
+
+    void <init>()
+    {
+        jdk.internal.logger.BootstrapLogger$DetectBackend$1 this;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$DetectBackend$1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.logger.BootstrapLogger$LoggingBackend run()
+    {
+        jdk.internal.logger.BootstrapLogger$DetectBackend$1 this;
+        jdk.internal.logger.BootstrapLogger$LoggingBackend $stack13, $stack17, $stack16#1;
+        bottom_type $stack16;
+        java.lang.String $stack14, cname, $stack15, fname;
+        boolean $stack9, $stack12;
+        java.util.Iterator $stack8, iterator, $stack11, iterator2;
+        java.util.ServiceLoader $stack7, $stack10;
+        java.lang.Class $stack5;
+        java.lang.ClassLoader $stack6;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$DetectBackend$1;
+
+        $stack5 = class "Ljava/lang/System$LoggerFinder;";
+
+        $stack6 = staticinvoke <java.lang.ClassLoader: java.lang.ClassLoader getSystemClassLoader()>();
+
+        $stack7 = staticinvoke <java.util.ServiceLoader: java.util.ServiceLoader load(java.lang.Class,java.lang.ClassLoader)>($stack5, $stack6);
+
+        $stack8 = virtualinvoke $stack7.<java.util.ServiceLoader: java.util.Iterator iterator()>();
+
+        iterator = $stack8;
+
+        $stack9 = interfaceinvoke iterator.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack9 == 0 goto label1;
+
+        $stack17 = <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend CUSTOM>;
+
+        return $stack17;
+
+     label1:
+        $stack10 = staticinvoke <java.util.ServiceLoader: java.util.ServiceLoader loadInstalled(java.lang.Class)>(class "Ljdk/internal/logger/DefaultLoggerFinder;");
+
+        $stack11 = virtualinvoke $stack10.<java.util.ServiceLoader: java.util.Iterator iterator()>();
+
+        iterator2 = $stack11;
+
+        $stack12 = interfaceinvoke iterator2.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack12 == 0 goto label5;
+
+        $stack14 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.util.logging.config.class");
+
+        cname = $stack14;
+
+        $stack15 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.util.logging.config.file");
+
+        fname = $stack15;
+
+        if cname != null goto label2;
+
+        if fname == null goto label3;
+
+     label2:
+        $stack16#1 = <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend JUL_WITH_CONFIG>;
+
+        goto label4;
+
+     label3:
+        $stack16#1 = <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend JUL_DEFAULT>;
+
+     label4:
+        return $stack16#1;
+
+     label5:
+        $stack13 = <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend NONE>;
+
+        return $stack13;
+
+        nop;
+    }
+
+    public volatile java.lang.Object run()
+    {
+        jdk.internal.logger.BootstrapLogger$DetectBackend$1 this;
+        jdk.internal.logger.BootstrapLogger$LoggingBackend $stack1;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$DetectBackend$1;
+
+        $stack1 = virtualinvoke this.<jdk.internal.logger.BootstrapLogger$DetectBackend$1: jdk.internal.logger.BootstrapLogger$LoggingBackend run()>();
+
+        return $stack1;
+
+        nop;
+    }
+}

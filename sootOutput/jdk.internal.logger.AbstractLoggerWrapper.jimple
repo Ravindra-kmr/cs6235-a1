@@ -1,0 +1,1733 @@
+abstract class jdk.internal.logger.AbstractLoggerWrapper extends java.lang.Object implements java.lang.System$Logger, sun.util.logging.PlatformLogger$Bridge, sun.util.logging.PlatformLogger$ConfigurableBridge
+{
+
+    void <init>()
+    {
+        jdk.internal.logger.AbstractLoggerWrapper this;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    abstract java.lang.System$Logger wrapped();
+
+    abstract sun.util.logging.PlatformLogger$Bridge platformProxy();
+
+    java.lang.System$Logger getWrapped()
+    {
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.System$Logger $stack1;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        $stack1 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        return $stack1;
+
+        nop;
+    }
+
+    public final java.lang.String getName()
+    {
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.System$Logger $stack1;
+        java.lang.String $stack2;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        $stack1 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack2 = interfaceinvoke $stack1.<java.lang.System$Logger: java.lang.String getName()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    public boolean isLoggable(java.lang.System$Logger$Level)
+    {
+        java.lang.System$Logger $stack2;
+        java.lang.System$Logger$Level level;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        boolean $stack3;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: java.lang.System$Logger$Level;
+
+        $stack2 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack3 = interfaceinvoke $stack2.<java.lang.System$Logger: boolean isLoggable(java.lang.System$Logger$Level)>(level);
+
+        return $stack3;
+
+        nop;
+    }
+
+    public void log(java.lang.System$Logger$Level, java.lang.String)
+    {
+        java.lang.System$Logger $stack3;
+        java.lang.System$Logger$Level level;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String msg;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: java.lang.System$Logger$Level;
+
+        msg := @parameter1: java.lang.String;
+
+        $stack3 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        interfaceinvoke $stack3.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String)>(level, msg);
+
+        return;
+
+        nop;
+    }
+
+    public void log(java.lang.System$Logger$Level, java.util.function.Supplier)
+    {
+        java.lang.System$Logger $stack3;
+        java.lang.System$Logger$Level level;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.util.function.Supplier msgSupplier;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: java.lang.System$Logger$Level;
+
+        msgSupplier := @parameter1: java.util.function.Supplier;
+
+        $stack3 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        interfaceinvoke $stack3.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.function.Supplier)>(level, msgSupplier);
+
+        return;
+
+        nop;
+    }
+
+    public void log(java.lang.System$Logger$Level, java.lang.Object)
+    {
+        java.lang.System$Logger $stack3;
+        java.lang.System$Logger$Level level;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.Object obj;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: java.lang.System$Logger$Level;
+
+        obj := @parameter1: java.lang.Object;
+
+        $stack3 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        interfaceinvoke $stack3.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.Object)>(level, obj);
+
+        return;
+
+        nop;
+    }
+
+    public void log(java.lang.System$Logger$Level, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable thrown;
+        java.lang.System$Logger $stack4;
+        java.lang.System$Logger$Level level;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String msg;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: java.lang.System$Logger$Level;
+
+        msg := @parameter1: java.lang.String;
+
+        thrown := @parameter2: java.lang.Throwable;
+
+        $stack4 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        interfaceinvoke $stack4.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Throwable)>(level, msg, thrown);
+
+        return;
+
+        nop;
+    }
+
+    public void log(java.lang.System$Logger$Level, java.util.function.Supplier, java.lang.Throwable)
+    {
+        java.lang.Throwable thrown;
+        java.lang.System$Logger $stack4;
+        java.lang.System$Logger$Level level;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.util.function.Supplier msgSupplier;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: java.lang.System$Logger$Level;
+
+        msgSupplier := @parameter1: java.util.function.Supplier;
+
+        thrown := @parameter2: java.lang.Throwable;
+
+        $stack4 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        interfaceinvoke $stack4.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.function.Supplier,java.lang.Throwable)>(level, msgSupplier, thrown);
+
+        return;
+
+        nop;
+    }
+
+    public transient void log(java.lang.System$Logger$Level, java.lang.String, java.lang.Object[])
+    {
+        java.lang.System$Logger $stack4;
+        java.lang.System$Logger$Level level;
+        java.lang.Object[] params;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String format;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: java.lang.System$Logger$Level;
+
+        format := @parameter1: java.lang.String;
+
+        params := @parameter2: java.lang.Object[];
+
+        $stack4 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        interfaceinvoke $stack4.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Object[])>(level, format, params);
+
+        return;
+
+        nop;
+    }
+
+    public void log(java.lang.System$Logger$Level, java.util.ResourceBundle, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable thrown;
+        java.lang.System$Logger $stack5;
+        java.lang.System$Logger$Level level;
+        java.util.ResourceBundle bundle;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String key;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: java.lang.System$Logger$Level;
+
+        bundle := @parameter1: java.util.ResourceBundle;
+
+        key := @parameter2: java.lang.String;
+
+        thrown := @parameter3: java.lang.Throwable;
+
+        $stack5 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        interfaceinvoke $stack5.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Throwable)>(level, bundle, key, thrown);
+
+        return;
+
+        nop;
+    }
+
+    public transient void log(java.lang.System$Logger$Level, java.util.ResourceBundle, java.lang.String, java.lang.Object[])
+    {
+        java.lang.System$Logger $stack5;
+        java.lang.System$Logger$Level level;
+        java.lang.Object[] params;
+        java.util.ResourceBundle bundle;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String format;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: java.lang.System$Logger$Level;
+
+        bundle := @parameter1: java.util.ResourceBundle;
+
+        format := @parameter2: java.lang.String;
+
+        params := @parameter3: java.lang.Object[];
+
+        $stack5 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        interfaceinvoke $stack5.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Object[])>(level, bundle, format, params);
+
+        return;
+
+        nop;
+    }
+
+    public boolean isLoggable(sun.util.logging.PlatformLogger$Level)
+    {
+        java.lang.System$Logger$Level $stack5;
+        sun.util.logging.PlatformLogger$Level level;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        sun.util.logging.PlatformLogger$Bridge $stack3, platformProxy;
+        boolean $stack4, $stack6;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        $stack3 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack3;
+
+        if platformProxy != null goto label1;
+
+        $stack5 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        $stack6 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: boolean isLoggable(java.lang.System$Logger$Level)>($stack5);
+
+        return $stack6;
+
+     label1:
+        $stack4 = interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: boolean isLoggable(sun.util.logging.PlatformLogger$Level)>(level);
+
+        return $stack4;
+
+        nop;
+    }
+
+    public boolean isEnabled()
+    {
+        bottom_type $stack4;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        sun.util.logging.PlatformLogger$Bridge $stack2, platformProxy;
+        boolean $stack3, $stack4#1;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        $stack2 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack2;
+
+        if platformProxy == null goto label1;
+
+        $stack3 = interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: boolean isEnabled()>();
+
+        if $stack3 == 0 goto label2;
+
+     label1:
+        $stack4#1 = 1;
+
+        goto label3;
+
+     label2:
+        $stack4#1 = 0;
+
+     label3:
+        return $stack4#1;
+
+        nop;
+    }
+
+    public void log(sun.util.logging.PlatformLogger$Level, java.lang.String)
+    {
+        java.lang.System$Logger $stack5;
+        java.lang.System$Logger$Level $stack6;
+        sun.util.logging.PlatformLogger$Level level;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String msg;
+        sun.util.logging.PlatformLogger$Bridge $stack4, platformProxy;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        msg := @parameter1: java.lang.String;
+
+        $stack4 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack4;
+
+        if platformProxy != null goto label1;
+
+        $stack5 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack6 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack5.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String)>($stack6, msg);
+
+        goto label2;
+
+     label1:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void log(sun.util.logging.PlatformLogger$Level,java.lang.String)>(level, msg);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    public void log(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable thrown;
+        java.lang.System$Logger $stack6;
+        sun.util.logging.PlatformLogger$Level level;
+        sun.util.logging.PlatformLogger$Bridge $stack5, platformProxy;
+        java.lang.System$Logger$Level $stack7;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String msg;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        msg := @parameter1: java.lang.String;
+
+        thrown := @parameter2: java.lang.Throwable;
+
+        $stack5 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack5;
+
+        if platformProxy != null goto label1;
+
+        $stack6 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack7 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack6.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Throwable)>($stack7, msg, thrown);
+
+        goto label2;
+
+     label1:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void log(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.Throwable)>(level, msg, thrown);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    public transient void log(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.Object[])
+    {
+        java.lang.System$Logger $stack6;
+        sun.util.logging.PlatformLogger$Level level;
+        java.lang.Object[] params;
+        sun.util.logging.PlatformLogger$Bridge $stack5, platformProxy;
+        java.lang.System$Logger$Level $stack7;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String msg;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        msg := @parameter1: java.lang.String;
+
+        params := @parameter2: java.lang.Object[];
+
+        $stack5 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack5;
+
+        if platformProxy != null goto label1;
+
+        $stack6 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack7 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack6.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Object[])>($stack7, msg, params);
+
+        goto label2;
+
+     label1:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void log(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.Object[])>(level, msg, params);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    public void log(sun.util.logging.PlatformLogger$Level, java.util.function.Supplier)
+    {
+        java.lang.System$Logger $stack5;
+        java.lang.System$Logger$Level $stack6;
+        sun.util.logging.PlatformLogger$Level level;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        sun.util.logging.PlatformLogger$Bridge $stack4, platformProxy;
+        java.util.function.Supplier msgSupplier;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        msgSupplier := @parameter1: java.util.function.Supplier;
+
+        $stack4 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack4;
+
+        if platformProxy != null goto label1;
+
+        $stack5 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack6 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack5.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.function.Supplier)>($stack6, msgSupplier);
+
+        goto label2;
+
+     label1:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void log(sun.util.logging.PlatformLogger$Level,java.util.function.Supplier)>(level, msgSupplier);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    public void log(sun.util.logging.PlatformLogger$Level, java.lang.Throwable, java.util.function.Supplier)
+    {
+        java.lang.Throwable thrown;
+        java.lang.System$Logger $stack6;
+        sun.util.logging.PlatformLogger$Level level;
+        sun.util.logging.PlatformLogger$Bridge $stack5, platformProxy;
+        java.util.function.Supplier msgSupplier;
+        java.lang.System$Logger$Level $stack7;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        thrown := @parameter1: java.lang.Throwable;
+
+        msgSupplier := @parameter2: java.util.function.Supplier;
+
+        $stack5 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack5;
+
+        if platformProxy != null goto label1;
+
+        $stack6 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack7 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack6.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.function.Supplier,java.lang.Throwable)>($stack7, msgSupplier, thrown);
+
+        goto label2;
+
+     label1:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void log(sun.util.logging.PlatformLogger$Level,java.lang.Throwable,java.util.function.Supplier)>(level, thrown, msgSupplier);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    public void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.lang.String)
+    {
+        sun.util.logging.PlatformLogger$Bridge $stack8, platformProxy;
+        java.lang.System$Logger$Level $stack9, systemLevel, $stack23, $stack31, $stack34;
+        byte $stack15, $stack17, $stack19, $stack21;
+        bottom_type sourceClass, sourceMethod, msg, $stack14, $stack25, $stack27;
+        boolean $stack11;
+        sun.util.logging.PlatformLogger$Level level, $stack29;
+        java.lang.Object[] $stack12;
+        jdk.internal.logger.AbstractLoggerWrapper this, $stack30;
+        java.lang.String $stack13, $stack16, $stack18, $stack20, $stack22, $stack26, $stack28, sourceClass#1, sourceMethod#2, msg#3, $stack27#4, sourceClass#5, $stack25#6, sourceMethod#7, $stack14#8, msg#9;
+        java.lang.System$Logger $stack10, wrapped, $stack24, $stack32, $stack33;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        sourceClass#1 := @parameter1: java.lang.String;
+
+        sourceMethod#2 := @parameter2: java.lang.String;
+
+        msg#3 := @parameter3: java.lang.String;
+
+        $stack8 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack8;
+
+        if platformProxy != null goto label09;
+
+        if sourceClass#1 != null goto label01;
+
+        if sourceMethod#2 != null goto label01;
+
+        $stack33 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack34 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack33.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String)>($stack34, msg#3);
+
+        goto label10;
+
+     label01:
+        $stack29 = level;
+
+        $stack9 = virtualinvoke $stack29.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        systemLevel = $stack9;
+
+        $stack30 = this;
+
+        $stack10 = virtualinvoke $stack30.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        wrapped = $stack10;
+
+        $stack32 = wrapped;
+
+        $stack31 = systemLevel;
+
+        $stack11 = interfaceinvoke $stack32.<java.lang.System$Logger: boolean isLoggable(java.lang.System$Logger$Level)>($stack31);
+
+        if $stack11 == 0 goto label08;
+
+        if sourceClass#1 != null goto label02;
+
+        $stack27#4 = "";
+
+        goto label03;
+
+     label02:
+        $stack27#4 = sourceClass#1;
+
+     label03:
+        sourceClass#5 = $stack27#4;
+
+        $stack28 = sourceMethod#2;
+
+        if $stack28 != null goto label04;
+
+        $stack25#6 = "";
+
+        goto label05;
+
+     label04:
+        $stack25#6 = sourceMethod#2;
+
+     label05:
+        sourceMethod#7 = $stack25#6;
+
+        $stack26 = msg#3;
+
+        if $stack26 != null goto label06;
+
+        $stack14#8 = "";
+
+        goto label07;
+
+     label06:
+        $stack14#8 = msg#3;
+
+     label07:
+        msg#9 = $stack14#8;
+
+        $stack24 = wrapped;
+
+        $stack23 = systemLevel;
+
+        $stack22 = "[%s %s] %s";
+
+        $stack15 = 3;
+
+        $stack12 = newarray (java.lang.Object)[$stack15];
+
+        $stack17 = 0;
+
+        $stack16 = sourceClass#5;
+
+        $stack12[$stack17] = $stack16;
+
+        $stack19 = 1;
+
+        $stack18 = sourceMethod#7;
+
+        $stack12[$stack19] = $stack18;
+
+        $stack21 = 2;
+
+        $stack20 = msg#9;
+
+        $stack12[$stack21] = $stack20;
+
+        $stack13 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack22, $stack12);
+
+        interfaceinvoke $stack24.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String)>($stack23, $stack13);
+
+     label08:
+        goto label10;
+
+     label09:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.lang.String)>(level, sourceClass#1, sourceMethod#2, msg#3);
+
+     label10:
+        return;
+
+        nop;
+    }
+
+    public void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.util.function.Supplier)
+    {
+        sun.util.logging.PlatformLogger$Bridge $stack10, platformProxy;
+        java.util.function.Supplier msgSupplier, $stack14, $stack18;
+        java.lang.System$Logger$Level $stack11, systemLevel, $stack19, $stack25, $stack28;
+        bottom_type $stack15, $stack21;
+        jdk.internal.logger.AbstractLoggerWrapper this, $stack24;
+        java.lang.String sourceClass, sourceMethod, sClass, sMethod, $stack16, $stack17, $stack22, $stack21#1, $stack15#2;
+        boolean $stack13;
+        java.lang.System$Logger $stack12, wrapped, $stack20, $stack26, $stack27;
+        sun.util.logging.PlatformLogger$Level level, $stack23;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        sourceClass := @parameter1: java.lang.String;
+
+        sourceMethod := @parameter2: java.lang.String;
+
+        msgSupplier := @parameter3: java.util.function.Supplier;
+
+        $stack10 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack10;
+
+        if platformProxy != null goto label7;
+
+        if sourceClass != null goto label1;
+
+        if sourceMethod != null goto label1;
+
+        $stack27 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack28 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack27.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.function.Supplier)>($stack28, msgSupplier);
+
+        goto label8;
+
+     label1:
+        $stack23 = level;
+
+        $stack11 = virtualinvoke $stack23.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        systemLevel = $stack11;
+
+        $stack24 = this;
+
+        $stack12 = virtualinvoke $stack24.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        wrapped = $stack12;
+
+        $stack26 = wrapped;
+
+        $stack25 = systemLevel;
+
+        $stack13 = interfaceinvoke $stack26.<java.lang.System$Logger: boolean isLoggable(java.lang.System$Logger$Level)>($stack25);
+
+        if $stack13 == 0 goto label6;
+
+        if sourceClass != null goto label2;
+
+        $stack21#1 = "";
+
+        goto label3;
+
+     label2:
+        $stack21#1 = sourceClass;
+
+     label3:
+        sClass = $stack21#1;
+
+        $stack22 = sourceMethod;
+
+        if $stack22 != null goto label4;
+
+        $stack15#2 = "";
+
+        goto label5;
+
+     label4:
+        $stack15#2 = sourceMethod;
+
+     label5:
+        sMethod = $stack15#2;
+
+        $stack20 = wrapped;
+
+        $stack19 = systemLevel;
+
+        $stack16 = sClass;
+
+        $stack17 = sMethod;
+
+        $stack18 = msgSupplier;
+
+        $stack14 = staticinvoke <jdk.internal.logger.AbstractLoggerWrapper$lambda_logp_0__190: java.util.function.Supplier bootstrap$(java.lang.String,java.lang.String,java.util.function.Supplier)>($stack16, $stack17, $stack18);
+
+        interfaceinvoke $stack20.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.function.Supplier)>($stack19, $stack14);
+
+     label6:
+        goto label8;
+
+     label7:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.util.function.Supplier)>(level, sourceClass, sourceMethod, msgSupplier);
+
+     label8:
+        return;
+
+        nop;
+    }
+
+    public transient void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.lang.String, java.lang.Object[])
+    {
+        sun.util.logging.PlatformLogger$Bridge $stack9, platformProxy;
+        java.lang.System$Logger$Level $stack10, systemLevel, $stack24, $stack33, $stack36;
+        byte $stack16, $stack18, $stack20, $stack22;
+        bottom_type sourceClass, sourceMethod, msg, $stack15, $stack27, $stack29;
+        boolean $stack12;
+        sun.util.logging.PlatformLogger$Level level, $stack31;
+        java.lang.Object[] params, $stack13, $stack25;
+        jdk.internal.logger.AbstractLoggerWrapper this, $stack32;
+        java.lang.String $stack14, $stack17, $stack19, $stack21, $stack23, $stack28, $stack30, sourceClass#1, sourceMethod#2, msg#3, $stack29#4, sourceClass#5, $stack27#6, sourceMethod#7, $stack15#8, msg#9;
+        java.lang.System$Logger $stack11, wrapped, $stack26, $stack34, $stack35;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        sourceClass#1 := @parameter1: java.lang.String;
+
+        sourceMethod#2 := @parameter2: java.lang.String;
+
+        msg#3 := @parameter3: java.lang.String;
+
+        params := @parameter4: java.lang.Object[];
+
+        $stack9 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack9;
+
+        if platformProxy != null goto label09;
+
+        if sourceClass#1 != null goto label01;
+
+        if sourceMethod#2 != null goto label01;
+
+        $stack35 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack36 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack35.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Object[])>($stack36, msg#3, params);
+
+        goto label10;
+
+     label01:
+        $stack31 = level;
+
+        $stack10 = virtualinvoke $stack31.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        systemLevel = $stack10;
+
+        $stack32 = this;
+
+        $stack11 = virtualinvoke $stack32.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        wrapped = $stack11;
+
+        $stack34 = wrapped;
+
+        $stack33 = systemLevel;
+
+        $stack12 = interfaceinvoke $stack34.<java.lang.System$Logger: boolean isLoggable(java.lang.System$Logger$Level)>($stack33);
+
+        if $stack12 == 0 goto label08;
+
+        if sourceClass#1 != null goto label02;
+
+        $stack29#4 = "";
+
+        goto label03;
+
+     label02:
+        $stack29#4 = sourceClass#1;
+
+     label03:
+        sourceClass#5 = $stack29#4;
+
+        $stack30 = sourceMethod#2;
+
+        if $stack30 != null goto label04;
+
+        $stack27#6 = "";
+
+        goto label05;
+
+     label04:
+        $stack27#6 = sourceMethod#2;
+
+     label05:
+        sourceMethod#7 = $stack27#6;
+
+        $stack28 = msg#3;
+
+        if $stack28 != null goto label06;
+
+        $stack15#8 = "";
+
+        goto label07;
+
+     label06:
+        $stack15#8 = msg#3;
+
+     label07:
+        msg#9 = $stack15#8;
+
+        $stack26 = wrapped;
+
+        $stack24 = systemLevel;
+
+        $stack23 = "[%s %s] %s";
+
+        $stack16 = 3;
+
+        $stack13 = newarray (java.lang.Object)[$stack16];
+
+        $stack18 = 0;
+
+        $stack17 = sourceClass#5;
+
+        $stack13[$stack18] = $stack17;
+
+        $stack20 = 1;
+
+        $stack19 = sourceMethod#7;
+
+        $stack13[$stack20] = $stack19;
+
+        $stack22 = 2;
+
+        $stack21 = msg#9;
+
+        $stack13[$stack22] = $stack21;
+
+        $stack14 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack23, $stack13);
+
+        $stack25 = params;
+
+        interfaceinvoke $stack26.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Object[])>($stack24, $stack14, $stack25);
+
+     label08:
+        goto label10;
+
+     label09:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.lang.String,java.lang.Object[])>(level, sourceClass#1, sourceMethod#2, msg#3, params);
+
+     label10:
+        return;
+
+        nop;
+    }
+
+    public void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.lang.String, java.lang.Throwable)
+    {
+        sun.util.logging.PlatformLogger$Bridge $stack9, platformProxy;
+        java.lang.System$Logger$Level $stack10, systemLevel, $stack24, $stack33, $stack36;
+        byte $stack16, $stack18, $stack20, $stack22;
+        bottom_type sourceClass, sourceMethod, msg, $stack15, $stack27, $stack29;
+        boolean $stack12;
+        sun.util.logging.PlatformLogger$Level level, $stack31;
+        java.lang.Throwable thrown, $stack25;
+        java.lang.Object[] $stack13;
+        jdk.internal.logger.AbstractLoggerWrapper this, $stack32;
+        java.lang.String $stack14, $stack17, $stack19, $stack21, $stack23, $stack28, $stack30, sourceClass#1, sourceMethod#2, msg#3, $stack29#4, sourceClass#5, $stack27#6, sourceMethod#7, $stack15#8, msg#9;
+        java.lang.System$Logger $stack11, wrapped, $stack26, $stack34, $stack35;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        sourceClass#1 := @parameter1: java.lang.String;
+
+        sourceMethod#2 := @parameter2: java.lang.String;
+
+        msg#3 := @parameter3: java.lang.String;
+
+        thrown := @parameter4: java.lang.Throwable;
+
+        $stack9 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack9;
+
+        if platformProxy != null goto label09;
+
+        if sourceClass#1 != null goto label01;
+
+        if sourceMethod#2 != null goto label01;
+
+        $stack35 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack36 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack35.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Throwable)>($stack36, msg#3, thrown);
+
+        goto label10;
+
+     label01:
+        $stack31 = level;
+
+        $stack10 = virtualinvoke $stack31.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        systemLevel = $stack10;
+
+        $stack32 = this;
+
+        $stack11 = virtualinvoke $stack32.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        wrapped = $stack11;
+
+        $stack34 = wrapped;
+
+        $stack33 = systemLevel;
+
+        $stack12 = interfaceinvoke $stack34.<java.lang.System$Logger: boolean isLoggable(java.lang.System$Logger$Level)>($stack33);
+
+        if $stack12 == 0 goto label08;
+
+        if sourceClass#1 != null goto label02;
+
+        $stack29#4 = "";
+
+        goto label03;
+
+     label02:
+        $stack29#4 = sourceClass#1;
+
+     label03:
+        sourceClass#5 = $stack29#4;
+
+        $stack30 = sourceMethod#2;
+
+        if $stack30 != null goto label04;
+
+        $stack27#6 = "";
+
+        goto label05;
+
+     label04:
+        $stack27#6 = sourceMethod#2;
+
+     label05:
+        sourceMethod#7 = $stack27#6;
+
+        $stack28 = msg#3;
+
+        if $stack28 != null goto label06;
+
+        $stack15#8 = "";
+
+        goto label07;
+
+     label06:
+        $stack15#8 = msg#3;
+
+     label07:
+        msg#9 = $stack15#8;
+
+        $stack26 = wrapped;
+
+        $stack24 = systemLevel;
+
+        $stack23 = "[%s %s] %s";
+
+        $stack16 = 3;
+
+        $stack13 = newarray (java.lang.Object)[$stack16];
+
+        $stack18 = 0;
+
+        $stack17 = sourceClass#5;
+
+        $stack13[$stack18] = $stack17;
+
+        $stack20 = 1;
+
+        $stack19 = sourceMethod#7;
+
+        $stack13[$stack20] = $stack19;
+
+        $stack22 = 2;
+
+        $stack21 = msg#9;
+
+        $stack13[$stack22] = $stack21;
+
+        $stack14 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack23, $stack13);
+
+        $stack25 = thrown;
+
+        interfaceinvoke $stack26.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.lang.String,java.lang.Throwable)>($stack24, $stack14, $stack25);
+
+     label08:
+        goto label10;
+
+     label09:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.lang.String,java.lang.Throwable)>(level, sourceClass#1, sourceMethod#2, msg#3, thrown);
+
+     label10:
+        return;
+
+        nop;
+    }
+
+    public void logp(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.lang.Throwable, java.util.function.Supplier)
+    {
+        sun.util.logging.PlatformLogger$Bridge $stack11, platformProxy;
+        java.lang.System$Logger$Level $stack12, systemLevel, $stack20, $stack27, $stack30;
+        bottom_type $stack16, $stack23;
+        boolean $stack14;
+        sun.util.logging.PlatformLogger$Level level, $stack25;
+        java.lang.Throwable thrown, $stack21;
+        java.util.function.Supplier msgSupplier, $stack15, $stack19;
+        jdk.internal.logger.AbstractLoggerWrapper this, $stack26;
+        java.lang.String sourceClass, sourceMethod, sClass, sMethod, $stack17, $stack18, $stack24, $stack23#1, $stack16#2;
+        java.lang.System$Logger $stack13, wrapped, $stack22, $stack28, $stack29;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        sourceClass := @parameter1: java.lang.String;
+
+        sourceMethod := @parameter2: java.lang.String;
+
+        thrown := @parameter3: java.lang.Throwable;
+
+        msgSupplier := @parameter4: java.util.function.Supplier;
+
+        $stack11 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack11;
+
+        if platformProxy != null goto label7;
+
+        if sourceClass != null goto label1;
+
+        if sourceMethod != null goto label1;
+
+        $stack29 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack30 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack29.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.function.Supplier,java.lang.Throwable)>($stack30, msgSupplier, thrown);
+
+        goto label8;
+
+     label1:
+        $stack25 = level;
+
+        $stack12 = virtualinvoke $stack25.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        systemLevel = $stack12;
+
+        $stack26 = this;
+
+        $stack13 = virtualinvoke $stack26.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        wrapped = $stack13;
+
+        $stack28 = wrapped;
+
+        $stack27 = systemLevel;
+
+        $stack14 = interfaceinvoke $stack28.<java.lang.System$Logger: boolean isLoggable(java.lang.System$Logger$Level)>($stack27);
+
+        if $stack14 == 0 goto label6;
+
+        if sourceClass != null goto label2;
+
+        $stack23#1 = "";
+
+        goto label3;
+
+     label2:
+        $stack23#1 = sourceClass;
+
+     label3:
+        sClass = $stack23#1;
+
+        $stack24 = sourceMethod;
+
+        if $stack24 != null goto label4;
+
+        $stack16#2 = "";
+
+        goto label5;
+
+     label4:
+        $stack16#2 = sourceMethod;
+
+     label5:
+        sMethod = $stack16#2;
+
+        $stack22 = wrapped;
+
+        $stack20 = systemLevel;
+
+        $stack17 = sClass;
+
+        $stack18 = sMethod;
+
+        $stack19 = msgSupplier;
+
+        $stack15 = staticinvoke <jdk.internal.logger.AbstractLoggerWrapper$lambda_logp_1__189: java.util.function.Supplier bootstrap$(java.lang.String,java.lang.String,java.util.function.Supplier)>($stack17, $stack18, $stack19);
+
+        $stack21 = thrown;
+
+        interfaceinvoke $stack22.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.function.Supplier,java.lang.Throwable)>($stack20, $stack15, $stack21);
+
+     label6:
+        goto label8;
+
+     label7:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void logp(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.lang.Throwable,java.util.function.Supplier)>(level, sourceClass, sourceMethod, thrown, msgSupplier);
+
+     label8:
+        return;
+
+        nop;
+    }
+
+    public transient void logrb(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.util.ResourceBundle, java.lang.String, java.lang.Object[])
+    {
+        sun.util.logging.PlatformLogger$Bridge $stack10, platformProxy;
+        java.lang.System$Logger$Level $stack12, $stack13, systemLevel, $stack27, $stack37;
+        byte $stack19, $stack21, $stack23, $stack25;
+        bottom_type sourceClass, sourceMethod, msg, $stack18, $stack31, $stack33;
+        boolean $stack15;
+        sun.util.logging.PlatformLogger$Level level, $stack35, $stack40;
+        java.lang.Object[] params, $stack16, $stack29, $stack43;
+        java.util.ResourceBundle bundle, $stack28, $stack41;
+        jdk.internal.logger.AbstractLoggerWrapper this, $stack36, $stack39;
+        java.lang.String $stack17, $stack20, $stack22, $stack24, $stack26, $stack32, $stack34, $stack42, sourceClass#1, sourceMethod#2, msg#3, $stack33#4, sourceClass#5, $stack31#6, sourceMethod#7, $stack18#8, msg#9;
+        java.lang.System$Logger $stack11, $stack14, wrapped, $stack30, $stack38;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        sourceClass#1 := @parameter1: java.lang.String;
+
+        sourceMethod#2 := @parameter2: java.lang.String;
+
+        bundle := @parameter3: java.util.ResourceBundle;
+
+        msg#3 := @parameter4: java.lang.String;
+
+        params := @parameter5: java.lang.Object[];
+
+        $stack10 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack10;
+
+        if platformProxy != null goto label10;
+
+        if bundle != null goto label01;
+
+        if sourceClass#1 != null goto label02;
+
+        if sourceMethod#2 != null goto label02;
+
+     label01:
+        $stack39 = this;
+
+        $stack11 = virtualinvoke $stack39.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack40 = level;
+
+        $stack12 = virtualinvoke $stack40.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        $stack41 = bundle;
+
+        $stack42 = msg#3;
+
+        $stack43 = params;
+
+        interfaceinvoke $stack11.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Object[])>($stack12, $stack41, $stack42, $stack43);
+
+        goto label11;
+
+     label02:
+        $stack35 = level;
+
+        $stack13 = virtualinvoke $stack35.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        systemLevel = $stack13;
+
+        $stack36 = this;
+
+        $stack14 = virtualinvoke $stack36.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        wrapped = $stack14;
+
+        $stack38 = wrapped;
+
+        $stack37 = systemLevel;
+
+        $stack15 = interfaceinvoke $stack38.<java.lang.System$Logger: boolean isLoggable(java.lang.System$Logger$Level)>($stack37);
+
+        if $stack15 == 0 goto label09;
+
+        if sourceClass#1 != null goto label03;
+
+        $stack33#4 = "";
+
+        goto label04;
+
+     label03:
+        $stack33#4 = sourceClass#1;
+
+     label04:
+        sourceClass#5 = $stack33#4;
+
+        $stack34 = sourceMethod#2;
+
+        if $stack34 != null goto label05;
+
+        $stack31#6 = "";
+
+        goto label06;
+
+     label05:
+        $stack31#6 = sourceMethod#2;
+
+     label06:
+        sourceMethod#7 = $stack31#6;
+
+        $stack32 = msg#3;
+
+        if $stack32 != null goto label07;
+
+        $stack18#8 = "";
+
+        goto label08;
+
+     label07:
+        $stack18#8 = msg#3;
+
+     label08:
+        msg#9 = $stack18#8;
+
+        $stack30 = wrapped;
+
+        $stack27 = systemLevel;
+
+        $stack28 = bundle;
+
+        $stack26 = "[%s %s] %s";
+
+        $stack19 = 3;
+
+        $stack16 = newarray (java.lang.Object)[$stack19];
+
+        $stack21 = 0;
+
+        $stack20 = sourceClass#5;
+
+        $stack16[$stack21] = $stack20;
+
+        $stack23 = 1;
+
+        $stack22 = sourceMethod#7;
+
+        $stack16[$stack23] = $stack22;
+
+        $stack25 = 2;
+
+        $stack24 = msg#9;
+
+        $stack16[$stack25] = $stack24;
+
+        $stack17 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack26, $stack16);
+
+        $stack29 = params;
+
+        interfaceinvoke $stack30.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Object[])>($stack27, $stack28, $stack17, $stack29);
+
+     label09:
+        goto label11;
+
+     label10:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void logrb(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.util.ResourceBundle,java.lang.String,java.lang.Object[])>(level, sourceClass#1, sourceMethod#2, bundle, msg#3, params);
+
+     label11:
+        return;
+
+        nop;
+    }
+
+    public void logrb(sun.util.logging.PlatformLogger$Level, java.lang.String, java.lang.String, java.util.ResourceBundle, java.lang.String, java.lang.Throwable)
+    {
+        sun.util.logging.PlatformLogger$Bridge $stack10, platformProxy;
+        java.lang.System$Logger$Level $stack12, $stack13, systemLevel, $stack27, $stack37;
+        byte $stack19, $stack21, $stack23, $stack25;
+        bottom_type sourceClass, sourceMethod, msg, $stack18, $stack31, $stack33;
+        boolean $stack15;
+        sun.util.logging.PlatformLogger$Level level, $stack35, $stack40;
+        java.lang.Throwable thrown, $stack29, $stack43;
+        java.lang.Object[] $stack16;
+        java.util.ResourceBundle bundle, $stack28, $stack41;
+        jdk.internal.logger.AbstractLoggerWrapper this, $stack36, $stack39;
+        java.lang.String $stack17, $stack20, $stack22, $stack24, $stack26, $stack32, $stack34, $stack42, sourceClass#1, sourceMethod#2, msg#3, $stack33#4, sourceClass#5, $stack31#6, sourceMethod#7, $stack18#8, msg#9;
+        java.lang.System$Logger $stack11, $stack14, wrapped, $stack30, $stack38;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        sourceClass#1 := @parameter1: java.lang.String;
+
+        sourceMethod#2 := @parameter2: java.lang.String;
+
+        bundle := @parameter3: java.util.ResourceBundle;
+
+        msg#3 := @parameter4: java.lang.String;
+
+        thrown := @parameter5: java.lang.Throwable;
+
+        $stack10 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack10;
+
+        if platformProxy != null goto label10;
+
+        if bundle != null goto label01;
+
+        if sourceClass#1 != null goto label02;
+
+        if sourceMethod#2 != null goto label02;
+
+     label01:
+        $stack39 = this;
+
+        $stack11 = virtualinvoke $stack39.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack40 = level;
+
+        $stack12 = virtualinvoke $stack40.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        $stack41 = bundle;
+
+        $stack42 = msg#3;
+
+        $stack43 = thrown;
+
+        interfaceinvoke $stack11.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Throwable)>($stack12, $stack41, $stack42, $stack43);
+
+        goto label11;
+
+     label02:
+        $stack35 = level;
+
+        $stack13 = virtualinvoke $stack35.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        systemLevel = $stack13;
+
+        $stack36 = this;
+
+        $stack14 = virtualinvoke $stack36.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        wrapped = $stack14;
+
+        $stack38 = wrapped;
+
+        $stack37 = systemLevel;
+
+        $stack15 = interfaceinvoke $stack38.<java.lang.System$Logger: boolean isLoggable(java.lang.System$Logger$Level)>($stack37);
+
+        if $stack15 == 0 goto label09;
+
+        if sourceClass#1 != null goto label03;
+
+        $stack33#4 = "";
+
+        goto label04;
+
+     label03:
+        $stack33#4 = sourceClass#1;
+
+     label04:
+        sourceClass#5 = $stack33#4;
+
+        $stack34 = sourceMethod#2;
+
+        if $stack34 != null goto label05;
+
+        $stack31#6 = "";
+
+        goto label06;
+
+     label05:
+        $stack31#6 = sourceMethod#2;
+
+     label06:
+        sourceMethod#7 = $stack31#6;
+
+        $stack32 = msg#3;
+
+        if $stack32 != null goto label07;
+
+        $stack18#8 = "";
+
+        goto label08;
+
+     label07:
+        $stack18#8 = msg#3;
+
+     label08:
+        msg#9 = $stack18#8;
+
+        $stack30 = wrapped;
+
+        $stack27 = systemLevel;
+
+        $stack28 = bundle;
+
+        $stack26 = "[%s %s] %s";
+
+        $stack19 = 3;
+
+        $stack16 = newarray (java.lang.Object)[$stack19];
+
+        $stack21 = 0;
+
+        $stack20 = sourceClass#5;
+
+        $stack16[$stack21] = $stack20;
+
+        $stack23 = 1;
+
+        $stack22 = sourceMethod#7;
+
+        $stack16[$stack23] = $stack22;
+
+        $stack25 = 2;
+
+        $stack24 = msg#9;
+
+        $stack16[$stack25] = $stack24;
+
+        $stack17 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack26, $stack16);
+
+        $stack29 = thrown;
+
+        interfaceinvoke $stack30.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Throwable)>($stack27, $stack28, $stack17, $stack29);
+
+     label09:
+        goto label11;
+
+     label10:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void logrb(sun.util.logging.PlatformLogger$Level,java.lang.String,java.lang.String,java.util.ResourceBundle,java.lang.String,java.lang.Throwable)>(level, sourceClass#1, sourceMethod#2, bundle, msg#3, thrown);
+
+     label11:
+        return;
+
+        nop;
+    }
+
+    public void logrb(sun.util.logging.PlatformLogger$Level, java.util.ResourceBundle, java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable thrown;
+        java.lang.System$Logger $stack7;
+        sun.util.logging.PlatformLogger$Level level;
+        sun.util.logging.PlatformLogger$Bridge $stack6, platformProxy;
+        java.lang.System$Logger$Level $stack8;
+        java.util.ResourceBundle bundle;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String msg;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        bundle := @parameter1: java.util.ResourceBundle;
+
+        msg := @parameter2: java.lang.String;
+
+        thrown := @parameter3: java.lang.Throwable;
+
+        $stack6 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack6;
+
+        if platformProxy != null goto label1;
+
+        $stack7 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack8 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack7.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Throwable)>($stack8, bundle, msg, thrown);
+
+        goto label2;
+
+     label1:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void logrb(sun.util.logging.PlatformLogger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Throwable)>(level, bundle, msg, thrown);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    public transient void logrb(sun.util.logging.PlatformLogger$Level, java.util.ResourceBundle, java.lang.String, java.lang.Object[])
+    {
+        java.lang.System$Logger $stack7;
+        sun.util.logging.PlatformLogger$Level level;
+        java.lang.Object[] params;
+        sun.util.logging.PlatformLogger$Bridge $stack6, platformProxy;
+        java.lang.System$Logger$Level $stack8;
+        java.util.ResourceBundle bundle;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        java.lang.String msg;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        level := @parameter0: sun.util.logging.PlatformLogger$Level;
+
+        bundle := @parameter1: java.util.ResourceBundle;
+
+        msg := @parameter2: java.lang.String;
+
+        params := @parameter3: java.lang.Object[];
+
+        $stack6 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack6;
+
+        if platformProxy != null goto label1;
+
+        $stack7 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: java.lang.System$Logger wrapped()>();
+
+        $stack8 = virtualinvoke level.<sun.util.logging.PlatformLogger$Level: java.lang.System$Logger$Level systemLevel()>();
+
+        interfaceinvoke $stack7.<java.lang.System$Logger: void log(java.lang.System$Logger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Object[])>($stack8, bundle, msg, params);
+
+        goto label2;
+
+     label1:
+        interfaceinvoke platformProxy.<sun.util.logging.PlatformLogger$Bridge: void logrb(sun.util.logging.PlatformLogger$Level,java.util.ResourceBundle,java.lang.String,java.lang.Object[])>(level, bundle, msg, params);
+
+     label2:
+        return;
+
+        nop;
+    }
+
+    public sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration getLoggerConfiguration()
+    {
+        sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration $stack3#1;
+        bottom_type $stack3;
+        jdk.internal.logger.AbstractLoggerWrapper this;
+        sun.util.logging.PlatformLogger$Bridge $stack2, platformProxy;
+
+        this := @this: jdk.internal.logger.AbstractLoggerWrapper;
+
+        $stack2 = virtualinvoke this.<jdk.internal.logger.AbstractLoggerWrapper: sun.util.logging.PlatformLogger$Bridge platformProxy()>();
+
+        platformProxy = $stack2;
+
+        if platformProxy != null goto label1;
+
+        $stack3#1 = null;
+
+        goto label2;
+
+     label1:
+        $stack3#1 = staticinvoke <sun.util.logging.PlatformLogger$ConfigurableBridge: sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration getLoggerConfiguration(sun.util.logging.PlatformLogger$Bridge)>(platformProxy);
+
+     label2:
+        return $stack3#1;
+
+        nop;
+    }
+
+    public static java.lang.String lambda$logp$1(java.lang.String, java.lang.String, java.util.function.Supplier)
+    {
+        java.lang.Object[] $stack3;
+        java.util.function.Supplier msgSupplier;
+        byte $stack5;
+        java.lang.Object $stack6;
+        java.lang.String sClass, sMethod, $stack4, $stack7;
+
+        sClass := @parameter0: java.lang.String;
+
+        sMethod := @parameter1: java.lang.String;
+
+        msgSupplier := @parameter2: java.util.function.Supplier;
+
+        $stack4 = "[%s %s] %s";
+
+        $stack3 = newarray (java.lang.Object)[3];
+
+        $stack3[0] = sClass;
+
+        $stack3[1] = sMethod;
+
+        $stack5 = 2;
+
+        $stack6 = interfaceinvoke msgSupplier.<java.util.function.Supplier: java.lang.Object get()>();
+
+        $stack3[$stack5] = $stack6;
+
+        $stack7 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack4, $stack3);
+
+        return $stack7;
+
+        nop;
+    }
+
+    public static java.lang.String lambda$logp$0(java.lang.String, java.lang.String, java.util.function.Supplier)
+    {
+        java.lang.Object[] $stack3;
+        java.util.function.Supplier msgSupplier;
+        byte $stack5;
+        java.lang.Object $stack6;
+        java.lang.String sClass, sMethod, $stack4, $stack7;
+
+        sClass := @parameter0: java.lang.String;
+
+        sMethod := @parameter1: java.lang.String;
+
+        msgSupplier := @parameter2: java.util.function.Supplier;
+
+        $stack4 = "[%s %s] %s";
+
+        $stack3 = newarray (java.lang.Object)[3];
+
+        $stack3[0] = sClass;
+
+        $stack3[1] = sMethod;
+
+        $stack5 = 2;
+
+        $stack6 = interfaceinvoke msgSupplier.<java.util.function.Supplier: java.lang.Object get()>();
+
+        $stack3[$stack5] = $stack6;
+
+        $stack7 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack4, $stack3);
+
+        return $stack7;
+
+        nop;
+    }
+}

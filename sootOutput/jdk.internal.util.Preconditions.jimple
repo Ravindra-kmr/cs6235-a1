@@ -1,0 +1,631 @@
+public class jdk.internal.util.Preconditions extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        jdk.internal.util.Preconditions this;
+
+        this := @this: jdk.internal.util.Preconditions;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    private static transient java.lang.RuntimeException outOfBounds(java.util.function.BiFunction, java.lang.String, java.lang.Integer[])
+    {
+        java.lang.IndexOutOfBoundsException $u0;
+        java.util.function.BiFunction oobef;
+        java.lang.RuntimeException e, $stack10, $stack9#1, $stack7#2;
+        java.util.List $stack5, largs;
+        bottom_type $stack7, $stack9;
+        java.lang.Object $stack6;
+        java.lang.String checkKind, $stack8;
+        java.lang.Integer[] args;
+
+        oobef := @parameter0: java.util.function.BiFunction;
+
+        checkKind := @parameter1: java.lang.String;
+
+        args := @parameter2: java.lang.Integer[];
+
+        $stack5 = staticinvoke <java.util.List: java.util.List of(java.lang.Object[])>(args);
+
+        largs = $stack5;
+
+        if oobef != null goto label1;
+
+        $stack9#1 = null;
+
+        goto label2;
+
+     label1:
+        $stack6 = interfaceinvoke oobef.<java.util.function.BiFunction: java.lang.Object apply(java.lang.Object,java.lang.Object)>(checkKind, largs);
+
+        $stack9#1 = (java.lang.RuntimeException) $stack6;
+
+     label2:
+        e = $stack9#1;
+
+        $stack10 = e;
+
+        if $stack10 != null goto label3;
+
+        $u0 = new java.lang.IndexOutOfBoundsException;
+
+        $stack7#2 = $u0;
+
+        $stack8 = staticinvoke <jdk.internal.util.Preconditions: java.lang.String outOfBoundsMessage(java.lang.String,java.util.List)>(checkKind, largs);
+
+        specialinvoke $u0.<java.lang.IndexOutOfBoundsException: void <init>(java.lang.String)>($stack8);
+
+        goto label4;
+
+     label3:
+        $stack7#2 = e;
+
+     label4:
+        return $stack7#2;
+
+        nop;
+    }
+
+    private static java.lang.RuntimeException outOfBoundsCheckIndex(java.util.function.BiFunction, int, int)
+    {
+        java.util.function.BiFunction oobe;
+        java.lang.RuntimeException $stack9;
+        java.lang.Integer $stack6, $stack8;
+        byte $stack5, $stack7;
+        int index, length;
+        java.lang.String $stack4;
+        java.lang.Integer[] $stack3;
+
+        oobe := @parameter0: java.util.function.BiFunction;
+
+        index := @parameter1: int;
+
+        length := @parameter2: int;
+
+        $stack4 = "checkIndex";
+
+        $stack3 = newarray (java.lang.Integer)[2];
+
+        $stack5 = 0;
+
+        $stack6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(index);
+
+        $stack3[$stack5] = $stack6;
+
+        $stack7 = 1;
+
+        $stack8 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(length);
+
+        $stack3[$stack7] = $stack8;
+
+        $stack9 = staticinvoke <jdk.internal.util.Preconditions: java.lang.RuntimeException outOfBounds(java.util.function.BiFunction,java.lang.String,java.lang.Integer[])>(oobe, $stack4, $stack3);
+
+        return $stack9;
+
+        nop;
+    }
+
+    private static java.lang.RuntimeException outOfBoundsCheckFromToIndex(java.util.function.BiFunction, int, int, int)
+    {
+        java.util.function.BiFunction oobe;
+        java.lang.RuntimeException $stack12;
+        java.lang.Integer $stack7, $stack9, $stack11;
+        byte $stack6, $stack8, $stack10;
+        int fromIndex, toIndex, length;
+        java.lang.String $stack5;
+        java.lang.Integer[] $stack4;
+
+        oobe := @parameter0: java.util.function.BiFunction;
+
+        fromIndex := @parameter1: int;
+
+        toIndex := @parameter2: int;
+
+        length := @parameter3: int;
+
+        $stack5 = "checkFromToIndex";
+
+        $stack4 = newarray (java.lang.Integer)[3];
+
+        $stack6 = 0;
+
+        $stack7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(fromIndex);
+
+        $stack4[$stack6] = $stack7;
+
+        $stack8 = 1;
+
+        $stack9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(toIndex);
+
+        $stack4[$stack8] = $stack9;
+
+        $stack10 = 2;
+
+        $stack11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(length);
+
+        $stack4[$stack10] = $stack11;
+
+        $stack12 = staticinvoke <jdk.internal.util.Preconditions: java.lang.RuntimeException outOfBounds(java.util.function.BiFunction,java.lang.String,java.lang.Integer[])>(oobe, $stack5, $stack4);
+
+        return $stack12;
+
+        nop;
+    }
+
+    private static java.lang.RuntimeException outOfBoundsCheckFromIndexSize(java.util.function.BiFunction, int, int, int)
+    {
+        java.util.function.BiFunction oobe;
+        java.lang.RuntimeException $stack12;
+        java.lang.Integer $stack7, $stack9, $stack11;
+        byte $stack6, $stack8, $stack10;
+        int fromIndex, size, length;
+        java.lang.String $stack5;
+        java.lang.Integer[] $stack4;
+
+        oobe := @parameter0: java.util.function.BiFunction;
+
+        fromIndex := @parameter1: int;
+
+        size := @parameter2: int;
+
+        length := @parameter3: int;
+
+        $stack5 = "checkFromIndexSize";
+
+        $stack4 = newarray (java.lang.Integer)[3];
+
+        $stack6 = 0;
+
+        $stack7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(fromIndex);
+
+        $stack4[$stack6] = $stack7;
+
+        $stack8 = 1;
+
+        $stack9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(size);
+
+        $stack4[$stack8] = $stack9;
+
+        $stack10 = 2;
+
+        $stack11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(length);
+
+        $stack4[$stack10] = $stack11;
+
+        $stack12 = staticinvoke <jdk.internal.util.Preconditions: java.lang.RuntimeException outOfBounds(java.util.function.BiFunction,java.lang.String,java.lang.Integer[])>(oobe, $stack5, $stack4);
+
+        return $stack12;
+
+        nop;
+    }
+
+    public static java.util.function.BiFunction outOfBoundsExceptionFormatter(java.util.function.Function)
+    {
+        java.util.function.Function f;
+        jdk.internal.util.Preconditions$1 $stack1;
+
+        f := @parameter0: java.util.function.Function;
+
+        $stack1 = new jdk.internal.util.Preconditions$1;
+
+        specialinvoke $stack1.<jdk.internal.util.Preconditions$1: void <init>(java.util.function.Function)>(f);
+
+        return $stack1;
+
+        nop;
+    }
+
+    private static java.lang.String outOfBoundsMessage(java.lang.String, java.util.List)
+    {
+        byte $stack12, $stack14, $stack16, $stack21, $stack23, $stack25, $stack30, $stack32, $stack41, argSize#1, l4#3, $stack45#4, $stack45#5, $stack44#10, $stack44#11, l4#14, $stack37#15, $stack37#16;
+        bottom_type argSize, l3, l4, $stack7, $stack37, $stack40, $stack43, $stack44, $stack45;
+        java.lang.Object[] $stack10, $stack19, $stack28, $stack35, $stack48, $stack50, $stack53;
+        java.lang.String checkKind, $stack11, $stack18, $stack20, $stack27, $stack29, $stack34, $stack36, $stack42, $stack49, $stack51, $stack52, $stack54, l3#2, $stack40#12, l3#13;
+        boolean $stack6, $stack9, $stack38, $stack39, $stack46, $stack47;
+        java.util.List args, $stack43#6, $stack43#7;
+        int $stack5, $stack8, $stack7#8, $stack7#9;
+        java.lang.Object $stack13, $stack15, $stack17, $stack22, $stack24, $stack26, $stack31, $stack33;
+
+        checkKind := @parameter0: java.lang.String;
+
+        args := @parameter1: java.util.List;
+
+        if checkKind != null goto label01;
+
+        if args != null goto label01;
+
+        $stack53 = newarray (java.lang.Object)[0];
+
+        $stack54 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Range check failed", $stack53);
+
+        return $stack54;
+
+     label01:
+        $stack52 = checkKind;
+
+        if $stack52 != null goto label02;
+
+        $stack50 = newarray (java.lang.Object)[1];
+
+        $stack50[0] = args;
+
+        $stack51 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Range check failed: %s", $stack50);
+
+        return $stack51;
+
+     label02:
+        if args != null goto label03;
+
+        $stack48 = newarray (java.lang.Object)[1];
+
+        $stack48[0] = checkKind;
+
+        $stack49 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Range check failed: %s", $stack48);
+
+        return $stack49;
+
+     label03:
+        argSize#1 = 0;
+
+        l3#2 = checkKind;
+
+        l4#3 = -1;
+
+        $stack5 = virtualinvoke l3#2.<java.lang.String: int hashCode()>();
+
+        lookupswitch($stack5)
+        {
+            case -538822486: goto label04;
+            case 1844394469: goto label05;
+            case 1848935233: goto label06;
+            default: goto label07;
+        };
+
+     label04:
+        $stack47 = virtualinvoke l3#2.<java.lang.String: boolean equals(java.lang.Object)>("checkIndex");
+
+        if $stack47 == 0 goto label07;
+
+        l4#3 = 0;
+
+        goto label07;
+
+     label05:
+        $stack46 = virtualinvoke l3#2.<java.lang.String: boolean equals(java.lang.Object)>("checkFromToIndex");
+
+        if $stack46 == 0 goto label07;
+
+        l4#3 = 1;
+
+        goto label07;
+
+     label06:
+        $stack6 = virtualinvoke l3#2.<java.lang.String: boolean equals(java.lang.Object)>("checkFromIndexSize");
+
+        if $stack6 == 0 goto label07;
+
+        l4#3 = 2;
+
+     label07:
+        $stack45#4 = l4#3;
+
+        $stack45#5 = $stack45#4;
+
+        tableswitch($stack45#5)
+        {
+            case 0: goto label08;
+            case 1: goto label09;
+            case 2: goto label09;
+            default: goto label10;
+        };
+
+     label08:
+        argSize#1 = 2;
+
+        goto label10;
+
+     label09:
+        argSize#1 = 3;
+
+        goto label10;
+
+     label10:
+        $stack43#6 = args;
+
+        $stack43#7 = $stack43#6;
+
+        $stack7#8 = interfaceinvoke $stack43#7.<java.util.List: int size()>();
+
+        $stack7#9 = $stack7#8;
+
+        $stack44#10 = argSize#1;
+
+        $stack44#11 = $stack44#10;
+
+        if $stack7#9 == $stack44#11 goto label11;
+
+        $stack40#12 = "";
+
+        goto label12;
+
+     label11:
+        $stack40#12 = checkKind;
+
+     label12:
+        l3#13 = $stack40#12;
+
+        $stack41 = -1;
+
+        l4#14 = $stack41;
+
+        $stack42 = l3#13;
+
+        $stack8 = virtualinvoke $stack42.<java.lang.String: int hashCode()>();
+
+        lookupswitch($stack8)
+        {
+            case -538822486: goto label13;
+            case 1844394469: goto label14;
+            case 1848935233: goto label15;
+            default: goto label16;
+        };
+
+     label13:
+        $stack39 = virtualinvoke l3#13.<java.lang.String: boolean equals(java.lang.Object)>("checkIndex");
+
+        if $stack39 == 0 goto label16;
+
+        l4#14 = 0;
+
+        goto label16;
+
+     label14:
+        $stack38 = virtualinvoke l3#13.<java.lang.String: boolean equals(java.lang.Object)>("checkFromToIndex");
+
+        if $stack38 == 0 goto label16;
+
+        l4#14 = 1;
+
+        goto label16;
+
+     label15:
+        $stack9 = virtualinvoke l3#13.<java.lang.String: boolean equals(java.lang.Object)>("checkFromIndexSize");
+
+        if $stack9 == 0 goto label16;
+
+        l4#14 = 2;
+
+     label16:
+        $stack37#15 = l4#14;
+
+        $stack37#16 = $stack37#15;
+
+        tableswitch($stack37#16)
+        {
+            case 0: goto label17;
+            case 1: goto label18;
+            case 2: goto label19;
+            default: goto label20;
+        };
+
+     label17:
+        $stack29 = "Index %s out of bounds for length %s";
+
+        $stack28 = newarray (java.lang.Object)[2];
+
+        $stack30 = 0;
+
+        $stack31 = interfaceinvoke args.<java.util.List: java.lang.Object get(int)>(0);
+
+        $stack28[$stack30] = $stack31;
+
+        $stack32 = 1;
+
+        $stack33 = interfaceinvoke args.<java.util.List: java.lang.Object get(int)>(1);
+
+        $stack28[$stack32] = $stack33;
+
+        $stack34 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack29, $stack28);
+
+        return $stack34;
+
+     label18:
+        $stack20 = "Range [%s, %s) out of bounds for length %s";
+
+        $stack19 = newarray (java.lang.Object)[3];
+
+        $stack21 = 0;
+
+        $stack22 = interfaceinvoke args.<java.util.List: java.lang.Object get(int)>(0);
+
+        $stack19[$stack21] = $stack22;
+
+        $stack23 = 1;
+
+        $stack24 = interfaceinvoke args.<java.util.List: java.lang.Object get(int)>(1);
+
+        $stack19[$stack23] = $stack24;
+
+        $stack25 = 2;
+
+        $stack26 = interfaceinvoke args.<java.util.List: java.lang.Object get(int)>(2);
+
+        $stack19[$stack25] = $stack26;
+
+        $stack27 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack20, $stack19);
+
+        return $stack27;
+
+     label19:
+        $stack11 = "Range [%s, %<s + %s) out of bounds for length %s";
+
+        $stack10 = newarray (java.lang.Object)[3];
+
+        $stack12 = 0;
+
+        $stack13 = interfaceinvoke args.<java.util.List: java.lang.Object get(int)>(0);
+
+        $stack10[$stack12] = $stack13;
+
+        $stack14 = 1;
+
+        $stack15 = interfaceinvoke args.<java.util.List: java.lang.Object get(int)>(1);
+
+        $stack10[$stack14] = $stack15;
+
+        $stack16 = 2;
+
+        $stack17 = interfaceinvoke args.<java.util.List: java.lang.Object get(int)>(2);
+
+        $stack10[$stack16] = $stack17;
+
+        $stack18 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>($stack11, $stack10);
+
+        return $stack18;
+
+     label20:
+        $stack35 = newarray (java.lang.Object)[2];
+
+        $stack35[0] = checkKind;
+
+        $stack35[1] = args;
+
+        $stack36 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Range check failed: %s %s", $stack35);
+
+        return $stack36;
+
+        nop;
+    }
+
+    public static int checkIndex(int, int, java.util.function.BiFunction)
+    {
+        java.util.function.BiFunction oobef, $stack4;
+        int index, length, $stack5, $stack6;
+        java.lang.RuntimeException $stack3;
+
+        index := @parameter0: int;
+
+        length := @parameter1: int;
+
+        oobef := @parameter2: java.util.function.BiFunction;
+
+        if index < 0 goto label1;
+
+        if index < length goto label2;
+
+     label1:
+        $stack4 = oobef;
+
+        $stack5 = index;
+
+        $stack6 = length;
+
+        $stack3 = staticinvoke <jdk.internal.util.Preconditions: java.lang.RuntimeException outOfBoundsCheckIndex(java.util.function.BiFunction,int,int)>($stack4, $stack5, $stack6);
+
+        throw $stack3;
+
+     label2:
+        return index;
+
+        nop;
+    }
+
+    public static int checkFromToIndex(int, int, int, java.util.function.BiFunction)
+    {
+        java.util.function.BiFunction oobef, $stack5#1, $stack5#2;
+        bottom_type $stack4, $stack5, $stack6, $stack7, $stack8;
+        int fromIndex, toIndex, length, $stack6#3, $stack6#4, $stack7#5, $stack7#6, $stack8#7, $stack8#8;
+        java.lang.RuntimeException $stack4#9, $stack4#10;
+
+        fromIndex := @parameter0: int;
+
+        toIndex := @parameter1: int;
+
+        length := @parameter2: int;
+
+        oobef := @parameter3: java.util.function.BiFunction;
+
+        if fromIndex < 0 goto label1;
+
+        if fromIndex > toIndex goto label1;
+
+        if toIndex <= length goto label2;
+
+     label1:
+        $stack5#1 = oobef;
+
+        $stack5#2 = $stack5#1;
+
+        $stack6#3 = fromIndex;
+
+        $stack6#4 = $stack6#3;
+
+        $stack7#5 = toIndex;
+
+        $stack7#6 = $stack7#5;
+
+        $stack8#7 = length;
+
+        $stack8#8 = $stack8#7;
+
+        $stack4#9 = staticinvoke <jdk.internal.util.Preconditions: java.lang.RuntimeException outOfBoundsCheckFromToIndex(java.util.function.BiFunction,int,int,int)>($stack5#2, $stack6#4, $stack7#6, $stack8#8);
+
+        $stack4#10 = $stack4#9;
+
+        throw $stack4#10;
+
+     label2:
+        return fromIndex;
+
+        nop;
+    }
+
+    public static int checkFromIndexSize(int, int, int, java.util.function.BiFunction)
+    {
+        java.util.function.BiFunction oobef, $stack8;
+        java.lang.RuntimeException $stack6;
+        int length, fromIndex, size, $stack4, $stack5, $stack7, $stack9, $stack10, $stack11;
+
+        fromIndex := @parameter0: int;
+
+        size := @parameter1: int;
+
+        length := @parameter2: int;
+
+        oobef := @parameter3: java.util.function.BiFunction;
+
+        $stack4 = length | fromIndex;
+
+        $stack5 = $stack4 | size;
+
+        if $stack5 < 0 goto label1;
+
+        $stack7 = length - fromIndex;
+
+        if size <= $stack7 goto label2;
+
+     label1:
+        $stack8 = oobef;
+
+        $stack9 = fromIndex;
+
+        $stack10 = size;
+
+        $stack11 = length;
+
+        $stack6 = staticinvoke <jdk.internal.util.Preconditions: java.lang.RuntimeException outOfBoundsCheckFromIndexSize(java.util.function.BiFunction,int,int,int)>($stack8, $stack9, $stack10, $stack11);
+
+        throw $stack6;
+
+     label2:
+        return fromIndex;
+
+        nop;
+    }
+}

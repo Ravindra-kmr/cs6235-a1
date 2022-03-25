@@ -1,0 +1,91 @@
+class jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1 extends java.lang.Object implements java.security.PrivilegedAction
+{
+    final java.util.concurrent.ExecutorService val$owner;
+    final java.lang.Runnable val$r;
+    final jdk.internal.logger.BootstrapLogger$BootstrapExecutors this$0;
+
+    void <init>(jdk.internal.logger.BootstrapLogger$BootstrapExecutors, java.util.concurrent.ExecutorService, java.lang.Runnable)
+    {
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1 this;
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors this$0;
+        java.lang.Runnable l3;
+        java.util.concurrent.ExecutorService l2;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1;
+
+        this$0 := @parameter0: jdk.internal.logger.BootstrapLogger$BootstrapExecutors;
+
+        l2 := @parameter1: java.util.concurrent.ExecutorService;
+
+        l3 := @parameter2: java.lang.Runnable;
+
+        this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1: jdk.internal.logger.BootstrapLogger$BootstrapExecutors this$0> = this$0;
+
+        this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1: java.util.concurrent.ExecutorService val$owner> = l2;
+
+        this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1: java.lang.Runnable val$r> = l3;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public java.lang.Thread run()
+    {
+        java.lang.Runnable $stack3;
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1 this;
+        java.lang.Thread $stack5, t;
+        java.lang.StringBuilder $stack6, $stack7, $stack9;
+        java.lang.String $stack8, $stack10;
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask $stack2;
+        java.util.concurrent.ExecutorService $stack4;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1;
+
+        $stack2 = new jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask;
+
+        $stack4 = this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1: java.util.concurrent.ExecutorService val$owner>;
+
+        $stack3 = this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1: java.lang.Runnable val$r>;
+
+        specialinvoke $stack2.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$BootstrapMessageLoggerTask: void <init>(java.util.concurrent.ExecutorService,java.lang.Runnable)>($stack4, $stack3);
+
+        $stack5 = staticinvoke <jdk.internal.misc.InnocuousThread: java.lang.Thread newThread(java.lang.Runnable)>($stack2);
+
+        t = $stack5;
+
+        $stack6 = new java.lang.StringBuilder;
+
+        specialinvoke $stack6.<java.lang.StringBuilder: void <init>()>();
+
+        $stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("BootstrapMessageLoggerTask-");
+
+        $stack8 = virtualinvoke t.<java.lang.Thread: java.lang.String getName()>();
+
+        $stack9 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack8);
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke t.<java.lang.Thread: void setName(java.lang.String)>($stack10);
+
+        return t;
+
+        nop;
+    }
+
+    public volatile java.lang.Object run()
+    {
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1 this;
+        java.lang.Thread $stack1;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1;
+
+        $stack1 = virtualinvoke this.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1: java.lang.Thread run()>();
+
+        return $stack1;
+
+        nop;
+    }
+}

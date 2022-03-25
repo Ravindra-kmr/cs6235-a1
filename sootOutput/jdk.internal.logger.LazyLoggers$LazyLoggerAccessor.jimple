@@ -1,0 +1,674 @@
+final class jdk.internal.logger.LazyLoggers$LazyLoggerAccessor extends java.lang.Object implements jdk.internal.logger.LazyLoggers$LoggerAccessor
+{
+    final jdk.internal.logger.LazyLoggers$LazyLoggerFactories factories;
+    private final java.lang.ref.WeakReference moduleRef;
+    final java.lang.String name;
+    private volatile java.lang.System$Logger w;
+    private volatile sun.util.logging.PlatformLogger$Bridge p;
+    static final boolean $assertionsDisabled;
+
+    private void <init>(java.lang.String, jdk.internal.logger.LazyLoggers$LazyLoggerFactories, java.lang.Module)
+    {
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this;
+        jdk.internal.logger.LazyLoggers$LazyLoggerFactories factories, $stack7;
+        java.lang.Module module, $stack9;
+        java.lang.Object $stack4, $stack6, $stack8;
+        java.lang.String name, $stack5;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        name := @parameter0: java.lang.String;
+
+        factories := @parameter1: jdk.internal.logger.LazyLoggers$LazyLoggerFactories;
+
+        module := @parameter2: java.lang.Module;
+
+        $stack4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(name);
+
+        $stack5 = (java.lang.String) $stack4;
+
+        $stack6 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(factories);
+
+        $stack7 = (jdk.internal.logger.LazyLoggers$LazyLoggerFactories) $stack6;
+
+        $stack8 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(module);
+
+        $stack9 = (java.lang.Module) $stack8;
+
+        specialinvoke this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: void <init>(java.lang.String,jdk.internal.logger.LazyLoggers$LazyLoggerFactories,java.lang.Module,java.lang.Void)>($stack5, $stack7, $stack9, null);
+
+        return;
+
+        nop;
+    }
+
+    private void <init>(java.lang.String, jdk.internal.logger.LazyLoggers$LazyLoggerFactories, java.lang.Module, java.lang.Void)
+    {
+        java.lang.Void unused;
+        java.lang.Module module;
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this;
+        java.lang.String name;
+        java.lang.ref.WeakReference $stack5;
+        jdk.internal.logger.LazyLoggers$LazyLoggerFactories factories;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        name := @parameter0: java.lang.String;
+
+        factories := @parameter1: jdk.internal.logger.LazyLoggers$LazyLoggerFactories;
+
+        module := @parameter2: java.lang.Module;
+
+        unused := @parameter3: java.lang.Void;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.String name> = name;
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: jdk.internal.logger.LazyLoggers$LazyLoggerFactories factories> = factories;
+
+        $stack5 = new java.lang.ref.WeakReference;
+
+        specialinvoke $stack5.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>(module);
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.ref.WeakReference moduleRef> = $stack5;
+
+        return;
+
+        nop;
+    }
+
+    public java.lang.String getLoggerName()
+    {
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this;
+        java.lang.String $stack1;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        $stack1 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.String name>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    private void setWrappedIfNotSet(java.lang.System$Logger)
+    {
+        java.lang.System$Logger $stack2, wrapped;
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        wrapped := @parameter0: java.lang.System$Logger;
+
+        $stack2 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w>;
+
+        if $stack2 != null goto label1;
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w> = wrapped;
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public java.lang.System$Logger wrapped()
+    {
+        java.lang.Throwable $stack8, l3;
+        java.lang.System$Logger $stack4, $stack7, wrapped#1, wrapped#2;
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this, l2, $stack5, $stack6, $stack9;
+        bottom_type wrapped;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        wrapped#1 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w>;
+
+        if wrapped#1 == null goto label1;
+
+        return wrapped#1;
+
+     label1:
+        $stack4 = staticinvoke <jdk.internal.logger.BootstrapLogger: java.lang.System$Logger getLogger(jdk.internal.logger.LazyLoggers$LazyLoggerAccessor)>(this);
+
+        wrapped#2 = $stack4;
+
+        $stack5 = this;
+
+        l2 = $stack5;
+
+        entermonitor $stack5;
+
+     label2:
+        virtualinvoke this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: void setWrappedIfNotSet(java.lang.System$Logger)>(wrapped#2);
+
+        $stack7 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w>;
+
+        $stack6 = l2;
+
+        exitmonitor $stack6;
+
+     label3:
+        return $stack7;
+
+     label4:
+        $stack8 := @caughtexception;
+
+        l3 = $stack8;
+
+        $stack9 = l2;
+
+        exitmonitor $stack9;
+
+     label5:
+        throw l3;
+
+        nop;
+
+        catch java.lang.Throwable from label2 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public sun.util.logging.PlatformLogger$Bridge platform()
+    {
+        java.lang.Throwable $stack22, l4, $stack24, l3#2;
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this, $stack5, $stack7, $stack9, $stack11, $stack15, $stack17, $stack21, $stack23, $stack25, wrapped#1, l3#4;
+        sun.util.logging.PlatformLogger$Bridge platform, $stack10, $stack12, $stack14, $stack16, $stack18, $stack20;
+        bottom_type wrapped, l3;
+        java.lang.System$Logger $stack6, $stack8, $stack13, $stack19, wrapped#3;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        platform = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p>;
+
+        if platform == null goto label01;
+
+        return platform;
+
+     label01:
+        $stack5 = this;
+
+        wrapped#1 = $stack5;
+
+        entermonitor $stack5;
+
+     label02:
+        $stack6 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w>;
+
+        if $stack6 == null goto label05;
+
+        $stack16 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p>;
+
+        if $stack16 != null goto label03;
+
+        $stack19 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w>;
+
+        $stack20 = staticinvoke <sun.util.logging.PlatformLogger$Bridge: sun.util.logging.PlatformLogger$Bridge convert(java.lang.System$Logger)>($stack19);
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p> = $stack20;
+
+     label03:
+        $stack21 = this;
+
+        $stack18 = $stack21.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p>;
+
+        $stack17 = wrapped#1;
+
+        exitmonitor $stack17;
+
+     label04:
+        return $stack18;
+
+     label05:
+        $stack7 = wrapped#1;
+
+        exitmonitor $stack7;
+
+     label06:
+        goto label09;
+
+     label07:
+        $stack24 := @caughtexception;
+
+        l3#2 = $stack24;
+
+        $stack25 = wrapped#1;
+
+        exitmonitor $stack25;
+
+     label08:
+        throw l3#2;
+
+     label09:
+        $stack8 = staticinvoke <jdk.internal.logger.BootstrapLogger: java.lang.System$Logger getLogger(jdk.internal.logger.LazyLoggers$LazyLoggerAccessor)>(this);
+
+        wrapped#3 = $stack8;
+
+        $stack9 = this;
+
+        l3#4 = $stack9;
+
+        entermonitor $stack9;
+
+     label10:
+        virtualinvoke this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: void setWrappedIfNotSet(java.lang.System$Logger)>(wrapped#3);
+
+        $stack10 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p>;
+
+        if $stack10 != null goto label11;
+
+        $stack13 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w>;
+
+        $stack14 = staticinvoke <sun.util.logging.PlatformLogger$Bridge: sun.util.logging.PlatformLogger$Bridge convert(java.lang.System$Logger)>($stack13);
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p> = $stack14;
+
+     label11:
+        $stack15 = this;
+
+        $stack12 = $stack15.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p>;
+
+        $stack11 = l3#4;
+
+        exitmonitor $stack11;
+
+     label12:
+        return $stack12;
+
+     label13:
+        $stack22 := @caughtexception;
+
+        l4 = $stack22;
+
+        $stack23 = l3#4;
+
+        exitmonitor $stack23;
+
+     label14:
+        throw l4;
+
+        nop;
+
+        catch java.lang.Throwable from label02 to label04 with label07;
+        catch java.lang.Throwable from label05 to label06 with label07;
+        catch java.lang.Throwable from label07 to label08 with label07;
+        catch java.lang.Throwable from label10 to label12 with label13;
+        catch java.lang.Throwable from label13 to label14 with label13;
+    }
+
+    void release(jdk.internal.logger.SimpleConsoleLogger, boolean)
+    {
+        java.lang.Throwable $stack20, l6;
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this, $stack8, $stack10, $stack16, $stack18, $stack21, platform#3;
+        sun.util.logging.PlatformLogger$Bridge $stack11#4, platform#5;
+        sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration $stack7, $stack14, conf#1, $stack12#6, conf#7, $stack13#8, $stack13#9;
+        bottom_type conf, platform, $stack11, $stack12, $stack13, $stack17;
+        boolean replace;
+        java.lang.System$Logger $stack9;
+        jdk.internal.logger.SimpleConsoleLogger temporary, $stack19;
+        sun.util.logging.PlatformLogger$Level level, $stack15, $stack17#2;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        temporary := @parameter0: jdk.internal.logger.SimpleConsoleLogger;
+
+        replace := @parameter1: boolean;
+
+        $stack7 = staticinvoke <sun.util.logging.PlatformLogger$ConfigurableBridge: sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration getLoggerConfiguration(sun.util.logging.PlatformLogger$Bridge)>(temporary);
+
+        conf#1 = $stack7;
+
+        if conf#1 == null goto label01;
+
+        $stack17#2 = virtualinvoke conf#1.<sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration: sun.util.logging.PlatformLogger$Level getPlatformLevel()>();
+
+        goto label02;
+
+     label01:
+        $stack17#2 = null;
+
+     label02:
+        level = $stack17#2;
+
+        $stack8 = this;
+
+        platform#3 = $stack8;
+
+        entermonitor $stack8;
+
+     label03:
+        $stack18 = this;
+
+        $stack9 = $stack18.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w>;
+
+        $stack19 = temporary;
+
+        if $stack9 != $stack19 goto label04;
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w> = null;
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p> = null;
+
+     label04:
+        $stack10 = platform#3;
+
+        exitmonitor $stack10;
+
+     label05:
+        goto label08;
+
+     label06:
+        $stack20 := @caughtexception;
+
+        l6 = $stack20;
+
+        $stack21 = platform#3;
+
+        exitmonitor $stack21;
+
+     label07:
+        throw l6;
+
+     label08:
+        if replace != 0 goto label09;
+
+        if level == null goto label10;
+
+     label09:
+        $stack16 = this;
+
+        $stack11#4 = virtualinvoke $stack16.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge platform()>();
+
+        goto label11;
+
+     label10:
+        $stack11#4 = null;
+
+     label11:
+        platform#5 = $stack11#4;
+
+        $stack15 = level;
+
+        if $stack15 == null goto label14;
+
+        if platform#5 == null goto label12;
+
+        if platform#5 == temporary goto label12;
+
+        $stack14 = staticinvoke <sun.util.logging.PlatformLogger$ConfigurableBridge: sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration getLoggerConfiguration(sun.util.logging.PlatformLogger$Bridge)>(platform#5);
+
+        $stack12#6 = $stack14;
+
+        goto label13;
+
+     label12:
+        $stack12#6 = null;
+
+     label13:
+        conf#7 = $stack12#6;
+
+        $stack13#8 = conf#7;
+
+        $stack13#9 = $stack13#8;
+
+        if $stack13#9 == null goto label14;
+
+        virtualinvoke conf#7.<sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration: void setPlatformLevel(sun.util.logging.PlatformLogger$Level)>(level);
+
+     label14:
+        return;
+
+        nop;
+
+        catch java.lang.Throwable from label03 to label05 with label06;
+        catch java.lang.Throwable from label06 to label07 with label06;
+    }
+
+    java.lang.System$Logger getConcreteLogger(jdk.internal.logger.BootstrapLogger)
+    {
+        java.lang.Throwable $stack13, l3;
+        java.lang.System$Logger $stack6, $stack8;
+        jdk.internal.logger.BootstrapLogger bootstrap, $stack11;
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this, l2, $stack5, $stack7, $stack10, $stack14;
+        java.lang.AssertionError $stack12;
+        boolean $stack4, $stack9;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        bootstrap := @parameter0: jdk.internal.logger.BootstrapLogger;
+
+        $stack4 = <jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: boolean $assertionsDisabled>;
+
+        if $stack4 != 0 goto label1;
+
+        $stack9 = staticinvoke <jdk.internal.misc.VM: boolean isBooted()>();
+
+        if $stack9 != 0 goto label1;
+
+        $stack12 = new java.lang.AssertionError;
+
+        specialinvoke $stack12.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack12;
+
+     label1:
+        $stack5 = this;
+
+        l2 = $stack5;
+
+        entermonitor $stack5;
+
+     label2:
+        $stack10 = this;
+
+        $stack6 = $stack10.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w>;
+
+        $stack11 = bootstrap;
+
+        if $stack6 != $stack11 goto label3;
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w> = null;
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p> = null;
+
+     label3:
+        $stack7 = l2;
+
+        exitmonitor $stack7;
+
+     label4:
+        goto label7;
+
+     label5:
+        $stack13 := @caughtexception;
+
+        l3 = $stack13;
+
+        $stack14 = l2;
+
+        exitmonitor $stack14;
+
+     label6:
+        throw l3;
+
+     label7:
+        $stack8 = virtualinvoke this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger wrapped()>();
+
+        return $stack8;
+
+        nop;
+
+        catch java.lang.Throwable from label2 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    sun.util.logging.PlatformLogger$Bridge getConcretePlatformLogger(jdk.internal.logger.BootstrapLogger)
+    {
+        java.lang.Throwable $stack13, l3;
+        java.lang.System$Logger $stack6;
+        jdk.internal.logger.BootstrapLogger bootstrap, $stack11;
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this, l2, $stack5, $stack7, $stack10, $stack14;
+        java.lang.AssertionError $stack12;
+        sun.util.logging.PlatformLogger$Bridge $stack8;
+        boolean $stack4, $stack9;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        bootstrap := @parameter0: jdk.internal.logger.BootstrapLogger;
+
+        $stack4 = <jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: boolean $assertionsDisabled>;
+
+        if $stack4 != 0 goto label1;
+
+        $stack9 = staticinvoke <jdk.internal.misc.VM: boolean isBooted()>();
+
+        if $stack9 != 0 goto label1;
+
+        $stack12 = new java.lang.AssertionError;
+
+        specialinvoke $stack12.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack12;
+
+     label1:
+        $stack5 = this;
+
+        l2 = $stack5;
+
+        entermonitor $stack5;
+
+     label2:
+        $stack10 = this;
+
+        $stack6 = $stack10.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w>;
+
+        $stack11 = bootstrap;
+
+        if $stack6 != $stack11 goto label3;
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.System$Logger w> = null;
+
+        this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge p> = null;
+
+     label3:
+        $stack7 = l2;
+
+        exitmonitor $stack7;
+
+     label4:
+        goto label7;
+
+     label5:
+        $stack13 := @caughtexception;
+
+        l3 = $stack13;
+
+        $stack14 = l2;
+
+        exitmonitor $stack14;
+
+     label6:
+        throw l3;
+
+     label7:
+        $stack8 = virtualinvoke this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: sun.util.logging.PlatformLogger$Bridge platform()>();
+
+        return $stack8;
+
+        nop;
+
+        catch java.lang.Throwable from label2 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    java.lang.System$Logger createLogger()
+    {
+        java.lang.System$Logger $stack8;
+        java.lang.IllegalStateException $stack9;
+        java.util.function.BiFunction $stack6;
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor this;
+        jdk.internal.logger.LazyLoggers$LazyLoggerFactories $stack4;
+        java.lang.Module module;
+        java.lang.Object $stack3, $stack7;
+        java.lang.String $stack5;
+        java.lang.ref.WeakReference $stack2;
+
+        this := @this: jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        $stack2 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.ref.WeakReference moduleRef>;
+
+        $stack3 = virtualinvoke $stack2.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        module = (java.lang.Module) $stack3;
+
+        if module != null goto label1;
+
+        $stack9 = new java.lang.IllegalStateException;
+
+        specialinvoke $stack9.<java.lang.IllegalStateException: void <init>(java.lang.String)>("The module for which this logger was created has been garbage collected");
+
+        throw $stack9;
+
+     label1:
+        $stack4 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: jdk.internal.logger.LazyLoggers$LazyLoggerFactories factories>;
+
+        $stack6 = $stack4.<jdk.internal.logger.LazyLoggers$LazyLoggerFactories: java.util.function.BiFunction loggerSupplier>;
+
+        $stack5 = this.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: java.lang.String name>;
+
+        $stack7 = interfaceinvoke $stack6.<java.util.function.BiFunction: java.lang.Object apply(java.lang.Object,java.lang.Object)>($stack5, module);
+
+        $stack8 = (java.lang.System$Logger) $stack7;
+
+        return $stack8;
+
+        nop;
+    }
+
+    public static jdk.internal.logger.LazyLoggers$LazyLoggerAccessor makeAccessor(java.lang.String, jdk.internal.logger.LazyLoggers$LazyLoggerFactories, java.lang.Module)
+    {
+        java.lang.Module module;
+        jdk.internal.logger.LazyLoggers$LazyLoggerAccessor $stack3;
+        java.lang.String name;
+        jdk.internal.logger.LazyLoggers$LazyLoggerFactories factories;
+
+        name := @parameter0: java.lang.String;
+
+        factories := @parameter1: jdk.internal.logger.LazyLoggers$LazyLoggerFactories;
+
+        module := @parameter2: java.lang.Module;
+
+        $stack3 = new jdk.internal.logger.LazyLoggers$LazyLoggerAccessor;
+
+        specialinvoke $stack3.<jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: void <init>(java.lang.String,jdk.internal.logger.LazyLoggers$LazyLoggerFactories,java.lang.Module)>(name, factories, module);
+
+        return $stack3;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        bottom_type $stack2;
+        java.lang.Class $stack0;
+        boolean $stack1, $stack2#1;
+
+        $stack0 = class "Ljdk/internal/logger/LazyLoggers;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack2#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack2#1 = 0;
+
+     label2:
+        <jdk.internal.logger.LazyLoggers$LazyLoggerAccessor: boolean $assertionsDisabled> = $stack2#1;
+
+        return;
+    }
+}

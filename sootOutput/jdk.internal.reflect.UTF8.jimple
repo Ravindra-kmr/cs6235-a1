@@ -1,0 +1,304 @@
+class jdk.internal.reflect.UTF8 extends java.lang.Object
+{
+
+    void <init>()
+    {
+        jdk.internal.reflect.UTF8 this;
+
+        this := @this: jdk.internal.reflect.UTF8;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    static byte[] encode(java.lang.String)
+    {
+        byte[] res, $stack35, $stack40, $stack44, $stack48, $stack52;
+        byte $stack12, $stack16, $stack22, $stack27, $stack31, $stack32, $stack36, $stack38, $stack41, $stack45, $stack49, $stack55;
+        bottom_type utf8Idx, i;
+        java.lang.InternalError $stack57, $u0;
+        short $stack34, $stack39, $stack43, $stack47, $stack51;
+        java.lang.String str;
+        java.lang.ArrayIndexOutOfBoundsException $stack56, i#6;
+        int $stack6, len, $stack7, $stack9, $stack10, $stack11, $stack13, $stack14, $stack15, $stack17, $stack18, $stack19, $stack20, $stack21, $stack23, $stack24, $stack25, $stack26, $stack28, $stack29, $stack30, $stack54, utf8Idx#1, i#2, utf8Idx#3, utf8Idx#4, utf8Idx#5, $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8;
+        char $stack8, c, $stack33, $stack37, $stack42, $stack46, $stack50, $stack53;
+
+        str := @parameter0: java.lang.String;
+
+        $stack6 = virtualinvoke str.<java.lang.String: int length()>();
+
+        len = $stack6;
+
+        $stack7 = staticinvoke <jdk.internal.reflect.UTF8: int utf8Length(java.lang.String)>(str);
+
+        res = newarray (byte)[$stack7];
+
+        utf8Idx#1 = 0;
+
+     label1:
+        i#2 = 0;
+
+     label2:
+        $stack18 = i#2;
+
+        $stack17 = len;
+
+        if $stack18 >= $stack17 goto label7;
+
+        $stack8 = virtualinvoke str.<java.lang.String: char charAt(int)>(i#2);
+
+        c = $stack8 & 65535;
+
+        $i0 = (int) c;
+
+        if $i0 < 1 goto label3;
+
+        $i1 = (int) c;
+
+        if $i1 > 127 goto label3;
+
+        $stack54 = utf8Idx#1;
+
+        utf8Idx#1 = utf8Idx#1 + 1;
+
+        $stack55 = (byte) c;
+
+        res[$stack54] = $stack55;
+
+        goto label6;
+
+     label3:
+        $stack53 = c;
+
+        if $stack53 == 0 goto label4;
+
+        $i2 = (int) c;
+
+        if $i2 < 128 goto label5;
+
+        $i3 = (int) c;
+
+        if $i3 > 2047 goto label5;
+
+     label4:
+        $stack48 = res;
+
+        $stack9 = utf8Idx#1;
+
+        utf8Idx#3 = utf8Idx#1 + 1;
+
+        $stack47 = 192;
+
+        $stack46 = c;
+
+        $stack45 = 6;
+
+        $i4 = (int) $stack46;
+
+        $stack10 = $i4 >> $stack45;
+
+        $stack11 = $stack47 + $stack10;
+
+        $stack12 = (byte) $stack11;
+
+        $stack48[$stack9] = $stack12;
+
+        $stack52 = res;
+
+        $stack13 = utf8Idx#3;
+
+        utf8Idx#1 = utf8Idx#3 + 1;
+
+        $stack51 = 128;
+
+        $stack50 = c;
+
+        $stack49 = 63;
+
+        $stack14 = $stack50 & $stack49;
+
+        $i5 = (int) $stack14;
+
+        $stack15 = $stack51 + $i5;
+
+        $stack16 = (byte) $stack15;
+
+        $stack52[$stack13] = $stack16;
+
+        goto label6;
+
+     label5:
+        $stack35 = res;
+
+        $stack19 = utf8Idx#1;
+
+        utf8Idx#4 = utf8Idx#1 + 1;
+
+        $stack34 = 224;
+
+        $stack33 = c;
+
+        $stack32 = 12;
+
+        $i6 = (int) $stack33;
+
+        $stack20 = $i6 >> $stack32;
+
+        $stack21 = $stack34 + $stack20;
+
+        $stack22 = (byte) $stack21;
+
+        $stack35[$stack19] = $stack22;
+
+        $stack40 = res;
+
+        $stack23 = utf8Idx#4;
+
+        utf8Idx#5 = utf8Idx#4 + 1;
+
+        $stack39 = 128;
+
+        $stack37 = c;
+
+        $stack36 = 6;
+
+        $i7 = (int) $stack37;
+
+        $stack24 = $i7 >> $stack36;
+
+        $stack38 = 63;
+
+        $stack25 = $stack24 & $stack38;
+
+        $stack26 = $stack39 + $stack25;
+
+        $stack27 = (byte) $stack26;
+
+        $stack40[$stack23] = $stack27;
+
+        $stack44 = res;
+
+        $stack28 = utf8Idx#5;
+
+        utf8Idx#1 = utf8Idx#5 + 1;
+
+        $stack43 = 128;
+
+        $stack42 = c;
+
+        $stack41 = 63;
+
+        $stack29 = $stack42 & $stack41;
+
+        $i8 = (int) $stack29;
+
+        $stack30 = $stack43 + $i8;
+
+        $stack31 = (byte) $stack30;
+
+        $stack44[$stack28] = $stack31;
+
+     label6:
+        i#2 = i#2 + 1;
+
+        goto label2;
+
+     label7:
+        goto label9;
+
+     label8:
+        $stack56 := @caughtexception;
+
+        i#6 = $stack56;
+
+        $u0 = new java.lang.InternalError;
+
+        $stack57 = $u0;
+
+        specialinvoke $u0.<java.lang.InternalError: void <init>(java.lang.String,java.lang.Throwable)>("Bug in sun.reflect bootstrap UTF-8 encoder", i#6);
+
+        throw $stack57;
+
+     label9:
+        return res;
+
+        nop;
+
+        catch java.lang.ArrayIndexOutOfBoundsException from label1 to label7 with label8;
+    }
+
+    private static int utf8Length(java.lang.String)
+    {
+        bottom_type utf8Len, i;
+        int $stack5, len, $stack7, $stack8, utf8Len#1, i#2, $i0, $i1, $i2, $i3;
+        java.lang.String str;
+        char $stack6, c, $stack9;
+
+        str := @parameter0: java.lang.String;
+
+        $stack5 = virtualinvoke str.<java.lang.String: int length()>();
+
+        len = $stack5;
+
+        utf8Len#1 = 0;
+
+        i#2 = 0;
+
+     label1:
+        $stack8 = i#2;
+
+        $stack7 = len;
+
+        if $stack8 >= $stack7 goto label6;
+
+        $stack6 = virtualinvoke str.<java.lang.String: char charAt(int)>(i#2);
+
+        c = $stack6 & 65535;
+
+        $i0 = (int) c;
+
+        if $i0 < 1 goto label2;
+
+        $i1 = (int) c;
+
+        if $i1 > 127 goto label2;
+
+        utf8Len#1 = utf8Len#1 + 1;
+
+        goto label5;
+
+     label2:
+        $stack9 = c;
+
+        if $stack9 == 0 goto label3;
+
+        $i2 = (int) c;
+
+        if $i2 < 128 goto label4;
+
+        $i3 = (int) c;
+
+        if $i3 > 2047 goto label4;
+
+     label3:
+        utf8Len#1 = utf8Len#1 + 2;
+
+        goto label5;
+
+     label4:
+        utf8Len#1 = utf8Len#1 + 3;
+
+     label5:
+        i#2 = i#2 + 1;
+
+        goto label1;
+
+     label6:
+        return utf8Len#1;
+
+        nop;
+    }
+}

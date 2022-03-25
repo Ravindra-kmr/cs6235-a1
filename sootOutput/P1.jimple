@@ -1,0 +1,59 @@
+class P1 extends java.lang.Object
+{
+
+    void <init>()
+    {
+        P1 this;
+
+        this := @this: P1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        A $stack6, $stack7, obj2, $stack8, obj3, $stack9, obj4, $stack10, obj5, obj1#1, obj1#2;
+        java.lang.String[] args;
+        bottom_type obj1;
+
+        args := @parameter0: java.lang.String[];
+
+        $stack6 = new A;
+
+        specialinvoke $stack6.<A: void <init>()>();
+
+        obj1#1 = $stack6;
+
+        $stack7 = new A;
+
+        specialinvoke $stack7.<A: void <init>()>();
+
+        obj2 = $stack7;
+
+        $stack8 = new A;
+
+        specialinvoke $stack8.<A: void <init>()>();
+
+        obj3 = $stack8;
+
+        obj1#2 = obj2;
+
+        obj2.<A: A f1> = obj3;
+
+        $stack9 = virtualinvoke obj1#2.<A: A getf1()>();
+
+        obj4 = $stack9;
+
+        $stack10 = virtualinvoke obj2.<A: A getf1()>();
+
+        obj5 = $stack10;
+
+        return;
+
+        nop;
+    }
+}

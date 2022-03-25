@@ -1,0 +1,39 @@
+class jdk.internal.loader.ClassLoaders$BootClassLoader extends jdk.internal.loader.BuiltinClassLoader
+{
+
+    void <init>(jdk.internal.loader.URLClassPath)
+    {
+        jdk.internal.loader.ClassLoaders$BootClassLoader this;
+        jdk.internal.loader.URLClassPath bcp;
+
+        this := @this: jdk.internal.loader.ClassLoaders$BootClassLoader;
+
+        bcp := @parameter0: jdk.internal.loader.URLClassPath;
+
+        specialinvoke this.<jdk.internal.loader.BuiltinClassLoader: void <init>(java.lang.String,jdk.internal.loader.BuiltinClassLoader,jdk.internal.loader.URLClassPath)>(null, null, bcp);
+
+        return;
+
+        nop;
+    }
+
+    protected java.lang.Class loadClassOrNull(java.lang.String)
+    {
+        jdk.internal.loader.ClassLoaders$BootClassLoader this;
+        java.lang.Class $stack3;
+        java.lang.String cn;
+        jdk.internal.misc.JavaLangAccess $stack2;
+
+        this := @this: jdk.internal.loader.ClassLoaders$BootClassLoader;
+
+        cn := @parameter0: java.lang.String;
+
+        $stack2 = <jdk.internal.loader.ClassLoaders: jdk.internal.misc.JavaLangAccess JLA>;
+
+        $stack3 = interfaceinvoke $stack2.<jdk.internal.misc.JavaLangAccess: java.lang.Class findBootstrapClassOrNull(java.lang.ClassLoader,java.lang.String)>(this, cn);
+
+        return $stack3;
+
+        nop;
+    }
+}

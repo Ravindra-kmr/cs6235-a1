@@ -1,0 +1,94 @@
+public class jdk.internal.util.xml.XMLStreamException extends java.lang.Exception
+{
+    private static final long serialVersionUID;
+    protected java.lang.Throwable nested;
+
+    public void <init>()
+    {
+        jdk.internal.util.xml.XMLStreamException this;
+
+        this := @this: jdk.internal.util.xml.XMLStreamException;
+
+        specialinvoke this.<java.lang.Exception: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        java.lang.String msg;
+        jdk.internal.util.xml.XMLStreamException this;
+
+        this := @this: jdk.internal.util.xml.XMLStreamException;
+
+        msg := @parameter0: java.lang.String;
+
+        specialinvoke this.<java.lang.Exception: void <init>(java.lang.String)>(msg);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(java.lang.Throwable)
+    {
+        java.lang.Throwable th;
+        jdk.internal.util.xml.XMLStreamException this;
+
+        this := @this: jdk.internal.util.xml.XMLStreamException;
+
+        th := @parameter0: java.lang.Throwable;
+
+        specialinvoke this.<java.lang.Exception: void <init>(java.lang.Throwable)>(th);
+
+        this.<jdk.internal.util.xml.XMLStreamException: java.lang.Throwable nested> = th;
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(java.lang.String, java.lang.Throwable)
+    {
+        java.lang.Throwable th;
+        java.lang.String msg;
+        jdk.internal.util.xml.XMLStreamException this;
+
+        this := @this: jdk.internal.util.xml.XMLStreamException;
+
+        msg := @parameter0: java.lang.String;
+
+        th := @parameter1: java.lang.Throwable;
+
+        specialinvoke this.<java.lang.Exception: void <init>(java.lang.String,java.lang.Throwable)>(msg, th);
+
+        this.<jdk.internal.util.xml.XMLStreamException: java.lang.Throwable nested> = th;
+
+        return;
+
+        nop;
+    }
+
+    public java.lang.Throwable getNestedException()
+    {
+        java.lang.Throwable $stack1;
+        jdk.internal.util.xml.XMLStreamException this;
+
+        this := @this: jdk.internal.util.xml.XMLStreamException;
+
+        $stack1 = this.<jdk.internal.util.xml.XMLStreamException: java.lang.Throwable nested>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    public static void <clinit>()
+    {
+        <jdk.internal.util.xml.XMLStreamException: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

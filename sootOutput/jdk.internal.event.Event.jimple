@@ -1,0 +1,88 @@
+public abstract class jdk.internal.event.Event extends java.lang.Object
+{
+
+    protected void <init>()
+    {
+        jdk.internal.event.Event this;
+
+        this := @this: jdk.internal.event.Event;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public void begin()
+    {
+        jdk.internal.event.Event this;
+
+        this := @this: jdk.internal.event.Event;
+
+        return;
+
+        nop;
+    }
+
+    public void end()
+    {
+        jdk.internal.event.Event this;
+
+        this := @this: jdk.internal.event.Event;
+
+        return;
+
+        nop;
+    }
+
+    public void commit()
+    {
+        jdk.internal.event.Event this;
+
+        this := @this: jdk.internal.event.Event;
+
+        return;
+
+        nop;
+    }
+
+    public boolean isEnabled()
+    {
+        jdk.internal.event.Event this;
+
+        this := @this: jdk.internal.event.Event;
+
+        return 0;
+
+        nop;
+    }
+
+    public boolean shouldCommit()
+    {
+        jdk.internal.event.Event this;
+
+        this := @this: jdk.internal.event.Event;
+
+        return 0;
+
+        nop;
+    }
+
+    public void set(int, java.lang.Object)
+    {
+        int index;
+        java.lang.Object value;
+        jdk.internal.event.Event this;
+
+        this := @this: jdk.internal.event.Event;
+
+        index := @parameter0: int;
+
+        value := @parameter1: java.lang.Object;
+
+        return;
+
+        nop;
+    }
+}

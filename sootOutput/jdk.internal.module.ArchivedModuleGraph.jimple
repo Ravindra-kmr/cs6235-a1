@@ -1,0 +1,172 @@
+final class jdk.internal.module.ArchivedModuleGraph extends java.lang.Object
+{
+    private static java.lang.String archivedMainModule;
+    private static jdk.internal.module.SystemModules archivedSystemModules;
+    private static java.lang.module.ModuleFinder archivedModuleFinder;
+    private static java.lang.module.Configuration archivedConfiguration;
+    private final jdk.internal.module.SystemModules systemModules;
+    private final java.lang.module.ModuleFinder finder;
+    private final java.lang.module.Configuration configuration;
+
+    private void <init>(jdk.internal.module.SystemModules, java.lang.module.ModuleFinder, java.lang.module.Configuration)
+    {
+        java.lang.module.ModuleFinder finder;
+        jdk.internal.module.ArchivedModuleGraph this;
+        java.lang.module.Configuration configuration;
+        jdk.internal.module.SystemModules modules;
+
+        this := @this: jdk.internal.module.ArchivedModuleGraph;
+
+        modules := @parameter0: jdk.internal.module.SystemModules;
+
+        finder := @parameter1: java.lang.module.ModuleFinder;
+
+        configuration := @parameter2: java.lang.module.Configuration;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.module.ArchivedModuleGraph: jdk.internal.module.SystemModules systemModules> = modules;
+
+        this.<jdk.internal.module.ArchivedModuleGraph: java.lang.module.ModuleFinder finder> = finder;
+
+        this.<jdk.internal.module.ArchivedModuleGraph: java.lang.module.Configuration configuration> = configuration;
+
+        return;
+
+        nop;
+    }
+
+    jdk.internal.module.SystemModules systemModules()
+    {
+        jdk.internal.module.ArchivedModuleGraph this;
+        jdk.internal.module.SystemModules $stack1;
+
+        this := @this: jdk.internal.module.ArchivedModuleGraph;
+
+        $stack1 = this.<jdk.internal.module.ArchivedModuleGraph: jdk.internal.module.SystemModules systemModules>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    java.lang.module.ModuleFinder finder()
+    {
+        jdk.internal.module.ArchivedModuleGraph this;
+        java.lang.module.ModuleFinder $stack1;
+
+        this := @this: jdk.internal.module.ArchivedModuleGraph;
+
+        $stack1 = this.<jdk.internal.module.ArchivedModuleGraph: java.lang.module.ModuleFinder finder>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    java.lang.module.Configuration configuration()
+    {
+        jdk.internal.module.ArchivedModuleGraph this;
+        java.lang.module.Configuration $stack1;
+
+        this := @this: jdk.internal.module.ArchivedModuleGraph;
+
+        $stack1 = this.<jdk.internal.module.ArchivedModuleGraph: java.lang.module.Configuration configuration>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    static jdk.internal.module.ArchivedModuleGraph get(java.lang.String)
+    {
+        java.lang.module.Configuration $stack6, $stack8;
+        jdk.internal.module.ArchivedModuleGraph $stack7;
+        jdk.internal.module.SystemModules $stack3, $stack10;
+        java.lang.module.ModuleFinder $stack5, $stack9;
+        java.lang.String mainModule, $stack1;
+        boolean $stack2;
+
+        mainModule := @parameter0: java.lang.String;
+
+        $stack1 = <jdk.internal.module.ArchivedModuleGraph: java.lang.String archivedMainModule>;
+
+        $stack2 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>(mainModule, $stack1);
+
+        if $stack2 == 0 goto label1;
+
+        $stack3 = <jdk.internal.module.ArchivedModuleGraph: jdk.internal.module.SystemModules archivedSystemModules>;
+
+        if $stack3 == null goto label1;
+
+        $stack5 = <jdk.internal.module.ArchivedModuleGraph: java.lang.module.ModuleFinder archivedModuleFinder>;
+
+        if $stack5 == null goto label1;
+
+        $stack6 = <jdk.internal.module.ArchivedModuleGraph: java.lang.module.Configuration archivedConfiguration>;
+
+        if $stack6 == null goto label1;
+
+        $stack7 = new jdk.internal.module.ArchivedModuleGraph;
+
+        $stack10 = <jdk.internal.module.ArchivedModuleGraph: jdk.internal.module.SystemModules archivedSystemModules>;
+
+        $stack9 = <jdk.internal.module.ArchivedModuleGraph: java.lang.module.ModuleFinder archivedModuleFinder>;
+
+        $stack8 = <jdk.internal.module.ArchivedModuleGraph: java.lang.module.Configuration archivedConfiguration>;
+
+        specialinvoke $stack7.<jdk.internal.module.ArchivedModuleGraph: void <init>(jdk.internal.module.SystemModules,java.lang.module.ModuleFinder,java.lang.module.Configuration)>($stack10, $stack9, $stack8);
+
+        return $stack7;
+
+     label1:
+        return null;
+    }
+
+    static void archive(java.lang.String, jdk.internal.module.SystemModules, java.lang.module.ModuleFinder, java.lang.module.Configuration)
+    {
+        java.lang.UnsupportedOperationException $stack5;
+        java.lang.module.ModuleFinder finder;
+        java.lang.module.Configuration configuration;
+        java.lang.String $stack4, mainModule;
+        jdk.internal.module.SystemModules systemModules;
+
+        mainModule := @parameter0: java.lang.String;
+
+        systemModules := @parameter1: jdk.internal.module.SystemModules;
+
+        finder := @parameter2: java.lang.module.ModuleFinder;
+
+        configuration := @parameter3: java.lang.module.Configuration;
+
+        $stack4 = <jdk.internal.module.ArchivedModuleGraph: java.lang.String archivedMainModule>;
+
+        if $stack4 == null goto label1;
+
+        $stack5 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $stack5.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $stack5;
+
+     label1:
+        <jdk.internal.module.ArchivedModuleGraph: java.lang.String archivedMainModule> = mainModule;
+
+        <jdk.internal.module.ArchivedModuleGraph: jdk.internal.module.SystemModules archivedSystemModules> = systemModules;
+
+        <jdk.internal.module.ArchivedModuleGraph: java.lang.module.ModuleFinder archivedModuleFinder> = finder;
+
+        <jdk.internal.module.ArchivedModuleGraph: java.lang.module.Configuration archivedConfiguration> = configuration;
+
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        staticinvoke <jdk.internal.misc.VM: void initializeFromArchive(java.lang.Class)>(class "Ljdk/internal/module/ArchivedModuleGraph;");
+
+        return;
+    }
+}

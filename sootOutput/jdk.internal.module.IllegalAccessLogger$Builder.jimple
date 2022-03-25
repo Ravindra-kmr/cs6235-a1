@@ -1,0 +1,161 @@
+public class jdk.internal.module.IllegalAccessLogger$Builder extends java.lang.Object
+{
+    private final jdk.internal.module.IllegalAccessLogger$Mode mode;
+    private final java.io.PrintStream warningStream;
+    private final java.util.Map moduleToConcealedPackages;
+    private final java.util.Map moduleToExportedPackages;
+    private boolean complete;
+
+    private void ensureNotComplete()
+    {
+        jdk.internal.module.IllegalAccessLogger$Builder this;
+        java.lang.IllegalStateException $stack2;
+        boolean $stack1;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger$Builder;
+
+        $stack1 = this.<jdk.internal.module.IllegalAccessLogger$Builder: boolean complete>;
+
+        if $stack1 == 0 goto label1;
+
+        $stack2 = new java.lang.IllegalStateException;
+
+        specialinvoke $stack2.<java.lang.IllegalStateException: void <init>()>();
+
+        throw $stack2;
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public void <init>(jdk.internal.module.IllegalAccessLogger$Mode, java.io.PrintStream)
+    {
+        java.io.PrintStream warningStream;
+        jdk.internal.module.IllegalAccessLogger$Mode mode;
+        jdk.internal.module.IllegalAccessLogger$Builder this;
+        java.util.HashMap $stack3, $stack4;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger$Builder;
+
+        mode := @parameter0: jdk.internal.module.IllegalAccessLogger$Mode;
+
+        warningStream := @parameter1: java.io.PrintStream;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.module.IllegalAccessLogger$Builder: jdk.internal.module.IllegalAccessLogger$Mode mode> = mode;
+
+        this.<jdk.internal.module.IllegalAccessLogger$Builder: java.io.PrintStream warningStream> = warningStream;
+
+        $stack3 = new java.util.HashMap;
+
+        specialinvoke $stack3.<java.util.HashMap: void <init>()>();
+
+        this.<jdk.internal.module.IllegalAccessLogger$Builder: java.util.Map moduleToConcealedPackages> = $stack3;
+
+        $stack4 = new java.util.HashMap;
+
+        specialinvoke $stack4.<java.util.HashMap: void <init>()>();
+
+        this.<jdk.internal.module.IllegalAccessLogger$Builder: java.util.Map moduleToExportedPackages> = $stack4;
+
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.module.IllegalAccessLogger$Builder logAccessToConcealedPackages(java.lang.Module, java.util.Set)
+    {
+        java.lang.Module m;
+        java.util.Map $stack3;
+        jdk.internal.module.IllegalAccessLogger$Builder this;
+        java.util.Set packages, $stack4;
+        java.lang.Object $stack5;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger$Builder;
+
+        m := @parameter0: java.lang.Module;
+
+        packages := @parameter1: java.util.Set;
+
+        virtualinvoke this.<jdk.internal.module.IllegalAccessLogger$Builder: void ensureNotComplete()>();
+
+        $stack3 = this.<jdk.internal.module.IllegalAccessLogger$Builder: java.util.Map moduleToConcealedPackages>;
+
+        $stack4 = staticinvoke <java.util.Collections: java.util.Set unmodifiableSet(java.util.Set)>(packages);
+
+        $stack5 = interfaceinvoke $stack3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(m, $stack4);
+
+        return this;
+
+        nop;
+    }
+
+    public jdk.internal.module.IllegalAccessLogger$Builder logAccessToExportedPackages(java.lang.Module, java.util.Set)
+    {
+        java.lang.Module m;
+        java.util.Map $stack3;
+        jdk.internal.module.IllegalAccessLogger$Builder this;
+        java.util.Set packages, $stack4;
+        java.lang.Object $stack5;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger$Builder;
+
+        m := @parameter0: java.lang.Module;
+
+        packages := @parameter1: java.util.Set;
+
+        virtualinvoke this.<jdk.internal.module.IllegalAccessLogger$Builder: void ensureNotComplete()>();
+
+        $stack3 = this.<jdk.internal.module.IllegalAccessLogger$Builder: java.util.Map moduleToExportedPackages>;
+
+        $stack4 = staticinvoke <java.util.Collections: java.util.Set unmodifiableSet(java.util.Set)>(packages);
+
+        $stack5 = interfaceinvoke $stack3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(m, $stack4);
+
+        return this;
+
+        nop;
+    }
+
+    public void complete()
+    {
+        java.io.PrintStream $stack8;
+        jdk.internal.module.IllegalAccessLogger$Builder this;
+        jdk.internal.module.IllegalAccessLogger $stack7;
+        jdk.internal.module.IllegalAccessLogger$Mode $stack9;
+        java.util.Map $stack3, $stack4, map1, $stack5, $stack6, map2;
+
+        this := @this: jdk.internal.module.IllegalAccessLogger$Builder;
+
+        $stack3 = this.<jdk.internal.module.IllegalAccessLogger$Builder: java.util.Map moduleToConcealedPackages>;
+
+        $stack4 = staticinvoke <java.util.Collections: java.util.Map unmodifiableMap(java.util.Map)>($stack3);
+
+        map1 = $stack4;
+
+        $stack5 = this.<jdk.internal.module.IllegalAccessLogger$Builder: java.util.Map moduleToExportedPackages>;
+
+        $stack6 = staticinvoke <java.util.Collections: java.util.Map unmodifiableMap(java.util.Map)>($stack5);
+
+        map2 = $stack6;
+
+        $stack7 = new jdk.internal.module.IllegalAccessLogger;
+
+        $stack9 = this.<jdk.internal.module.IllegalAccessLogger$Builder: jdk.internal.module.IllegalAccessLogger$Mode mode>;
+
+        $stack8 = this.<jdk.internal.module.IllegalAccessLogger$Builder: java.io.PrintStream warningStream>;
+
+        specialinvoke $stack7.<jdk.internal.module.IllegalAccessLogger: void <init>(jdk.internal.module.IllegalAccessLogger$Mode,java.io.PrintStream,java.util.Map,java.util.Map)>($stack9, $stack8, map1, map2);
+
+        <jdk.internal.module.IllegalAccessLogger: jdk.internal.module.IllegalAccessLogger logger> = $stack7;
+
+        this.<jdk.internal.module.IllegalAccessLogger$Builder: boolean complete> = 1;
+
+        return;
+
+        nop;
+    }
+}

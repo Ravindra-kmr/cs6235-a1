@@ -1,0 +1,225 @@
+public class jdk.internal.loader.ClassLoaders extends java.lang.Object
+{
+    private static final jdk.internal.misc.JavaLangAccess JLA;
+    private static final jdk.internal.loader.ClassLoaders$BootClassLoader BOOT_LOADER;
+    private static final jdk.internal.loader.ClassLoaders$PlatformClassLoader PLATFORM_LOADER;
+    private static final jdk.internal.loader.ClassLoaders$AppClassLoader APP_LOADER;
+
+    private void <init>()
+    {
+        jdk.internal.loader.ClassLoaders this;
+
+        this := @this: jdk.internal.loader.ClassLoaders;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    static jdk.internal.loader.BuiltinClassLoader bootLoader()
+    {
+        jdk.internal.loader.ClassLoaders$BootClassLoader $stack0;
+
+        $stack0 = <jdk.internal.loader.ClassLoaders: jdk.internal.loader.ClassLoaders$BootClassLoader BOOT_LOADER>;
+
+        return $stack0;
+    }
+
+    public static java.lang.ClassLoader platformClassLoader()
+    {
+        jdk.internal.loader.ClassLoaders$PlatformClassLoader $stack0;
+
+        $stack0 = <jdk.internal.loader.ClassLoaders: jdk.internal.loader.ClassLoaders$PlatformClassLoader PLATFORM_LOADER>;
+
+        return $stack0;
+    }
+
+    public static java.lang.ClassLoader appClassLoader()
+    {
+        jdk.internal.loader.ClassLoaders$AppClassLoader $stack0;
+
+        $stack0 = <jdk.internal.loader.ClassLoaders: jdk.internal.loader.ClassLoaders$AppClassLoader APP_LOADER>;
+
+        return $stack0;
+    }
+
+    private static java.net.URL toFileURL(java.lang.String)
+    {
+        java.nio.file.LinkOption[] $stack4;
+        java.net.URL $stack8;
+        java.lang.String[] $stack2;
+        java.io.File $stack6;
+        java.lang.Exception $stack9, ignore;
+        java.lang.String s;
+        java.net.URI $stack7;
+        java.nio.file.Path $stack3, $stack5;
+
+        s := @parameter0: java.lang.String;
+
+     label1:
+        $stack2 = newarray (java.lang.String)[0];
+
+        $stack3 = staticinvoke <java.nio.file.Path: java.nio.file.Path of(java.lang.String,java.lang.String[])>(s, $stack2);
+
+        $stack4 = newarray (java.nio.file.LinkOption)[0];
+
+        $stack5 = interfaceinvoke $stack3.<java.nio.file.Path: java.nio.file.Path toRealPath(java.nio.file.LinkOption[])>($stack4);
+
+        $stack6 = interfaceinvoke $stack5.<java.nio.file.Path: java.io.File toFile()>();
+
+        $stack7 = virtualinvoke $stack6.<java.io.File: java.net.URI toURI()>();
+
+        $stack8 = virtualinvoke $stack7.<java.net.URI: java.net.URL toURL()>();
+
+     label2:
+        return $stack8;
+
+     label3:
+        $stack9 := @caughtexception;
+
+        ignore = $stack9;
+
+        return null;
+
+        nop;
+
+        catch java.nio.file.InvalidPathException from label1 to label2 with label3;
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.misc.JavaLangAccess $stack3;
+        bottom_type $stack5, $stack6, $stack7, $stack8, cp, initialModuleName, $stack10, $stack11, $stack12, $stack13, $stack14, $stack15, $stack16, $stack21, $stack22, $stack23;
+        jdk.internal.loader.ClassLoaders$BootClassLoader $stack5#1, $stack5#2, $stack7#6, $stack7#7;
+        jdk.internal.loader.ClassLoaders$PlatformClassLoader $stack6#4, $stack6#5, $stack12#26, $stack12#27;
+        boolean $stack17, $stack20, $stack15#21, $stack15#22;
+        jdk.internal.loader.ClassLoaders$AppClassLoader $stack11#24, $stack11#25;
+        jdk.internal.loader.URLClassPath $stack24, $stack21#3, $stack10#17, $stack10#18, initialModuleName#23, $stack16#28, $stack16#29;
+        java.lang.String $stack4, append, $stack9, $stack18, $stack19, $stack22#8, $stack22#9, $stack8#10, $stack8#11, cp#12, $stack23#13, $stack23#14, initialModuleName#15, $stack13#16, $stack14#19, $stack14#20;
+
+        $stack3 = staticinvoke <jdk.internal.misc.SharedSecrets: jdk.internal.misc.JavaLangAccess getJavaLangAccess()>();
+
+        <jdk.internal.loader.ClassLoaders: jdk.internal.misc.JavaLangAccess JLA> = $stack3;
+
+        $stack4 = staticinvoke <jdk.internal.misc.VM: java.lang.String getSavedProperty(java.lang.String)>("jdk.boot.class.path.append");
+
+        append = $stack4;
+
+        $stack5#1 = new jdk.internal.loader.ClassLoaders$BootClassLoader;
+
+        $stack5#2 = $stack5#1;
+
+        if append == null goto label1;
+
+        $stack20 = virtualinvoke append.<java.lang.String: boolean isEmpty()>();
+
+        if $stack20 != 0 goto label1;
+
+        $stack24 = new jdk.internal.loader.URLClassPath;
+
+        $stack21#3 = $stack24;
+
+        specialinvoke $stack24.<jdk.internal.loader.URLClassPath: void <init>(java.lang.String,boolean)>(append, 1);
+
+        goto label2;
+
+     label1:
+        $stack21#3 = null;
+
+     label2:
+        specialinvoke $stack5#2.<jdk.internal.loader.ClassLoaders$BootClassLoader: void <init>(jdk.internal.loader.URLClassPath)>($stack21#3);
+
+        <jdk.internal.loader.ClassLoaders: jdk.internal.loader.ClassLoaders$BootClassLoader BOOT_LOADER> = $stack5#2;
+
+        $stack6#4 = new jdk.internal.loader.ClassLoaders$PlatformClassLoader;
+
+        $stack6#5 = $stack6#4;
+
+        $stack7#6 = <jdk.internal.loader.ClassLoaders: jdk.internal.loader.ClassLoaders$BootClassLoader BOOT_LOADER>;
+
+        $stack7#7 = $stack7#6;
+
+        specialinvoke $stack6#5.<jdk.internal.loader.ClassLoaders$PlatformClassLoader: void <init>(jdk.internal.loader.ClassLoaders$BootClassLoader)>($stack7#7);
+
+        <jdk.internal.loader.ClassLoaders: jdk.internal.loader.ClassLoaders$PlatformClassLoader PLATFORM_LOADER> = $stack6#5;
+
+        $stack22#8 = "java.class.path";
+
+        $stack22#9 = $stack22#8;
+
+        $stack8#10 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>($stack22#9);
+
+        $stack8#11 = $stack8#10;
+
+        cp#12 = $stack8#11;
+
+        $stack23#13 = cp#12;
+
+        $stack23#14 = $stack23#13;
+
+        if $stack23#14 == null goto label3;
+
+        $stack17 = virtualinvoke cp#12.<java.lang.String: boolean isEmpty()>();
+
+        if $stack17 == 0 goto label6;
+
+     label3:
+        $stack18 = "jdk.module.main";
+
+        $stack9 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>($stack18);
+
+        initialModuleName#15 = $stack9;
+
+        $stack19 = initialModuleName#15;
+
+        if $stack19 != null goto label4;
+
+        $stack13#16 = "";
+
+        goto label5;
+
+     label4:
+        $stack13#16 = null;
+
+     label5:
+        cp#12 = $stack13#16;
+
+     label6:
+        $stack10#17 = new jdk.internal.loader.URLClassPath;
+
+        $stack10#18 = $stack10#17;
+
+        $stack14#19 = cp#12;
+
+        $stack14#20 = $stack14#19;
+
+        $stack15#21 = 0;
+
+        $stack15#22 = $stack15#21;
+
+        specialinvoke $stack10#18.<jdk.internal.loader.URLClassPath: void <init>(java.lang.String,boolean)>($stack14#20, $stack15#22);
+
+        initialModuleName#23 = $stack10#18;
+
+        $stack11#24 = new jdk.internal.loader.ClassLoaders$AppClassLoader;
+
+        $stack11#25 = $stack11#24;
+
+        $stack12#26 = <jdk.internal.loader.ClassLoaders: jdk.internal.loader.ClassLoaders$PlatformClassLoader PLATFORM_LOADER>;
+
+        $stack12#27 = $stack12#26;
+
+        $stack16#28 = initialModuleName#23;
+
+        $stack16#29 = $stack16#28;
+
+        specialinvoke $stack11#25.<jdk.internal.loader.ClassLoaders$AppClassLoader: void <init>(jdk.internal.loader.ClassLoaders$PlatformClassLoader,jdk.internal.loader.URLClassPath)>($stack12#27, $stack16#29);
+
+        <jdk.internal.loader.ClassLoaders: jdk.internal.loader.ClassLoaders$AppClassLoader APP_LOADER> = $stack11#25;
+
+        return;
+    }
+}

@@ -1,0 +1,283 @@
+public class jdk.internal.util.xml.impl.ReaderUTF8 extends java.io.Reader
+{
+    private java.io.InputStream is;
+
+    public void <init>(java.io.InputStream)
+    {
+        jdk.internal.util.xml.impl.ReaderUTF8 this;
+        java.io.InputStream is;
+
+        this := @this: jdk.internal.util.xml.impl.ReaderUTF8;
+
+        is := @parameter0: java.io.InputStream;
+
+        specialinvoke this.<java.io.Reader: void <init>()>();
+
+        this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is> = is;
+
+        return;
+
+        nop;
+    }
+
+    public int read(char[], int, int) throws java.io.IOException
+    {
+        byte $b0;
+        bottom_type num, off, $stack35;
+        jdk.internal.util.xml.impl.ReaderUTF8 this;
+        java.io.UnsupportedEncodingException $stack9, $u0;
+        int len, $stack7, val, $stack8, $stack10, $stack11, $stack13, $stack14, $stack15, $stack16, $stack18, $stack19, $stack20, $stack21, $stack23, $stack24, $stack25, $stack26, $stack28, $stack29, $stack30, $stack31, $stack33, off#1, num#2, $stack35#3, $i0;
+        char $stack22, $stack32, $stack34;
+        char[] cbuf;
+        java.io.InputStream $stack6, $stack12, $stack17, $stack27;
+
+        this := @this: jdk.internal.util.xml.impl.ReaderUTF8;
+
+        cbuf := @parameter0: char[];
+
+        off#1 := @parameter1: int;
+
+        len := @parameter2: int;
+
+        num#2 = 0;
+
+     label01:
+        $stack24 = num#2;
+
+        $stack23 = len;
+
+        if $stack24 >= $stack23 goto label10;
+
+        $stack6 = this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is>;
+
+        $stack7 = virtualinvoke $stack6.<java.io.InputStream: int read()>();
+
+        val = $stack7;
+
+        if $stack7 >= 0 goto label04;
+
+        if num#2 == 0 goto label02;
+
+        $stack35#3 = num#2;
+
+        goto label03;
+
+     label02:
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        $stack35#3 = $i0;
+
+     label03:
+        return $stack35#3;
+
+     label04:
+        $stack8 = val & 240;
+
+        lookupswitch($stack8)
+        {
+            case 192: goto label05;
+            case 208: goto label05;
+            case 224: goto label06;
+            case 240: goto label07;
+            default: goto label08;
+        };
+
+     label05:
+        $stack25 = off#1;
+
+        off#1 = off#1 + 1;
+
+        $stack26 = val & 31;
+
+        $stack28 = $stack26 << 6;
+
+        $stack27 = this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is>;
+
+        $stack29 = virtualinvoke $stack27.<java.io.InputStream: int read()>();
+
+        $stack30 = $stack29 & 63;
+
+        $stack31 = $stack28 | $stack30;
+
+        $stack32 = (char) $stack31;
+
+        cbuf[$stack25] = $stack32;
+
+        goto label09;
+
+     label06:
+        $stack10 = off#1;
+
+        off#1 = off#1 + 1;
+
+        $stack11 = val & 15;
+
+        $stack13 = $stack11 << 12;
+
+        $stack12 = this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is>;
+
+        $stack14 = virtualinvoke $stack12.<java.io.InputStream: int read()>();
+
+        $stack15 = $stack14 & 63;
+
+        $stack16 = $stack15 << 6;
+
+        $stack18 = $stack13 | $stack16;
+
+        $stack17 = this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is>;
+
+        $stack19 = virtualinvoke $stack17.<java.io.InputStream: int read()>();
+
+        $stack20 = $stack19 & 63;
+
+        $stack21 = $stack18 | $stack20;
+
+        $stack22 = (char) $stack21;
+
+        cbuf[$stack10] = $stack22;
+
+        goto label09;
+
+     label07:
+        $u0 = new java.io.UnsupportedEncodingException;
+
+        $stack9 = $u0;
+
+        specialinvoke $u0.<java.io.UnsupportedEncodingException: void <init>(java.lang.String)>("UTF-32 (or UCS-4) encoding not supported.");
+
+        throw $stack9;
+
+     label08:
+        $stack33 = off#1;
+
+        off#1 = off#1 + 1;
+
+        $stack34 = (char) val;
+
+        cbuf[$stack33] = $stack34;
+
+     label09:
+        num#2 = num#2 + 1;
+
+        goto label01;
+
+     label10:
+        return num#2;
+
+        nop;
+    }
+
+    public int read() throws java.io.IOException
+    {
+        byte $b0;
+        bottom_type val, $stack21;
+        int $stack3, $stack4, $stack6, $stack8, $stack9, $stack10, $stack11, $stack13, $stack14, $stack15, $stack16, $stack18, $stack19, $stack20, val#1, $stack21#2, $stack21#3, $i0;
+        jdk.internal.util.xml.impl.ReaderUTF8 this;
+        java.io.UnsupportedEncodingException $stack5, $u0;
+        java.io.InputStream $stack2, $stack7, $stack12, $stack17;
+
+        this := @this: jdk.internal.util.xml.impl.ReaderUTF8;
+
+        $stack2 = this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is>;
+
+        $stack3 = virtualinvoke $stack2.<java.io.InputStream: int read()>();
+
+        val#1 = $stack3;
+
+        if $stack3 >= 0 goto label1;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        return $i0;
+
+     label1:
+        $stack4 = val#1 & 240;
+
+        lookupswitch($stack4)
+        {
+            case 192: goto label2;
+            case 208: goto label2;
+            case 224: goto label3;
+            case 240: goto label4;
+            default: goto label5;
+        };
+
+     label2:
+        $stack16 = val#1 & 31;
+
+        $stack18 = $stack16 << 6;
+
+        $stack17 = this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is>;
+
+        $stack19 = virtualinvoke $stack17.<java.io.InputStream: int read()>();
+
+        $stack20 = $stack19 & 63;
+
+        val#1 = $stack18 | $stack20;
+
+        goto label5;
+
+     label3:
+        $stack6 = val#1 & 15;
+
+        $stack8 = $stack6 << 12;
+
+        $stack7 = this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is>;
+
+        $stack9 = virtualinvoke $stack7.<java.io.InputStream: int read()>();
+
+        $stack10 = $stack9 & 63;
+
+        $stack11 = $stack10 << 6;
+
+        $stack13 = $stack8 | $stack11;
+
+        $stack12 = this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is>;
+
+        $stack14 = virtualinvoke $stack12.<java.io.InputStream: int read()>();
+
+        $stack15 = $stack14 & 63;
+
+        val#1 = $stack13 | $stack15;
+
+        goto label5;
+
+     label4:
+        $u0 = new java.io.UnsupportedEncodingException;
+
+        $stack5 = $u0;
+
+        specialinvoke $u0.<java.io.UnsupportedEncodingException: void <init>()>();
+
+        throw $stack5;
+
+     label5:
+        $stack21#2 = val#1;
+
+        $stack21#3 = $stack21#2;
+
+        return $stack21#3;
+
+        nop;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        jdk.internal.util.xml.impl.ReaderUTF8 this;
+        java.io.InputStream $stack1;
+
+        this := @this: jdk.internal.util.xml.impl.ReaderUTF8;
+
+        $stack1 = this.<jdk.internal.util.xml.impl.ReaderUTF8: java.io.InputStream is>;
+
+        virtualinvoke $stack1.<java.io.InputStream: void close()>();
+
+        return;
+
+        nop;
+    }
+}

@@ -1,0 +1,249 @@
+class jdk.internal.module.ModuleReferences extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        jdk.internal.module.ModuleReferences this;
+
+        this := @this: jdk.internal.module.ModuleReferences;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    private static java.lang.module.ModuleReference newModule(jdk.internal.module.ModuleInfo$Attributes, java.net.URI, java.util.function.Supplier, jdk.internal.module.ModulePatcher, jdk.internal.module.ModuleHashes$HashSupplier)
+    {
+        jdk.internal.module.ModulePatcher patcher;
+        jdk.internal.module.ModuleInfo$Attributes attrs;
+        jdk.internal.module.ModuleResolution $stack11;
+        java.lang.module.ModuleDescriptor $stack7;
+        jdk.internal.module.ModuleReferenceImpl $stack6;
+        java.lang.module.ModuleReference $stack12, $stack13, mref#1;
+        jdk.internal.module.ModuleTarget $stack9;
+        java.util.function.Supplier supplier;
+        jdk.internal.module.ModuleHashes$HashSupplier hasher;
+        java.net.URI uri;
+        jdk.internal.module.ModuleHashes $stack10;
+
+        attrs := @parameter0: jdk.internal.module.ModuleInfo$Attributes;
+
+        uri := @parameter1: java.net.URI;
+
+        supplier := @parameter2: java.util.function.Supplier;
+
+        patcher := @parameter3: jdk.internal.module.ModulePatcher;
+
+        hasher := @parameter4: jdk.internal.module.ModuleHashes$HashSupplier;
+
+        $stack6 = new jdk.internal.module.ModuleReferenceImpl;
+
+        $stack7 = virtualinvoke attrs.<jdk.internal.module.ModuleInfo$Attributes: java.lang.module.ModuleDescriptor descriptor()>();
+
+        $stack9 = virtualinvoke attrs.<jdk.internal.module.ModuleInfo$Attributes: jdk.internal.module.ModuleTarget target()>();
+
+        $stack10 = virtualinvoke attrs.<jdk.internal.module.ModuleInfo$Attributes: jdk.internal.module.ModuleHashes recordedHashes()>();
+
+        $stack11 = virtualinvoke attrs.<jdk.internal.module.ModuleInfo$Attributes: jdk.internal.module.ModuleResolution moduleResolution()>();
+
+        specialinvoke $stack6.<jdk.internal.module.ModuleReferenceImpl: void <init>(java.lang.module.ModuleDescriptor,java.net.URI,java.util.function.Supplier,jdk.internal.module.ModulePatcher,jdk.internal.module.ModuleTarget,jdk.internal.module.ModuleHashes,jdk.internal.module.ModuleHashes$HashSupplier,jdk.internal.module.ModuleResolution)>($stack7, uri, supplier, null, $stack9, $stack10, hasher, $stack11);
+
+        mref#1 = $stack6;
+
+        if patcher == null goto label1;
+
+        $stack12 = virtualinvoke patcher.<jdk.internal.module.ModulePatcher: java.lang.module.ModuleReference patchIfNeeded(java.lang.module.ModuleReference)>(mref#1);
+
+        mref#1 = $stack12;
+
+     label1:
+        $stack13 = mref#1;
+
+        return $stack13;
+    }
+
+    static java.lang.module.ModuleReference newJarModule(jdk.internal.module.ModuleInfo$Attributes, jdk.internal.module.ModulePatcher, java.nio.file.Path)
+    {
+        jdk.internal.module.ModulePatcher patcher;
+        jdk.internal.module.ModuleInfo$Attributes attrs;
+        java.lang.module.ModuleReference $stack9;
+        java.util.function.Supplier $stack7, supplier;
+        jdk.internal.module.ModuleHashes$HashSupplier $stack8, hasher;
+        java.net.URI $stack6, uri;
+        java.nio.file.Path file;
+
+        attrs := @parameter0: jdk.internal.module.ModuleInfo$Attributes;
+
+        patcher := @parameter1: jdk.internal.module.ModulePatcher;
+
+        file := @parameter2: java.nio.file.Path;
+
+        $stack6 = interfaceinvoke file.<java.nio.file.Path: java.net.URI toUri()>();
+
+        uri = $stack6;
+
+        $stack7 = staticinvoke <jdk.internal.module.ModuleReferences$lambda_newJarModule_0__459: java.util.function.Supplier bootstrap$(java.nio.file.Path,java.net.URI)>(file, uri);
+
+        supplier = $stack7;
+
+        $stack8 = staticinvoke <jdk.internal.module.ModuleReferences$lambda_newJarModule_1__463: jdk.internal.module.ModuleHashes$HashSupplier bootstrap$(java.nio.file.Path)>(file);
+
+        hasher = $stack8;
+
+        $stack9 = staticinvoke <jdk.internal.module.ModuleReferences: java.lang.module.ModuleReference newModule(jdk.internal.module.ModuleInfo$Attributes,java.net.URI,java.util.function.Supplier,jdk.internal.module.ModulePatcher,jdk.internal.module.ModuleHashes$HashSupplier)>(attrs, uri, supplier, patcher, hasher);
+
+        return $stack9;
+
+        nop;
+    }
+
+    static java.lang.module.ModuleReference newJModModule(jdk.internal.module.ModuleInfo$Attributes, java.nio.file.Path)
+    {
+        jdk.internal.module.ModuleInfo$Attributes attrs;
+        java.lang.module.ModuleReference $stack8;
+        java.util.function.Supplier $stack6, supplier;
+        jdk.internal.module.ModuleHashes$HashSupplier $stack7, hasher;
+        java.net.URI $stack5, uri;
+        java.nio.file.Path file;
+
+        attrs := @parameter0: jdk.internal.module.ModuleInfo$Attributes;
+
+        file := @parameter1: java.nio.file.Path;
+
+        $stack5 = interfaceinvoke file.<java.nio.file.Path: java.net.URI toUri()>();
+
+        uri = $stack5;
+
+        $stack6 = staticinvoke <jdk.internal.module.ModuleReferences$lambda_newJModModule_2__460: java.util.function.Supplier bootstrap$(java.nio.file.Path,java.net.URI)>(file, uri);
+
+        supplier = $stack6;
+
+        $stack7 = staticinvoke <jdk.internal.module.ModuleReferences$lambda_newJModModule_3__462: jdk.internal.module.ModuleHashes$HashSupplier bootstrap$(java.nio.file.Path)>(file);
+
+        hasher = $stack7;
+
+        $stack8 = staticinvoke <jdk.internal.module.ModuleReferences: java.lang.module.ModuleReference newModule(jdk.internal.module.ModuleInfo$Attributes,java.net.URI,java.util.function.Supplier,jdk.internal.module.ModulePatcher,jdk.internal.module.ModuleHashes$HashSupplier)>(attrs, uri, supplier, null, hasher);
+
+        return $stack8;
+
+        nop;
+    }
+
+    static java.lang.module.ModuleReference newExplodedModule(jdk.internal.module.ModuleInfo$Attributes, jdk.internal.module.ModulePatcher, java.nio.file.Path)
+    {
+        jdk.internal.module.ModulePatcher patcher;
+        jdk.internal.module.ModuleInfo$Attributes attrs;
+        java.lang.module.ModuleReference $stack6;
+        java.net.URI $stack5;
+        java.nio.file.Path dir;
+        java.util.function.Supplier $stack4, supplier;
+
+        attrs := @parameter0: jdk.internal.module.ModuleInfo$Attributes;
+
+        patcher := @parameter1: jdk.internal.module.ModulePatcher;
+
+        dir := @parameter2: java.nio.file.Path;
+
+        $stack4 = staticinvoke <jdk.internal.module.ModuleReferences$lambda_newExplodedModule_4__461: java.util.function.Supplier bootstrap$(java.nio.file.Path)>(dir);
+
+        supplier = $stack4;
+
+        $stack5 = interfaceinvoke dir.<java.nio.file.Path: java.net.URI toUri()>();
+
+        $stack6 = staticinvoke <jdk.internal.module.ModuleReferences: java.lang.module.ModuleReference newModule(jdk.internal.module.ModuleInfo$Attributes,java.net.URI,java.util.function.Supplier,jdk.internal.module.ModulePatcher,jdk.internal.module.ModuleHashes$HashSupplier)>(attrs, $stack5, supplier, patcher, null);
+
+        return $stack6;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleReader lambda$newExplodedModule$4(java.nio.file.Path)
+    {
+        jdk.internal.module.ModuleReferences$ExplodedModuleReader $stack1;
+        java.nio.file.Path dir;
+
+        dir := @parameter0: java.nio.file.Path;
+
+        $stack1 = new jdk.internal.module.ModuleReferences$ExplodedModuleReader;
+
+        specialinvoke $stack1.<jdk.internal.module.ModuleReferences$ExplodedModuleReader: void <init>(java.nio.file.Path)>(dir);
+
+        return $stack1;
+
+        nop;
+    }
+
+    public static byte[] lambda$newJModModule$3(java.nio.file.Path, java.lang.String)
+    {
+        byte[] $stack2;
+        java.lang.String a;
+        java.nio.file.Path file;
+
+        file := @parameter0: java.nio.file.Path;
+
+        a := @parameter1: java.lang.String;
+
+        $stack2 = staticinvoke <jdk.internal.module.ModuleHashes: byte[] computeHash(java.nio.file.Path,java.lang.String)>(file, a);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleReader lambda$newJModModule$2(java.nio.file.Path, java.net.URI)
+    {
+        java.net.URI uri;
+        jdk.internal.module.ModuleReferences$JModModuleReader $stack2;
+        java.nio.file.Path file;
+
+        file := @parameter0: java.nio.file.Path;
+
+        uri := @parameter1: java.net.URI;
+
+        $stack2 = new jdk.internal.module.ModuleReferences$JModModuleReader;
+
+        specialinvoke $stack2.<jdk.internal.module.ModuleReferences$JModModuleReader: void <init>(java.nio.file.Path,java.net.URI)>(file, uri);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static byte[] lambda$newJarModule$1(java.nio.file.Path, java.lang.String)
+    {
+        byte[] $stack2;
+        java.lang.String a;
+        java.nio.file.Path file;
+
+        file := @parameter0: java.nio.file.Path;
+
+        a := @parameter1: java.lang.String;
+
+        $stack2 = staticinvoke <jdk.internal.module.ModuleHashes: byte[] computeHash(java.nio.file.Path,java.lang.String)>(file, a);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static java.lang.module.ModuleReader lambda$newJarModule$0(java.nio.file.Path, java.net.URI)
+    {
+        java.net.URI uri;
+        java.nio.file.Path file;
+        jdk.internal.module.ModuleReferences$JarModuleReader $stack2;
+
+        file := @parameter0: java.nio.file.Path;
+
+        uri := @parameter1: java.net.URI;
+
+        $stack2 = new jdk.internal.module.ModuleReferences$JarModuleReader;
+
+        specialinvoke $stack2.<jdk.internal.module.ModuleReferences$JarModuleReader: void <init>(java.nio.file.Path,java.net.URI)>(file, uri);
+
+        return $stack2;
+
+        nop;
+    }
+}

@@ -1,0 +1,4484 @@
+public class jdk.internal.math.FDBigInteger extends java.lang.Object
+{
+    static final int[] SMALL_5_POW;
+    static final long[] LONG_5_POW;
+    private static final int MAX_FIVE_POW;
+    private static final jdk.internal.math.FDBigInteger[] POW_5_CACHE;
+    public static final jdk.internal.math.FDBigInteger ZERO;
+    private static final long LONG_MASK;
+    private int[] data;
+    private int offset;
+    private int nWords;
+    private boolean isImmutable;
+    static final boolean $assertionsDisabled;
+
+    private void <init>(int[], int)
+    {
+        int[] data;
+        int offset, $stack3;
+        jdk.internal.math.FDBigInteger this;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        data := @parameter0: int[];
+
+        offset := @parameter1: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.math.FDBigInteger: boolean isImmutable> = 0;
+
+        this.<jdk.internal.math.FDBigInteger: int[] data> = data;
+
+        this.<jdk.internal.math.FDBigInteger: int offset> = offset;
+
+        $stack3 = lengthof data;
+
+        this.<jdk.internal.math.FDBigInteger: int nWords> = $stack3;
+
+        virtualinvoke this.<jdk.internal.math.FDBigInteger: void trimLeadingZeros()>();
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(long, char[], int, int)
+    {
+        int[] $stack14, $stack16, $stack19;
+        bottom_type i, ilim, v;
+        long lValue, $stack17;
+        jdk.internal.math.FDBigInteger this, $stack20;
+        int nDigits, $stack11, $stack12, $stack13, n, $stack15, $stack18, kDigits, limit, $stack21, $stack23, $stack24, $stack25, $stack26, $stack27, $stack29, $stack30, $stack31, $stack33, $stack34, $stack35, $stack36, i#1, ilim#2, v#3, ilim#4, v#5, $i0, $i1, $i2;
+        char $stack22, $stack28, $stack32;
+        char[] digits;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        lValue := @parameter0: long;
+
+        digits := @parameter1: char[];
+
+        kDigits := @parameter2: int;
+
+        nDigits := @parameter3: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.math.FDBigInteger: boolean isImmutable> = 0;
+
+        $stack11 = nDigits + 8;
+
+        $stack12 = $stack11 / 9;
+
+        $stack13 = staticinvoke <java.lang.Math: int max(int,int)>($stack12, 2);
+
+        n = $stack13;
+
+        $stack14 = newarray (int)[n];
+
+        this.<jdk.internal.math.FDBigInteger: int[] data> = $stack14;
+
+        $stack16 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack15 = (int) lValue;
+
+        $stack16[0] = $stack15;
+
+        $stack19 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack17 = lValue >>> 32;
+
+        $stack18 = (int) $stack17;
+
+        $stack19[1] = $stack18;
+
+        this.<jdk.internal.math.FDBigInteger: int offset> = 0;
+
+        this.<jdk.internal.math.FDBigInteger: int nWords> = 2;
+
+        i#1 = kDigits;
+
+        limit = nDigits - 5;
+
+     label1:
+        $stack30 = i#1;
+
+        $stack29 = limit;
+
+        if $stack30 >= $stack29 goto label4;
+
+        ilim#2 = i#1 + 5;
+
+        $stack27 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack28 = digits[$stack27];
+
+        $i0 = (int) $stack28;
+
+        v#3 = $i0 - 48;
+
+     label2:
+        $stack36 = i#1;
+
+        $stack35 = ilim#2;
+
+        if $stack36 >= $stack35 goto label3;
+
+        $stack33 = 10 * v#3;
+
+        $stack31 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack32 = digits[$stack31];
+
+        $i1 = (int) $stack32;
+
+        $stack34 = $stack33 + $i1;
+
+        v#3 = $stack34 - 48;
+
+        goto label2;
+
+     label3:
+        virtualinvoke this.<jdk.internal.math.FDBigInteger: void multAddMe(int,int)>(100000, v#3);
+
+        goto label1;
+
+     label4:
+        ilim#4 = 1;
+
+        v#5 = 0;
+
+     label5:
+        $stack26 = i#1;
+
+        $stack25 = nDigits;
+
+        if $stack26 >= $stack25 goto label6;
+
+        $stack23 = 10 * v#5;
+
+        $stack21 = i#1;
+
+        i#1 = i#1 + 1;
+
+        $stack22 = digits[$stack21];
+
+        $i2 = (int) $stack22;
+
+        $stack24 = $stack23 + $i2;
+
+        v#5 = $stack24 - 48;
+
+        ilim#4 = ilim#4 * 10;
+
+        goto label5;
+
+     label6:
+        if ilim#4 == 1 goto label7;
+
+        virtualinvoke this.<jdk.internal.math.FDBigInteger: void multAddMe(int,int)>(ilim#4, v#5);
+
+     label7:
+        $stack20 = this;
+
+        virtualinvoke $stack20.<jdk.internal.math.FDBigInteger: void trimLeadingZeros()>();
+
+        return;
+
+        nop;
+    }
+
+    public static jdk.internal.math.FDBigInteger valueOfPow52(int, int)
+    {
+        jdk.internal.math.FDBigInteger $stack5, $stack8, $stack9, $stack11, $stack16, $stack18;
+        int[] $stack6, $stack10, $stack12, $stack17;
+        int p5, p2, $stack7, pow5, wordcount, bitcount, $stack13, $stack14, $stack15;
+
+        p5 := @parameter0: int;
+
+        p2 := @parameter1: int;
+
+        if p5 == 0 goto label4;
+
+        if p2 != 0 goto label1;
+
+        $stack18 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger big5pow(int)>(p5);
+
+        return $stack18;
+
+     label1:
+        $stack6 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        $stack7 = lengthof $stack6;
+
+        if p5 >= $stack7 goto label3;
+
+        $stack10 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        pow5 = $stack10[p5];
+
+        wordcount = p2 >> 5;
+
+        bitcount = p2 & 31;
+
+        if bitcount != 0 goto label2;
+
+        $stack16 = new jdk.internal.math.FDBigInteger;
+
+        $stack17 = newarray (int)[1];
+
+        $stack17[0] = pow5;
+
+        specialinvoke $stack16.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack17, wordcount);
+
+        return $stack16;
+
+     label2:
+        $stack11 = new jdk.internal.math.FDBigInteger;
+
+        $stack12 = newarray (int)[2];
+
+        $stack13 = pow5 << bitcount;
+
+        $stack12[0] = $stack13;
+
+        $stack14 = 32 - bitcount;
+
+        $stack15 = pow5 >>> $stack14;
+
+        $stack12[1] = $stack15;
+
+        specialinvoke $stack11.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack12, wordcount);
+
+        return $stack11;
+
+     label3:
+        $stack8 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger big5pow(int)>(p5);
+
+        $stack9 = virtualinvoke $stack8.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftShift(int)>(p2);
+
+        return $stack9;
+
+     label4:
+        $stack5 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger valueOfPow2(int)>(p2);
+
+        return $stack5;
+
+        nop;
+    }
+
+    public static jdk.internal.math.FDBigInteger valueOfMulPow52(long, int, int)
+    {
+        byte $stack87, $stack90, $stack93;
+        bottom_type v0, v1, pow5, r, $stack37, $stack38, $stack39, $stack40, $stack47, $stack48, $stack49, $stack55, carry;
+        long value, $stack15, $stack63, $stack64, $stack65, $stack66, $stack67, $stack68, $stack69, $stack85, $stack88, pow5#3, carry#4, carry#6, carry#7;
+        java.lang.AssertionError $stack97, $stack98;
+        jdk.internal.math.FDBigInteger $stack16, $stack18, $stack27, $stack31, $stack42, $stack43, $stack57, $stack58, $stack70, $stack83, pow5#9, $stack37#13, $stack37#14, $stack47#17, $stack47#18, $stack39#23, $stack39#24;
+        int[] $stack17, $stack19, $stack28, $stack29, $stack36, $stack41, $stack46, $stack54, $stack56, $stack60, $stack61, $stack71, $stack84, r#11, $stack48#15, $stack48#16;
+        boolean $stack13, $stack14, $stack55#10, $stack40#12;
+        int p2, wordcount, bitcount, p5, $stack20, $stack21, $stack22, $stack23, $stack24, $stack25, $stack26, $stack30, $stack32, $stack33, $stack34, $stack35, $stack44, $stack45, $stack50, $stack51, $stack52, $stack53, $stack59, $stack62, v2, $stack72, $stack73, $stack74, $stack75, $stack76, $stack77, $stack78, $stack79, $stack80, $stack81, $stack82, $stack86, $stack89, $stack91, $stack92, $stack94, $stack95, $stack96, v0#1, v1#2, v0#5, v1#8, $stack38#19, $stack38#20, $stack49#21, $stack49#22;
+
+        value := @parameter0: long;
+
+        p5 := @parameter1: int;
+
+        p2 := @parameter2: int;
+
+        $stack13 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack13 != 0 goto label01;
+
+        if p5 >= 0 goto label01;
+
+        $stack98 = new java.lang.AssertionError;
+
+        specialinvoke $stack98.<java.lang.AssertionError: void <init>(int)>(p5);
+
+        throw $stack98;
+
+     label01:
+        $stack14 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack14 != 0 goto label02;
+
+        if p2 >= 0 goto label02;
+
+        $stack97 = new java.lang.AssertionError;
+
+        specialinvoke $stack97.<java.lang.AssertionError: void <init>(int)>(p2);
+
+        throw $stack97;
+
+     label02:
+        $stack85 = value;
+
+        $stack86 = (int) $stack85;
+
+        v0#1 = $stack86;
+
+        $stack88 = value;
+
+        $stack87 = 32;
+
+        $stack15 = $stack88 >>> $stack87;
+
+        $stack89 = (int) $stack15;
+
+        v1#2 = $stack89;
+
+        $stack91 = p2;
+
+        $stack90 = 5;
+
+        $stack92 = $stack91 >> $stack90;
+
+        wordcount = $stack92;
+
+        $stack94 = p2;
+
+        $stack93 = 31;
+
+        $stack95 = $stack94 & $stack93;
+
+        bitcount = $stack95;
+
+        $stack96 = p5;
+
+        if $stack96 == 0 goto label11;
+
+        $stack29 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        $stack30 = lengthof $stack29;
+
+        if p5 >= $stack30 goto label04;
+
+        $stack61 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        $stack62 = $stack61[p5];
+
+        $stack63 = (long) $stack62;
+
+        pow5#3 = $stack63 & 4294967295L;
+
+        $stack64 = (long) v0#1;
+
+        $stack65 = $stack64 & 4294967295L;
+
+        carry#4 = $stack65 * pow5#3;
+
+        v0#5 = (int) carry#4;
+
+        carry#6 = carry#4 >>> 32;
+
+        $stack66 = (long) v1#2;
+
+        $stack67 = $stack66 & 4294967295L;
+
+        $stack68 = $stack67 * pow5#3;
+
+        carry#7 = $stack68 + carry#6;
+
+        v1#8 = (int) carry#7;
+
+        $stack69 = carry#7 >>> 32;
+
+        v2 = (int) $stack69;
+
+        if bitcount != 0 goto label03;
+
+        $stack83 = new jdk.internal.math.FDBigInteger;
+
+        $stack84 = newarray (int)[3];
+
+        $stack84[0] = v0#5;
+
+        $stack84[1] = v1#8;
+
+        $stack84[2] = v2;
+
+        specialinvoke $stack83.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack84, wordcount);
+
+        return $stack83;
+
+     label03:
+        $stack70 = new jdk.internal.math.FDBigInteger;
+
+        $stack71 = newarray (int)[4];
+
+        $stack72 = v0#5 << bitcount;
+
+        $stack71[0] = $stack72;
+
+        $stack75 = v1#8 << bitcount;
+
+        $stack73 = 32 - bitcount;
+
+        $stack74 = v0#5 >>> $stack73;
+
+        $stack76 = $stack75 | $stack74;
+
+        $stack71[1] = $stack76;
+
+        $stack79 = v2 << bitcount;
+
+        $stack77 = 32 - bitcount;
+
+        $stack78 = v1#8 >>> $stack77;
+
+        $stack80 = $stack79 | $stack78;
+
+        $stack71[2] = $stack80;
+
+        $stack81 = 32 - bitcount;
+
+        $stack82 = v2 >>> $stack81;
+
+        $stack71[3] = $stack82;
+
+        specialinvoke $stack70.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack71, wordcount);
+
+        return $stack70;
+
+     label04:
+        $stack31 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger big5pow(int)>(p5);
+
+        pow5#9 = $stack31;
+
+        if v1#2 != 0 goto label07;
+
+        $stack50 = pow5#9.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack51 = $stack50 + 1;
+
+        if p2 == 0 goto label05;
+
+        $stack55#10 = 1;
+
+        goto label06;
+
+     label05:
+        $stack55#10 = 0;
+
+     label06:
+        $stack52 = $stack51 + $stack55#10;
+
+        $stack56 = newarray (int)[$stack52];
+
+        r#11 = $stack56;
+
+        $stack57 = pow5#9;
+
+        $stack54 = $stack57.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack58 = pow5#9;
+
+        $stack53 = $stack58.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack59 = v0#1;
+
+        $stack60 = r#11;
+
+        staticinvoke <jdk.internal.math.FDBigInteger: void mult(int[],int,int,int[])>($stack54, $stack53, $stack59, $stack60);
+
+        goto label10;
+
+     label07:
+        $stack32 = pow5#9.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack33 = $stack32 + 2;
+
+        if p2 == 0 goto label08;
+
+        $stack40#12 = 1;
+
+        goto label09;
+
+     label08:
+        $stack40#12 = 0;
+
+     label09:
+        $stack34 = $stack33 + $stack40#12;
+
+        $stack41 = newarray (int)[$stack34];
+
+        r#11 = $stack41;
+
+        $stack42 = pow5#9;
+
+        $stack36 = $stack42.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack43 = pow5#9;
+
+        $stack35 = $stack43.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack44 = v0#1;
+
+        $stack45 = v1#2;
+
+        $stack46 = r#11;
+
+        staticinvoke <jdk.internal.math.FDBigInteger: void mult(int[],int,int,int,int[])>($stack36, $stack35, $stack44, $stack45, $stack46);
+
+     label10:
+        $stack37#13 = new jdk.internal.math.FDBigInteger;
+
+        $stack37#14 = $stack37#13;
+
+        $stack48#15 = r#11;
+
+        $stack48#16 = $stack48#15;
+
+        $stack47#17 = pow5#9;
+
+        $stack47#18 = $stack47#17;
+
+        $stack38#19 = $stack47#18.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack38#20 = $stack38#19;
+
+        specialinvoke $stack37#14.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack48#16, $stack38#20);
+
+        $stack49#21 = p2;
+
+        $stack49#22 = $stack49#21;
+
+        $stack39#23 = virtualinvoke $stack37#14.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftShift(int)>($stack49#22);
+
+        $stack39#24 = $stack39#23;
+
+        return $stack39#24;
+
+     label11:
+        if p2 == 0 goto label13;
+
+        if bitcount != 0 goto label12;
+
+        $stack27 = new jdk.internal.math.FDBigInteger;
+
+        $stack28 = newarray (int)[2];
+
+        $stack28[0] = v0#1;
+
+        $stack28[1] = v1#2;
+
+        specialinvoke $stack27.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack28, wordcount);
+
+        return $stack27;
+
+     label12:
+        $stack18 = new jdk.internal.math.FDBigInteger;
+
+        $stack19 = newarray (int)[3];
+
+        $stack20 = v0#1 << bitcount;
+
+        $stack19[0] = $stack20;
+
+        $stack23 = v1#2 << bitcount;
+
+        $stack21 = 32 - bitcount;
+
+        $stack22 = v0#1 >>> $stack21;
+
+        $stack24 = $stack23 | $stack22;
+
+        $stack19[1] = $stack24;
+
+        $stack25 = 32 - bitcount;
+
+        $stack26 = v1#2 >>> $stack25;
+
+        $stack19[2] = $stack26;
+
+        specialinvoke $stack18.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack19, wordcount);
+
+        return $stack18;
+
+     label13:
+        $stack16 = new jdk.internal.math.FDBigInteger;
+
+        $stack17 = newarray (int)[2];
+
+        $stack17[0] = v0#1;
+
+        $stack17[1] = v1#2;
+
+        specialinvoke $stack16.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack17, 0);
+
+        return $stack16;
+
+        nop;
+    }
+
+    private static jdk.internal.math.FDBigInteger valueOfPow2(int)
+    {
+        int[] $stack4;
+        int p2, wordcount, bitcount, $stack5;
+        jdk.internal.math.FDBigInteger $stack3;
+
+        p2 := @parameter0: int;
+
+        wordcount = p2 >> 5;
+
+        bitcount = p2 & 31;
+
+        $stack3 = new jdk.internal.math.FDBigInteger;
+
+        $stack4 = newarray (int)[1];
+
+        $stack5 = 1 << bitcount;
+
+        $stack4[0] = $stack5;
+
+        specialinvoke $stack3.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack4, wordcount);
+
+        return $stack3;
+
+        nop;
+    }
+
+    private void trimLeadingZeros()
+    {
+        jdk.internal.math.FDBigInteger this, $stack8;
+        byte $b0, $b1;
+        bottom_type i;
+        int[] $stack2, $stack5;
+        int $stack3, $stack4, $stack6, $stack7, $stack9, $stack10, i#1, i#2, $i0, $i1;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        i#1 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if i#1 <= 0 goto label3;
+
+        $stack2 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        i#2 = i#1 + $i0;
+
+        $stack3 = $stack2[i#2];
+
+        if $stack3 != 0 goto label3;
+
+     label1:
+        $stack10 = i#2;
+
+        if $stack10 <= 0 goto label2;
+
+        $stack5 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack4 = i#2 - 1;
+
+        $stack6 = $stack5[$stack4];
+
+        if $stack6 != 0 goto label2;
+
+        $b1 = -1;
+
+        $i1 = (int) $b1;
+
+        i#2 = i#2 + $i1;
+
+        goto label1;
+
+     label2:
+        $stack8 = this;
+
+        $stack7 = i#2;
+
+        $stack8.<jdk.internal.math.FDBigInteger: int nWords> = $stack7;
+
+        $stack9 = i#2;
+
+        if $stack9 != 0 goto label3;
+
+        this.<jdk.internal.math.FDBigInteger: int offset> = 0;
+
+     label3:
+        return;
+
+        nop;
+    }
+
+    public int getNormalizationBias()
+    {
+        jdk.internal.math.FDBigInteger this;
+        java.lang.IllegalArgumentException $stack9;
+        int[] $stack5;
+        bottom_type $stack8;
+        int $stack2, $stack3, $stack4, $stack6, $stack7, zeros, $stack8#1;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        $stack2 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack2 != 0 goto label1;
+
+        $stack9 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Zero value cannot be normalized");
+
+        throw $stack9;
+
+     label1:
+        $stack5 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack3 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack4 = $stack3 - 1;
+
+        $stack6 = $stack5[$stack4];
+
+        $stack7 = staticinvoke <java.lang.Integer: int numberOfLeadingZeros(int)>($stack6);
+
+        zeros = $stack7;
+
+        if zeros >= 4 goto label2;
+
+        $stack8#1 = 28 + zeros;
+
+        goto label3;
+
+     label2:
+        $stack8#1 = zeros - 4;
+
+     label3:
+        return $stack8#1;
+
+        nop;
+    }
+
+    private static void leftShift(int[], int, int[], int, int, int)
+    {
+        byte $b0;
+        bottom_type idx, prev, v;
+        int[] result, src;
+        int bitcount, $stack7, anticount, $stack8, $stack9, idx#1, prev#2, v#3, v#4, v#5, $i0;
+
+        src := @parameter0: int[];
+
+        idx#1 := @parameter1: int;
+
+        result := @parameter2: int[];
+
+        bitcount := @parameter3: int;
+
+        anticount := @parameter4: int;
+
+        prev#2 := @parameter5: int;
+
+     label1:
+        $stack9 = idx#1;
+
+        if $stack9 <= 0 goto label2;
+
+        v#3 = prev#2 << bitcount;
+
+        $stack7 = idx#1 - 1;
+
+        prev#2 = src[$stack7];
+
+        $stack8 = prev#2 >>> anticount;
+
+        v#4 = v#3 | $stack8;
+
+        result[idx#1] = v#4;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        idx#1 = idx#1 + $i0;
+
+        goto label1;
+
+     label2:
+        v#5 = prev#2 << bitcount;
+
+        result[0] = v#5;
+
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.math.FDBigInteger leftShift(int)
+    {
+        bottom_type $stack12, $stack13, anticount, idx, prev, hi, result, $stack19, $stack20, $stack21, $stack27, $stack28, $stack29, $stack30, $stack31, $stack32;
+        jdk.internal.math.FDBigInteger this, $stack36, $stack48, $stack54, $stack61, $stack67, $stack73, $stack76, $stack82, $stack19#28, $stack19#29, $stack21#36, $stack21#37;
+        int[] $stack14, $stack18, src, $stack22, $stack35, $stack39, $stack40, $stack43, $stack51, $stack53, $stack58, $stack60, $stack69, $stack75, $stack78, $stack79, result#5, result#15, $stack27#16, $stack27#17, $stack29#20, $stack29#21;
+        boolean $stack11, $stack37, $stack49, $stack55;
+        int shift, $stack10, wordcount, bitcount, $stack15, $stack16, $stack17, $stack23, $stack24, $stack25, $stack26, $stack33, $stack34, $stack38, $stack41, $stack42, $stack44, $stack45, $stack46, $stack47, $stack50, $stack52, $stack56, $stack57, $stack59, $stack62, $stack63, $stack64, $stack65, $stack66, $stack68, $stack70, $stack71, $stack72, $stack74, $stack77, $stack80, $stack81, anticount#1, idx#2, prev#3, hi#4, anticount#6, idx#7, prev#8, hi#9, hi#10, hi#11, idx#12, prev#13, hi#14, $stack28#18, $stack28#19, $stack30#22, $stack30#23, $stack31#24, $stack31#25, $stack32#26, $stack32#27, $stack12#30, $stack12#31, $stack20#32, $stack20#33, $stack13#34, $stack13#35;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        shift := @parameter0: int;
+
+        if shift == 0 goto label01;
+
+        $stack10 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack10 != 0 goto label02;
+
+     label01:
+        $stack82 = this;
+
+        return $stack82;
+
+     label02:
+        wordcount = shift >> 5;
+
+        bitcount = shift & 31;
+
+        $stack11 = this.<jdk.internal.math.FDBigInteger: boolean isImmutable>;
+
+        if $stack11 == 0 goto label06;
+
+        if bitcount != 0 goto label03;
+
+        $stack76 = new jdk.internal.math.FDBigInteger;
+
+        $stack78 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack77 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack79 = staticinvoke <java.util.Arrays: int[] copyOf(int[],int)>($stack78, $stack77);
+
+        $stack80 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack81 = $stack80 + wordcount;
+
+        specialinvoke $stack76.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack79, $stack81);
+
+        return $stack76;
+
+     label03:
+        anticount#1 = 32 - bitcount;
+
+        $stack57 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        idx#2 = $stack57 - 1;
+
+        $stack58 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        prev#3 = $stack58[idx#2];
+
+        hi#4 = prev#3 >>> anticount#1;
+
+        if hi#4 == 0 goto label04;
+
+        $stack64 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack65 = $stack64 + 1;
+
+        result#5 = newarray (int)[$stack65];
+
+        $stack66 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        result#5[$stack66] = hi#4;
+
+        goto label05;
+
+     label04:
+        $stack59 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        result#5 = newarray (int)[$stack59];
+
+     label05:
+        $stack67 = this;
+
+        $stack60 = $stack67.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack68 = idx#2;
+
+        $stack69 = result#5;
+
+        $stack70 = bitcount;
+
+        $stack71 = anticount#1;
+
+        $stack72 = prev#3;
+
+        staticinvoke <jdk.internal.math.FDBigInteger: void leftShift(int[],int,int[],int,int,int)>($stack60, $stack68, $stack69, $stack70, $stack71, $stack72);
+
+        $stack61 = new jdk.internal.math.FDBigInteger;
+
+        $stack75 = result#5;
+
+        $stack73 = this;
+
+        $stack62 = $stack73.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack74 = wordcount;
+
+        $stack63 = $stack62 + $stack74;
+
+        specialinvoke $stack61.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack75, $stack63);
+
+        return $stack61;
+
+     label06:
+        if bitcount == 0 goto label13;
+
+        anticount#6 = 32 - bitcount;
+
+        $stack14 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack15 = $stack14[0];
+
+        $stack16 = $stack15 << bitcount;
+
+        if $stack16 != 0 goto label10;
+
+        idx#7 = 0;
+
+        $stack40 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        prev#8 = $stack40[idx#7];
+
+     label07:
+        $stack56 = idx#7;
+
+        $stack54 = this;
+
+        $stack41 = $stack54.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack55 = 1;
+
+        $stack42 = $stack41 - $stack55;
+
+        if $stack56 >= $stack42 goto label08;
+
+        hi#9 = prev#8 >>> anticount#6;
+
+        $stack51 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack50 = idx#7 + 1;
+
+        prev#8 = $stack51[$stack50];
+
+        $stack52 = prev#8 << bitcount;
+
+        hi#10 = hi#9 | $stack52;
+
+        $stack53 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack53[idx#7] = hi#10;
+
+        idx#7 = idx#7 + 1;
+
+        goto label07;
+
+     label08:
+        hi#11 = prev#8 >>> anticount#6;
+
+        $stack43 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack43[idx#7] = hi#11;
+
+        if hi#11 != 0 goto label09;
+
+        $stack46 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack47 = $stack46 - 1;
+
+        this.<jdk.internal.math.FDBigInteger: int nWords> = $stack47;
+
+     label09:
+        $stack48 = this;
+
+        $stack44 = $stack48.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack49 = 1;
+
+        $stack45 = $stack44 + $stack49;
+
+        $stack48.<jdk.internal.math.FDBigInteger: int offset> = $stack45;
+
+        goto label13;
+
+     label10:
+        $stack17 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        idx#12 = $stack17 - 1;
+
+        $stack18 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        prev#13 = $stack18[idx#12];
+
+        hi#14 = prev#13 >>> anticount#6;
+
+        result#15 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        src = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        if hi#14 == 0 goto label12;
+
+        $stack24 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack22 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack23 = lengthof $stack22;
+
+        if $stack24 != $stack23 goto label11;
+
+        $stack33 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack34 = $stack33 + 1;
+
+        $stack35 = newarray (int)[$stack34];
+
+        result#15 = $stack35;
+
+        this.<jdk.internal.math.FDBigInteger: int[] data> = $stack35;
+
+     label11:
+        $stack39 = result#15;
+
+        $stack36 = this;
+
+        $stack25 = $stack36.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack37 = 1;
+
+        $stack26 = $stack25 + $stack37;
+
+        $stack36.<jdk.internal.math.FDBigInteger: int nWords> = $stack26;
+
+        $stack38 = hi#14;
+
+        $stack39[$stack25] = $stack38;
+
+     label12:
+        $stack27#16 = src;
+
+        $stack27#17 = $stack27#16;
+
+        $stack28#18 = idx#12;
+
+        $stack28#19 = $stack28#18;
+
+        $stack29#20 = result#15;
+
+        $stack29#21 = $stack29#20;
+
+        $stack30#22 = bitcount;
+
+        $stack30#23 = $stack30#22;
+
+        $stack31#24 = anticount#6;
+
+        $stack31#25 = $stack31#24;
+
+        $stack32#26 = prev#13;
+
+        $stack32#27 = $stack32#26;
+
+        staticinvoke <jdk.internal.math.FDBigInteger: void leftShift(int[],int,int[],int,int,int)>($stack27#17, $stack28#19, $stack29#21, $stack30#23, $stack31#25, $stack32#27);
+
+     label13:
+        $stack19#28 = this;
+
+        $stack19#29 = $stack19#28;
+
+        $stack12#30 = $stack19#29.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack12#31 = $stack12#30;
+
+        $stack20#32 = wordcount;
+
+        $stack20#33 = $stack20#32;
+
+        $stack13#34 = $stack12#31 + $stack20#33;
+
+        $stack13#35 = $stack13#34;
+
+        $stack19#29.<jdk.internal.math.FDBigInteger: int offset> = $stack13#35;
+
+        $stack21#36 = this;
+
+        $stack21#37 = $stack21#36;
+
+        return $stack21#37;
+
+        nop;
+    }
+
+    private int size()
+    {
+        int $stack1, $stack2, $stack3;
+        jdk.internal.math.FDBigInteger this;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        $stack2 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack1 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack3 = $stack2 + $stack1;
+
+        return $stack3;
+
+        nop;
+    }
+
+    public int quoRemIteration(jdk.internal.math.FDBigInteger) throws java.lang.IllegalArgumentException
+    {
+        byte $stack31, $stack43, $stack51, $stack55, $stack75;
+        bottom_type p, sum, sIndex, tIndex, $stack52, $stack53, $stack54;
+        long $stack22, $stack27, $stack28, $stack29, $stack30, diff, $stack39, $stack49, $stack50, $stack58, $stack60, $stack61, $stack62, $stack63, p#2, sum#3, sum#6, $stack53#7, $stack53#8, $stack52#9, $stack52#10, $stack54#11, $stack54#12;
+        java.lang.AssertionError $stack40, $stack56, $stack81;
+        jdk.internal.math.FDBigInteger this, S, $stack38, $stack44, $stack45, $stack46, $stack65, $stack77, $stack78;
+        int[] $stack20, $stack25, $stack32, $stack34, sd, td, $stack68, $stack70, $stack74;
+        boolean $stack15, $stack36, $stack48, $stack76;
+        int $stack16, thSize, $stack17, sSize, $stack18, $stack19, $stack21, $stack23, $stack24, $stack26, $stack33, $stack35, $stack37, $stack41, $stack42, tStart, $stack47, $stack57, $stack59, $stack64, $stack66, $stack69, $stack71, $stack72, $stack73, $stack79, $stack80, p#1, sIndex#4, tIndex#5, sum#13;
+        java.lang.IllegalArgumentException $stack67;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        S := @parameter0: jdk.internal.math.FDBigInteger;
+
+        $stack15 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack15 != 0 goto label01;
+
+        $stack76 = this.<jdk.internal.math.FDBigInteger: boolean isImmutable>;
+
+        if $stack76 == 0 goto label01;
+
+        $stack81 = new java.lang.AssertionError;
+
+        specialinvoke $stack81.<java.lang.AssertionError: void <init>(java.lang.Object)>("cannot modify immutable value");
+
+        throw $stack81;
+
+     label01:
+        $stack77 = this;
+
+        $stack16 = virtualinvoke $stack77.<jdk.internal.math.FDBigInteger: int size()>();
+
+        thSize = $stack16;
+
+        $stack78 = S;
+
+        $stack17 = virtualinvoke $stack78.<jdk.internal.math.FDBigInteger: int size()>();
+
+        sSize = $stack17;
+
+        $stack80 = thSize;
+
+        $stack79 = sSize;
+
+        if $stack80 >= $stack79 goto label04;
+
+        $stack70 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack69 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack68 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack71 = staticinvoke <jdk.internal.math.FDBigInteger: int multAndCarryBy10(int[],int,int[])>($stack70, $stack69, $stack68);
+
+        p#1 = $stack71;
+
+        if p#1 == 0 goto label02;
+
+        $stack74 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack72 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack73 = $stack72 + 1;
+
+        this.<jdk.internal.math.FDBigInteger: int nWords> = $stack73;
+
+        $stack74[$stack72] = p#1;
+
+        goto label03;
+
+     label02:
+        virtualinvoke this.<jdk.internal.math.FDBigInteger: void trimLeadingZeros()>();
+
+     label03:
+        $stack75 = 0;
+
+        return $stack75;
+
+     label04:
+        if thSize <= sSize goto label05;
+
+        $stack67 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $stack67.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("disparate values");
+
+        throw $stack67;
+
+     label05:
+        $stack20 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack18 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack19 = $stack18 - 1;
+
+        $stack21 = $stack20[$stack19];
+
+        $stack22 = (long) $stack21;
+
+        $stack29 = $stack22 & 4294967295L;
+
+        $stack25 = S.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack23 = S.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack24 = $stack23 - 1;
+
+        $stack26 = $stack25[$stack24];
+
+        $stack27 = (long) $stack26;
+
+        $stack28 = $stack27 & 4294967295L;
+
+        p#2 = $stack29 / $stack28;
+
+        $stack30 = virtualinvoke this.<jdk.internal.math.FDBigInteger: long multDiffMe(long,jdk.internal.math.FDBigInteger)>(p#2, S);
+
+        diff = $stack30;
+
+        $stack31 = diff cmp 0L;
+
+        if $stack31 == 0 goto label10;
+
+        sum#3 = 0L;
+
+        $stack42 = S.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack41 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        tStart = $stack42 - $stack41;
+
+        sd = S.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        td = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+     label06:
+        $stack50 = sum#3;
+
+        $stack49 = 0L;
+
+        $stack43 = $stack50 cmp $stack49;
+
+        if $stack43 != 0 goto label10;
+
+        sIndex#4 = 0;
+
+        tIndex#5 = tStart;
+
+     label07:
+        $stack66 = tIndex#5;
+
+        $stack65 = this;
+
+        $stack47 = $stack65.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack66 >= $stack47 goto label08;
+
+        $stack57 = td[tIndex#5];
+
+        $stack58 = (long) $stack57;
+
+        $stack62 = $stack58 & 4294967295L;
+
+        $stack59 = sd[sIndex#4];
+
+        $stack60 = (long) $stack59;
+
+        $stack61 = $stack60 & 4294967295L;
+
+        $stack63 = $stack62 + $stack61;
+
+        sum#6 = sum#3 + $stack63;
+
+        $stack64 = (int) sum#6;
+
+        td[tIndex#5] = $stack64;
+
+        sum#3 = sum#6 >>> 32;
+
+        sIndex#4 = sIndex#4 + 1;
+
+        tIndex#5 = tIndex#5 + 1;
+
+        goto label07;
+
+     label08:
+        $stack48 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack48 != 0 goto label09;
+
+        $stack51 = sum#3 cmp 0L;
+
+        if $stack51 == 0 goto label09;
+
+        $stack55 = sum#3 cmp 1L;
+
+        if $stack55 == 0 goto label09;
+
+        $stack56 = new java.lang.AssertionError;
+
+        specialinvoke $stack56.<java.lang.AssertionError: void <init>(long)>(sum#3);
+
+        throw $stack56;
+
+     label09:
+        $stack53#7 = p#2;
+
+        $stack53#8 = $stack53#7;
+
+        $stack52#9 = 1L;
+
+        $stack52#10 = $stack52#9;
+
+        $stack54#11 = $stack53#8 - $stack52#10;
+
+        $stack54#12 = $stack54#11;
+
+        p#2 = $stack54#12;
+
+        goto label06;
+
+     label10:
+        $stack44 = this;
+
+        $stack34 = $stack44.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack45 = this;
+
+        $stack33 = $stack45.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack46 = this;
+
+        $stack32 = $stack46.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack35 = staticinvoke <jdk.internal.math.FDBigInteger: int multAndCarryBy10(int[],int,int[])>($stack34, $stack33, $stack32);
+
+        sum#13 = $stack35;
+
+        $stack36 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack36 != 0 goto label11;
+
+        if sum#13 == 0 goto label11;
+
+        $stack40 = new java.lang.AssertionError;
+
+        specialinvoke $stack40.<java.lang.AssertionError: void <init>(int)>(sum#13);
+
+        throw $stack40;
+
+     label11:
+        $stack38 = this;
+
+        virtualinvoke $stack38.<jdk.internal.math.FDBigInteger: void trimLeadingZeros()>();
+
+        $stack39 = p#2;
+
+        $stack37 = (int) $stack39;
+
+        return $stack37;
+
+        nop;
+    }
+
+    public jdk.internal.math.FDBigInteger multBy10()
+    {
+        byte $stack29, $stack31;
+        int[] $stack4, $stack6, $stack8, $stack15, $stack17, $stack20, $stack21, $stack28, $stack30, $stack37, res#1, $stack13#5, $stack13#6;
+        bottom_type res, $stack11, $stack12, $stack13, $stack22, $stack23, $stack24, $stack25;
+        boolean $stack3, $stack24#11, $stack24#12;
+        jdk.internal.math.FDBigInteger this, $stack14, $stack40, $stack22#3, $stack22#4, $stack23#7, $stack23#8;
+        int $stack2, $stack5, $stack7, $stack9, $stack10, $stack16, $stack18, $stack19, $stack26, $stack27, $stack32, $stack33, $stack34, $stack35, $stack36, $stack38, $stack39, $stack41, res#2, $stack11#9, $stack11#10, $stack12#13, $stack12#14, $stack25#15, $stack25#16;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        $stack2 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack2 != 0 goto label1;
+
+        return this;
+
+     label1:
+        $stack3 = this.<jdk.internal.math.FDBigInteger: boolean isImmutable>;
+
+        if $stack3 == 0 goto label2;
+
+        $stack34 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack35 = $stack34 + 1;
+
+        res#1 = newarray (int)[$stack35];
+
+        $stack38 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack37 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack36 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack39 = staticinvoke <jdk.internal.math.FDBigInteger: int multAndCarryBy10(int[],int,int[])>($stack37, $stack36, res#1);
+
+        res#1[$stack38] = $stack39;
+
+        $stack40 = new jdk.internal.math.FDBigInteger;
+
+        $stack41 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        specialinvoke $stack40.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>(res#1, $stack41);
+
+        return $stack40;
+
+     label2:
+        $stack6 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack5 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack4 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack7 = staticinvoke <jdk.internal.math.FDBigInteger: int multAndCarryBy10(int[],int,int[])>($stack6, $stack5, $stack4);
+
+        res#2 = $stack7;
+
+        if res#2 == 0 goto label5;
+
+        $stack10 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack8 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack9 = lengthof $stack8;
+
+        if $stack10 != $stack9 goto label4;
+
+        $stack15 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack16 = $stack15[0];
+
+        if $stack16 != 0 goto label3;
+
+        $stack28 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack29 = 1;
+
+        $stack30 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack31 = 0;
+
+        $stack26 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack27 = $stack26 - 1;
+
+        this.<jdk.internal.math.FDBigInteger: int nWords> = $stack27;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($stack28, $stack29, $stack30, $stack31, $stack27);
+
+        $stack32 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack33 = $stack32 + 1;
+
+        this.<jdk.internal.math.FDBigInteger: int offset> = $stack33;
+
+        goto label4;
+
+     label3:
+        $stack20 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack17 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack18 = lengthof $stack17;
+
+        $stack19 = $stack18 + 1;
+
+        $stack21 = staticinvoke <java.util.Arrays: int[] copyOf(int[],int)>($stack20, $stack19);
+
+        this.<jdk.internal.math.FDBigInteger: int[] data> = $stack21;
+
+     label4:
+        $stack22#3 = this;
+
+        $stack22#4 = $stack22#3;
+
+        $stack13#5 = $stack22#4.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack13#6 = $stack13#5;
+
+        $stack23#7 = this;
+
+        $stack23#8 = $stack23#7;
+
+        $stack11#9 = $stack23#8.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack11#10 = $stack11#9;
+
+        $stack24#11 = 1;
+
+        $stack24#12 = $stack24#11;
+
+        $stack12#13 = $stack11#10 + $stack24#12;
+
+        $stack12#14 = $stack12#13;
+
+        $stack23#8.<jdk.internal.math.FDBigInteger: int nWords> = $stack12#14;
+
+        $stack25#15 = res#2;
+
+        $stack25#16 = $stack25#15;
+
+        $stack13#6[$stack11#10] = $stack25#16;
+
+        goto label6;
+
+     label5:
+        virtualinvoke this.<jdk.internal.math.FDBigInteger: void trimLeadingZeros()>();
+
+     label6:
+        $stack14 = this;
+
+        return $stack14;
+
+        nop;
+    }
+
+    public jdk.internal.math.FDBigInteger multByPow52(int, int)
+    {
+        bottom_type res, $stack8, r, $stack24, $stack25, $stack35;
+        int[] $stack9, $stack17, $stack19, $stack29, $stack32, r#3, r#4;
+        boolean extraSize, $stack35#2;
+        jdk.internal.math.FDBigInteger this, $stack11, pow5, $stack20, $stack33, res#1, $stack25#5, $stack25#6, $stack8#9, $stack8#10;
+        int $stack7, p5, p2, $stack10, $stack12, $stack13, $stack14, $stack15, $stack16, $stack18, $stack21, $stack22, $stack23, $stack26, $stack27, $stack28, $stack30, $stack31, $stack34, $stack36, $stack24#7, $stack24#8;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        p5 := @parameter0: int;
+
+        p2 := @parameter1: int;
+
+        $stack7 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack7 != 0 goto label1;
+
+        return this;
+
+     label1:
+        res#1 = this;
+
+        if p5 == 0 goto label5;
+
+        if p2 == 0 goto label2;
+
+        $stack35#2 = 1;
+
+        goto label3;
+
+     label2:
+        $stack35#2 = 0;
+
+     label3:
+        extraSize = $stack35#2;
+
+        $stack36 = p5;
+
+        $stack9 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        $stack10 = lengthof $stack9;
+
+        if $stack36 >= $stack10 goto label4;
+
+        $stack26 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack27 = $stack26 + 1;
+
+        $stack28 = $stack27 + extraSize;
+
+        r#3 = newarray (int)[$stack28];
+
+        $stack32 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack31 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack29 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        $stack30 = $stack29[p5];
+
+        staticinvoke <jdk.internal.math.FDBigInteger: void mult(int[],int,int,int[])>($stack32, $stack31, $stack30, r#3);
+
+        $stack33 = new jdk.internal.math.FDBigInteger;
+
+        $stack34 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        specialinvoke $stack33.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>(r#3, $stack34);
+
+        res#1 = $stack33;
+
+        goto label5;
+
+     label4:
+        $stack11 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger big5pow(int)>(p5);
+
+        pow5 = $stack11;
+
+        $stack12 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack13 = virtualinvoke pow5.<jdk.internal.math.FDBigInteger: int size()>();
+
+        $stack14 = $stack12 + $stack13;
+
+        $stack15 = $stack14 + extraSize;
+
+        r#4 = newarray (int)[$stack15];
+
+        $stack19 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack18 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack17 = pow5.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack16 = pow5.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        staticinvoke <jdk.internal.math.FDBigInteger: void mult(int[],int,int[],int,int[])>($stack19, $stack18, $stack17, $stack16, r#4);
+
+        $stack20 = new jdk.internal.math.FDBigInteger;
+
+        $stack22 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack21 = pow5.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack23 = $stack22 + $stack21;
+
+        specialinvoke $stack20.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>(r#4, $stack23);
+
+        res#1 = $stack20;
+
+     label5:
+        $stack25#5 = res#1;
+
+        $stack25#6 = $stack25#5;
+
+        $stack24#7 = p2;
+
+        $stack24#8 = $stack24#7;
+
+        $stack8#9 = virtualinvoke $stack25#6.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftShift(int)>($stack24#8);
+
+        $stack8#10 = $stack8#9;
+
+        return $stack8#10;
+
+        nop;
+    }
+
+    private static void mult(int[], int, int[], int, int[])
+    {
+        bottom_type i, p, j;
+        int[] s1, dst, s2;
+        long $stack12, v, $stack19, $stack21, $stack22, $stack23, $stack24, $stack25, p#2, p#4;
+        int s1Len, $stack11, s2Len, $stack13, $stack14, $stack15, $stack16, $stack17, $stack18, $stack20, $stack26, $stack27, $stack28, $stack29, i#1, j#3;
+
+        s1 := @parameter0: int[];
+
+        s1Len := @parameter1: int;
+
+        s2 := @parameter2: int[];
+
+        s2Len := @parameter3: int;
+
+        dst := @parameter4: int[];
+
+        i#1 = 0;
+
+     label1:
+        $stack16 = i#1;
+
+        $stack15 = s1Len;
+
+        if $stack16 >= $stack15 goto label4;
+
+        $stack11 = s1[i#1];
+
+        $stack12 = (long) $stack11;
+
+        v = $stack12 & 4294967295L;
+
+        p#2 = 0L;
+
+        j#3 = 0;
+
+     label2:
+        $stack29 = j#3;
+
+        $stack28 = s2Len;
+
+        if $stack29 >= $stack28 goto label3;
+
+        $stack17 = i#1 + j#3;
+
+        $stack18 = dst[$stack17];
+
+        $stack19 = (long) $stack18;
+
+        $stack24 = $stack19 & 4294967295L;
+
+        $stack20 = s2[j#3];
+
+        $stack21 = (long) $stack20;
+
+        $stack22 = $stack21 & 4294967295L;
+
+        $stack23 = v * $stack22;
+
+        $stack25 = $stack24 + $stack23;
+
+        p#4 = p#2 + $stack25;
+
+        $stack27 = i#1 + j#3;
+
+        $stack26 = (int) p#4;
+
+        dst[$stack27] = $stack26;
+
+        p#2 = p#4 >>> 32;
+
+        j#3 = j#3 + 1;
+
+        goto label2;
+
+     label3:
+        $stack14 = i#1 + s2Len;
+
+        $stack13 = (int) p#2;
+
+        dst[$stack14] = $stack13;
+
+        i#1 = i#1 + 1;
+
+        goto label1;
+
+     label4:
+        return;
+
+        nop;
+    }
+
+    public jdk.internal.math.FDBigInteger leftInplaceSub(jdk.internal.math.FDBigInteger)
+    {
+        byte $stack20, $stack52, $stack45#12, $stack45#13, $stack18#23, $stack18#24;
+        bottom_type minuend, offsetDiff, mData, minLen, rLen, mIndex, sIndex, $stack18, $stack28, $stack29, $stack38, $stack39, $stack43, $stack44, $stack45;
+        long $stack25, $stack26, $stack31, $stack33, $stack34, $stack35, $stack36, diff, $stack43#6, $stack43#7, rLen#8, $stack29#19, $stack29#20, $stack28#21, $stack28#22, sIndex#25;
+        java.lang.AssertionError $stack23, $stack73;
+        jdk.internal.math.FDBigInteger this, subtrahend, $stack21, $stack22, $stack48, $stack49, $stack51, $stack53, $stack58, $stack59, $stack61, $stack63, $stack65, $stack67, $stack72, minuend#1;
+        int[] sData, r, $stack54, $stack57, $stack62, $stack64, mData#3;
+        boolean $stack14, $stack15, $stack19;
+        int $stack16, $stack17, subLen, $stack24, $stack27, $stack30, $stack32, $stack37, $stack40, $stack41, $stack42, $stack46, $stack47, $stack50, $stack56, $stack60, $stack66, $stack68, $stack69, $stack70, $stack71, offsetDiff#2, minLen#4, rLen#5, $stack44#9, $stack44#10, mIndex#11, sIndex#14, $stack39#15, $stack39#16, $stack38#17, $stack38#18;
+        java.lang.Object $stack55;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        subtrahend := @parameter0: jdk.internal.math.FDBigInteger;
+
+        $stack14 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack14 != 0 goto label01;
+
+        $stack70 = virtualinvoke this.<jdk.internal.math.FDBigInteger: int size()>();
+
+        $stack71 = virtualinvoke subtrahend.<jdk.internal.math.FDBigInteger: int size()>();
+
+        if $stack70 >= $stack71 goto label01;
+
+        $stack73 = new java.lang.AssertionError;
+
+        specialinvoke $stack73.<java.lang.AssertionError: void <init>(java.lang.Object)>("result should be positive");
+
+        throw $stack73;
+
+     label01:
+        $stack72 = this;
+
+        $stack15 = $stack72.<jdk.internal.math.FDBigInteger: boolean isImmutable>;
+
+        if $stack15 == 0 goto label02;
+
+        $stack53 = new jdk.internal.math.FDBigInteger;
+
+        $stack54 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack55 = virtualinvoke $stack54.<java.lang.Object: java.lang.Object clone()>();
+
+        $stack57 = (int[]) $stack55;
+
+        $stack56 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        specialinvoke $stack53.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack57, $stack56);
+
+        minuend#1 = $stack53;
+
+        goto label03;
+
+     label02:
+        minuend#1 = this;
+
+     label03:
+        $stack58 = subtrahend;
+
+        $stack17 = $stack58.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack59 = minuend#1;
+
+        $stack16 = $stack59.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack60 = $stack17 - $stack16;
+
+        offsetDiff#2 = $stack60;
+
+        $stack61 = subtrahend;
+
+        $stack62 = $stack61.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        sData = $stack62;
+
+        $stack63 = minuend#1;
+
+        $stack64 = $stack63.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        mData#3 = $stack64;
+
+        $stack65 = subtrahend;
+
+        $stack66 = $stack65.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        subLen = $stack66;
+
+        $stack67 = minuend#1;
+
+        $stack68 = $stack67.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        minLen#4 = $stack68;
+
+        $stack69 = offsetDiff#2;
+
+        if $stack69 >= 0 goto label06;
+
+        rLen#5 = minLen#4 - offsetDiff#2;
+
+        $stack40 = lengthof mData#3;
+
+        if rLen#5 >= $stack40 goto label04;
+
+        $stack46 = neg offsetDiff#2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(mData#3, 0, mData#3, $stack46, minLen#4);
+
+        $stack47 = neg offsetDiff#2;
+
+        staticinvoke <java.util.Arrays: void fill(int[],int,int,int)>(mData#3, 0, $stack47, 0);
+
+        goto label05;
+
+     label04:
+        r = newarray (int)[rLen#5];
+
+        $stack41 = neg offsetDiff#2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(mData#3, 0, r, $stack41, minLen#4);
+
+        mData#3 = r;
+
+        minuend#1.<jdk.internal.math.FDBigInteger: int[] data> = r;
+
+     label05:
+        $stack49 = minuend#1;
+
+        $stack48 = subtrahend;
+
+        $stack42 = $stack48.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack49.<jdk.internal.math.FDBigInteger: int offset> = $stack42;
+
+        $stack51 = minuend#1;
+
+        $stack50 = rLen#5;
+
+        minLen#4 = $stack50;
+
+        $stack51.<jdk.internal.math.FDBigInteger: int nWords> = $stack50;
+
+        $stack52 = 0;
+
+        offsetDiff#2 = $stack52;
+
+     label06:
+        $stack43#6 = 0L;
+
+        $stack43#7 = $stack43#6;
+
+        rLen#8 = $stack43#7;
+
+        $stack44#9 = offsetDiff#2;
+
+        $stack44#10 = $stack44#9;
+
+        mIndex#11 = $stack44#10;
+
+        $stack45#12 = 0;
+
+        $stack45#13 = $stack45#12;
+
+        sIndex#14 = $stack45#13;
+
+     label07:
+        $stack39#15 = sIndex#14;
+
+        $stack39#16 = $stack39#15;
+
+        $stack38#17 = subLen;
+
+        $stack38#18 = $stack38#17;
+
+        if $stack39#16 >= $stack38#18 goto label08;
+
+        if mIndex#11 >= minLen#4 goto label08;
+
+        $stack30 = mData#3[mIndex#11];
+
+        $stack31 = (long) $stack30;
+
+        $stack35 = $stack31 & 4294967295L;
+
+        $stack32 = sData[sIndex#14];
+
+        $stack33 = (long) $stack32;
+
+        $stack34 = $stack33 & 4294967295L;
+
+        $stack36 = $stack35 - $stack34;
+
+        diff = $stack36 + rLen#8;
+
+        $stack37 = (int) diff;
+
+        mData#3[mIndex#11] = $stack37;
+
+        rLen#8 = diff >> 32;
+
+        sIndex#14 = sIndex#14 + 1;
+
+        mIndex#11 = mIndex#11 + 1;
+
+        goto label07;
+
+     label08:
+        $stack29#19 = rLen#8;
+
+        $stack29#20 = $stack29#19;
+
+        $stack28#21 = 0L;
+
+        $stack28#22 = $stack28#21;
+
+        $stack18#23 = $stack29#20 cmp $stack28#22;
+
+        $stack18#24 = $stack18#23;
+
+        if $stack18#24 == 0 goto label09;
+
+        if mIndex#11 >= minLen#4 goto label09;
+
+        $stack24 = mData#3[mIndex#11];
+
+        $stack25 = (long) $stack24;
+
+        $stack26 = $stack25 & 4294967295L;
+
+        sIndex#25 = $stack26 + rLen#8;
+
+        $stack27 = (int) sIndex#25;
+
+        mData#3[mIndex#11] = $stack27;
+
+        rLen#8 = sIndex#25 >> 32;
+
+        mIndex#11 = mIndex#11 + 1;
+
+        goto label08;
+
+     label09:
+        $stack19 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack19 != 0 goto label10;
+
+        $stack20 = rLen#8 cmp 0L;
+
+        if $stack20 == 0 goto label10;
+
+        $stack23 = new java.lang.AssertionError;
+
+        specialinvoke $stack23.<java.lang.AssertionError: void <init>(long)>(rLen#8);
+
+        throw $stack23;
+
+     label10:
+        $stack21 = minuend#1;
+
+        virtualinvoke $stack21.<jdk.internal.math.FDBigInteger: void trimLeadingZeros()>();
+
+        $stack22 = minuend#1;
+
+        return $stack22;
+
+        nop;
+    }
+
+    public jdk.internal.math.FDBigInteger rightInplaceSub(jdk.internal.math.FDBigInteger)
+    {
+        byte $stack20, $stack56, $stack44#9, $stack44#10;
+        bottom_type subtrahend, offsetDiff, sData, subLen, rLen, r, diff_1, $stack41, $stack42, $stack44, $stack45;
+        long $stack27, $stack29, $stack30, $stack31, $stack32, diff_2, $stack37, $stack38, $stack39, $stack45#12, $stack45#13, r#14, diff_1#19;
+        java.lang.AssertionError $stack25, $stack78;
+        jdk.internal.math.FDBigInteger this, minuend, $stack22, $stack23, $stack24, $stack51, $stack52, $stack57, $stack62, $stack63, $stack65, $stack67, $stack69, $stack71, $stack76, $stack77, subtrahend#1;
+        int[] mData, $stack43, $stack58, $stack61, $stack66, $stack68, sData#3, r#6;
+        boolean $stack14, $stack15, $stack19;
+        int $stack16, $stack17, minLen, $stack18, $stack21, $stack26, $stack28, $stack33, $stack34, $stack35, $stack36, $stack40, $stack46, $stack47, $stack48, $stack49, $stack50, $stack53, $stack54, $stack55, $stack60, $stack64, $stack70, $stack72, $stack73, $stack74, $stack75, offsetDiff#2, subLen#4, rLen#5, subLen#7, rLen#8, rLen#11, $stack42#15, $stack42#16, $stack41#17, $stack41#18, diff_1#20;
+        java.lang.Object $stack59;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        subtrahend#1 := @parameter0: jdk.internal.math.FDBigInteger;
+
+        $stack14 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack14 != 0 goto label01;
+
+        $stack74 = virtualinvoke this.<jdk.internal.math.FDBigInteger: int size()>();
+
+        $stack75 = virtualinvoke subtrahend#1.<jdk.internal.math.FDBigInteger: int size()>();
+
+        if $stack74 >= $stack75 goto label01;
+
+        $stack78 = new java.lang.AssertionError;
+
+        specialinvoke $stack78.<java.lang.AssertionError: void <init>(java.lang.Object)>("result should be positive");
+
+        throw $stack78;
+
+     label01:
+        $stack76 = this;
+
+        minuend = $stack76;
+
+        $stack77 = subtrahend#1;
+
+        $stack15 = $stack77.<jdk.internal.math.FDBigInteger: boolean isImmutable>;
+
+        if $stack15 == 0 goto label02;
+
+        $stack57 = new jdk.internal.math.FDBigInteger;
+
+        $stack58 = subtrahend#1.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack59 = virtualinvoke $stack58.<java.lang.Object: java.lang.Object clone()>();
+
+        $stack61 = (int[]) $stack59;
+
+        $stack60 = subtrahend#1.<jdk.internal.math.FDBigInteger: int offset>;
+
+        specialinvoke $stack57.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack61, $stack60);
+
+        subtrahend#1 = $stack57;
+
+     label02:
+        $stack62 = minuend;
+
+        $stack17 = $stack62.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack63 = subtrahend#1;
+
+        $stack16 = $stack63.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack64 = $stack17 - $stack16;
+
+        offsetDiff#2 = $stack64;
+
+        $stack65 = subtrahend#1;
+
+        $stack66 = $stack65.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        sData#3 = $stack66;
+
+        $stack67 = minuend;
+
+        $stack68 = $stack67.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        mData = $stack68;
+
+        $stack69 = subtrahend#1;
+
+        $stack70 = $stack69.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        subLen#4 = $stack70;
+
+        $stack71 = minuend;
+
+        $stack72 = $stack71.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        minLen = $stack72;
+
+        $stack73 = offsetDiff#2;
+
+        if $stack73 >= 0 goto label05;
+
+        rLen#5 = minLen;
+
+        $stack46 = lengthof sData#3;
+
+        if rLen#5 >= $stack46 goto label03;
+
+        $stack49 = neg offsetDiff#2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(sData#3, 0, sData#3, $stack49, subLen#4);
+
+        $stack50 = neg offsetDiff#2;
+
+        staticinvoke <java.util.Arrays: void fill(int[],int,int,int)>(sData#3, 0, $stack50, 0);
+
+        goto label04;
+
+     label03:
+        r#6 = newarray (int)[rLen#5];
+
+        $stack47 = neg offsetDiff#2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(sData#3, 0, r#6, $stack47, subLen#4);
+
+        sData#3 = r#6;
+
+        subtrahend#1.<jdk.internal.math.FDBigInteger: int[] data> = r#6;
+
+     label04:
+        $stack52 = subtrahend#1;
+
+        $stack51 = minuend;
+
+        $stack48 = $stack51.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack52.<jdk.internal.math.FDBigInteger: int offset> = $stack48;
+
+        $stack54 = subLen#4;
+
+        $stack53 = offsetDiff#2;
+
+        $stack55 = $stack54 - $stack53;
+
+        subLen#7 = $stack55;
+
+        $stack56 = 0;
+
+        offsetDiff#2 = $stack56;
+
+        goto label06;
+
+     label05:
+        rLen#8 = minLen + offsetDiff#2;
+
+        $stack18 = lengthof sData#3;
+
+        if rLen#8 < $stack18 goto label06;
+
+        $stack43 = staticinvoke <java.util.Arrays: int[] copyOf(int[],int)>(sData#3, rLen#8);
+
+        sData#3 = $stack43;
+
+        subtrahend#1.<jdk.internal.math.FDBigInteger: int[] data> = $stack43;
+
+     label06:
+        $stack44#9 = 0;
+
+        $stack44#10 = $stack44#9;
+
+        rLen#11 = $stack44#10;
+
+        $stack45#12 = 0L;
+
+        $stack45#13 = $stack45#12;
+
+        r#14 = $stack45#13;
+
+     label07:
+        $stack42#15 = rLen#11;
+
+        $stack42#16 = $stack42#15;
+
+        $stack41#17 = offsetDiff#2;
+
+        $stack41#18 = $stack41#17;
+
+        if $stack42#16 >= $stack41#18 goto label08;
+
+        $stack36 = sData#3[rLen#11];
+
+        $stack37 = (long) $stack36;
+
+        $stack38 = $stack37 & 4294967295L;
+
+        $stack39 = 0L - $stack38;
+
+        diff_1#19 = $stack39 + r#14;
+
+        $stack40 = (int) diff_1#19;
+
+        sData#3[rLen#11] = $stack40;
+
+        r#14 = diff_1#19 >> 32;
+
+        rLen#11 = rLen#11 + 1;
+
+        goto label07;
+
+     label08:
+        diff_1#20 = 0;
+
+     label09:
+        $stack35 = diff_1#20;
+
+        $stack34 = minLen;
+
+        if $stack35 >= $stack34 goto label10;
+
+        $stack26 = mData[diff_1#20];
+
+        $stack27 = (long) $stack26;
+
+        $stack31 = $stack27 & 4294967295L;
+
+        $stack28 = sData#3[rLen#11];
+
+        $stack29 = (long) $stack28;
+
+        $stack30 = $stack29 & 4294967295L;
+
+        $stack32 = $stack31 - $stack30;
+
+        diff_2 = $stack32 + r#14;
+
+        $stack33 = (int) diff_2;
+
+        sData#3[rLen#11] = $stack33;
+
+        r#14 = diff_2 >> 32;
+
+        rLen#11 = rLen#11 + 1;
+
+        diff_1#20 = diff_1#20 + 1;
+
+        goto label09;
+
+     label10:
+        $stack19 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack19 != 0 goto label11;
+
+        $stack20 = r#14 cmp 0L;
+
+        if $stack20 == 0 goto label11;
+
+        $stack25 = new java.lang.AssertionError;
+
+        specialinvoke $stack25.<java.lang.AssertionError: void <init>(long)>(r#14);
+
+        throw $stack25;
+
+     label11:
+        $stack22 = subtrahend#1;
+
+        $stack21 = rLen#11;
+
+        $stack22.<jdk.internal.math.FDBigInteger: int nWords> = $stack21;
+
+        $stack23 = subtrahend#1;
+
+        virtualinvoke $stack23.<jdk.internal.math.FDBigInteger: void trimLeadingZeros()>();
+
+        $stack24 = subtrahend#1;
+
+        return $stack24;
+
+        nop;
+    }
+
+    private static int checkZeroTail(int[], int)
+    {
+        byte $b0;
+        bottom_type 'from';
+        int[] a;
+        int $stack2, $stack3, from#1, $i0;
+
+        a := @parameter0: int[];
+
+        from#1 := @parameter1: int;
+
+     label1:
+        $stack3 = from#1;
+
+        if $stack3 <= 0 goto label2;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        from#1 = from#1 + $i0;
+
+        $stack2 = a[from#1];
+
+        if $stack2 == 0 goto label1;
+
+        return 1;
+
+     label2:
+        return 0;
+
+        nop;
+    }
+
+    public int 'cmp'(jdk.internal.math.FDBigInteger)
+    {
+        byte $stack25, $stack26#3, $b0, $b1, $b2;
+        bottom_type aLen, bLen, $stack26;
+        int[] $stack12, $stack15, $stack18, $stack19;
+        long $stack21, $stack22, $stack23, $stack24;
+        jdk.internal.math.FDBigInteger this, other;
+        int $stack8, $stack9, aSize, $stack10, $stack11, bSize, $stack13, $stack14, $stack16, $stack17, a, b, $stack20, aLen#1, bLen#2, $i0, $i1, $i2, $i3;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        other := @parameter0: jdk.internal.math.FDBigInteger;
+
+        $stack9 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack8 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        aSize = $stack9 + $stack8;
+
+        $stack11 = other.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack10 = other.<jdk.internal.math.FDBigInteger: int offset>;
+
+        bSize = $stack11 + $stack10;
+
+        if aSize <= bSize goto label1;
+
+        return 1;
+
+     label1:
+        if aSize >= bSize goto label2;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        return $i0;
+
+     label2:
+        aLen#1 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        bLen#2 = other.<jdk.internal.math.FDBigInteger: int nWords>;
+
+     label3:
+        $stack20 = aLen#1;
+
+        if $stack20 <= 0 goto label7;
+
+        if bLen#2 <= 0 goto label7;
+
+        $stack18 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $b1 = -1;
+
+        $i1 = (int) $b1;
+
+        aLen#1 = aLen#1 + $i1;
+
+        a = $stack18[aLen#1];
+
+        $stack19 = other.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $b2 = -1;
+
+        $i2 = (int) $b2;
+
+        bLen#2 = bLen#2 + $i2;
+
+        b = $stack19[bLen#2];
+
+        if a == b goto label6;
+
+        $stack21 = (long) a;
+
+        $stack24 = $stack21 & 4294967295L;
+
+        $stack22 = (long) b;
+
+        $stack23 = $stack22 & 4294967295L;
+
+        $stack25 = $stack24 cmp $stack23;
+
+        $i3 = (int) $stack25;
+
+        if $i3 >= 0 goto label4;
+
+        $stack26#3 = -1;
+
+        goto label5;
+
+     label4:
+        $stack26#3 = 1;
+
+     label5:
+        return $stack26#3;
+
+     label6:
+        goto label3;
+
+     label7:
+        $stack17 = aLen#1;
+
+        if $stack17 <= 0 goto label8;
+
+        $stack15 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack16 = staticinvoke <jdk.internal.math.FDBigInteger: int checkZeroTail(int[],int)>($stack15, aLen#1);
+
+        return $stack16;
+
+     label8:
+        if bLen#2 <= 0 goto label9;
+
+        $stack12 = other.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack13 = staticinvoke <jdk.internal.math.FDBigInteger: int checkZeroTail(int[],int)>($stack12, bLen#2);
+
+        $stack14 = neg $stack13;
+
+        return $stack14;
+
+     label9:
+        return 0;
+
+        nop;
+    }
+
+    public int cmpPow52(int, int)
+    {
+        byte $stack26, $stack27#1, $b0;
+        int[] $stack17, $stack20;
+        bottom_type $stack27;
+        long $stack22, $stack23, $stack24, $stack25;
+        jdk.internal.math.FDBigInteger this, $stack8, $stack9;
+        int p5, p2, $stack10, wordcount, bitcount, $stack11, $stack12, size, $stack13, $stack14, $stack15, $stack16, a, b, $stack18, $stack19, $stack21, $i0, $i1;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        p5 := @parameter0: int;
+
+        p2 := @parameter1: int;
+
+        if p5 != 0 goto label6;
+
+        wordcount = p2 >> 5;
+
+        bitcount = p2 & 31;
+
+        $stack12 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack11 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        size = $stack12 + $stack11;
+
+        $stack13 = wordcount + 1;
+
+        if size <= $stack13 goto label1;
+
+        return 1;
+
+     label1:
+        $stack14 = wordcount + 1;
+
+        if size >= $stack14 goto label2;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        return $i0;
+
+     label2:
+        $stack17 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack15 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack16 = $stack15 - 1;
+
+        a = $stack17[$stack16];
+
+        b = 1 << bitcount;
+
+        if a == b goto label5;
+
+        $stack22 = (long) a;
+
+        $stack25 = $stack22 & 4294967295L;
+
+        $stack23 = (long) b;
+
+        $stack24 = $stack23 & 4294967295L;
+
+        $stack26 = $stack25 cmp $stack24;
+
+        $i1 = (int) $stack26;
+
+        if $i1 >= 0 goto label3;
+
+        $stack27#1 = -1;
+
+        goto label4;
+
+     label3:
+        $stack27#1 = 1;
+
+     label4:
+        return $stack27#1;
+
+     label5:
+        $stack20 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack18 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack19 = $stack18 - 1;
+
+        $stack21 = staticinvoke <jdk.internal.math.FDBigInteger: int checkZeroTail(int[],int)>($stack20, $stack19);
+
+        return $stack21;
+
+     label6:
+        $stack8 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger big5pow(int)>(p5);
+
+        $stack9 = virtualinvoke $stack8.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger leftShift(int)>(p2);
+
+        $stack10 = virtualinvoke this.<jdk.internal.math.FDBigInteger: int 'cmp'(jdk.internal.math.FDBigInteger)>($stack9);
+
+        return $stack10;
+
+        nop;
+    }
+
+    public int addAndCmp(jdk.internal.math.FDBigInteger, jdk.internal.math.FDBigInteger)
+    {
+        byte $stack24, $stack31, $stack33, $stack38, $stack47, $stack49, $stack56, $stack60#5, $b0, $b1, $b2, $b3;
+        bottom_type big, small, bSize, sSize, top, v, $stack34, $stack35, $stack39, $stack40, $stack41, $stack60;
+        long $stack22, $stack23, $stack30, $stack32, $stack36, $stack37, $stack46, $stack48, $stack54, $stack55, $stack57, $stack58, top#6, v#7, top#8, v#9;
+        jdk.internal.math.FDBigInteger x, y, this, $stack61, big#1, small#2, $stack41#10, $stack41#11, $stack40#12, $stack40#13, $stack39#14, $stack39#15, $stack34#16, $stack34#17;
+        int[] $stack20, $stack28, $stack44, $stack52;
+        int $stack14, xSize, $stack15, ySize, $stack16, thSize, $stack17, $stack18, $stack19, $stack21, $stack25, $stack26, $stack27, $stack29, $stack42, $stack43, $stack45, $stack50, $stack51, $stack53, $stack59, $stack62, bSize#3, sSize#4, $stack35#18, $stack35#19, $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        x := @parameter0: jdk.internal.math.FDBigInteger;
+
+        y := @parameter1: jdk.internal.math.FDBigInteger;
+
+        $stack14 = virtualinvoke x.<jdk.internal.math.FDBigInteger: int size()>();
+
+        xSize = $stack14;
+
+        $stack15 = virtualinvoke y.<jdk.internal.math.FDBigInteger: int size()>();
+
+        ySize = $stack15;
+
+        if xSize < ySize goto label01;
+
+        big#1 = x;
+
+        small#2 = y;
+
+        bSize#3 = xSize;
+
+        sSize#4 = ySize;
+
+        goto label02;
+
+     label01:
+        big#1 = y;
+
+        small#2 = x;
+
+        bSize#3 = ySize;
+
+        sSize#4 = xSize;
+
+     label02:
+        $stack61 = this;
+
+        $stack16 = virtualinvoke $stack61.<jdk.internal.math.FDBigInteger: int size()>();
+
+        thSize = $stack16;
+
+        $stack62 = bSize#3;
+
+        if $stack62 != 0 goto label05;
+
+        if thSize != 0 goto label03;
+
+        $stack60#5 = 0;
+
+        goto label04;
+
+     label03:
+        $stack60#5 = 1;
+
+     label04:
+        return $stack60#5;
+
+     label05:
+        if sSize#4 != 0 goto label06;
+
+        $stack59 = virtualinvoke this.<jdk.internal.math.FDBigInteger: int 'cmp'(jdk.internal.math.FDBigInteger)>(big#1);
+
+        return $stack59;
+
+     label06:
+        if bSize#3 <= thSize goto label07;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        return $i0;
+
+     label07:
+        $stack17 = bSize#3 + 1;
+
+        if $stack17 >= thSize goto label08;
+
+        return 1;
+
+     label08:
+        $stack20 = big#1.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack18 = big#1.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack19 = $stack18 - 1;
+
+        $stack21 = $stack20[$stack19];
+
+        $stack22 = (long) $stack21;
+
+        top#6 = $stack22 & 4294967295L;
+
+        if sSize#4 != bSize#3 goto label09;
+
+        $stack52 = small#2.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack50 = small#2.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack51 = $stack50 - 1;
+
+        $stack53 = $stack52[$stack51];
+
+        $stack54 = (long) $stack53;
+
+        $stack55 = $stack54 & 4294967295L;
+
+        top#6 = top#6 + $stack55;
+
+     label09:
+        $stack57 = top#6;
+
+        $stack56 = 32;
+
+        $stack23 = $stack57 >>> $stack56;
+
+        $stack58 = 0L;
+
+        $stack24 = $stack23 cmp $stack58;
+
+        if $stack24 != 0 goto label13;
+
+        $stack36 = top#6 + 1L;
+
+        $stack37 = $stack36 >>> 32;
+
+        $stack38 = $stack37 cmp 0L;
+
+        if $stack38 != 0 goto label16;
+
+        if bSize#3 >= thSize goto label10;
+
+        return 1;
+
+     label10:
+        $stack44 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack42 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack43 = $stack42 - 1;
+
+        $stack45 = $stack44[$stack43];
+
+        $stack46 = (long) $stack45;
+
+        v#7 = $stack46 & 4294967295L;
+
+        $stack47 = v#7 cmp top#6;
+
+        $i1 = (int) $stack47;
+
+        if $i1 >= 0 goto label11;
+
+        $b1 = -1;
+
+        $i2 = (int) $b1;
+
+        return $i2;
+
+     label11:
+        $stack48 = top#6 + 1L;
+
+        $stack49 = v#7 cmp $stack48;
+
+        $i3 = (int) $stack49;
+
+        if $i3 <= 0 goto label12;
+
+        return 1;
+
+     label12:
+        goto label16;
+
+     label13:
+        $stack25 = bSize#3 + 1;
+
+        if $stack25 <= thSize goto label14;
+
+        $b2 = -1;
+
+        $i4 = (int) $b2;
+
+        return $i4;
+
+     label14:
+        top#8 = top#6 >>> 32;
+
+        $stack28 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack26 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack27 = $stack26 - 1;
+
+        $stack29 = $stack28[$stack27];
+
+        $stack30 = (long) $stack29;
+
+        v#9 = $stack30 & 4294967295L;
+
+        $stack31 = v#9 cmp top#8;
+
+        $i5 = (int) $stack31;
+
+        if $i5 >= 0 goto label15;
+
+        $b3 = -1;
+
+        $i6 = (int) $b3;
+
+        return $i6;
+
+     label15:
+        $stack32 = top#8 + 1L;
+
+        $stack33 = v#9 cmp $stack32;
+
+        $i7 = (int) $stack33;
+
+        if $i7 <= 0 goto label16;
+
+        return 1;
+
+     label16:
+        $stack41#10 = this;
+
+        $stack41#11 = $stack41#10;
+
+        $stack40#12 = big#1;
+
+        $stack40#13 = $stack40#12;
+
+        $stack39#14 = small#2;
+
+        $stack39#15 = $stack39#14;
+
+        $stack34#16 = virtualinvoke $stack40#13.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger add(jdk.internal.math.FDBigInteger)>($stack39#15);
+
+        $stack34#17 = $stack34#16;
+
+        $stack35#18 = virtualinvoke $stack41#11.<jdk.internal.math.FDBigInteger: int 'cmp'(jdk.internal.math.FDBigInteger)>($stack34#17);
+
+        $stack35#19 = $stack35#18;
+
+        return $stack35#19;
+
+        nop;
+    }
+
+    public void makeImmutable()
+    {
+        jdk.internal.math.FDBigInteger this;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        this.<jdk.internal.math.FDBigInteger: boolean isImmutable> = 1;
+
+        return;
+
+        nop;
+    }
+
+    private jdk.internal.math.FDBigInteger mult(int)
+    {
+        jdk.internal.math.FDBigInteger this, $stack8;
+        int[] r, $stack7;
+        int $stack3, $stack4, $stack5, i, $stack6, $stack9;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        i := @parameter0: int;
+
+        $stack3 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack3 != 0 goto label1;
+
+        return this;
+
+     label1:
+        $stack4 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack5 = $stack4 + 1;
+
+        r = newarray (int)[$stack5];
+
+        $stack7 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack6 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        staticinvoke <jdk.internal.math.FDBigInteger: void mult(int[],int,int,int[])>($stack7, $stack6, i, r);
+
+        $stack8 = new jdk.internal.math.FDBigInteger;
+
+        $stack9 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        specialinvoke $stack8.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>(r, $stack9);
+
+        return $stack8;
+
+        nop;
+    }
+
+    private jdk.internal.math.FDBigInteger mult(jdk.internal.math.FDBigInteger)
+    {
+        jdk.internal.math.FDBigInteger this, other, $stack14, $stack20, $stack23;
+        int[] r, $stack11, $stack13, $stack18, $stack21;
+        int $stack3, $stack4, $stack5, $stack6, $stack7, $stack8, $stack9, $stack10, $stack12, $stack15, $stack16, $stack17, $stack19, $stack22;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        other := @parameter0: jdk.internal.math.FDBigInteger;
+
+        $stack3 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack3 != 0 goto label1;
+
+        return this;
+
+     label1:
+        $stack4 = virtualinvoke this.<jdk.internal.math.FDBigInteger: int size()>();
+
+        if $stack4 != 1 goto label2;
+
+        $stack21 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack22 = $stack21[0];
+
+        $stack23 = virtualinvoke other.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger mult(int)>($stack22);
+
+        return $stack23;
+
+     label2:
+        $stack5 = other.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack5 != 0 goto label3;
+
+        return other;
+
+     label3:
+        $stack6 = virtualinvoke other.<jdk.internal.math.FDBigInteger: int size()>();
+
+        if $stack6 != 1 goto label4;
+
+        $stack18 = other.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack19 = $stack18[0];
+
+        $stack20 = virtualinvoke this.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger mult(int)>($stack19);
+
+        return $stack20;
+
+     label4:
+        $stack8 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack7 = other.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack9 = $stack8 + $stack7;
+
+        r = newarray (int)[$stack9];
+
+        $stack13 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack12 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack11 = other.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack10 = other.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        staticinvoke <jdk.internal.math.FDBigInteger: void mult(int[],int,int[],int,int[])>($stack13, $stack12, $stack11, $stack10, r);
+
+        $stack14 = new jdk.internal.math.FDBigInteger;
+
+        $stack16 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack15 = other.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack17 = $stack16 + $stack15;
+
+        specialinvoke $stack14.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>(r, $stack17);
+
+        return $stack14;
+
+        nop;
+    }
+
+    private jdk.internal.math.FDBigInteger add(jdk.internal.math.FDBigInteger)
+    {
+        byte $stack32, $stack70, $stack58#33, $stack58#34;
+        bottom_type big, bigLen, small, smallLen, i, carry, $stack23, $stack47, $stack48, $stack49, $stack50, $stack51, $stack52, $stack53, $stack54, $stack55, $stack56, $stack57, $stack58, $stack59, $stack60;
+        long $stack22, $stack27, $stack28, $stack29, $stack33, $stack34, $stack40, $stack46, $stack66, $stack71, carry#6, $stack53#11, $stack53#12, $stack48#13, $stack48#14, $stack47#15, $stack47#16, $stack47#17, $stack49#18, $stack49#19, $stack54#20, $stack54#21, carry#22, $stack55#27, $stack55#28, $stack59#31, $stack59#32, $stack60#35, $stack60#36, $stack23#37, carry#38;
+        jdk.internal.math.FDBigInteger this, other, $stack16, $stack61, $stack63, $stack64, big#1, small#3;
+        int[] r, $stack20, $stack31, $stack38, $stack44, $stack69, $stack57#23, $stack57#24;
+        boolean $stack67;
+        int $stack12, tSize, $stack13, oSize, $stack14, $stack15, $stack17, $stack18, $stack19, $stack21, $stack24, $stack25, $stack26, $stack30, $stack35, $stack36, $stack37, $stack39, $stack41, $stack42, $stack43, $stack45, $stack62, $stack65, $stack68, bigLen#2, smallLen#4, i#5, $stack52#7, $stack52#8, $stack51#9, $stack51#10, $stack56#25, $stack56#26, $stack50#29, $stack50#30;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        other := @parameter0: jdk.internal.math.FDBigInteger;
+
+        $stack12 = virtualinvoke this.<jdk.internal.math.FDBigInteger: int size()>();
+
+        tSize = $stack12;
+
+        $stack13 = virtualinvoke other.<jdk.internal.math.FDBigInteger: int size()>();
+
+        oSize = $stack13;
+
+        if tSize < oSize goto label01;
+
+        big#1 = this;
+
+        bigLen#2 = tSize;
+
+        small#3 = other;
+
+        smallLen#4 = oSize;
+
+        goto label02;
+
+     label01:
+        big#1 = other;
+
+        bigLen#2 = oSize;
+
+        small#3 = this;
+
+        smallLen#4 = tSize;
+
+     label02:
+        $stack68 = bigLen#2;
+
+        $stack67 = 1;
+
+        $stack14 = $stack68 + $stack67;
+
+        $stack69 = newarray (int)[$stack14];
+
+        r = $stack69;
+
+        $stack70 = 0;
+
+        i#5 = $stack70;
+
+        $stack71 = 0L;
+
+        carry#6 = $stack71;
+
+     label03:
+        $stack52#7 = i#5;
+
+        $stack52#8 = $stack52#7;
+
+        $stack51#9 = smallLen#4;
+
+        $stack51#10 = $stack51#9;
+
+        if $stack52#8 >= $stack51#10 goto label08;
+
+        $stack53#11 = carry#6;
+
+        $stack53#12 = $stack53#11;
+
+        $stack35 = big#1.<jdk.internal.math.FDBigInteger: int offset>;
+
+        if i#5 >= $stack35 goto label04;
+
+        $stack48#13 = 0L;
+
+        $stack48#14 = $stack48#13;
+
+        goto label05;
+
+     label04:
+        $stack38 = big#1.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack36 = big#1.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack37 = i#5 - $stack36;
+
+        $stack39 = $stack38[$stack37];
+
+        $stack40 = (long) $stack39;
+
+        $stack48#14 = $stack40 & 4294967295L;
+
+     label05:
+        $stack62 = i#5;
+
+        $stack61 = small#3;
+
+        $stack41 = $stack61.<jdk.internal.math.FDBigInteger: int offset>;
+
+        if $stack62 >= $stack41 goto label06;
+
+        $stack47#15 = 0L;
+
+        $stack47#16 = $stack47#15;
+
+        goto label07;
+
+     label06:
+        $stack63 = small#3;
+
+        $stack44 = $stack63.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack65 = i#5;
+
+        $stack64 = small#3;
+
+        $stack42 = $stack64.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack43 = $stack65 - $stack42;
+
+        $stack45 = $stack44[$stack43];
+
+        $stack46 = (long) $stack45;
+
+        $stack66 = 4294967295L;
+
+        $stack47#17 = $stack46 & $stack66;
+
+        $stack47#16 = $stack47#17;
+
+     label07:
+        $stack49#18 = $stack48#14 + $stack47#16;
+
+        $stack49#19 = $stack49#18;
+
+        $stack54#20 = $stack53#12 + $stack49#19;
+
+        $stack54#21 = $stack54#20;
+
+        carry#22 = $stack54#21;
+
+        $stack57#23 = r;
+
+        $stack57#24 = $stack57#23;
+
+        $stack56#25 = i#5;
+
+        $stack56#26 = $stack56#25;
+
+        $stack55#27 = carry#22;
+
+        $stack55#28 = $stack55#27;
+
+        $stack50#29 = (int) $stack55#28;
+
+        $stack50#30 = $stack50#29;
+
+        $stack57#24[$stack56#26] = $stack50#30;
+
+        $stack59#31 = carry#22;
+
+        $stack59#32 = $stack59#31;
+
+        $stack58#33 = 32;
+
+        $stack58#34 = $stack58#33;
+
+        $stack60#35 = $stack59#32 >> $stack58#34;
+
+        $stack60#36 = $stack60#35;
+
+        carry#6 = $stack60#36;
+
+        i#5 = i#5 + 1;
+
+        goto label03;
+
+     label08:
+        $stack26 = i#5;
+
+        $stack25 = bigLen#2;
+
+        if $stack26 >= $stack25 goto label11;
+
+        $stack27 = carry#6;
+
+        $stack17 = big#1.<jdk.internal.math.FDBigInteger: int offset>;
+
+        if i#5 >= $stack17 goto label09;
+
+        $stack23#37 = 0L;
+
+        goto label10;
+
+     label09:
+        $stack20 = big#1.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack18 = big#1.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack19 = i#5 - $stack18;
+
+        $stack21 = $stack20[$stack19];
+
+        $stack22 = (long) $stack21;
+
+        $stack23#37 = $stack22 & 4294967295L;
+
+     label10:
+        $stack28 = $stack27 + $stack23#37;
+
+        carry#38 = $stack28;
+
+        $stack31 = r;
+
+        $stack30 = i#5;
+
+        $stack29 = carry#38;
+
+        $stack24 = (int) $stack29;
+
+        $stack31[$stack30] = $stack24;
+
+        $stack33 = carry#38;
+
+        $stack32 = 32;
+
+        $stack34 = $stack33 >> $stack32;
+
+        carry#6 = $stack34;
+
+        i#5 = i#5 + 1;
+
+        goto label08;
+
+     label11:
+        $stack15 = (int) carry#6;
+
+        r[bigLen#2] = $stack15;
+
+        $stack16 = new jdk.internal.math.FDBigInteger;
+
+        specialinvoke $stack16.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>(r, 0);
+
+        return $stack16;
+
+        nop;
+    }
+
+    private void multAddMe(int, int)
+    {
+        byte $stack19;
+        int[] $stack9, $stack17, $stack22, $stack24, $stack30;
+        bottom_type p, i;
+        long $stack8, v, $stack11, $stack12, $stack13, $stack14, $stack15, $stack26, $stack27, $stack28, p#1, p#2, p#4;
+        jdk.internal.math.FDBigInteger this, $stack31;
+        int iv, $stack10, addend, $stack16, $stack18, $stack20, $stack21, $stack23, $stack25, $stack29, $stack32, i#3;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        iv := @parameter0: int;
+
+        addend := @parameter1: int;
+
+        $stack8 = (long) iv;
+
+        v = $stack8 & 4294967295L;
+
+        $stack9 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack10 = $stack9[0];
+
+        $stack11 = (long) $stack10;
+
+        $stack12 = $stack11 & 4294967295L;
+
+        $stack15 = v * $stack12;
+
+        $stack13 = (long) addend;
+
+        $stack14 = $stack13 & 4294967295L;
+
+        p#1 = $stack15 + $stack14;
+
+        $stack17 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack16 = (int) p#1;
+
+        $stack17[0] = $stack16;
+
+        p#2 = p#1 >>> 32;
+
+        i#3 = 1;
+
+     label1:
+        $stack32 = i#3;
+
+        $stack31 = this;
+
+        $stack18 = $stack31.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack32 >= $stack18 goto label2;
+
+        $stack24 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack25 = $stack24[i#3];
+
+        $stack26 = (long) $stack25;
+
+        $stack27 = $stack26 & 4294967295L;
+
+        $stack28 = v * $stack27;
+
+        p#4 = p#2 + $stack28;
+
+        $stack30 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack29 = (int) p#4;
+
+        $stack30[i#3] = $stack29;
+
+        p#2 = p#4 >>> 32;
+
+        i#3 = i#3 + 1;
+
+        goto label1;
+
+     label2:
+        $stack19 = p#2 cmp 0L;
+
+        if $stack19 == 0 goto label3;
+
+        $stack22 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack20 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack21 = $stack20 + 1;
+
+        this.<jdk.internal.math.FDBigInteger: int nWords> = $stack21;
+
+        $stack23 = (int) p#2;
+
+        $stack22[$stack20] = $stack23;
+
+     label3:
+        return;
+
+        nop;
+    }
+
+    private long multDiffMe(long, jdk.internal.math.FDBigInteger)
+    {
+        byte $stack13, $stack36;
+        bottom_type diff, deltaSize, sd, td_1, sIndex, tIndex_1, tIndex_2, $stack18, $stack23, $stack33, $stack34;
+        long q, $stack25, $stack27, $stack28, $stack29, $stack30, $stack31, $stack40, $stack41, $stack42, $stack48, $stack50, $stack51, $stack52, $stack53, $stack54, diff#1, diff#7, diff#13, diff#21, $stack23#22, $stack23#23;
+        jdk.internal.math.FDBigInteger S, this, $stack37, $stack56, $stack33#17, $stack33#18;
+        int[] td_2, $stack38, sd#3, td_1#4, sd#9, tIndex_1#12;
+        int $stack14, $stack15, $stack16, $stack17, $stack19, $stack20, $stack21, $stack22, $stack24, $stack26, $stack32, $stack35, $stack39, $stack43, $stack44, $stack45, $stack46, $stack47, $stack49, $stack55, $stack57, deltaSize#2, sIndex#5, tIndex_1#6, deltaSize#8, td_1#10, sIndex#11, tIndex_2#14, $stack34#15, $stack34#16, $stack18#19, $stack18#20;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        q := @parameter0: long;
+
+        S := @parameter1: jdk.internal.math.FDBigInteger;
+
+        diff#1 = 0L;
+
+        $stack13 = q cmp 0L;
+
+        if $stack13 == 0 goto label8;
+
+        $stack15 = S.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack14 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        deltaSize#2 = $stack15 - $stack14;
+
+        if deltaSize#2 < 0 goto label3;
+
+        sd#3 = S.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        td_1#4 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        sIndex#5 = 0;
+
+        tIndex_1#6 = deltaSize#2;
+
+     label1:
+        $stack57 = sIndex#5;
+
+        $stack56 = S;
+
+        $stack46 = $stack56.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack57 >= $stack46 goto label2;
+
+        $stack47 = td_1#4[tIndex_1#6];
+
+        $stack48 = (long) $stack47;
+
+        $stack53 = $stack48 & 4294967295L;
+
+        $stack49 = sd#3[sIndex#5];
+
+        $stack50 = (long) $stack49;
+
+        $stack51 = $stack50 & 4294967295L;
+
+        $stack52 = q * $stack51;
+
+        $stack54 = $stack53 - $stack52;
+
+        diff#7 = diff#1 + $stack54;
+
+        $stack55 = (int) diff#7;
+
+        td_1#4[tIndex_1#6] = $stack55;
+
+        diff#1 = diff#7 >> 32;
+
+        sIndex#5 = sIndex#5 + 1;
+
+        tIndex_1#6 = tIndex_1#6 + 1;
+
+        goto label1;
+
+     label2:
+        goto label8;
+
+     label3:
+        deltaSize#8 = neg deltaSize#2;
+
+        $stack16 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack17 = $stack16 + deltaSize#8;
+
+        sd#9 = newarray (int)[$stack17];
+
+        td_1#10 = 0;
+
+        sIndex#11 = 0;
+
+        tIndex_1#12 = S.<jdk.internal.math.FDBigInteger: int[] data>;
+
+     label4:
+        $stack45 = sIndex#11;
+
+        $stack44 = deltaSize#8;
+
+        if $stack45 >= $stack44 goto label5;
+
+        $stack35 = S.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if td_1#10 >= $stack35 goto label5;
+
+        $stack39 = tIndex_1#12[td_1#10];
+
+        $stack40 = (long) $stack39;
+
+        $stack41 = $stack40 & 4294967295L;
+
+        $stack42 = q * $stack41;
+
+        diff#13 = diff#1 - $stack42;
+
+        $stack43 = (int) diff#13;
+
+        sd#9[sIndex#11] = $stack43;
+
+        diff#1 = diff#13 >> 32;
+
+        td_1#10 = td_1#10 + 1;
+
+        sIndex#11 = sIndex#11 + 1;
+
+        goto label4;
+
+     label5:
+        $stack36 = 0;
+
+        tIndex_2#14 = $stack36;
+
+        $stack37 = this;
+
+        $stack38 = $stack37.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        td_2 = $stack38;
+
+     label6:
+        $stack34#15 = td_1#10;
+
+        $stack34#16 = $stack34#15;
+
+        $stack33#17 = S;
+
+        $stack33#18 = $stack33#17;
+
+        $stack18#19 = $stack33#18.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack18#20 = $stack18#19;
+
+        if $stack34#16 >= $stack18#20 goto label7;
+
+        $stack24 = td_2[tIndex_2#14];
+
+        $stack25 = (long) $stack24;
+
+        $stack30 = $stack25 & 4294967295L;
+
+        $stack26 = tIndex_1#12[td_1#10];
+
+        $stack27 = (long) $stack26;
+
+        $stack28 = $stack27 & 4294967295L;
+
+        $stack29 = q * $stack28;
+
+        $stack31 = $stack30 - $stack29;
+
+        diff#21 = diff#1 + $stack31;
+
+        $stack32 = (int) diff#21;
+
+        sd#9[sIndex#11] = $stack32;
+
+        diff#1 = diff#21 >> 32;
+
+        td_1#10 = td_1#10 + 1;
+
+        tIndex_2#14 = tIndex_2#14 + 1;
+
+        sIndex#11 = sIndex#11 + 1;
+
+        goto label6;
+
+     label7:
+        $stack19 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack20 = $stack19 + deltaSize#8;
+
+        this.<jdk.internal.math.FDBigInteger: int nWords> = $stack20;
+
+        $stack21 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack22 = $stack21 - deltaSize#8;
+
+        this.<jdk.internal.math.FDBigInteger: int offset> = $stack22;
+
+        this.<jdk.internal.math.FDBigInteger: int[] data> = sd#9;
+
+     label8:
+        $stack23#22 = diff#1;
+
+        $stack23#23 = $stack23#22;
+
+        return $stack23#23;
+
+        nop;
+    }
+
+    private static int multAndCarryBy10(int[], int, int[])
+    {
+        long $stack10, $stack11, $stack12, product, carry#1;
+        bottom_type carry, i;
+        int[] src, dst;
+        int srcLen, $stack8, $stack9, $stack13, $stack14, $stack15, i#2;
+
+        src := @parameter0: int[];
+
+        srcLen := @parameter1: int;
+
+        dst := @parameter2: int[];
+
+        carry#1 = 0L;
+
+        i#2 = 0;
+
+     label1:
+        $stack15 = i#2;
+
+        $stack14 = srcLen;
+
+        if $stack15 >= $stack14 goto label2;
+
+        $stack9 = src[i#2];
+
+        $stack10 = (long) $stack9;
+
+        $stack11 = $stack10 & 4294967295L;
+
+        $stack12 = $stack11 * 10L;
+
+        product = $stack12 + carry#1;
+
+        $stack13 = (int) product;
+
+        dst[i#2] = $stack13;
+
+        carry#1 = product >>> 32;
+
+        i#2 = i#2 + 1;
+
+        goto label1;
+
+     label2:
+        $stack8 = (int) carry#1;
+
+        return $stack8;
+
+        nop;
+    }
+
+    private static void mult(int[], int, int, int[])
+    {
+        long $stack11, val, $stack14, $stack15, $stack16, product, carry#1;
+        bottom_type carry, i;
+        int[] dst, src;
+        int value, srcLen, $stack12, $stack13, $stack17, $stack18, $stack19, i#2;
+
+        src := @parameter0: int[];
+
+        srcLen := @parameter1: int;
+
+        value := @parameter2: int;
+
+        dst := @parameter3: int[];
+
+        $stack11 = (long) value;
+
+        val = $stack11 & 4294967295L;
+
+        carry#1 = 0L;
+
+        i#2 = 0;
+
+     label1:
+        $stack19 = i#2;
+
+        $stack18 = srcLen;
+
+        if $stack19 >= $stack18 goto label2;
+
+        $stack13 = src[i#2];
+
+        $stack14 = (long) $stack13;
+
+        $stack15 = $stack14 & 4294967295L;
+
+        $stack16 = $stack15 * val;
+
+        product = $stack16 + carry#1;
+
+        $stack17 = (int) product;
+
+        dst[i#2] = $stack17;
+
+        carry#1 = product >>> 32;
+
+        i#2 = i#2 + 1;
+
+        goto label1;
+
+     label2:
+        $stack12 = (int) carry#1;
+
+        dst[srcLen] = $stack12;
+
+        return;
+
+        nop;
+    }
+
+    private static void mult(int[], int, int, int, int[])
+    {
+        bottom_type v, carry, j, product;
+        int[] dst, src;
+        long $stack12, $stack14, $stack19, $stack21, $stack22, $stack23, $stack24, $stack25, $stack31, $stack32, $stack33, v#1, carry#2, product#4, v#5, carry#6, product#8;
+        int v0, srcLen, $stack13, v1, $stack15, $stack16, $stack17, $stack18, $stack20, $stack26, $stack27, $stack28, $stack29, $stack30, $stack34, $stack35, $stack36, j#3, j#7;
+
+        src := @parameter0: int[];
+
+        srcLen := @parameter1: int;
+
+        v0 := @parameter2: int;
+
+        v1 := @parameter3: int;
+
+        dst := @parameter4: int[];
+
+        $stack12 = (long) v0;
+
+        v#1 = $stack12 & 4294967295L;
+
+        carry#2 = 0L;
+
+        j#3 = 0;
+
+     label1:
+        $stack36 = j#3;
+
+        $stack35 = srcLen;
+
+        if $stack36 >= $stack35 goto label2;
+
+        $stack30 = src[j#3];
+
+        $stack31 = (long) $stack30;
+
+        $stack32 = $stack31 & 4294967295L;
+
+        $stack33 = v#1 * $stack32;
+
+        product#4 = $stack33 + carry#2;
+
+        $stack34 = (int) product#4;
+
+        dst[j#3] = $stack34;
+
+        carry#2 = product#4 >>> 32;
+
+        j#3 = j#3 + 1;
+
+        goto label1;
+
+     label2:
+        $stack13 = (int) carry#2;
+
+        dst[srcLen] = $stack13;
+
+        $stack14 = (long) v1;
+
+        v#5 = $stack14 & 4294967295L;
+
+        carry#6 = 0L;
+
+        j#7 = 0;
+
+     label3:
+        $stack29 = j#7;
+
+        $stack28 = srcLen;
+
+        if $stack29 >= $stack28 goto label4;
+
+        $stack17 = j#7 + 1;
+
+        $stack18 = dst[$stack17];
+
+        $stack19 = (long) $stack18;
+
+        $stack24 = $stack19 & 4294967295L;
+
+        $stack20 = src[j#7];
+
+        $stack21 = (long) $stack20;
+
+        $stack22 = $stack21 & 4294967295L;
+
+        $stack23 = v#5 * $stack22;
+
+        $stack25 = $stack24 + $stack23;
+
+        product#8 = $stack25 + carry#6;
+
+        $stack27 = j#7 + 1;
+
+        $stack26 = (int) product#8;
+
+        dst[$stack27] = $stack26;
+
+        carry#6 = product#8 >>> 32;
+
+        j#7 = j#7 + 1;
+
+        goto label3;
+
+     label4:
+        $stack16 = srcLen + 1;
+
+        $stack15 = (int) carry#6;
+
+        dst[$stack16] = $stack15;
+
+        return;
+
+        nop;
+    }
+
+    private static jdk.internal.math.FDBigInteger big5pow(int)
+    {
+        java.lang.AssertionError $stack7;
+        jdk.internal.math.FDBigInteger $stack2, $stack4;
+        short $stack5;
+        int p, $stack6;
+        boolean $stack1;
+        jdk.internal.math.FDBigInteger[] $stack3;
+
+        p := @parameter0: int;
+
+        $stack1 = <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled>;
+
+        if $stack1 != 0 goto label1;
+
+        if p >= 0 goto label1;
+
+        $stack7 = new java.lang.AssertionError;
+
+        specialinvoke $stack7.<java.lang.AssertionError: void <init>(int)>(p);
+
+        throw $stack7;
+
+     label1:
+        $stack6 = p;
+
+        $stack5 = 340;
+
+        if $stack6 >= $stack5 goto label2;
+
+        $stack3 = <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger[] POW_5_CACHE>;
+
+        $stack4 = $stack3[p];
+
+        return $stack4;
+
+     label2:
+        $stack2 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger big5powRec(int)>(p);
+
+        return $stack2;
+
+        nop;
+    }
+
+    private static jdk.internal.math.FDBigInteger big5powRec(int)
+    {
+        jdk.internal.math.FDBigInteger $stack4, bigq, $stack7, $stack8, $stack11, $stack13;
+        int[] $stack5, $stack9;
+        int p, q, r, $stack6, $stack10;
+        jdk.internal.math.FDBigInteger[] $stack12;
+
+        p := @parameter0: int;
+
+        if p >= 340 goto label1;
+
+        $stack12 = <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger[] POW_5_CACHE>;
+
+        $stack13 = $stack12[p];
+
+        return $stack13;
+
+     label1:
+        q = p >> 1;
+
+        r = p - q;
+
+        $stack4 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger big5powRec(int)>(q);
+
+        bigq = $stack4;
+
+        $stack5 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        $stack6 = lengthof $stack5;
+
+        if r >= $stack6 goto label2;
+
+        $stack9 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        $stack10 = $stack9[r];
+
+        $stack11 = virtualinvoke bigq.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger mult(int)>($stack10);
+
+        return $stack11;
+
+     label2:
+        $stack7 = staticinvoke <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger big5powRec(int)>(r);
+
+        $stack8 = virtualinvoke bigq.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger mult(jdk.internal.math.FDBigInteger)>($stack7);
+
+        return $stack8;
+
+        nop;
+    }
+
+    public java.lang.String toHexString()
+    {
+        byte $stack22, $b0, $b1;
+        bottom_type i, j;
+        int[] $stack15;
+        java.lang.StringBuilder $stack6, sb, $stack13, $stack19, $stack21, $u0;
+        jdk.internal.math.FDBigInteger this;
+        int $stack5, $stack7, $stack8, $stack9, $stack10, $stack11, $stack14, $stack16, $stack18, $stack20, $stack23, i#1, j#2, i#3, $i0, $i1;
+        java.lang.String $stack12, $stack17, subStr;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        $stack5 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack5 != 0 goto label1;
+
+        return "0";
+
+     label1:
+        $u0 = new java.lang.StringBuilder;
+
+        $stack6 = $u0;
+
+        $stack8 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack7 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack9 = $stack8 + $stack7;
+
+        $stack10 = $stack9 * 8;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>(int)>($stack10);
+
+        sb = $stack6;
+
+        $stack11 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        i#1 = $stack11 - 1;
+
+     label2:
+        $stack20 = i#1;
+
+        if $stack20 < 0 goto label5;
+
+        $stack15 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        $stack16 = $stack15[i#1];
+
+        $stack17 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($stack16);
+
+        subStr = $stack17;
+
+        $stack18 = virtualinvoke subStr.<java.lang.String: int length()>();
+
+        j#2 = $stack18;
+
+     label3:
+        $stack23 = j#2;
+
+        $stack22 = 8;
+
+        if $stack23 >= $stack22 goto label4;
+
+        $stack21 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(48);
+
+        j#2 = j#2 + 1;
+
+        goto label3;
+
+     label4:
+        $stack19 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(subStr);
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        i#1 = i#1 + $i0;
+
+        goto label2;
+
+     label5:
+        i#3 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+     label6:
+        $stack14 = i#3;
+
+        if $stack14 <= 0 goto label7;
+
+        $stack13 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("00000000");
+
+        $b1 = -1;
+
+        $i1 = (int) $b1;
+
+        i#3 = i#3 + $i1;
+
+        goto label6;
+
+     label7:
+        $stack12 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $stack12;
+
+        nop;
+    }
+
+    public java.math.BigInteger toBigInteger()
+    {
+        byte[] magnitude;
+        byte $stack16, $stack22, $stack28, $stack34;
+        bottom_type i;
+        int[] $stack12;
+        java.math.BigInteger $stack8, $stack11;
+        jdk.internal.math.FDBigInteger this, $stack36;
+        int $stack4, $stack5, $stack6, $stack7, $stack9, $stack10, w, $stack13, $stack14, $stack15, $stack17, $stack18, $stack19, $stack20, $stack21, $stack23, $stack24, $stack25, $stack26, $stack27, $stack29, $stack30, $stack31, $stack32, $stack33, $stack35, $stack37, i#1;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        $stack4 = this.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        $stack5 = $stack4 * 4;
+
+        $stack6 = $stack5 + 1;
+
+        magnitude = newarray (byte)[$stack6];
+
+        i#1 = 0;
+
+     label1:
+        $stack37 = i#1;
+
+        $stack36 = this;
+
+        $stack7 = $stack36.<jdk.internal.math.FDBigInteger: int nWords>;
+
+        if $stack37 >= $stack7 goto label2;
+
+        $stack12 = this.<jdk.internal.math.FDBigInteger: int[] data>;
+
+        w = $stack12[i#1];
+
+        $stack14 = lengthof magnitude;
+
+        $stack13 = 4 * i#1;
+
+        $stack15 = $stack14 - $stack13;
+
+        $stack17 = $stack15 - 1;
+
+        $stack16 = (byte) w;
+
+        magnitude[$stack17] = $stack16;
+
+        $stack19 = lengthof magnitude;
+
+        $stack18 = 4 * i#1;
+
+        $stack20 = $stack19 - $stack18;
+
+        $stack23 = $stack20 - 2;
+
+        $stack21 = w >> 8;
+
+        $stack22 = (byte) $stack21;
+
+        magnitude[$stack23] = $stack22;
+
+        $stack25 = lengthof magnitude;
+
+        $stack24 = 4 * i#1;
+
+        $stack26 = $stack25 - $stack24;
+
+        $stack29 = $stack26 - 3;
+
+        $stack27 = w >> 16;
+
+        $stack28 = (byte) $stack27;
+
+        magnitude[$stack29] = $stack28;
+
+        $stack31 = lengthof magnitude;
+
+        $stack30 = 4 * i#1;
+
+        $stack32 = $stack31 - $stack30;
+
+        $stack35 = $stack32 - 4;
+
+        $stack33 = w >> 24;
+
+        $stack34 = (byte) $stack33;
+
+        magnitude[$stack35] = $stack34;
+
+        i#1 = i#1 + 1;
+
+        goto label1;
+
+     label2:
+        $stack8 = new java.math.BigInteger;
+
+        specialinvoke $stack8.<java.math.BigInteger: void <init>(byte[])>(magnitude);
+
+        $stack9 = this.<jdk.internal.math.FDBigInteger: int offset>;
+
+        $stack10 = $stack9 * 32;
+
+        $stack11 = virtualinvoke $stack8.<java.math.BigInteger: java.math.BigInteger shiftLeft(int)>($stack10);
+
+        return $stack11;
+
+        nop;
+    }
+
+    public java.lang.String toString()
+    {
+        java.math.BigInteger $stack1;
+        java.lang.String $stack2;
+        jdk.internal.math.FDBigInteger this;
+
+        this := @this: jdk.internal.math.FDBigInteger;
+
+        $stack1 = virtualinvoke this.<jdk.internal.math.FDBigInteger: java.math.BigInteger toBigInteger()>();
+
+        $stack2 = virtualinvoke $stack1.<java.math.BigInteger: java.lang.String toString()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        byte $stack25, $stack26, $stack27, $stack28, $stack29, $stack30, $stack31, $stack32, $stack33, $stack35, $stack37, $stack39, $stack41, $stack43, $stack45, $stack47, $stack49, $stack51, $stack53, $stack54, $stack56, $stack58, $stack60, $stack62, $stack64, $stack66, $stack68, $stack70, $stack72, $stack74, $stack76, $stack78, $stack80, $stack82, $stack84, $stack86, $stack88, $stack90, $stack92, $stack94, $stack96, $stack98, $stack100, $stack102, $stack104, $stack106, $stack108, $stack110;
+        bottom_type i, $stack7, $stack8, pow5, $stack23, $stack24;
+        long $stack55, $stack57, $stack59, $stack61, $stack63, $stack65, $stack67, $stack69, $stack71, $stack73, $stack75, $stack77, $stack79, $stack81, $stack83, $stack85, $stack87, $stack89, $stack91, $stack93, $stack95, $stack97, $stack99, $stack101, $stack103, $stack105, $stack107;
+        jdk.internal.math.FDBigInteger $stack11, $stack13, $stack15, $stack18, pow5#9, pow5#10;
+        short $stack16, $stack34, $stack36, $stack38, $stack109;
+        int[] $stack4, $stack12, $stack19, $stack20, $stack7#5, $stack7#6;
+        boolean $stack3, $stack24#1;
+        jdk.internal.math.FDBigInteger[] $stack6, $stack10, $stack14, $stack22;
+        long[] $stack5;
+        int $stack9, $stack17, $stack21, $stack40, $stack42, $stack44, $stack46, $stack48, $stack50, $stack52, i#2, $stack23#3, $stack23#4, $stack8#7, $stack8#8;
+        java.lang.Class $stack2;
+
+        <jdk.internal.math.FDBigInteger: long LONG_MASK> = 4294967295L;
+
+        <jdk.internal.math.FDBigInteger: int MAX_FIVE_POW> = 340;
+
+        $stack2 = class "Ljdk/internal/math/FDBigInteger;";
+
+        $stack3 = virtualinvoke $stack2.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack3 != 0 goto label1;
+
+        $stack24#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack24#1 = 0;
+
+     label2:
+        <jdk.internal.math.FDBigInteger: boolean $assertionsDisabled> = $stack24#1;
+
+        $stack25 = 14;
+
+        $stack4 = newarray (int)[$stack25];
+
+        $stack27 = 0;
+
+        $stack26 = 1;
+
+        $stack4[$stack27] = $stack26;
+
+        $stack29 = 1;
+
+        $stack28 = 5;
+
+        $stack4[$stack29] = $stack28;
+
+        $stack31 = 2;
+
+        $stack30 = 25;
+
+        $stack4[$stack31] = $stack30;
+
+        $stack33 = 3;
+
+        $stack32 = 125;
+
+        $stack4[$stack33] = $stack32;
+
+        $stack35 = 4;
+
+        $stack34 = 625;
+
+        $stack4[$stack35] = $stack34;
+
+        $stack37 = 5;
+
+        $stack36 = 3125;
+
+        $stack4[$stack37] = $stack36;
+
+        $stack39 = 6;
+
+        $stack38 = 15625;
+
+        $stack4[$stack39] = $stack38;
+
+        $stack41 = 7;
+
+        $stack40 = 78125;
+
+        $stack4[$stack41] = $stack40;
+
+        $stack43 = 8;
+
+        $stack42 = 390625;
+
+        $stack4[$stack43] = $stack42;
+
+        $stack45 = 9;
+
+        $stack44 = 1953125;
+
+        $stack4[$stack45] = $stack44;
+
+        $stack47 = 10;
+
+        $stack46 = 9765625;
+
+        $stack4[$stack47] = $stack46;
+
+        $stack49 = 11;
+
+        $stack48 = 48828125;
+
+        $stack4[$stack49] = $stack48;
+
+        $stack51 = 12;
+
+        $stack50 = 244140625;
+
+        $stack4[$stack51] = $stack50;
+
+        $stack53 = 13;
+
+        $stack52 = 1220703125;
+
+        $stack4[$stack53] = $stack52;
+
+        <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW> = $stack4;
+
+        $stack54 = 27;
+
+        $stack5 = newarray (long)[$stack54];
+
+        $stack56 = 0;
+
+        $stack55 = 1L;
+
+        $stack5[$stack56] = $stack55;
+
+        $stack58 = 1;
+
+        $stack57 = 5L;
+
+        $stack5[$stack58] = $stack57;
+
+        $stack60 = 2;
+
+        $stack59 = 25L;
+
+        $stack5[$stack60] = $stack59;
+
+        $stack62 = 3;
+
+        $stack61 = 125L;
+
+        $stack5[$stack62] = $stack61;
+
+        $stack64 = 4;
+
+        $stack63 = 625L;
+
+        $stack5[$stack64] = $stack63;
+
+        $stack66 = 5;
+
+        $stack65 = 3125L;
+
+        $stack5[$stack66] = $stack65;
+
+        $stack68 = 6;
+
+        $stack67 = 15625L;
+
+        $stack5[$stack68] = $stack67;
+
+        $stack70 = 7;
+
+        $stack69 = 78125L;
+
+        $stack5[$stack70] = $stack69;
+
+        $stack72 = 8;
+
+        $stack71 = 390625L;
+
+        $stack5[$stack72] = $stack71;
+
+        $stack74 = 9;
+
+        $stack73 = 1953125L;
+
+        $stack5[$stack74] = $stack73;
+
+        $stack76 = 10;
+
+        $stack75 = 9765625L;
+
+        $stack5[$stack76] = $stack75;
+
+        $stack78 = 11;
+
+        $stack77 = 48828125L;
+
+        $stack5[$stack78] = $stack77;
+
+        $stack80 = 12;
+
+        $stack79 = 244140625L;
+
+        $stack5[$stack80] = $stack79;
+
+        $stack82 = 13;
+
+        $stack81 = 1220703125L;
+
+        $stack5[$stack82] = $stack81;
+
+        $stack84 = 14;
+
+        $stack83 = 6103515625L;
+
+        $stack5[$stack84] = $stack83;
+
+        $stack86 = 15;
+
+        $stack85 = 30517578125L;
+
+        $stack5[$stack86] = $stack85;
+
+        $stack88 = 16;
+
+        $stack87 = 152587890625L;
+
+        $stack5[$stack88] = $stack87;
+
+        $stack90 = 17;
+
+        $stack89 = 762939453125L;
+
+        $stack5[$stack90] = $stack89;
+
+        $stack92 = 18;
+
+        $stack91 = 3814697265625L;
+
+        $stack5[$stack92] = $stack91;
+
+        $stack94 = 19;
+
+        $stack93 = 19073486328125L;
+
+        $stack5[$stack94] = $stack93;
+
+        $stack96 = 20;
+
+        $stack95 = 95367431640625L;
+
+        $stack5[$stack96] = $stack95;
+
+        $stack98 = 21;
+
+        $stack97 = 476837158203125L;
+
+        $stack5[$stack98] = $stack97;
+
+        $stack100 = 22;
+
+        $stack99 = 2384185791015625L;
+
+        $stack5[$stack100] = $stack99;
+
+        $stack102 = 23;
+
+        $stack101 = 11920928955078125L;
+
+        $stack5[$stack102] = $stack101;
+
+        $stack104 = 24;
+
+        $stack103 = 59604644775390625L;
+
+        $stack5[$stack104] = $stack103;
+
+        $stack106 = 25;
+
+        $stack105 = 298023223876953125L;
+
+        $stack5[$stack106] = $stack105;
+
+        $stack108 = 26;
+
+        $stack107 = 1490116119384765625L;
+
+        $stack5[$stack108] = $stack107;
+
+        <jdk.internal.math.FDBigInteger: long[] LONG_5_POW> = $stack5;
+
+        $stack109 = 340;
+
+        $stack6 = newarray (jdk.internal.math.FDBigInteger)[$stack109];
+
+        <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger[] POW_5_CACHE> = $stack6;
+
+        $stack110 = 0;
+
+        i#2 = $stack110;
+
+     label3:
+        $stack23#3 = i#2;
+
+        $stack23#4 = $stack23#3;
+
+        $stack7#5 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        $stack7#6 = $stack7#5;
+
+        $stack8#7 = lengthof $stack7#6;
+
+        $stack8#8 = $stack8#7;
+
+        if $stack23#4 >= $stack8#8 goto label4;
+
+        $stack18 = new jdk.internal.math.FDBigInteger;
+
+        $stack19 = newarray (int)[1];
+
+        $stack20 = <jdk.internal.math.FDBigInteger: int[] SMALL_5_POW>;
+
+        $stack21 = $stack20[i#2];
+
+        $stack19[0] = $stack21;
+
+        specialinvoke $stack18.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack19, 0);
+
+        pow5#9 = $stack18;
+
+        virtualinvoke pow5#9.<jdk.internal.math.FDBigInteger: void makeImmutable()>();
+
+        $stack22 = <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger[] POW_5_CACHE>;
+
+        $stack22[i#2] = pow5#9;
+
+        i#2 = i#2 + 1;
+
+        goto label3;
+
+     label4:
+        $stack10 = <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger[] POW_5_CACHE>;
+
+        $stack9 = i#2 - 1;
+
+        pow5#10 = $stack10[$stack9];
+
+     label5:
+        $stack17 = i#2;
+
+        $stack16 = 340;
+
+        if $stack17 >= $stack16 goto label6;
+
+        $stack14 = <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger[] POW_5_CACHE>;
+
+        $stack15 = virtualinvoke pow5#10.<jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger mult(int)>(5);
+
+        pow5#10 = $stack15;
+
+        $stack14[i#2] = $stack15;
+
+        virtualinvoke pow5#10.<jdk.internal.math.FDBigInteger: void makeImmutable()>();
+
+        i#2 = i#2 + 1;
+
+        goto label5;
+
+     label6:
+        $stack11 = new jdk.internal.math.FDBigInteger;
+
+        $stack12 = newarray (int)[0];
+
+        specialinvoke $stack11.<jdk.internal.math.FDBigInteger: void <init>(int[],int)>($stack12, 0);
+
+        <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger ZERO> = $stack11;
+
+        $stack13 = <jdk.internal.math.FDBigInteger: jdk.internal.math.FDBigInteger ZERO>;
+
+        virtualinvoke $stack13.<jdk.internal.math.FDBigInteger: void makeImmutable()>();
+
+        return;
+    }
+}

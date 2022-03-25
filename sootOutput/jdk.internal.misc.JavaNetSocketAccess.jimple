@@ -1,0 +1,7 @@
+public interface  jdk.internal.misc.JavaNetSocketAccess extends java.lang.Object
+{
+
+    public abstract java.net.ServerSocket newServerSocket(java.net.SocketImpl);
+
+    public abstract java.net.SocketImpl newSocketImpl(java.lang.Class);
+}

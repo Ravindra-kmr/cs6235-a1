@@ -1,0 +1,44 @@
+class jdk.internal.jimage.ImageBufferCache$1 extends java.lang.ThreadLocal
+{
+
+    void <init>()
+    {
+        jdk.internal.jimage.ImageBufferCache$1 this;
+
+        this := @this: jdk.internal.jimage.ImageBufferCache$1;
+
+        specialinvoke this.<java.lang.ThreadLocal: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    protected jdk.internal.jimage.ImageBufferCache$BufferReference[] initialValue()
+    {
+        jdk.internal.jimage.ImageBufferCache$BufferReference[] $stack1;
+        jdk.internal.jimage.ImageBufferCache$1 this;
+
+        this := @this: jdk.internal.jimage.ImageBufferCache$1;
+
+        $stack1 = newarray (jdk.internal.jimage.ImageBufferCache$BufferReference)[4];
+
+        return $stack1;
+
+        nop;
+    }
+
+    protected volatile java.lang.Object initialValue()
+    {
+        jdk.internal.jimage.ImageBufferCache$BufferReference[] $stack1;
+        jdk.internal.jimage.ImageBufferCache$1 this;
+
+        this := @this: jdk.internal.jimage.ImageBufferCache$1;
+
+        $stack1 = virtualinvoke this.<jdk.internal.jimage.ImageBufferCache$1: jdk.internal.jimage.ImageBufferCache$BufferReference[] initialValue()>();
+
+        return $stack1;
+
+        nop;
+    }
+}

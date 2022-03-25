@@ -1,0 +1,40 @@
+public class jdk.internal.org.xml.sax.SAXNotRecognizedException extends jdk.internal.org.xml.sax.SAXException
+{
+    static final long serialVersionUID;
+
+    public void <init>()
+    {
+        jdk.internal.org.xml.sax.SAXNotRecognizedException this;
+
+        this := @this: jdk.internal.org.xml.sax.SAXNotRecognizedException;
+
+        specialinvoke this.<jdk.internal.org.xml.sax.SAXException: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        java.lang.String message;
+        jdk.internal.org.xml.sax.SAXNotRecognizedException this;
+
+        this := @this: jdk.internal.org.xml.sax.SAXNotRecognizedException;
+
+        message := @parameter0: java.lang.String;
+
+        specialinvoke this.<jdk.internal.org.xml.sax.SAXException: void <init>(java.lang.String)>(message);
+
+        return;
+
+        nop;
+    }
+
+    public static void <clinit>()
+    {
+        <jdk.internal.org.xml.sax.SAXNotRecognizedException: long serialVersionUID> = 5440506620509557213L;
+
+        return;
+    }
+}

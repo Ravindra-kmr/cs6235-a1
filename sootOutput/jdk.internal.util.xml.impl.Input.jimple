@@ -1,0 +1,77 @@
+public class jdk.internal.util.xml.impl.Input extends java.lang.Object
+{
+    public java.lang.String pubid;
+    public java.lang.String sysid;
+    public java.lang.String xmlenc;
+    public char xmlver;
+    public java.io.Reader src;
+    public char[] chars;
+    public int chLen;
+    public int chIdx;
+    public jdk.internal.util.xml.impl.Input next;
+
+    public void <init>(int)
+    {
+        int buffsize, $stack4;
+        char[] $stack2, $stack3;
+        jdk.internal.util.xml.impl.Input this;
+
+        this := @this: jdk.internal.util.xml.impl.Input;
+
+        buffsize := @parameter0: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack2 = newarray (char)[buffsize];
+
+        this.<jdk.internal.util.xml.impl.Input: char[] chars> = $stack2;
+
+        $stack3 = this.<jdk.internal.util.xml.impl.Input: char[] chars>;
+
+        $stack4 = lengthof $stack3;
+
+        this.<jdk.internal.util.xml.impl.Input: int chLen> = $stack4;
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(char[])
+    {
+        int $stack3;
+        char[] buff, $stack2;
+        jdk.internal.util.xml.impl.Input this;
+
+        this := @this: jdk.internal.util.xml.impl.Input;
+
+        buff := @parameter0: char[];
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<jdk.internal.util.xml.impl.Input: char[] chars> = buff;
+
+        $stack2 = this.<jdk.internal.util.xml.impl.Input: char[] chars>;
+
+        $stack3 = lengthof $stack2;
+
+        this.<jdk.internal.util.xml.impl.Input: int chLen> = $stack3;
+
+        return;
+
+        nop;
+    }
+
+    public void <init>()
+    {
+        jdk.internal.util.xml.impl.Input this;
+
+        this := @this: jdk.internal.util.xml.impl.Input;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+}

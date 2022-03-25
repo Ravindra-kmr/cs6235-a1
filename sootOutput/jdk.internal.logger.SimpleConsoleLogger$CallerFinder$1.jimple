@@ -1,0 +1,47 @@
+class jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1 extends java.lang.Object implements java.security.PrivilegedAction
+{
+
+    void <init>()
+    {
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1 this;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public java.lang.StackWalker run()
+    {
+        java.lang.StackWalker $stack2;
+        java.lang.StackWalker$Option $stack1;
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1 this;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1;
+
+        $stack1 = <java.lang.StackWalker$Option: java.lang.StackWalker$Option RETAIN_CLASS_REFERENCE>;
+
+        $stack2 = staticinvoke <java.lang.StackWalker: java.lang.StackWalker getInstance(java.lang.StackWalker$Option)>($stack1);
+
+        return $stack2;
+
+        nop;
+    }
+
+    public volatile java.lang.Object run()
+    {
+        java.lang.StackWalker $stack1;
+        jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1 this;
+
+        this := @this: jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1;
+
+        $stack1 = virtualinvoke this.<jdk.internal.logger.SimpleConsoleLogger$CallerFinder$1: java.lang.StackWalker run()>();
+
+        return $stack1;
+
+        nop;
+    }
+}

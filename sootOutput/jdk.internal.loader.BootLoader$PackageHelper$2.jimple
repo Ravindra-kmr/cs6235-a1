@@ -1,0 +1,160 @@
+class jdk.internal.loader.BootLoader$PackageHelper$2 extends java.lang.Object implements java.security.PrivilegedAction
+{
+    final java.lang.String val$location;
+
+    void <init>(java.lang.String)
+    {
+        java.lang.String l1;
+        jdk.internal.loader.BootLoader$PackageHelper$2 this;
+
+        this := @this: jdk.internal.loader.BootLoader$PackageHelper$2;
+
+        l1 := @parameter0: java.lang.String;
+
+        this.<jdk.internal.loader.BootLoader$PackageHelper$2: java.lang.String val$location> = l1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public java.util.jar.Manifest run()
+    {
+        java.util.jar.Manifest $stack12, $stack13, l4#3;
+        java.lang.Throwable $stack15, $stack16, $stack18, l5, $stack19, $stack20, l4#4, jis#5, l4#6, $stack17#7, $stack17#8;
+        java.lang.String[] $stack6;
+        bottom_type in, jis, l4, $stack17;
+        java.nio.file.OpenOption[] $stack9;
+        java.util.jar.JarInputStream $stack11, jis#2;
+        java.lang.String $stack7;
+        java.nio.file.Path $stack8, jar;
+        jdk.internal.loader.BootLoader$PackageHelper$2 this;
+        java.io.IOException $stack14, in#9;
+        java.io.InputStream $stack10, in#1;
+
+        this := @this: jdk.internal.loader.BootLoader$PackageHelper$2;
+
+        $stack7 = this.<jdk.internal.loader.BootLoader$PackageHelper$2: java.lang.String val$location>;
+
+        $stack6 = newarray (java.lang.String)[0];
+
+        $stack8 = staticinvoke <java.nio.file.Path: java.nio.file.Path of(java.lang.String,java.lang.String[])>($stack7, $stack6);
+
+        jar = $stack8;
+
+     label01:
+        $stack9 = newarray (java.nio.file.OpenOption)[0];
+
+        $stack10 = staticinvoke <java.nio.file.Files: java.io.InputStream newInputStream(java.nio.file.Path,java.nio.file.OpenOption[])>(jar, $stack9);
+
+        in#1 = $stack10;
+
+     label02:
+        $stack11 = new java.util.jar.JarInputStream;
+
+        specialinvoke $stack11.<java.util.jar.JarInputStream: void <init>(java.io.InputStream,boolean)>(in#1, 0);
+
+        jis#2 = $stack11;
+
+     label03:
+        $stack12 = virtualinvoke jis#2.<java.util.jar.JarInputStream: java.util.jar.Manifest getManifest()>();
+
+        l4#3 = $stack12;
+
+     label04:
+        virtualinvoke jis#2.<java.util.jar.JarInputStream: void close()>();
+
+     label05:
+        if in#1 == null goto label06;
+
+        virtualinvoke in#1.<java.io.InputStream: void close()>();
+
+     label06:
+        $stack13 = l4#3;
+
+        return $stack13;
+
+     label07:
+        $stack19 := @caughtexception;
+
+        l4#4 = $stack19;
+
+     label08:
+        virtualinvoke jis#2.<java.util.jar.JarInputStream: void close()>();
+
+     label09:
+        goto label11;
+
+     label10:
+        $stack18 := @caughtexception;
+
+        l5 = $stack18;
+
+        virtualinvoke l4#4.<java.lang.Throwable: void addSuppressed(java.lang.Throwable)>(l5);
+
+     label11:
+        $stack20 = l4#4;
+
+        throw $stack20;
+
+     label12:
+        $stack16 := @caughtexception;
+
+        jis#5 = $stack16;
+
+        if in#1 == null goto label16;
+
+     label13:
+        virtualinvoke in#1.<java.io.InputStream: void close()>();
+
+     label14:
+        goto label16;
+
+     label15:
+        $stack15 := @caughtexception;
+
+        l4#6 = $stack15;
+
+        virtualinvoke jis#5.<java.lang.Throwable: void addSuppressed(java.lang.Throwable)>(l4#6);
+
+     label16:
+        $stack17#7 = jis#5;
+
+        $stack17#8 = $stack17#7;
+
+        throw $stack17#8;
+
+     label17:
+        $stack14 := @caughtexception;
+
+        in#9 = $stack14;
+
+        return null;
+
+        nop;
+
+        catch java.lang.Throwable from label03 to label04 with label07;
+        catch java.lang.Throwable from label08 to label09 with label10;
+        catch java.lang.Throwable from label02 to label05 with label12;
+        catch java.lang.Throwable from label07 to label12 with label12;
+        catch java.lang.Throwable from label13 to label14 with label15;
+        catch java.io.IOException from label01 to label06 with label17;
+        catch java.io.IOException from label07 to label17 with label17;
+    }
+
+    public volatile java.lang.Object run()
+    {
+        java.util.jar.Manifest $stack1;
+        jdk.internal.loader.BootLoader$PackageHelper$2 this;
+
+        this := @this: jdk.internal.loader.BootLoader$PackageHelper$2;
+
+        $stack1 = virtualinvoke this.<jdk.internal.loader.BootLoader$PackageHelper$2: java.util.jar.Manifest run()>();
+
+        return $stack1;
+
+        nop;
+    }
+}

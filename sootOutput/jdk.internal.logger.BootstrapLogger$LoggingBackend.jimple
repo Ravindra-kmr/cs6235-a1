@@ -1,0 +1,116 @@
+final enum class jdk.internal.logger.BootstrapLogger$LoggingBackend extends java.lang.Enum
+{
+    public static final enum jdk.internal.logger.BootstrapLogger$LoggingBackend NONE;
+    public static final enum jdk.internal.logger.BootstrapLogger$LoggingBackend JUL_DEFAULT;
+    public static final enum jdk.internal.logger.BootstrapLogger$LoggingBackend JUL_WITH_CONFIG;
+    public static final enum jdk.internal.logger.BootstrapLogger$LoggingBackend CUSTOM;
+    final boolean useLoggerFinder;
+    private static final jdk.internal.logger.BootstrapLogger$LoggingBackend[] $VALUES;
+
+    public static jdk.internal.logger.BootstrapLogger$LoggingBackend[] values()
+    {
+        java.lang.Object $stack1;
+        jdk.internal.logger.BootstrapLogger$LoggingBackend[] $stack0, $stack2;
+
+        $stack0 = <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend[] $VALUES>;
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Object: java.lang.Object clone()>();
+
+        $stack2 = (jdk.internal.logger.BootstrapLogger$LoggingBackend[]) $stack1;
+
+        return $stack2;
+    }
+
+    public static jdk.internal.logger.BootstrapLogger$LoggingBackend valueOf(java.lang.String)
+    {
+        java.lang.String name;
+        java.lang.Enum $stack1;
+        jdk.internal.logger.BootstrapLogger$LoggingBackend $stack2;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Ljdk/internal/logger/BootstrapLogger$LoggingBackend;", name);
+
+        $stack2 = (jdk.internal.logger.BootstrapLogger$LoggingBackend) $stack1;
+
+        return $stack2;
+
+        nop;
+    }
+
+    private void <init>(java.lang.String, int, boolean)
+    {
+        int l2;
+        java.lang.String l1;
+        jdk.internal.logger.BootstrapLogger$LoggingBackend this;
+        boolean useLoggerFinder;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$LoggingBackend;
+
+        l1 := @parameter0: java.lang.String;
+
+        l2 := @parameter1: int;
+
+        useLoggerFinder := @parameter2: boolean;
+
+        specialinvoke this.<java.lang.Enum: void <init>(java.lang.String,int)>(l1, l2);
+
+        this.<jdk.internal.logger.BootstrapLogger$LoggingBackend: boolean useLoggerFinder> = useLoggerFinder;
+
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.logger.BootstrapLogger$LoggingBackend $stack0, $stack1, $stack2, $stack3, $stack5, $stack6, $stack7, $stack8;
+        jdk.internal.logger.BootstrapLogger$LoggingBackend[] $stack4;
+
+        $stack0 = new jdk.internal.logger.BootstrapLogger$LoggingBackend;
+
+        specialinvoke $stack0.<jdk.internal.logger.BootstrapLogger$LoggingBackend: void <init>(java.lang.String,int,boolean)>("NONE", 0, 1);
+
+        <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend NONE> = $stack0;
+
+        $stack1 = new jdk.internal.logger.BootstrapLogger$LoggingBackend;
+
+        specialinvoke $stack1.<jdk.internal.logger.BootstrapLogger$LoggingBackend: void <init>(java.lang.String,int,boolean)>("JUL_DEFAULT", 1, 0);
+
+        <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend JUL_DEFAULT> = $stack1;
+
+        $stack2 = new jdk.internal.logger.BootstrapLogger$LoggingBackend;
+
+        specialinvoke $stack2.<jdk.internal.logger.BootstrapLogger$LoggingBackend: void <init>(java.lang.String,int,boolean)>("JUL_WITH_CONFIG", 2, 1);
+
+        <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend JUL_WITH_CONFIG> = $stack2;
+
+        $stack3 = new jdk.internal.logger.BootstrapLogger$LoggingBackend;
+
+        specialinvoke $stack3.<jdk.internal.logger.BootstrapLogger$LoggingBackend: void <init>(java.lang.String,int,boolean)>("CUSTOM", 3, 1);
+
+        <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend CUSTOM> = $stack3;
+
+        $stack4 = newarray (jdk.internal.logger.BootstrapLogger$LoggingBackend)[4];
+
+        $stack5 = <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend NONE>;
+
+        $stack4[0] = $stack5;
+
+        $stack6 = <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend JUL_DEFAULT>;
+
+        $stack4[1] = $stack6;
+
+        $stack7 = <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend JUL_WITH_CONFIG>;
+
+        $stack4[2] = $stack7;
+
+        $stack8 = <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend CUSTOM>;
+
+        $stack4[3] = $stack8;
+
+        <jdk.internal.logger.BootstrapLogger$LoggingBackend: jdk.internal.logger.BootstrapLogger$LoggingBackend[] $VALUES> = $stack4;
+
+        return;
+    }
+}

@@ -1,0 +1,110 @@
+public final enum class jdk.internal.math.FormattedFloatingDecimal$Form extends java.lang.Enum
+{
+    public static final enum jdk.internal.math.FormattedFloatingDecimal$Form SCIENTIFIC;
+    public static final enum jdk.internal.math.FormattedFloatingDecimal$Form COMPATIBLE;
+    public static final enum jdk.internal.math.FormattedFloatingDecimal$Form DECIMAL_FLOAT;
+    public static final enum jdk.internal.math.FormattedFloatingDecimal$Form GENERAL;
+    private static final jdk.internal.math.FormattedFloatingDecimal$Form[] $VALUES;
+
+    public static jdk.internal.math.FormattedFloatingDecimal$Form[] values()
+    {
+        jdk.internal.math.FormattedFloatingDecimal$Form[] $stack0, $stack2;
+        java.lang.Object $stack1;
+
+        $stack0 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form[] $VALUES>;
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Object: java.lang.Object clone()>();
+
+        $stack2 = (jdk.internal.math.FormattedFloatingDecimal$Form[]) $stack1;
+
+        return $stack2;
+    }
+
+    public static jdk.internal.math.FormattedFloatingDecimal$Form valueOf(java.lang.String)
+    {
+        java.lang.String name;
+        jdk.internal.math.FormattedFloatingDecimal$Form $stack2;
+        java.lang.Enum $stack1;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Ljdk/internal/math/FormattedFloatingDecimal$Form;", name);
+
+        $stack2 = (jdk.internal.math.FormattedFloatingDecimal$Form) $stack1;
+
+        return $stack2;
+
+        nop;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        int l2;
+        jdk.internal.math.FormattedFloatingDecimal$Form this;
+        java.lang.String l1;
+
+        this := @this: jdk.internal.math.FormattedFloatingDecimal$Form;
+
+        l1 := @parameter0: java.lang.String;
+
+        l2 := @parameter1: int;
+
+        specialinvoke this.<java.lang.Enum: void <init>(java.lang.String,int)>(l1, l2);
+
+        return;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        jdk.internal.math.FormattedFloatingDecimal$Form $stack0, $stack1, $stack2, $stack3, $stack5, $stack6, $stack7, $stack8;
+        jdk.internal.math.FormattedFloatingDecimal$Form[] $stack4;
+
+        $stack0 = new jdk.internal.math.FormattedFloatingDecimal$Form;
+
+        specialinvoke $stack0.<jdk.internal.math.FormattedFloatingDecimal$Form: void <init>(java.lang.String,int)>("SCIENTIFIC", 0);
+
+        <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form SCIENTIFIC> = $stack0;
+
+        $stack1 = new jdk.internal.math.FormattedFloatingDecimal$Form;
+
+        specialinvoke $stack1.<jdk.internal.math.FormattedFloatingDecimal$Form: void <init>(java.lang.String,int)>("COMPATIBLE", 1);
+
+        <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form COMPATIBLE> = $stack1;
+
+        $stack2 = new jdk.internal.math.FormattedFloatingDecimal$Form;
+
+        specialinvoke $stack2.<jdk.internal.math.FormattedFloatingDecimal$Form: void <init>(java.lang.String,int)>("DECIMAL_FLOAT", 2);
+
+        <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form DECIMAL_FLOAT> = $stack2;
+
+        $stack3 = new jdk.internal.math.FormattedFloatingDecimal$Form;
+
+        specialinvoke $stack3.<jdk.internal.math.FormattedFloatingDecimal$Form: void <init>(java.lang.String,int)>("GENERAL", 3);
+
+        <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form GENERAL> = $stack3;
+
+        $stack4 = newarray (jdk.internal.math.FormattedFloatingDecimal$Form)[4];
+
+        $stack5 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form SCIENTIFIC>;
+
+        $stack4[0] = $stack5;
+
+        $stack6 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form COMPATIBLE>;
+
+        $stack4[1] = $stack6;
+
+        $stack7 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form DECIMAL_FLOAT>;
+
+        $stack4[2] = $stack7;
+
+        $stack8 = <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form GENERAL>;
+
+        $stack4[3] = $stack8;
+
+        <jdk.internal.math.FormattedFloatingDecimal$Form: jdk.internal.math.FormattedFloatingDecimal$Form[] $VALUES> = $stack4;
+
+        return;
+    }
+}

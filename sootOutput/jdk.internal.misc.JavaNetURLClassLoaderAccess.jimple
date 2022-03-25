@@ -1,0 +1,5 @@
+public interface  jdk.internal.misc.JavaNetURLClassLoaderAccess extends java.lang.Object
+{
+
+    public abstract java.security.AccessControlContext getAccessControlContext(java.net.URLClassLoader);
+}

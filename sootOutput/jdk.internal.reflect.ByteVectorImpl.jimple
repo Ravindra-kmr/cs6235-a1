@@ -1,0 +1,297 @@
+class jdk.internal.reflect.ByteVectorImpl extends java.lang.Object implements jdk.internal.reflect.ByteVector
+{
+    private byte[] data;
+    private int pos;
+
+    public void <init>()
+    {
+        jdk.internal.reflect.ByteVectorImpl this;
+
+        this := @this: jdk.internal.reflect.ByteVectorImpl;
+
+        specialinvoke this.<jdk.internal.reflect.ByteVectorImpl: void <init>(int)>(100);
+
+        return;
+
+        nop;
+    }
+
+    public void <init>(int)
+    {
+        byte[] $stack2;
+        jdk.internal.reflect.ByteVectorImpl this;
+        byte $b0;
+        int sz, $i0;
+
+        this := @this: jdk.internal.reflect.ByteVectorImpl;
+
+        sz := @parameter0: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack2 = newarray (byte)[sz];
+
+        this.<jdk.internal.reflect.ByteVectorImpl: byte[] data> = $stack2;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        this.<jdk.internal.reflect.ByteVectorImpl: int pos> = $i0;
+
+        return;
+
+        nop;
+    }
+
+    public int getLength()
+    {
+        int $stack1, $stack2;
+        jdk.internal.reflect.ByteVectorImpl this;
+
+        this := @this: jdk.internal.reflect.ByteVectorImpl;
+
+        $stack1 = this.<jdk.internal.reflect.ByteVectorImpl: int pos>;
+
+        $stack2 = $stack1 + 1;
+
+        return $stack2;
+
+        nop;
+    }
+
+    public byte get(int)
+    {
+        byte[] $stack2, $stack4;
+        jdk.internal.reflect.ByteVectorImpl this, $stack6;
+        byte $stack5;
+        int index, $stack3, $stack7;
+
+        this := @this: jdk.internal.reflect.ByteVectorImpl;
+
+        index := @parameter0: int;
+
+        $stack2 = this.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack3 = lengthof $stack2;
+
+        if index < $stack3 goto label1;
+
+        virtualinvoke this.<jdk.internal.reflect.ByteVectorImpl: void resize(int)>(index);
+
+        this.<jdk.internal.reflect.ByteVectorImpl: int pos> = index;
+
+     label1:
+        $stack6 = this;
+
+        $stack4 = $stack6.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack7 = index;
+
+        $stack5 = $stack4[$stack7];
+
+        return $stack5;
+
+        nop;
+    }
+
+    public void put(int, byte)
+    {
+        byte[] $stack3, $stack5;
+        jdk.internal.reflect.ByteVectorImpl this, $stack6;
+        byte value, $stack7;
+        int index, $stack4, $stack8;
+
+        this := @this: jdk.internal.reflect.ByteVectorImpl;
+
+        index := @parameter0: int;
+
+        value := @parameter1: byte;
+
+        $stack3 = this.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack4 = lengthof $stack3;
+
+        if index < $stack4 goto label1;
+
+        virtualinvoke this.<jdk.internal.reflect.ByteVectorImpl: void resize(int)>(index);
+
+        this.<jdk.internal.reflect.ByteVectorImpl: int pos> = index;
+
+     label1:
+        $stack6 = this;
+
+        $stack5 = $stack6.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack8 = index;
+
+        $stack7 = value;
+
+        $stack5[$stack8] = $stack7;
+
+        return;
+
+        nop;
+    }
+
+    public void add(byte)
+    {
+        byte[] $stack4, $stack7;
+        jdk.internal.reflect.ByteVectorImpl this, $stack9, $stack10;
+        byte value, $stack11;
+        int $stack2, $stack3, $stack5, $stack6, $stack8;
+
+        this := @this: jdk.internal.reflect.ByteVectorImpl;
+
+        value := @parameter0: byte;
+
+        $stack2 = this.<jdk.internal.reflect.ByteVectorImpl: int pos>;
+
+        $stack3 = $stack2 + 1;
+
+        this.<jdk.internal.reflect.ByteVectorImpl: int pos> = $stack3;
+
+        $stack4 = this.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack5 = lengthof $stack4;
+
+        if $stack3 < $stack5 goto label1;
+
+        $stack8 = this.<jdk.internal.reflect.ByteVectorImpl: int pos>;
+
+        virtualinvoke this.<jdk.internal.reflect.ByteVectorImpl: void resize(int)>($stack8);
+
+     label1:
+        $stack9 = this;
+
+        $stack7 = $stack9.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack10 = this;
+
+        $stack6 = $stack10.<jdk.internal.reflect.ByteVectorImpl: int pos>;
+
+        $stack11 = value;
+
+        $stack7[$stack6] = $stack11;
+
+        return;
+
+        nop;
+    }
+
+    public void trim()
+    {
+        byte[] $stack2, newData, $stack10;
+        jdk.internal.reflect.ByteVectorImpl this;
+        int $stack3, $stack4, $stack5, $stack6, $stack7, $stack8, $stack9;
+
+        this := @this: jdk.internal.reflect.ByteVectorImpl;
+
+        $stack5 = this.<jdk.internal.reflect.ByteVectorImpl: int pos>;
+
+        $stack2 = this.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack3 = lengthof $stack2;
+
+        $stack4 = $stack3 - 1;
+
+        if $stack5 == $stack4 goto label1;
+
+        $stack6 = this.<jdk.internal.reflect.ByteVectorImpl: int pos>;
+
+        $stack7 = $stack6 + 1;
+
+        newData = newarray (byte)[$stack7];
+
+        $stack10 = this.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack8 = this.<jdk.internal.reflect.ByteVectorImpl: int pos>;
+
+        $stack9 = $stack8 + 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($stack10, 0, newData, 0, $stack9);
+
+        this.<jdk.internal.reflect.ByteVectorImpl: byte[] data> = newData;
+
+     label1:
+        return;
+
+        nop;
+    }
+
+    public byte[] getData()
+    {
+        byte[] $stack1;
+        jdk.internal.reflect.ByteVectorImpl this;
+
+        this := @this: jdk.internal.reflect.ByteVectorImpl;
+
+        $stack1 = this.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        return $stack1;
+
+        nop;
+    }
+
+    private void resize(int)
+    {
+        byte[] $stack3, newData, $stack6, $stack8, $stack9, $stack12, $stack16, $stack18;
+        jdk.internal.reflect.ByteVectorImpl this, $stack13, $stack14, $stack19;
+        byte $stack15, $stack17;
+        bottom_type minSize;
+        int $stack4, $stack5, $stack7, $stack10, $stack11, minSize#1;
+
+        this := @this: jdk.internal.reflect.ByteVectorImpl;
+
+        minSize#1 := @parameter0: int;
+
+        $stack3 = this.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack4 = lengthof $stack3;
+
+        $stack5 = 2 * $stack4;
+
+        if minSize#1 > $stack5 goto label1;
+
+        $stack9 = this.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack10 = lengthof $stack9;
+
+        minSize#1 = 2 * $stack10;
+
+     label1:
+        $stack11 = minSize#1;
+
+        $stack12 = newarray (byte)[$stack11];
+
+        newData = $stack12;
+
+        $stack13 = this;
+
+        $stack8 = $stack13.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack15 = 0;
+
+        $stack16 = newData;
+
+        $stack17 = 0;
+
+        $stack14 = this;
+
+        $stack6 = $stack14.<jdk.internal.reflect.ByteVectorImpl: byte[] data>;
+
+        $stack7 = lengthof $stack6;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($stack8, $stack15, $stack16, $stack17, $stack7);
+
+        $stack19 = this;
+
+        $stack18 = newData;
+
+        $stack19.<jdk.internal.reflect.ByteVectorImpl: byte[] data> = $stack18;
+
+        return;
+
+        nop;
+    }
+}

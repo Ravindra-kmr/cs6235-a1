@@ -1,0 +1,613 @@
+class jdk.internal.logger.BootstrapLogger$BootstrapExecutors extends java.lang.Object implements java.util.concurrent.ThreadFactory
+{
+    static final long KEEP_EXECUTOR_ALIVE_SECONDS;
+    private static volatile java.lang.ref.WeakReference executorRef;
+    static jdk.internal.logger.BootstrapLogger$LogEvent head;
+    static jdk.internal.logger.BootstrapLogger$LogEvent tail;
+
+    private void <init>()
+    {
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors this;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$BootstrapExecutors;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    private static java.util.concurrent.ExecutorService getExecutor()
+    {
+        java.lang.Throwable $stack23, l3;
+        java.util.concurrent.ThreadPoolExecutor $stack11;
+        long $stack15;
+        byte $stack13, $stack14;
+        bottom_type ref, executor, $stack19, $stack21;
+        java.lang.ref.WeakReference $stack6, $stack7, ref#1, ref#4;
+        java.util.concurrent.ExecutorService $stack10, $stack18, $stack20, $stack22, $stack21#2, executor#3, $stack19#5, executor#6;
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors $stack17;
+        java.util.concurrent.LinkedBlockingQueue $stack12;
+        java.util.concurrent.TimeUnit $stack16;
+        java.lang.Object $stack4, $stack5, $stack8;
+        java.lang.Class l2, $stack9, $stack24;
+
+        ref#1 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.lang.ref.WeakReference executorRef>;
+
+        if ref#1 != null goto label01;
+
+        $stack21#2 = null;
+
+        goto label02;
+
+     label01:
+        $stack4 = virtualinvoke ref#1.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $stack21#2 = (java.util.concurrent.ExecutorService) $stack4;
+
+     label02:
+        executor#3 = $stack21#2;
+
+        $stack22 = executor#3;
+
+        if $stack22 == null goto label03;
+
+        return executor#3;
+
+     label03:
+        l2 = class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+        entermonitor class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+     label04:
+        ref#4 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.lang.ref.WeakReference executorRef>;
+
+        if ref#4 != null goto label05;
+
+        $stack19#5 = null;
+
+        goto label06;
+
+     label05:
+        $stack5 = virtualinvoke ref#4.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $stack19#5 = (java.util.concurrent.ExecutorService) $stack5;
+
+     label06:
+        executor#6 = $stack19#5;
+
+        $stack20 = executor#6;
+
+        if $stack20 != null goto label07;
+
+        $stack11 = new java.util.concurrent.ThreadPoolExecutor;
+
+        $stack13 = 0;
+
+        $stack14 = 1;
+
+        $stack15 = 30L;
+
+        $stack16 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $stack12 = new java.util.concurrent.LinkedBlockingQueue;
+
+        specialinvoke $stack12.<java.util.concurrent.LinkedBlockingQueue: void <init>()>();
+
+        $stack17 = new jdk.internal.logger.BootstrapLogger$BootstrapExecutors;
+
+        specialinvoke $stack17.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors: void <init>()>();
+
+        specialinvoke $stack11.<java.util.concurrent.ThreadPoolExecutor: void <init>(int,int,long,java.util.concurrent.TimeUnit,java.util.concurrent.BlockingQueue,java.util.concurrent.ThreadFactory)>($stack13, $stack14, $stack15, $stack16, $stack12, $stack17);
+
+        executor#6 = $stack11;
+
+     label07:
+        $stack6 = new java.lang.ref.WeakReference;
+
+        $stack18 = executor#6;
+
+        specialinvoke $stack6.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($stack18);
+
+        <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.lang.ref.WeakReference executorRef> = $stack6;
+
+        $stack7 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.lang.ref.WeakReference executorRef>;
+
+        $stack8 = virtualinvoke $stack7.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $stack10 = (java.util.concurrent.ExecutorService) $stack8;
+
+        $stack9 = l2;
+
+        exitmonitor $stack9;
+
+     label08:
+        return $stack10;
+
+     label09:
+        $stack23 := @caughtexception;
+
+        l3 = $stack23;
+
+        $stack24 = l2;
+
+        exitmonitor $stack24;
+
+     label10:
+        throw l3;
+
+        nop;
+
+        catch java.lang.Throwable from label04 to label08 with label09;
+        catch java.lang.Throwable from label09 to label10 with label09;
+    }
+
+    public java.lang.Thread newThread(java.lang.Runnable)
+    {
+        java.security.Permission[] $stack6;
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors this;
+        java.lang.Runnable r;
+        jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1 $stack5;
+        java.lang.Thread thread;
+        java.lang.RuntimePermission $stack7;
+        java.lang.Object $stack10;
+        java.util.concurrent.ExecutorService $stack4, owner;
+
+        this := @this: jdk.internal.logger.BootstrapLogger$BootstrapExecutors;
+
+        r := @parameter0: java.lang.Runnable;
+
+        $stack4 = staticinvoke <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.util.concurrent.ExecutorService getExecutor()>();
+
+        owner = $stack4;
+
+        $stack5 = new jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1;
+
+        specialinvoke $stack5.<jdk.internal.logger.BootstrapLogger$BootstrapExecutors$1: void <init>(jdk.internal.logger.BootstrapLogger$BootstrapExecutors,java.util.concurrent.ExecutorService,java.lang.Runnable)>(this, owner, r);
+
+        $stack6 = newarray (java.security.Permission)[1];
+
+        $stack7 = new java.lang.RuntimePermission;
+
+        specialinvoke $stack7.<java.lang.RuntimePermission: void <init>(java.lang.String)>("enableContextClassLoaderOverride");
+
+        $stack6[0] = $stack7;
+
+        $stack10 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedAction,java.security.AccessControlContext,java.security.Permission[])>($stack5, null, $stack6);
+
+        thread = (java.lang.Thread) $stack10;
+
+        virtualinvoke thread.<java.lang.Thread: void setDaemon(boolean)>(1);
+
+        return thread;
+    }
+
+    static void submit(java.lang.Runnable)
+    {
+        java.lang.Runnable r;
+        java.util.concurrent.ExecutorService $stack1;
+
+        r := @parameter0: java.lang.Runnable;
+
+        $stack1 = staticinvoke <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.util.concurrent.ExecutorService getExecutor()>();
+
+        interfaceinvoke $stack1.<java.util.concurrent.ExecutorService: void execute(java.lang.Runnable)>(r);
+
+        return;
+
+        nop;
+    }
+
+    static void join(java.lang.Runnable)
+    {
+        java.util.concurrent.Future $stack3;
+        java.lang.Object $stack4;
+        java.lang.RuntimeException $stack6;
+        java.lang.Runnable r;
+        java.util.concurrent.ExecutorService $stack2;
+        java.lang.Exception $stack5, ex;
+
+        r := @parameter0: java.lang.Runnable;
+
+     label1:
+        $stack2 = staticinvoke <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.util.concurrent.ExecutorService getExecutor()>();
+
+        $stack3 = interfaceinvoke $stack2.<java.util.concurrent.ExecutorService: java.util.concurrent.Future submit(java.lang.Runnable)>(r);
+
+        $stack4 = interfaceinvoke $stack3.<java.util.concurrent.Future: java.lang.Object get()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $stack5 := @caughtexception;
+
+        ex = $stack5;
+
+        $stack6 = new java.lang.RuntimeException;
+
+        specialinvoke $stack6.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>(ex);
+
+        throw $stack6;
+
+     label4:
+        return;
+
+        nop;
+
+        catch java.lang.InterruptedException from label1 to label2 with label3;
+        catch java.util.concurrent.ExecutionException from label1 to label2 with label3;
+    }
+
+    static void awaitPendingTasks()
+    {
+        java.lang.Throwable $stack12, l3;
+        java.lang.Runnable $stack5;
+        bottom_type ref, executor, $stack9, $stack10;
+        java.lang.ref.WeakReference $stack11, ref#1, ref#4;
+        java.util.concurrent.ExecutorService $stack8, $stack10#2, executor#3, $stack9#5;
+        java.lang.Object $stack4, $stack6;
+        java.lang.Class l2, $stack7, $stack13;
+
+        ref#1 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.lang.ref.WeakReference executorRef>;
+
+        if ref#1 != null goto label01;
+
+        $stack10#2 = null;
+
+        goto label02;
+
+     label01:
+        $stack4 = virtualinvoke ref#1.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $stack10#2 = (java.util.concurrent.ExecutorService) $stack4;
+
+     label02:
+        executor#3 = $stack10#2;
+
+        $stack11 = ref#1;
+
+        if $stack11 != null goto label09;
+
+        l2 = class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+        entermonitor class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+     label03:
+        ref#4 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.lang.ref.WeakReference executorRef>;
+
+        if ref#4 != null goto label04;
+
+        $stack9#5 = null;
+
+        goto label05;
+
+     label04:
+        $stack6 = virtualinvoke ref#4.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $stack9#5 = (java.util.concurrent.ExecutorService) $stack6;
+
+     label05:
+        executor#3 = $stack9#5;
+
+        $stack7 = l2;
+
+        exitmonitor $stack7;
+
+     label06:
+        goto label09;
+
+     label07:
+        $stack12 := @caughtexception;
+
+        l3 = $stack12;
+
+        $stack13 = l2;
+
+        exitmonitor $stack13;
+
+     label08:
+        throw l3;
+
+     label09:
+        $stack8 = executor#3;
+
+        if $stack8 == null goto label10;
+
+        $stack5 = staticinvoke <jdk.internal.logger.BootstrapLogger$BootstrapExecutors$lambda_awaitPendingTasks_0__457: java.lang.Runnable bootstrap$()>();
+
+        staticinvoke <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: void join(java.lang.Runnable)>($stack5);
+
+     label10:
+        return;
+
+        nop;
+
+        catch java.lang.Throwable from label03 to label06 with label07;
+        catch java.lang.Throwable from label07 to label08 with label07;
+    }
+
+    static boolean isAlive()
+    {
+        java.lang.Throwable $stack12, l3;
+        bottom_type ref, executor, $stack7, $stack8, $stack10;
+        java.lang.ref.WeakReference ref#1, ref#4;
+        java.util.concurrent.ExecutorService $stack9, $stack11, $stack10#2, executor#3, $stack8#5, executor#6;
+        boolean $stack7#7;
+        java.lang.Object $stack4, $stack5;
+        java.lang.Class l2, $stack6, $stack13;
+
+        ref#1 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.lang.ref.WeakReference executorRef>;
+
+        if ref#1 != null goto label01;
+
+        $stack10#2 = null;
+
+        goto label02;
+
+     label01:
+        $stack4 = virtualinvoke ref#1.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $stack10#2 = (java.util.concurrent.ExecutorService) $stack4;
+
+     label02:
+        executor#3 = $stack10#2;
+
+        $stack11 = executor#3;
+
+        if $stack11 == null goto label03;
+
+        return 1;
+
+     label03:
+        l2 = class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+        entermonitor class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+     label04:
+        ref#4 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: java.lang.ref.WeakReference executorRef>;
+
+        if ref#4 != null goto label05;
+
+        $stack8#5 = null;
+
+        goto label06;
+
+     label05:
+        $stack5 = virtualinvoke ref#4.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $stack8#5 = (java.util.concurrent.ExecutorService) $stack5;
+
+     label06:
+        executor#6 = $stack8#5;
+
+        $stack9 = executor#6;
+
+        if $stack9 == null goto label07;
+
+        $stack7#7 = 1;
+
+        goto label08;
+
+     label07:
+        $stack7#7 = 0;
+
+     label08:
+        $stack6 = l2;
+
+        exitmonitor $stack6;
+
+     label09:
+        return $stack7#7;
+
+     label10:
+        $stack12 := @caughtexception;
+
+        l3 = $stack12;
+
+        $stack13 = l2;
+
+        exitmonitor $stack13;
+
+     label11:
+        throw l3;
+
+        nop;
+
+        catch java.lang.Throwable from label04 to label09 with label10;
+        catch java.lang.Throwable from label10 to label11 with label10;
+    }
+
+    static void enqueue(jdk.internal.logger.BootstrapLogger$LogEvent)
+    {
+        java.lang.Throwable $stack9, l2;
+        jdk.internal.logger.BootstrapLogger$LogEvent event, $stack3, $stack4, $stack5, $stack6;
+        java.lang.Class l1, $stack7, $stack8, $stack10;
+
+        event := @parameter0: jdk.internal.logger.BootstrapLogger$LogEvent;
+
+        $stack3 = event.<jdk.internal.logger.BootstrapLogger$LogEvent: jdk.internal.logger.BootstrapLogger$LogEvent next>;
+
+        if $stack3 == null goto label01;
+
+        return;
+
+     label01:
+        l1 = class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+        entermonitor class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+     label02:
+        $stack4 = event.<jdk.internal.logger.BootstrapLogger$LogEvent: jdk.internal.logger.BootstrapLogger$LogEvent next>;
+
+        if $stack4 == null goto label04;
+
+        $stack8 = l1;
+
+        exitmonitor $stack8;
+
+     label03:
+        return;
+
+     label04:
+        event.<jdk.internal.logger.BootstrapLogger$LogEvent: jdk.internal.logger.BootstrapLogger$LogEvent next> = event;
+
+        $stack5 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: jdk.internal.logger.BootstrapLogger$LogEvent tail>;
+
+        if $stack5 != null goto label05;
+
+        <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: jdk.internal.logger.BootstrapLogger$LogEvent tail> = event;
+
+        <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: jdk.internal.logger.BootstrapLogger$LogEvent head> = event;
+
+        goto label06;
+
+     label05:
+        $stack6 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: jdk.internal.logger.BootstrapLogger$LogEvent tail>;
+
+        $stack6.<jdk.internal.logger.BootstrapLogger$LogEvent: jdk.internal.logger.BootstrapLogger$LogEvent next> = event;
+
+        <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: jdk.internal.logger.BootstrapLogger$LogEvent tail> = event;
+
+     label06:
+        $stack7 = l1;
+
+        exitmonitor $stack7;
+
+     label07:
+        goto label10;
+
+     label08:
+        $stack9 := @caughtexception;
+
+        l2 = $stack9;
+
+        $stack10 = l1;
+
+        exitmonitor $stack10;
+
+     label09:
+        throw l2;
+
+     label10:
+        return;
+
+        nop;
+
+        catch java.lang.Throwable from label02 to label03 with label08;
+        catch java.lang.Throwable from label04 to label07 with label08;
+        catch java.lang.Throwable from label08 to label09 with label08;
+    }
+
+    static void flush()
+    {
+        java.lang.Throwable $stack12, l3, $stack14, prev#3;
+        jdk.internal.logger.BootstrapLogger$LogEvent $stack6, $stack8, $stack11, event#2, prev#5, $stack9#6;
+        java.lang.Class $stack5, $stack7, $stack13, $stack15, l1#1, l1#4;
+
+        l1#1 = class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+        entermonitor class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+     label01:
+        event#2 = <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: jdk.internal.logger.BootstrapLogger$LogEvent head>;
+
+        <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: jdk.internal.logger.BootstrapLogger$LogEvent tail> = null;
+
+        <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: jdk.internal.logger.BootstrapLogger$LogEvent head> = null;
+
+        $stack5 = l1#1;
+
+        exitmonitor $stack5;
+
+     label02:
+        goto label05;
+
+     label03:
+        $stack14 := @caughtexception;
+
+        prev#3 = $stack14;
+
+        $stack15 = l1#1;
+
+        exitmonitor $stack15;
+
+     label04:
+        throw prev#3;
+
+     label05:
+        $stack8 = event#2;
+
+        if $stack8 == null goto label13;
+
+        staticinvoke <jdk.internal.logger.BootstrapLogger$LogEvent: void log(jdk.internal.logger.BootstrapLogger$LogEvent)>(event#2);
+
+        l1#4 = class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+        entermonitor class "Ljdk/internal/logger/BootstrapLogger$BootstrapExecutors;";
+
+     label06:
+        prev#5 = event#2;
+
+        $stack6 = event#2.<jdk.internal.logger.BootstrapLogger$LogEvent: jdk.internal.logger.BootstrapLogger$LogEvent next>;
+
+        if $stack6 != event#2 goto label07;
+
+        $stack9#6 = null;
+
+        goto label08;
+
+     label07:
+        $stack9#6 = event#2.<jdk.internal.logger.BootstrapLogger$LogEvent: jdk.internal.logger.BootstrapLogger$LogEvent next>;
+
+     label08:
+        event#2 = $stack9#6;
+
+        $stack11 = prev#5;
+
+        $stack11.<jdk.internal.logger.BootstrapLogger$LogEvent: jdk.internal.logger.BootstrapLogger$LogEvent next> = null;
+
+        $stack7 = l1#4;
+
+        exitmonitor $stack7;
+
+     label09:
+        goto label12;
+
+     label10:
+        $stack12 := @caughtexception;
+
+        l3 = $stack12;
+
+        $stack13 = l1#4;
+
+        exitmonitor $stack13;
+
+     label11:
+        throw l3;
+
+     label12:
+        goto label05;
+
+     label13:
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label03;
+        catch java.lang.Throwable from label03 to label04 with label03;
+        catch java.lang.Throwable from label06 to label09 with label10;
+        catch java.lang.Throwable from label10 to label11 with label10;
+    }
+
+    public static void lambda$awaitPendingTasks$0()
+    {
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <jdk.internal.logger.BootstrapLogger$BootstrapExecutors: long KEEP_EXECUTOR_ALIVE_SECONDS> = 30L;
+
+        return;
+    }
+}

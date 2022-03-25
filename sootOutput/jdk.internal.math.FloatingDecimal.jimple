@@ -1,0 +1,2718 @@
+public class jdk.internal.math.FloatingDecimal extends java.lang.Object
+{
+    static final int EXP_SHIFT;
+    static final long FRACT_HOB;
+    static final long EXP_ONE;
+    static final int MAX_SMALL_BIN_EXP;
+    static final int MIN_SMALL_BIN_EXP;
+    static final int MAX_DECIMAL_DIGITS;
+    static final int MAX_DECIMAL_EXPONENT;
+    static final int MIN_DECIMAL_EXPONENT;
+    static final int BIG_DECIMAL_EXPONENT;
+    static final int MAX_NDIGITS;
+    static final int SINGLE_EXP_SHIFT;
+    static final int SINGLE_FRACT_HOB;
+    static final int SINGLE_MAX_DECIMAL_DIGITS;
+    static final int SINGLE_MAX_DECIMAL_EXPONENT;
+    static final int SINGLE_MIN_DECIMAL_EXPONENT;
+    static final int SINGLE_MAX_NDIGITS;
+    static final int INT_DECIMAL_DIGITS;
+    private static final java.lang.String INFINITY_REP;
+    private static final int INFINITY_LENGTH;
+    private static final java.lang.String NAN_REP;
+    private static final int NAN_LENGTH;
+    private static final jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_POSITIVE_INFINITY;
+    private static final jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NEGATIVE_INFINITY;
+    private static final jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NOT_A_NUMBER;
+    private static final jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_POSITIVE_ZERO;
+    private static final jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NEGATIVE_ZERO;
+    private static final java.lang.ThreadLocal threadLocalBinaryToASCIIBuffer;
+    static final jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_INFINITY;
+    static final jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_INFINITY;
+    static final jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NOT_A_NUMBER;
+    static final jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_ZERO;
+    static final jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_ZERO;
+    static final boolean $assertionsDisabled;
+
+    public void <init>()
+    {
+        jdk.internal.math.FloatingDecimal this;
+
+        this := @this: jdk.internal.math.FloatingDecimal;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public static java.lang.String toJavaFormatString(double)
+    {
+        java.lang.String $stack3;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter $stack2;
+        double d;
+
+        d := @parameter0: double;
+
+        $stack2 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter getBinaryToASCIIConverter(double)>(d);
+
+        $stack3 = interfaceinvoke $stack2.<jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter: java.lang.String toJavaFormatString()>();
+
+        return $stack3;
+
+        nop;
+    }
+
+    public static java.lang.String toJavaFormatString(float)
+    {
+        float f;
+        java.lang.String $stack2;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter $stack1;
+
+        f := @parameter0: float;
+
+        $stack1 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter getBinaryToASCIIConverter(float)>(f);
+
+        $stack2 = interfaceinvoke $stack1.<jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter: java.lang.String toJavaFormatString()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static void appendTo(double, java.lang.Appendable)
+    {
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter $stack3;
+        java.lang.Appendable buf;
+        double d;
+
+        d := @parameter0: double;
+
+        buf := @parameter1: java.lang.Appendable;
+
+        $stack3 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter getBinaryToASCIIConverter(double)>(d);
+
+        interfaceinvoke $stack3.<jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter: void appendTo(java.lang.Appendable)>(buf);
+
+        return;
+
+        nop;
+    }
+
+    public static void appendTo(float, java.lang.Appendable)
+    {
+        float f;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter $stack2;
+        java.lang.Appendable buf;
+
+        f := @parameter0: float;
+
+        buf := @parameter1: java.lang.Appendable;
+
+        $stack2 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter getBinaryToASCIIConverter(float)>(f);
+
+        interfaceinvoke $stack2.<jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter: void appendTo(java.lang.Appendable)>(buf);
+
+        return;
+
+        nop;
+    }
+
+    public static double parseDouble(java.lang.String) throws java.lang.NumberFormatException
+    {
+        jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter $stack1;
+        java.lang.String s;
+        double $stack2;
+
+        s := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter readJavaFormatString(java.lang.String)>(s);
+
+        $stack2 = interfaceinvoke $stack1.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter: double doubleValue()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    public static float parseFloat(java.lang.String) throws java.lang.NumberFormatException
+    {
+        float $stack2;
+        jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter $stack1;
+        java.lang.String s;
+
+        s := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter readJavaFormatString(java.lang.String)>(s);
+
+        $stack2 = interfaceinvoke $stack1.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter: float floatValue()>();
+
+        return $stack2;
+
+        nop;
+    }
+
+    private static jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer getBinaryToASCIIBuffer()
+    {
+        java.lang.ThreadLocal $stack0;
+        java.lang.Object $stack1;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer $stack2;
+
+        $stack0 = <jdk.internal.math.FloatingDecimal: java.lang.ThreadLocal threadLocalBinaryToASCIIBuffer>;
+
+        $stack1 = virtualinvoke $stack0.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $stack2 = (jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer) $stack1;
+
+        return $stack2;
+    }
+
+    public static jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter getBinaryToASCIIConverter(double)
+    {
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter $stack2;
+        double d;
+
+        d := @parameter0: double;
+
+        $stack2 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter getBinaryToASCIIConverter(double,boolean)>(d, 1);
+
+        return $stack2;
+
+        nop;
+    }
+
+    static jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter getBinaryToASCIIConverter(double, boolean)
+    {
+        byte $stack14, $stack18, $stack29, $stack38;
+        bottom_type fractBits, binExp, nSignificantBits, leadingZeros, $stack28, $stack31, $stack32;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer $stack17, $stack21, $stack26, $stack27, leadingZeros#10;
+        boolean isNegative, isCompatibleFormat, $stack20, $stack25, $stack32#1;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter $stack30, $stack31#4, $stack28#5;
+        long $stack12, dBits, $stack13, $stack15, $stack16, $stack23, $stack33, $stack34, $stack35, $stack36, $stack37, fractBits#2, fractBits#7;
+        short $stack40, $s0;
+        int $stack19, shift, $stack22, $stack24, $stack39, $stack41, binExp#3, leadingZeros#6, nSignificantBits#8, binExp#9, $i0;
+        double d;
+
+        d := @parameter0: double;
+
+        isCompatibleFormat := @parameter1: boolean;
+
+        $stack12 = staticinvoke <java.lang.Double: long doubleToRawLongBits(double)>(d);
+
+        dBits = $stack12;
+
+        $stack13 = dBits & -9223372036854775808L;
+
+        $stack14 = $stack13 cmp 0L;
+
+        if $stack14 == 0 goto label01;
+
+        $stack32#1 = 1;
+
+        goto label02;
+
+     label01:
+        $stack32#1 = 0;
+
+     label02:
+        isNegative = $stack32#1;
+
+        $stack34 = dBits;
+
+        $stack33 = 4503599627370495L;
+
+        $stack35 = $stack34 & $stack33;
+
+        fractBits#2 = $stack35;
+
+        $stack37 = dBits;
+
+        $stack36 = 9218868437227405312L;
+
+        $stack15 = $stack37 & $stack36;
+
+        $stack38 = 52;
+
+        $stack16 = $stack15 >> $stack38;
+
+        $stack39 = (int) $stack16;
+
+        binExp#3 = $stack39;
+
+        $stack41 = binExp#3;
+
+        $stack40 = 2047;
+
+        if $stack41 != $stack40 goto label06;
+
+        $stack29 = fractBits#2 cmp 0L;
+
+        if $stack29 != 0 goto label05;
+
+        if isNegative == 0 goto label03;
+
+        $stack31#4 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NEGATIVE_INFINITY>;
+
+        goto label04;
+
+     label03:
+        $stack31#4 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_POSITIVE_INFINITY>;
+
+     label04:
+        return $stack31#4;
+
+     label05:
+        $stack30 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NOT_A_NUMBER>;
+
+        return $stack30;
+
+     label06:
+        if binExp#3 != 0 goto label10;
+
+        $stack18 = fractBits#2 cmp 0L;
+
+        if $stack18 != 0 goto label09;
+
+        if isNegative == 0 goto label07;
+
+        $stack28#5 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NEGATIVE_ZERO>;
+
+        goto label08;
+
+     label07:
+        $stack28#5 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_POSITIVE_ZERO>;
+
+     label08:
+        return $stack28#5;
+
+     label09:
+        $stack19 = staticinvoke <java.lang.Long: int numberOfLeadingZeros(long)>(fractBits#2);
+
+        leadingZeros#6 = $stack19;
+
+        shift = leadingZeros#6 - 11;
+
+        fractBits#7 = fractBits#2 << shift;
+
+        binExp#3 = 1 - shift;
+
+        nSignificantBits#8 = 64 - leadingZeros#6;
+
+        goto label11;
+
+     label10:
+        fractBits#7 = fractBits#2 | 4503599627370496L;
+
+        nSignificantBits#8 = 53;
+
+     label11:
+        $s0 = -1023;
+
+        $i0 = (int) $s0;
+
+        binExp#9 = binExp#3 + $i0;
+
+        $stack17 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer getBinaryToASCIIBuffer()>();
+
+        leadingZeros#10 = $stack17;
+
+        $stack21 = leadingZeros#10;
+
+        $stack20 = isNegative;
+
+        virtualinvoke $stack21.<jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer: void setSign(boolean)>($stack20);
+
+        $stack26 = leadingZeros#10;
+
+        $stack22 = binExp#9;
+
+        $stack23 = fractBits#7;
+
+        $stack24 = nSignificantBits#8;
+
+        $stack25 = isCompatibleFormat;
+
+        virtualinvoke $stack26.<jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer: void dtoa(int,long,int,boolean)>($stack22, $stack23, $stack24, $stack25);
+
+        $stack27 = leadingZeros#10;
+
+        return $stack27;
+
+        nop;
+    }
+
+    private static jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter getBinaryToASCIIConverter(float)
+    {
+        byte $stack18, $stack26, $stack35, $b0;
+        bottom_type fractBits, binExp, nSignificantBits, leadingZeros, $stack24, $stack28, $stack29;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer $stack11, $stack16, $stack22, $stack23, leadingZeros#10;
+        boolean isNegative, $stack15, $stack21, $stack29#1;
+        float f;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter $stack27, $stack28#4, $stack24#5;
+        long $stack12, $stack13, $stack25;
+        short $stack37;
+        int $stack8, fBits, $stack9, $stack10, $stack14, shift, $stack17, $stack19, $stack20, $stack30, $stack31, $stack32, $stack33, $stack34, $stack36, $stack38, fractBits#2, binExp#3, leadingZeros#6, fractBits#7, nSignificantBits#8, binExp#9, $i0;
+
+        f := @parameter0: float;
+
+        $stack8 = staticinvoke <java.lang.Float: int floatToRawIntBits(float)>(f);
+
+        fBits = $stack8;
+
+        $stack9 = fBits & -2147483648;
+
+        if $stack9 == 0 goto label01;
+
+        $stack29#1 = 1;
+
+        goto label02;
+
+     label01:
+        $stack29#1 = 0;
+
+     label02:
+        isNegative = $stack29#1;
+
+        $stack31 = fBits;
+
+        $stack30 = 8388607;
+
+        $stack32 = $stack31 & $stack30;
+
+        fractBits#2 = $stack32;
+
+        $stack34 = fBits;
+
+        $stack33 = 2139095040;
+
+        $stack10 = $stack34 & $stack33;
+
+        $stack35 = 23;
+
+        $stack36 = $stack10 >> $stack35;
+
+        binExp#3 = $stack36;
+
+        $stack38 = binExp#3;
+
+        $stack37 = 255;
+
+        if $stack38 != $stack37 goto label06;
+
+        $stack25 = (long) fractBits#2;
+
+        $stack26 = $stack25 cmp 0L;
+
+        if $stack26 != 0 goto label05;
+
+        if isNegative == 0 goto label03;
+
+        $stack28#4 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NEGATIVE_INFINITY>;
+
+        goto label04;
+
+     label03:
+        $stack28#4 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_POSITIVE_INFINITY>;
+
+     label04:
+        return $stack28#4;
+
+     label05:
+        $stack27 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NOT_A_NUMBER>;
+
+        return $stack27;
+
+     label06:
+        if binExp#3 != 0 goto label10;
+
+        if fractBits#2 != 0 goto label09;
+
+        if isNegative == 0 goto label07;
+
+        $stack24#5 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NEGATIVE_ZERO>;
+
+        goto label08;
+
+     label07:
+        $stack24#5 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_POSITIVE_ZERO>;
+
+     label08:
+        return $stack24#5;
+
+     label09:
+        $stack14 = staticinvoke <java.lang.Integer: int numberOfLeadingZeros(int)>(fractBits#2);
+
+        leadingZeros#6 = $stack14;
+
+        shift = leadingZeros#6 - 8;
+
+        fractBits#7 = fractBits#2 << shift;
+
+        binExp#3 = 1 - shift;
+
+        nSignificantBits#8 = 32 - leadingZeros#6;
+
+        goto label11;
+
+     label10:
+        fractBits#7 = fractBits#2 | 8388608;
+
+        nSignificantBits#8 = 24;
+
+     label11:
+        $b0 = -127;
+
+        $i0 = (int) $b0;
+
+        binExp#9 = binExp#3 + $i0;
+
+        $stack11 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer getBinaryToASCIIBuffer()>();
+
+        leadingZeros#10 = $stack11;
+
+        $stack16 = leadingZeros#10;
+
+        $stack15 = isNegative;
+
+        virtualinvoke $stack16.<jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer: void setSign(boolean)>($stack15);
+
+        $stack22 = leadingZeros#10;
+
+        $stack19 = binExp#9;
+
+        $stack17 = fractBits#7;
+
+        $stack12 = (long) $stack17;
+
+        $stack18 = 29;
+
+        $stack13 = $stack12 << $stack18;
+
+        $stack20 = nSignificantBits#8;
+
+        $stack21 = 1;
+
+        virtualinvoke $stack22.<jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer: void dtoa(int,long,int,boolean)>($stack19, $stack13, $stack20, $stack21);
+
+        $stack23 = leadingZeros#10;
+
+        return $stack23;
+
+        nop;
+    }
+
+    static jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter readJavaFormatString(java.lang.String) throws java.lang.NumberFormatException
+    {
+        java.lang.StringIndexOutOfBoundsException $stack124, len#80;
+        int $stack21, $stack26, reallyBig, expAt, $stack40, expLimit, $stack49, $stack52, $stack54, $stack56, $stack58, $stack59, $stack61, $stack62, $stack71, $stack73, $stack75, $stack76, $stack81, $stack82, $stack83, $stack84, $stack89, $stack92, $stack98, $stack106, $stack110, $stack111, $stack112, $stack114, $stack115, $stack116, len#4, i#5, $stack119#8, $stack119#9, $stack99#19, $stack99#20, nDigits#26, decPt#32, nLeadZero#35, nTrailZero#38, $stack95#39, $stack95#40, $stack94#41, $stack94#42, $stack86#44, $stack86#45, $stack85#46, $stack85#47, nDigits#49, decExp#51, expVal#54, $stack68#56, $stack68#57, $stack64#58, $stack64#59, $stack63#60, $stack63#61, $stack46#65, $stack46#66, $stack48#67, $stack48#68, $stack51#69, $stack51#70, $stack50#71, $stack50#72, $stack42#73, $stack42#74, $stack41#75, $stack41#76, $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i17, $i18, $i19, $i20, $i21, $i22, $i23, $i24;
+        jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter $stack108, $stack117, $stack113#17, $stack25#79;
+        java.lang.String $stack20, $stack65, $stack74, $stack109, in#1, $stack120#6, $stack120#7, $stack43#85, $stack43#86, $stack44#89, $stack44#90, $stack45#93, $stack45#94, $stack32#97, $stack32#98;
+        char[] $stack100#21, $stack100#22, ch#23;
+        boolean isZero, $stack53, $stack60, $stack72, $stack77, $stack79, $stack87, $stack96, $stack118, isNegative#2, signSeen#3, $stack102#27, $stack102#28, decSeen#29, $stack78#50, expOverflow#55, $stack34#77, $stack34#78;
+        byte $stack66, $stack69, $stack70, $stack90, $stack121#15, $stack121#16, $stack101#24, $stack101#25, $stack103#30, $stack103#31, $stack104#33, $stack104#34, $stack105#36, $stack105#37, expSign#53, $stack47#63, $stack47#64, $b0, $b1, $b2;
+        java.lang.StringBuilder $stack28#83, $stack28#84, $stack29#87, $stack29#88, $stack30#91, $stack30#92, $stack31#95, $stack31#96, $u4;
+        jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer $stack24, $u3;
+        short $stack57;
+        bottom_type isNegative, signSeen, in, len, i, $stack23, c, ch, nDigits, decSeen, decPt, nLeadZero, nTrailZero, decExp, $stack25, $stack27, $stack28, $stack29, $stack30, $stack31, $stack32, $stack34, expSign, expVal, expOverflow, $stack41, $stack42, $stack43, $stack44, $stack45, $stack46, $stack47, $stack48, $stack50, $stack51, $stack63, $stack64, $stack68, $stack78, $stack85, $stack86, $stack94, $stack95, $stack99, $stack100, $stack101, $stack102, $stack103, $stack104, $stack105, $stack113, $stack119, $stack120, $stack121, $stack122;
+        java.lang.NumberFormatException $stack88, $stack97, $stack123, $stack27#81, $stack27#82, $u0, $u1, $u2, $u5;
+        char $stack22, $stack33, $stack35, $stack36, $stack37, $stack38, $stack39, $stack55, $stack67, $stack80, $stack91, $stack93, $stack107, $stack23#10, $stack23#11, c#12, $stack122#13, $stack122#14, ch#18, c#43, c#48, c#52, c#62;
+
+        in#1 := @parameter0: java.lang.String;
+
+        isNegative#2 = 0;
+
+        signSeen#3 = 0;
+
+     label01:
+        $stack20 = virtualinvoke in#1.<java.lang.String: java.lang.String trim()>();
+
+        in#1 = $stack20;
+
+        $stack21 = virtualinvoke in#1.<java.lang.String: int length()>();
+
+        len#4 = $stack21;
+
+        if len#4 != 0 goto label02;
+
+        $u0 = new java.lang.NumberFormatException;
+
+        $stack123 = $u0;
+
+        specialinvoke $u0.<java.lang.NumberFormatException: void <init>(java.lang.String)>("empty String");
+
+        throw $stack123;
+
+     label02:
+        i#5 = 0;
+
+        $stack22 = virtualinvoke in#1.<java.lang.String: char charAt(int)>(i#5);
+
+        $i0 = (int) $stack22;
+
+        lookupswitch($i0)
+        {
+            case 43: goto label04;
+            case 45: goto label03;
+            default: goto label05;
+        };
+
+     label03:
+        isNegative#2 = 1;
+
+     label04:
+        i#5 = i#5 + 1;
+
+        $stack118 = 1;
+
+        signSeen#3 = $stack118;
+
+     label05:
+        $stack120#6 = in#1;
+
+        $stack120#7 = $stack120#6;
+
+        $stack119#8 = i#5;
+
+        $stack119#9 = $stack119#8;
+
+        $stack23#10 = virtualinvoke $stack120#7.<java.lang.String: char charAt(int)>($stack119#9);
+
+        $stack23#11 = $stack23#10;
+
+        c#12 = $stack23#11;
+
+        $stack122#13 = c#12;
+
+        $stack122#14 = $stack122#13;
+
+        $stack121#15 = 78;
+
+        $stack121#16 = $stack121#15;
+
+        $i1 = (int) $stack122#14;
+
+        if $i1 != $stack121#16 goto label08;
+
+        $stack115 = len#4 - i#5;
+
+        $stack114 = <jdk.internal.math.FloatingDecimal: int NAN_LENGTH>;
+
+        if $stack115 != $stack114 goto label07;
+
+        $stack116 = virtualinvoke in#1.<java.lang.String: int indexOf(java.lang.String,int)>("NaN", i#5);
+
+        if $stack116 != i#5 goto label07;
+
+        $stack117 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NOT_A_NUMBER>;
+
+     label06:
+        return $stack117;
+
+     label07:
+        goto label55;
+
+     label08:
+        $i2 = (int) c#12;
+
+        if $i2 != 73 goto label12;
+
+        $stack111 = len#4 - i#5;
+
+        $stack110 = <jdk.internal.math.FloatingDecimal: int INFINITY_LENGTH>;
+
+        if $stack111 != $stack110 goto label11;
+
+        $stack112 = virtualinvoke in#1.<java.lang.String: int indexOf(java.lang.String,int)>("Infinity", i#5);
+
+        if $stack112 != i#5 goto label11;
+
+        if isNegative#2 == 0 goto label09;
+
+        $stack113#17 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_INFINITY>;
+
+        goto label10;
+
+     label09:
+        $stack113#17 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_INFINITY>;
+
+     label10:
+        return $stack113#17;
+
+     label11:
+        goto label55;
+
+     label12:
+        $i3 = (int) c#12;
+
+        if $i3 != 48 goto label15;
+
+        $stack98 = i#5 + 1;
+
+        if len#4 <= $stack98 goto label15;
+
+        $stack106 = i#5 + 1;
+
+        $stack107 = virtualinvoke in#1.<java.lang.String: char charAt(int)>($stack106);
+
+        ch#18 = $stack107;
+
+        $i4 = (int) ch#18;
+
+        if $i4 == 120 goto label13;
+
+        $i5 = (int) ch#18;
+
+        if $i5 != 88 goto label15;
+
+     label13:
+        $stack109 = in#1;
+
+        $stack108 = staticinvoke <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter parseHexString(java.lang.String)>($stack109);
+
+     label14:
+        return $stack108;
+
+     label15:
+        $stack99#19 = len#4;
+
+        $stack99#20 = $stack99#19;
+
+        $stack100#21 = newarray (char)[$stack99#20];
+
+        $stack100#22 = $stack100#21;
+
+        ch#23 = $stack100#22;
+
+        $stack101#24 = 0;
+
+        $stack101#25 = $stack101#24;
+
+        nDigits#26 = $stack101#25;
+
+        $stack102#27 = 0;
+
+        $stack102#28 = $stack102#27;
+
+        decSeen#29 = $stack102#28;
+
+        $stack103#30 = 0;
+
+        $stack103#31 = $stack103#30;
+
+        decPt#32 = $stack103#31;
+
+        $stack104#33 = 0;
+
+        $stack104#34 = $stack104#33;
+
+        nLeadZero#35 = $stack104#34;
+
+        $stack105#36 = 0;
+
+        $stack105#37 = $stack105#36;
+
+        nTrailZero#38 = $stack105#37;
+
+     label16:
+        $stack95#39 = i#5;
+
+        $stack95#40 = $stack95#39;
+
+        $stack94#41 = len#4;
+
+        $stack94#42 = $stack94#41;
+
+        if $stack95#40 >= $stack94#42 goto label21;
+
+        $stack93 = virtualinvoke in#1.<java.lang.String: char charAt(int)>(i#5);
+
+        c#43 = $stack93;
+
+        $i6 = (int) c#43;
+
+        if $i6 != 48 goto label17;
+
+        nLeadZero#35 = nLeadZero#35 + 1;
+
+        goto label20;
+
+     label17:
+        $i7 = (int) c#43;
+
+        if $i7 != 46 goto label21;
+
+        if decSeen#29 == 0 goto label18;
+
+        $u1 = new java.lang.NumberFormatException;
+
+        $stack97 = $u1;
+
+        specialinvoke $u1.<java.lang.NumberFormatException: void <init>(java.lang.String)>("multiple points");
+
+        throw $stack97;
+
+     label18:
+        decPt#32 = i#5;
+
+        if signSeen#3 == 0 goto label19;
+
+        $b0 = -1;
+
+        $i8 = (int) $b0;
+
+        decPt#32 = decPt#32 + $i8;
+
+     label19:
+        $stack96 = 1;
+
+        decSeen#29 = $stack96;
+
+     label20:
+        i#5 = i#5 + 1;
+
+        goto label16;
+
+     label21:
+        $stack86#44 = i#5;
+
+        $stack86#45 = $stack86#44;
+
+        $stack85#46 = len#4;
+
+        $stack85#47 = $stack85#46;
+
+        if $stack86#45 >= $stack85#47 goto label27;
+
+        $stack80 = virtualinvoke in#1.<java.lang.String: char charAt(int)>(i#5);
+
+        c#48 = $stack80;
+
+        $i9 = (int) c#48;
+
+        if $i9 < 49 goto label22;
+
+        $i10 = (int) c#48;
+
+        if $i10 > 57 goto label22;
+
+        $stack92 = nDigits#26;
+
+        nDigits#26 = nDigits#26 + 1;
+
+        ch#23[$stack92] = c#48;
+
+        nTrailZero#38 = 0;
+
+        goto label26;
+
+     label22:
+        $stack91 = c#48;
+
+        $stack90 = 48;
+
+        $i11 = (int) $stack91;
+
+        if $i11 != $stack90 goto label23;
+
+        $stack89 = nDigits#26;
+
+        nDigits#26 = nDigits#26 + 1;
+
+        ch#23[$stack89] = c#48;
+
+        nTrailZero#38 = nTrailZero#38 + 1;
+
+        goto label26;
+
+     label23:
+        $i12 = (int) c#48;
+
+        if $i12 != 46 goto label27;
+
+        if decSeen#29 == 0 goto label24;
+
+        $u2 = new java.lang.NumberFormatException;
+
+        $stack88 = $u2;
+
+        specialinvoke $u2.<java.lang.NumberFormatException: void <init>(java.lang.String)>("multiple points");
+
+        throw $stack88;
+
+     label24:
+        decPt#32 = i#5;
+
+        if signSeen#3 == 0 goto label25;
+
+        $b1 = -1;
+
+        $i13 = (int) $b1;
+
+        decPt#32 = decPt#32 + $i13;
+
+     label25:
+        $stack87 = 1;
+
+        decSeen#29 = $stack87;
+
+     label26:
+        i#5 = i#5 + 1;
+
+        goto label21;
+
+     label27:
+        $stack82 = nDigits#26;
+
+        $stack81 = nTrailZero#38;
+
+        $stack83 = $stack82 - $stack81;
+
+        nDigits#49 = $stack83;
+
+        $stack84 = nDigits#49;
+
+        if $stack84 != 0 goto label28;
+
+        $stack78#50 = 1;
+
+        goto label29;
+
+     label28:
+        $stack78#50 = 0;
+
+     label29:
+        isZero = $stack78#50;
+
+        $stack79 = isZero;
+
+        if $stack79 == 0 goto label31;
+
+        if nLeadZero#35 != 0 goto label31;
+
+     label30:
+        goto label55;
+
+     label31:
+        $stack77 = decSeen#29;
+
+        if $stack77 == 0 goto label32;
+
+        decExp#51 = decPt#32 - nLeadZero#35;
+
+        goto label33;
+
+     label32:
+        decExp#51 = nDigits#49 + nTrailZero#38;
+
+     label33:
+        $stack76 = i#5;
+
+        $stack75 = len#4;
+
+        if $stack76 >= $stack75 goto label47;
+
+        $stack38 = virtualinvoke in#1.<java.lang.String: char charAt(int)>(i#5);
+
+        c#52 = $stack38;
+
+        $i14 = (int) $stack38;
+
+        if $i14 == 101 goto label34;
+
+        $i15 = (int) c#52;
+
+        if $i15 != 69 goto label47;
+
+     label34:
+        $stack69 = 1;
+
+        expSign#53 = $stack69;
+
+        $stack70 = 0;
+
+        expVal#54 = $stack70;
+
+        $stack71 = 214748364;
+
+        reallyBig = $stack71;
+
+        $stack72 = 0;
+
+        expOverflow#55 = $stack72;
+
+        $stack74 = in#1;
+
+        i#5 = i#5 + 1;
+
+        $stack73 = i#5;
+
+        $stack39 = virtualinvoke $stack74.<java.lang.String: char charAt(int)>($stack73);
+
+        $i16 = (int) $stack39;
+
+        lookupswitch($i16)
+        {
+            case 43: goto label36;
+            case 45: goto label35;
+            default: goto label37;
+        };
+
+     label35:
+        expSign#53 = -1;
+
+     label36:
+        i#5 = i#5 + 1;
+
+     label37:
+        $stack68#56 = i#5;
+
+        $stack68#57 = $stack68#56;
+
+        expAt = $stack68#57;
+
+     label38:
+        $stack64#58 = i#5;
+
+        $stack64#59 = $stack64#58;
+
+        $stack63#60 = len#4;
+
+        $stack63#61 = $stack63#60;
+
+        if $stack64#59 >= $stack63#61 goto label41;
+
+        if expVal#54 < reallyBig goto label39;
+
+        expOverflow#55 = 1;
+
+     label39:
+        $stack65 = in#1;
+
+        $stack54 = i#5;
+
+        i#5 = i#5 + 1;
+
+        $stack55 = virtualinvoke $stack65.<java.lang.String: char charAt(int)>($stack54);
+
+        c#62 = $stack55;
+
+        $stack67 = c#62;
+
+        $stack66 = 48;
+
+        $i17 = (int) $stack67;
+
+        if $i17 < $stack66 goto label40;
+
+        $i18 = (int) c#62;
+
+        if $i18 > 57 goto label40;
+
+        $stack62 = expVal#54 * 10;
+
+        $i19 = (int) c#62;
+
+        $stack61 = $i19 - 48;
+
+        expVal#54 = $stack62 + $stack61;
+
+        goto label38;
+
+     label40:
+        $b2 = -1;
+
+        $i20 = (int) $b2;
+
+        i#5 = i#5 + $i20;
+
+        goto label41;
+
+     label41:
+        $stack57 = 324;
+
+        $stack56 = nDigits#49;
+
+        $stack40 = $stack57 + $stack56;
+
+        $stack58 = nTrailZero#38;
+
+        $stack59 = $stack40 + $stack58;
+
+        expLimit = $stack59;
+
+        $stack60 = expOverflow#55;
+
+        if $stack60 != 0 goto label42;
+
+        if expVal#54 <= expLimit goto label44;
+
+     label42:
+        $stack53 = expOverflow#55;
+
+        if $stack53 != 0 goto label43;
+
+        if expSign#53 != 1 goto label43;
+
+        if decExp#51 >= 0 goto label43;
+
+        $stack49 = expVal#54 + decExp#51;
+
+        if $stack49 >= expLimit goto label43;
+
+        decExp#51 = decExp#51 + expVal#54;
+
+        goto label45;
+
+     label43:
+        $stack47#63 = expSign#53;
+
+        $stack47#64 = $stack47#63;
+
+        $stack46#65 = expLimit;
+
+        $stack46#66 = $stack46#65;
+
+        $stack48#67 = $stack47#64 * $stack46#66;
+
+        $stack48#68 = $stack48#67;
+
+        decExp#51 = $stack48#68;
+
+        goto label45;
+
+     label44:
+        $stack52 = expSign#53 * expVal#54;
+
+        decExp#51 = decExp#51 + $stack52;
+
+     label45:
+        $stack51#69 = i#5;
+
+        $stack51#70 = $stack51#69;
+
+        $stack50#71 = expAt;
+
+        $stack50#72 = $stack50#71;
+
+        if $stack51#70 != $stack50#72 goto label47;
+
+     label46:
+        goto label55;
+
+     label47:
+        $stack42#73 = i#5;
+
+        $stack42#74 = $stack42#73;
+
+        $stack41#75 = len#4;
+
+        $stack41#76 = $stack41#75;
+
+        if $stack42#74 >= $stack41#76 goto label49;
+
+        $stack26 = len#4 - 1;
+
+        if i#5 != $stack26 goto label48;
+
+        $stack33 = virtualinvoke in#1.<java.lang.String: char charAt(int)>(i#5);
+
+        $i21 = (int) $stack33;
+
+        if $i21 == 102 goto label49;
+
+        $stack35 = virtualinvoke in#1.<java.lang.String: char charAt(int)>(i#5);
+
+        $i22 = (int) $stack35;
+
+        if $i22 == 70 goto label49;
+
+        $stack36 = virtualinvoke in#1.<java.lang.String: char charAt(int)>(i#5);
+
+        $i23 = (int) $stack36;
+
+        if $i23 == 100 goto label49;
+
+        $stack37 = virtualinvoke in#1.<java.lang.String: char charAt(int)>(i#5);
+
+        $i24 = (int) $stack37;
+
+        if $i24 == 68 goto label49;
+
+     label48:
+        goto label55;
+
+     label49:
+        $stack34#77 = isZero;
+
+        $stack34#78 = $stack34#77;
+
+        if $stack34#78 == 0 goto label52;
+
+        if isNegative#2 == 0 goto label50;
+
+        $stack25#79 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_ZERO>;
+
+        goto label51;
+
+     label50:
+        $stack25#79 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_ZERO>;
+
+     label51:
+        return $stack25#79;
+
+     label52:
+        $u3 = new jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer;
+
+        $stack24 = $u3;
+
+        specialinvoke $u3.<jdk.internal.math.FloatingDecimal$ASCIIToBinaryBuffer: void <init>(boolean,int,char[],int)>(isNegative#2, decExp#51, ch#23, nDigits#49);
+
+     label53:
+        return $stack24;
+
+     label54:
+        $stack124 := @caughtexception;
+
+        len#80 = $stack124;
+
+     label55:
+        $u5 = new java.lang.NumberFormatException;
+
+        $stack27#81 = $u5;
+
+        $stack27#82 = $stack27#81;
+
+        $u4 = new java.lang.StringBuilder;
+
+        $stack28#83 = $u4;
+
+        $stack28#84 = $stack28#83;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        $stack43#85 = "For input string: \"";
+
+        $stack43#86 = $stack43#85;
+
+        $stack29#87 = virtualinvoke $stack28#84.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack43#86);
+
+        $stack29#88 = $stack29#87;
+
+        $stack44#89 = in#1;
+
+        $stack44#90 = $stack44#89;
+
+        $stack30#91 = virtualinvoke $stack29#88.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack44#90);
+
+        $stack30#92 = $stack30#91;
+
+        $stack45#93 = "\"";
+
+        $stack45#94 = $stack45#93;
+
+        $stack31#95 = virtualinvoke $stack30#92.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack45#94);
+
+        $stack31#96 = $stack31#95;
+
+        $stack32#97 = virtualinvoke $stack31#96.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $stack32#98 = $stack32#97;
+
+        specialinvoke $u5.<java.lang.NumberFormatException: void <init>(java.lang.String)>($stack32#98);
+
+        throw $stack27#82;
+
+        nop;
+
+        catch java.lang.StringIndexOutOfBoundsException from label01 to label06 with label54;
+        catch java.lang.StringIndexOutOfBoundsException from label08 to label10 with label54;
+        catch java.lang.StringIndexOutOfBoundsException from label12 to label14 with label54;
+        catch java.lang.StringIndexOutOfBoundsException from label15 to label30 with label54;
+        catch java.lang.StringIndexOutOfBoundsException from label31 to label46 with label54;
+        catch java.lang.StringIndexOutOfBoundsException from label47 to label48 with label54;
+        catch java.lang.StringIndexOutOfBoundsException from label49 to label51 with label54;
+        catch java.lang.StringIndexOutOfBoundsException from label52 to label53 with label54;
+    }
+
+    static jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter parseHexString(java.lang.String)
+    {
+        int $stack36, $stack38, $stack45, $stack46, $stack49, $stack51, $stack68, $stack74, $stack75, $stack76, $stack78, $stack98, $stack115, $stack118, $stack128, $stack146, $stack148, $stack150, $stack152, $stack165, $stack181, $stack183, $stack188, $stack194, $stack232, $stack233, $stack234, $stack246, $stack264, $stack265, $stack273, rightDigits#16, leftDigits#25, $stack44#35, $stack44#36, signifLength#37, $stack271#38, $stack271#39, exponentAdjust#42, nextShift#58, i#64, $stack237#65, $stack237#66, $stack236#67, $stack236#68, i#78, $stack196#79, $stack196#80, $stack195#81, $stack195#82, $stack185#87, currentDigit#88, iValue#92, $stack176#93, $stack176#94, $stack166#97, $stack166#98, $stack167#101, $stack167#102, $stack169#105, $stack169#106, $stack175#107, $stack175#108, $stack168#111, $stack168#112, $stack170#113, $stack170#114, $stack177#115, $stack177#116, threshShift#117, iValue#120, $stack140#121, $stack140#122, $stack139#123, $stack139#124, $stack69#127, $stack69#128, $stack141#129, $stack141#130, $stack142#131, $stack142#132, floatSticky#147, $stack100#153, $stack100#154, $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12;
+        jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter $stack263#43, $stack290#49, $stack137#142, $stack129#144;
+        java.lang.AssertionError $stack56, $stack116, $stack157, $stack158, $stack231, $u3, $u4, $u5, $u6, $u7;
+        java.lang.String s, $stack32, group1, $stack34, $stack35, group6, $stack37, $stack42, $stack47, $stack48, $stack253, $stack267, $stack272, $stack288, $stack33#21, $stack33#22, group4#23, significandString#24, group7#26, $stack266#27, $stack268#28, $stack268#29, $stack43#30, $stack43#31, significandString#32, $stack269#33, $stack269#34, leftDigits#44;
+        boolean $stack31, validInput, isNegative, $stack61, $stack62, $stack77, $stack97, $stack258, $stack274, $stack275#1, $stack259#45, rightDigits#46, round#53, sticky#54, $stack199#71, $stack207#72, $stack206#73, $stack218#74, $stack217#75, $stack227#76, $stack226#77, $stack198#84, $stack193#85, $stack193#86, $stack178#90, floatSticky#91, $stack145#118, floatSticky#119, $stack122#145, $stack113#148, $stack112#150, $stack96#178, floatSticky#179, $stack92#180, $stack92#181, $stack91#182, $stack91#183;
+        java.util.regex.Pattern $stack29;
+        double $stack89, $stack85#184, iValue#185;
+        byte $stack52, $stack53, $stack54, $stack55, $stack58, $stack59, $stack66, $stack72, $stack73, $stack81, $stack111, $stack130, $stack159, $stack163, $stack192, $stack197, $stack203, $stack205, $stack214, $stack216, $stack223, $stack225, $stack71#140, $stack71#141, $stack84#176, $stack84#177;
+        java.lang.StringBuilder $stack39, $stack40, $stack41, $stack284, $stack285, $stack286, $stack287, $u0, $u2;
+        long $stack50, leadingDigit, $stack57, $stack60, $stack63, $stack64, $stack65, $stack67, $stack79, $stack80, $stack87, $stack94, $stack95, $stack99, $stack110, $stack120, $stack124, $stack132, $stack133, $stack134, $stack135, $stack136, $stack147, $stack155, $stack162, $stack164, $stack180, $stack187, $stack189, $stack190, $stack191, $stack200, $stack201, $stack202, $stack204, $stack209, $stack211, $stack212, $stack213, $stack215, $stack220, $stack222, $stack224, $stack229, $stack235, $stack238, $stack241, $stack242, $stack243, $stack245, $stack247, $stack248, $stack255, $stack257, $stack262, group4#47, $stack244#50, group7#51, exponent#52, significand#57, currentDigit#69, currentDigit#70, currentDigit#83, $stack171#95, $stack171#96, $stack144#136, $stack144#137, significand#143, iValue#149, $stack101#151, $stack101#152, $stack102#155, $stack102#156, significand#157, $stack103#162, $stack103#163, $stack82#164, $stack82#165, $stack106#166, $stack106#167, $stack108#168, $stack108#169, $stack83#172, $stack83#173;
+        java.util.regex.Matcher $stack30, m, $stack261, $stack282#17, $stack282#18;
+        jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer $stack86, $u8;
+        java.lang.NumberFormatException $stack283, $stack289, $u1;
+        float $stack90, $stack70#133, $stack70#134, threshShift#135;
+
+        s := @parameter0: java.lang.String;
+
+        $stack29 = <jdk.internal.math.FloatingDecimal$HexFloatPattern: java.util.regex.Pattern VALUE>;
+
+        $stack30 = virtualinvoke $stack29.<java.util.regex.Pattern: java.util.regex.Matcher matcher(java.lang.CharSequence)>(s);
+
+        m = $stack30;
+
+        $stack31 = virtualinvoke m.<java.util.regex.Matcher: boolean matches()>();
+
+        validInput = $stack31;
+
+        if validInput != 0 goto label001;
+
+        $u1 = new java.lang.NumberFormatException;
+
+        $stack283 = $u1;
+
+        $u0 = new java.lang.StringBuilder;
+
+        $stack284 = $u0;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $stack285 = virtualinvoke $stack284.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("For input string: \"");
+
+        $stack286 = virtualinvoke $stack285.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(s);
+
+        $stack287 = virtualinvoke $stack286.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\"");
+
+        $stack288 = virtualinvoke $stack287.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.NumberFormatException: void <init>(java.lang.String)>($stack288);
+
+        throw $stack283;
+
+     label001:
+        $stack32 = virtualinvoke m.<java.util.regex.Matcher: java.lang.String group(int)>(1);
+
+        group1 = $stack32;
+
+        if group1 == null goto label002;
+
+        $stack274 = virtualinvoke group1.<java.lang.String: boolean equals(java.lang.Object)>("-");
+
+        if $stack274 == 0 goto label002;
+
+        $stack275#1 = 1;
+
+        goto label003;
+
+     label002:
+        $stack275#1 = 0;
+
+     label003:
+        isNegative = $stack275#1;
+
+        rightDigits#16 = 0;
+
+        $stack282#17 = m;
+
+        $stack282#18 = $stack282#17;
+
+        $stack33#21 = virtualinvoke $stack282#18.<java.util.regex.Matcher: java.lang.String group(int)>(4);
+
+        $stack33#22 = $stack33#21;
+
+        group4#23 = $stack33#22;
+
+        if $stack33#22 == null goto label004;
+
+        $stack272 = staticinvoke <jdk.internal.math.FloatingDecimal: java.lang.String stripLeadingZeros(java.lang.String)>(group4#23);
+
+        significandString#24 = $stack272;
+
+        $stack273 = virtualinvoke significandString#24.<java.lang.String: int length()>();
+
+        leftDigits#25 = $stack273;
+
+        goto label007;
+
+     label004:
+        $stack34 = virtualinvoke m.<java.util.regex.Matcher: java.lang.String group(int)>(6);
+
+        $stack35 = staticinvoke <jdk.internal.math.FloatingDecimal: java.lang.String stripLeadingZeros(java.lang.String)>($stack34);
+
+        group6 = $stack35;
+
+        $stack36 = virtualinvoke group6.<java.lang.String: int length()>();
+
+        leftDigits#25 = $stack36;
+
+        $stack37 = virtualinvoke m.<java.util.regex.Matcher: java.lang.String group(int)>(7);
+
+        group7#26 = $stack37;
+
+        $stack38 = virtualinvoke group7#26.<java.lang.String: int length()>();
+
+        rightDigits#16 = $stack38;
+
+        $u2 = new java.lang.StringBuilder;
+
+        $stack39 = $u2;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        if group6 != null goto label005;
+
+        $stack266#27 = "";
+
+        goto label006;
+
+     label005:
+        $stack266#27 = group6;
+
+     label006:
+        $stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack266#27);
+
+        $stack267 = group7#26;
+
+        $stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack267);
+
+        $stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        significandString#24 = $stack42;
+
+     label007:
+        $stack268#28 = significandString#24;
+
+        $stack268#29 = $stack268#28;
+
+        $stack43#30 = staticinvoke <jdk.internal.math.FloatingDecimal: java.lang.String stripLeadingZeros(java.lang.String)>($stack268#29);
+
+        $stack43#31 = $stack43#30;
+
+        significandString#32 = $stack43#31;
+
+        $stack269#33 = significandString#32;
+
+        $stack269#34 = $stack269#33;
+
+        $stack44#35 = virtualinvoke $stack269#34.<java.lang.String: int length()>();
+
+        $stack44#36 = $stack44#35;
+
+        signifLength#37 = $stack44#36;
+
+        $stack271#38 = leftDigits#25;
+
+        $stack271#39 = $stack271#38;
+
+        if $stack271#39 < 1 goto label008;
+
+        $stack264 = leftDigits#25 - 1;
+
+        exponentAdjust#42 = 4 * $stack264;
+
+        goto label009;
+
+     label008:
+        $stack45 = rightDigits#16 - signifLength#37;
+
+        $stack46 = $stack45 + 1;
+
+        $i0 = (int) -4;
+
+        exponentAdjust#42 = $i0 * $stack46;
+
+     label009:
+        $stack265 = signifLength#37;
+
+        if $stack265 != 0 goto label012;
+
+        if isNegative == 0 goto label010;
+
+        $stack263#43 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_ZERO>;
+
+        goto label011;
+
+     label010:
+        $stack263#43 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_ZERO>;
+
+     label011:
+        return $stack263#43;
+
+     label012:
+        $stack47 = virtualinvoke m.<java.util.regex.Matcher: java.lang.String group(int)>(8);
+
+        leftDigits#44 = $stack47;
+
+        if leftDigits#44 == null goto label013;
+
+        $stack258 = virtualinvoke leftDigits#44.<java.lang.String: boolean equals(java.lang.Object)>("+");
+
+        if $stack258 == 0 goto label014;
+
+     label013:
+        $stack259#45 = 1;
+
+        goto label015;
+
+     label014:
+        $stack259#45 = 0;
+
+     label015:
+        rightDigits#46 = $stack259#45;
+
+     label016:
+        $stack261 = m;
+
+        $stack48 = virtualinvoke $stack261.<java.util.regex.Matcher: java.lang.String group(int)>(9);
+
+        $stack49 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($stack48);
+
+        $stack262 = (long) $stack49;
+
+        group4#47 = $stack262;
+
+     label017:
+        goto label023;
+
+     label018:
+        $stack289 := @caughtexception;
+
+        if isNegative == 0 goto label020;
+
+        if rightDigits#46 == 0 goto label019;
+
+        $stack290#49 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_INFINITY>;
+
+        goto label022;
+
+     label019:
+        $stack290#49 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_ZERO>;
+
+        goto label022;
+
+     label020:
+        if rightDigits#46 == 0 goto label021;
+
+        $stack290#49 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_INFINITY>;
+
+        goto label022;
+
+     label021:
+        $stack290#49 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_ZERO>;
+
+     label022:
+        return $stack290#49;
+
+     label023:
+        if rightDigits#46 == 0 goto label024;
+
+        $stack244#50 = 1L;
+
+        goto label025;
+
+     label024:
+        $stack244#50 = -1L;
+
+     label025:
+        $stack243 = group4#47;
+
+        $stack245 = $stack244#50 * $stack243;
+
+        group7#51 = $stack245;
+
+        $stack247 = group7#51;
+
+        $stack246 = exponentAdjust#42;
+
+        $stack50 = (long) $stack246;
+
+        $stack248 = $stack247 + $stack50;
+
+        exponent#52 = $stack248;
+
+        round#53 = 0;
+
+        sticky#54 = 0;
+
+        $stack253 = significandString#32;
+
+        $stack51 = staticinvoke <jdk.internal.math.FloatingDecimal: int getHexDigit(java.lang.String,int)>($stack253, 0);
+
+        $stack255 = (long) $stack51;
+
+        leadingDigit = $stack255;
+
+        $stack257 = leadingDigit;
+
+        $stack52 = $stack257 cmp 1L;
+
+        if $stack52 != 0 goto label026;
+
+        $stack242 = leadingDigit << 52;
+
+        significand#57 = 0L | $stack242;
+
+        nextShift#58 = 48;
+
+        goto label030;
+
+     label026:
+        $stack53 = leadingDigit cmp 3L;
+
+        $i1 = (int) $stack53;
+
+        if $i1 > 0 goto label027;
+
+        $stack241 = leadingDigit << 51;
+
+        significand#57 = 0L | $stack241;
+
+        nextShift#58 = 47;
+
+        exponent#52 = exponent#52 + 1L;
+
+        goto label030;
+
+     label027:
+        $stack54 = leadingDigit cmp 7L;
+
+        $i2 = (int) $stack54;
+
+        if $i2 > 0 goto label028;
+
+        $stack238 = leadingDigit << 50;
+
+        significand#57 = 0L | $stack238;
+
+        nextShift#58 = 46;
+
+        exponent#52 = exponent#52 + 2L;
+
+        goto label030;
+
+     label028:
+        $stack55 = leadingDigit cmp 15L;
+
+        $i3 = (int) $stack55;
+
+        if $i3 > 0 goto label029;
+
+        $stack57 = leadingDigit << 49;
+
+        significand#57 = 0L | $stack57;
+
+        nextShift#58 = 45;
+
+        exponent#52 = exponent#52 + 3L;
+
+        goto label030;
+
+     label029:
+        $u3 = new java.lang.AssertionError;
+
+        $stack56 = $u3;
+
+        specialinvoke $u3.<java.lang.AssertionError: void <init>(java.lang.Object)>("Result from digit conversion too large!");
+
+        throw $stack56;
+
+     label030:
+        i#64 = 1;
+
+     label031:
+        $stack237#65 = i#64;
+
+        $stack237#66 = $stack237#65;
+
+        $stack236#67 = signifLength#37;
+
+        $stack236#68 = $stack236#67;
+
+        if $stack237#66 >= $stack236#68 goto label032;
+
+        if nextShift#58 < 0 goto label032;
+
+        $stack234 = staticinvoke <jdk.internal.math.FloatingDecimal: int getHexDigit(java.lang.String,int)>(significandString#32, i#64);
+
+        currentDigit#69 = (long) $stack234;
+
+        $stack235 = currentDigit#69 << nextShift#58;
+
+        significand#57 = significand#57 | $stack235;
+
+        $i4 = (int) -4;
+
+        nextShift#58 = nextShift#58 + $i4;
+
+        i#64 = i#64 + 1;
+
+        goto label031;
+
+     label032:
+        $stack233 = i#64;
+
+        $stack232 = signifLength#37;
+
+        if $stack233 >= $stack232 goto label057;
+
+        $stack188 = staticinvoke <jdk.internal.math.FloatingDecimal: int getHexDigit(java.lang.String,int)>(significandString#32, i#64);
+
+        currentDigit#70 = (long) $stack188;
+
+        tableswitch(nextShift#58)
+        {
+            case -4: goto label046;
+            case -3: goto label041;
+            case -2: goto label036;
+            case -1: goto label033;
+            default: goto label051;
+        };
+
+     label033:
+        $stack189 = currentDigit#70 & 14L;
+
+        $stack190 = $stack189 >> 1;
+
+        significand#57 = significand#57 | $stack190;
+
+        $stack191 = currentDigit#70 & 1L;
+
+        $stack192 = $stack191 cmp 0L;
+
+        if $stack192 == 0 goto label034;
+
+        $stack199#71 = 1;
+
+        goto label035;
+
+     label034:
+        $stack199#71 = 0;
+
+     label035:
+        round#53 = $stack199#71;
+
+        goto label052;
+
+     label036:
+        $stack200 = currentDigit#70 & 12L;
+
+        $stack201 = $stack200 >> 2;
+
+        significand#57 = significand#57 | $stack201;
+
+        $stack202 = currentDigit#70 & 2L;
+
+        $stack203 = $stack202 cmp 0L;
+
+        if $stack203 == 0 goto label037;
+
+        $stack207#72 = 1;
+
+        goto label038;
+
+     label037:
+        $stack207#72 = 0;
+
+     label038:
+        round#53 = $stack207#72;
+
+        $stack209 = currentDigit#70;
+
+        $stack204 = $stack209 & 1L;
+
+        $stack205 = $stack204 cmp 0L;
+
+        if $stack205 == 0 goto label039;
+
+        $stack206#73 = 1;
+
+        goto label040;
+
+     label039:
+        $stack206#73 = 0;
+
+     label040:
+        sticky#54 = $stack206#73;
+
+        goto label052;
+
+     label041:
+        $stack211 = currentDigit#70 & 8L;
+
+        $stack212 = $stack211 >> 3;
+
+        significand#57 = significand#57 | $stack212;
+
+        $stack213 = currentDigit#70 & 4L;
+
+        $stack214 = $stack213 cmp 0L;
+
+        if $stack214 == 0 goto label042;
+
+        $stack218#74 = 1;
+
+        goto label043;
+
+     label042:
+        $stack218#74 = 0;
+
+     label043:
+        round#53 = $stack218#74;
+
+        $stack220 = currentDigit#70;
+
+        $stack215 = $stack220 & 3L;
+
+        $stack216 = $stack215 cmp 0L;
+
+        if $stack216 == 0 goto label044;
+
+        $stack217#75 = 1;
+
+        goto label045;
+
+     label044:
+        $stack217#75 = 0;
+
+     label045:
+        sticky#54 = $stack217#75;
+
+        goto label052;
+
+     label046:
+        $stack222 = currentDigit#70 & 8L;
+
+        $stack223 = $stack222 cmp 0L;
+
+        if $stack223 == 0 goto label047;
+
+        $stack227#76 = 1;
+
+        goto label048;
+
+     label047:
+        $stack227#76 = 0;
+
+     label048:
+        round#53 = $stack227#76;
+
+        $stack229 = currentDigit#70;
+
+        $stack224 = $stack229 & 7L;
+
+        $stack225 = $stack224 cmp 0L;
+
+        if $stack225 == 0 goto label049;
+
+        $stack226#77 = 1;
+
+        goto label050;
+
+     label049:
+        $stack226#77 = 0;
+
+     label050:
+        sticky#54 = $stack226#77;
+
+        goto label052;
+
+     label051:
+        $u4 = new java.lang.AssertionError;
+
+        $stack231 = $u4;
+
+        specialinvoke $u4.<java.lang.AssertionError: void <init>(java.lang.Object)>("Unexpected shift distance remainder.");
+
+        throw $stack231;
+
+     label052:
+        i#78 = i#64 + 1;
+
+     label053:
+        $stack196#79 = i#78;
+
+        $stack196#80 = $stack196#79;
+
+        $stack195#81 = signifLength#37;
+
+        $stack195#82 = $stack195#81;
+
+        if $stack196#80 >= $stack195#82 goto label057;
+
+        if sticky#54 != 0 goto label057;
+
+        $stack194 = staticinvoke <jdk.internal.math.FloatingDecimal: int getHexDigit(java.lang.String,int)>(significandString#32, i#78);
+
+        currentDigit#83 = (long) $stack194;
+
+        if sticky#54 != 0 goto label054;
+
+        $stack197 = currentDigit#83 cmp 0L;
+
+        if $stack197 == 0 goto label055;
+
+     label054:
+        $stack198#84 = 1;
+
+        goto label056;
+
+     label055:
+        $stack198#84 = 0;
+
+     label056:
+        sticky#54 = $stack198#84;
+
+        i#78 = i#78 + 1;
+
+        goto label053;
+
+     label057:
+        $stack193#85 = isNegative;
+
+        $stack193#86 = $stack193#85;
+
+        if $stack193#86 == 0 goto label058;
+
+        $stack185#87 = -2147483648;
+
+        goto label059;
+
+     label058:
+        $stack185#87 = 0;
+
+     label059:
+        currentDigit#88 = $stack185#87;
+
+        $stack187 = exponent#52;
+
+        $stack58 = $stack187 cmp -126L;
+
+        $i5 = (int) $stack58;
+
+        if $i5 < 0 goto label066;
+
+        $stack159 = exponent#52 cmp 127L;
+
+        $i6 = (int) $stack159;
+
+        if $i6 <= 0 goto label060;
+
+        currentDigit#88 = currentDigit#88 | 2139095040;
+
+        goto label075;
+
+     label060:
+        $stack162 = significand#57 & 268435455L;
+
+        $stack163 = $stack162 cmp 0L;
+
+        if $stack163 != 0 goto label061;
+
+        if round#53 != 0 goto label061;
+
+        if sticky#54 == 0 goto label062;
+
+     label061:
+        $stack178#90 = 1;
+
+        goto label063;
+
+     label062:
+        $stack178#90 = 0;
+
+     label063:
+        floatSticky#91 = $stack178#90;
+
+        $stack180 = significand#57;
+
+        $stack164 = $stack180 >>> 28;
+
+        $stack181 = (int) $stack164;
+
+        iValue#92 = $stack181;
+
+        $stack183 = iValue#92;
+
+        $stack165 = $stack183 & 3;
+
+        if $stack165 != 1 goto label064;
+
+        if floatSticky#91 == 0 goto label065;
+
+     label064:
+        iValue#92 = iValue#92 + 1;
+
+     label065:
+        $stack176#93 = currentDigit#88;
+
+        $stack176#94 = $stack176#93;
+
+        $stack171#95 = exponent#52;
+
+        $stack171#96 = $stack171#95;
+
+        $stack166#97 = (int) $stack171#96;
+
+        $stack166#98 = $stack166#97;
+
+        $stack167#101 = $stack166#98 + 126;
+
+        $stack167#102 = $stack167#101;
+
+        $stack169#105 = $stack167#102 << 23;
+
+        $stack169#106 = $stack169#105;
+
+        $stack175#107 = iValue#92;
+
+        $stack175#108 = $stack175#107;
+
+        $stack168#111 = $stack175#108 >> 1;
+
+        $stack168#112 = $stack168#111;
+
+        $stack170#113 = $stack169#106 + $stack168#112;
+
+        $stack170#114 = $stack170#113;
+
+        $stack177#115 = $stack176#94 | $stack170#114;
+
+        $stack177#116 = $stack177#115;
+
+        currentDigit#88 = $stack177#116;
+
+        goto label075;
+
+     label066:
+        $stack59 = exponent#52 cmp -150L;
+
+        $i7 = (int) $stack59;
+
+        if $i7 >= 0 goto label067;
+
+        goto label075;
+
+     label067:
+        $stack60 = -98L - exponent#52;
+
+        threshShift#117 = (int) $stack60;
+
+        $stack61 = <jdk.internal.math.FloatingDecimal: boolean $assertionsDisabled>;
+
+        if $stack61 != 0 goto label068;
+
+        if threshShift#117 >= 29 goto label068;
+
+        $u5 = new java.lang.AssertionError;
+
+        $stack158 = $u5;
+
+        specialinvoke $u5.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack158;
+
+     label068:
+        $stack62 = <jdk.internal.math.FloatingDecimal: boolean $assertionsDisabled>;
+
+        if $stack62 != 0 goto label069;
+
+        if threshShift#117 < 53 goto label069;
+
+        $u6 = new java.lang.AssertionError;
+
+        $stack157 = $u6;
+
+        specialinvoke $u6.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack157;
+
+     label069:
+        $stack155 = significand#57;
+
+        $stack152 = threshShift#117;
+
+        $stack63 = 1L << $stack152;
+
+        $stack64 = $stack63 - 1L;
+
+        $stack65 = $stack155 & $stack64;
+
+        $stack66 = $stack65 cmp 0L;
+
+        if $stack66 != 0 goto label070;
+
+        if round#53 != 0 goto label070;
+
+        if sticky#54 == 0 goto label071;
+
+     label070:
+        $stack145#118 = 1;
+
+        goto label072;
+
+     label071:
+        $stack145#118 = 0;
+
+     label072:
+        floatSticky#119 = $stack145#118;
+
+        $stack147 = significand#57;
+
+        $stack146 = threshShift#117;
+
+        $stack67 = $stack147 >>> $stack146;
+
+        $stack148 = (int) $stack67;
+
+        iValue#120 = $stack148;
+
+        $stack150 = iValue#120;
+
+        $stack68 = $stack150 & 3;
+
+        if $stack68 != 1 goto label073;
+
+        if floatSticky#119 == 0 goto label074;
+
+     label073:
+        iValue#120 = iValue#120 + 1;
+
+     label074:
+        $stack140#121 = currentDigit#88;
+
+        $stack140#122 = $stack140#121;
+
+        $stack139#123 = iValue#120;
+
+        $stack139#124 = $stack139#123;
+
+        $stack69#127 = $stack139#124 >> 1;
+
+        $stack69#128 = $stack69#127;
+
+        $stack141#129 = $stack140#122 | $stack69#128;
+
+        $stack141#130 = $stack141#129;
+
+        currentDigit#88 = $stack141#130;
+
+     label075:
+        $stack142#131 = currentDigit#88;
+
+        $stack142#132 = $stack142#131;
+
+        $stack70#133 = staticinvoke <java.lang.Float: float intBitsToFloat(int)>($stack142#132);
+
+        $stack70#134 = $stack70#133;
+
+        threshShift#135 = $stack70#134;
+
+        $stack144#136 = exponent#52;
+
+        $stack144#137 = $stack144#136;
+
+        $stack71#140 = $stack144#137 cmp 1023L;
+
+        $stack71#141 = $stack71#140;
+
+        $i8 = (int) $stack71#141;
+
+        if $i8 <= 0 goto label078;
+
+        if isNegative == 0 goto label076;
+
+        $stack137#142 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_INFINITY>;
+
+        goto label077;
+
+     label076:
+        $stack137#142 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_INFINITY>;
+
+     label077:
+        return $stack137#142;
+
+     label078:
+        $stack72 = exponent#52 cmp 1023L;
+
+        $i9 = (int) $stack72;
+
+        if $i9 > 0 goto label079;
+
+        $stack130 = exponent#52 cmp -1022L;
+
+        $i10 = (int) $stack130;
+
+        if $i10 < 0 goto label079;
+
+        $stack133 = exponent#52 + 1023L;
+
+        $stack134 = $stack133 << 52;
+
+        $stack136 = $stack134 & 9218868437227405312L;
+
+        $stack135 = 4503599627370495L & significand#57;
+
+        significand#143 = $stack136 | $stack135;
+
+        goto label094;
+
+     label079:
+        $stack132 = exponent#52;
+
+        $stack73 = $stack132 cmp -1075L;
+
+        $i11 = (int) $stack73;
+
+        if $i11 >= 0 goto label082;
+
+        if isNegative == 0 goto label080;
+
+        $stack129#144 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_ZERO>;
+
+        goto label081;
+
+     label080:
+        $stack129#144 = <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_ZERO>;
+
+     label081:
+        return $stack129#144;
+
+     label082:
+        if sticky#54 != 0 goto label083;
+
+        if round#53 == 0 goto label084;
+
+     label083:
+        $stack122#145 = 1;
+
+        goto label085;
+
+     label084:
+        $stack122#145 = 0;
+
+     label085:
+        sticky#54 = $stack122#145;
+
+        $stack124 = exponent#52;
+
+        $stack74 = (int) $stack124;
+
+        $i12 = (int) -1074;
+
+        $stack75 = $stack74 - $i12;
+
+        $stack76 = $stack75 + 1;
+
+        $stack128 = 53 - $stack76;
+
+        floatSticky#147 = $stack128;
+
+        $stack77 = <jdk.internal.math.FloatingDecimal: boolean $assertionsDisabled>;
+
+        if $stack77 != 0 goto label087;
+
+        if floatSticky#147 < 1 goto label086;
+
+        if floatSticky#147 <= 53 goto label087;
+
+     label086:
+        $u7 = new java.lang.AssertionError;
+
+        $stack116 = $u7;
+
+        specialinvoke $u7.<java.lang.AssertionError: void <init>()>();
+
+        throw $stack116;
+
+     label087:
+        $stack120 = significand#57;
+
+        $stack118 = floatSticky#147;
+
+        $stack78 = $stack118 - 1;
+
+        $stack79 = 1L << $stack78;
+
+        $stack80 = $stack120 & $stack79;
+
+        $stack81 = $stack80 cmp 0L;
+
+        if $stack81 == 0 goto label088;
+
+        $stack113#148 = 1;
+
+        goto label089;
+
+     label088:
+        $stack113#148 = 0;
+
+     label089:
+        round#53 = $stack113#148;
+
+        $stack115 = floatSticky#147;
+
+        if $stack115 <= 1 goto label093;
+
+        $stack98 = floatSticky#147 - 1;
+
+        $stack99 = -1L << $stack98;
+
+        iValue#149 = $stack99 ^ -1L;
+
+        if sticky#54 != 0 goto label090;
+
+        $stack110 = significand#57 & iValue#149;
+
+        $stack111 = $stack110 cmp 0L;
+
+        if $stack111 == 0 goto label091;
+
+     label090:
+        $stack112#150 = 1;
+
+        goto label092;
+
+     label091:
+        $stack112#150 = 0;
+
+     label092:
+        sticky#54 = $stack112#150;
+
+     label093:
+        $stack101#151 = significand#57;
+
+        $stack101#152 = $stack101#151;
+
+        $stack100#153 = floatSticky#147;
+
+        $stack100#154 = $stack100#153;
+
+        $stack102#155 = $stack101#152 >> $stack100#154;
+
+        $stack102#156 = $stack102#155;
+
+        significand#157 = $stack102#156;
+
+        $stack103#162 = significand#157;
+
+        $stack103#163 = $stack103#162;
+
+        $stack82#164 = 4503599627370495L & $stack103#163;
+
+        $stack82#165 = $stack82#164;
+
+        $stack106#166 = 0L | $stack82#165;
+
+        $stack106#167 = $stack106#166;
+
+        significand#143 = $stack106#167;
+
+     label094:
+        $stack108#168 = significand#143;
+
+        $stack108#169 = $stack108#168;
+
+        $stack83#172 = $stack108#169 & 1L;
+
+        $stack83#173 = $stack83#172;
+
+        $stack84#176 = $stack83#173 cmp 0L;
+
+        $stack84#177 = $stack84#176;
+
+        if $stack84#177 != 0 goto label095;
+
+        $stack96#178 = 1;
+
+        goto label096;
+
+     label095:
+        $stack96#178 = 0;
+
+     label096:
+        floatSticky#179 = $stack96#178;
+
+        $stack97 = floatSticky#179;
+
+        if $stack97 == 0 goto label097;
+
+        if round#53 == 0 goto label097;
+
+        if sticky#54 != 0 goto label098;
+
+     label097:
+        $stack92#180 = floatSticky#179;
+
+        $stack92#181 = $stack92#180;
+
+        if $stack92#181 != 0 goto label099;
+
+        if round#53 == 0 goto label099;
+
+     label098:
+        $stack94 = significand#143;
+
+        $stack95 = $stack94 + 1L;
+
+        significand#143 = $stack95;
+
+     label099:
+        $stack91#182 = isNegative;
+
+        $stack91#183 = $stack91#182;
+
+        if $stack91#183 == 0 goto label100;
+
+        $stack87 = significand#143 | -9223372036854775808L;
+
+        $stack85#184 = staticinvoke <java.lang.Double: double longBitsToDouble(long)>($stack87);
+
+        goto label101;
+
+     label100:
+        $stack85#184 = staticinvoke <java.lang.Double: double longBitsToDouble(long)>(significand#143);
+
+     label101:
+        iValue#185 = $stack85#184;
+
+        $u8 = new jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer;
+
+        $stack86 = $u8;
+
+        $stack89 = iValue#185;
+
+        $stack90 = threshShift#135;
+
+        specialinvoke $u8.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: void <init>(double,float)>($stack89, $stack90);
+
+        return $stack86;
+
+        catch java.lang.NumberFormatException from label016 to label017 with label018;
+    }
+
+    static java.lang.String stripLeadingZeros(java.lang.String)
+    {
+        char $stack3, $stack6;
+        bottom_type i;
+        int $stack5, $stack8, i#1, $i0, $i1;
+        java.lang.String s, $stack4, $stack7, $stack9;
+        boolean $stack2;
+
+        s := @parameter0: java.lang.String;
+
+        $stack2 = virtualinvoke s.<java.lang.String: boolean isEmpty()>();
+
+        if $stack2 != 0 goto label4;
+
+        $stack3 = virtualinvoke s.<java.lang.String: char charAt(int)>(0);
+
+        $i0 = (int) $stack3;
+
+        if $i0 != 48 goto label4;
+
+        i#1 = 1;
+
+     label1:
+        $stack8 = i#1;
+
+        $stack7 = s;
+
+        $stack5 = virtualinvoke $stack7.<java.lang.String: int length()>();
+
+        if $stack8 >= $stack5 goto label3;
+
+        $stack6 = virtualinvoke s.<java.lang.String: char charAt(int)>(i#1);
+
+        $i1 = (int) $stack6;
+
+        if $i1 == 48 goto label2;
+
+        $stack9 = virtualinvoke s.<java.lang.String: java.lang.String substring(int)>(i#1);
+
+        return $stack9;
+
+     label2:
+        i#1 = i#1 + 1;
+
+        goto label1;
+
+     label3:
+        return "";
+
+     label4:
+        $stack4 = s;
+
+        return $stack4;
+
+        nop;
+    }
+
+    static int getHexDigit(java.lang.String, int)
+    {
+        java.lang.AssertionError $stack5, $u1;
+        byte $b0;
+        int position, $stack4, value, $stack12, $i0;
+        java.lang.String s, $stack10, $stack11, $stack13;
+        char $stack3, $stack8;
+        java.lang.StringBuilder $stack6, $stack7, $stack9, $u0;
+
+        s := @parameter0: java.lang.String;
+
+        position := @parameter1: int;
+
+        $stack3 = virtualinvoke s.<java.lang.String: char charAt(int)>(position);
+
+        $stack4 = staticinvoke <java.lang.Character: int digit(char,int)>($stack3, 16);
+
+        value = $stack4;
+
+        $b0 = -1;
+
+        $i0 = (int) $b0;
+
+        if value <= $i0 goto label1;
+
+        if value < 16 goto label2;
+
+     label1:
+        $u1 = new java.lang.AssertionError;
+
+        $stack5 = $u1;
+
+        $u0 = new java.lang.StringBuilder;
+
+        $stack6 = $u0;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $stack11 = "Unexpected failure of digit conversion of ";
+
+        $stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11);
+
+        $stack13 = s;
+
+        $stack12 = position;
+
+        $stack8 = virtualinvoke $stack13.<java.lang.String: char charAt(int)>($stack12);
+
+        $stack9 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($stack8);
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.AssertionError: void <init>(java.lang.Object)>($stack10);
+
+        throw $stack5;
+
+     label2:
+        return value;
+
+        nop;
+    }
+
+    static void <clinit>()
+    {
+        byte $stack26, $stack28, $stack30, $stack32;
+        bottom_type $stack19;
+        jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer $stack9, $stack11;
+        boolean $stack1, $stack21, $stack23, $stack25, $stack29, $stack33, $stack19#1;
+        jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer $stack14, $stack15, $stack16, $stack17, $stack18;
+        float $stack35, $stack37, $stack39, $stack41, $stack43;
+        int $stack3, $stack5;
+        java.lang.String $stack2, $stack4, $stack20, $stack22, $stack24;
+        double $stack34, $stack36, $stack38, $stack40, $stack42;
+        char $stack27, $stack31;
+        jdk.internal.math.FloatingDecimal$1 $stack13;
+        jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer $stack6, $stack7, $stack8;
+        char[] $stack10, $stack12;
+        java.lang.Class $stack0;
+
+        <jdk.internal.math.FloatingDecimal: java.lang.String NAN_REP> = "NaN";
+
+        <jdk.internal.math.FloatingDecimal: java.lang.String INFINITY_REP> = "Infinity";
+
+        <jdk.internal.math.FloatingDecimal: int INT_DECIMAL_DIGITS> = 9;
+
+        <jdk.internal.math.FloatingDecimal: int SINGLE_MAX_NDIGITS> = 200;
+
+        <jdk.internal.math.FloatingDecimal: int SINGLE_MIN_DECIMAL_EXPONENT> = -45;
+
+        <jdk.internal.math.FloatingDecimal: int SINGLE_MAX_DECIMAL_EXPONENT> = 38;
+
+        <jdk.internal.math.FloatingDecimal: int SINGLE_MAX_DECIMAL_DIGITS> = 7;
+
+        <jdk.internal.math.FloatingDecimal: int SINGLE_FRACT_HOB> = 8388608;
+
+        <jdk.internal.math.FloatingDecimal: int SINGLE_EXP_SHIFT> = 23;
+
+        <jdk.internal.math.FloatingDecimal: int MAX_NDIGITS> = 1100;
+
+        <jdk.internal.math.FloatingDecimal: int BIG_DECIMAL_EXPONENT> = 324;
+
+        <jdk.internal.math.FloatingDecimal: int MIN_DECIMAL_EXPONENT> = -324;
+
+        <jdk.internal.math.FloatingDecimal: int MAX_DECIMAL_EXPONENT> = 308;
+
+        <jdk.internal.math.FloatingDecimal: int MAX_DECIMAL_DIGITS> = 15;
+
+        <jdk.internal.math.FloatingDecimal: int MIN_SMALL_BIN_EXP> = -21;
+
+        <jdk.internal.math.FloatingDecimal: int MAX_SMALL_BIN_EXP> = 62;
+
+        <jdk.internal.math.FloatingDecimal: long EXP_ONE> = 4607182418800017408L;
+
+        <jdk.internal.math.FloatingDecimal: long FRACT_HOB> = 4503599627370496L;
+
+        <jdk.internal.math.FloatingDecimal: int EXP_SHIFT> = 52;
+
+        $stack0 = class "Ljdk/internal/math/FloatingDecimal;";
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Class: boolean desiredAssertionStatus()>();
+
+        if $stack1 != 0 goto label1;
+
+        $stack19#1 = 1;
+
+        goto label2;
+
+     label1:
+        $stack19#1 = 0;
+
+     label2:
+        <jdk.internal.math.FloatingDecimal: boolean $assertionsDisabled> = $stack19#1;
+
+        $stack2 = "Infinity";
+
+        $stack3 = virtualinvoke $stack2.<java.lang.String: int length()>();
+
+        <jdk.internal.math.FloatingDecimal: int INFINITY_LENGTH> = $stack3;
+
+        $stack4 = "NaN";
+
+        $stack5 = virtualinvoke $stack4.<java.lang.String: int length()>();
+
+        <jdk.internal.math.FloatingDecimal: int NAN_LENGTH> = $stack5;
+
+        $stack6 = new jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        $stack20 = "Infinity";
+
+        $stack21 = 0;
+
+        specialinvoke $stack6.<jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: void <init>(java.lang.String,boolean)>($stack20, $stack21);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_POSITIVE_INFINITY> = $stack6;
+
+        $stack7 = new jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        $stack22 = "-Infinity";
+
+        $stack23 = 1;
+
+        specialinvoke $stack7.<jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: void <init>(java.lang.String,boolean)>($stack22, $stack23);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NEGATIVE_INFINITY> = $stack7;
+
+        $stack8 = new jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer;
+
+        $stack24 = "NaN";
+
+        $stack25 = 0;
+
+        specialinvoke $stack8.<jdk.internal.math.FloatingDecimal$ExceptionalBinaryToASCIIBuffer: void <init>(java.lang.String,boolean)>($stack24, $stack25);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NOT_A_NUMBER> = $stack8;
+
+        $stack9 = new jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer;
+
+        $stack29 = 0;
+
+        $stack26 = 1;
+
+        $stack10 = newarray (char)[$stack26];
+
+        $stack28 = 0;
+
+        $stack27 = 48;
+
+        $stack10[$stack28] = $stack27;
+
+        specialinvoke $stack9.<jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer: void <init>(boolean,char[])>($stack29, $stack10);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_POSITIVE_ZERO> = $stack9;
+
+        $stack11 = new jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer;
+
+        $stack33 = 1;
+
+        $stack30 = 1;
+
+        $stack12 = newarray (char)[$stack30];
+
+        $stack32 = 0;
+
+        $stack31 = 48;
+
+        $stack12[$stack32] = $stack31;
+
+        specialinvoke $stack11.<jdk.internal.math.FloatingDecimal$BinaryToASCIIBuffer: void <init>(boolean,char[])>($stack33, $stack12);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$BinaryToASCIIConverter B2AC_NEGATIVE_ZERO> = $stack11;
+
+        $stack13 = new jdk.internal.math.FloatingDecimal$1;
+
+        specialinvoke $stack13.<jdk.internal.math.FloatingDecimal$1: void <init>()>();
+
+        <jdk.internal.math.FloatingDecimal: java.lang.ThreadLocal threadLocalBinaryToASCIIBuffer> = $stack13;
+
+        $stack14 = new jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer;
+
+        $stack34 = #Infinity;
+
+        $stack35 = #InfinityF;
+
+        specialinvoke $stack14.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: void <init>(double,float)>($stack34, $stack35);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_INFINITY> = $stack14;
+
+        $stack15 = new jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer;
+
+        $stack36 = #-Infinity;
+
+        $stack37 = #-InfinityF;
+
+        specialinvoke $stack15.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: void <init>(double,float)>($stack36, $stack37);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_INFINITY> = $stack15;
+
+        $stack16 = new jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer;
+
+        $stack38 = #NaN;
+
+        $stack39 = #NaNF;
+
+        specialinvoke $stack16.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: void <init>(double,float)>($stack38, $stack39);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NOT_A_NUMBER> = $stack16;
+
+        $stack17 = new jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer;
+
+        $stack40 = 0.0;
+
+        $stack41 = 0.0F;
+
+        specialinvoke $stack17.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: void <init>(double,float)>($stack40, $stack41);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_POSITIVE_ZERO> = $stack17;
+
+        $stack18 = new jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer;
+
+        $stack42 = -0.0;
+
+        $stack43 = -0.0F;
+
+        specialinvoke $stack18.<jdk.internal.math.FloatingDecimal$PreparedASCIIToBinaryBuffer: void <init>(double,float)>($stack42, $stack43);
+
+        <jdk.internal.math.FloatingDecimal: jdk.internal.math.FloatingDecimal$ASCIIToBinaryConverter A2BC_NEGATIVE_ZERO> = $stack18;
+
+        return;
+    }
+}

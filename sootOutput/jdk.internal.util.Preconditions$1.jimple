@@ -1,0 +1,75 @@
+class jdk.internal.util.Preconditions$1 extends java.lang.Object implements java.util.function.BiFunction
+{
+    final java.util.function.Function val$f;
+
+    void <init>(java.util.function.Function)
+    {
+        java.util.function.Function l1;
+        jdk.internal.util.Preconditions$1 this;
+
+        this := @this: jdk.internal.util.Preconditions$1;
+
+        l1 := @parameter0: java.util.function.Function;
+
+        this.<jdk.internal.util.Preconditions$1: java.util.function.Function val$f> = l1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+
+        nop;
+    }
+
+    public java.lang.RuntimeException apply(java.lang.String, java.util.List)
+    {
+        java.util.List args;
+        jdk.internal.util.Preconditions$1 this;
+        java.lang.Object $stack5;
+        java.lang.String checkKind, $stack4;
+        java.lang.RuntimeException $stack6;
+        java.util.function.Function $stack3;
+
+        this := @this: jdk.internal.util.Preconditions$1;
+
+        checkKind := @parameter0: java.lang.String;
+
+        args := @parameter1: java.util.List;
+
+        $stack3 = this.<jdk.internal.util.Preconditions$1: java.util.function.Function val$f>;
+
+        $stack4 = staticinvoke <jdk.internal.util.Preconditions: java.lang.String outOfBoundsMessage(java.lang.String,java.util.List)>(checkKind, args);
+
+        $stack5 = interfaceinvoke $stack3.<java.util.function.Function: java.lang.Object apply(java.lang.Object)>($stack4);
+
+        $stack6 = (java.lang.RuntimeException) $stack5;
+
+        return $stack6;
+
+        nop;
+    }
+
+    public volatile java.lang.Object apply(java.lang.Object, java.lang.Object)
+    {
+        java.util.List $stack3;
+        jdk.internal.util.Preconditions$1 this;
+        java.lang.Object l1, l2;
+        java.lang.String $stack4;
+        java.lang.RuntimeException $stack5;
+
+        this := @this: jdk.internal.util.Preconditions$1;
+
+        l1 := @parameter0: java.lang.Object;
+
+        l2 := @parameter1: java.lang.Object;
+
+        $stack4 = (java.lang.String) l1;
+
+        $stack3 = (java.util.List) l2;
+
+        $stack5 = virtualinvoke this.<jdk.internal.util.Preconditions$1: java.lang.RuntimeException apply(java.lang.String,java.util.List)>($stack4, $stack3);
+
+        return $stack5;
+
+        nop;
+    }
+}
