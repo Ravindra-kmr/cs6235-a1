@@ -11,11 +11,6 @@ public class Driver {
 	public static void main (String [] args) {
 
 		String classPath = "tests";
-<<<<<<< HEAD
-		String queriesPath = "tests/CS21M050/Q1.txt";
-		Options.queriesPath = queriesPath;
-		String mainClass = "P1";
-=======
 		String queriesPath = "q.txt";
 		String mainClass = "Main";
 		if(args != null && args.length > 0) {
@@ -38,7 +33,6 @@ public class Driver {
 		
 
 		Options.queriesPath = queriesPath;
->>>>>>> 0ea5b8ce46cd503c8e04463b94300bfa3e67484d
 		
 		String [] sootArgs = {
 				"-v",
