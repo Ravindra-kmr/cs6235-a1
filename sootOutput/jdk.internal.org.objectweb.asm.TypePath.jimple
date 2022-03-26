@@ -9,322 +9,268 @@ public class jdk.internal.org.objectweb.asm.TypePath extends java.lang.Object
 
     void <init>(byte[], int)
     {
-        int offset;
-        byte[] b;
-        jdk.internal.org.objectweb.asm.TypePath this;
+        int i0;
+        byte[] r1;
+        jdk.internal.org.objectweb.asm.TypePath r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.TypePath;
+        r0 := @this: jdk.internal.org.objectweb.asm.TypePath;
 
-        b := @parameter0: byte[];
+        r1 := @parameter0: byte[];
 
-        offset := @parameter1: int;
+        i0 := @parameter1: int;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        this.<jdk.internal.org.objectweb.asm.TypePath: byte[] b> = b;
+        r0.<jdk.internal.org.objectweb.asm.TypePath: byte[] b> = r1;
 
-        this.<jdk.internal.org.objectweb.asm.TypePath: int offset> = offset;
+        r0.<jdk.internal.org.objectweb.asm.TypePath: int offset> = i0;
 
         return;
-
-        nop;
     }
 
     public int getLength()
     {
-        byte[] $stack2;
-        jdk.internal.org.objectweb.asm.TypePath this;
-        byte $stack3;
-        int $stack1, $i0;
+        byte[] $r1;
+        jdk.internal.org.objectweb.asm.TypePath r0;
+        byte $b1;
+        int $i0, $i2;
 
-        this := @this: jdk.internal.org.objectweb.asm.TypePath;
+        r0 := @this: jdk.internal.org.objectweb.asm.TypePath;
 
-        $stack2 = this.<jdk.internal.org.objectweb.asm.TypePath: byte[] b>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.TypePath: byte[] b>;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.TypePath: int offset>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.TypePath: int offset>;
 
-        $stack3 = $stack2[$stack1];
+        $b1 = $r1[$i0];
 
-        $i0 = (int) $stack3;
+        $i2 = (int) $b1;
 
-        return $i0;
-
-        nop;
+        return $i2;
     }
 
     public int getStep(int)
     {
-        byte[] $stack6;
-        jdk.internal.org.objectweb.asm.TypePath this;
-        byte $stack7;
-        int index, $stack2, $stack3, $stack4, $stack5, $i0;
+        byte[] $r1;
+        jdk.internal.org.objectweb.asm.TypePath r0;
+        byte $b5;
+        int i0, $i1, $i2, $i3, $i4, $i6;
 
-        this := @this: jdk.internal.org.objectweb.asm.TypePath;
+        r0 := @this: jdk.internal.org.objectweb.asm.TypePath;
 
-        index := @parameter0: int;
+        i0 := @parameter0: int;
 
-        $stack6 = this.<jdk.internal.org.objectweb.asm.TypePath: byte[] b>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.TypePath: byte[] b>;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.TypePath: int offset>;
+        $i2 = r0.<jdk.internal.org.objectweb.asm.TypePath: int offset>;
 
-        $stack2 = 2 * index;
+        $i1 = 2 * i0;
 
-        $stack4 = $stack3 + $stack2;
+        $i3 = $i2 + $i1;
 
-        $stack5 = $stack4 + 1;
+        $i4 = $i3 + 1;
 
-        $stack7 = $stack6[$stack5];
+        $b5 = $r1[$i4];
 
-        $i0 = (int) $stack7;
+        $i6 = (int) $b5;
 
-        return $i0;
-
-        nop;
+        return $i6;
     }
 
     public int getStepArgument(int)
     {
-        byte[] $stack6;
-        jdk.internal.org.objectweb.asm.TypePath this;
-        byte $stack7;
-        int index, $stack2, $stack3, $stack4, $stack5, $i0;
+        byte[] $r1;
+        jdk.internal.org.objectweb.asm.TypePath r0;
+        byte $b5;
+        int i0, $i1, $i2, $i3, $i4, $i6;
 
-        this := @this: jdk.internal.org.objectweb.asm.TypePath;
+        r0 := @this: jdk.internal.org.objectweb.asm.TypePath;
 
-        index := @parameter0: int;
+        i0 := @parameter0: int;
 
-        $stack6 = this.<jdk.internal.org.objectweb.asm.TypePath: byte[] b>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.TypePath: byte[] b>;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.TypePath: int offset>;
+        $i2 = r0.<jdk.internal.org.objectweb.asm.TypePath: int offset>;
 
-        $stack2 = 2 * index;
+        $i1 = 2 * i0;
 
-        $stack4 = $stack3 + $stack2;
+        $i3 = $i2 + $i1;
 
-        $stack5 = $stack4 + 2;
+        $i4 = $i3 + 2;
 
-        $stack7 = $stack6[$stack5];
+        $b5 = $r1[$i4];
 
-        $i0 = (int) $stack7;
+        $i6 = (int) $b5;
 
-        return $i0;
-
-        nop;
+        return $i6;
     }
 
     public static jdk.internal.org.objectweb.asm.TypePath fromString(java.lang.String)
     {
-        byte[] $stack13, $stack15;
-        byte $stack12;
-        boolean $stack6;
-        jdk.internal.org.objectweb.asm.TypePath $stack14, $u1;
-        jdk.internal.org.objectweb.asm.ByteVector $stack8, out, $stack24#9, $stack24#10, $u0;
-        int $stack7, n, $stack10, $stack11, $stack16, $stack18, $stack19, $stack28, $stack29, $stack30, $stack31, i#1, typeArg#3, $stack27#5, $stack27#6, $stack26#7, $stack26#8, $stack23#13, $stack23#14, $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9;
-        java.lang.String typePath;
-        char $stack17, $stack21, $stack25, c#2, c#4;
+        byte[] $r2, $r4;
+        jdk.internal.org.objectweb.asm.ByteVector $r5;
+        byte $b4;
+        int $i0, $i1, $i2, $i3, $i5, $i9, $i10, i11, i12, $i13, $i14, $i15, $i16, $i17, $i18, $i19, $i20, $i21, $i22;
+        java.lang.String r0;
+        jdk.internal.org.objectweb.asm.TypePath $r6;
+        char $c6, $c7, $c8;
 
-        typePath := @parameter0: java.lang.String;
+        r0 := @parameter0: java.lang.String;
 
-        if typePath == null goto label01;
+        if r0 == null goto label01;
 
-        $stack6 = virtualinvoke typePath.<java.lang.String: boolean isEmpty()>();
+        $i0 = virtualinvoke r0.<java.lang.String: int length()>();
 
-        if $stack6 == 0 goto label02;
+        if $i0 != 0 goto label02;
 
      label01:
         return null;
 
      label02:
-        $stack7 = virtualinvoke typePath.<java.lang.String: int length()>();
+        $i1 = virtualinvoke r0.<java.lang.String: int length()>();
 
-        n = $stack7;
+        $r5 = new jdk.internal.org.objectweb.asm.ByteVector;
 
-        $u0 = new jdk.internal.org.objectweb.asm.ByteVector;
+        specialinvoke $r5.<jdk.internal.org.objectweb.asm.ByteVector: void <init>(int)>($i1);
 
-        $stack8 = $u0;
+        virtualinvoke $r5.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByte(int)>(0);
 
-        specialinvoke $u0.<jdk.internal.org.objectweb.asm.ByteVector: void <init>(int)>(n);
-
-        out = $stack8;
-
-        virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByte(int)>(0);
-
-        i#1 = 0;
+        i11 = 0;
 
      label03:
-        $stack19 = i#1;
+        if i11 >= $i1 goto label11;
 
-        $stack18 = n;
+        $i5 = i11;
 
-        if $stack19 >= $stack18 goto label11;
+        i11 = i11 + 1;
 
-        $stack16 = i#1;
+        $c6 = virtualinvoke r0.<java.lang.String: char charAt(int)>($i5);
 
-        i#1 = i#1 + 1;
+        $i13 = (int) $c6;
 
-        $stack17 = virtualinvoke typePath.<java.lang.String: char charAt(int)>($stack16);
+        if $i13 != 91 goto label04;
 
-        c#2 = $stack17;
-
-        $i0 = (int) c#2;
-
-        if $i0 != 91 goto label04;
-
-        virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector put11(int,int)>(0, 0);
+        virtualinvoke $r5.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector put11(int,int)>(0, 0);
 
         goto label10;
 
      label04:
-        $i1 = (int) c#2;
+        $i14 = (int) $c6;
 
-        if $i1 != 46 goto label05;
+        if $i14 != 46 goto label05;
 
-        virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector put11(int,int)>(1, 0);
+        virtualinvoke $r5.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector put11(int,int)>(1, 0);
 
         goto label10;
 
      label05:
-        $i2 = (int) c#2;
+        $i15 = (int) $c6;
 
-        if $i2 != 42 goto label06;
+        if $i15 != 42 goto label06;
 
-        virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector put11(int,int)>(2, 0);
+        virtualinvoke $r5.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector put11(int,int)>(2, 0);
 
         goto label10;
 
      label06:
-        $i3 = (int) c#2;
+        $i16 = (int) $c6;
 
-        if $i3 < 48 goto label10;
+        if $i16 < 48 goto label10;
 
-        $i4 = (int) c#2;
+        $i17 = (int) $c6;
 
-        if $i4 > 57 goto label10;
+        if $i17 > 57 goto label10;
 
-        $i5 = (int) c#2;
+        $i18 = (int) $c6;
 
-        typeArg#3 = $i5 - 48;
+        i12 = $i18 - 48;
 
      label07:
-        $stack31 = i#1;
+        if i11 >= $i1 goto label08;
 
-        $stack30 = n;
+        $c8 = virtualinvoke r0.<java.lang.String: char charAt(int)>(i11);
 
-        if $stack31 >= $stack30 goto label08;
+        $i19 = (int) $c8;
 
-        $stack25 = virtualinvoke typePath.<java.lang.String: char charAt(int)>(i#1);
+        if $i19 < 48 goto label08;
 
-        c#4 = $stack25;
+        $i20 = (int) $c8;
 
-        $i6 = (int) $stack25;
+        if $i20 > 57 goto label08;
 
-        if $i6 < 48 goto label08;
+        $i9 = i12 * 10;
 
-        $i7 = (int) c#4;
+        $i21 = (int) $c8;
 
-        if $i7 > 57 goto label08;
+        $i10 = $i9 + $i21;
 
-        $stack28 = typeArg#3 * 10;
+        i12 = $i10 - 48;
 
-        $i8 = (int) c#4;
-
-        $stack29 = $stack28 + $i8;
-
-        typeArg#3 = $stack29 - 48;
-
-        i#1 = i#1 + 1;
+        i11 = i11 + 1;
 
         goto label07;
 
      label08:
-        $stack27#5 = i#1;
+        if i11 >= $i1 goto label09;
 
-        $stack27#6 = $stack27#5;
+        $c7 = virtualinvoke r0.<java.lang.String: char charAt(int)>(i11);
 
-        $stack26#7 = n;
+        $i22 = (int) $c7;
 
-        $stack26#8 = $stack26#7;
+        if $i22 != 59 goto label09;
 
-        if $stack27#6 >= $stack26#8 goto label09;
-
-        $stack21 = virtualinvoke typePath.<java.lang.String: char charAt(int)>(i#1);
-
-        $i9 = (int) $stack21;
-
-        if $i9 != 59 goto label09;
-
-        i#1 = i#1 + 1;
+        i11 = i11 + 1;
 
      label09:
-        $stack24#9 = out;
-
-        $stack24#10 = $stack24#9;
-
-        $stack23#13 = typeArg#3;
-
-        $stack23#14 = $stack23#13;
-
-        virtualinvoke $stack24#10.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector put11(int,int)>(3, $stack23#14);
+        virtualinvoke $r5.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector put11(int,int)>(3, i12);
 
      label10:
         goto label03;
 
      label11:
-        $stack13 = out.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
+        $r2 = $r5.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
 
-        $stack10 = out.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+        $i2 = $r5.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
 
-        $stack11 = $stack10 / 2;
+        $i3 = $i2 / 2;
 
-        $stack12 = (byte) $stack11;
+        $b4 = (byte) $i3;
 
-        $stack13[0] = $stack12;
+        $r2[0] = $b4;
 
-        $u1 = new jdk.internal.org.objectweb.asm.TypePath;
+        $r6 = new jdk.internal.org.objectweb.asm.TypePath;
 
-        $stack14 = $u1;
+        $r4 = $r5.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
 
-        $stack15 = out.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
+        specialinvoke $r6.<jdk.internal.org.objectweb.asm.TypePath: void <init>(byte[],int)>($r4, 0);
 
-        specialinvoke $u1.<jdk.internal.org.objectweb.asm.TypePath: void <init>(byte[],int)>($stack15, 0);
-
-        return $stack14;
+        return $r6;
     }
 
     public java.lang.String toString()
     {
-        bottom_type i;
-        int $stack4, length, $stack6, $stack8, $stack9, $stack12, $stack13, i#1;
-        java.lang.String $stack7;
-        jdk.internal.org.objectweb.asm.TypePath this;
-        java.lang.StringBuilder $stack5, result, $stack10, $stack11, $stack14, $stack15, $stack16, $stack17;
+        jdk.internal.org.objectweb.asm.TypePath r0;
+        int $i0, $i1, $i2, $i3, i4;
+        java.lang.StringBuilder $r1, $r3;
+        java.lang.String $r2;
 
-        this := @this: jdk.internal.org.objectweb.asm.TypePath;
+        r0 := @this: jdk.internal.org.objectweb.asm.TypePath;
 
-        $stack4 = virtualinvoke this.<jdk.internal.org.objectweb.asm.TypePath: int getLength()>();
+        $i0 = virtualinvoke r0.<jdk.internal.org.objectweb.asm.TypePath: int getLength()>();
 
-        length = $stack4;
+        $r1 = new java.lang.StringBuilder;
 
-        $stack5 = new java.lang.StringBuilder;
+        $i1 = $i0 * 2;
 
-        $stack6 = length * 2;
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(int)>($i1);
 
-        specialinvoke $stack5.<java.lang.StringBuilder: void <init>(int)>($stack6);
-
-        result = $stack5;
-
-        i#1 = 0;
+        i4 = 0;
 
      label1:
-        $stack13 = i#1;
+        if i4 >= $i0 goto label8;
 
-        $stack12 = length;
+        $i2 = virtualinvoke r0.<jdk.internal.org.objectweb.asm.TypePath: int getStep(int)>(i4);
 
-        if $stack13 >= $stack12 goto label8;
-
-        $stack8 = virtualinvoke this.<jdk.internal.org.objectweb.asm.TypePath: int getStep(int)>(i#1);
-
-        tableswitch($stack8)
+        tableswitch($i2)
         {
             case 0: goto label2;
             case 1: goto label3;
@@ -334,43 +280,41 @@ public class jdk.internal.org.objectweb.asm.TypePath extends java.lang.Object
         };
 
      label2:
-        $stack16 = virtualinvoke result.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(91);
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(91);
 
         goto label7;
 
      label3:
-        $stack15 = virtualinvoke result.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
 
         goto label7;
 
      label4:
-        $stack14 = virtualinvoke result.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(42);
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(42);
 
         goto label7;
 
      label5:
-        $stack9 = virtualinvoke this.<jdk.internal.org.objectweb.asm.TypePath: int getStepArgument(int)>(i#1);
+        $i3 = virtualinvoke r0.<jdk.internal.org.objectweb.asm.TypePath: int getStepArgument(int)>(i4);
 
-        $stack10 = virtualinvoke result.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack9);
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
 
-        $stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(59);
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(59);
 
         goto label7;
 
      label6:
-        $stack17 = virtualinvoke result.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(95);
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(95);
 
      label7:
-        i#1 = i#1 + 1;
+        i4 = i4 + 1;
 
         goto label1;
 
      label8:
-        $stack7 = virtualinvoke result.<java.lang.StringBuilder: java.lang.String toString()>();
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        return $stack7;
-
-        nop;
+        return $r2;
     }
 
     public static void <clinit>()

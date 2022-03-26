@@ -4,33 +4,4 @@ public interface  jdk.internal.org.xml.sax.DTDHandler extends java.lang.Object
     public abstract void notationDecl(java.lang.String, java.lang.String, java.lang.String) throws jdk.internal.org.xml.sax.SAXException;
 
     public abstract void unparsedEntityDecl(java.lang.String, java.lang.String, java.lang.String, java.lang.String) throws jdk.internal.org.xml.sax.SAXException;
-
-    public void startDTD(java.lang.String, java.lang.String, java.lang.String) throws jdk.internal.org.xml.sax.SAXException
-    {
-        jdk.internal.org.xml.sax.DTDHandler this;
-        java.lang.String name, publicId, systemId;
-
-        this := @this: jdk.internal.org.xml.sax.DTDHandler;
-
-        name := @parameter0: java.lang.String;
-
-        publicId := @parameter1: java.lang.String;
-
-        systemId := @parameter2: java.lang.String;
-
-        return;
-
-        nop;
-    }
-
-    public void startInternalSub() throws jdk.internal.org.xml.sax.SAXException
-    {
-        jdk.internal.org.xml.sax.DTDHandler this;
-
-        this := @this: jdk.internal.org.xml.sax.DTDHandler;
-
-        return;
-
-        nop;
-    }
 }

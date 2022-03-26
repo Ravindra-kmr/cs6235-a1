@@ -5,177 +5,162 @@ public abstract class jdk.internal.org.objectweb.asm.AnnotationVisitor extends j
 
     public void <init>(int)
     {
-        int api;
-        jdk.internal.org.objectweb.asm.AnnotationVisitor this;
+        int i0;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
 
-        api := @parameter0: int;
+        i0 := @parameter0: int;
 
-        specialinvoke this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: void <init>(int,jdk.internal.org.objectweb.asm.AnnotationVisitor)>(api, null);
+        specialinvoke r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: void <init>(int,jdk.internal.org.objectweb.asm.AnnotationVisitor)>(i0, null);
 
         return;
-
-        nop;
     }
 
     public void <init>(int, jdk.internal.org.objectweb.asm.AnnotationVisitor)
     {
-        int api;
-        jdk.internal.org.objectweb.asm.AnnotationVisitor this, av;
-        java.lang.IllegalArgumentException $stack3;
+        int i0;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor r0, r1;
+        java.lang.IllegalArgumentException $r2;
 
-        this := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
 
-        api := @parameter0: int;
+        i0 := @parameter0: int;
 
-        av := @parameter1: jdk.internal.org.objectweb.asm.AnnotationVisitor;
+        r1 := @parameter1: jdk.internal.org.objectweb.asm.AnnotationVisitor;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        if api < 262144 goto label1;
+        if i0 == 262144 goto label1;
 
-        if api <= 393216 goto label2;
+        if i0 == 327680 goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $r2;
 
      label1:
-        $stack3 = new java.lang.IllegalArgumentException;
+        r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: int api> = i0;
 
-        specialinvoke $stack3.<java.lang.IllegalArgumentException: void <init>()>();
-
-        throw $stack3;
-
-     label2:
-        this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: int api> = api;
-
-        this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av> = av;
+        r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av> = r1;
 
         return;
-
-        nop;
     }
 
     public void visit(java.lang.String, java.lang.Object)
     {
-        java.lang.Object value;
-        java.lang.String name;
-        jdk.internal.org.objectweb.asm.AnnotationVisitor this, $stack3, $stack4;
+        java.lang.Object r3;
+        java.lang.String r2;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor r0, $r1, $r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
 
-        name := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        value := @parameter1: java.lang.Object;
+        r3 := @parameter1: java.lang.Object;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        if $stack3 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r4 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.AnnotationVisitor: void visit(java.lang.String,java.lang.Object)>(name, value);
+        virtualinvoke $r4.<jdk.internal.org.objectweb.asm.AnnotationVisitor: void visit(java.lang.String,java.lang.Object)>(r2, r3);
 
      label1:
         return;
-
-        nop;
     }
 
     public void visitEnum(java.lang.String, java.lang.String, java.lang.String)
     {
-        java.lang.String name, desc, value;
-        jdk.internal.org.objectweb.asm.AnnotationVisitor this, $stack4, $stack5;
+        java.lang.String r2, r3, r4;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor r0, $r1, $r5;
 
-        this := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
 
-        name := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        desc := @parameter1: java.lang.String;
+        r3 := @parameter1: java.lang.String;
 
-        value := @parameter2: java.lang.String;
+        r4 := @parameter2: java.lang.String;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        if $stack4 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r5 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.AnnotationVisitor: void visitEnum(java.lang.String,java.lang.String,java.lang.String)>(name, desc, value);
+        virtualinvoke $r5.<jdk.internal.org.objectweb.asm.AnnotationVisitor: void visitEnum(java.lang.String,java.lang.String,java.lang.String)>(r2, r3, r4);
 
      label1:
         return;
-
-        nop;
     }
 
     public jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String, java.lang.String)
     {
-        java.lang.String name, desc;
-        jdk.internal.org.objectweb.asm.AnnotationVisitor this, $stack3, $stack4, $stack5;
+        java.lang.String r2, r3;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor r0, $r1, $r4, $r5;
 
-        this := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
 
-        name := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        desc := @parameter1: java.lang.String;
+        r3 := @parameter1: java.lang.String;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        if $stack3 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r4 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        $stack5 = virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String,java.lang.String)>(name, desc);
+        $r5 = virtualinvoke $r4.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String,java.lang.String)>(r2, r3);
 
-        return $stack5;
+        return $r5;
 
      label1:
         return null;
-
-        nop;
     }
 
     public jdk.internal.org.objectweb.asm.AnnotationVisitor visitArray(java.lang.String)
     {
-        java.lang.String name;
-        jdk.internal.org.objectweb.asm.AnnotationVisitor this, $stack2, $stack3, $stack4;
+        java.lang.String r2;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor r0, $r1, $r3, $r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
 
-        name := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        $stack2 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        if $stack2 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r3 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        $stack4 = virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitArray(java.lang.String)>(name);
+        $r4 = virtualinvoke $r3.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitArray(java.lang.String)>(r2);
 
-        return $stack4;
+        return $r4;
 
      label1:
         return null;
-
-        nop;
     }
 
     public void visitEnd()
     {
-        jdk.internal.org.objectweb.asm.AnnotationVisitor this, $stack1, $stack2;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor r0, $r1, $r2;
 
-        this := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.AnnotationVisitor;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        if $stack1 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack2 = this.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
+        $r2 = r0.<jdk.internal.org.objectweb.asm.AnnotationVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor av>;
 
-        virtualinvoke $stack2.<jdk.internal.org.objectweb.asm.AnnotationVisitor: void visitEnd()>();
+        virtualinvoke $r2.<jdk.internal.org.objectweb.asm.AnnotationVisitor: void visitEnd()>();
 
      label1:
         return;
-
-        nop;
     }
 }

@@ -23,14 +23,12 @@ class jdk.internal.org.objectweb.asm.Context extends java.lang.Object
 
     void <init>()
     {
-        jdk.internal.org.objectweb.asm.Context this;
+        jdk.internal.org.objectweb.asm.Context r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Context;
+        r0 := @this: jdk.internal.org.objectweb.asm.Context;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
         return;
-
-        nop;
     }
 }

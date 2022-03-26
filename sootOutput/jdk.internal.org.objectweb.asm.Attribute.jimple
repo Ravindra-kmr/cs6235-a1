@@ -3,317 +3,253 @@ public class jdk.internal.org.objectweb.asm.Attribute extends java.lang.Object
     public final java.lang.String type;
     byte[] value;
     jdk.internal.org.objectweb.asm.Attribute next;
-    static final jdk.internal.org.objectweb.asm.Attribute[] DEFAULT_ATTRIBUTE_PROTOS;
 
     protected void <init>(java.lang.String)
     {
-        jdk.internal.org.objectweb.asm.Attribute this;
-        java.lang.String type;
+        jdk.internal.org.objectweb.asm.Attribute r0;
+        java.lang.String r1;
 
-        this := @this: jdk.internal.org.objectweb.asm.Attribute;
+        r0 := @this: jdk.internal.org.objectweb.asm.Attribute;
 
-        type := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        this.<jdk.internal.org.objectweb.asm.Attribute: java.lang.String type> = type;
+        r0.<jdk.internal.org.objectweb.asm.Attribute: java.lang.String type> = r1;
 
         return;
-
-        nop;
     }
 
     public boolean isUnknown()
     {
-        jdk.internal.org.objectweb.asm.Attribute this;
+        jdk.internal.org.objectweb.asm.Attribute r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Attribute;
+        r0 := @this: jdk.internal.org.objectweb.asm.Attribute;
 
         return 1;
-
-        nop;
     }
 
     public boolean isCodeAttribute()
     {
-        jdk.internal.org.objectweb.asm.Attribute this;
+        jdk.internal.org.objectweb.asm.Attribute r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Attribute;
+        r0 := @this: jdk.internal.org.objectweb.asm.Attribute;
 
         return 0;
-
-        nop;
     }
 
     protected jdk.internal.org.objectweb.asm.Label[] getLabels()
     {
-        jdk.internal.org.objectweb.asm.Attribute this;
+        jdk.internal.org.objectweb.asm.Attribute r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Attribute;
+        r0 := @this: jdk.internal.org.objectweb.asm.Attribute;
 
         return null;
-
-        nop;
     }
 
     protected jdk.internal.org.objectweb.asm.Attribute read(jdk.internal.org.objectweb.asm.ClassReader, int, int, char[], int, jdk.internal.org.objectweb.asm.Label[])
     {
-        byte[] $stack10, $stack11, $stack12;
-        jdk.internal.org.objectweb.asm.Attribute $stack8, this, attr;
-        jdk.internal.org.objectweb.asm.Label[] labels;
-        jdk.internal.org.objectweb.asm.ClassReader cr;
-        int len, off, codeOff;
-        char[] buf;
-        java.lang.String $stack9;
+        byte[] $r3, $r5, $r6;
+        jdk.internal.org.objectweb.asm.Attribute $r0, r1;
+        jdk.internal.org.objectweb.asm.Label[] r8;
+        jdk.internal.org.objectweb.asm.ClassReader r4;
+        int i0, i1, i2;
+        char[] r7;
+        java.lang.String $r2;
 
-        this := @this: jdk.internal.org.objectweb.asm.Attribute;
+        r1 := @this: jdk.internal.org.objectweb.asm.Attribute;
 
-        cr := @parameter0: jdk.internal.org.objectweb.asm.ClassReader;
+        r4 := @parameter0: jdk.internal.org.objectweb.asm.ClassReader;
 
-        off := @parameter1: int;
+        i1 := @parameter1: int;
 
-        len := @parameter2: int;
+        i0 := @parameter2: int;
 
-        buf := @parameter3: char[];
+        r7 := @parameter3: char[];
 
-        codeOff := @parameter4: int;
+        i2 := @parameter4: int;
 
-        labels := @parameter5: jdk.internal.org.objectweb.asm.Label[];
+        r8 := @parameter5: jdk.internal.org.objectweb.asm.Label[];
 
-        $stack8 = new jdk.internal.org.objectweb.asm.Attribute;
+        $r0 = new jdk.internal.org.objectweb.asm.Attribute;
 
-        $stack9 = this.<jdk.internal.org.objectweb.asm.Attribute: java.lang.String type>;
+        $r2 = r1.<jdk.internal.org.objectweb.asm.Attribute: java.lang.String type>;
 
-        specialinvoke $stack8.<jdk.internal.org.objectweb.asm.Attribute: void <init>(java.lang.String)>($stack9);
+        specialinvoke $r0.<jdk.internal.org.objectweb.asm.Attribute: void <init>(java.lang.String)>($r2);
 
-        attr = $stack8;
+        $r3 = newarray (byte)[i0];
 
-        $stack10 = newarray (byte)[len];
+        $r0.<jdk.internal.org.objectweb.asm.Attribute: byte[] value> = $r3;
 
-        attr.<jdk.internal.org.objectweb.asm.Attribute: byte[] value> = $stack10;
+        $r6 = r4.<jdk.internal.org.objectweb.asm.ClassReader: byte[] b>;
 
-        $stack12 = cr.<jdk.internal.org.objectweb.asm.ClassReader: byte[] b>;
+        $r5 = $r0.<jdk.internal.org.objectweb.asm.Attribute: byte[] value>;
 
-        $stack11 = attr.<jdk.internal.org.objectweb.asm.Attribute: byte[] value>;
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r6, i1, $r5, 0, i0);
 
-        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($stack12, off, $stack11, 0, len);
-
-        return attr;
-
-        nop;
+        return $r0;
     }
 
     protected jdk.internal.org.objectweb.asm.ByteVector write(jdk.internal.org.objectweb.asm.ClassWriter, byte[], int, int, int)
     {
-        jdk.internal.org.objectweb.asm.ClassWriter cw;
-        byte[] $stack8, $stack9, code;
-        jdk.internal.org.objectweb.asm.Attribute this;
-        jdk.internal.org.objectweb.asm.ByteVector $stack7, v;
-        int $stack10, len, maxStack, maxLocals;
+        jdk.internal.org.objectweb.asm.ClassWriter r4;
+        byte[] $r2, $r3, r5;
+        jdk.internal.org.objectweb.asm.Attribute r1;
+        jdk.internal.org.objectweb.asm.ByteVector $r0;
+        int $i0, i1, i2, i3;
 
-        this := @this: jdk.internal.org.objectweb.asm.Attribute;
+        r1 := @this: jdk.internal.org.objectweb.asm.Attribute;
 
-        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+        r4 := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
 
-        code := @parameter1: byte[];
+        r5 := @parameter1: byte[];
 
-        len := @parameter2: int;
+        i1 := @parameter2: int;
 
-        maxStack := @parameter3: int;
+        i2 := @parameter3: int;
 
-        maxLocals := @parameter4: int;
+        i3 := @parameter4: int;
 
-        $stack7 = new jdk.internal.org.objectweb.asm.ByteVector;
+        $r0 = new jdk.internal.org.objectweb.asm.ByteVector;
 
-        specialinvoke $stack7.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
+        specialinvoke $r0.<jdk.internal.org.objectweb.asm.ByteVector: void <init>()>();
 
-        v = $stack7;
+        $r2 = r1.<jdk.internal.org.objectweb.asm.Attribute: byte[] value>;
 
-        $stack8 = this.<jdk.internal.org.objectweb.asm.Attribute: byte[] value>;
+        $r0.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data> = $r2;
 
-        v.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data> = $stack8;
+        $r3 = r1.<jdk.internal.org.objectweb.asm.Attribute: byte[] value>;
 
-        $stack9 = this.<jdk.internal.org.objectweb.asm.Attribute: byte[] value>;
+        $i0 = lengthof $r3;
 
-        $stack10 = lengthof $stack9;
+        $r0.<jdk.internal.org.objectweb.asm.ByteVector: int length> = $i0;
 
-        v.<jdk.internal.org.objectweb.asm.ByteVector: int length> = $stack10;
-
-        return v;
-
-        nop;
+        return $r0;
     }
 
     final int getCount()
     {
-        bottom_type count, attr;
-        jdk.internal.org.objectweb.asm.Attribute this, $stack3, attr#2;
-        int count#1;
+        jdk.internal.org.objectweb.asm.Attribute r0, r1;
+        int i0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Attribute;
+        r0 := @this: jdk.internal.org.objectweb.asm.Attribute;
 
-        count#1 = 0;
+        i0 = 0;
 
-        attr#2 = this;
+        r1 = r0;
 
      label1:
-        $stack3 = attr#2;
+        if r1 == null goto label2;
 
-        if $stack3 == null goto label2;
+        i0 = i0 + 1;
 
-        count#1 = count#1 + 1;
-
-        attr#2 = attr#2.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.Attribute next>;
+        r1 = r1.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.Attribute next>;
 
         goto label1;
 
      label2:
-        return count#1;
-
-        nop;
+        return i0;
     }
 
     final int getSize(jdk.internal.org.objectweb.asm.ClassWriter, byte[], int, int, int)
     {
-        jdk.internal.org.objectweb.asm.ClassWriter cw;
-        byte[] code;
-        jdk.internal.org.objectweb.asm.ByteVector $stack10;
-        bottom_type attr, size;
-        int $stack9, len, maxStack, maxLocals, $stack11, $stack12, size#2;
-        java.lang.String $stack8;
-        jdk.internal.org.objectweb.asm.Attribute this, $stack13, attr#1;
+        jdk.internal.org.objectweb.asm.ClassWriter r1;
+        byte[] r3;
+        jdk.internal.org.objectweb.asm.Attribute r0, r5;
+        jdk.internal.org.objectweb.asm.ByteVector $r4;
+        int i0, i1, i2, $i3, $i4, i5;
+        java.lang.String $r2;
 
-        this := @this: jdk.internal.org.objectweb.asm.Attribute;
+        r0 := @this: jdk.internal.org.objectweb.asm.Attribute;
 
-        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+        r1 := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
 
-        code := @parameter1: byte[];
+        r3 := @parameter1: byte[];
 
-        len := @parameter2: int;
+        i0 := @parameter2: int;
 
-        maxStack := @parameter3: int;
+        i1 := @parameter3: int;
 
-        maxLocals := @parameter4: int;
+        i2 := @parameter4: int;
 
-        attr#1 = this;
+        r5 = r0;
 
-        size#2 = 0;
+        i5 = 0;
 
      label1:
-        $stack13 = attr#1;
+        if r5 == null goto label2;
 
-        if $stack13 == null goto label2;
+        $r2 = r5.<jdk.internal.org.objectweb.asm.Attribute: java.lang.String type>;
 
-        $stack8 = attr#1.<jdk.internal.org.objectweb.asm.Attribute: java.lang.String type>;
+        virtualinvoke r1.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>($r2);
 
-        $stack9 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>($stack8);
+        $r4 = virtualinvoke r5.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.ByteVector write(jdk.internal.org.objectweb.asm.ClassWriter,byte[],int,int,int)>(r1, r3, i0, i1, i2);
 
-        $stack10 = virtualinvoke attr#1.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.ByteVector write(jdk.internal.org.objectweb.asm.ClassWriter,byte[],int,int,int)>(cw, code, len, maxStack, maxLocals);
+        $i3 = $r4.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
 
-        $stack11 = $stack10.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+        $i4 = $i3 + 6;
 
-        $stack12 = $stack11 + 6;
+        i5 = i5 + $i4;
 
-        size#2 = size#2 + $stack12;
-
-        attr#1 = attr#1.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.Attribute next>;
+        r5 = r5.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.Attribute next>;
 
         goto label1;
 
      label2:
-        return size#2;
-
-        nop;
+        return i5;
     }
 
     final void put(jdk.internal.org.objectweb.asm.ClassWriter, byte[], int, int, int, jdk.internal.org.objectweb.asm.ByteVector)
     {
-        jdk.internal.org.objectweb.asm.ClassWriter cw;
-        byte[] code, $stack16;
-        jdk.internal.org.objectweb.asm.ByteVector $stack9, b, out, $stack12, $stack14, $stack17;
-        bottom_type attr;
-        int len, maxStack, maxLocals, $stack11, $stack13, $stack15;
-        java.lang.String $stack10;
-        jdk.internal.org.objectweb.asm.Attribute this, $stack18, attr#1;
+        jdk.internal.org.objectweb.asm.ClassWriter r1;
+        byte[] r2, $r7;
+        jdk.internal.org.objectweb.asm.Attribute r0, r8;
+        jdk.internal.org.objectweb.asm.ByteVector $r3, r4, $r6;
+        int i0, i1, i2, $i3, $i4, $i5;
+        java.lang.String $r5;
 
-        this := @this: jdk.internal.org.objectweb.asm.Attribute;
+        r0 := @this: jdk.internal.org.objectweb.asm.Attribute;
 
-        cw := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
+        r1 := @parameter0: jdk.internal.org.objectweb.asm.ClassWriter;
 
-        code := @parameter1: byte[];
+        r2 := @parameter1: byte[];
 
-        len := @parameter2: int;
+        i0 := @parameter2: int;
 
-        maxStack := @parameter3: int;
+        i1 := @parameter3: int;
 
-        maxLocals := @parameter4: int;
+        i2 := @parameter4: int;
 
-        out := @parameter5: jdk.internal.org.objectweb.asm.ByteVector;
+        r4 := @parameter5: jdk.internal.org.objectweb.asm.ByteVector;
 
-        attr#1 = this;
+        r8 = r0;
 
      label1:
-        $stack18 = attr#1;
+        if r8 == null goto label2;
 
-        if $stack18 == null goto label2;
+        $r3 = virtualinvoke r8.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.ByteVector write(jdk.internal.org.objectweb.asm.ClassWriter,byte[],int,int,int)>(r1, r2, i0, i1, i2);
 
-        $stack9 = virtualinvoke attr#1.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.ByteVector write(jdk.internal.org.objectweb.asm.ClassWriter,byte[],int,int,int)>(cw, code, len, maxStack, maxLocals);
+        $r5 = r8.<jdk.internal.org.objectweb.asm.Attribute: java.lang.String type>;
 
-        b = $stack9;
+        $i3 = virtualinvoke r1.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>($r5);
 
-        $stack10 = attr#1.<jdk.internal.org.objectweb.asm.Attribute: java.lang.String type>;
+        $r6 = virtualinvoke r4.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($i3);
 
-        $stack11 = virtualinvoke cw.<jdk.internal.org.objectweb.asm.ClassWriter: int newUTF8(java.lang.String)>($stack10);
+        $i4 = $r3.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
 
-        $stack12 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack11);
+        virtualinvoke $r6.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>($i4);
 
-        $stack13 = b.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+        $r7 = $r3.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
 
-        $stack14 = virtualinvoke $stack12.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>($stack13);
+        $i5 = $r3.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
 
-        $stack16 = b.<jdk.internal.org.objectweb.asm.ByteVector: byte[] data>;
+        virtualinvoke r4.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByteArray(byte[],int,int)>($r7, 0, $i5);
 
-        $stack15 = b.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
-
-        $stack17 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putByteArray(byte[],int,int)>($stack16, 0, $stack15);
-
-        attr#1 = attr#1.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.Attribute next>;
+        r8 = r8.<jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.Attribute next>;
 
         goto label1;
 
      label2:
-        return;
-
-        nop;
-    }
-
-    static void <clinit>()
-    {
-        byte $stack2, $stack4;
-        jdk.internal.org.objectweb.asm.Attribute[] $stack0;
-        jdk.internal.org.objectweb.asm.Attribute$NestHost $stack3;
-        jdk.internal.org.objectweb.asm.Attribute$NestMembers $stack1;
-
-        $stack0 = newarray (jdk.internal.org.objectweb.asm.Attribute)[2];
-
-        $stack2 = 0;
-
-        $stack1 = new jdk.internal.org.objectweb.asm.Attribute$NestMembers;
-
-        specialinvoke $stack1.<jdk.internal.org.objectweb.asm.Attribute$NestMembers: void <init>()>();
-
-        $stack0[$stack2] = $stack1;
-
-        $stack4 = 1;
-
-        $stack3 = new jdk.internal.org.objectweb.asm.Attribute$NestHost;
-
-        specialinvoke $stack3.<jdk.internal.org.objectweb.asm.Attribute$NestHost: void <init>()>();
-
-        $stack0[$stack4] = $stack3;
-
-        <jdk.internal.org.objectweb.asm.Attribute: jdk.internal.org.objectweb.asm.Attribute[] DEFAULT_ATTRIBUTE_PROTOS> = $stack0;
-
         return;
     }
 }

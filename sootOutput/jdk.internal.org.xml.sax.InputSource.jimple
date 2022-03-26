@@ -8,218 +8,190 @@ public class jdk.internal.org.xml.sax.InputSource extends java.lang.Object
 
     public void <init>()
     {
-        jdk.internal.org.xml.sax.InputSource this;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
         return;
-
-        nop;
     }
 
     public void <init>(java.lang.String)
     {
-        java.lang.String systemId;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.lang.String r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        systemId := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        virtualinvoke this.<jdk.internal.org.xml.sax.InputSource: void setSystemId(java.lang.String)>(systemId);
+        virtualinvoke r0.<jdk.internal.org.xml.sax.InputSource: void setSystemId(java.lang.String)>(r1);
 
         return;
-
-        nop;
     }
 
     public void <init>(java.io.InputStream)
     {
-        jdk.internal.org.xml.sax.InputSource this;
-        java.io.InputStream byteStream;
+        jdk.internal.org.xml.sax.InputSource r0;
+        java.io.InputStream r1;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        byteStream := @parameter0: java.io.InputStream;
+        r1 := @parameter0: java.io.InputStream;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        virtualinvoke this.<jdk.internal.org.xml.sax.InputSource: void setByteStream(java.io.InputStream)>(byteStream);
+        virtualinvoke r0.<jdk.internal.org.xml.sax.InputSource: void setByteStream(java.io.InputStream)>(r1);
 
         return;
-
-        nop;
     }
 
     public void <init>(java.io.Reader)
     {
-        java.io.Reader characterStream;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.io.Reader r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        characterStream := @parameter0: java.io.Reader;
+        r1 := @parameter0: java.io.Reader;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        virtualinvoke this.<jdk.internal.org.xml.sax.InputSource: void setCharacterStream(java.io.Reader)>(characterStream);
+        virtualinvoke r0.<jdk.internal.org.xml.sax.InputSource: void setCharacterStream(java.io.Reader)>(r1);
 
         return;
-
-        nop;
     }
 
     public void setPublicId(java.lang.String)
     {
-        java.lang.String publicId;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.lang.String r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        publicId := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        this.<jdk.internal.org.xml.sax.InputSource: java.lang.String publicId> = publicId;
+        r0.<jdk.internal.org.xml.sax.InputSource: java.lang.String publicId> = r1;
 
         return;
-
-        nop;
     }
 
     public java.lang.String getPublicId()
     {
-        java.lang.String $stack1;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.lang.String $r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        $stack1 = this.<jdk.internal.org.xml.sax.InputSource: java.lang.String publicId>;
+        $r1 = r0.<jdk.internal.org.xml.sax.InputSource: java.lang.String publicId>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public void setSystemId(java.lang.String)
     {
-        java.lang.String systemId;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.lang.String r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        systemId := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        this.<jdk.internal.org.xml.sax.InputSource: java.lang.String systemId> = systemId;
+        r0.<jdk.internal.org.xml.sax.InputSource: java.lang.String systemId> = r1;
 
         return;
-
-        nop;
     }
 
     public java.lang.String getSystemId()
     {
-        java.lang.String $stack1;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.lang.String $r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        $stack1 = this.<jdk.internal.org.xml.sax.InputSource: java.lang.String systemId>;
+        $r1 = r0.<jdk.internal.org.xml.sax.InputSource: java.lang.String systemId>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public void setByteStream(java.io.InputStream)
     {
-        jdk.internal.org.xml.sax.InputSource this;
-        java.io.InputStream byteStream;
+        jdk.internal.org.xml.sax.InputSource r0;
+        java.io.InputStream r1;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        byteStream := @parameter0: java.io.InputStream;
+        r1 := @parameter0: java.io.InputStream;
 
-        this.<jdk.internal.org.xml.sax.InputSource: java.io.InputStream byteStream> = byteStream;
+        r0.<jdk.internal.org.xml.sax.InputSource: java.io.InputStream byteStream> = r1;
 
         return;
-
-        nop;
     }
 
     public java.io.InputStream getByteStream()
     {
-        jdk.internal.org.xml.sax.InputSource this;
-        java.io.InputStream $stack1;
+        jdk.internal.org.xml.sax.InputSource r0;
+        java.io.InputStream $r1;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        $stack1 = this.<jdk.internal.org.xml.sax.InputSource: java.io.InputStream byteStream>;
+        $r1 = r0.<jdk.internal.org.xml.sax.InputSource: java.io.InputStream byteStream>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public void setEncoding(java.lang.String)
     {
-        java.lang.String encoding;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.lang.String r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        encoding := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        this.<jdk.internal.org.xml.sax.InputSource: java.lang.String encoding> = encoding;
+        r0.<jdk.internal.org.xml.sax.InputSource: java.lang.String encoding> = r1;
 
         return;
-
-        nop;
     }
 
     public java.lang.String getEncoding()
     {
-        java.lang.String $stack1;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.lang.String $r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        $stack1 = this.<jdk.internal.org.xml.sax.InputSource: java.lang.String encoding>;
+        $r1 = r0.<jdk.internal.org.xml.sax.InputSource: java.lang.String encoding>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public void setCharacterStream(java.io.Reader)
     {
-        java.io.Reader characterStream;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.io.Reader r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        characterStream := @parameter0: java.io.Reader;
+        r1 := @parameter0: java.io.Reader;
 
-        this.<jdk.internal.org.xml.sax.InputSource: java.io.Reader characterStream> = characterStream;
+        r0.<jdk.internal.org.xml.sax.InputSource: java.io.Reader characterStream> = r1;
 
         return;
-
-        nop;
     }
 
     public java.io.Reader getCharacterStream()
     {
-        java.io.Reader $stack1;
-        jdk.internal.org.xml.sax.InputSource this;
+        java.io.Reader $r1;
+        jdk.internal.org.xml.sax.InputSource r0;
 
-        this := @this: jdk.internal.org.xml.sax.InputSource;
+        r0 := @this: jdk.internal.org.xml.sax.InputSource;
 
-        $stack1 = this.<jdk.internal.org.xml.sax.InputSource: java.io.Reader characterStream>;
+        $r1 = r0.<jdk.internal.org.xml.sax.InputSource: java.io.Reader characterStream>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 }

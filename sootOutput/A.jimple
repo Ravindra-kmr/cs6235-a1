@@ -2,6 +2,31 @@ class A extends java.lang.Object
 {
     A f1;
 
+    public boolean foo()
+    {
+        A this;
+        boolean a, temp$0;
+
+        this := @this: A;
+
+        temp$0 = 1;
+
+        a = temp$0;
+
+        return a;
+    }
+
+    public A getf1()
+    {
+        A this, temp$0;
+
+        this := @this: A;
+
+        temp$0 = this.<A: A f1>;
+
+        return temp$0;
+    }
+
     void <init>()
     {
         A this;
@@ -11,34 +36,5 @@ class A extends java.lang.Object
         specialinvoke this.<java.lang.Object: void <init>()>();
 
         return;
-
-        nop;
-    }
-
-    public boolean foo()
-    {
-        A this;
-        boolean a;
-
-        this := @this: A;
-
-        a = 1;
-
-        return a;
-
-        nop;
-    }
-
-    public A getf1()
-    {
-        A this, $stack1;
-
-        this := @this: A;
-
-        $stack1 = this.<A: A f1>;
-
-        return $stack1;
-
-        nop;
     }
 }

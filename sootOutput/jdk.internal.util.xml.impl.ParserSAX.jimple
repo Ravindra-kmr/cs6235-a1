@@ -12,459 +12,399 @@ final class jdk.internal.util.xml.impl.ParserSAX extends jdk.internal.util.xml.i
 
     public void <init>()
     {
-        jdk.internal.util.xml.impl.ParserSAX this;
-        jdk.internal.org.xml.sax.helpers.DefaultHandler $stack1, $stack2, $stack3, $stack4, $stack5;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler $r1, $r2, $r3, $r4, $r5;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        specialinvoke this.<jdk.internal.util.xml.impl.Parser: void <init>()>();
+        specialinvoke r0.<jdk.internal.util.xml.impl.Parser: void <init>()>();
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: boolean mFNamespaces> = 1;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: boolean mFNamespaces> = 1;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: boolean mFPrefixes> = 0;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: boolean mFPrefixes> = 0;
 
-        $stack1 = new jdk.internal.org.xml.sax.helpers.DefaultHandler;
+        $r1 = new jdk.internal.org.xml.sax.helpers.DefaultHandler;
 
-        specialinvoke $stack1.<jdk.internal.org.xml.sax.helpers.DefaultHandler: void <init>()>();
+        specialinvoke $r1.<jdk.internal.org.xml.sax.helpers.DefaultHandler: void <init>()>();
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand> = $stack1;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand> = $r1;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont> = $stack2;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont> = $r2;
 
-        $stack3 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
+        $r3 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd> = $stack3;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd> = $r3;
 
-        $stack4 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
+        $r4 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr> = $stack4;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr> = $r4;
 
-        $stack5 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
+        $r5 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt> = $stack5;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt> = $r5;
 
         return;
-
-        nop;
     }
 
     public jdk.internal.org.xml.sax.ContentHandler getContentHandler()
     {
-        bottom_type $stack3;
-        jdk.internal.org.xml.sax.ContentHandler $stack2, $stack3#1;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        jdk.internal.org.xml.sax.helpers.DefaultHandler $stack1;
+        jdk.internal.org.xml.sax.ContentHandler $r2, $r3;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler $r1;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
 
-        if $stack2 == $stack1 goto label1;
+        if $r2 == $r1 goto label1;
 
-        $stack3#1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r3 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
         goto label2;
 
      label1:
-        $stack3#1 = null;
+        $r3 = null;
 
      label2:
-        return $stack3#1;
-
-        nop;
+        return $r3;
     }
 
     public void setContentHandler(jdk.internal.org.xml.sax.ContentHandler)
     {
-        jdk.internal.org.xml.sax.ContentHandler handler;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.NullPointerException $stack2;
+        jdk.internal.org.xml.sax.ContentHandler r0;
+        jdk.internal.util.xml.impl.ParserSAX r1;
+        java.lang.NullPointerException $r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r1 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        handler := @parameter0: jdk.internal.org.xml.sax.ContentHandler;
+        r0 := @parameter0: jdk.internal.org.xml.sax.ContentHandler;
 
-        if handler != null goto label1;
+        if r0 != null goto label1;
 
-        $stack2 = new java.lang.NullPointerException;
+        $r2 = new java.lang.NullPointerException;
 
-        specialinvoke $stack2.<java.lang.NullPointerException: void <init>()>();
+        specialinvoke $r2.<java.lang.NullPointerException: void <init>()>();
 
-        throw $stack2;
+        throw $r2;
 
      label1:
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont> = handler;
+        r1.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont> = r0;
 
         return;
-
-        nop;
     }
 
     public jdk.internal.org.xml.sax.DTDHandler getDTDHandler()
     {
-        jdk.internal.org.xml.sax.DTDHandler $stack2, $stack3#1;
-        bottom_type $stack3;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        jdk.internal.org.xml.sax.helpers.DefaultHandler $stack1;
+        jdk.internal.org.xml.sax.DTDHandler $r2, $r3;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler $r1;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
 
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
 
-        if $stack2 == $stack1 goto label1;
+        if $r2 == $r1 goto label1;
 
-        $stack3#1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
+        $r3 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
 
         goto label2;
 
      label1:
-        $stack3#1 = null;
+        $r3 = null;
 
      label2:
-        return $stack3#1;
-
-        nop;
+        return $r3;
     }
 
     public void setDTDHandler(jdk.internal.org.xml.sax.DTDHandler)
     {
-        jdk.internal.org.xml.sax.DTDHandler handler;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.NullPointerException $stack2;
+        jdk.internal.org.xml.sax.DTDHandler r0;
+        jdk.internal.util.xml.impl.ParserSAX r1;
+        java.lang.NullPointerException $r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r1 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        handler := @parameter0: jdk.internal.org.xml.sax.DTDHandler;
+        r0 := @parameter0: jdk.internal.org.xml.sax.DTDHandler;
 
-        if handler != null goto label1;
+        if r0 != null goto label1;
 
-        $stack2 = new java.lang.NullPointerException;
+        $r2 = new java.lang.NullPointerException;
 
-        specialinvoke $stack2.<java.lang.NullPointerException: void <init>()>();
+        specialinvoke $r2.<java.lang.NullPointerException: void <init>()>();
 
-        throw $stack2;
+        throw $r2;
 
      label1:
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd> = handler;
+        r1.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd> = r0;
 
         return;
-
-        nop;
     }
 
     public jdk.internal.org.xml.sax.ErrorHandler getErrorHandler()
     {
-        jdk.internal.org.xml.sax.ErrorHandler $stack2, $stack3#1;
-        bottom_type $stack3;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        jdk.internal.org.xml.sax.helpers.DefaultHandler $stack1;
+        jdk.internal.org.xml.sax.ErrorHandler $r2, $r3;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler $r1;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr>;
 
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
 
-        if $stack2 == $stack1 goto label1;
+        if $r2 == $r1 goto label1;
 
-        $stack3#1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr>;
+        $r3 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr>;
 
         goto label2;
 
      label1:
-        $stack3#1 = null;
+        $r3 = null;
 
      label2:
-        return $stack3#1;
-
-        nop;
+        return $r3;
     }
 
     public void setErrorHandler(jdk.internal.org.xml.sax.ErrorHandler)
     {
-        jdk.internal.util.xml.impl.ParserSAX this;
-        jdk.internal.org.xml.sax.ErrorHandler handler;
-        java.lang.NullPointerException $stack2;
+        jdk.internal.util.xml.impl.ParserSAX r1;
+        jdk.internal.org.xml.sax.ErrorHandler r0;
+        java.lang.NullPointerException $r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r1 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        handler := @parameter0: jdk.internal.org.xml.sax.ErrorHandler;
+        r0 := @parameter0: jdk.internal.org.xml.sax.ErrorHandler;
 
-        if handler != null goto label1;
+        if r0 != null goto label1;
 
-        $stack2 = new java.lang.NullPointerException;
+        $r2 = new java.lang.NullPointerException;
 
-        specialinvoke $stack2.<java.lang.NullPointerException: void <init>()>();
+        specialinvoke $r2.<java.lang.NullPointerException: void <init>()>();
 
-        throw $stack2;
+        throw $r2;
 
      label1:
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr> = handler;
+        r1.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr> = r0;
 
         return;
-
-        nop;
     }
 
     public jdk.internal.org.xml.sax.EntityResolver getEntityResolver()
     {
-        bottom_type $stack3;
-        jdk.internal.org.xml.sax.EntityResolver $stack2, $stack3#1;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        jdk.internal.org.xml.sax.helpers.DefaultHandler $stack1;
+        jdk.internal.org.xml.sax.EntityResolver $r2, $r3;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler $r1;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt>;
 
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.helpers.DefaultHandler mHand>;
 
-        if $stack2 == $stack1 goto label1;
+        if $r2 == $r1 goto label1;
 
-        $stack3#1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt>;
+        $r3 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt>;
 
         goto label2;
 
      label1:
-        $stack3#1 = null;
+        $r3 = null;
 
      label2:
-        return $stack3#1;
-
-        nop;
+        return $r3;
     }
 
     public void setEntityResolver(jdk.internal.org.xml.sax.EntityResolver)
     {
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.NullPointerException $stack2;
-        jdk.internal.org.xml.sax.EntityResolver resolver;
+        jdk.internal.util.xml.impl.ParserSAX r1;
+        java.lang.NullPointerException $r2;
+        jdk.internal.org.xml.sax.EntityResolver r0;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r1 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        resolver := @parameter0: jdk.internal.org.xml.sax.EntityResolver;
+        r0 := @parameter0: jdk.internal.org.xml.sax.EntityResolver;
 
-        if resolver != null goto label1;
+        if r0 != null goto label1;
 
-        $stack2 = new java.lang.NullPointerException;
+        $r2 = new java.lang.NullPointerException;
 
-        specialinvoke $stack2.<java.lang.NullPointerException: void <init>()>();
+        specialinvoke $r2.<java.lang.NullPointerException: void <init>()>();
 
-        throw $stack2;
+        throw $r2;
 
      label1:
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt> = resolver;
+        r1.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt> = r0;
 
         return;
-
-        nop;
     }
 
     public java.lang.String getPublicId()
     {
-        bottom_type $stack3;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String $stack3#1;
-        jdk.internal.util.xml.impl.Input $stack1, $stack2;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String $r3;
+        jdk.internal.util.xml.impl.Input $r1, $r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp>;
 
-        if $stack1 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp>;
 
-        $stack3#1 = $stack2.<jdk.internal.util.xml.impl.Input: java.lang.String pubid>;
+        $r3 = $r2.<jdk.internal.util.xml.impl.Input: java.lang.String pubid>;
 
         goto label2;
 
      label1:
-        $stack3#1 = null;
+        $r3 = null;
 
      label2:
-        return $stack3#1;
-
-        nop;
+        return $r3;
     }
 
     public java.lang.String getSystemId()
     {
-        bottom_type $stack3;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String $stack3#1;
-        jdk.internal.util.xml.impl.Input $stack1, $stack2;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String $r3;
+        jdk.internal.util.xml.impl.Input $r1, $r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp>;
 
-        if $stack1 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp>;
 
-        $stack3#1 = $stack2.<jdk.internal.util.xml.impl.Input: java.lang.String sysid>;
+        $r3 = $r2.<jdk.internal.util.xml.impl.Input: java.lang.String sysid>;
 
         goto label2;
 
      label1:
-        $stack3#1 = null;
+        $r3 = null;
 
      label2:
-        return $stack3#1;
-
-        nop;
+        return $r3;
     }
 
     public int getLineNumber()
     {
-        int $i0;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        byte $b0;
+        int $i1;
+        jdk.internal.util.xml.impl.ParserSAX r0;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $b0 = -1;
+        $i1 = (int) -1;
 
-        $i0 = (int) $b0;
-
-        return $i0;
-
-        nop;
+        return $i1;
     }
 
     public int getColumnNumber()
     {
-        int $i0;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        byte $b0;
+        int $i1;
+        jdk.internal.util.xml.impl.ParserSAX r0;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $b0 = -1;
+        $i1 = (int) -1;
 
-        $i0 = (int) $b0;
-
-        return $i0;
-
-        nop;
+        return $i1;
     }
 
     public void parse(java.lang.String) throws java.io.IOException, jdk.internal.org.xml.sax.SAXException
     {
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String systemId;
-        jdk.internal.org.xml.sax.InputSource $stack2;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String r2;
+        jdk.internal.org.xml.sax.InputSource $r1;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        systemId := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        $stack2 = new jdk.internal.org.xml.sax.InputSource;
+        $r1 = new jdk.internal.org.xml.sax.InputSource;
 
-        specialinvoke $stack2.<jdk.internal.org.xml.sax.InputSource: void <init>(java.lang.String)>(systemId);
+        specialinvoke $r1.<jdk.internal.org.xml.sax.InputSource: void <init>(java.lang.String)>(r2);
 
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void parse(jdk.internal.org.xml.sax.InputSource)>($stack2);
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void parse(jdk.internal.org.xml.sax.InputSource)>($r1);
 
         return;
-
-        nop;
     }
 
     public void parse(jdk.internal.org.xml.sax.InputSource) throws java.io.IOException, jdk.internal.org.xml.sax.SAXException
     {
-        byte $b0;
-        bottom_type saxe;
-        int $i0;
-        java.lang.String $stack6;
-        jdk.internal.org.xml.sax.SAXException $stack10, saxe#1;
-        java.io.IOException $stack9, saxe#2;
-        java.lang.RuntimeException $stack8, saxe#3;
-        java.lang.IllegalArgumentException $stack4, $u0;
-        jdk.internal.org.xml.sax.InputSource is;
-        java.lang.Exception $stack5, saxe#4;
-        jdk.internal.util.xml.impl.ParserSAX this, $stack7;
-        jdk.internal.util.xml.impl.Input $stack3, $u1;
+        java.io.IOException $r7;
+        java.lang.RuntimeException $r6;
+        java.lang.IllegalArgumentException $r9;
+        jdk.internal.org.xml.sax.InputSource r0;
+        java.lang.Exception $r4;
+        int $i1;
+        jdk.internal.util.xml.impl.ParserSAX r1;
+        java.lang.String $r5;
+        jdk.internal.org.xml.sax.SAXException $r8;
+        jdk.internal.util.xml.impl.Input $r10;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r1 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        is := @parameter0: jdk.internal.org.xml.sax.InputSource;
+        r0 := @parameter0: jdk.internal.org.xml.sax.InputSource;
 
-        if is != null goto label1;
+        if r0 != null goto label1;
 
-        $u0 = new java.lang.IllegalArgumentException;
+        $r9 = new java.lang.IllegalArgumentException;
 
-        $stack4 = $u0;
+        specialinvoke $r9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("");
 
-        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("");
-
-        throw $stack4;
+        throw $r9;
 
      label1:
-        $u1 = new jdk.internal.util.xml.impl.Input;
+        $r10 = new jdk.internal.util.xml.impl.Input;
 
-        $stack3 = $u1;
+        specialinvoke $r10.<jdk.internal.util.xml.impl.Input: void <init>(int)>(512);
 
-        specialinvoke $u1.<jdk.internal.util.xml.impl.Input: void <init>(int)>(512);
+        r1.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp> = $r10;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp> = $stack3;
+        $i1 = (int) -1;
 
-        $b0 = -1;
-
-        $i0 = (int) $b0;
-
-        this.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = $i0;
+        r1.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = $i1;
 
      label2:
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void setinp(jdk.internal.org.xml.sax.InputSource)>(is);
+        virtualinvoke r1.<jdk.internal.util.xml.impl.ParserSAX: void setinp(jdk.internal.org.xml.sax.InputSource)>(r0);
 
      label3:
         goto label8;
 
      label4:
-        $stack10 := @caughtexception;
+        $r8 := @caughtexception;
 
-        saxe#1 = $stack10;
-
-        throw saxe#1;
+        throw $r8;
 
      label5:
-        $stack9 := @caughtexception;
+        $r7 := @caughtexception;
 
-        saxe#2 = $stack9;
-
-        throw saxe#2;
+        throw $r7;
 
      label6:
-        $stack8 := @caughtexception;
+        $r6 := @caughtexception;
 
-        saxe#3 = $stack8;
-
-        throw saxe#3;
+        throw $r6;
 
      label7:
-        $stack5 := @caughtexception;
+        $r4 := @caughtexception;
 
-        saxe#4 = $stack5;
+        $r5 = virtualinvoke $r4.<java.lang.Exception: java.lang.String toString()>();
 
-        $stack6 = virtualinvoke saxe#4.<java.lang.Exception: java.lang.String toString()>();
-
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>($stack6);
+        virtualinvoke r1.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>($r5);
 
      label8:
-        $stack7 = this;
-
-        virtualinvoke $stack7.<jdk.internal.util.xml.impl.ParserSAX: void parse()>();
+        specialinvoke r1.<jdk.internal.util.xml.impl.ParserSAX: void parse()>();
 
         return;
-
-        nop;
 
         catch jdk.internal.org.xml.sax.SAXException from label2 to label3 with label4;
         catch java.io.IOException from label2 to label3 with label5;
@@ -474,131 +414,108 @@ final class jdk.internal.util.xml.impl.ParserSAX extends jdk.internal.util.xml.i
 
     public void parse(java.io.InputStream, jdk.internal.org.xml.sax.helpers.DefaultHandler) throws jdk.internal.org.xml.sax.SAXException, java.io.IOException
     {
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String $stack5;
-        java.lang.IllegalArgumentException $stack3;
-        jdk.internal.org.xml.sax.InputSource $stack4;
-        java.io.InputStream src;
-        jdk.internal.org.xml.sax.helpers.DefaultHandler handler;
+        jdk.internal.util.xml.impl.ParserSAX r3;
+        java.lang.IllegalArgumentException $r1;
+        jdk.internal.org.xml.sax.InputSource $r4;
+        java.io.InputStream r0;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r3 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        src := @parameter0: java.io.InputStream;
+        r0 := @parameter0: java.io.InputStream;
 
-        handler := @parameter1: jdk.internal.org.xml.sax.helpers.DefaultHandler;
+        r2 := @parameter1: jdk.internal.org.xml.sax.helpers.DefaultHandler;
 
-        if src == null goto label1;
+        if r0 == null goto label1;
 
-        if handler != null goto label2;
+        if r2 != null goto label2;
 
      label1:
-        $stack3 = new java.lang.IllegalArgumentException;
+        $r1 = new java.lang.IllegalArgumentException;
 
-        $stack5 = "";
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("");
 
-        specialinvoke $stack3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($stack5);
-
-        throw $stack3;
+        throw $r1;
 
      label2:
-        $stack4 = new jdk.internal.org.xml.sax.InputSource;
+        $r4 = new jdk.internal.org.xml.sax.InputSource;
 
-        specialinvoke $stack4.<jdk.internal.org.xml.sax.InputSource: void <init>(java.io.InputStream)>(src);
+        specialinvoke $r4.<jdk.internal.org.xml.sax.InputSource: void <init>(java.io.InputStream)>(r0);
 
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void parse(jdk.internal.org.xml.sax.InputSource,jdk.internal.org.xml.sax.helpers.DefaultHandler)>($stack4, handler);
+        virtualinvoke r3.<jdk.internal.util.xml.impl.ParserSAX: void parse(jdk.internal.org.xml.sax.InputSource,jdk.internal.org.xml.sax.helpers.DefaultHandler)>($r4, r2);
 
         return;
-
-        nop;
     }
 
     public void parse(jdk.internal.org.xml.sax.InputSource, jdk.internal.org.xml.sax.helpers.DefaultHandler) throws jdk.internal.org.xml.sax.SAXException, java.io.IOException
     {
-        byte $b0;
-        bottom_type saxe;
-        int $i0;
-        java.lang.String $stack6, $stack8;
-        jdk.internal.org.xml.sax.helpers.DefaultHandler handler;
-        java.lang.IllegalArgumentException $stack4, $u0;
-        jdk.internal.org.xml.sax.InputSource is;
-        java.lang.Exception $stack7, $stack10, saxe#1, saxe#2;
-        jdk.internal.util.xml.impl.ParserSAX this, $stack9;
-        jdk.internal.util.xml.impl.Input $stack5, $u1;
+        java.lang.IllegalArgumentException $r8;
+        jdk.internal.org.xml.sax.InputSource r0;
+        java.lang.Exception $r5, $r7;
+        int $i1;
+        jdk.internal.util.xml.impl.ParserSAX r3;
+        java.lang.String $r6;
+        jdk.internal.util.xml.impl.Input $r9;
+        jdk.internal.org.xml.sax.helpers.DefaultHandler r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r3 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        is := @parameter0: jdk.internal.org.xml.sax.InputSource;
+        r0 := @parameter0: jdk.internal.org.xml.sax.InputSource;
 
-        handler := @parameter1: jdk.internal.org.xml.sax.helpers.DefaultHandler;
+        r2 := @parameter1: jdk.internal.org.xml.sax.helpers.DefaultHandler;
 
-        if is == null goto label1;
+        if r0 == null goto label1;
 
-        if handler != null goto label2;
+        if r2 != null goto label2;
 
      label1:
-        $u0 = new java.lang.IllegalArgumentException;
+        $r8 = new java.lang.IllegalArgumentException;
 
-        $stack4 = $u0;
+        specialinvoke $r8.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("");
 
-        $stack6 = "";
-
-        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($stack6);
-
-        throw $stack4;
+        throw $r8;
 
      label2:
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont> = handler;
+        r3.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont> = r2;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd> = handler;
+        r3.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd> = r2;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr> = handler;
+        r3.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr> = r2;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt> = handler;
+        r3.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt> = r2;
 
-        $u1 = new jdk.internal.util.xml.impl.Input;
+        $r9 = new jdk.internal.util.xml.impl.Input;
 
-        $stack5 = $u1;
+        specialinvoke $r9.<jdk.internal.util.xml.impl.Input: void <init>(int)>(512);
 
-        specialinvoke $u1.<jdk.internal.util.xml.impl.Input: void <init>(int)>(512);
+        r3.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp> = $r9;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Input mInp> = $stack5;
+        $i1 = (int) -1;
 
-        $b0 = -1;
-
-        $i0 = (int) $b0;
-
-        this.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = $i0;
+        r3.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = $i1;
 
      label3:
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void setinp(jdk.internal.org.xml.sax.InputSource)>(is);
+        virtualinvoke r3.<jdk.internal.util.xml.impl.ParserSAX: void setinp(jdk.internal.org.xml.sax.InputSource)>(r0);
 
      label4:
         goto label7;
 
      label5:
-        $stack10 := @caughtexception;
+        $r7 := @caughtexception;
 
-        saxe#1 = $stack10;
-
-        throw saxe#1;
+        throw $r7;
 
      label6:
-        $stack7 := @caughtexception;
+        $r5 := @caughtexception;
 
-        saxe#2 = $stack7;
+        $r6 = virtualinvoke $r5.<java.lang.Exception: java.lang.String toString()>();
 
-        $stack8 = virtualinvoke saxe#2.<java.lang.Exception: java.lang.String toString()>();
-
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>($stack8);
+        virtualinvoke r3.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>($r6);
 
      label7:
-        $stack9 = this;
-
-        virtualinvoke $stack9.<jdk.internal.util.xml.impl.ParserSAX: void parse()>();
+        specialinvoke r3.<jdk.internal.util.xml.impl.ParserSAX: void parse()>();
 
         return;
-
-        nop;
 
         catch jdk.internal.org.xml.sax.SAXException from label3 to label4 with label5;
         catch java.io.IOException from label3 to label4 with label5;
@@ -608,797 +525,644 @@ final class jdk.internal.util.xml.impl.ParserSAX extends jdk.internal.util.xml.i
 
     private void parse() throws jdk.internal.org.xml.sax.SAXException, java.io.IOException
     {
-        byte $stack22, $stack23, $stack66, $stack68, $stack71#13, $stack71#14, $stack39#29, $stack39#30;
-        bottom_type evt, $stack7, $stack9, $stack10, $stack11, $stack13, $stack31, $stack32, $stack33, $stack38, $stack39, $stack45, $stack46, $stack70, $stack71;
-        java.lang.Exception $stack75, evt#34;
-        java.lang.Throwable $stack73, l2;
-        jdk.internal.util.xml.impl.Pair $stack28, $stack34, $stack35, $stack36, $stack40, $stack43, $stack44, $stack47, $stack48, $stack53, $stack60, $stack61, $stack31#17, $stack31#18, $stack33#19, $stack33#20, $stack32#23, $stack32#24;
-        jdk.internal.org.xml.sax.ContentHandler $stack3, $stack4, $stack20, $stack30, $stack42, $stack51, $stack56, $stack65, $stack74, $stack77;
-        java.lang.String $stack29, $stack41, $stack49, $stack50, $stack55, $stack63, $stack64, $stack76;
-        java.io.IOException $stack79, evt#32;
-        java.lang.RuntimeException $stack78, evt#33;
-        jdk.internal.org.xml.sax.SAXException $stack80, evt#31;
-        boolean $stack27, $stack52, $stack58, $stack72, evt#1;
-        int $stack5, $stack8, $stack12, $stack14, $stack16, $stack17, $stack37, $stack59, $stack67, $stack7#6, $stack7#7, evt#8, $stack9#11, $stack9#12, $stack13#27, $stack13#28, $i0, $i1;
-        char $stack6, $stack15, $stack19;
-        jdk.internal.util.xml.impl.Attrs $stack54, $stack62;
-        jdk.internal.util.xml.impl.ParserSAX this, $stack18, $stack21, $stack24, $stack25, $stack26, $stack57, $stack69, $stack10#2, $stack10#3, $stack11#4, $stack11#5, $stack70#9, $stack70#10, $stack45#15, $stack45#16, $stack46#21, $stack46#22, $stack38#25, $stack38#26;
+        jdk.internal.org.xml.sax.SAXException $r37;
+        boolean $z0, $z1;
+        java.lang.Exception $r32;
+        java.lang.Throwable $r30;
+        jdk.internal.util.xml.impl.Pair $r4, $r7, $r8, $r9, $r10, $r13, $r14, $r15, $r16, $r20, $r24, $r25, $r38, $r39, $r40;
+        jdk.internal.org.xml.sax.ContentHandler $r1, $r2, $r3, $r6, $r12, $r19, $r23, $r29, $r31, $r34;
+        int $i0, $i1, $i3, $i4, $i5, i6, $i7, $i8, $i9, $i11;
+        java.lang.String $r5, $r11, $r17, $r18, $r22, $r27, $r28, $r33;
+        char $c2;
+        java.io.IOException $r36;
+        jdk.internal.util.xml.impl.Attrs $r21, $r26;
+        java.lang.RuntimeException $r35;
+        jdk.internal.util.xml.impl.ParserSAX r0;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void init()>();
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void init()>();
 
      label01:
-        $stack3 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        interfaceinvoke $stack3.<jdk.internal.org.xml.sax.ContentHandler: void setDocumentLocator(jdk.internal.org.xml.sax.Locator)>(this);
+        interfaceinvoke $r1.<jdk.internal.org.xml.sax.ContentHandler: void setDocumentLocator(jdk.internal.org.xml.sax.Locator)>(r0);
 
-        $stack4 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        interfaceinvoke $stack4.<jdk.internal.org.xml.sax.ContentHandler: void startDocument()>();
+        interfaceinvoke $r2.<jdk.internal.org.xml.sax.ContentHandler: void startDocument()>();
 
-        $stack5 = this.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
+        $i0 = r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
 
-        if $stack5 == 1 goto label02;
+        if $i0 == 1 goto label02;
 
-        this.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = 1;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = 1;
 
      label02:
-        $stack72 = 0;
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: char wsskip()>();
 
-        evt#1 = $stack72;
+        $i5 = virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
+
+        i6 = $i5;
+
+        tableswitch($i5)
+        {
+            case 1: goto label03;
+            case 2: goto label03;
+            case 3: goto label07;
+            case 4: goto label07;
+            case 5: goto label07;
+            case 6: goto label04;
+            case 7: goto label07;
+            case 8: goto label04;
+            case 9: goto label05;
+            default: goto label07;
+        };
 
      label03:
-        $stack10#2 = this;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = 4;
 
-        $stack10#3 = $stack10#2;
-
-        $stack6 = virtualinvoke $stack10#3.<jdk.internal.util.xml.impl.ParserSAX: char wsskip()>();
-
-        $stack11#4 = this;
-
-        $stack11#5 = $stack11#4;
-
-        $stack7#6 = virtualinvoke $stack11#5.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
-
-        $stack7#7 = $stack7#6;
-
-        evt#8 = $stack7#7;
-
-        tableswitch($stack7#7)
-        {
-            case 1: goto label04;
-            case 2: goto label04;
-            case 3: goto label08;
-            case 4: goto label08;
-            case 5: goto label08;
-            case 6: goto label05;
-            case 7: goto label08;
-            case 8: goto label05;
-            case 9: goto label06;
-            default: goto label08;
-        };
+        goto label08;
 
      label04:
-        this.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = 4;
-
-        goto label09;
+        goto label08;
 
      label05:
-        goto label09;
+        $i1 = r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
+
+        if $i1 < 3 goto label06;
+
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>("");
 
      label06:
-        $stack8 = this.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = 3;
 
-        if $stack8 < 3 goto label07;
-
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>("");
+        goto label08;
 
      label07:
-        $stack69 = this;
-
-        $stack68 = 3;
-
-        $stack69.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = $stack68;
-
-        goto label09;
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>("");
 
      label08:
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>("");
+        $i7 = r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
+
+        if $i7 < 4 goto label02;
 
      label09:
-        $stack70#9 = this;
-
-        $stack70#10 = $stack70#9;
-
-        $stack9#11 = $stack70#10.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
-
-        $stack9#12 = $stack9#11;
-
-        $stack71#13 = 4;
-
-        $stack71#14 = $stack71#13;
-
-        if $stack9#12 < $stack71#14 goto label03;
+        tableswitch(i6)
+        {
+            case 1: goto label10;
+            case 2: goto label10;
+            case 3: goto label13;
+            case 4: goto label18;
+            case 5: goto label18;
+            case 6: goto label18;
+            case 7: goto label18;
+            case 8: goto label18;
+            case 9: goto label19;
+            case 10: goto label18;
+            default: goto label19;
+        };
 
      label10:
-        $stack14 = evt#8;
+        $z1 = r0.<jdk.internal.util.xml.impl.ParserSAX: boolean mIsNSAware>;
 
-        tableswitch($stack14)
-        {
-            case 1: goto label11;
-            case 2: goto label11;
-            case 3: goto label14;
-            case 4: goto label19;
-            case 5: goto label19;
-            case 6: goto label19;
-            case 7: goto label19;
-            case 8: goto label19;
-            case 9: goto label20;
-            case 10: goto label19;
-            default: goto label20;
-        };
+        if $z1 != 1 goto label11;
+
+        $r29 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+
+        $r24 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
+
+        $r28 = $r24.<jdk.internal.util.xml.impl.Pair: java.lang.String value>;
+
+        $r25 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
+
+        $r27 = $r25.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
+
+        $r26 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Attrs mAttrs>;
+
+        interfaceinvoke $r29.<jdk.internal.org.xml.sax.ContentHandler: void startElement(java.lang.String,java.lang.String,java.lang.String,jdk.internal.org.xml.sax.Attributes)>($r28, $r27, "", $r26);
+
+        goto label12;
 
      label11:
-        $stack52 = this.<jdk.internal.util.xml.impl.ParserSAX: boolean mIsNSAware>;
+        $r23 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        if $stack52 != 1 goto label12;
+        $r20 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
 
-        $stack65 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r22 = $r20.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
 
-        $stack60 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
+        $r21 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Attrs mAttrs>;
 
-        $stack64 = $stack60.<jdk.internal.util.xml.impl.Pair: java.lang.String value>;
-
-        $stack61 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
-
-        $stack63 = $stack61.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
-
-        $stack62 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Attrs mAttrs>;
-
-        interfaceinvoke $stack65.<jdk.internal.org.xml.sax.ContentHandler: void startElement(java.lang.String,java.lang.String,java.lang.String,jdk.internal.org.xml.sax.Attributes)>($stack64, $stack63, "", $stack62);
-
-        goto label13;
+        interfaceinvoke $r23.<jdk.internal.org.xml.sax.ContentHandler: void startElement(java.lang.String,java.lang.String,java.lang.String,jdk.internal.org.xml.sax.Attributes)>("", "", $r22, $r21);
 
      label12:
-        $stack56 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        if i6 != 2 goto label13;
 
-        $stack53 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
+        i6 = virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
 
-        $stack55 = $stack53.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
-
-        $stack54 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Attrs mAttrs>;
-
-        interfaceinvoke $stack56.<jdk.internal.org.xml.sax.ContentHandler: void startElement(java.lang.String,java.lang.String,java.lang.String,jdk.internal.org.xml.sax.Attributes)>("", "", $stack55, $stack54);
+        goto label20;
 
      label13:
-        $stack67 = evt#8;
+        $z0 = r0.<jdk.internal.util.xml.impl.ParserSAX: boolean mIsNSAware>;
 
-        $stack66 = 2;
+        if $z0 != 1 goto label14;
 
-        if $stack67 != $stack66 goto label14;
+        $r19 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        $stack59 = virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
+        $r15 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
 
-        evt#8 = $stack59;
+        $r18 = $r15.<jdk.internal.util.xml.impl.Pair: java.lang.String value>;
 
-        goto label21;
+        $r16 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
+
+        $r17 = $r16.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
+
+        interfaceinvoke $r19.<jdk.internal.org.xml.sax.ContentHandler: void endElement(java.lang.String,java.lang.String,java.lang.String)>($r18, $r17, "");
+
+        goto label15;
 
      label14:
-        $stack57 = this;
+        $r6 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        $stack27 = $stack57.<jdk.internal.util.xml.impl.ParserSAX: boolean mIsNSAware>;
+        $r4 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
 
-        $stack58 = 1;
+        $r5 = $r4.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
 
-        if $stack27 != $stack58 goto label15;
-
-        $stack51 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
-
-        $stack47 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
-
-        $stack50 = $stack47.<jdk.internal.util.xml.impl.Pair: java.lang.String value>;
-
-        $stack48 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
-
-        $stack49 = $stack48.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
-
-        interfaceinvoke $stack51.<jdk.internal.org.xml.sax.ContentHandler: void endElement(java.lang.String,java.lang.String,java.lang.String)>($stack50, $stack49, "");
-
-        goto label16;
+        interfaceinvoke $r6.<jdk.internal.org.xml.sax.ContentHandler: void endElement(java.lang.String,java.lang.String,java.lang.String)>("", "", $r5);
 
      label15:
-        $stack30 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r38 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
 
-        $stack28 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
+        $r39 = $r38.<jdk.internal.util.xml.impl.Pair: jdk.internal.util.xml.impl.Pair list>;
 
-        $stack29 = $stack28.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
+        $r40 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
 
-        interfaceinvoke $stack30.<jdk.internal.org.xml.sax.ContentHandler: void endElement(java.lang.String,java.lang.String,java.lang.String)>("", "", $stack29);
+        if $r39 != $r40 goto label16;
+
+        $r12 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+
+        $r10 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
+
+        $r11 = $r10.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
+
+        interfaceinvoke $r12.<jdk.internal.org.xml.sax.ContentHandler: void endPrefixMapping(java.lang.String)>($r11);
+
+        $r13 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
+
+        $r14 = virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair del(jdk.internal.util.xml.impl.Pair)>($r13);
+
+        r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref> = $r14;
+
+        goto label15;
 
      label16:
-        $stack45#15 = this;
+        $r7 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
 
-        $stack45#16 = $stack45#15;
+        $r8 = virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair del(jdk.internal.util.xml.impl.Pair)>($r7);
 
-        $stack31#17 = $stack45#16.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm> = $r8;
 
-        $stack31#18 = $stack31#17;
+        $r9 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
 
-        $stack33#19 = $stack31#18.<jdk.internal.util.xml.impl.Pair: jdk.internal.util.xml.impl.Pair list>;
+        if $r9 != null goto label17;
 
-        $stack33#20 = $stack33#19;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = 5;
 
-        $stack46#21 = this;
-
-        $stack46#22 = $stack46#21;
-
-        $stack32#23 = $stack46#22.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
-
-        $stack32#24 = $stack32#23;
-
-        if $stack33#20 != $stack32#24 goto label17;
-
-        $stack42 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
-
-        $stack40 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
-
-        $stack41 = $stack40.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
-
-        interfaceinvoke $stack42.<jdk.internal.org.xml.sax.ContentHandler: void endPrefixMapping(java.lang.String)>($stack41);
-
-        $stack43 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
-
-        $stack44 = virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair del(jdk.internal.util.xml.impl.Pair)>($stack43);
-
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref> = $stack44;
-
-        goto label16;
+        goto label20;
 
      label17:
-        $stack34 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
+        i6 = virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
 
-        $stack35 = virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair del(jdk.internal.util.xml.impl.Pair)>($stack34);
-
-        this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm> = $stack35;
-
-        $stack36 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mElm>;
-
-        if $stack36 != null goto label18;
-
-        this.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = 5;
-
-        goto label21;
+        goto label20;
 
      label18:
-        $stack37 = virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
+        i6 = virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
 
-        evt#8 = $stack37;
-
-        goto label21;
+        goto label20;
 
      label19:
-        $stack12 = virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
-
-        evt#8 = $stack12;
-
-        goto label21;
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>("");
 
      label20:
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>("");
+        $i8 = r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
+
+        if $i8 == 4 goto label09;
 
      label21:
-        $stack38#25 = this;
+        $c2 = virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: char wsskip()>();
 
-        $stack38#26 = $stack38#25;
+        $i9 = (int) $c2;
 
-        $stack13#27 = $stack38#26.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
+        $i11 = (int) 65535;
 
-        $stack13#28 = $stack13#27;
+        if $i9 != $i11 goto label22;
 
-        $stack39#29 = 4;
-
-        $stack39#30 = $stack39#29;
-
-        if $stack13#28 == $stack39#30 goto label10;
-
-     label22:
-        $stack18 = this;
-
-        $stack15 = virtualinvoke $stack18.<jdk.internal.util.xml.impl.ParserSAX: char wsskip()>();
-
-        $stack19 = 65535;
-
-        $i0 = (int) $stack15;
-
-        $i1 = (int) $stack19;
-
-        if $i0 != $i1 goto label23;
-
-        goto label27;
-
-     label23:
-        $stack16 = virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
-
-        lookupswitch($stack16)
-        {
-            case 6: goto label24;
-            case 8: goto label24;
-            default: goto label25;
-        };
-
-     label24:
         goto label26;
 
+     label22:
+        $i3 = virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: int step()>();
+
+        lookupswitch($i3)
+        {
+            case 6: goto label23;
+            case 8: goto label23;
+            default: goto label24;
+        };
+
+     label23:
+        goto label25;
+
+     label24:
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>("");
+
      label25:
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>("");
+        $i4 = r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
+
+        if $i4 == 5 goto label21;
 
      label26:
-        $stack21 = this;
-
-        $stack17 = $stack21.<jdk.internal.util.xml.impl.ParserSAX: int mPh>;
-
-        $stack22 = 5;
-
-        if $stack17 == $stack22 goto label22;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = 6;
 
      label27:
-        $stack24 = this;
+        $r3 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        $stack23 = 6;
+        interfaceinvoke $r3.<jdk.internal.org.xml.sax.ContentHandler: void endDocument()>();
 
-        $stack24.<jdk.internal.util.xml.impl.ParserSAX: int mPh> = $stack23;
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void cleanup()>();
+
+        goto label34;
 
      label28:
-        $stack25 = this;
+        $r37 := @caughtexception;
 
-        $stack20 = $stack25.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
-
-        interfaceinvoke $stack20.<jdk.internal.org.xml.sax.ContentHandler: void endDocument()>();
-
-        $stack26 = this;
-
-        virtualinvoke $stack26.<jdk.internal.util.xml.impl.ParserSAX: void cleanup()>();
-
-        goto label35;
+        throw $r37;
 
      label29:
-        $stack80 := @caughtexception;
+        $r36 := @caughtexception;
 
-        evt#31 = $stack80;
-
-        throw evt#31;
+        throw $r36;
 
      label30:
-        $stack79 := @caughtexception;
+        $r35 := @caughtexception;
 
-        evt#32 = $stack79;
-
-        throw evt#32;
+        throw $r35;
 
      label31:
-        $stack78 := @caughtexception;
+        $r32 := @caughtexception;
 
-        evt#33 = $stack78;
+        $r33 = virtualinvoke $r32.<java.lang.Exception: java.lang.String toString()>();
 
-        throw evt#33;
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>($r33);
 
      label32:
-        $stack75 := @caughtexception;
+        $r34 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        evt#34 = $stack75;
+        interfaceinvoke $r34.<jdk.internal.org.xml.sax.ContentHandler: void endDocument()>();
 
-        $stack76 = virtualinvoke evt#34.<java.lang.Exception: java.lang.String toString()>();
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void cleanup()>();
 
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void panic(java.lang.String)>($stack76);
+        goto label34;
 
      label33:
-        $stack77 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r30 := @caughtexception;
 
-        interfaceinvoke $stack77.<jdk.internal.org.xml.sax.ContentHandler: void endDocument()>();
+        $r31 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void cleanup()>();
+        interfaceinvoke $r31.<jdk.internal.org.xml.sax.ContentHandler: void endDocument()>();
 
-        goto label35;
+        virtualinvoke r0.<jdk.internal.util.xml.impl.ParserSAX: void cleanup()>();
+
+        throw $r30;
 
      label34:
-        $stack73 := @caughtexception;
-
-        l2 = $stack73;
-
-        $stack74 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
-
-        interfaceinvoke $stack74.<jdk.internal.org.xml.sax.ContentHandler: void endDocument()>();
-
-        virtualinvoke this.<jdk.internal.util.xml.impl.ParserSAX: void cleanup()>();
-
-        throw l2;
-
-     label35:
         return;
 
-        nop;
-
-        catch jdk.internal.org.xml.sax.SAXException from label01 to label28 with label29;
-        catch java.io.IOException from label01 to label28 with label30;
-        catch java.lang.RuntimeException from label01 to label28 with label31;
-        catch java.lang.Exception from label01 to label28 with label32;
-        catch java.lang.Throwable from label01 to label28 with label34;
-        catch java.lang.Throwable from label29 to label33 with label34;
+        catch jdk.internal.org.xml.sax.SAXException from label01 to label27 with label28;
+        catch java.io.IOException from label01 to label27 with label29;
+        catch java.lang.RuntimeException from label01 to label27 with label30;
+        catch java.lang.Exception from label01 to label27 with label31;
+        catch java.lang.Throwable from label01 to label27 with label33;
+        catch java.lang.Throwable from label28 to label32 with label33;
     }
 
     protected void docType(java.lang.String, java.lang.String, java.lang.String) throws jdk.internal.org.xml.sax.SAXException
     {
-        jdk.internal.org.xml.sax.DTDHandler $stack4;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String name, pubid, sysid;
+        jdk.internal.org.xml.sax.DTDHandler $r4;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String r1, r2, r3;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        name := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        pubid := @parameter1: java.lang.String;
+        r2 := @parameter1: java.lang.String;
 
-        sysid := @parameter2: java.lang.String;
+        r3 := @parameter2: java.lang.String;
 
-        $stack4 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
+        $r4 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
 
-        interfaceinvoke $stack4.<jdk.internal.org.xml.sax.DTDHandler: void startDTD(java.lang.String,java.lang.String,java.lang.String)>(name, pubid, sysid);
-
-        return;
-
-        nop;
-    }
-
-    public void startInternalSub() throws jdk.internal.org.xml.sax.SAXException
-    {
-        jdk.internal.org.xml.sax.DTDHandler $stack1;
-        jdk.internal.util.xml.impl.ParserSAX this;
-
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
-
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
-
-        interfaceinvoke $stack1.<jdk.internal.org.xml.sax.DTDHandler: void startInternalSub()>();
+        interfaceinvoke $r4.<jdk.internal.org.xml.sax.DTDHandler: void notationDecl(java.lang.String,java.lang.String,java.lang.String)>(r1, r2, r3);
 
         return;
-
-        nop;
     }
 
     protected void comm(char[], int)
     {
-        int length;
-        char[] text;
-        jdk.internal.util.xml.impl.ParserSAX this;
+        int i0;
+        char[] r1;
+        jdk.internal.util.xml.impl.ParserSAX r0;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        text := @parameter0: char[];
+        r1 := @parameter0: char[];
 
-        length := @parameter1: int;
+        i0 := @parameter1: int;
 
         return;
-
-        nop;
     }
 
     protected void pi(java.lang.String, java.lang.String) throws jdk.internal.org.xml.sax.SAXException
     {
-        jdk.internal.org.xml.sax.ContentHandler $stack3;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String target, body;
+        jdk.internal.org.xml.sax.ContentHandler $r3;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String r1, r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        target := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        body := @parameter1: java.lang.String;
+        r2 := @parameter1: java.lang.String;
 
-        $stack3 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r3 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        interfaceinvoke $stack3.<jdk.internal.org.xml.sax.ContentHandler: void processingInstruction(java.lang.String,java.lang.String)>(target, body);
+        interfaceinvoke $r3.<jdk.internal.org.xml.sax.ContentHandler: void processingInstruction(java.lang.String,java.lang.String)>(r1, r2);
 
         return;
-
-        nop;
     }
 
     protected void newPrefix() throws jdk.internal.org.xml.sax.SAXException
     {
-        jdk.internal.org.xml.sax.ContentHandler $stack5;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String $stack3, $stack4;
-        jdk.internal.util.xml.impl.Pair $stack1, $stack2;
+        jdk.internal.org.xml.sax.ContentHandler $r5;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String $r3, $r4;
+        jdk.internal.util.xml.impl.Pair $r1, $r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $stack5 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r5 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
 
-        $stack4 = $stack1.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
+        $r4 = $r1.<jdk.internal.util.xml.impl.Pair: java.lang.String name>;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.util.xml.impl.Pair mPref>;
 
-        $stack3 = $stack2.<jdk.internal.util.xml.impl.Pair: java.lang.String value>;
+        $r3 = $r2.<jdk.internal.util.xml.impl.Pair: java.lang.String value>;
 
-        interfaceinvoke $stack5.<jdk.internal.org.xml.sax.ContentHandler: void startPrefixMapping(java.lang.String,java.lang.String)>($stack4, $stack3);
+        interfaceinvoke $r5.<jdk.internal.org.xml.sax.ContentHandler: void startPrefixMapping(java.lang.String,java.lang.String)>($r4, $r3);
 
         return;
-
-        nop;
     }
 
     protected void skippedEnt(java.lang.String) throws jdk.internal.org.xml.sax.SAXException
     {
-        jdk.internal.org.xml.sax.ContentHandler $stack2;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String name;
+        jdk.internal.org.xml.sax.ContentHandler $r2;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String r1;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        name := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        interfaceinvoke $stack2.<jdk.internal.org.xml.sax.ContentHandler: void skippedEntity(java.lang.String)>(name);
+        interfaceinvoke $r2.<jdk.internal.org.xml.sax.ContentHandler: void skippedEntity(java.lang.String)>(r1);
 
         return;
-
-        nop;
     }
 
     protected jdk.internal.org.xml.sax.InputSource resolveEnt(java.lang.String, java.lang.String, java.lang.String) throws jdk.internal.org.xml.sax.SAXException, java.io.IOException
     {
-        jdk.internal.org.xml.sax.EntityResolver $stack4;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String pubid, sysid, name;
-        jdk.internal.org.xml.sax.InputSource $stack5;
+        jdk.internal.org.xml.sax.EntityResolver $r3;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String r1, r2, r5;
+        jdk.internal.org.xml.sax.InputSource $r4;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        name := @parameter0: java.lang.String;
+        r5 := @parameter0: java.lang.String;
 
-        pubid := @parameter1: java.lang.String;
+        r1 := @parameter1: java.lang.String;
 
-        sysid := @parameter2: java.lang.String;
+        r2 := @parameter2: java.lang.String;
 
-        $stack4 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt>;
+        $r3 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.EntityResolver mHandEnt>;
 
-        $stack5 = interfaceinvoke $stack4.<jdk.internal.org.xml.sax.EntityResolver: jdk.internal.org.xml.sax.InputSource resolveEntity(java.lang.String,java.lang.String)>(pubid, sysid);
+        $r4 = interfaceinvoke $r3.<jdk.internal.org.xml.sax.EntityResolver: jdk.internal.org.xml.sax.InputSource resolveEntity(java.lang.String,java.lang.String)>(r1, r2);
 
-        return $stack5;
-
-        nop;
+        return $r4;
     }
 
     protected void notDecl(java.lang.String, java.lang.String, java.lang.String) throws jdk.internal.org.xml.sax.SAXException
     {
-        jdk.internal.org.xml.sax.DTDHandler $stack4;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String name, pubid, sysid;
+        jdk.internal.org.xml.sax.DTDHandler $r4;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String r1, r2, r3;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        name := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        pubid := @parameter1: java.lang.String;
+        r2 := @parameter1: java.lang.String;
 
-        sysid := @parameter2: java.lang.String;
+        r3 := @parameter2: java.lang.String;
 
-        $stack4 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
+        $r4 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
 
-        interfaceinvoke $stack4.<jdk.internal.org.xml.sax.DTDHandler: void notationDecl(java.lang.String,java.lang.String,java.lang.String)>(name, pubid, sysid);
+        interfaceinvoke $r4.<jdk.internal.org.xml.sax.DTDHandler: void notationDecl(java.lang.String,java.lang.String,java.lang.String)>(r1, r2, r3);
 
         return;
-
-        nop;
     }
 
     protected void unparsedEntDecl(java.lang.String, java.lang.String, java.lang.String, java.lang.String) throws jdk.internal.org.xml.sax.SAXException
     {
-        jdk.internal.org.xml.sax.DTDHandler $stack5;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String name, pubid, sysid, notation;
+        jdk.internal.org.xml.sax.DTDHandler $r5;
+        jdk.internal.util.xml.impl.ParserSAX r0;
+        java.lang.String r1, r2, r3, r4;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        name := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        pubid := @parameter1: java.lang.String;
+        r2 := @parameter1: java.lang.String;
 
-        sysid := @parameter2: java.lang.String;
+        r3 := @parameter2: java.lang.String;
 
-        notation := @parameter3: java.lang.String;
+        r4 := @parameter3: java.lang.String;
 
-        $stack5 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
+        $r5 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.DTDHandler mHandDtd>;
 
-        interfaceinvoke $stack5.<jdk.internal.org.xml.sax.DTDHandler: void unparsedEntityDecl(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>(name, pubid, sysid, notation);
+        interfaceinvoke $r5.<jdk.internal.org.xml.sax.DTDHandler: void unparsedEntityDecl(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>(r1, r2, r3, r4);
 
         return;
-
-        nop;
     }
 
     protected void panic(java.lang.String) throws jdk.internal.org.xml.sax.SAXException
     {
-        jdk.internal.org.xml.sax.ErrorHandler $stack4;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String msg;
-        jdk.internal.org.xml.sax.SAXParseException $stack3, spe;
+        jdk.internal.org.xml.sax.ErrorHandler $r3;
+        jdk.internal.util.xml.impl.ParserSAX r2;
+        java.lang.String r1;
+        jdk.internal.org.xml.sax.SAXParseException $r0;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r2 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        msg := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        $stack3 = new jdk.internal.org.xml.sax.SAXParseException;
+        $r0 = new jdk.internal.org.xml.sax.SAXParseException;
 
-        specialinvoke $stack3.<jdk.internal.org.xml.sax.SAXParseException: void <init>(java.lang.String,jdk.internal.org.xml.sax.Locator)>(msg, this);
+        specialinvoke $r0.<jdk.internal.org.xml.sax.SAXParseException: void <init>(java.lang.String,jdk.internal.org.xml.sax.Locator)>(r1, r2);
 
-        spe = $stack3;
+        $r3 = r2.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr>;
 
-        $stack4 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ErrorHandler mHandErr>;
+        interfaceinvoke $r3.<jdk.internal.org.xml.sax.ErrorHandler: void fatalError(jdk.internal.org.xml.sax.SAXParseException)>($r0);
 
-        interfaceinvoke $stack4.<jdk.internal.org.xml.sax.ErrorHandler: void fatalError(jdk.internal.org.xml.sax.SAXParseException)>(spe);
-
-        throw spe;
-
-        nop;
+        throw $r0;
     }
 
     protected void bflash() throws jdk.internal.org.xml.sax.SAXException
     {
-        byte $b0;
-        int $stack1, $stack2, $stack3, $i0;
-        jdk.internal.org.xml.sax.ContentHandler $stack5;
-        char[] $stack4;
-        jdk.internal.util.xml.impl.ParserSAX this;
+        int $i0, $i1, $i2, $i4;
+        jdk.internal.org.xml.sax.ContentHandler $r2;
+        char[] $r1;
+        jdk.internal.util.xml.impl.ParserSAX r0;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx>;
+        $i0 = r0.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx>;
 
-        if $stack1 < 0 goto label1;
+        if $i0 < 0 goto label1;
 
-        $stack5 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        $stack4 = this.<jdk.internal.util.xml.impl.ParserSAX: char[] mBuff>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: char[] mBuff>;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx>;
+        $i1 = r0.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx>;
 
-        $stack3 = $stack2 + 1;
+        $i2 = $i1 + 1;
 
-        interfaceinvoke $stack5.<jdk.internal.org.xml.sax.ContentHandler: void characters(char[],int,int)>($stack4, 0, $stack3);
+        interfaceinvoke $r2.<jdk.internal.org.xml.sax.ContentHandler: void characters(char[],int,int)>($r1, 0, $i2);
 
-        $b0 = -1;
+        $i4 = (int) -1;
 
-        $i0 = (int) $b0;
-
-        this.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx> = $i0;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx> = $i4;
 
      label1:
         return;
-
-        nop;
     }
 
     protected void bflash_ws() throws jdk.internal.org.xml.sax.SAXException
     {
-        byte $b0;
-        int $stack1, $stack2, $stack3, $i0;
-        jdk.internal.org.xml.sax.ContentHandler $stack5;
-        char[] $stack4;
-        jdk.internal.util.xml.impl.ParserSAX this;
+        int $i0, $i1, $i2, $i4;
+        jdk.internal.org.xml.sax.ContentHandler $r2;
+        char[] $r1;
+        jdk.internal.util.xml.impl.ParserSAX r0;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r0 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        $stack1 = this.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx>;
+        $i0 = r0.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx>;
 
-        if $stack1 < 0 goto label1;
+        if $i0 < 0 goto label1;
 
-        $stack5 = this.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
+        $r2 = r0.<jdk.internal.util.xml.impl.ParserSAX: jdk.internal.org.xml.sax.ContentHandler mHandCont>;
 
-        $stack4 = this.<jdk.internal.util.xml.impl.ParserSAX: char[] mBuff>;
+        $r1 = r0.<jdk.internal.util.xml.impl.ParserSAX: char[] mBuff>;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx>;
+        $i1 = r0.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx>;
 
-        $stack3 = $stack2 + 1;
+        $i2 = $i1 + 1;
 
-        interfaceinvoke $stack5.<jdk.internal.org.xml.sax.ContentHandler: void characters(char[],int,int)>($stack4, 0, $stack3);
+        interfaceinvoke $r2.<jdk.internal.org.xml.sax.ContentHandler: void characters(char[],int,int)>($r1, 0, $i2);
 
-        $b0 = -1;
+        $i4 = (int) -1;
 
-        $i0 = (int) $b0;
-
-        this.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx> = $i0;
+        r0.<jdk.internal.util.xml.impl.ParserSAX: int mBuffIdx> = $i4;
 
      label1:
         return;
-
-        nop;
     }
 
     public boolean getFeature(java.lang.String)
     {
-        java.lang.UnsupportedOperationException $stack2;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String name;
+        java.lang.UnsupportedOperationException $r0;
+        jdk.internal.util.xml.impl.ParserSAX r1;
+        java.lang.String r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r1 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        name := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        $stack2 = new java.lang.UnsupportedOperationException;
+        $r0 = new java.lang.UnsupportedOperationException;
 
-        specialinvoke $stack2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Not supported yet.");
+        specialinvoke $r0.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Not supported yet.");
 
-        throw $stack2;
-
-        nop;
+        throw $r0;
     }
 
     public void setFeature(java.lang.String, boolean)
     {
-        java.lang.UnsupportedOperationException $stack3;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String name;
-        boolean value;
+        java.lang.UnsupportedOperationException $r0;
+        jdk.internal.util.xml.impl.ParserSAX r1;
+        java.lang.String r2;
+        boolean z0;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r1 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        name := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        value := @parameter1: boolean;
+        z0 := @parameter1: boolean;
 
-        $stack3 = new java.lang.UnsupportedOperationException;
+        $r0 = new java.lang.UnsupportedOperationException;
 
-        specialinvoke $stack3.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Not supported yet.");
+        specialinvoke $r0.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Not supported yet.");
 
-        throw $stack3;
-
-        nop;
+        throw $r0;
     }
 
     public java.lang.Object getProperty(java.lang.String)
     {
-        java.lang.UnsupportedOperationException $stack2;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.String name;
+        java.lang.UnsupportedOperationException $r0;
+        jdk.internal.util.xml.impl.ParserSAX r1;
+        java.lang.String r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r1 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        name := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        $stack2 = new java.lang.UnsupportedOperationException;
+        $r0 = new java.lang.UnsupportedOperationException;
 
-        specialinvoke $stack2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Not supported yet.");
+        specialinvoke $r0.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Not supported yet.");
 
-        throw $stack2;
-
-        nop;
+        throw $r0;
     }
 
     public void setProperty(java.lang.String, java.lang.Object)
     {
-        java.lang.UnsupportedOperationException $stack3;
-        jdk.internal.util.xml.impl.ParserSAX this;
-        java.lang.Object value;
-        java.lang.String name;
+        java.lang.UnsupportedOperationException $r0;
+        jdk.internal.util.xml.impl.ParserSAX r1;
+        java.lang.Object r3;
+        java.lang.String r2;
 
-        this := @this: jdk.internal.util.xml.impl.ParserSAX;
+        r1 := @this: jdk.internal.util.xml.impl.ParserSAX;
 
-        name := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        value := @parameter1: java.lang.Object;
+        r3 := @parameter1: java.lang.Object;
 
-        $stack3 = new java.lang.UnsupportedOperationException;
+        $r0 = new java.lang.UnsupportedOperationException;
 
-        specialinvoke $stack3.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Not supported yet.");
+        specialinvoke $r0.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Not supported yet.");
 
-        throw $stack3;
-
-        nop;
+        throw $r0;
     }
 
     public static void <clinit>()

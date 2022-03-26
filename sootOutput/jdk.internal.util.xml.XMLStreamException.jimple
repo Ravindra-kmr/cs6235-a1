@@ -5,84 +5,74 @@ public class jdk.internal.util.xml.XMLStreamException extends java.lang.Exceptio
 
     public void <init>()
     {
-        jdk.internal.util.xml.XMLStreamException this;
+        jdk.internal.util.xml.XMLStreamException r0;
 
-        this := @this: jdk.internal.util.xml.XMLStreamException;
+        r0 := @this: jdk.internal.util.xml.XMLStreamException;
 
-        specialinvoke this.<java.lang.Exception: void <init>()>();
+        specialinvoke r0.<java.lang.Exception: void <init>()>();
 
         return;
-
-        nop;
     }
 
     public void <init>(java.lang.String)
     {
-        java.lang.String msg;
-        jdk.internal.util.xml.XMLStreamException this;
+        java.lang.String r1;
+        jdk.internal.util.xml.XMLStreamException r0;
 
-        this := @this: jdk.internal.util.xml.XMLStreamException;
+        r0 := @this: jdk.internal.util.xml.XMLStreamException;
 
-        msg := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        specialinvoke this.<java.lang.Exception: void <init>(java.lang.String)>(msg);
+        specialinvoke r0.<java.lang.Exception: void <init>(java.lang.String)>(r1);
 
         return;
-
-        nop;
     }
 
     public void <init>(java.lang.Throwable)
     {
-        java.lang.Throwable th;
-        jdk.internal.util.xml.XMLStreamException this;
+        java.lang.Throwable r1;
+        jdk.internal.util.xml.XMLStreamException r0;
 
-        this := @this: jdk.internal.util.xml.XMLStreamException;
+        r0 := @this: jdk.internal.util.xml.XMLStreamException;
 
-        th := @parameter0: java.lang.Throwable;
+        r1 := @parameter0: java.lang.Throwable;
 
-        specialinvoke this.<java.lang.Exception: void <init>(java.lang.Throwable)>(th);
+        specialinvoke r0.<java.lang.Exception: void <init>(java.lang.Throwable)>(r1);
 
-        this.<jdk.internal.util.xml.XMLStreamException: java.lang.Throwable nested> = th;
+        r0.<jdk.internal.util.xml.XMLStreamException: java.lang.Throwable nested> = r1;
 
         return;
-
-        nop;
     }
 
     public void <init>(java.lang.String, java.lang.Throwable)
     {
-        java.lang.Throwable th;
-        java.lang.String msg;
-        jdk.internal.util.xml.XMLStreamException this;
+        java.lang.Throwable r2;
+        java.lang.String r1;
+        jdk.internal.util.xml.XMLStreamException r0;
 
-        this := @this: jdk.internal.util.xml.XMLStreamException;
+        r0 := @this: jdk.internal.util.xml.XMLStreamException;
 
-        msg := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        th := @parameter1: java.lang.Throwable;
+        r2 := @parameter1: java.lang.Throwable;
 
-        specialinvoke this.<java.lang.Exception: void <init>(java.lang.String,java.lang.Throwable)>(msg, th);
+        specialinvoke r0.<java.lang.Exception: void <init>(java.lang.String,java.lang.Throwable)>(r1, r2);
 
-        this.<jdk.internal.util.xml.XMLStreamException: java.lang.Throwable nested> = th;
+        r0.<jdk.internal.util.xml.XMLStreamException: java.lang.Throwable nested> = r2;
 
         return;
-
-        nop;
     }
 
     public java.lang.Throwable getNestedException()
     {
-        java.lang.Throwable $stack1;
-        jdk.internal.util.xml.XMLStreamException this;
+        java.lang.Throwable $r1;
+        jdk.internal.util.xml.XMLStreamException r0;
 
-        this := @this: jdk.internal.util.xml.XMLStreamException;
+        r0 := @this: jdk.internal.util.xml.XMLStreamException;
 
-        $stack1 = this.<jdk.internal.util.xml.XMLStreamException: java.lang.Throwable nested>;
+        $r1 = r0.<jdk.internal.util.xml.XMLStreamException: java.lang.Throwable nested>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public static void <clinit>()

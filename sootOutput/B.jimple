@@ -1,0 +1,28 @@
+class B extends A
+{
+
+    void foo()
+    {
+        java.io.PrintStream temp$0;
+        B this;
+
+        this := @this: B;
+
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("hello from B foo");
+
+        return;
+    }
+
+    void <init>()
+    {
+        B this;
+
+        this := @this: B;
+
+        specialinvoke this.<A: void <init>()>();
+
+        return;
+    }
+}

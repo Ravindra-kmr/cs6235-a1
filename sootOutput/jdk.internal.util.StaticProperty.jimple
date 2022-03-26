@@ -1,128 +1,34 @@
 public final class jdk.internal.util.StaticProperty extends java.lang.Object
 {
-    private static final java.lang.String JAVA_HOME;
-    private static final java.lang.String USER_HOME;
-    private static final java.lang.String USER_DIR;
-    private static final java.lang.String USER_NAME;
     private static final java.lang.String JDK_SERIAL_FILTER;
 
     private void <init>()
     {
-        jdk.internal.util.StaticProperty this;
+        jdk.internal.util.StaticProperty r0;
 
-        this := @this: jdk.internal.util.StaticProperty;
+        r0 := @this: jdk.internal.util.StaticProperty;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
         return;
-
-        nop;
-    }
-
-    private static java.lang.String initProperty(java.lang.String)
-    {
-        java.lang.InternalError $stack3;
-        java.lang.StringBuilder $stack4, $stack5, $stack6;
-        java.lang.String key, $stack2, v, $stack7;
-
-        key := @parameter0: java.lang.String;
-
-        $stack2 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>(key);
-
-        v = $stack2;
-
-        if v != null goto label1;
-
-        $stack3 = new java.lang.InternalError;
-
-        $stack4 = new java.lang.StringBuilder;
-
-        specialinvoke $stack4.<java.lang.StringBuilder: void <init>()>();
-
-        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("null property: ");
-
-        $stack6 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(key);
-
-        $stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.String toString()>();
-
-        specialinvoke $stack3.<java.lang.InternalError: void <init>(java.lang.String)>($stack7);
-
-        throw $stack3;
-
-     label1:
-        return v;
-
-        nop;
-    }
-
-    public static java.lang.String javaHome()
-    {
-        java.lang.String $stack0;
-
-        $stack0 = <jdk.internal.util.StaticProperty: java.lang.String JAVA_HOME>;
-
-        return $stack0;
-    }
-
-    public static java.lang.String userHome()
-    {
-        java.lang.String $stack0;
-
-        $stack0 = <jdk.internal.util.StaticProperty: java.lang.String USER_HOME>;
-
-        return $stack0;
-    }
-
-    public static java.lang.String userDir()
-    {
-        java.lang.String $stack0;
-
-        $stack0 = <jdk.internal.util.StaticProperty: java.lang.String USER_DIR>;
-
-        return $stack0;
-    }
-
-    public static java.lang.String userName()
-    {
-        java.lang.String $stack0;
-
-        $stack0 = <jdk.internal.util.StaticProperty: java.lang.String USER_NAME>;
-
-        return $stack0;
     }
 
     public static java.lang.String jdkSerialFilter()
     {
-        java.lang.String $stack0;
+        java.lang.String $r0;
 
-        $stack0 = <jdk.internal.util.StaticProperty: java.lang.String JDK_SERIAL_FILTER>;
+        $r0 = <jdk.internal.util.StaticProperty: java.lang.String JDK_SERIAL_FILTER>;
 
-        return $stack0;
+        return $r0;
     }
 
     static void <clinit>()
     {
-        java.lang.String $stack0, $stack1, $stack2, $stack3, $stack4;
+        java.lang.String $r0;
 
-        $stack0 = staticinvoke <jdk.internal.util.StaticProperty: java.lang.String initProperty(java.lang.String)>("java.home");
+        $r0 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("jdk.serialFilter");
 
-        <jdk.internal.util.StaticProperty: java.lang.String JAVA_HOME> = $stack0;
-
-        $stack1 = staticinvoke <jdk.internal.util.StaticProperty: java.lang.String initProperty(java.lang.String)>("user.home");
-
-        <jdk.internal.util.StaticProperty: java.lang.String USER_HOME> = $stack1;
-
-        $stack2 = staticinvoke <jdk.internal.util.StaticProperty: java.lang.String initProperty(java.lang.String)>("user.dir");
-
-        <jdk.internal.util.StaticProperty: java.lang.String USER_DIR> = $stack2;
-
-        $stack3 = staticinvoke <jdk.internal.util.StaticProperty: java.lang.String initProperty(java.lang.String)>("user.name");
-
-        <jdk.internal.util.StaticProperty: java.lang.String USER_NAME> = $stack3;
-
-        $stack4 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("jdk.serialFilter");
-
-        <jdk.internal.util.StaticProperty: java.lang.String JDK_SERIAL_FILTER> = $stack4;
+        <jdk.internal.util.StaticProperty: java.lang.String JDK_SERIAL_FILTER> = $r0;
 
         return;
     }

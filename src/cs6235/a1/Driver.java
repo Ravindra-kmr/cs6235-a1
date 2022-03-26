@@ -10,9 +10,9 @@ import soot.Transform;
 public class Driver {
 	public static void main (String [] args) {
 
-		String classPath = "tests";
-		String queriesPath = "q.txt";
-		String mainClass = "Main";
+		String classPath = "tests/CS21M050";
+		String queriesPath = "tests/CS21M050/Q1.txt";
+		String mainClass = "P1";
 		if(args != null && args.length > 0) {
 			int i = 0;
 			while(true) {

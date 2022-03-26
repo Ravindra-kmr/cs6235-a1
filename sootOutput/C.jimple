@@ -1,0 +1,28 @@
+class C extends java.lang.Object
+{
+
+    void fooBar(A)
+    {
+        A p;
+        C this;
+
+        this := @this: C;
+
+        p := @parameter0: A;
+
+        virtualinvoke p.<A: void foo()>();
+
+        return;
+    }
+
+    void <init>()
+    {
+        C this;
+
+        this := @this: C;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

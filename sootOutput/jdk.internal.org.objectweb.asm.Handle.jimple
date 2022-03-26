@@ -4,351 +4,219 @@ public final class jdk.internal.org.objectweb.asm.Handle extends java.lang.Objec
     final java.lang.String owner;
     final java.lang.String name;
     final java.lang.String desc;
-    final boolean itf;
 
     public void <init>(int, java.lang.String, java.lang.String, java.lang.String)
     {
-        jdk.internal.org.objectweb.asm.Handle this, $stack10;
-        bottom_type $stack9;
-        int tag, $stack5;
-        java.lang.String owner, name, desc, $stack6, $stack7, $stack8;
-        boolean $stack9#1;
+        jdk.internal.org.objectweb.asm.Handle r0;
+        int i0;
+        java.lang.String r1, r2, r3;
 
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
+        r0 := @this: jdk.internal.org.objectweb.asm.Handle;
 
-        tag := @parameter0: int;
+        i0 := @parameter0: int;
 
-        owner := @parameter1: java.lang.String;
+        r1 := @parameter1: java.lang.String;
 
-        name := @parameter2: java.lang.String;
+        r2 := @parameter2: java.lang.String;
 
-        desc := @parameter3: java.lang.String;
+        r3 := @parameter3: java.lang.String;
 
-        $stack10 = this;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        $stack5 = tag;
+        r0.<jdk.internal.org.objectweb.asm.Handle: int tag> = i0;
 
-        $stack6 = owner;
+        r0.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner> = r1;
 
-        $stack7 = name;
+        r0.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name> = r2;
 
-        $stack8 = desc;
-
-        if tag != 9 goto label1;
-
-        $stack9#1 = 1;
-
-        goto label2;
-
-     label1:
-        $stack9#1 = 0;
-
-     label2:
-        specialinvoke $stack10.<jdk.internal.org.objectweb.asm.Handle: void <init>(int,java.lang.String,java.lang.String,java.lang.String,boolean)>($stack5, $stack6, $stack7, $stack8, $stack9#1);
+        r0.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc> = r3;
 
         return;
-
-        nop;
-    }
-
-    public void <init>(int, java.lang.String, java.lang.String, java.lang.String, boolean)
-    {
-        jdk.internal.org.objectweb.asm.Handle this;
-        int tag;
-        java.lang.String owner, name, desc;
-        boolean itf;
-
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
-
-        tag := @parameter0: int;
-
-        owner := @parameter1: java.lang.String;
-
-        name := @parameter2: java.lang.String;
-
-        desc := @parameter3: java.lang.String;
-
-        itf := @parameter4: boolean;
-
-        specialinvoke this.<java.lang.Object: void <init>()>();
-
-        this.<jdk.internal.org.objectweb.asm.Handle: int tag> = tag;
-
-        this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner> = owner;
-
-        this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name> = name;
-
-        this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc> = desc;
-
-        this.<jdk.internal.org.objectweb.asm.Handle: boolean itf> = itf;
-
-        return;
-
-        nop;
     }
 
     public int getTag()
     {
-        int $stack1;
-        jdk.internal.org.objectweb.asm.Handle this;
+        int $i0;
+        jdk.internal.org.objectweb.asm.Handle r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
+        r0 := @this: jdk.internal.org.objectweb.asm.Handle;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.Handle: int tag>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.Handle: int tag>;
 
-        return $stack1;
-
-        nop;
+        return $i0;
     }
 
     public java.lang.String getOwner()
     {
-        java.lang.String $stack1;
-        jdk.internal.org.objectweb.asm.Handle this;
+        java.lang.String $r1;
+        jdk.internal.org.objectweb.asm.Handle r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
+        r0 := @this: jdk.internal.org.objectweb.asm.Handle;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public java.lang.String getName()
     {
-        java.lang.String $stack1;
-        jdk.internal.org.objectweb.asm.Handle this;
+        java.lang.String $r1;
+        jdk.internal.org.objectweb.asm.Handle r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
+        r0 := @this: jdk.internal.org.objectweb.asm.Handle;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public java.lang.String getDesc()
     {
-        java.lang.String $stack1;
-        jdk.internal.org.objectweb.asm.Handle this;
+        java.lang.String $r1;
+        jdk.internal.org.objectweb.asm.Handle r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
+        r0 := @this: jdk.internal.org.objectweb.asm.Handle;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
 
-        return $stack1;
-
-        nop;
-    }
-
-    public boolean isInterface()
-    {
-        jdk.internal.org.objectweb.asm.Handle this;
-        boolean $stack1;
-
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
-
-        $stack1 = this.<jdk.internal.org.objectweb.asm.Handle: boolean itf>;
-
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public boolean equals(java.lang.Object)
     {
-        jdk.internal.org.objectweb.asm.Handle this, h;
-        bottom_type $stack8;
-        int $stack4, $stack5;
-        java.lang.String $stack9, $stack10, $stack12, $stack13, $stack15, $stack16;
-        boolean $stack3, $stack6, $stack7, $stack11, $stack14, $stack17, $stack8#1, $stack8#2;
-        java.lang.Object obj;
+        jdk.internal.org.objectweb.asm.Handle r1, r2;
+        int $i0, $i1;
+        java.lang.String $r3, $r4, $r5, $r6, $r7, $r8;
+        boolean $z0, $z1, $z2, $z3, $z4;
+        java.lang.Object r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
+        r1 := @this: jdk.internal.org.objectweb.asm.Handle;
 
-        obj := @parameter0: java.lang.Object;
+        r0 := @parameter0: java.lang.Object;
 
-        if obj != this goto label1;
+        if r0 != r1 goto label1;
 
         return 1;
 
      label1:
-        $stack3 = obj instanceof jdk.internal.org.objectweb.asm.Handle;
+        $z0 = r0 instanceof jdk.internal.org.objectweb.asm.Handle;
 
-        if $stack3 != 0 goto label2;
+        if $z0 != 0 goto label2;
 
         return 0;
 
      label2:
-        h = (jdk.internal.org.objectweb.asm.Handle) obj;
+        r2 = (jdk.internal.org.objectweb.asm.Handle) r0;
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.Handle: int tag>;
+        $i1 = r1.<jdk.internal.org.objectweb.asm.Handle: int tag>;
 
-        $stack4 = h.<jdk.internal.org.objectweb.asm.Handle: int tag>;
+        $i0 = r2.<jdk.internal.org.objectweb.asm.Handle: int tag>;
 
-        if $stack5 != $stack4 goto label3;
+        if $i1 != $i0 goto label3;
 
-        $stack7 = this.<jdk.internal.org.objectweb.asm.Handle: boolean itf>;
+        $r4 = r1.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
 
-        $stack6 = h.<jdk.internal.org.objectweb.asm.Handle: boolean itf>;
+        $r3 = r2.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
 
-        if $stack7 != $stack6 goto label3;
+        $z1 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
 
-        $stack10 = this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
+        if $z1 == 0 goto label3;
 
-        $stack9 = h.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
+        $r6 = r1.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
 
-        $stack11 = virtualinvoke $stack10.<java.lang.String: boolean equals(java.lang.Object)>($stack9);
+        $r5 = r2.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
 
-        if $stack11 == 0 goto label3;
+        $z2 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>($r5);
 
-        $stack13 = this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
+        if $z2 == 0 goto label3;
 
-        $stack12 = h.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
+        $r8 = r1.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
 
-        $stack14 = virtualinvoke $stack13.<java.lang.String: boolean equals(java.lang.Object)>($stack12);
+        $r7 = r2.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
 
-        if $stack14 == 0 goto label3;
+        $z3 = virtualinvoke $r8.<java.lang.String: boolean equals(java.lang.Object)>($r7);
 
-        $stack16 = this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
+        if $z3 == 0 goto label3;
 
-        $stack15 = h.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
-
-        $stack17 = virtualinvoke $stack16.<java.lang.String: boolean equals(java.lang.Object)>($stack15);
-
-        if $stack17 == 0 goto label3;
-
-        $stack8#1 = 1;
+        $z4 = 1;
 
         goto label4;
 
      label3:
-        $stack8#2 = 0;
-
-        $stack8#1 = $stack8#2;
+        $z4 = 0;
 
      label4:
-        return $stack8#1;
-
-        nop;
+        return $z4;
     }
 
     public int hashCode()
     {
-        jdk.internal.org.objectweb.asm.Handle this, $stack14, $stack15, $stack16;
-        byte $stack13#1;
-        bottom_type $stack13;
-        int $stack2, $stack4, $stack5, $stack7, $stack9, $stack10, $stack11, $stack12;
-        java.lang.String $stack3, $stack6, $stack8;
-        boolean $stack1;
+        jdk.internal.org.objectweb.asm.Handle r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+        java.lang.String $r1, $r2, $r3;
 
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
+        r0 := @this: jdk.internal.org.objectweb.asm.Handle;
 
-        $stack2 = this.<jdk.internal.org.objectweb.asm.Handle: int tag>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.Handle: int tag>;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.Handle: boolean itf>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
 
-        if $stack1 == 0 goto label1;
+        $i1 = virtualinvoke $r1.<java.lang.String: int hashCode()>();
 
-        $stack13#1 = 64;
+        $r2 = r0.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
 
-        goto label2;
+        $i2 = virtualinvoke $r2.<java.lang.String: int hashCode()>();
 
-     label1:
-        $stack13#1 = 0;
+        $i3 = $i1 * $i2;
 
-     label2:
-        $stack4 = $stack2 + $stack13#1;
+        $r3 = r0.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
 
-        $stack14 = this;
+        $i4 = virtualinvoke $r3.<java.lang.String: int hashCode()>();
 
-        $stack3 = $stack14.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
+        $i5 = $i3 * $i4;
 
-        $stack5 = virtualinvoke $stack3.<java.lang.String: int hashCode()>();
+        $i6 = $i0 + $i5;
 
-        $stack15 = this;
-
-        $stack6 = $stack15.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
-
-        $stack7 = virtualinvoke $stack6.<java.lang.String: int hashCode()>();
-
-        $stack9 = $stack5 * $stack7;
-
-        $stack16 = this;
-
-        $stack8 = $stack16.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
-
-        $stack10 = virtualinvoke $stack8.<java.lang.String: int hashCode()>();
-
-        $stack11 = $stack9 * $stack10;
-
-        $stack12 = $stack4 + $stack11;
-
-        return $stack12;
-
-        nop;
+        return $i6;
     }
 
     public java.lang.String toString()
     {
-        jdk.internal.org.objectweb.asm.Handle this;
-        bottom_type $stack16;
-        int $stack10;
-        java.lang.String $stack2, $stack5, $stack7, $stack15, $stack16#1;
-        boolean $stack12;
-        char $stack17;
-        java.lang.StringBuilder $stack1, $stack3, $stack4, $stack6, $stack8, $stack9, $stack11, $stack13, $stack14;
+        jdk.internal.org.objectweb.asm.Handle r1;
+        int $i0;
+        java.lang.StringBuilder $r0, $r3, $r4, $r6, $r8, $r9, $r10, $r11;
+        java.lang.String $r2, $r5, $r7, $r12;
 
-        this := @this: jdk.internal.org.objectweb.asm.Handle;
+        r1 := @this: jdk.internal.org.objectweb.asm.Handle;
 
-        $stack1 = new java.lang.StringBuilder;
+        $r0 = new java.lang.StringBuilder;
 
-        specialinvoke $stack1.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();
 
-        $stack2 = this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
+        $r2 = r1.<jdk.internal.org.objectweb.asm.Handle: java.lang.String owner>;
 
-        $stack3 = virtualinvoke $stack1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack2);
+        $r3 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
 
-        $stack4 = virtualinvoke $stack3.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
+        $r5 = r1.<jdk.internal.org.objectweb.asm.Handle: java.lang.String name>;
 
-        $stack6 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack5);
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
 
-        $stack7 = this.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
+        $r7 = r1.<jdk.internal.org.objectweb.asm.Handle: java.lang.String desc>;
 
-        $stack8 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack7);
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
 
-        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (");
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (");
 
-        $stack10 = this.<jdk.internal.org.objectweb.asm.Handle: int tag>;
+        $i0 = r1.<jdk.internal.org.objectweb.asm.Handle: int tag>;
 
-        $stack11 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack10);
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
 
-        $stack12 = this.<jdk.internal.org.objectweb.asm.Handle: boolean itf>;
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(41);
 
-        if $stack12 == 0 goto label1;
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        $stack16#1 = " itf";
-
-        goto label2;
-
-     label1:
-        $stack16#1 = "";
-
-     label2:
-        $stack13 = virtualinvoke $stack11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack16#1);
-
-        $stack17 = 41;
-
-        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($stack17);
-
-        $stack15 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.String toString()>();
-
-        return $stack15;
-
-        nop;
+        return $r12;
     }
 }

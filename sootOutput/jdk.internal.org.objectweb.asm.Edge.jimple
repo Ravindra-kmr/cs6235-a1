@@ -8,15 +8,13 @@ class jdk.internal.org.objectweb.asm.Edge extends java.lang.Object
 
     void <init>()
     {
-        jdk.internal.org.objectweb.asm.Edge this;
+        jdk.internal.org.objectweb.asm.Edge r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Edge;
+        r0 := @this: jdk.internal.org.objectweb.asm.Edge;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
         return;
-
-        nop;
     }
 
     public static void <clinit>()

@@ -2,7 +2,6 @@ public interface  jdk.internal.org.objectweb.asm.Opcodes extends java.lang.Objec
 {
     public static final int ASM4;
     public static final int ASM5;
-    public static final int ASM6;
     public static final int V1_1;
     public static final int V1_2;
     public static final int V1_3;
@@ -11,9 +10,6 @@ public interface  jdk.internal.org.objectweb.asm.Opcodes extends java.lang.Objec
     public static final int V1_6;
     public static final int V1_7;
     public static final int V1_8;
-    public static final int V9;
-    public static final int V10;
-    public static final int V11;
     public static final int ACC_PUBLIC;
     public static final int ACC_PRIVATE;
     public static final int ACC_PROTECTED;
@@ -21,11 +17,8 @@ public interface  jdk.internal.org.objectweb.asm.Opcodes extends java.lang.Objec
     public static final int ACC_FINAL;
     public static final int ACC_SUPER;
     public static final int ACC_SYNCHRONIZED;
-    public static final int ACC_OPEN;
-    public static final int ACC_TRANSITIVE;
     public static final int ACC_VOLATILE;
     public static final int ACC_BRIDGE;
-    public static final int ACC_STATIC_PHASE;
     public static final int ACC_VARARGS;
     public static final int ACC_TRANSIENT;
     public static final int ACC_NATIVE;
@@ -36,7 +29,6 @@ public interface  jdk.internal.org.objectweb.asm.Opcodes extends java.lang.Objec
     public static final int ACC_ANNOTATION;
     public static final int ACC_ENUM;
     public static final int ACC_MANDATED;
-    public static final int ACC_MODULE;
     public static final int ACC_DEPRECATED;
     public static final int T_BOOLEAN;
     public static final int T_CHAR;
@@ -228,7 +220,7 @@ public interface  jdk.internal.org.objectweb.asm.Opcodes extends java.lang.Objec
 
     static void <clinit>()
     {
-        java.lang.Integer $stack0, $stack1, $stack2, $stack3, $stack4, $stack5, $stack6;
+        java.lang.Integer $r0, $r1, $r2, $r3, $r4, $r5, $r6;
 
         <jdk.internal.org.objectweb.asm.Opcodes: int IFNONNULL> = 199;
 
@@ -592,8 +584,6 @@ public interface  jdk.internal.org.objectweb.asm.Opcodes extends java.lang.Objec
 
         <jdk.internal.org.objectweb.asm.Opcodes: int ACC_DEPRECATED> = 131072;
 
-        <jdk.internal.org.objectweb.asm.Opcodes: int ACC_MODULE> = 32768;
-
         <jdk.internal.org.objectweb.asm.Opcodes: int ACC_MANDATED> = 32768;
 
         <jdk.internal.org.objectweb.asm.Opcodes: int ACC_ENUM> = 16384;
@@ -614,15 +604,9 @@ public interface  jdk.internal.org.objectweb.asm.Opcodes extends java.lang.Objec
 
         <jdk.internal.org.objectweb.asm.Opcodes: int ACC_VARARGS> = 128;
 
-        <jdk.internal.org.objectweb.asm.Opcodes: int ACC_STATIC_PHASE> = 64;
-
         <jdk.internal.org.objectweb.asm.Opcodes: int ACC_BRIDGE> = 64;
 
         <jdk.internal.org.objectweb.asm.Opcodes: int ACC_VOLATILE> = 64;
-
-        <jdk.internal.org.objectweb.asm.Opcodes: int ACC_TRANSITIVE> = 32;
-
-        <jdk.internal.org.objectweb.asm.Opcodes: int ACC_OPEN> = 32;
 
         <jdk.internal.org.objectweb.asm.Opcodes: int ACC_SYNCHRONIZED> = 32;
 
@@ -637,12 +621,6 @@ public interface  jdk.internal.org.objectweb.asm.Opcodes extends java.lang.Objec
         <jdk.internal.org.objectweb.asm.Opcodes: int ACC_PRIVATE> = 2;
 
         <jdk.internal.org.objectweb.asm.Opcodes: int ACC_PUBLIC> = 1;
-
-        <jdk.internal.org.objectweb.asm.Opcodes: int V11> = 55;
-
-        <jdk.internal.org.objectweb.asm.Opcodes: int V10> = 54;
-
-        <jdk.internal.org.objectweb.asm.Opcodes: int V9> = 53;
 
         <jdk.internal.org.objectweb.asm.Opcodes: int V1_8> = 52;
 
@@ -660,53 +638,51 @@ public interface  jdk.internal.org.objectweb.asm.Opcodes extends java.lang.Objec
 
         <jdk.internal.org.objectweb.asm.Opcodes: int V1_1> = 196653;
 
-        <jdk.internal.org.objectweb.asm.Opcodes: int ASM6> = 393216;
-
         <jdk.internal.org.objectweb.asm.Opcodes: int ASM5> = 327680;
 
         <jdk.internal.org.objectweb.asm.Opcodes: int ASM4> = 262144;
 
-        $stack0 = new java.lang.Integer;
+        $r0 = new java.lang.Integer;
 
-        specialinvoke $stack0.<java.lang.Integer: void <init>(int)>(0);
+        specialinvoke $r0.<java.lang.Integer: void <init>(int)>(0);
 
-        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer TOP> = $stack0;
+        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer TOP> = $r0;
 
-        $stack1 = new java.lang.Integer;
+        $r1 = new java.lang.Integer;
 
-        specialinvoke $stack1.<java.lang.Integer: void <init>(int)>(1);
+        specialinvoke $r1.<java.lang.Integer: void <init>(int)>(1);
 
-        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer INTEGER> = $stack1;
+        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer INTEGER> = $r1;
 
-        $stack2 = new java.lang.Integer;
+        $r2 = new java.lang.Integer;
 
-        specialinvoke $stack2.<java.lang.Integer: void <init>(int)>(2);
+        specialinvoke $r2.<java.lang.Integer: void <init>(int)>(2);
 
-        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer FLOAT> = $stack2;
+        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer FLOAT> = $r2;
 
-        $stack3 = new java.lang.Integer;
+        $r3 = new java.lang.Integer;
 
-        specialinvoke $stack3.<java.lang.Integer: void <init>(int)>(3);
+        specialinvoke $r3.<java.lang.Integer: void <init>(int)>(3);
 
-        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer DOUBLE> = $stack3;
+        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer DOUBLE> = $r3;
 
-        $stack4 = new java.lang.Integer;
+        $r4 = new java.lang.Integer;
 
-        specialinvoke $stack4.<java.lang.Integer: void <init>(int)>(4);
+        specialinvoke $r4.<java.lang.Integer: void <init>(int)>(4);
 
-        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer LONG> = $stack4;
+        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer LONG> = $r4;
 
-        $stack5 = new java.lang.Integer;
+        $r5 = new java.lang.Integer;
 
-        specialinvoke $stack5.<java.lang.Integer: void <init>(int)>(5);
+        specialinvoke $r5.<java.lang.Integer: void <init>(int)>(5);
 
-        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer NULL> = $stack5;
+        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer NULL> = $r5;
 
-        $stack6 = new java.lang.Integer;
+        $r6 = new java.lang.Integer;
 
-        specialinvoke $stack6.<java.lang.Integer: void <init>(int)>(6);
+        specialinvoke $r6.<java.lang.Integer: void <init>(int)>(6);
 
-        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer UNINITIALIZED_THIS> = $stack6;
+        <jdk.internal.org.objectweb.asm.Opcodes: java.lang.Integer UNINITIALIZED_THIS> = $r6;
 
         return;
     }

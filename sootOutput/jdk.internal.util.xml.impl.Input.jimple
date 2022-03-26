@@ -12,66 +12,60 @@ public class jdk.internal.util.xml.impl.Input extends java.lang.Object
 
     public void <init>(int)
     {
-        int buffsize, $stack4;
-        char[] $stack2, $stack3;
-        jdk.internal.util.xml.impl.Input this;
+        int i0, $i1;
+        char[] $r1, $r2;
+        jdk.internal.util.xml.impl.Input r0;
 
-        this := @this: jdk.internal.util.xml.impl.Input;
+        r0 := @this: jdk.internal.util.xml.impl.Input;
 
-        buffsize := @parameter0: int;
+        i0 := @parameter0: int;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        $stack2 = newarray (char)[buffsize];
+        $r1 = newarray (char)[i0];
 
-        this.<jdk.internal.util.xml.impl.Input: char[] chars> = $stack2;
+        r0.<jdk.internal.util.xml.impl.Input: char[] chars> = $r1;
 
-        $stack3 = this.<jdk.internal.util.xml.impl.Input: char[] chars>;
+        $r2 = r0.<jdk.internal.util.xml.impl.Input: char[] chars>;
 
-        $stack4 = lengthof $stack3;
+        $i1 = lengthof $r2;
 
-        this.<jdk.internal.util.xml.impl.Input: int chLen> = $stack4;
+        r0.<jdk.internal.util.xml.impl.Input: int chLen> = $i1;
 
         return;
-
-        nop;
     }
 
     public void <init>(char[])
     {
-        int $stack3;
-        char[] buff, $stack2;
-        jdk.internal.util.xml.impl.Input this;
+        int $i0;
+        char[] r1, $r2;
+        jdk.internal.util.xml.impl.Input r0;
 
-        this := @this: jdk.internal.util.xml.impl.Input;
+        r0 := @this: jdk.internal.util.xml.impl.Input;
 
-        buff := @parameter0: char[];
+        r1 := @parameter0: char[];
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        this.<jdk.internal.util.xml.impl.Input: char[] chars> = buff;
+        r0.<jdk.internal.util.xml.impl.Input: char[] chars> = r1;
 
-        $stack2 = this.<jdk.internal.util.xml.impl.Input: char[] chars>;
+        $r2 = r0.<jdk.internal.util.xml.impl.Input: char[] chars>;
 
-        $stack3 = lengthof $stack2;
+        $i0 = lengthof $r2;
 
-        this.<jdk.internal.util.xml.impl.Input: int chLen> = $stack3;
+        r0.<jdk.internal.util.xml.impl.Input: int chLen> = $i0;
 
         return;
-
-        nop;
     }
 
     public void <init>()
     {
-        jdk.internal.util.xml.impl.Input this;
+        jdk.internal.util.xml.impl.Input r0;
 
-        this := @this: jdk.internal.util.xml.impl.Input;
+        r0 := @this: jdk.internal.util.xml.impl.Input;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
         return;
-
-        nop;
     }
 }

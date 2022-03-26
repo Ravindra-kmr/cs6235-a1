@@ -27,796 +27,635 @@ public class jdk.internal.org.objectweb.asm.Label extends java.lang.Object
 
     public void <init>()
     {
-        jdk.internal.org.objectweb.asm.Label this;
+        jdk.internal.org.objectweb.asm.Label r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
         return;
-
-        nop;
     }
 
     public int getOffset()
     {
-        java.lang.IllegalStateException $stack4;
-        jdk.internal.org.objectweb.asm.Label this;
-        int $stack1, $stack2, $stack3;
+        java.lang.IllegalStateException $r1;
+        jdk.internal.org.objectweb.asm.Label r0;
+        int $i0, $i1, $i2;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack2 = $stack1 & 2;
+        $i1 = $i0 & 2;
 
-        if $stack2 != 0 goto label1;
+        if $i1 != 0 goto label1;
 
-        $stack4 = new java.lang.IllegalStateException;
+        $r1 = new java.lang.IllegalStateException;
 
-        specialinvoke $stack4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Label offset position has not been resolved yet");
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Label offset position has not been resolved yet");
 
-        throw $stack4;
+        throw $r1;
 
      label1:
-        $stack3 = this.<jdk.internal.org.objectweb.asm.Label: int position>;
+        $i2 = r0.<jdk.internal.org.objectweb.asm.Label: int position>;
 
-        return $stack3;
-
-        nop;
+        return $i2;
     }
 
     void put(jdk.internal.org.objectweb.asm.MethodWriter, jdk.internal.org.objectweb.asm.ByteVector, int, boolean)
     {
-        jdk.internal.org.objectweb.asm.MethodWriter owner;
-        jdk.internal.org.objectweb.asm.ByteVector out, $stack9, $stack12, $stack14, $stack17;
-        byte $b0, $b1, $b2;
-        int $stack5, $stack6, source, $stack7, $stack8, $stack10, $stack11, $stack13, $stack15, $stack16, $i0, $i1, $i2;
-        boolean wideOffset;
-        jdk.internal.org.objectweb.asm.Label this;
+        jdk.internal.org.objectweb.asm.MethodWriter r2;
+        jdk.internal.org.objectweb.asm.ByteVector r1;
+        int $i0, $i1, i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i11, $i13, $i15;
+        boolean z0;
+        jdk.internal.org.objectweb.asm.Label r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        owner := @parameter0: jdk.internal.org.objectweb.asm.MethodWriter;
+        r2 := @parameter0: jdk.internal.org.objectweb.asm.MethodWriter;
 
-        out := @parameter1: jdk.internal.org.objectweb.asm.ByteVector;
+        r1 := @parameter1: jdk.internal.org.objectweb.asm.ByteVector;
 
-        source := @parameter2: int;
+        i2 := @parameter2: int;
 
-        wideOffset := @parameter3: boolean;
+        z0 := @parameter3: boolean;
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack6 = $stack5 & 2;
+        $i1 = $i0 & 2;
 
-        if $stack6 != 0 goto label2;
+        if $i1 != 0 goto label2;
 
-        if wideOffset == 0 goto label1;
+        if z0 == 0 goto label1;
 
-        $b0 = -1;
+        $i11 = (int) -1;
 
-        $i0 = (int) $b0;
+        $i9 = $i11 - i2;
 
-        $stack16 = $i0 - source;
+        $i8 = r1.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
 
-        $stack15 = out.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+        specialinvoke r0.<jdk.internal.org.objectweb.asm.Label: void addReference(int,int)>($i9, $i8);
 
-        virtualinvoke this.<jdk.internal.org.objectweb.asm.Label: void addReference(int,int)>($stack16, $stack15);
+        $i13 = (int) -1;
 
-        $b1 = -1;
-
-        $i1 = (int) $b1;
-
-        $stack17 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>($i1);
+        virtualinvoke r1.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>($i13);
 
         goto label4;
 
      label1:
-        $stack13 = out.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
+        $i7 = r1.<jdk.internal.org.objectweb.asm.ByteVector: int length>;
 
-        virtualinvoke this.<jdk.internal.org.objectweb.asm.Label: void addReference(int,int)>(source, $stack13);
+        specialinvoke r0.<jdk.internal.org.objectweb.asm.Label: void addReference(int,int)>(i2, $i7);
 
-        $b2 = -1;
+        $i15 = (int) -1;
 
-        $i2 = (int) $b2;
-
-        $stack14 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($i2);
+        virtualinvoke r1.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($i15);
 
         goto label4;
 
      label2:
-        if wideOffset == 0 goto label3;
+        if z0 == 0 goto label3;
 
-        $stack10 = this.<jdk.internal.org.objectweb.asm.Label: int position>;
+        $i5 = r0.<jdk.internal.org.objectweb.asm.Label: int position>;
 
-        $stack11 = $stack10 - source;
+        $i6 = $i5 - i2;
 
-        $stack12 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>($stack11);
+        virtualinvoke r1.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putInt(int)>($i6);
 
         goto label4;
 
      label3:
-        $stack7 = this.<jdk.internal.org.objectweb.asm.Label: int position>;
+        $i3 = r0.<jdk.internal.org.objectweb.asm.Label: int position>;
 
-        $stack8 = $stack7 - source;
+        $i4 = $i3 - i2;
 
-        $stack9 = virtualinvoke out.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($stack8);
+        virtualinvoke r1.<jdk.internal.org.objectweb.asm.ByteVector: jdk.internal.org.objectweb.asm.ByteVector putShort(int)>($i4);
 
      label4:
         return;
-
-        nop;
     }
 
     private void addReference(int, int)
     {
-        int[] $stack4, $stack5, $stack10, $stack13, $stack14, a, $stack17, $stack19, $stack28;
-        int $stack6, $stack7, $stack8, $stack9, sourcePosition, $stack11, $stack12, referencePosition, $stack15, $stack16, $stack18, $stack23, $stack27;
-        boolean $stack22, $stack26;
-        jdk.internal.org.objectweb.asm.Label this, $stack20, $stack21, $stack24, $stack25, $stack29, $stack30;
+        int[] $r1, $r2, $r3, $r4, $r5, r6, $r7, $r8, $r9;
+        int $i0, $i1, $i2, $i3, i4, $i5, $i6, i7, $i8, $i9, $i10;
+        jdk.internal.org.objectweb.asm.Label r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        sourcePosition := @parameter0: int;
+        i4 := @parameter0: int;
 
-        referencePosition := @parameter1: int;
+        i7 := @parameter1: int;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        if $stack4 != null goto label1;
+        if $r1 != null goto label1;
 
-        $stack28 = newarray (int)[6];
+        $r9 = newarray (int)[6];
 
-        this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions> = $stack28;
+        r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions> = $r9;
 
      label1:
-        $stack29 = this;
+        $i1 = r0.<jdk.internal.org.objectweb.asm.Label: int referenceCount>;
 
-        $stack7 = $stack29.<jdk.internal.org.objectweb.asm.Label: int referenceCount>;
+        $r2 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        $stack30 = this;
+        $i0 = lengthof $r2;
 
-        $stack5 = $stack30.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        if $i1 < $i0 goto label2;
 
-        $stack6 = lengthof $stack5;
+        $r5 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        if $stack7 < $stack6 goto label2;
+        $i8 = lengthof $r5;
 
-        $stack14 = this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        $i9 = $i8 + 6;
 
-        $stack15 = lengthof $stack14;
+        r6 = newarray (int)[$i9];
 
-        $stack16 = $stack15 + 6;
+        $r8 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        a = newarray (int)[$stack16];
+        $r7 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        $stack19 = this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        $i10 = lengthof $r7;
 
-        $stack17 = this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r8, 0, r6, 0, $i10);
 
-        $stack18 = lengthof $stack17;
-
-        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($stack19, 0, a, 0, $stack18);
-
-        this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions> = a;
+        r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions> = r6;
 
      label2:
-        $stack20 = this;
+        $r3 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        $stack10 = $stack20.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        $i2 = r0.<jdk.internal.org.objectweb.asm.Label: int referenceCount>;
 
-        $stack21 = this;
+        $i3 = $i2 + 1;
 
-        $stack8 = $stack21.<jdk.internal.org.objectweb.asm.Label: int referenceCount>;
+        r0.<jdk.internal.org.objectweb.asm.Label: int referenceCount> = $i3;
 
-        $stack22 = 1;
+        $r3[$i2] = i4;
 
-        $stack9 = $stack8 + $stack22;
+        $r4 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        $stack21.<jdk.internal.org.objectweb.asm.Label: int referenceCount> = $stack9;
+        $i5 = r0.<jdk.internal.org.objectweb.asm.Label: int referenceCount>;
 
-        $stack23 = sourcePosition;
+        $i6 = $i5 + 1;
 
-        $stack10[$stack8] = $stack23;
+        r0.<jdk.internal.org.objectweb.asm.Label: int referenceCount> = $i6;
 
-        $stack24 = this;
-
-        $stack13 = $stack24.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
-
-        $stack25 = this;
-
-        $stack11 = $stack25.<jdk.internal.org.objectweb.asm.Label: int referenceCount>;
-
-        $stack26 = 1;
-
-        $stack12 = $stack11 + $stack26;
-
-        $stack25.<jdk.internal.org.objectweb.asm.Label: int referenceCount> = $stack12;
-
-        $stack27 = referencePosition;
-
-        $stack13[$stack11] = $stack27;
+        $r4[$i5] = i7;
 
         return;
-
-        nop;
     }
 
     boolean resolve(jdk.internal.org.objectweb.asm.MethodWriter, int, byte[])
     {
-        byte[] data, $stack51, $stack45#6, $stack45#7, $stack48#19, $stack48#20;
-        byte $stack20, $stack23, $stack26, $stack27, $stack31, $stack33, $stack40, $stack43#13, $stack43#14, $stack37#17, $stack37#18, $stack38#25, $stack38#26;
-        bottom_type needUpdate, i, reference, offset, $stack35, $stack36, $stack37, $stack38, $stack43, $stack44, $stack45, $stack46, $stack47, $stack48;
-        jdk.internal.org.objectweb.asm.MethodWriter owner;
-        short opcode, $stack52, $stack53, $stack54, $stack55, $s0, $s1;
-        int[] $stack14, $stack16;
-        boolean $stack42, $stack49, needUpdate#1;
-        int $stack10, $stack11, position, $stack12, $stack13, source, $stack15, $stack17, $stack18, $stack19, $stack21, $stack22, $stack24, $stack25, $stack29, $stack30, $stack32, $stack34, $stack39, $stack41, $stack50, i#2, i#3, reference#4, offset#5, $stack35#8, $stack35#9, reference#10, $stack44#11, $stack44#12, $stack36#15, $stack36#16, $stack47#21, $stack47#22, $stack46#23, $stack46#24, offset#27, reference#28, reference#29, reference#30, $i0, $i1, $i2, $i3;
-        jdk.internal.org.objectweb.asm.Label this, $stack28;
+        byte[] r3;
+        byte $b7, $b9, $b11, $b12, $b14, $b16, $b19, $b28, $b29;
+        int[] $r1, $r2;
+        boolean z0;
+        jdk.internal.org.objectweb.asm.MethodWriter r4;
+        short $s21, $s36;
+        int $i0, $i1, i2, $i3, i4, $i5, $i6, $i8, $i10, $i13, $i15, $i17, $i18, $i20, i22, i23, i24, i25, i26, $i27, i30, i31, i32, i33, $i35, $i37, $i38, $i39;
+        jdk.internal.org.objectweb.asm.Label r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        owner := @parameter0: jdk.internal.org.objectweb.asm.MethodWriter;
+        r4 := @parameter0: jdk.internal.org.objectweb.asm.MethodWriter;
 
-        position := @parameter1: int;
+        i2 := @parameter1: int;
 
-        data := @parameter2: byte[];
+        r3 := @parameter2: byte[];
 
-        needUpdate#1 = 0;
+        z0 = 0;
 
-        $stack10 = this.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack11 = $stack10 | 2;
+        $i1 = $i0 | 2;
 
-        this.<jdk.internal.org.objectweb.asm.Label: int status> = $stack11;
+        r0.<jdk.internal.org.objectweb.asm.Label: int status> = $i1;
 
-        this.<jdk.internal.org.objectweb.asm.Label: int position> = position;
+        r0.<jdk.internal.org.objectweb.asm.Label: int position> = i2;
 
-        i#2 = 0;
+        i22 = 0;
 
      label1:
-        $stack29 = i#2;
+        $i3 = r0.<jdk.internal.org.objectweb.asm.Label: int referenceCount>;
 
-        $stack28 = this;
+        if i22 >= $i3 goto label8;
 
-        $stack12 = $stack28.<jdk.internal.org.objectweb.asm.Label: int referenceCount>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        if $stack29 >= $stack12 goto label8;
+        i23 = i22 + 1;
 
-        $stack14 = this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        i4 = $r1[i22];
 
-        $stack13 = i#2;
+        $r2 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        i#3 = i#2 + 1;
+        i22 = i23 + 1;
 
-        source = $stack14[$stack13];
+        i24 = $r2[i23];
 
-        $stack16 = this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        if i4 < 0 goto label6;
 
-        $stack15 = i#3;
+        i25 = i2 - i4;
 
-        i#2 = i#3 + 1;
+        $i35 = (int) -32768;
 
-        reference#4 = $stack16[$stack15];
+        if i25 < $i35 goto label2;
 
-        if source < 0 goto label6;
-
-        offset#5 = position - source;
-
-        $s0 = -32768;
-
-        $i0 = (int) $s0;
-
-        if offset#5 < $i0 goto label2;
-
-        if offset#5 <= 32767 goto label5;
+        if i25 <= 32767 goto label5;
 
      label2:
-        $stack51 = data;
+        $i13 = i24 - 1;
 
-        $stack50 = reference#4;
+        $b14 = r3[$i13];
 
-        $stack49 = 1;
+        $s36 = (short) $b14;
 
-        $stack30 = $stack50 - $stack49;
+        $s21 = $s36 & 255;
 
-        $stack31 = $stack51[$stack30];
+        $i37 = (int) $s21;
 
-        $stack52 = 255;
+        if $i37 > 168 goto label3;
 
-        $s1 = (short) $stack31;
+        $i20 = i24 - 1;
 
-        $stack53 = $s1 & $stack52;
+        $i38 = (int) $s21;
 
-        opcode = $stack53;
+        $i18 = $i38 + 49;
 
-        $stack55 = opcode;
+        $b19 = (byte) $i18;
 
-        $stack54 = 168;
-
-        $i1 = (int) $stack55;
-
-        if $i1 > $stack54 goto label3;
-
-        $stack41 = reference#4 - 1;
-
-        $i2 = (int) opcode;
-
-        $stack39 = $i2 + 49;
-
-        $stack40 = (byte) $stack39;
-
-        data[$stack41] = $stack40;
+        r3[$i20] = $b19;
 
         goto label4;
 
      label3:
-        $stack34 = reference#4 - 1;
+        $i17 = i24 - 1;
 
-        $i3 = (int) opcode;
+        $i39 = (int) $s21;
 
-        $stack32 = $i3 + 20;
+        $i15 = $i39 + 20;
 
-        $stack33 = (byte) $stack32;
+        $b16 = (byte) $i15;
 
-        data[$stack34] = $stack33;
+        r3[$i17] = $b16;
 
      label4:
-        $stack42 = 1;
-
-        needUpdate#1 = $stack42;
+        z0 = 1;
 
      label5:
-        $stack45#6 = data;
+        i26 = i24 + 1;
 
-        $stack45#7 = $stack45#6;
+        $i27 = i25 >>> 8;
 
-        $stack35#8 = reference#4;
+        $b28 = (byte) $i27;
 
-        $stack35#9 = $stack35#8;
+        r3[i24] = $b28;
 
-        reference#10 = reference#4 + 1;
+        $b29 = (byte) i25;
 
-        $stack44#11 = offset#5;
-
-        $stack44#12 = $stack44#11;
-
-        $stack43#13 = 8;
-
-        $stack43#14 = $stack43#13;
-
-        $stack36#15 = $stack44#12 >>> $stack43#14;
-
-        $stack36#16 = $stack36#15;
-
-        $stack37#17 = (byte) $stack36#16;
-
-        $stack37#18 = $stack37#17;
-
-        $stack45#7[$stack35#9] = $stack37#18;
-
-        $stack48#19 = data;
-
-        $stack48#20 = $stack48#19;
-
-        $stack47#21 = reference#10;
-
-        $stack47#22 = $stack47#21;
-
-        $stack46#23 = offset#5;
-
-        $stack46#24 = $stack46#23;
-
-        $stack38#25 = (byte) $stack46#24;
-
-        $stack38#26 = $stack38#25;
-
-        $stack48#20[$stack47#22] = $stack38#26;
+        r3[i26] = $b29;
 
         goto label7;
 
      label6:
-        $stack17 = position + source;
+        $i5 = i2 + i4;
 
-        offset#27 = $stack17 + 1;
+        i30 = $i5 + 1;
 
-        $stack18 = reference#4;
+        i31 = i24 + 1;
 
-        reference#28 = reference#4 + 1;
+        $i6 = i30 >>> 24;
 
-        $stack19 = offset#27 >>> 24;
+        $b7 = (byte) $i6;
 
-        $stack20 = (byte) $stack19;
+        r3[i24] = $b7;
 
-        data[$stack18] = $stack20;
+        i32 = i31 + 1;
 
-        $stack21 = reference#28;
+        $i8 = i30 >>> 16;
 
-        reference#29 = reference#28 + 1;
+        $b9 = (byte) $i8;
 
-        $stack22 = offset#27 >>> 16;
+        r3[i31] = $b9;
 
-        $stack23 = (byte) $stack22;
+        i33 = i32 + 1;
 
-        data[$stack21] = $stack23;
+        $i10 = i30 >>> 8;
 
-        $stack24 = reference#29;
+        $b11 = (byte) $i10;
 
-        reference#30 = reference#29 + 1;
+        r3[i32] = $b11;
 
-        $stack25 = offset#27 >>> 8;
+        $b12 = (byte) i30;
 
-        $stack26 = (byte) $stack25;
-
-        data[$stack24] = $stack26;
-
-        $stack27 = (byte) offset#27;
-
-        data[reference#30] = $stack27;
+        r3[i33] = $b12;
 
      label7:
         goto label1;
 
      label8:
-        return needUpdate#1;
-
-        nop;
+        return z0;
     }
 
     jdk.internal.org.objectweb.asm.Label getFirst()
     {
-        jdk.internal.org.objectweb.asm.Label this, $stack3#1;
-        bottom_type $stack3;
-        jdk.internal.org.objectweb.asm.Frame $stack1, $stack2;
+        jdk.internal.org.objectweb.asm.Label r0, $r3;
+        jdk.internal.org.objectweb.asm.Frame $r1, $r2;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Frame frame>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Frame frame>;
 
-        if $stack1 != null goto label1;
+        if $r1 != null goto label1;
 
-        $stack3#1 = this;
+        $r3 = r0;
 
         goto label2;
 
      label1:
-        $stack2 = this.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Frame frame>;
+        $r2 = r0.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Frame frame>;
 
-        $stack3#1 = $stack2.<jdk.internal.org.objectweb.asm.Frame: jdk.internal.org.objectweb.asm.Label owner>;
+        $r3 = $r2.<jdk.internal.org.objectweb.asm.Frame: jdk.internal.org.objectweb.asm.Label owner>;
 
      label2:
-        return $stack3#1;
-
-        nop;
+        return $r3;
     }
 
     boolean inSubroutine(long)
     {
-        long id, $stack5;
-        jdk.internal.org.objectweb.asm.Label this;
-        int[] $stack7;
-        bottom_type $stack11;
-        int $stack3, $stack4, $stack6, $stack8, $stack9, $stack10;
-        boolean $stack11#1;
+        long l2, $l3;
+        jdk.internal.org.objectweb.asm.Label r0;
+        int[] $r1;
+        int $i0, $i1, $i4, $i5, $i6, $i7;
+        boolean $z0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        id := @parameter0: long;
+        l2 := @parameter0: long;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack4 = $stack3 & 1024;
+        $i1 = $i0 & 1024;
 
-        if $stack4 == 0 goto label3;
+        if $i1 == 0 goto label3;
 
-        $stack7 = this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        $stack5 = id >>> 32;
+        $l3 = l2 >>> 32;
 
-        $stack6 = (int) $stack5;
+        $i4 = (int) $l3;
 
-        $stack9 = $stack7[$stack6];
+        $i6 = $r1[$i4];
 
-        $stack8 = (int) id;
+        $i5 = (int) l2;
 
-        $stack10 = $stack9 & $stack8;
+        $i7 = $i6 & $i5;
 
-        if $stack10 == 0 goto label1;
+        if $i7 == 0 goto label1;
 
-        $stack11#1 = 1;
+        $z0 = 1;
 
         goto label2;
 
      label1:
-        $stack11#1 = 0;
+        $z0 = 0;
 
      label2:
-        return $stack11#1;
+        return $z0;
 
      label3:
         return 0;
-
-        nop;
     }
 
     boolean inSameSubroutine(jdk.internal.org.objectweb.asm.Label)
     {
-        bottom_type i;
-        int[] $stack7, $stack9, $stack10;
-        int $stack3, $stack4, $stack5, $stack6, $stack8, $stack11, $stack12, $stack13, $stack15, i#1;
-        boolean $stack16;
-        jdk.internal.org.objectweb.asm.Label this, block, $stack14;
+        jdk.internal.org.objectweb.asm.Label r0, r1;
+        int[] $r2, $r3, $r4;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, i8;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        block := @parameter0: jdk.internal.org.objectweb.asm.Label;
+        r1 := @parameter0: jdk.internal.org.objectweb.asm.Label;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack4 = $stack3 & 1024;
+        $i1 = $i0 & 1024;
 
-        if $stack4 == 0 goto label1;
+        if $i1 == 0 goto label1;
 
-        $stack5 = block.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i2 = r1.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack6 = $stack5 & 1024;
+        $i3 = $i2 & 1024;
 
-        if $stack6 != 0 goto label2;
+        if $i3 != 0 goto label2;
 
      label1:
-        $stack16 = 0;
-
-        return $stack16;
+        return 0;
 
      label2:
-        i#1 = 0;
+        i8 = 0;
 
      label3:
-        $stack15 = i#1;
+        $r2 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        $stack14 = this;
+        $i4 = lengthof $r2;
 
-        $stack7 = $stack14.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        if i8 >= $i4 goto label5;
 
-        $stack8 = lengthof $stack7;
+        $r3 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        if $stack15 >= $stack8 goto label5;
+        $i6 = $r3[i8];
 
-        $stack9 = this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        $r4 = r1.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        $stack12 = $stack9[i#1];
+        $i5 = $r4[i8];
 
-        $stack10 = block.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        $i7 = $i6 & $i5;
 
-        $stack11 = $stack10[i#1];
-
-        $stack13 = $stack12 & $stack11;
-
-        if $stack13 == 0 goto label4;
+        if $i7 == 0 goto label4;
 
         return 1;
 
      label4:
-        i#1 = i#1 + 1;
+        i8 = i8 + 1;
 
         goto label3;
 
      label5:
         return 0;
-
-        nop;
     }
 
     void addToSubroutine(long, int)
     {
-        long id, $stack6, $stack19, $stack20;
-        byte $stack18;
-        int[] $stack8, $stack16;
-        int $stack4, $stack5, $stack7, $stack9, $stack10, $stack11, $stack12, $stack13, nbSubroutines, $stack14, $stack15;
-        jdk.internal.org.objectweb.asm.Label this, $stack17;
+        long l2, $l3;
+        int[] $r1, $r2;
+        int $i0, $i1, $i4, $i5, $i6, $i7, $i8, $i9, i10, $i11, $i12;
+        jdk.internal.org.objectweb.asm.Label r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        id := @parameter0: long;
+        l2 := @parameter0: long;
 
-        nbSubroutines := @parameter1: int;
+        i10 := @parameter1: int;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack5 = $stack4 & 1024;
+        $i1 = $i0 & 1024;
 
-        if $stack5 != 0 goto label1;
+        if $i1 != 0 goto label1;
 
-        $stack12 = this.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i8 = r0.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack13 = $stack12 | 1024;
+        $i9 = $i8 | 1024;
 
-        this.<jdk.internal.org.objectweb.asm.Label: int status> = $stack13;
+        r0.<jdk.internal.org.objectweb.asm.Label: int status> = $i9;
 
-        $stack14 = nbSubroutines / 32;
+        $i11 = i10 / 32;
 
-        $stack15 = $stack14 + 1;
+        $i12 = $i11 + 1;
 
-        $stack16 = newarray (int)[$stack15];
+        $r2 = newarray (int)[$i12];
 
-        this.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions> = $stack16;
+        r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions> = $r2;
 
      label1:
-        $stack17 = this;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
 
-        $stack8 = $stack17.<jdk.internal.org.objectweb.asm.Label: int[] srcAndRefPositions>;
+        $l3 = l2 >>> 32;
 
-        $stack19 = id;
+        $i4 = (int) $l3;
 
-        $stack18 = 32;
+        $i6 = $r1[$i4];
 
-        $stack6 = $stack19 >>> $stack18;
+        $i5 = (int) l2;
 
-        $stack7 = (int) $stack6;
+        $i7 = $i6 | $i5;
 
-        $stack10 = $stack8[$stack7];
-
-        $stack20 = id;
-
-        $stack9 = (int) $stack20;
-
-        $stack11 = $stack10 | $stack9;
-
-        $stack8[$stack7] = $stack11;
+        $r1[$i4] = $i7;
 
         return;
-
-        nop;
     }
 
     void visitSubroutine(jdk.internal.org.objectweb.asm.Label, long, int)
     {
-        bottom_type stack, e, $stack9, $stack14, $stack16, $stack17, $stack27, $stack28;
-        boolean $stack8, $stack29;
-        jdk.internal.org.objectweb.asm.Edge $stack18, $stack19, $stack20, $stack30, $stack32, $stack34, e#4, $stack28#7, $stack28#8, e#9, $stack14#10, $stack14#11, $stack16#12, $stack16#13, $stack17#14, $stack17#15;
-        long id;
-        int nbSubroutines, $stack10, $stack11, $stack21, $stack22, $stack23, $stack24, $stack25, $stack26, $stack31;
-        jdk.internal.org.objectweb.asm.Label this, l, JSR, $stack12, $stack13, $stack15, $stack33, stack#1, $stack9#2, $stack9#3, $stack27#5, $stack27#6;
+        long l0;
+        int i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10;
+        boolean $z0, $z1;
+        jdk.internal.org.objectweb.asm.Edge $r6, $r7, $r8, $r9, $r11, r13;
+        jdk.internal.org.objectweb.asm.Label r0, r1, r2, $r3, $r4, $r5, $r10, r12;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r0 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        JSR := @parameter0: jdk.internal.org.objectweb.asm.Label;
+        r2 := @parameter0: jdk.internal.org.objectweb.asm.Label;
 
-        id := @parameter1: long;
+        l0 := @parameter1: long;
 
-        nbSubroutines := @parameter2: int;
+        i1 := @parameter2: int;
 
-        stack#1 = this;
+        r12 = r0;
 
      label01:
-        $stack9#2 = stack#1;
+        if r12 == null goto label10;
 
-        $stack9#3 = $stack9#2;
+        r1 = r12;
 
-        if $stack9#3 == null goto label10;
+        r12 = r12.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Label next>;
 
-        l = stack#1;
+        r1.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Label next> = null;
 
-        stack#1 = l.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Label next>;
+        if r2 == null goto label03;
 
-        l.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Label next> = null;
+        $i4 = r1.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        if JSR == null goto label03;
+        $i5 = $i4 & 2048;
 
-        $stack21 = l.<jdk.internal.org.objectweb.asm.Label: int status>;
-
-        $stack22 = $stack21 & 2048;
-
-        if $stack22 == 0 goto label02;
+        if $i5 == 0 goto label02;
 
         goto label01;
 
      label02:
-        $stack23 = l.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i6 = r1.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack24 = $stack23 | 2048;
+        $i7 = $i6 | 2048;
 
-        l.<jdk.internal.org.objectweb.asm.Label: int status> = $stack24;
+        r1.<jdk.internal.org.objectweb.asm.Label: int status> = $i7;
 
-        $stack25 = l.<jdk.internal.org.objectweb.asm.Label: int status>;
+        $i8 = r1.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        $stack26 = $stack25 & 256;
+        $i9 = $i8 & 256;
 
-        if $stack26 == 0 goto label05;
+        if $i9 == 0 goto label05;
 
-        $stack29 = virtualinvoke l.<jdk.internal.org.objectweb.asm.Label: boolean inSameSubroutine(jdk.internal.org.objectweb.asm.Label)>(JSR);
+        $z1 = virtualinvoke r1.<jdk.internal.org.objectweb.asm.Label: boolean inSameSubroutine(jdk.internal.org.objectweb.asm.Label)>(r2);
 
-        if $stack29 != 0 goto label05;
+        if $z1 != 0 goto label05;
 
-        $stack30 = new jdk.internal.org.objectweb.asm.Edge;
+        $r8 = new jdk.internal.org.objectweb.asm.Edge;
 
-        specialinvoke $stack30.<jdk.internal.org.objectweb.asm.Edge: void <init>()>();
+        specialinvoke $r8.<jdk.internal.org.objectweb.asm.Edge: void <init>()>();
 
-        e#4 = $stack30;
+        $i10 = r1.<jdk.internal.org.objectweb.asm.Label: int inputStackTop>;
 
-        $stack31 = l.<jdk.internal.org.objectweb.asm.Label: int inputStackTop>;
+        $r8.<jdk.internal.org.objectweb.asm.Edge: int info> = $i10;
 
-        e#4.<jdk.internal.org.objectweb.asm.Edge: int info> = $stack31;
+        $r9 = r2.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors>;
 
-        $stack32 = JSR.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors>;
+        $r10 = $r9.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor>;
 
-        $stack33 = $stack32.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor>;
+        $r8.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor> = $r10;
 
-        e#4.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor> = $stack33;
+        $r11 = r1.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors>;
 
-        $stack34 = l.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors>;
+        $r8.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Edge next> = $r11;
 
-        e#4.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Edge next> = $stack34;
-
-        l.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors> = e#4;
+        r1.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors> = $r8;
 
         goto label05;
 
      label03:
-        $stack8 = virtualinvoke l.<jdk.internal.org.objectweb.asm.Label: boolean inSubroutine(long)>(id);
+        $z0 = virtualinvoke r1.<jdk.internal.org.objectweb.asm.Label: boolean inSubroutine(long)>(l0);
 
-        if $stack8 == 0 goto label04;
+        if $z0 == 0 goto label04;
 
         goto label01;
 
      label04:
-        virtualinvoke l.<jdk.internal.org.objectweb.asm.Label: void addToSubroutine(long,int)>(id, nbSubroutines);
+        virtualinvoke r1.<jdk.internal.org.objectweb.asm.Label: void addToSubroutine(long,int)>(l0, i1);
 
      label05:
-        $stack27#5 = l;
-
-        $stack27#6 = $stack27#5;
-
-        $stack28#7 = $stack27#6.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors>;
-
-        $stack28#8 = $stack28#7;
-
-        e#9 = $stack28#8;
+        r13 = r1.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors>;
 
      label06:
-        $stack14#10 = e#9;
+        if r13 == null goto label09;
 
-        $stack14#11 = $stack14#10;
+        $i2 = r1.<jdk.internal.org.objectweb.asm.Label: int status>;
 
-        if $stack14#11 == null goto label09;
+        $i3 = $i2 & 128;
 
-        $stack10 = l.<jdk.internal.org.objectweb.asm.Label: int status>;
+        if $i3 == 0 goto label07;
 
-        $stack11 = $stack10 & 128;
+        $r6 = r1.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors>;
 
-        if $stack11 == 0 goto label07;
+        $r7 = $r6.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Edge next>;
 
-        $stack18 = l.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Edge successors>;
-
-        $stack19 = $stack18.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Edge next>;
-
-        if e#9 == $stack19 goto label08;
+        if r13 == $r7 goto label08;
 
      label07:
-        $stack20 = e#9;
+        $r3 = r13.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor>;
 
-        $stack12 = $stack20.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor>;
+        $r4 = $r3.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Label next>;
 
-        $stack13 = $stack12.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Label next>;
+        if $r4 != null goto label08;
 
-        if $stack13 != null goto label08;
+        $r5 = r13.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor>;
 
-        $stack15 = e#9.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor>;
+        $r5.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Label next> = r12;
 
-        $stack15.<jdk.internal.org.objectweb.asm.Label: jdk.internal.org.objectweb.asm.Label next> = stack#1;
-
-        stack#1 = e#9.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor>;
+        r12 = r13.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Label successor>;
 
      label08:
-        $stack16#12 = e#9;
-
-        $stack16#13 = $stack16#12;
-
-        $stack17#14 = $stack16#13.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Edge next>;
-
-        $stack17#15 = $stack17#14;
-
-        e#9 = $stack17#15;
+        r13 = r13.<jdk.internal.org.objectweb.asm.Edge: jdk.internal.org.objectweb.asm.Edge next>;
 
         goto label06;
 
@@ -825,34 +664,30 @@ public class jdk.internal.org.objectweb.asm.Label extends java.lang.Object
 
      label10:
         return;
-
-        nop;
     }
 
     public java.lang.String toString()
     {
-        jdk.internal.org.objectweb.asm.Label this;
-        int $stack3;
-        java.lang.StringBuilder $stack1, $stack2, $stack4;
-        java.lang.String $stack5;
+        jdk.internal.org.objectweb.asm.Label r2;
+        int $i0;
+        java.lang.StringBuilder $r0, $r1, $r3;
+        java.lang.String $r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.Label;
+        r2 := @this: jdk.internal.org.objectweb.asm.Label;
 
-        $stack1 = new java.lang.StringBuilder;
+        $r0 = new java.lang.StringBuilder;
 
-        specialinvoke $stack1.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();
 
-        $stack2 = virtualinvoke $stack1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("L");
+        $r1 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("L");
 
-        $stack3 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>(this);
+        $i0 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>(r2);
 
-        $stack4 = virtualinvoke $stack2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack3);
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
 
-        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.String toString()>();
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        return $stack5;
-
-        nop;
+        return $r4;
     }
 
     public static void <clinit>()

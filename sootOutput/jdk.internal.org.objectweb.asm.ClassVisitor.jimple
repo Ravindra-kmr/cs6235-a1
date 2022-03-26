@@ -5,403 +5,335 @@ public abstract class jdk.internal.org.objectweb.asm.ClassVisitor extends java.l
 
     public void <init>(int)
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this;
-        int api;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0;
+        int i0;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        api := @parameter0: int;
+        i0 := @parameter0: int;
 
-        specialinvoke this.<jdk.internal.org.objectweb.asm.ClassVisitor: void <init>(int,jdk.internal.org.objectweb.asm.ClassVisitor)>(api, null);
+        specialinvoke r0.<jdk.internal.org.objectweb.asm.ClassVisitor: void <init>(int,jdk.internal.org.objectweb.asm.ClassVisitor)>(i0, null);
 
         return;
-
-        nop;
     }
 
     public void <init>(int, jdk.internal.org.objectweb.asm.ClassVisitor)
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, cv;
-        int api;
-        java.lang.IllegalArgumentException $stack3;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, r1;
+        int i0;
+        java.lang.IllegalArgumentException $r2;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        api := @parameter0: int;
+        i0 := @parameter0: int;
 
-        cv := @parameter1: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r1 := @parameter1: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        if api < 262144 goto label1;
+        if i0 == 262144 goto label1;
 
-        if api <= 393216 goto label2;
+        if i0 == 327680 goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $r2;
 
      label1:
-        $stack3 = new java.lang.IllegalArgumentException;
+        r0.<jdk.internal.org.objectweb.asm.ClassVisitor: int api> = i0;
 
-        specialinvoke $stack3.<java.lang.IllegalArgumentException: void <init>()>();
-
-        throw $stack3;
-
-     label2:
-        this.<jdk.internal.org.objectweb.asm.ClassVisitor: int api> = api;
-
-        this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv> = cv;
+        r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv> = r1;
 
         return;
-
-        nop;
     }
 
     public void visit(int, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String[])
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack7, $stack8;
-        java.lang.String[] interfaces;
-        int version, access;
-        java.lang.String name, signature, superName;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r6;
+        java.lang.String[] r5;
+        int i0, i1;
+        java.lang.String r2, r3, r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        version := @parameter0: int;
+        i0 := @parameter0: int;
 
-        access := @parameter1: int;
+        i1 := @parameter1: int;
 
-        name := @parameter2: java.lang.String;
+        r2 := @parameter2: java.lang.String;
 
-        signature := @parameter3: java.lang.String;
+        r3 := @parameter3: java.lang.String;
 
-        superName := @parameter4: java.lang.String;
+        r4 := @parameter4: java.lang.String;
 
-        interfaces := @parameter5: java.lang.String[];
+        r5 := @parameter5: java.lang.String[];
 
-        $stack7 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack7 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack8 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r6 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        virtualinvoke $stack8.<jdk.internal.org.objectweb.asm.ClassVisitor: void visit(int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String[])>(version, access, name, signature, superName, interfaces);
+        virtualinvoke $r6.<jdk.internal.org.objectweb.asm.ClassVisitor: void visit(int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String[])>(i0, i1, r2, r3, r4, r5);
 
      label1:
         return;
-
-        nop;
     }
 
     public void visitSource(java.lang.String, java.lang.String)
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack3, $stack4;
-        java.lang.String source, debug;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r4;
+        java.lang.String r2, r3;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        source := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        debug := @parameter1: java.lang.String;
+        r3 := @parameter1: java.lang.String;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack3 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r4 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitSource(java.lang.String,java.lang.String)>(source, debug);
+        virtualinvoke $r4.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitSource(java.lang.String,java.lang.String)>(r2, r3);
 
      label1:
         return;
-
-        nop;
-    }
-
-    public jdk.internal.org.objectweb.asm.ModuleVisitor visitModule(java.lang.String, int, java.lang.String)
-    {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack5, $stack6;
-        java.lang.RuntimeException $stack8;
-        jdk.internal.org.objectweb.asm.ModuleVisitor $stack7;
-        int $stack4, access;
-        java.lang.String name, version;
-
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
-
-        name := @parameter0: java.lang.String;
-
-        access := @parameter1: int;
-
-        version := @parameter2: java.lang.String;
-
-        $stack4 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: int api>;
-
-        if $stack4 >= 393216 goto label1;
-
-        $stack8 = new java.lang.RuntimeException;
-
-        specialinvoke $stack8.<java.lang.RuntimeException: void <init>()>();
-
-        throw $stack8;
-
-     label1:
-        $stack5 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
-
-        if $stack5 == null goto label2;
-
-        $stack6 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
-
-        $stack7 = virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ModuleVisitor visitModule(java.lang.String,int,java.lang.String)>(name, access, version);
-
-        return $stack7;
-
-     label2:
-        return null;
-
-        nop;
     }
 
     public void visitOuterClass(java.lang.String, java.lang.String, java.lang.String)
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack4, $stack5;
-        java.lang.String owner, name, desc;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r5;
+        java.lang.String r2, r3, r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        owner := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        name := @parameter1: java.lang.String;
+        r3 := @parameter1: java.lang.String;
 
-        desc := @parameter2: java.lang.String;
+        r4 := @parameter2: java.lang.String;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack4 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r5 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        virtualinvoke $stack5.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitOuterClass(java.lang.String,java.lang.String,java.lang.String)>(owner, name, desc);
+        virtualinvoke $r5.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitOuterClass(java.lang.String,java.lang.String,java.lang.String)>(r2, r3, r4);
 
      label1:
         return;
-
-        nop;
     }
 
     public jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String, boolean)
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack3, $stack4;
-        java.lang.String desc;
-        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack5;
-        boolean visible;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r3;
+        java.lang.String r2;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $r4;
+        boolean z0;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        desc := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        visible := @parameter1: boolean;
+        z0 := @parameter1: boolean;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack3 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r3 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        $stack5 = virtualinvoke $stack4.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String,boolean)>(desc, visible);
+        $r4 = virtualinvoke $r3.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitAnnotation(java.lang.String,boolean)>(r2, z0);
 
-        return $stack5;
+        return $r4;
 
      label1:
         return null;
-
-        nop;
     }
 
     public jdk.internal.org.objectweb.asm.AnnotationVisitor visitTypeAnnotation(int, jdk.internal.org.objectweb.asm.TypePath, java.lang.String, boolean)
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack6, $stack7;
-        jdk.internal.org.objectweb.asm.TypePath typePath;
-        java.lang.RuntimeException $stack9;
-        jdk.internal.org.objectweb.asm.AnnotationVisitor $stack8;
-        int $stack5, typeRef;
-        java.lang.String desc;
-        boolean visible;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r4;
+        jdk.internal.org.objectweb.asm.TypePath r2;
+        java.lang.RuntimeException $r6;
+        jdk.internal.org.objectweb.asm.AnnotationVisitor $r5;
+        int $i0, i1;
+        java.lang.String r3;
+        boolean z0;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        typeRef := @parameter0: int;
+        i1 := @parameter0: int;
 
-        typePath := @parameter1: jdk.internal.org.objectweb.asm.TypePath;
+        r2 := @parameter1: jdk.internal.org.objectweb.asm.TypePath;
 
-        desc := @parameter2: java.lang.String;
+        r3 := @parameter2: java.lang.String;
 
-        visible := @parameter3: boolean;
+        z0 := @parameter3: boolean;
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: int api>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: int api>;
 
-        if $stack5 >= 327680 goto label1;
+        if $i0 >= 327680 goto label1;
 
-        $stack9 = new java.lang.RuntimeException;
+        $r6 = new java.lang.RuntimeException;
 
-        specialinvoke $stack9.<java.lang.RuntimeException: void <init>()>();
+        specialinvoke $r6.<java.lang.RuntimeException: void <init>()>();
 
-        throw $stack9;
+        throw $r6;
 
      label1:
-        $stack6 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack6 == null goto label2;
+        if $r1 == null goto label2;
 
-        $stack7 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r4 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        $stack8 = virtualinvoke $stack7.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitTypeAnnotation(int,jdk.internal.org.objectweb.asm.TypePath,java.lang.String,boolean)>(typeRef, typePath, desc, visible);
+        $r5 = virtualinvoke $r4.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.AnnotationVisitor visitTypeAnnotation(int,jdk.internal.org.objectweb.asm.TypePath,java.lang.String,boolean)>(i1, r2, r3, z0);
 
-        return $stack8;
+        return $r5;
 
      label2:
         return null;
-
-        nop;
     }
 
     public void visitAttribute(jdk.internal.org.objectweb.asm.Attribute)
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack2, $stack3;
-        jdk.internal.org.objectweb.asm.Attribute attr;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r3;
+        jdk.internal.org.objectweb.asm.Attribute r2;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        attr := @parameter0: jdk.internal.org.objectweb.asm.Attribute;
+        r2 := @parameter0: jdk.internal.org.objectweb.asm.Attribute;
 
-        $stack2 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack2 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r3 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        virtualinvoke $stack3.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitAttribute(jdk.internal.org.objectweb.asm.Attribute)>(attr);
+        virtualinvoke $r3.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitAttribute(jdk.internal.org.objectweb.asm.Attribute)>(r2);
 
      label1:
         return;
-
-        nop;
     }
 
     public void visitInnerClass(java.lang.String, java.lang.String, java.lang.String, int)
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack5, $stack6;
-        int access;
-        java.lang.String name, outerName, innerName;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r5;
+        int i0;
+        java.lang.String r2, r3, r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        name := @parameter0: java.lang.String;
+        r2 := @parameter0: java.lang.String;
 
-        outerName := @parameter1: java.lang.String;
+        r3 := @parameter1: java.lang.String;
 
-        innerName := @parameter2: java.lang.String;
+        r4 := @parameter2: java.lang.String;
 
-        access := @parameter3: int;
+        i0 := @parameter3: int;
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack5 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack6 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r5 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        virtualinvoke $stack6.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitInnerClass(java.lang.String,java.lang.String,java.lang.String,int)>(name, outerName, innerName, access);
+        virtualinvoke $r5.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitInnerClass(java.lang.String,java.lang.String,java.lang.String,int)>(r2, r3, r4, i0);
 
      label1:
         return;
-
-        nop;
     }
 
     public jdk.internal.org.objectweb.asm.FieldVisitor visitField(int, java.lang.String, java.lang.String, java.lang.String, java.lang.Object)
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack6, $stack7;
-        jdk.internal.org.objectweb.asm.FieldVisitor $stack8;
-        int access;
-        java.lang.Object value;
-        java.lang.String name, desc, signature;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r6;
+        jdk.internal.org.objectweb.asm.FieldVisitor $r7;
+        int i0;
+        java.lang.Object r5;
+        java.lang.String r2, r3, r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        access := @parameter0: int;
+        i0 := @parameter0: int;
 
-        name := @parameter1: java.lang.String;
+        r2 := @parameter1: java.lang.String;
 
-        desc := @parameter2: java.lang.String;
+        r3 := @parameter2: java.lang.String;
 
-        signature := @parameter3: java.lang.String;
+        r4 := @parameter3: java.lang.String;
 
-        value := @parameter4: java.lang.Object;
+        r5 := @parameter4: java.lang.Object;
 
-        $stack6 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack6 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack7 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r6 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        $stack8 = virtualinvoke $stack7.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.FieldVisitor visitField(int,java.lang.String,java.lang.String,java.lang.String,java.lang.Object)>(access, name, desc, signature, value);
+        $r7 = virtualinvoke $r6.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.FieldVisitor visitField(int,java.lang.String,java.lang.String,java.lang.String,java.lang.Object)>(i0, r2, r3, r4, r5);
 
-        return $stack8;
+        return $r7;
 
      label1:
         return null;
-
-        nop;
     }
 
     public jdk.internal.org.objectweb.asm.MethodVisitor visitMethod(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String[])
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack6, $stack7;
-        java.lang.String[] exceptions;
-        jdk.internal.org.objectweb.asm.MethodVisitor $stack8;
-        int access;
-        java.lang.String name, desc, signature;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r6;
+        java.lang.String[] r5;
+        jdk.internal.org.objectweb.asm.MethodVisitor $r7;
+        int i0;
+        java.lang.String r2, r3, r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        access := @parameter0: int;
+        i0 := @parameter0: int;
 
-        name := @parameter1: java.lang.String;
+        r2 := @parameter1: java.lang.String;
 
-        desc := @parameter2: java.lang.String;
+        r3 := @parameter2: java.lang.String;
 
-        signature := @parameter3: java.lang.String;
+        r4 := @parameter3: java.lang.String;
 
-        exceptions := @parameter4: java.lang.String[];
+        r5 := @parameter4: java.lang.String[];
 
-        $stack6 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack6 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack7 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r6 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        $stack8 = virtualinvoke $stack7.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.MethodVisitor visitMethod(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String[])>(access, name, desc, signature, exceptions);
+        $r7 = virtualinvoke $r6.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.MethodVisitor visitMethod(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String[])>(i0, r2, r3, r4, r5);
 
-        return $stack8;
+        return $r7;
 
      label1:
         return null;
-
-        nop;
     }
 
     public void visitEnd()
     {
-        jdk.internal.org.objectweb.asm.ClassVisitor this, $stack1, $stack2;
+        jdk.internal.org.objectweb.asm.ClassVisitor r0, $r1, $r2;
 
-        this := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
+        r0 := @this: jdk.internal.org.objectweb.asm.ClassVisitor;
 
-        $stack1 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r1 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        if $stack1 == null goto label1;
+        if $r1 == null goto label1;
 
-        $stack2 = this.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
+        $r2 = r0.<jdk.internal.org.objectweb.asm.ClassVisitor: jdk.internal.org.objectweb.asm.ClassVisitor cv>;
 
-        virtualinvoke $stack2.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitEnd()>();
+        virtualinvoke $r2.<jdk.internal.org.objectweb.asm.ClassVisitor: void visitEnd()>();
 
      label1:
         return;
-
-        nop;
     }
 }

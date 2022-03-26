@@ -16,8 +16,8 @@ class P1{
 		obj3 = new A();
 		obj1 = obj2;
 		obj2.f1 = obj3;
-		obj4 = obj1.getf1();
-		obj5 = obj2.getf1();
+		obj4 = obj1.f1;
+		obj5 = obj2.f1;
 	}
 }
 class A{

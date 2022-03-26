@@ -1,304 +1,164 @@
 public class jdk.internal.org.xml.sax.SAXException extends java.lang.Exception
 {
-    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private java.lang.Exception exception;
     static final long serialVersionUID;
 
     public void <init>()
     {
-        jdk.internal.org.xml.sax.SAXException this;
+        jdk.internal.org.xml.sax.SAXException r0;
 
-        this := @this: jdk.internal.org.xml.sax.SAXException;
+        r0 := @this: jdk.internal.org.xml.sax.SAXException;
 
-        specialinvoke this.<java.lang.Exception: void <init>()>();
+        specialinvoke r0.<java.lang.Exception: void <init>()>();
+
+        r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception> = null;
 
         return;
-
-        nop;
     }
 
     public void <init>(java.lang.String)
     {
-        jdk.internal.org.xml.sax.SAXException this;
-        java.lang.String message;
+        jdk.internal.org.xml.sax.SAXException r0;
+        java.lang.String r1;
 
-        this := @this: jdk.internal.org.xml.sax.SAXException;
+        r0 := @this: jdk.internal.org.xml.sax.SAXException;
 
-        message := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        specialinvoke this.<java.lang.Exception: void <init>(java.lang.String)>(message);
+        specialinvoke r0.<java.lang.Exception: void <init>(java.lang.String)>(r1);
+
+        r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception> = null;
 
         return;
-
-        nop;
     }
 
     public void <init>(java.lang.Exception)
     {
-        jdk.internal.org.xml.sax.SAXException this;
-        java.lang.Exception e;
+        jdk.internal.org.xml.sax.SAXException r0;
+        java.lang.Exception r1;
 
-        this := @this: jdk.internal.org.xml.sax.SAXException;
+        r0 := @this: jdk.internal.org.xml.sax.SAXException;
 
-        e := @parameter0: java.lang.Exception;
+        r1 := @parameter0: java.lang.Exception;
 
-        specialinvoke this.<java.lang.Exception: void <init>(java.lang.Throwable)>(e);
+        specialinvoke r0.<java.lang.Exception: void <init>()>();
+
+        r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception> = r1;
 
         return;
-
-        nop;
     }
 
     public void <init>(java.lang.String, java.lang.Exception)
     {
-        jdk.internal.org.xml.sax.SAXException this;
-        java.lang.String message;
-        java.lang.Exception e;
+        jdk.internal.org.xml.sax.SAXException r0;
+        java.lang.String r1;
+        java.lang.Exception r2;
 
-        this := @this: jdk.internal.org.xml.sax.SAXException;
+        r0 := @this: jdk.internal.org.xml.sax.SAXException;
 
-        message := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        e := @parameter1: java.lang.Exception;
+        r2 := @parameter1: java.lang.Exception;
 
-        specialinvoke this.<java.lang.Exception: void <init>(java.lang.String,java.lang.Throwable)>(message, e);
+        specialinvoke r0.<java.lang.Exception: void <init>(java.lang.String)>(r1);
+
+        r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception> = r2;
 
         return;
-
-        nop;
     }
 
     public java.lang.String getMessage()
     {
-        java.lang.Throwable $stack4, cause;
-        jdk.internal.org.xml.sax.SAXException this;
-        java.lang.String $stack3, message, $stack5, $stack6;
+        jdk.internal.org.xml.sax.SAXException r0;
+        java.lang.String $r1, $r4;
+        java.lang.Exception $r2, $r3;
 
-        this := @this: jdk.internal.org.xml.sax.SAXException;
+        r0 := @this: jdk.internal.org.xml.sax.SAXException;
 
-        $stack3 = specialinvoke this.<java.lang.Exception: java.lang.String getMessage()>();
+        $r1 = specialinvoke r0.<java.lang.Exception: java.lang.String getMessage()>();
 
-        message = $stack3;
+        if $r1 != null goto label1;
 
-        $stack4 = specialinvoke this.<java.lang.Exception: java.lang.Throwable getCause()>();
+        $r2 = r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception>;
 
-        cause = $stack4;
+        if $r2 == null goto label1;
 
-        if message != null goto label1;
+        $r3 = r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception>;
 
-        if cause == null goto label1;
+        $r4 = virtualinvoke $r3.<java.lang.Exception: java.lang.String getMessage()>();
 
-        $stack6 = virtualinvoke cause.<java.lang.Throwable: java.lang.String getMessage()>();
-
-        return $stack6;
+        return $r4;
 
      label1:
-        $stack5 = message;
-
-        return $stack5;
-
-        nop;
+        return $r1;
     }
 
     public java.lang.Exception getException()
     {
-        jdk.internal.org.xml.sax.SAXException this;
-        java.lang.Exception $stack1;
+        jdk.internal.org.xml.sax.SAXException r0;
+        java.lang.Exception $r1;
 
-        this := @this: jdk.internal.org.xml.sax.SAXException;
+        r0 := @this: jdk.internal.org.xml.sax.SAXException;
 
-        $stack1 = virtualinvoke this.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception getExceptionInternal()>();
+        $r1 = r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public java.lang.Throwable getCause()
     {
-        java.lang.Throwable $stack1;
-        jdk.internal.org.xml.sax.SAXException this;
+        jdk.internal.org.xml.sax.SAXException r0;
+        java.lang.Exception $r1;
 
-        this := @this: jdk.internal.org.xml.sax.SAXException;
+        r0 := @this: jdk.internal.org.xml.sax.SAXException;
 
-        $stack1 = specialinvoke this.<java.lang.Exception: java.lang.Throwable getCause()>();
+        $r1 = r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception>;
 
-        return $stack1;
-
-        nop;
+        return $r1;
     }
 
     public java.lang.String toString()
     {
-        java.lang.Throwable $stack2, exception;
-        java.lang.StringBuilder $stack4, $stack6, $stack7, $stack9;
-        jdk.internal.org.xml.sax.SAXException this;
-        java.lang.String $stack3, $stack5, $stack8, $stack10;
+        java.lang.Exception $r1, $r7;
+        java.lang.StringBuilder $r3, $r5, $r6, $r9;
+        jdk.internal.org.xml.sax.SAXException r0;
+        java.lang.String $r2, $r4, $r8, $r10;
 
-        this := @this: jdk.internal.org.xml.sax.SAXException;
+        r0 := @this: jdk.internal.org.xml.sax.SAXException;
 
-        $stack2 = specialinvoke this.<java.lang.Exception: java.lang.Throwable getCause()>();
+        $r1 = r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception>;
 
-        exception = $stack2;
+        if $r1 == null goto label1;
 
-        if exception == null goto label1;
+        $r3 = new java.lang.StringBuilder;
 
-        $stack4 = new java.lang.StringBuilder;
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
 
-        specialinvoke $stack4.<java.lang.StringBuilder: void <init>()>();
+        $r4 = specialinvoke r0.<java.lang.Exception: java.lang.String toString()>();
 
-        $stack5 = specialinvoke this.<java.lang.Exception: java.lang.String toString()>();
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
 
-        $stack6 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack5);
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n");
 
-        $stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n");
+        $r7 = r0.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception exception>;
 
-        $stack8 = virtualinvoke exception.<java.lang.Throwable: java.lang.String toString()>();
+        $r8 = virtualinvoke $r7.<java.lang.Exception: java.lang.String toString()>();
 
-        $stack9 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack8);
+        $r9 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
 
-        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.String toString()>();
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        return $stack10;
-
-     label1:
-        $stack3 = specialinvoke this.<java.lang.Exception: java.lang.String toString()>();
-
-        return $stack3;
-
-        nop;
-    }
-
-    private void writeObject(java.io.ObjectOutputStream) throws java.io.IOException
-    {
-        java.io.ObjectOutputStream$PutField $stack3, fields;
-        java.io.ObjectOutputStream out;
-        jdk.internal.org.xml.sax.SAXException this;
-        java.lang.String $stack4;
-        java.lang.Exception $stack5;
-
-        this := @this: jdk.internal.org.xml.sax.SAXException;
-
-        out := @parameter0: java.io.ObjectOutputStream;
-
-        $stack3 = virtualinvoke out.<java.io.ObjectOutputStream: java.io.ObjectOutputStream$PutField putFields()>();
-
-        fields = $stack3;
-
-        $stack4 = "exception";
-
-        $stack5 = virtualinvoke this.<jdk.internal.org.xml.sax.SAXException: java.lang.Exception getExceptionInternal()>();
-
-        virtualinvoke fields.<java.io.ObjectOutputStream$PutField: void put(java.lang.String,java.lang.Object)>($stack4, $stack5);
-
-        virtualinvoke out.<java.io.ObjectOutputStream: void writeFields()>();
-
-        return;
-
-        nop;
-    }
-
-    private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException
-    {
-        java.lang.Throwable $stack8, superCause, $stack9;
-        java.lang.IllegalStateException $stack10, e;
-        java.io.ObjectInputStream in;
-        java.lang.Exception exception;
-        java.io.InvalidClassException $stack11;
-        java.io.ObjectInputStream$GetField $stack6, fields;
-        java.lang.Object $stack7;
-        jdk.internal.org.xml.sax.SAXException this;
-
-        this := @this: jdk.internal.org.xml.sax.SAXException;
-
-        in := @parameter0: java.io.ObjectInputStream;
-
-        $stack6 = virtualinvoke in.<java.io.ObjectInputStream: java.io.ObjectInputStream$GetField readFields()>();
-
-        fields = $stack6;
-
-        $stack7 = virtualinvoke fields.<java.io.ObjectInputStream$GetField: java.lang.Object get(java.lang.String,java.lang.Object)>("exception", null);
-
-        exception = (java.lang.Exception) $stack7;
-
-        $stack8 = specialinvoke this.<java.lang.Exception: java.lang.Throwable getCause()>();
-
-        superCause = $stack8;
-
-        if superCause != null goto label4;
-
-        if exception == null goto label4;
+        return $r10;
 
      label1:
-        $stack9 = specialinvoke this.<java.lang.Exception: java.lang.Throwable initCause(java.lang.Throwable)>(exception);
+        $r2 = specialinvoke r0.<java.lang.Exception: java.lang.String toString()>();
 
-     label2:
-        goto label4;
-
-     label3:
-        $stack10 := @caughtexception;
-
-        e = $stack10;
-
-        $stack11 = new java.io.InvalidClassException;
-
-        specialinvoke $stack11.<java.io.InvalidClassException: void <init>(java.lang.String)>("Inconsistent state: two causes");
-
-        throw $stack11;
-
-     label4:
-        return;
-
-        nop;
-
-        catch java.lang.IllegalStateException from label1 to label2 with label3;
+        return $r2;
     }
 
-    private java.lang.Exception getExceptionInternal()
+    public static void <clinit>()
     {
-        java.lang.Throwable $stack2, cause;
-        jdk.internal.org.xml.sax.SAXException this;
-        java.lang.Exception $stack4;
-        boolean $stack3;
-
-        this := @this: jdk.internal.org.xml.sax.SAXException;
-
-        $stack2 = specialinvoke this.<java.lang.Exception: java.lang.Throwable getCause()>();
-
-        cause = $stack2;
-
-        $stack3 = cause instanceof java.lang.Exception;
-
-        if $stack3 == 0 goto label1;
-
-        $stack4 = (java.lang.Exception) cause;
-
-        return $stack4;
-
-     label1:
-        return null;
-
-        nop;
-    }
-
-    static void <clinit>()
-    {
-        byte $stack2;
-        java.io.ObjectStreamField[] $stack0;
-        java.io.ObjectStreamField $stack1;
-
         <jdk.internal.org.xml.sax.SAXException: long serialVersionUID> = 583241635256073760L;
-
-        $stack0 = newarray (java.io.ObjectStreamField)[1];
-
-        $stack2 = 0;
-
-        $stack1 = new java.io.ObjectStreamField;
-
-        specialinvoke $stack1.<java.io.ObjectStreamField: void <init>(java.lang.String,java.lang.Class)>("exception", class "Ljava/lang/Exception;");
-
-        $stack0[$stack2] = $stack1;
-
-        <jdk.internal.org.xml.sax.SAXException: java.io.ObjectStreamField[] serialPersistentFields> = $stack0;
 
         return;
     }

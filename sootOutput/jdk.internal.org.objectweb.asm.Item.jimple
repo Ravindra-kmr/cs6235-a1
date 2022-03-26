@@ -12,417 +12,355 @@ final class jdk.internal.org.objectweb.asm.Item extends java.lang.Object
 
     void <init>()
     {
-        jdk.internal.org.objectweb.asm.Item this;
+        jdk.internal.org.objectweb.asm.Item r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
         return;
-
-        nop;
     }
 
     void <init>(int)
     {
-        int index;
-        jdk.internal.org.objectweb.asm.Item this;
+        int i0;
+        jdk.internal.org.objectweb.asm.Item r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        index := @parameter0: int;
+        i0 := @parameter0: int;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        this.<jdk.internal.org.objectweb.asm.Item: int index> = index;
+        r0.<jdk.internal.org.objectweb.asm.Item: int index> = i0;
 
         return;
-
-        nop;
     }
 
     void <init>(int, jdk.internal.org.objectweb.asm.Item)
     {
-        long $stack5;
-        jdk.internal.org.objectweb.asm.Item this, i;
-        int index, $stack3, $stack4, $stack9;
-        java.lang.String $stack6, $stack7, $stack8;
+        long $l3;
+        jdk.internal.org.objectweb.asm.Item r0, r1;
+        int i0, $i1, $i2, $i4;
+        java.lang.String $r2, $r3, $r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        index := @parameter0: int;
+        i0 := @parameter0: int;
 
-        i := @parameter1: jdk.internal.org.objectweb.asm.Item;
+        r1 := @parameter1: jdk.internal.org.objectweb.asm.Item;
 
-        specialinvoke this.<java.lang.Object: void <init>()>();
+        specialinvoke r0.<java.lang.Object: void <init>()>();
 
-        this.<jdk.internal.org.objectweb.asm.Item: int index> = index;
+        r0.<jdk.internal.org.objectweb.asm.Item: int index> = i0;
 
-        $stack3 = i.<jdk.internal.org.objectweb.asm.Item: int type>;
+        $i1 = r1.<jdk.internal.org.objectweb.asm.Item: int type>;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int type> = $stack3;
+        r0.<jdk.internal.org.objectweb.asm.Item: int type> = $i1;
 
-        $stack4 = i.<jdk.internal.org.objectweb.asm.Item: int intVal>;
+        $i2 = r1.<jdk.internal.org.objectweb.asm.Item: int intVal>;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int intVal> = $stack4;
+        r0.<jdk.internal.org.objectweb.asm.Item: int intVal> = $i2;
 
-        $stack5 = i.<jdk.internal.org.objectweb.asm.Item: long longVal>;
+        $l3 = r1.<jdk.internal.org.objectweb.asm.Item: long longVal>;
 
-        this.<jdk.internal.org.objectweb.asm.Item: long longVal> = $stack5;
+        r0.<jdk.internal.org.objectweb.asm.Item: long longVal> = $l3;
 
-        $stack6 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r2 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1> = $stack6;
+        r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1> = $r2;
 
-        $stack7 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+        $r3 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
 
-        this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2> = $stack7;
+        r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2> = $r3;
 
-        $stack8 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
+        $r4 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
 
-        this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3> = $stack8;
+        r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3> = $r4;
 
-        $stack9 = i.<jdk.internal.org.objectweb.asm.Item: int hashCode>;
+        $i4 = r1.<jdk.internal.org.objectweb.asm.Item: int hashCode>;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $stack9;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $i4;
 
         return;
-
-        nop;
     }
 
     void set(int)
     {
-        jdk.internal.org.objectweb.asm.Item this;
-        int intVal, $stack2, $stack3, $stack4;
+        jdk.internal.org.objectweb.asm.Item r0;
+        int i0, $i1, $i2, $i3;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        intVal := @parameter0: int;
+        i0 := @parameter0: int;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int type> = 3;
+        r0.<jdk.internal.org.objectweb.asm.Item: int type> = 3;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int intVal> = intVal;
+        r0.<jdk.internal.org.objectweb.asm.Item: int intVal> = i0;
 
-        $stack2 = this.<jdk.internal.org.objectweb.asm.Item: int type>;
+        $i1 = r0.<jdk.internal.org.objectweb.asm.Item: int type>;
 
-        $stack3 = $stack2 + intVal;
+        $i2 = $i1 + i0;
 
-        $stack4 = 2147483647 & $stack3;
+        $i3 = 2147483647 & $i2;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $stack4;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $i3;
 
         return;
-
-        nop;
     }
 
     void set(long)
     {
-        jdk.internal.org.objectweb.asm.Item this;
-        int $stack3, $stack4, $stack5, $stack6;
-        long longVal;
+        jdk.internal.org.objectweb.asm.Item r0;
+        int $i1, $i2, $i3, $i4;
+        long l0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        longVal := @parameter0: long;
+        l0 := @parameter0: long;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int type> = 5;
+        r0.<jdk.internal.org.objectweb.asm.Item: int type> = 5;
 
-        this.<jdk.internal.org.objectweb.asm.Item: long longVal> = longVal;
+        r0.<jdk.internal.org.objectweb.asm.Item: long longVal> = l0;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.Item: int type>;
+        $i2 = r0.<jdk.internal.org.objectweb.asm.Item: int type>;
 
-        $stack3 = (int) longVal;
+        $i1 = (int) l0;
 
-        $stack5 = $stack4 + $stack3;
+        $i3 = $i2 + $i1;
 
-        $stack6 = 2147483647 & $stack5;
+        $i4 = 2147483647 & $i3;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $stack6;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $i4;
 
         return;
-
-        nop;
     }
 
     void set(float)
     {
-        jdk.internal.org.objectweb.asm.Item this;
-        int $stack2, $stack3, $stack4, $stack5, $stack6;
-        float floatVal;
+        jdk.internal.org.objectweb.asm.Item r0;
+        int $i0, $i1, $i2, $i3, $i4;
+        float f0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        floatVal := @parameter0: float;
+        f0 := @parameter0: float;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int type> = 4;
+        r0.<jdk.internal.org.objectweb.asm.Item: int type> = 4;
 
-        $stack2 = staticinvoke <java.lang.Float: int floatToRawIntBits(float)>(floatVal);
+        $i0 = staticinvoke <java.lang.Float: int floatToRawIntBits(float)>(f0);
 
-        this.<jdk.internal.org.objectweb.asm.Item: int intVal> = $stack2;
+        r0.<jdk.internal.org.objectweb.asm.Item: int intVal> = $i0;
 
-        $stack4 = this.<jdk.internal.org.objectweb.asm.Item: int type>;
+        $i2 = r0.<jdk.internal.org.objectweb.asm.Item: int type>;
 
-        $stack3 = (int) floatVal;
+        $i1 = (int) f0;
 
-        $stack5 = $stack4 + $stack3;
+        $i3 = $i2 + $i1;
 
-        $stack6 = 2147483647 & $stack5;
+        $i4 = 2147483647 & $i3;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $stack6;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $i4;
 
         return;
-
-        nop;
     }
 
     void set(double)
     {
-        jdk.internal.org.objectweb.asm.Item this;
-        int $stack4, $stack5, $stack6, $stack7;
-        long $stack3;
-        double doubleVal;
+        jdk.internal.org.objectweb.asm.Item r0;
+        int $i1, $i2, $i3, $i4;
+        long $l0;
+        double d0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        doubleVal := @parameter0: double;
+        d0 := @parameter0: double;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int type> = 6;
+        r0.<jdk.internal.org.objectweb.asm.Item: int type> = 6;
 
-        $stack3 = staticinvoke <java.lang.Double: long doubleToRawLongBits(double)>(doubleVal);
+        $l0 = staticinvoke <java.lang.Double: long doubleToRawLongBits(double)>(d0);
 
-        this.<jdk.internal.org.objectweb.asm.Item: long longVal> = $stack3;
+        r0.<jdk.internal.org.objectweb.asm.Item: long longVal> = $l0;
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.Item: int type>;
+        $i2 = r0.<jdk.internal.org.objectweb.asm.Item: int type>;
 
-        $stack4 = (int) doubleVal;
+        $i1 = (int) d0;
 
-        $stack6 = $stack5 + $stack4;
+        $i3 = $i2 + $i1;
 
-        $stack7 = 2147483647 & $stack6;
+        $i4 = 2147483647 & $i3;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $stack7;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $i4;
 
         return;
-
-        nop;
     }
 
     void set(int, java.lang.String, java.lang.String, java.lang.String)
     {
-        int type, $stack5, $stack6, $stack7, $stack8, $stack9, $stack10, $stack11, $stack12, $stack13, $stack14, $stack16, $stack18, $stack19, $stack20, $stack21, $stack22, $stack23, $stack24, $stack25;
-        java.lang.String strVal1, strVal2, strVal3, $stack15;
-        jdk.internal.org.objectweb.asm.Item this, $stack17;
+        int i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15;
+        java.lang.String r1, r2, r3;
+        jdk.internal.org.objectweb.asm.Item r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        type := @parameter0: int;
+        i0 := @parameter0: int;
 
-        strVal1 := @parameter1: java.lang.String;
+        r1 := @parameter1: java.lang.String;
 
-        strVal2 := @parameter2: java.lang.String;
+        r2 := @parameter2: java.lang.String;
 
-        strVal3 := @parameter3: java.lang.String;
+        r3 := @parameter3: java.lang.String;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int type> = type;
+        r0.<jdk.internal.org.objectweb.asm.Item: int type> = i0;
 
-        this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1> = strVal1;
+        r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1> = r1;
 
-        this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2> = strVal2;
+        r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2> = r2;
 
-        this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3> = strVal3;
+        r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3> = r3;
 
-        tableswitch(type)
+        lookupswitch(i0)
         {
             case 1: goto label2;
-            case 2: goto label4;
-            case 3: goto label4;
-            case 4: goto label4;
-            case 5: goto label4;
-            case 6: goto label4;
             case 7: goto label1;
             case 8: goto label2;
-            case 9: goto label4;
-            case 10: goto label4;
-            case 11: goto label4;
             case 12: goto label3;
-            case 13: goto label4;
-            case 14: goto label4;
-            case 15: goto label4;
             case 16: goto label2;
-            case 17: goto label4;
-            case 18: goto label4;
-            case 19: goto label2;
-            case 20: goto label2;
-            case 21: goto label4;
-            case 22: goto label4;
-            case 23: goto label4;
-            case 24: goto label4;
-            case 25: goto label4;
-            case 26: goto label4;
-            case 27: goto label4;
-            case 28: goto label4;
-            case 29: goto label4;
             case 30: goto label2;
             default: goto label4;
         };
 
      label1:
-        this.<jdk.internal.org.objectweb.asm.Item: int intVal> = 0;
+        r0.<jdk.internal.org.objectweb.asm.Item: int intVal> = 0;
 
      label2:
-        $stack17 = this;
+        $i6 = virtualinvoke r1.<java.lang.String: int hashCode()>();
 
-        $stack11 = 2147483647;
+        $i7 = i0 + $i6;
 
-        $stack16 = type;
+        $i8 = 2147483647 & $i7;
 
-        $stack15 = strVal1;
-
-        $stack12 = virtualinvoke $stack15.<java.lang.String: int hashCode()>();
-
-        $stack13 = $stack16 + $stack12;
-
-        $stack14 = $stack11 & $stack13;
-
-        $stack17.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $stack14;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $i8;
 
         return;
 
      label3:
-        $stack5 = 2147483647;
+        $i1 = virtualinvoke r1.<java.lang.String: int hashCode()>();
 
-        $stack6 = virtualinvoke strVal1.<java.lang.String: int hashCode()>();
+        $i2 = virtualinvoke r2.<java.lang.String: int hashCode()>();
 
-        $stack7 = virtualinvoke strVal2.<java.lang.String: int hashCode()>();
+        $i3 = $i1 * $i2;
 
-        $stack8 = $stack6 * $stack7;
+        $i4 = i0 + $i3;
 
-        $stack9 = type + $stack8;
+        $i5 = 2147483647 & $i4;
 
-        $stack10 = $stack5 & $stack9;
-
-        this.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $stack10;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $i5;
 
         return;
 
      label4:
-        $stack18 = 2147483647;
+        $i9 = virtualinvoke r1.<java.lang.String: int hashCode()>();
 
-        $stack19 = virtualinvoke strVal1.<java.lang.String: int hashCode()>();
+        $i10 = virtualinvoke r2.<java.lang.String: int hashCode()>();
 
-        $stack20 = virtualinvoke strVal2.<java.lang.String: int hashCode()>();
+        $i11 = $i9 * $i10;
 
-        $stack21 = $stack19 * $stack20;
+        $i12 = virtualinvoke r3.<java.lang.String: int hashCode()>();
 
-        $stack22 = virtualinvoke strVal3.<java.lang.String: int hashCode()>();
+        $i13 = $i11 * $i12;
 
-        $stack23 = $stack21 * $stack22;
+        $i14 = i0 + $i13;
 
-        $stack24 = type + $stack23;
+        $i15 = 2147483647 & $i14;
 
-        $stack25 = $stack18 & $stack24;
-
-        this.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $stack25;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $i15;
 
         return;
-
-        nop;
     }
 
     void set(java.lang.String, java.lang.String, int)
     {
-        long $stack4;
-        jdk.internal.org.objectweb.asm.Item this;
-        byte $stack7;
-        int bsmIndex, $stack6, $stack8, $stack10, $stack11, $stack12, $stack13, $stack14;
-        java.lang.String name, desc, $stack5, $stack9;
+        long $l1;
+        jdk.internal.org.objectweb.asm.Item r0;
+        int i0, $i2, $i3, $i4, $i5, $i6, $i7;
+        java.lang.String r1, r2, $r3, $r4;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        name := @parameter0: java.lang.String;
+        r1 := @parameter0: java.lang.String;
 
-        desc := @parameter1: java.lang.String;
+        r2 := @parameter1: java.lang.String;
 
-        bsmIndex := @parameter2: int;
+        i0 := @parameter2: int;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int type> = 18;
+        r0.<jdk.internal.org.objectweb.asm.Item: int type> = 18;
 
-        $stack4 = (long) bsmIndex;
+        $l1 = (long) i0;
 
-        this.<jdk.internal.org.objectweb.asm.Item: long longVal> = $stack4;
+        r0.<jdk.internal.org.objectweb.asm.Item: long longVal> = $l1;
 
-        this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1> = name;
+        r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1> = r1;
 
-        this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2> = desc;
+        r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2> = r2;
 
-        $stack6 = 2147483647;
+        $r3 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack7 = 18;
+        $i2 = virtualinvoke $r3.<java.lang.String: int hashCode()>();
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $i3 = i0 * $i2;
 
-        $stack8 = virtualinvoke $stack5.<java.lang.String: int hashCode()>();
+        $r4 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
 
-        $stack10 = bsmIndex * $stack8;
+        $i4 = virtualinvoke $r4.<java.lang.String: int hashCode()>();
 
-        $stack9 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+        $i5 = $i3 * $i4;
 
-        $stack11 = virtualinvoke $stack9.<java.lang.String: int hashCode()>();
+        $i6 = 18 + $i5;
 
-        $stack12 = $stack10 * $stack11;
+        $i7 = 2147483647 & $i6;
 
-        $stack13 = $stack7 + $stack12;
-
-        $stack14 = $stack6 & $stack13;
-
-        this.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $stack14;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = $i7;
 
         return;
-
-        nop;
     }
 
     void set(int, int)
     {
-        int position, hashCode;
-        jdk.internal.org.objectweb.asm.Item this;
+        int i0, i1;
+        jdk.internal.org.objectweb.asm.Item r0;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        position := @parameter0: int;
+        i0 := @parameter0: int;
 
-        hashCode := @parameter1: int;
+        i1 := @parameter1: int;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int type> = 33;
+        r0.<jdk.internal.org.objectweb.asm.Item: int type> = 33;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int intVal> = position;
+        r0.<jdk.internal.org.objectweb.asm.Item: int intVal> = i0;
 
-        this.<jdk.internal.org.objectweb.asm.Item: int hashCode> = hashCode;
+        r0.<jdk.internal.org.objectweb.asm.Item: int hashCode> = i1;
 
         return;
-
-        nop;
     }
 
     boolean isEqualTo(jdk.internal.org.objectweb.asm.Item)
     {
-        byte $stack11, $stack28;
-        bottom_type $stack8, $stack15, $stack25, $stack29, $stack32, $stack42;
-        boolean $stack7, $stack14, $stack18, $stack21, $stack24, $stack35, $stack38, $stack41, $stack45, $stack29#1, $stack32#2, $stack8#3, $stack25#4, $stack15#5, $stack15#6, $stack42#7, $stack42#8;
-        long $stack9, $stack10, $stack26, $stack27;
-        int $stack2, $stack3, $stack4, $stack30, $stack31;
-        java.lang.String $stack5, $stack6, $stack12, $stack13, $stack16, $stack17, $stack19, $stack20, $stack22, $stack23, $stack33, $stack34, $stack36, $stack37, $stack39, $stack40, $stack43, $stack44;
-        jdk.internal.org.objectweb.asm.Item this, i;
+        byte $b5, $b8;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9, $z10, $z11, $z12, $z13, $z14;
+        long $l3, $l4, $l6, $l7;
+        int $i0, $i1, $i2, $i9, $i10;
+        java.lang.String $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19;
+        jdk.internal.org.objectweb.asm.Item r0, r1;
 
-        this := @this: jdk.internal.org.objectweb.asm.Item;
+        r0 := @this: jdk.internal.org.objectweb.asm.Item;
 
-        i := @parameter0: jdk.internal.org.objectweb.asm.Item;
+        r1 := @parameter0: jdk.internal.org.objectweb.asm.Item;
 
-        $stack2 = this.<jdk.internal.org.objectweb.asm.Item: int type>;
+        $i0 = r0.<jdk.internal.org.objectweb.asm.Item: int type>;
 
-        tableswitch($stack2)
+        tableswitch($i0)
         {
             case 1: goto label01;
             case 2: goto label17;
@@ -442,8 +380,8 @@ final class jdk.internal.org.objectweb.asm.Item extends java.lang.Object
             case 16: goto label01;
             case 17: goto label17;
             case 18: goto label14;
-            case 19: goto label01;
-            case 20: goto label01;
+            case 19: goto label17;
+            case 20: goto label17;
             case 21: goto label17;
             case 22: goto label17;
             case 23: goto label17;
@@ -460,176 +398,170 @@ final class jdk.internal.org.objectweb.asm.Item extends java.lang.Object
         };
 
      label01:
-        $stack34 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r13 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack33 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r12 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack35 = virtualinvoke $stack34.<java.lang.String: boolean equals(java.lang.Object)>($stack33);
+        $z5 = virtualinvoke $r13.<java.lang.String: boolean equals(java.lang.Object)>($r12);
 
-        return $stack35;
+        return $z5;
 
      label02:
-        $stack27 = i.<jdk.internal.org.objectweb.asm.Item: long longVal>;
+        $l7 = r1.<jdk.internal.org.objectweb.asm.Item: long longVal>;
 
-        $stack26 = this.<jdk.internal.org.objectweb.asm.Item: long longVal>;
+        $l6 = r0.<jdk.internal.org.objectweb.asm.Item: long longVal>;
 
-        $stack28 = $stack27 cmp $stack26;
+        $b8 = $l7 cmp $l6;
 
-        if $stack28 != 0 goto label03;
+        if $b8 != 0 goto label03;
 
-        $stack29#1 = 1;
+        $z9 = 1;
 
         goto label04;
 
      label03:
-        $stack29#1 = 0;
+        $z9 = 0;
 
      label04:
-        return $stack29#1;
+        return $z9;
 
      label05:
-        $stack31 = i.<jdk.internal.org.objectweb.asm.Item: int intVal>;
+        $i10 = r1.<jdk.internal.org.objectweb.asm.Item: int intVal>;
 
-        $stack30 = this.<jdk.internal.org.objectweb.asm.Item: int intVal>;
+        $i9 = r0.<jdk.internal.org.objectweb.asm.Item: int intVal>;
 
-        if $stack31 != $stack30 goto label06;
+        if $i10 != $i9 goto label06;
 
-        $stack32#2 = 1;
+        $z10 = 1;
 
         goto label07;
 
      label06:
-        $stack32#2 = 0;
+        $z10 = 0;
 
      label07:
-        return $stack32#2;
+        return $z10;
 
      label08:
-        $stack4 = i.<jdk.internal.org.objectweb.asm.Item: int intVal>;
+        $i2 = r1.<jdk.internal.org.objectweb.asm.Item: int intVal>;
 
-        $stack3 = this.<jdk.internal.org.objectweb.asm.Item: int intVal>;
+        $i1 = r0.<jdk.internal.org.objectweb.asm.Item: int intVal>;
 
-        if $stack4 != $stack3 goto label09;
+        if $i2 != $i1 goto label09;
 
-        $stack6 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r3 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack5 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r2 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack7 = virtualinvoke $stack6.<java.lang.String: boolean equals(java.lang.Object)>($stack5);
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r2);
 
-        if $stack7 == 0 goto label09;
+        if $z0 == 0 goto label09;
 
-        $stack8#3 = 1;
+        $z11 = 1;
 
         goto label10;
 
      label09:
-        $stack8#3 = 0;
+        $z11 = 0;
 
      label10:
-        return $stack8#3;
+        return $z11;
 
      label11:
-        $stack20 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r9 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack19 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r8 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack21 = virtualinvoke $stack20.<java.lang.String: boolean equals(java.lang.Object)>($stack19);
+        $z3 = virtualinvoke $r9.<java.lang.String: boolean equals(java.lang.Object)>($r8);
 
-        if $stack21 == 0 goto label12;
+        if $z3 == 0 goto label12;
 
-        $stack23 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+        $r11 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
 
-        $stack22 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+        $r10 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
 
-        $stack24 = virtualinvoke $stack23.<java.lang.String: boolean equals(java.lang.Object)>($stack22);
+        $z4 = virtualinvoke $r11.<java.lang.String: boolean equals(java.lang.Object)>($r10);
 
-        if $stack24 == 0 goto label12;
+        if $z4 == 0 goto label12;
 
-        $stack25#4 = 1;
+        $z12 = 1;
 
         goto label13;
 
      label12:
-        $stack25#4 = 0;
+        $z12 = 0;
 
      label13:
-        return $stack25#4;
+        return $z12;
 
      label14:
-        $stack10 = i.<jdk.internal.org.objectweb.asm.Item: long longVal>;
+        $l4 = r1.<jdk.internal.org.objectweb.asm.Item: long longVal>;
 
-        $stack9 = this.<jdk.internal.org.objectweb.asm.Item: long longVal>;
+        $l3 = r0.<jdk.internal.org.objectweb.asm.Item: long longVal>;
 
-        $stack11 = $stack10 cmp $stack9;
+        $b5 = $l4 cmp $l3;
 
-        if $stack11 != 0 goto label15;
+        if $b5 != 0 goto label15;
 
-        $stack13 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r5 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack12 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r4 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack14 = virtualinvoke $stack13.<java.lang.String: boolean equals(java.lang.Object)>($stack12);
+        $z1 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r4);
 
-        if $stack14 == 0 goto label15;
+        if $z1 == 0 goto label15;
 
-        $stack17 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+        $r7 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
 
-        $stack16 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+        $r6 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
 
-        $stack18 = virtualinvoke $stack17.<java.lang.String: boolean equals(java.lang.Object)>($stack16);
+        $z2 = virtualinvoke $r7.<java.lang.String: boolean equals(java.lang.Object)>($r6);
 
-        if $stack18 == 0 goto label15;
+        if $z2 == 0 goto label15;
 
-        $stack15#5 = 1;
+        $z13 = 1;
 
         goto label16;
 
      label15:
-        $stack15#6 = 0;
-
-        $stack15#5 = $stack15#6;
+        $z13 = 0;
 
      label16:
-        return $stack15#5;
+        return $z13;
 
      label17:
-        $stack37 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r15 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack36 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
+        $r14 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal1>;
 
-        $stack38 = virtualinvoke $stack37.<java.lang.String: boolean equals(java.lang.Object)>($stack36);
+        $z6 = virtualinvoke $r15.<java.lang.String: boolean equals(java.lang.Object)>($r14);
 
-        if $stack38 == 0 goto label18;
+        if $z6 == 0 goto label18;
 
-        $stack40 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+        $r17 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
 
-        $stack39 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
+        $r16 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal2>;
 
-        $stack41 = virtualinvoke $stack40.<java.lang.String: boolean equals(java.lang.Object)>($stack39);
+        $z7 = virtualinvoke $r17.<java.lang.String: boolean equals(java.lang.Object)>($r16);
 
-        if $stack41 == 0 goto label18;
+        if $z7 == 0 goto label18;
 
-        $stack44 = i.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
+        $r19 = r1.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
 
-        $stack43 = this.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
+        $r18 = r0.<jdk.internal.org.objectweb.asm.Item: java.lang.String strVal3>;
 
-        $stack45 = virtualinvoke $stack44.<java.lang.String: boolean equals(java.lang.Object)>($stack43);
+        $z8 = virtualinvoke $r19.<java.lang.String: boolean equals(java.lang.Object)>($r18);
 
-        if $stack45 == 0 goto label18;
+        if $z8 == 0 goto label18;
 
-        $stack42#7 = 1;
+        $z14 = 1;
 
         goto label19;
 
      label18:
-        $stack42#8 = 0;
-
-        $stack42#7 = $stack42#8;
+        $z14 = 0;
 
      label19:
-        return $stack42#7;
-
-        nop;
+        return $z14;
     }
 }
