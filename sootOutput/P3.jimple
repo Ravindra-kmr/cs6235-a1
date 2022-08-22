@@ -1,0 +1,52 @@
+class P3 extends java.lang.Object
+{
+
+    public static void main(java.lang.String[])
+    {
+        A a2, a3, a4, temp$2, temp$3, temp$5;
+        B a1, temp$0;
+        java.lang.String[] args;
+        boolean res, temp$1, temp$4;
+
+        args := @parameter0: java.lang.String[];
+
+        temp$0 = new B;
+
+        specialinvoke temp$0.<B: void <init>()>();
+
+        a1 = temp$0;
+
+        temp$1 = virtualinvoke a1.<B: boolean foo(A)>(a1);
+
+        res = temp$1;
+
+        temp$2 = virtualinvoke a1.<B: A getf0()>();
+
+        a2 = temp$2;
+
+        temp$3 = virtualinvoke a1.<B: A getf1()>();
+
+        a3 = temp$3;
+
+        temp$4 = virtualinvoke a2.<A: boolean foo(A)>(a3);
+
+        res = temp$4;
+
+        temp$5 = virtualinvoke a2.<A: A getf0()>();
+
+        a4 = temp$5;
+
+        return;
+    }
+
+    void <init>()
+    {
+        P3 this;
+
+        this := @this: P3;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

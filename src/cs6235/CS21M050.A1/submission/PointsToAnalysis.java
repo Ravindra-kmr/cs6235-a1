@@ -365,16 +365,6 @@ public class PointsToAnalysis extends AnalysisBase {
 //									// System.out.println(tm.getName());
 									workingList.add(tm);
 								}
-								
-								if(! currentMethod.getName().equals("main")) {
-								Iterator<Edge> sEdges = cg.edgesInto(currentMethod);
-								while(sEdges.hasNext()) {
-									Edge sEdge = sEdges.next();
-									SootMethod tm = sEdge.getTgt().method();
-									workingList.add(tm);
-								}
-								}
-								
 								HashSet<refobj> lhsref= localrow.get(lhs.toString());	
 								if(lhsref == null)
 									lhsref = new HashSet<refobj>();
@@ -492,9 +482,7 @@ public class PointsToAnalysis extends AnalysisBase {
 						querytemp.answer = result(localrow.get(querytemp.lhs),localrow.get(querytemp.rhs));
 					}
 				}
-//				if(currentMethod.getName() != "main") {
-//					current
-//				}
+				
 				if(numberofRuns > 20)
 					break;
 //			System.out.println("QueriesAnswer:"+qa);

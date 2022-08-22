@@ -1,3 +1,13 @@
+# Question:
+ Assignment 1: Alias Analysis
+
+Our goal is to do alias analysis of qTACoJava programs. 
+
+Use Soot to write in Java one or more Java files which implement inter-procedural flow-insensitive context-insensitive may alias analysis. Your main analysis file should be called A1.java (it may invoke any supplementary java files you create or those provided by Soot). Say P.java contains a program to be analyzed in TACoJava form, and Q.txt contains a sequence of alias analysis queries. Say we obtain P.class by invoking javac on P.java. On invoking Soot on P.java, to perform alias analysis using A1.java (example invocation shown here), it is expected to answer the queries given in Q.txt.  
+
+Your program should print a series of "Yes" or "No" (each in a new line) corresponding to each query in Q.txt. The order of your answers should match the order of the alias queries.  
+
+
 # CS6235-A1
 Base repository for CS6235 A1 - a Soot-based Flow- and Context-Insensitive Interprocedural Alias Analysis of Java Programs, utilizing a Call Graph built on CHA.
 
