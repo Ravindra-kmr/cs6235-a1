@@ -1,5 +1,4 @@
-# Question:
- Assignment 1: Alias Analysis
+# Assignment 1: Alias Analysis
 
 Our goal is to do alias analysis of qTACoJava programs. 
 
